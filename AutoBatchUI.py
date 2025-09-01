@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import (
     QWidget, QLabel, QPushButton, QLineEdit, QListWidget,
     QFileDialog, QGridLayout, QVBoxLayout, QHBoxLayout, QComboBox, 
-    QSpinBox, QDoubleSpinBox, QDateEdit
+    QSpinBox, QDoubleSpinBox, QDateEdit , QSizePolicy,QSpacerItem
 )
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QDate , Qt
@@ -12,7 +12,7 @@ class AutoBatchUI(QWidget):
         super().__init__()
         self.setWindowTitle("AI Agent Finder - AutoBatch")
 
-        self.setGeometry(100, 100, 1200, 700)
+        self.setGeometry(0, 0, 1200, 700)
 
         
         self.setStyleSheet("""
@@ -117,18 +117,25 @@ class AutoBatchUI(QWidget):
         self.load_btn = QPushButton("LOAD")
         self.export_btn = QPushButton("EXPORT TEMPLATE")
         self.non_corr_btn = QPushButton("CREATE NON CORRELATED TEST LIST")
+        self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.corr_btn = QPushButton("SHOW CORRELATION MATRIX")
+    
 
+        # Now add buttons
         queue_controls.addWidget(self.move_up_btn, 0, 0)
         queue_controls.addWidget(self.move_down_btn, 0, 1)
+
         queue_controls.addWidget(self.add_btn, 1, 0)
         queue_controls.addWidget(self.dup_btn, 1, 1)
         queue_controls.addWidget(self.del_btn, 1, 2)
+
         queue_controls.addWidget(self.save_btn, 2, 0)
-        queue_controls.addWidget(self.load_btn, 2, 1)
-        queue_controls.addWidget(self.export_btn, 3, 0, 1, 3)
+        queue_controls.addWidget(self.load_btn, 2, 1)  # span across col 1+2
+
+        queue_controls.addWidget(self.export_btn, 3, 0, 1, 3)  # full width
         queue_controls.addWidget(self.non_corr_btn, 4, 0, 1, 3)
         queue_controls.addWidget(self.corr_btn, 5, 0, 1, 3)
+
 
         left_layout.addLayout(queue_controls)
 
