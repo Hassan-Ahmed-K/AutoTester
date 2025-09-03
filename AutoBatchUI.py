@@ -17,7 +17,6 @@ class AutoBatchUI(QWidget):
         
         self.setStyleSheet("""
                 /* Base widget style */
-                
                 QWidget {
                     background-color: #1e1e1e;
                     color: #e0dcdc;
@@ -113,12 +112,12 @@ class AutoBatchUI(QWidget):
 
         left_layout.addWidget(QLabel("Pairs to Test:"))
         self.queue_list = QListWidget()
+
         self.queue_list.setObjectName("queueList")
         self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.queue_list.setMinimumHeight(250)
         self.queue_list.setMinimumWidth(250)
         left_layout.addWidget(self.queue_list)
-
 
         # Queue controls
         queue_controls = QGridLayout()
@@ -131,6 +130,8 @@ class AutoBatchUI(QWidget):
         self.load_btn = QPushButton("LOAD")
         self.export_btn = QPushButton("EXPORT TEMPLATE")
         self.non_corr_btn = QPushButton("CREATE NON CORRELATED TEST LIST")
+
+        self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.corr_btn = QPushButton("SHOW CORRELATION MATRIX")
     
 
@@ -155,6 +156,7 @@ class AutoBatchUI(QWidget):
         # ================= RIGHT PANEL =================
         right_layout = QGridLayout()
 
+
                 # ---------------- Right Panel ----------------
         self.testfile_input = QLineEdit()
 
@@ -173,6 +175,7 @@ class AutoBatchUI(QWidget):
 
         self.date_from = QDateEdit(QDate.currentDate())
         self.date_to = QDateEdit(QDate.currentDate())
+
 
         self.forward_combo = QComboBox()
         self.forward_combo.addItems(["1/4", "1/2", "Custom"])

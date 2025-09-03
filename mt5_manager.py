@@ -1,6 +1,7 @@
 import MetaTrader5 as mt5
 
 class MT5Manager:
+
     def __init__(self):
         self.connected = False
 
@@ -15,3 +16,5 @@ class MT5Manager:
     def disconnect(self):
         mt5.shutdown()
         self.connected = False
+
+ 

@@ -1,5 +1,6 @@
 import json
 import os
+
 from PyQt5.QtWidgets import QInputDialog, QFileDialog, QMessageBox
 import matplotlib.pyplot as plt
 
@@ -89,3 +90,4 @@ class QueueManager:
             plt.title("Correlation Matrix")
             plt.colorbar()
             plt.show()
+

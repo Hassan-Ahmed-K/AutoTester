@@ -1,9 +1,9 @@
 from PyQt5.QtWidgets import QMessageBox, QFileDialog
 from mt5_manager import MT5Manager
 from queue_manager import QueueManager
+
 import MetaTrader5 as mt5
 import os, glob , datetime
-
 
 
 
@@ -200,3 +200,5 @@ class AutoBatchController:
             self.queue.add_test_to_queue(settings)
 
             QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
+
+       
