@@ -17,11 +17,20 @@ class AutoBatchUI(QWidget):
         
         self.setStyleSheet("""
                 /* Base widget style */
+                
                 QWidget {
                     background-color: #1e1e1e;
                     color: #e0dcdc;
                     font-family: Inter;
                     font-size: 10pt;
+                }
+
+                /* Specific styles for the queue list */
+                QListWidget#queueList {
+                    
+                    background-color: #2b2b2b;
+                    border: 1px solid #808791;
+                    color: #ffffff;
                 }
 
                 /* Shared inputs */
@@ -104,7 +113,12 @@ class AutoBatchUI(QWidget):
 
         left_layout.addWidget(QLabel("Pairs to Test:"))
         self.queue_list = QListWidget()
+        self.queue_list.setObjectName("queueList")
+        self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.queue_list.setMinimumHeight(250)
+        self.queue_list.setMinimumWidth(250)
         left_layout.addWidget(self.queue_list)
+
 
         # Queue controls
         queue_controls = QGridLayout()
@@ -117,7 +131,6 @@ class AutoBatchUI(QWidget):
         self.load_btn = QPushButton("LOAD")
         self.export_btn = QPushButton("EXPORT TEMPLATE")
         self.non_corr_btn = QPushButton("CREATE NON CORRELATED TEST LIST")
-        self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.corr_btn = QPushButton("SHOW CORRELATION MATRIX")
     
 
@@ -142,47 +155,124 @@ class AutoBatchUI(QWidget):
         # ================= RIGHT PANEL =================
         right_layout = QGridLayout()
 
+                # ---------------- Right Panel ----------------
         self.testfile_input = QLineEdit()
+
         self.expert_input = QLineEdit()
+        self.expert_button = QPushButton("Browse")
+
         self.param_input = QLineEdit()
-        self.symbol_input = QLineEdit("EURUSD")
+        self.param_button = QPushButton("Browse")
+
+        self.symbol_prefix = QLineEdit()
+        self.symbol_suffix = QLineEdit()
+        self.symbol_input = QLineEdit()
+
         self.timeframe_combo = QComboBox()
         self.timeframe_combo.addItems(["M1", "M5", "M15", "H1", "H4", "D1"])
 
         self.date_from = QDateEdit(QDate.currentDate())
         self.date_to = QDateEdit(QDate.currentDate())
-        self.forward_combo = QComboBox(); self.forward_combo.addItems(["1/4", "1/2", "Custom"])
-        self.delay_input = QSpinBox(); self.delay_input.setValue(100)
-        self.model_combo = QComboBox(); self.model_combo.addItems([
-            "Every tick based on real ticks", "1 minute OHLC", "Open prices only"
-        ])
-        self.deposit_input = QDoubleSpinBox(); self.deposit_input.setValue(100000)
-        self.currency_input = QLineEdit("USD")
-        self.leverage_input = QSpinBox(); self.leverage_input.setValue(100)
-        self.optim_combo = QComboBox(); self.optim_combo.addItems([
-            "Fast genetic based algorithm", "All symbols", "Disabled"
-        ])
-        self.criterion_input = QLineEdit("Custom Max")
 
-        right_layout.addWidget(QLabel("Test File Name:"), 0, 0); right_layout.addWidget(self.testfile_input, 0, 1)
-        right_layout.addWidget(QLabel("Expert File:"), 1, 0); right_layout.addWidget(self.expert_input, 1, 1)
-        right_layout.addWidget(QLabel("Param File:"), 2, 0); right_layout.addWidget(self.param_input, 2, 1)
-        right_layout.addWidget(QLabel("Symbol:"), 3, 0); right_layout.addWidget(self.symbol_input, 3, 1)
-        right_layout.addWidget(QLabel("Timeframe:"), 4, 0); right_layout.addWidget(self.timeframe_combo, 4, 1)
-        right_layout.addWidget(QLabel("Date From:"), 5, 0); right_layout.addWidget(self.date_from, 5, 1)
-        right_layout.addWidget(QLabel("Date To:"), 6, 0); right_layout.addWidget(self.date_to, 6, 1)
-        right_layout.addWidget(QLabel("Forward Period:"), 7, 0); right_layout.addWidget(self.forward_combo, 7, 1)
-        right_layout.addWidget(QLabel("Delay (ms):"), 8, 0); right_layout.addWidget(self.delay_input, 8, 1)
-        right_layout.addWidget(QLabel("Modeling:"), 9, 0); right_layout.addWidget(self.model_combo, 9, 1)
-        right_layout.addWidget(QLabel("Deposit:"), 10, 0); right_layout.addWidget(self.deposit_input, 10, 1)
-        right_layout.addWidget(QLabel("Currency:"), 11, 0); right_layout.addWidget(self.currency_input, 11, 1)
-        right_layout.addWidget(QLabel("Leverage:"), 12, 0); right_layout.addWidget(self.leverage_input, 12, 1)
-        right_layout.addWidget(QLabel("Optimization:"), 13, 0); right_layout.addWidget(self.optim_combo, 13, 1)
-        right_layout.addWidget(QLabel("Criterion:"), 14, 0); right_layout.addWidget(self.criterion_input, 14, 1)
+        self.forward_combo = QComboBox()
+        self.forward_combo.addItems(["1/4", "1/2", "Custom"])
+
+        self.delay_input = QSpinBox()
+        self.delay_input.setValue(100)
+
+        self.model_combo = QComboBox()
+        self.model_combo.addItems([
+            "Every tick",
+            "Every tick based on real ticks",
+            "1 minute OHLC",
+            "Open prices only",
+            "Math calculation"
+        ])
+
+        self.deposit_input = QDoubleSpinBox()
+        self.deposit_input.setValue(100000)
+
+        self.currency_input = QLineEdit("USD")
+
+        self.leverage_input = QLineEdit("")
+
+        self.optim_combo = QComboBox()
+        self.optim_combo.addItems([
+            "Disabled",
+            "Fast genetic based algorithm",
+            "Slow complete algorithm",
+            "All symbols selected in MarketWatch"
+        ])
+
+        self.criterion_input = QComboBox()
+        self.criterion_input.addItems([
+            "Balance Max",
+            "Profit Factor Max",
+            "Expected Payoff Max",
+            "Drawdown Max",
+            "Recovery Factor Max",
+            "Sharpe Ratio Max",
+            "Custom max",
+            "Complex Criterion max"
+        ])
+
+        # -------- Add widgets to right layout --------
+        right_layout.addWidget(QLabel("Test File Name:"),        0, 0)
+        right_layout.addWidget(self.testfile_input,              0, 1)
+
+        right_layout.addWidget(QLabel("Expert File:"),           1, 0)
+        right_layout.addWidget(self.expert_input,                1, 1)
+        right_layout.addWidget(self.expert_button,               1, 2)
+
+        right_layout.addWidget(QLabel("Param File:"),            2, 0)
+        right_layout.addWidget(self.param_input,                 2, 1)
+        right_layout.addWidget(self.param_button,                2, 2)
+
+        right_layout.addWidget(QLabel("Symbol:"),                3, 0)
+        right_layout.addWidget(self.symbol_input,                3, 1)
+
+        right_layout.addWidget(QLabel("Symbol Prefix:"),         3, 2)
+        right_layout.addWidget(self.symbol_prefix,               3, 3)
+
+        right_layout.addWidget(QLabel("Symbol Suffix:"),         3, 4)
+        right_layout.addWidget(self.symbol_suffix,               3, 5)
+
+        right_layout.addWidget(QLabel("Timeframe:"),             4, 0)
+        right_layout.addWidget(self.timeframe_combo,             4, 1)
+
+        right_layout.addWidget(QLabel("Date From:"),             5, 0)
+        right_layout.addWidget(self.date_from,                   5, 1)
+
+        right_layout.addWidget(QLabel("Date To:"),               6, 0)
+        right_layout.addWidget(self.date_to,                     6, 1)
+
+        right_layout.addWidget(QLabel("Forward Period:"),        7, 0)
+        right_layout.addWidget(self.forward_combo,               7, 1)
+
+        right_layout.addWidget(QLabel("Delay (ms):"),            8, 0)
+        right_layout.addWidget(self.delay_input,                 8, 1)
+
+        right_layout.addWidget(QLabel("Modeling:"),              9, 0)
+        right_layout.addWidget(self.model_combo,                 9, 1)
+
+        right_layout.addWidget(QLabel("Deposit:"),               10, 0)
+        right_layout.addWidget(self.deposit_input,               10, 1)
+
+        right_layout.addWidget(QLabel("Currency:"),              11, 0)
+        right_layout.addWidget(self.currency_input,              11, 1)
+
+        right_layout.addWidget(QLabel("Leverage:"),              12, 0)
+        right_layout.addWidget(self.leverage_input,              12, 1)
+
+        right_layout.addWidget(QLabel("Optimization:"),          13, 0)
+        right_layout.addWidget(self.optim_combo,                 13, 1)
+
+        right_layout.addWidget(QLabel("Optimization Criterion:"), 14, 0)
+        right_layout.addWidget(self.criterion_input,             14, 1)
 
         # ================= BOTTOM =================
         bottom_layout = QHBoxLayout()
-        bottom_layout.setAlignment(Qt.AlignCenter)
+        bottom_layout.setAlignment(Qt.AlignCenter) #type:ignore
         self.start_btn = QPushButton("START")
         
 
