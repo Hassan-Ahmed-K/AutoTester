@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMessageBox, QFileDialog
-from mt5_manager import MT5Manager
-from queue_manager import QueueManager
+from aiagentfinder.mt5_manager import MT5Manager
+from aiagentfinder.queue_manager import QueueManager
 
 import MetaTrader5 as mt5
 import os, glob , datetime

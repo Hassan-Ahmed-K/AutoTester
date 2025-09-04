@@ -1,12 +1,18 @@
+# main.py
+
 import sys
 from PyQt5.QtWidgets import QApplication
-from AutoBatchUI import AutoBatchUI
-from controller import AutoBatchController
+from aiagentfinder.ui.main_window import MainWindow
 
-if __name__ == "__main__":
+
+def main():
     app = QApplication(sys.argv)
-    ui = AutoBatchUI()
-    controller = AutoBatchController(ui)
-    ui.show()
+
+    window = MainWindow()
+    window.show()
+
     sys.exit(app.exec_())
 
+
+if __name__ == "__main__":
+    main()
