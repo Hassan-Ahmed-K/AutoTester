@@ -4,6 +4,7 @@ class MT5Manager:
 
     def __init__(self):
         self.connected = False
+        self.mt5 = mt5
 
     def connect(self, path):
         if mt5.initialize(path):
