@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QMessageBox, QFileDialog
+from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox
 from aiagentfinder.mt5_manager import MT5Manager
 from aiagentfinder.queue_manager import QueueManager
+import difflib
 
-import MetaTrader5 as mt5
+# import MetaTrader5 as mt5
 import os, glob , datetime
 
 
@@ -11,6 +12,7 @@ class AutoBatchController:
     def __init__(self, ui):
         self.ui = ui
         self.mt5 = MT5Manager()
+        self.symbols= []
         self.queue = QueueManager(ui) 
 
         # --- Connect UI buttons ---
@@ -18,10 +20,12 @@ class AutoBatchController:
         self.ui.data_btn.clicked.connect(self.browse_data_folder)
         self.ui.report_btn.clicked.connect(self.browse_report_folder)
         self.ui.expert_button.clicked.connect(self.browse_expert_file)
-        self.ui.testfile_input.textChanged.connect(self.autofill_symbol_from_testfile)
         self.ui.param_button.clicked.connect(self.browse_param_file)
         self.ui.add_btn.clicked.connect(self.add_test_to_queue)
-
+        self.ui.testfile_input.textChanged.connect(self.update_clean_symbol)
+        self.ui.data_input.textChanged.connect(self.update_expert_list)
+        self.ui.refresh_btn.clicked.connect(self.load_experts)
+        
 
 
     # ----------------------------
@@ -45,9 +49,10 @@ class AutoBatchController:
                     for folder in candidates:
                         if os.path.isdir(os.path.join(folder, "config")):
                             self.ui.data_input.setText(folder)
+                            os.makedirs(os.path.join(folder, "Agent Finder Results"), exist_ok=True)
                             QMessageBox.information(
                                 self.ui, "MT5 Data Folder",
-                                f"✅ Auto-selected Data Folder:\n{folder}"
+                                f"Auto-selected Data Folder:\n{folder}"
                             )
                             found = True
                             break
@@ -126,11 +131,6 @@ class AutoBatchController:
 
         return None
     
-    def autofill_symbol_from_testfile(self):
-        text = self.ui.testfile_input.text().strip().upper()
-        if len(text) >= 6:  # assume first 6 letters = symbol
-            symbol_guess = text[:6]
-            self.ui.symbol_input.setText(symbol_guess)
     
     def browse_param_file(self):
         data_folder = self.ui.data_input.text()
@@ -201,4 +201,69 @@ class AutoBatchController:
 
             QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
 
-       
+   
+    
+
+    def get_best_symbol(self,user_input: str) -> str:
+        symbols = [s.name for s in self.mt5.mt5.symbols_get()]
+        user_input = user_input.upper().strip()
+
+        # exact match
+        if user_input in symbols:
+            return user_input
+
+        # find closest
+        match = difflib.get_close_matches(user_input, symbols, n=1, cutoff=0.4)
+        return match[0] if match else ""
+    
+    def update_clean_symbol(self):
+        if self.mt5.connected == False:
+            return
+        
+        raw = self.ui.testfile_input.text().strip()
+        best = self.get_best_symbol(raw)
+        if best:
+            self.ui.symbol_input.setText(best)
+
+    def update_expert_list(self):
+        data_folder = self.ui.data_input.text()
+        expert_folder = os.path.join(data_folder, "MQL5", r"Experts\Advisors")
+
+        if not os.path.exists(expert_folder):
+            return
+
+        # Find all .ex5 and .mq5 files
+        expert_files = glob.glob(os.path.join(expert_folder, "*.ex5"))
+        self.ui.experts = {os.path.basename(f): f for f in expert_files}
+        # Extract just the filenames
+        expert_names = self.ui.experts.keys()
+
+        # Update the combo box
+        if hasattr(self.ui, "expert_input") and isinstance(self.ui.expert_input, QComboBox):
+            current_expert = self.ui.expert_input.currentText()
+            self.ui.expert_input.clear()
+            self.ui.expert_input.addItems(expert_names)
+            # Try to restore previous selection if still available
+            if current_expert in expert_names:
+                index = self.ui.expert_input.findText(current_expert)
+                self.ui.expert_input.setCurrentIndex(index)
+
+
+    def load_experts(self, expert_folder):
+        if not expert_folder or not isinstance(expert_folder, str):
+            print("⚠️ Invalid expert folder path")
+            return None
+        
+        expret_files = glob.glob(os.path.join(expert_folder, "*.ex5"))
+        experts_dict = {os.path.basename(f): f for f in expret_files}
+        self.ui.experts = experts_dict
+
+        if not expret_files:
+            return None
+
+        # Get the latest file
+        latest_file = max(expret_files, key=os.path.getmtime)
+        latest_name = os.path.basename(latest_file)
+
+        self.ui.expert_input.setText(latest_name)
+        return latest_file

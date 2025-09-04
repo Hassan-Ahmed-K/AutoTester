@@ -3,7 +3,7 @@
 from PyQt5.QtWidgets import (
     QLabel, QPushButton, QLineEdit, QListWidget,
     QFileDialog, QGridLayout, QVBoxLayout, QHBoxLayout, QComboBox,
-    QSpinBox, QDoubleSpinBox, QDateEdit, QSizePolicy
+    QSpinBox, QDoubleSpinBox, QDateEdit, QSizePolicy, QStyle
 )
 from PyQt5.QtCore import QDate, Qt
 from PyQt5.QtGui import QPalette, QColor
@@ -13,13 +13,12 @@ from aiagentfinder.controller import AutoBatchController
 
 
 
-
 class AutoBatchUI(BaseTab):
     """UI for the AutoBatch tab, inherits from BaseTab."""
 
     def __init__(self, parent=None):
         super().__init__("Auto Batch", parent)
-
+        self.experts = {}
     def init_ui(self):
         
         """Override BaseTab's init_ui with AutoBatch-specific layout."""
@@ -76,7 +75,6 @@ class AutoBatchUI(BaseTab):
         """)
 
         
-
         # ================= Header =================
         header_layout = QHBoxLayout()
         header_label = QLabel("AutoTestQ")
@@ -96,6 +94,8 @@ class AutoBatchUI(BaseTab):
         mt5_layout.addWidget(QLabel("MT5 Directory:"))
         self.mt5_dir_input = QLineEdit()
         self.mt5_dir_btn = QPushButton("Browse")
+        icon = self.mt5_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
+        self.mt5_dir_btn.setIcon(icon)
         self.mt5_dir_btn.setMinimumWidth(150) 
         mt5_layout.addWidget(self.mt5_dir_input)
         mt5_layout.addWidget(self.mt5_dir_btn)
@@ -107,6 +107,8 @@ class AutoBatchUI(BaseTab):
         data_layout.addWidget(QLabel("Data Folder:"))
         self.data_input = QLineEdit()
         self.data_btn = QPushButton("Browse")
+        icon = self.data_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
+        self.data_btn.setIcon(icon)
         self.data_btn.setMinimumWidth(150) 
         data_layout.addWidget(self.data_input)
         data_layout.addWidget(self.data_btn)
@@ -118,6 +120,8 @@ class AutoBatchUI(BaseTab):
         report_layout.addWidget(QLabel("Report Folder:"))
         self.report_input = QLineEdit("Agent Finder Results")
         self.report_btn = QPushButton("Browse")
+        icon = self.report_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
+        self.report_btn.setIcon(icon)
         self.report_btn.setMinimumWidth(150) 
         report_layout.addWidget(self.report_input)
         report_layout.addWidget(self.report_btn)
@@ -178,11 +182,21 @@ class AutoBatchUI(BaseTab):
 
 
         self.testfile_input = QLineEdit()
-        self.expert_input = QLineEdit()
+        self.expert_input = QComboBox()
+        self.expert_input.addItems(["Please Attach Data File"])
         self.expert_button = QPushButton("Browse")
+        icon = self.expert_button.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
+        self.expert_button.setIcon(icon)
+
+        self.refresh_btn = QPushButton("Refresh")
+        refresh_icon = self.refresh_btn.style().standardIcon(QStyle.SP_BrowserReload)
+        self.refresh_btn.setIcon(refresh_icon)
+
         self.expert_button.setMinimumWidth(150) 
         self.param_input = QLineEdit()
         self.param_button = QPushButton("Browse")
+        icon = self.param_button.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
+        self.param_button.setIcon(icon)
         self.param_button.setMinimumWidth(150) 
         self.symbol_prefix = QLineEdit()
         self.symbol_suffix = QLineEdit()
@@ -232,7 +246,8 @@ class AutoBatchUI(BaseTab):
 
         # Row 1: Expert File
         right_layout.addWidget(QLabel("Expert File:"), 1, 0)
-        right_layout.addWidget(self.expert_input, 1, 1, 1, 4)   # input takes 4 columns
+        right_layout.addWidget(self.expert_input, 1, 1, 1, 3)   # input takes 4 columns
+        right_layout.addWidget(self.refresh_btn, 1, 4) 
         right_layout.addWidget(self.expert_button, 1, 5)          # button in last column
 
         # Row 2: Param File
