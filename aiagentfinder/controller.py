@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox
+from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem
+from PyQt5.QtCore import QDate
 from aiagentfinder.utils import MT5Manager , Logger
 from aiagentfinder.queue_manager import QueueManager
 import difflib
-
+import random
 
 
 # import MetaTrader5 as mt5
@@ -14,8 +15,10 @@ class AutoBatchController:
     def __init__(self, ui):
         self.ui = ui
         self.mt5 = MT5Manager()
+        
         self.symbols= []
         self.queue = QueueManager(ui) 
+        self.selected_queue_item_index = -1
 
         # --- Connect UI buttons ---
         self.ui.mt5_dir_btn.clicked.connect(self.browse_mt5_dir)
@@ -27,6 +30,11 @@ class AutoBatchController:
         self.ui.testfile_input.textChanged.connect(self.update_clean_symbol)
         self.ui.data_input.textChanged.connect(self.update_expert_list)
         self.ui.refresh_btn.clicked.connect(self.load_experts)
+        self.ui.date_combo.currentTextChanged.connect(self.toggle_date_fields)
+        self.ui.forward_combo.currentTextChanged.connect(self.adjust_forward_date)
+        self.ui.delay_combo.currentTextChanged.connect(self.update_delay_input)
+        self.ui.move_up_btn.clicked.connect(self.move_up)
+        self.ui.queue_list.itemClicked.connect(self.on_item_clicked)
         
 
 
@@ -67,6 +75,8 @@ class AutoBatchController:
                             "⚠️ Could not detect Data Folder automatically. Please set it manually."
                         )
                         Logger.warning("Failed to auto-detect MT5 Data Folder")
+                    
+                    # 
 
             except Exception as e:
                 QMessageBox.critical(
@@ -78,6 +88,10 @@ class AutoBatchController:
             # Try to connect MT5 after setting terminal path
             success = self.mt5.connect(file_path)
             if success:
+                self.ui.deposit_info = self.mt5.get_deposit()
+                self.ui.deposit_input.setText(str(self.ui.deposit_info["balance"]))
+                self.ui.currency_input.setText(self.ui.deposit_info["currency"])
+                self.ui.leverage_input.setValue(self.ui.deposit_info["leverage"])
                 QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
                 Logger.success("MT5 connected successfully")
             else:
@@ -101,8 +115,6 @@ class AutoBatchController:
         if folder:
             self.ui.report_input.setText(folder)
             Logger.info(f"Report folder selected: {folder}")
-
-  
 
     def get_report_root(self, data_folder):
         """Return or create the main report root"""
@@ -146,7 +158,6 @@ class AutoBatchController:
 
         return None
     
-    
     def browse_param_file(self):
         data_folder = self.ui.data_input.text()
 
@@ -183,8 +194,6 @@ class AutoBatchController:
             self.ui.param_input.setText(file_path)
             Logger.info(f"Param file selected: {file_path}")
             
-    
-
     def test_settings(self):
         test_name = self.ui.testfile_input.text().strip()
         if not test_name:
@@ -194,7 +203,7 @@ class AutoBatchController:
 
         settings = {
             "test_name": test_name,
-            "expert": self.ui.expert_input.text().strip(),
+            "expert": self.ui.expert_input.currentText().strip(),
             "param_file": self.ui.param_input.text().strip(),
             "symbol_prefix": self.ui.symbol_prefix.text().strip(),
             "symbol_suffix": self.ui.symbol_suffix.text().strip(),
@@ -205,7 +214,7 @@ class AutoBatchController:
             "forward": self.ui.forward_combo.currentText(),
             "delay": self.ui.delay_input.value(),
             "model": self.ui.model_combo.currentText(),
-            "deposit": self.ui.deposit_input.value(),
+            "deposit": self.ui.deposit_input.text(),
             "currency": self.ui.currency_input.text().strip(),
             "leverage": self.ui.leverage_input.text().strip(),
             "optimization": self.ui.optim_combo.currentText(),
@@ -214,17 +223,13 @@ class AutoBatchController:
 
         return settings
     
-
     def add_test_to_queue(self):
         settings = self.test_settings()
         if settings:
             self.queue.add_test_to_queue(settings)
 
             QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
-            Logger.success(f"Test '{settings['test_name']}' added to queue.")
-
-   
-    
+            Logger.success(f"Test '{settings['test_name']}' added to queue.")  
 
     def get_best_symbol(self,user_input: str) -> str:
         symbols = [s.name for s in self.mt5.mt5.symbols_get()]
@@ -274,7 +279,6 @@ class AutoBatchController:
                 index = self.ui.expert_input.findText(current_expert)
                 self.ui.expert_input.setCurrentIndex(index)
 
-
     def load_experts(self, expert_folder):
         if not expert_folder or not isinstance(expert_folder, str):
             Logger.warning("Invalid expert folder path")
@@ -293,3 +297,103 @@ class AutoBatchController:
 
         self.ui.expert_input.setText(latest_name)
         return latest_file
+    
+    # --- helper method ---
+    def toggle_date_fields(self, text):
+        """Enable/disable date pickers and adjust dates based on combo selection."""
+        today = QDate.currentDate()
+
+        if text == "Entire history":
+            # Disable pickers, set from a very old date to today
+            self.ui.date_from.setEnabled(False)
+            self.ui.date_to.setEnabled(False)
+            self.ui.date_from.setDate(QDate(1970, 1, 1))  # or your earliest supported date
+            self.ui.date_to.setDate(today)
+
+        elif text == "Last month":
+            # first and last day of last month
+            first_day_last_month = today.addMonths(-1)
+            first_day_last_month = QDate(first_day_last_month.year(), first_day_last_month.month(), 1)
+
+            last_day_last_month = QDate(first_day_last_month.year(), first_day_last_month.month(),
+                                        first_day_last_month.daysInMonth())
+
+            self.ui.date_from.setDate(first_day_last_month)
+            self.ui.date_to.setDate(last_day_last_month)
+
+        elif text == "Last year":
+            # Disable pickers, set range to last year
+            self.ui.date_from.setEnabled(False)
+            self.ui.date_to.setEnabled(False)
+
+            first_day_last_year = QDate(today.year() - 1, 1, 1)
+            last_day_last_year = QDate(today.year() - 1, 12, 31)
+
+            self.ui.date_from.setDate(first_day_last_year)
+            self.ui.date_to.setDate(last_day_last_year)
+
+        elif text == "Custom period":
+            # Enable pickers, let user choose
+            self.ui.date_from.setEnabled(True)
+            self.ui.date_to.setEnabled(True)
+            self.ui.date_from.setDate(today)   # default both to today
+            self.ui.date_to.setDate(today)
+
+
+    def adjust_forward_date(self, text):
+        """Adjust forward_date depending on combo selection."""
+        today = QDate.currentDate()
+
+        if text == "No":
+            self.ui.forward_date.setEnabled(False)
+            self.ui.forward_date.setDate(today)
+
+        elif text == "1/4":
+            self.ui.forward_date.setEnabled(False)
+            self.ui.forward_date.setDate(today.addMonths(3))  # 1/4 year = 3 months
+
+        elif text == "1/3":
+            self.ui.forward_date.setEnabled(False)
+            self.ui.forward_date.setDate(today.addMonths(4))  # 1/3 year ≈ 4 months
+
+        elif text == "1/2":
+            self.ui.forward_date.setEnabled(False)
+            self.ui.forward_date.setDate(today.addMonths(6))  # half year
+
+        elif text == "Custom":
+            self.ui.forward_date.setEnabled(True)  # let user pick manually
+
+
+    def update_delay_input(self, text):
+        """Enable spinbox only when 'Custom Delay' is selected"""
+        if text == "Custom Delay":
+            self.delay_input.setEnabled(True)
+
+        elif text == "Random delay":
+            value = random.randint(0, 1000)
+            self.ui.delay_input.setValue(value)
+            self.ui.delay_input.setEnabled(False)
+
+        elif "ms" in text:  
+            # Extract number from string like "50 ms"
+            value = int(text.replace(" ms", "").strip())
+            self.ui.delay_input.setValue(value)
+            self.ui.delay_input.setEnabled(False)
+        else:
+            # For Zero latency, Random delay, etc.
+            self.ui.delay_input.setValue(0)
+            self.ui.delay_input.setEnabled(False)
+
+    
+    def on_item_clicked(self, item):
+        row = self.queue.row(item)
+        self.selected_queue_item_index = row
+        print(f"Clicked on: {item.text()} at index {row}")
+
+    def move_up(self):
+        if(self.selected_queue_item_index != -1):
+            print("self.selected_queue_item_index = ", self.selected_queue_item_index)
+            self.queue.move_up(self.selected_queue_item_index)
+            self.selected_queue_item_index = -1
+        else:
+            QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")

@@ -18,4 +18,20 @@ class MT5Manager:
         mt5.shutdown()
         self.connected = False
 
+    def get_deposit(self):
+        if not self.connected:
+            raise RuntimeError("Not connected to MT5 terminal")
+        
+        account_info = self.mt5.account_info()
+        if account_info is None:
+            raise RuntimeError("Failed to retrieve account info")
+        
+        return {
+            "balance": account_info.balance,
+            "equity": account_info.equity,
+            "margin": account_info.margin,
+            "currency": account_info.currency,
+            "leverage": account_info.leverage
+        }
+
  
