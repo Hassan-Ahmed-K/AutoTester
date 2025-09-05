@@ -34,7 +34,7 @@ class AutoBatchUI(BaseTab):
                 background-color: #1e1e1e;
                 color: #e0dcdc;
                 font-family: Inter;
-                font-size: 10pt;
+                font-size: 8pt;
             }
 
             /* File inputs and normal inputs */

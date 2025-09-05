@@ -3,8 +3,10 @@ from abc import abstractmethod
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from PyQt5.QtGui import QPalette, QColor
 
+
 class BaseTab(QWidget):
     """Abstract base class for tabs."""
+    
 
     def __init__(self, title: str, parent=None):
         super().__init__(parent)
