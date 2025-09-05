@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox
-from aiagentfinder.mt5_manager import MT5Manager
+from aiagentfinder.utils import MT5Manager , Logger
 from aiagentfinder.queue_manager import QueueManager
 import difflib
+
+
 
 # import MetaTrader5 as mt5
 import os, glob , datetime
@@ -38,6 +40,7 @@ class AutoBatchController:
         )
         if file_path:
             self.ui.mt5_dir_input.setText(file_path)
+            Logger.info(f"MT5 terminal selected: {file_path}")
 
             # Try auto-detect Data Folder using --datafolder
             try:
@@ -54,6 +57,7 @@ class AutoBatchController:
                                 self.ui, "MT5 Data Folder",
                                 f"Auto-selected Data Folder:\n{folder}"
                             )
+                            Logger.success(f"Auto-detected MT5 Data Folder: {folder}")
                             found = True
                             break
 
@@ -62,19 +66,23 @@ class AutoBatchController:
                             self.ui, "MT5 Data Folder",
                             "⚠️ Could not detect Data Folder automatically. Please set it manually."
                         )
+                        Logger.warning("Failed to auto-detect MT5 Data Folder")
 
             except Exception as e:
                 QMessageBox.critical(
                     self.ui, "Error",
                     f"❌ Failed to fetch MT5 Data Folder.\nError: {str(e)}"
                 )
+                Logger.error("Error while detecting MT5 Data Folder", e)
 
             # Try to connect MT5 after setting terminal path
             success = self.mt5.connect(file_path)
             if success:
                 QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
+                Logger.success("MT5 connected successfully")
             else:
                 QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
+                Logger.error("Failed to connect MT5")
 
     # ----------------------------
     # Browse MT5 data folder manually
@@ -83,6 +91,7 @@ class AutoBatchController:
         folder = QFileDialog.getExistingDirectory(self.ui, "Select Data Folder")
         if folder:
             self.ui.data_input.setText(folder)
+            Logger.info(f"Data folder selected: {folder}")
 
     # ----------------------------
     # Browse MT5 report folder
@@ -91,13 +100,16 @@ class AutoBatchController:
         folder = QFileDialog.getExistingDirectory(self.ui, "Select Report Folder")
         if folder:
             self.ui.report_input.setText(folder)
+            Logger.info(f"Report folder selected: {folder}")
 
   
 
     def get_report_root(self, data_folder):
         """Return or create the main report root"""
         report_root = os.path.join(data_folder, "Agent Finder Results")
+
         os.makedirs(report_root, exist_ok=True)
+        Logger.info(f"Report root folder: {report_root}")
         return report_root
 
     def create_batch_subfolder(self, report_root):
@@ -105,6 +117,7 @@ class AutoBatchController:
         ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         batch_folder = os.path.join(report_root, ts)
         os.makedirs(batch_folder, exist_ok=True)
+        Logger.info(f"Created batch folder: {batch_folder}")
         return batch_folder
     
     def browse_expert_file(self):
@@ -113,6 +126,7 @@ class AutoBatchController:
 
         if not os.path.exists(expert_folder):
             QMessageBox.warning(self.ui, "Error", f"Expert folder not found:\n{expert_folder}")
+            Logger.warning(f"Expert folder not found: {expert_folder}")
             return None
 
         # Open file dialog starting in Expert folder
@@ -127,6 +141,7 @@ class AutoBatchController:
             # Update expert input field in UI (if you have one)
             if hasattr(self.ui, "expert_input"):
                 self.ui.expert_input.setText(file_path)
+                Logger.info(f"Expert file selected: {file_path}")
             return file_path
 
         return None
@@ -137,6 +152,7 @@ class AutoBatchController:
 
         if not data_folder:
             QMessageBox.warning(self.ui, "Error", "Please set the Data Folder first.")
+            Logger.warning("Data folder is not set.")
             return None
 
         # Possible locations for .set files
@@ -149,11 +165,13 @@ class AutoBatchController:
         default_path = None
         for path in paths_to_check:
             if os.path.exists(path):
+                Logger.info(f"Param folder found: {path}")
                 default_path = path
                 break
 
         if not default_path:
             QMessageBox.warning(self.ui, "Error", "❌ No Param folder found in Data Folder.")
+            Logger.warning("No Param folder found in Data Folder.")
             return None
 
         # Open dialog
@@ -163,12 +181,15 @@ class AutoBatchController:
         )
         if file_path:
             self.ui.param_input.setText(file_path)
+            Logger.info(f"Param file selected: {file_path}")
+            
     
 
     def test_settings(self):
         test_name = self.ui.testfile_input.text().strip()
         if not test_name:
             QMessageBox.warning(self.ui, "Error", "Please enter a test file name")
+            Logger.warning("Test file name is not set")
             return None
 
         settings = {
@@ -200,6 +221,7 @@ class AutoBatchController:
             self.queue.add_test_to_queue(settings)
 
             QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
+            Logger.success(f"Test '{settings['test_name']}' added to queue.")
 
    
     
@@ -210,10 +232,13 @@ class AutoBatchController:
 
         # exact match
         if user_input in symbols:
+            Logger.info(f"Exact match found: {user_input}")
             return user_input
 
         # find closest
         match = difflib.get_close_matches(user_input, symbols, n=1, cutoff=0.4)
+        if match:
+            Logger.info(f"Closest match found: {match[0]}")
         return match[0] if match else ""
     
     def update_clean_symbol(self):
@@ -223,6 +248,7 @@ class AutoBatchController:
         raw = self.ui.testfile_input.text().strip()
         best = self.get_best_symbol(raw)
         if best:
+            Logger.info(f"Best symbol found: {best}")
             self.ui.symbol_input.setText(best)
 
     def update_expert_list(self):
@@ -251,18 +277,18 @@ class AutoBatchController:
 
     def load_experts(self, expert_folder):
         if not expert_folder or not isinstance(expert_folder, str):
-            print("⚠️ Invalid expert folder path")
+            Logger.warning("Invalid expert folder path")
             return None
-        
-        expret_files = glob.glob(os.path.join(expert_folder, "*.ex5"))
-        experts_dict = {os.path.basename(f): f for f in expret_files}
+
+        expert_files = glob.glob(os.path.join(expert_folder, "*.ex5"))
+        experts_dict = {os.path.basename(f): f for f in expert_files}
         self.ui.experts = experts_dict
 
-        if not expret_files:
+        if not expert_files:
             return None
 
         # Get the latest file
-        latest_file = max(expret_files, key=os.path.getmtime)
+        latest_file = max(expert_files, key=os.path.getmtime)
         latest_name = os.path.basename(latest_file)
 
         self.ui.expert_input.setText(latest_name)
