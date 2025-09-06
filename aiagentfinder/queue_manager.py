@@ -91,3 +91,12 @@ class QueueManager:
             plt.colorbar()
             plt.show()
 
+    def get_element_index(self, test_name:str):
+        print(f"item = {test_name}")
+        # print(f"self.tests = {self.tests}")
+        for i in range(len(self.tests)):
+            print(f"self.tests[i]['test_name'] = {self.tests[i]["test_name"]}")
+            if(self.tests[i]["test_name"] == test_name):
+                print(f"index = {i}")
+                return i
+

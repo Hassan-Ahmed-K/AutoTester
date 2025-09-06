@@ -33,10 +33,14 @@ class AutoBatchController:
         self.ui.date_combo.currentTextChanged.connect(self.toggle_date_fields)
         self.ui.forward_combo.currentTextChanged.connect(self.adjust_forward_date)
         self.ui.delay_combo.currentTextChanged.connect(self.update_delay_input)
-        self.ui.move_up_btn.clicked.connect(self.move_up)
         self.ui.queue_list.itemClicked.connect(self.on_item_clicked)
+        self.ui.move_up_btn.clicked.connect(self.move_up)
+        self.ui.move_down_btn.clicked.connect(self.move_down)
+        self.ui.dup_btn.clicked.connect(self.dup_down)
+        self.ui.del_btn.clicked.connect(self.delete_test)
+        self.ui.save_btn.clicked.connect(self.queue.save_queue)
+        self.ui.export_btn.clicked.connect(self.queue.export_template)
         
-
 
     # ----------------------------
     # Browse MT5 installation path
@@ -386,7 +390,7 @@ class AutoBatchController:
 
     
     def on_item_clicked(self, item):
-        row = self.queue.row(item)
+        row = self.queue.get_element_index(item.text())
         self.selected_queue_item_index = row
         print(f"Clicked on: {item.text()} at index {row}")
 
@@ -397,3 +401,31 @@ class AutoBatchController:
             self.selected_queue_item_index = -1
         else:
             QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")
+    
+    def move_down(self):
+        if(self.selected_queue_item_index != -1):
+            print("self.selected_queue_item_index = ", self.selected_queue_item_index)
+            self.queue.move_down(self.selected_queue_item_index)
+            self.selected_queue_item_index = -1
+        else:
+            QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")
+
+    def dup_down(self):
+        if(self.selected_queue_item_index != -1):
+            print("self.selected_queue_item_index = ", self.selected_queue_item_index)
+            self.queue.duplicate_test(self.selected_queue_item_index)
+            self.selected_queue_item_index = -1
+        else:
+            QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")
+
+    def delete_test(self):
+        if(self.selected_queue_item_index != -1):
+            print("self.selected_queue_item_index = ", self.selected_queue_item_index)
+            self.queue.delete_test(self.selected_queue_item_index)
+            self.selected_queue_item_index = -1
+        else:
+            QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")
+
+    
+    
+    
