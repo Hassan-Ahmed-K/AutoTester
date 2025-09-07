@@ -1,9 +1,17 @@
-from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem
+from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog
 from PyQt5.QtCore import QDate
 from aiagentfinder.utils import MT5Manager , Logger
 from aiagentfinder.queue_manager import QueueManager
 import difflib
 import random
+import requests
+import pandas as pd
+from io import StringIO
+import matplotlib.pyplot as plt
+import seaborn as sns
+from aiagentfinder.utils.QuantityDialog import QuantityDialog
+from aiagentfinder.utils.TextDialog import TextDialog
+from aiagentfinder.utils.RadioDialog import RadioDialog
 
 
 # import MetaTrader5 as mt5
@@ -19,6 +27,8 @@ class AutoBatchController:
         self.symbols= []
         self.queue = QueueManager(ui) 
         self.selected_queue_item_index = -1
+        self.non_correlated_popus_option = {}
+        self.ui.mt5_dir_input
 
         # --- Connect UI buttons ---
         self.ui.mt5_dir_btn.clicked.connect(self.browse_mt5_dir)
@@ -39,8 +49,12 @@ class AutoBatchController:
         self.ui.dup_btn.clicked.connect(self.dup_down)
         self.ui.del_btn.clicked.connect(self.delete_test)
         self.ui.save_btn.clicked.connect(self.queue.save_queue)
+        self.ui.load_btn.clicked.connect(self.queue.load_queue)
         self.ui.export_btn.clicked.connect(self.queue.export_template)
-        
+        self.ui.corr_btn.clicked.connect(lambda:self.show_correlation_popup(market="forex",period=50, symbols=None))
+        self.ui.non_corr_btn.clicked.connect(lambda: self.show_quantity_popup(title="Test Pairs", text="How many pairs will be in you test list: "))
+        self.ui.start_btn.clicked.connect(lambda: self.on_start_button_clicked(data_path = self.ui.data_input.text(), mt5_path =self.ui.mt5_dir_input.text(), report_path = self.ui.report_input.text() ))
+
 
     # ----------------------------
     # Browse MT5 installation path
@@ -343,7 +357,6 @@ class AutoBatchController:
             self.ui.date_from.setDate(today)   # default both to today
             self.ui.date_to.setDate(today)
 
-
     def adjust_forward_date(self, text):
         """Adjust forward_date depending on combo selection."""
         today = QDate.currentDate()
@@ -367,7 +380,6 @@ class AutoBatchController:
         elif text == "Custom":
             self.ui.forward_date.setEnabled(True)  # let user pick manually
 
-
     def update_delay_input(self, text):
         """Enable spinbox only when 'Custom Delay' is selected"""
         if text == "Custom Delay":
@@ -388,7 +400,6 @@ class AutoBatchController:
             self.ui.delay_input.setValue(0)
             self.ui.delay_input.setEnabled(False)
 
-    
     def on_item_clicked(self, item):
         row = self.queue.get_element_index(item.text())
         self.selected_queue_item_index = row
@@ -426,6 +437,236 @@ class AutoBatchController:
         else:
             QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")
 
+    def get_correlation( self,
+        market="forex",
+        period=50,
+        symbols=None,
+        output_format="csv",
+        endpoint="snapshot"
+    ):
+       
+        if symbols is None:
+            symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # default if nothing provided
+
+        # Join symbols with |
+        symbol_str = "|".join(symbols)
+
+        # Build the URL
+        url = f"https://www.mataf.io/api/tools/{output_format}/correl/{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
+
+        # Request the URL
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            lines = response.text.splitlines()
+            csv_data = "\n".join(lines[3:])  # drop metadata
+            df = pd.read_csv(StringIO(csv_data))
+            return df
+        else:
+            raise Exception(f"Error {response.status_code}: Unable to fetch data")
     
+    def show_correlation_popup(self,market="forex",period=50, symbols=None):
+        try:
+            # Fetch correlation data
+            df = self.get_correlation(
+                market="forex",
+                period=50,
+                symbols=symbols
+            )
+
+            corr_df = df.pivot(index="pair1", columns="pair2", values="day")
+
+            plt.figure(figsize=(6, 4))
+
+            sns.heatmap(
+                corr_df,
+                annot=True,
+                cmap="RdBu",  
+                center=0,       
+                vmin=-100,      
+                vmax=100,       
+                linewidths=0.5       
+            )
+            plt.title("Correlation Heatmap (Day)")
+            plt.tight_layout()
+            plt.show()
+
+        except Exception as e:
+            QMessageBox.critical(self, "Error", str(e))
+
+    def show_quantity_popup(self, title, text):
+        if(self.mt5.connected):
+            results = {
+                "test_symbol_quantity": None,
+                "strategies_count": None,
+                "strategies": [],
+                "symbol_type": None,
+                "correlationFilter": None
+            }
+
+            # First dialog
+            dialog1 = QuantityDialog(parent=self.ui, title=title, text=text)
+            if dialog1.exec_() == QDialog.Accepted:
+                qty1 = dialog1.get_value()
+                results["test_symbol_quantity"] = qty1
+                print("First quantity:", qty1)
+
+                # Second dialog
+                text = "How many strategies are you running"
+                title = "Strategies Count"
+                dialog2 = QuantityDialog(parent=self.ui, title=title, text=text)
+                if dialog2.exec_() == QDialog.Accepted:
+                    qty2 = dialog2.get_value()
+                    results["strategies_count"] = qty2
+                    print("Second quantity:", qty2)
+
+                    # Loop for strategy names
+                    for i in range(qty2):
+                        text = f"Please Name Strategy {i+1}"
+                        title = f"Strategy {i+1} Name"
+
+                        dialog3 = TextDialog(parent=self.ui, title=title, text=text)
+                        if dialog3.exec_() == QDialog.Accepted:
+                            strategy_name = dialog3.get_value()
+                            results["strategies"].append(strategy_name)
+                            print("Strategy name:", strategy_name)
+                        else:
+                            print("Strategy dialog cancelled")
+                            return  # stop immediately if cancelled
+
+                    # Symbol type radio dialog
+                    options = ["FX Only", "FX + Metals", "FX + Indices", "FX + Metal + Indices"]
+                    radio_dialog = RadioDialog(
+                        parent=self.ui,
+                        title="Symbols to Test",
+                        text="Which symbol do you want to include:",
+                        options=options
+                    )
+                    if radio_dialog.exec_() == QDialog.Accepted:
+                        symbol_type = radio_dialog.get_value()
+                        results["symbol_type"] = symbol_type
+                        print("Selected type for all strategies:", symbol_type)
+
+                        # Correlation filter dialog
+                        correlationFilterDialog = QuantityDialog(
+                            parent=self.ui,
+                            title="Correlation Filter",
+                            text="""Enter a value between 0-100 to filter out highly correlated pairs.
+                                    1) If the correlation is high (above 80) and positive then the currencies move in the same way.
+                                    2) If the correlation is high (above 80) and negative then the currencies move in the opposite way.
+                                    3) If the correlation is low (below 60) then the currencies don't move in the same way."""
+                        )
+                        if correlationFilterDialog.exec_() == QDialog.Accepted:   
+                            correlationFilter = correlationFilterDialog.get_value()
+                            results["correlationFilter"] = correlationFilter
+                            print("Correlation Filter:", correlationFilter)
+                        else:
+                            print("Correlation filter dialog cancelled")
+                    else:
+                        print("Radio dialog cancelled")
+                else:
+                    print("Second dialog cancelled")
+            else:
+                print("First dialog cancelled")
+
+            print("Final results:", results)
+            self.non_correlated_popus_option = results
+
+            symbols= self.get_symbols_for_option(results["symbol_type"])
+
+            print("symbols = ",symbols)
+
+            correlation = self.get_correlation(
+                market="forex",
+                period=50,
+                symbols=symbols,
+                output_format="csv",
+                endpoint="snapshot"
+            )
+
     
-    
+            uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+                                                                        correlation,
+                                                                        results["correlationFilter"],
+                                                                        results["test_symbol_quantity"]
+                                                                    )
+
+            if uncorrelated_pairs.empty:
+                QMessageBox.warning(
+                    self.ui,
+                    "No Pairs Found",
+                    f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
+                )
+                Logger.warning(f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}.")
+                return  # exit early
+
+            print(f"uncorrelated_pairs = {uncorrelated_pairs}")
+
+            for _, row in uncorrelated_pairs.iterrows():
+                uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
+                settings = {
+                    "test_name": f"{uncorrelated_pair}_trend",
+                    "expert": self.ui.expert_input.currentText().strip(),
+                    "param_file": self.ui.param_input.text().strip(),
+                    "symbol_prefix": self.ui.symbol_prefix.text().strip(),
+                    "symbol_suffix": self.ui.symbol_suffix.text().strip(),
+                    "symbol": uncorrelated_pair,
+                    "timeframe": self.ui.timeframe_combo.currentText(),
+                    "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
+                    "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
+                    "forward": self.ui.forward_combo.currentText(),
+                    "delay": self.ui.delay_input.value(),
+                    "model": self.ui.model_combo.currentText(),
+                    "deposit": self.ui.deposit_input.text(),
+                    "currency": self.ui.currency_input.text().strip(),
+                    "leverage": self.ui.leverage_input.text().strip(),
+                    "optimization": self.ui.optim_combo.currentText(),
+                    "criterion": self.ui.criterion_input.currentText(),
+                }
+
+                if settings:
+                    self.queue.add_test_to_queue(settings)
+                    QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
+                    Logger.success(f"Test '{settings['test_name']}' added to queue.")
+        
+    def get_symbols_for_option(self, option):
+        if option == "FX Only":
+            return self.mt5.get_fx_symbols()
+        elif option == "FX + Metals":
+            return self.mt5.get_fx_symbols() + self.mt5.get_metals_symbols()
+        elif option == "FX + Indices":
+            return self.mt5.get_fx_symbols() + self.mt5.get_indices_symbols()
+        elif option == "FX + Metal + Indices":
+            return self.mt5.get_fx_symbols() + self.mt5.get_metals_symbols() + self.mt5.get_indices_symbols()
+        else:
+            return self.mt5.get_fx_symbols()
+
+    def get_top_uncorrelated_pairs_day(self,df,correlation=60,top_n=5):
+        df_filtered = df[df["pair1"] != df["pair2"]].copy()
+        df_filtered["abs_day"] = df_filtered["day"].abs()
+        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=False)
+
+        return df_filtered[["pair1", "pair2", "day"]].head(top_n)
+
+
+    def on_start_button_clicked(self, data_path, mt5_path, report_path):
+        print("data_path = ",data_path)
+        print("mt5_path = ",mt5_path)
+        print("report_path = ",report_path)
+
+
+        if not hasattr(self, "queue") or self.queue.is_empty():
+            QMessageBox.warning(self.ui, "No Tests", "No tests in the queue. Please add tests first.")
+            return
+
+        QMessageBox.information(self.ui, "Starting", "Running tests in queue...")
+        Logger.info("Starting queued tests...")
+
+        # Example: run tests one by one
+        while not self.queue.is_empty():
+            test_settings = self.queue.get_next_test()
+            self.mt5.run_test(test_settings, data_path, mt5_path, report_path)
+
+        QMessageBox.information(self.ui, "Finished", "All tests completed.")
+        Logger.success("All tests completed.")
+

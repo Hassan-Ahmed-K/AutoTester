@@ -1,6 +1,5 @@
 import json
 import os
-
 from PyQt5.QtWidgets import QInputDialog, QFileDialog, QMessageBox
 import matplotlib.pyplot as plt
 
@@ -8,8 +7,7 @@ import matplotlib.pyplot as plt
 class QueueManager:
     def __init__(self, ui):
         self.ui = ui
-        # Queue is a list of dicts: {symbol, expert}
-        self.tests = []
+        self.tests = []  # list of dicts: {symbol, expert, test_name, ...}
 
     # ---------------- Core Operations ----------------
     def refresh_queue(self):
@@ -17,36 +15,33 @@ class QueueManager:
         print("Refreshing queue with:", len(self.tests), "items")
         for test in self.tests:
             test_name = test.get("test_name", "")
-
             display_text = f"{test_name}"
             print("Adding item:", display_text)
             self.ui.queue_list.addItem(display_text)
         print("Queue list count after refresh:", self.ui.queue_list.count())
 
-    def add_test_to_queue(self,tests):
-            print("Before append:", self.tests)
-            self.tests.append(tests)
-            print("After append:", self.tests)
-            self.refresh_queue()
+    def add_test_to_queue(self, test: dict):
+        self.tests.append(test)
+        self.refresh_queue()
 
-    def delete_test(self, index):
+    def delete_test(self, index: int):
         if 0 <= index < len(self.tests):
             del self.tests[index]
             self.refresh_queue()
 
-    def move_up(self, index):
+    def move_up(self, index: int):
         if index > 0:
             self.tests[index - 1], self.tests[index] = self.tests[index], self.tests[index - 1]
             self.refresh_queue()
             self.ui.queue_list.setCurrentRow(index - 1)
 
-    def move_down(self, index):
+    def move_down(self, index: int):
         if index < len(self.tests) - 1:
             self.tests[index + 1], self.tests[index] = self.tests[index], self.tests[index + 1]
             self.refresh_queue()
             self.ui.queue_list.setCurrentRow(index + 1)
 
-    def duplicate_test(self, index):
+    def duplicate_test(self, index: int):
         if 0 <= index < len(self.tests):
             self.tests.insert(index + 1, dict(self.tests[index]))
             self.refresh_queue()
@@ -76,7 +71,6 @@ class QueueManager:
 
     # ---------------- Extra Features ----------------
     def create_non_correlated_list(self):
-        # Placeholder (real logic can use correlation stats)
         result = {t["symbol"]: t for t in self.tests}.values()  # deduplicate by symbol
         QMessageBox.information(self.ui, "Non-Correlated List", f"Generated {len(result)} items.")
 
@@ -91,12 +85,23 @@ class QueueManager:
             plt.colorbar()
             plt.show()
 
-    def get_element_index(self, test_name:str):
-        print(f"item = {test_name}")
-        # print(f"self.tests = {self.tests}")
-        for i in range(len(self.tests)):
-            print(f"self.tests[i]['test_name'] = {self.tests[i]["test_name"]}")
-            if(self.tests[i]["test_name"] == test_name):
-                print(f"index = {i}")
+    def get_element_index(self, test_name: str):
+        for i, test in enumerate(self.tests):
+            if test.get("test_name") == test_name:
                 return i
+        return -1  # not found
 
+    # ---------------- Queue-Like Behavior ----------------
+    def get_next_test(self):
+        if self.tests:
+            return self.tests.pop(0)
+        return None
+
+    def is_empty(self):
+        return len(self.tests) == 0
+
+    def clear(self):
+        self.tests.clear()
+
+    def __len__(self):
+        return len(self.tests)
