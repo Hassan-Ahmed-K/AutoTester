@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import (
     QLabel, QPushButton, QLineEdit, QListWidget,
     QFileDialog, QGridLayout, QVBoxLayout, QHBoxLayout, QComboBox,
     QSpinBox, QDoubleSpinBox, QDateEdit, QSizePolicy, QStyle, QCalendarWidget
+
 )
 from PyQt5.QtCore import QDate, Qt
 from PyQt5.QtGui import QPalette, QColor
@@ -11,17 +12,13 @@ from PyQt5.QtGui import QPalette, QColor
 from aiagentfinder.ui.base_tab import BaseTab
 from aiagentfinder.controller import AutoBatchController
 
-
-
 class AutoBatchUI(BaseTab):
     """UI for the AutoBatch tab, inherits from BaseTab."""
 
     def __init__(self, parent=None):
         super().__init__("Auto Batch", parent)
-    
-        
-        
         self.experts = {}
+
     def init_ui(self):
         
         """Override BaseTab's init_ui with AutoBatch-specific layout."""
@@ -37,7 +34,9 @@ class AutoBatchUI(BaseTab):
                 background-color: #1e1e1e;
                 color: #e0dcdc;
                 font-family: Inter;
+
                 font-size: 8pt;
+
             }
 
             /* File inputs and normal inputs */
@@ -45,6 +44,7 @@ class AutoBatchUI(BaseTab):
                 border: 2px solid #555555;       /* nice gray border */
                 border-radius: 5px;              /* rounded corners */
                 padding: 6px;                    /* internal padding */
+
                 background-color: #2b2b2b;
                 color: #ffffff;
             }
@@ -63,6 +63,7 @@ class AutoBatchUI(BaseTab):
                 color: #ffffff;
                 padding: 6px 12px;
                 font-size: 8pt;
+
             }
 
             QPushButton:hover {
@@ -137,6 +138,7 @@ class AutoBatchUI(BaseTab):
         "currency": "USD",
         "leverage": 0
     }
+
         # ================= Header =================
         header_layout = QHBoxLayout()
         header_label = QLabel("AutoTestQ")
@@ -156,6 +158,7 @@ class AutoBatchUI(BaseTab):
         mt5_layout.addWidget(QLabel("MT5 Directory:"))
         self.mt5_dir_input = QLineEdit()
         self.mt5_dir_btn = QPushButton("Browse")
+
         icon = self.mt5_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.mt5_dir_btn.setIcon(icon)
         self.mt5_dir_btn.setMinimumWidth(100) 
@@ -169,9 +172,11 @@ class AutoBatchUI(BaseTab):
         data_layout.addWidget(QLabel("Data Folder:"))
         self.data_input = QLineEdit()
         self.data_btn = QPushButton("Browse")
+
         icon = self.data_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.data_btn.setIcon(icon)
         self.data_btn.setMinimumWidth(100) 
+
         data_layout.addWidget(self.data_input)
         data_layout.addWidget(self.data_btn)
         mt5_block_layout.addLayout(data_layout)
@@ -185,6 +190,7 @@ class AutoBatchUI(BaseTab):
         icon = self.report_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.report_btn.setIcon(icon)
         self.report_btn.setMinimumWidth(100) 
+
         report_layout.addWidget(self.report_input)
         report_layout.addWidget(self.report_btn)
         mt5_block_layout.addLayout(report_layout)
@@ -198,8 +204,10 @@ class AutoBatchUI(BaseTab):
         self.queue_list = QListWidget()
         self.queue_list.setObjectName("queueList")
         self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
         self.queue_list.setMinimumHeight(190)
         # self.queue_list.setMinimumWidth(250)
+
         left_layout.addWidget(self.queue_list)
 
         # Queue controls
@@ -233,7 +241,7 @@ class AutoBatchUI(BaseTab):
         queue_controls.addWidget(self.export_btn, 3, 0, 1, 3)   
         queue_controls.addWidget(self.non_corr_btn, 3, 3, 1, 3)   
         queue_controls.addWidget(self.corr_btn, 5, 0, 1, 6)      
-
+        
         left_layout.addLayout(queue_controls)  # Add the queue controls layout to the left layout (with stretch=1))
 
         # ================= Right Panel =================
@@ -320,8 +328,6 @@ class AutoBatchUI(BaseTab):
         self.delay_input.setRange(0, 100000)    
         self.delay_input.setSingleStep(10) 
 
-
-
         self.model_combo = QComboBox()
         self.model_combo.addItems([
             "Every tick",
@@ -330,6 +336,7 @@ class AutoBatchUI(BaseTab):
             "Open prices only",
             "Math calculation"
         ])
+
 
         self.model_copy_to_all = QPushButton("Copy To All")
         icon = self.model_copy_to_all.style().standardIcon(QStyle.SP_FileDialogNewFolder)
@@ -353,6 +360,7 @@ class AutoBatchUI(BaseTab):
             "Slow complete algorithm",
             "All symbols selected in MarketWatch"
         ])
+
         self.optim_copy_to_all = QPushButton("Copy To All")
         icon = self.optim_copy_to_all.style().standardIcon(QStyle.SP_FileDialogNewFolder)
         self.optim_copy_to_all.setIcon(icon)
@@ -388,6 +396,7 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(self.param_input, 2, 1, 1, 3)       # spans cols 1–3
         right_layout.addWidget(self.param_button, 2, 4, 1, 2)      # spans cols 4–5
 
+
         # Row 3: Symbol & Timeframe
         right_layout.addWidget(QLabel("Symbol:"), 3, 0)
         right_layout.addWidget(self.symbol_input, 3, 1, 1, 2)
@@ -401,6 +410,7 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(self.symbol_suffix, 4, 4, 1, 2)
 
         # Row 5: Date From & To
+
         right_layout.addWidget(QLabel("Date (DD/MM/YYYY):"), 5, 0)
         right_layout.addWidget(self.date_combo, 5, 1, 1, 2)
         right_layout.addWidget(self.date_from, 5, 3)
@@ -441,9 +451,7 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(QLabel("Optimization Criterion:"), 12, 0)
         right_layout.addWidget(self.criterion_input, 12, 1, 1, 3)
         right_layout.addWidget(self.criterion_copy_to_all, 12, 4, 1, 2)
-
         
-
         # ================= Bottom =================
         bottom_layout = QHBoxLayout()
         bottom_layout.setContentsMargins(10, 30, 10, 10)
@@ -462,7 +470,9 @@ class AutoBatchUI(BaseTab):
 
         # ================= Combine All =================
         main_layout = QHBoxLayout()
+
         main_layout.setSpacing(25)
+
         main_layout.addLayout(left_layout, 2)
         main_layout.addLayout(right_layout, 3)
 
@@ -474,7 +484,9 @@ class AutoBatchUI(BaseTab):
 
 
         # ===== Controller =====
+
         self.controller = AutoBatchController(self)
         self.controller.toggle_date_fields(self.date_combo.currentText())
         self.controller.adjust_forward_date(self.forward_combo.currentText())
         self.controller.update_delay_input(self.delay_combo.currentText())
+

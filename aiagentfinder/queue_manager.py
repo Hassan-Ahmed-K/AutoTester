@@ -9,6 +9,7 @@ class QueueManager:
         self.ui = ui
         self.tests = []  # list of dicts: {symbol, expert, test_name, ...}
 
+
     # ---------------- Core Operations ----------------
     def refresh_queue(self):
         self.ui.queue_list.clear()
@@ -20,6 +21,7 @@ class QueueManager:
             self.ui.queue_list.addItem(display_text)
         print("Queue list count after refresh:", self.ui.queue_list.count())
 
+
     def add_test_to_queue(self, test: dict):
         self.tests.append(test)
         self.refresh_queue()
@@ -29,6 +31,7 @@ class QueueManager:
             del self.tests[index]
             self.refresh_queue()
 
+
     def move_up(self, index: int):
         if index > 0:
             self.tests[index - 1], self.tests[index] = self.tests[index], self.tests[index - 1]
@@ -36,12 +39,14 @@ class QueueManager:
             self.ui.queue_list.setCurrentRow(index - 1)
 
     def move_down(self, index: int):
+
         if index < len(self.tests) - 1:
             self.tests[index + 1], self.tests[index] = self.tests[index], self.tests[index + 1]
             self.refresh_queue()
             self.ui.queue_list.setCurrentRow(index + 1)
 
     def duplicate_test(self, index: int):
+
         if 0 <= index < len(self.tests):
             self.tests.insert(index + 1, dict(self.tests[index]))
             self.refresh_queue()
@@ -105,3 +110,4 @@ class QueueManager:
 
     def __len__(self):
         return len(self.tests)
+

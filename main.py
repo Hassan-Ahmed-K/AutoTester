@@ -1,3 +1,5 @@
+# main.py
+
 import sys
 from PyQt5.QtWidgets import QApplication
 from aiagentfinder.ui.main_window import MainWindow
