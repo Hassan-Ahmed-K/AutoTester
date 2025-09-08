@@ -14,7 +14,7 @@ class BaseTab(QWidget):
         self.title = title
         self.layout = QVBoxLayout(self)
         self.setAutoFillBackground(True)
-        self.layout.setContentsMargins(5, 5 , 5, 5)
+        self.layout.setContentsMargins(10, 5 , 10,  10)
 
         self.setStyleSheet("background-color: #1e1e1e;") 
         self.init_ui()   #

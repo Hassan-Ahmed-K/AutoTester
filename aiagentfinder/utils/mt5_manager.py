@@ -119,15 +119,16 @@ class MT5Manager:
 
             # --- Run MT5 with config ---
             cmd = f'"{mt5_path}" /portable /config:"{config_path}"'
-            print("Running:", cmd)
-            subprocess.run(cmd, shell=True)
+            elevated_cmd = f'runas /user:Administrator "{cmd}"'
+
+            subprocess.run(elevated_cmd, shell=True)
 
             # --- Wait for report (up to 30 seconds) ---
-            timeout = 30
+            timeout = 60
             start_time = time.time()
             while not os.path.exists(report_path) and (time.time() - start_time) < timeout:
                 time.sleep(1)
-
+             
             if os.path.exists(report_path):
                 print(f"✅ Test completed. Report saved at {report_path}")
                 return {"status": "success", "report": report_path}

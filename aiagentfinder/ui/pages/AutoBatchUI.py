@@ -248,11 +248,12 @@ class AutoBatchUI(BaseTab):
         right_layout = QGridLayout()
         right_layout.setHorizontalSpacing(10)
         right_layout.setVerticalSpacing(10)
-        right_layout.setContentsMargins(0, 5, 0, 0)
+        right_layout.setContentsMargins(0, 0, 0, 0)
 
 
         self.testfile_input = QLineEdit()
         self.expert_input = QComboBox()
+        self.expert_input.setMinimumWidth(400)  # Set the minimum width()
         self.expert_input.addItems(["Please Attach Data File"])
         self.expert_button = QPushButton("Browse")
         icon = self.expert_button.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
@@ -266,12 +267,12 @@ class AutoBatchUI(BaseTab):
         refresh_icon = self.refresh_btn.style().standardIcon(QStyle.SP_BrowserReload)
         self.refresh_btn.setIcon(refresh_icon)
 
-        self.refresh_btn.setMinimumWidth(150) 
+        # self.refresh_btn.setMinimumWidth(100) 
         self.param_input = QLineEdit()
         self.param_button = QPushButton("Browse")
         icon = self.param_button.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.param_button.setIcon(icon)
-        self.param_button.setMinimumWidth(150) 
+        # self.param_button.setMinimumWidth(100) 
         self.symbol_input = QLineEdit()
         self.timeframe_combo = QComboBox()
         self.timeframe_combo.addItems(["M1","M2", "M3", "M4", "M5", "M6", "M10", "M12", "M15", "M20", "M30", "H1", "H2", "H3", "H4", "H6", "H8", "H12", "Daily", "Weekly", "Monthly"])
@@ -387,9 +388,9 @@ class AutoBatchUI(BaseTab):
         # Row 1: Expert File
         right_layout.addWidget(QLabel("Expert File:"), 1, 0)
         right_layout.addWidget(self.expert_input, 1, 1, 1, 2)      # takes 2 cols
-        right_layout.addWidget(self.refresh_btn, 1, 3)             # col 3
+        right_layout.addWidget(self.refresh_btn, 1, 3 )             # col 3
         right_layout.addWidget(self.expert_button, 1, 4)           # col 4
-        right_layout.addWidget(self.exper_copy_to_all, 1, 5)       # col 5
+        right_layout.addWidget(self.exper_copy_to_all, 1, 5 )       # col 5
 
         # Row 2: Param File
         right_layout.addWidget(QLabel("Param File:"), 2, 0)
@@ -460,6 +461,9 @@ class AutoBatchUI(BaseTab):
         self.start_btn = QPushButton("START")
         self.start_btn.setMinimumWidth(250) 
         self.schedule_date = QDateEdit(QDate.currentDate())
+
+        self.schedule_date.setCalendarPopup(True)
+
         self.schedule_date.setMinimumWidth(200) 
         bottom_layout.addWidget(self.start_btn)
         bottom_layout.addWidget(QLabel("Schedule Testing?"))
