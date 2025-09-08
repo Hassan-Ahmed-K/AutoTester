@@ -498,11 +498,16 @@ class AutoBatchController:
                 return
        
             self._correlation_busy = True
-            # self.loading_dialog = QProgressDialog("Generating correlation heatmap...", None, 0, 0, self.ui)
-            # self.loading_dialog.setWindowTitle("Please Wait")   
-            # self.loading_dialog.setCancelButton(None)   # disable cancel button
-            # self.loading_dialog.setMinimumDuration(0)
-            # self.loading_dialog.show()
+            self.loading_dialog = QProgressDialog("Generating correlation heatmap...", None, 0, 0, self.ui)
+            self.loading_dialog.setWindowTitle("Please Wait")
+            self.loading_dialog.setWindowModality(Qt.ApplicationModal)
+            self.loading_dialog.setCancelButton(None)   # disable cancel button
+            self.loading_dialog.setMinimumDuration(0)   # show immediately
+            self.loading_dialog.show()
+            
+            if getattr(self, "loading_dialog", None):
+                self.loading_dialog.close()
+                self.loading_dialog = None
             # --- Setup thread + worker ---
             self.thread = QThread()
             self.worker = CorrelationWorker(

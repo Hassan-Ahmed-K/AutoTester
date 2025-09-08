@@ -1043,3 +1043,35 @@
 [2025-09-09 03:42:51] [INFO] Correlation worker thread started
 [2025-09-09 03:44:41] [INFO] Correlation worker thread started
 [2025-09-09 03:45:28] [INFO] Correlation worker thread started
+[2025-09-09 03:51:17] [INFO] Correlation worker thread started
+[2025-09-09 03:51:22] [INFO] Correlation worker thread started
+[2025-09-09 03:52:40] [INFO] Correlation worker thread started
+[2025-09-09 03:58:01] [INFO] MT5 worker thread started
+[2025-09-09 03:58:01] [INFO] Connecting MT5 terminal...
+[2025-09-09 03:58:01] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 03:58:02] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 03:58:08] [INFO] Exact match found: H
+[2025-09-09 03:58:08] [INFO] Best symbol found: H
+[2025-09-09 03:58:08] [INFO] Closest match found: HCA
+[2025-09-09 03:58:08] [INFO] Best symbol found: HCA
+[2025-09-09 03:58:09] [INFO] Closest match found: SAH
+[2025-09-09 03:58:09] [INFO] Best symbol found: SAH
+[2025-09-09 03:58:09] [INFO] Closest match found: AHH
+[2025-09-09 03:58:09] [INFO] Best symbol found: AHH
+[2025-09-09 03:58:09] [INFO] Closest match found: AHH
+[2025-09-09 03:58:09] [INFO] Best symbol found: AHH
+[2025-09-09 03:58:09] [INFO] Closest match found: HHH
+[2025-09-09 03:58:09] [INFO] Best symbol found: HHH
+[2025-09-09 03:58:21] [SUCCESS] ✅ Test 'hahhah' added to queue.
+[2025-09-09 03:58:25] [INFO] Exact match found: A
+[2025-09-09 03:58:25] [INFO] Best symbol found: A
+[2025-09-09 03:58:25] [INFO] Exact match found: AU
+[2025-09-09 03:58:25] [INFO] Best symbol found: AU
+[2025-09-09 03:58:26] [INFO] Closest match found: AUNA
+[2025-09-09 03:58:26] [INFO] Best symbol found: AUNA
+[2025-09-09 03:58:32] [SUCCESS] ✅ Test 'aun' added to queue.
+[2025-09-09 03:59:34] [SUCCESS] ✅ Uncorrelated pairs calculated successfully!
+[2025-09-09 03:59:38] [SUCCESS] ✅ Test 'EURPLNNZDCHF_trend' added to queue.
+[2025-09-09 03:59:40] [SUCCESS] ✅ Test 'EURNOKUSDHUF_trend' added to queue.
+[2025-09-09 03:59:45] [INFO] Correlation worker thread started
+[2025-09-09 03:59:50] [INFO] Correlation worker thread started
