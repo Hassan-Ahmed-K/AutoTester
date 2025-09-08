@@ -1,6 +1,7 @@
+# type : ignore
 from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog
-from PyQt5.QtCore import QDate
-from aiagentfinder.utils import MT5Manager , Logger
+from PyQt5.QtCore import QDate ,  QThread , QTimer
+from aiagentfinder.utils import MT5Manager , Logger , MT5Worker, CorrelationWorker
 from aiagentfinder.queue_manager import QueueManager
 import difflib
 import random
@@ -14,8 +15,12 @@ from aiagentfinder.utils.TextDialog import TextDialog
 from aiagentfinder.utils.RadioDialog import RadioDialog
 
 
+
 # import MetaTrader5 as mt5
 import os, glob , datetime
+
+
+
 
 
 
@@ -23,6 +28,7 @@ class AutoBatchController:
     def __init__(self, ui):
         self.ui = ui
         self.mt5 = MT5Manager()
+        
         
         self.symbols= []
         self.queue = QueueManager(ui) 
@@ -59,62 +65,130 @@ class AutoBatchController:
     # ----------------------------
     # Browse MT5 installation path
     # ----------------------------
-    def browse_mt5_dir(self):
+    # def browse_mt5_dir(self):
     
+    #     file_path, _ = QFileDialog.getOpenFileName(
+    #         self.ui, "Select MT5 Terminal", "", "Executable Files (*.exe)"
+    #     )
+    #     if file_path:
+    #         self.ui.mt5_dir_input.setText(file_path)
+    #         Logger.info(f"MT5 terminal selected: {file_path}")
+
+    #         # Try auto-detect Data Folder using --datafolder
+    #         try:
+    #                 # ⚡ Fallback: try default roaming path
+    #                 # roaming = os.path.join(os.environ["APPDATA"], "MetaQuotes", "Terminal")
+    #                 # candidates = glob.glob(os.path.join(roaming, "*"))
+
+    #                 # found = False
+    #                 # for folder in candidates:
+    #                 #     if os.path.isdir(os.path.join(folder, "config")):
+    #                 #         self.ui.data_input.setText(folder)
+    #                 #         os.makedirs(os.path.join(folder, "Agent Finder Results"), exist_ok=True)
+    #                 #         QMessageBox.information(
+    #                 #             self.ui, "MT5 Data Folder",
+    #                 #             f"Auto-selected Data Folder:\n{folder}"
+    #                 #         )
+    #                 #         Logger.success(f"Auto-detected MT5 Data Folder: {folder}")
+    #                 #         found = True
+    #                 #         break
+
+    #                 # if not found:
+    #                 #     QMessageBox.warning(
+    #                 #         self.ui, "MT5 Data Folder",
+    #                 #         "⚠️ Could not detect Data Folder automatically. Please set it manually."
+    #                 #     )
+    #                 #     Logger.warning("Failed to auto-detect MT5 Data Folder")
+    #                 self.ui.mt5_dir_input.setText(file_path)
+
+    #                 # --- Run worker thread ---
+    #                 self.worker = MT5Worker(self.mt5, file_path)
+    #                 self.worker.finished.connect(self.on_mt5_connected)
+    #                 self.worker.start()
+
+    #                 QMessageBox.information(self.ui, "MT5", "⏳ Connecting to MT5... Please wait.")
+                                    
+                    
+
+    #         except Exception as e:
+    #             QMessageBox.critical(
+    #                 self.ui, "Error",
+    #                 f"❌ Failed to fetch MT5 Data Folder.\nError: {str(e)}"
+    #             )
+    #             Logger.error("Error while detecting MT5 Data Folder", e)
+
+    #         # Try to connect MT5 after setting terminal path
+    #         # success = self.mt5.connect(file_path)
+    #         # if success:
+    #         #     self.ui.deposit_info = self.mt5.get_deposit()
+    #         #     self.ui.deposit_input.setText(str(self.ui.deposit_info["balance"]))
+    #         #     self.ui.currency_input.setText(self.ui.deposit_info["currency"])
+    #         #     self.ui.leverage_input.setValue(self.ui.deposit_info["leverage"])
+    #         #     QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
+    #         #     Logger.success("MT5 connected successfully")
+    #         # else:
+    #         #     QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
+    #         #     Logger.error("Failed to connect MT5")
+
+
+    def browse_mt5_dir(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self.ui, "Select MT5 Terminal", "", "Executable Files (*.exe)"
         )
-        if file_path:
-            self.ui.mt5_dir_input.setText(file_path)
-            Logger.info(f"MT5 terminal selected: {file_path}")
+        if not file_path:
+            return
 
-            # Try auto-detect Data Folder using --datafolder
-            try:
-                    # ⚡ Fallback: try default roaming path
-                    roaming = os.path.join(os.environ["APPDATA"], "MetaQuotes", "Terminal")
-                    candidates = glob.glob(os.path.join(roaming, "*"))
+        self.ui.mt5_dir_input.setText(file_path)
 
-                    found = False
-                    for folder in candidates:
-                        if os.path.isdir(os.path.join(folder, "config")):
-                            self.ui.data_input.setText(folder)
-                            os.makedirs(os.path.join(folder, "Agent Finder Results"), exist_ok=True)
-                            QMessageBox.information(
-                                self.ui, "MT5 Data Folder",
-                                f"Auto-selected Data Folder:\n{folder}"
-                            )
-                            Logger.success(f"Auto-detected MT5 Data Folder: {folder}")
-                            found = True
-                            break
+        # --- Setup worker in QThread ---
+        self.thread = QThread()
+        self.worker = MT5Worker(self.mt5, file_path)
+        self.worker.moveToThread(self.thread)
 
-                    if not found:
-                        QMessageBox.warning(
-                            self.ui, "MT5 Data Folder",
-                            "⚠️ Could not detect Data Folder automatically. Please set it manually."
-                        )
-                        Logger.warning("Failed to auto-detect MT5 Data Folder")
-                    
-                    # 
+        # Connect signals
+        self.thread.started.connect(self.worker.run)
+        self.worker.finished.connect(self.on_mt5_connected)
+        self.worker.error.connect(lambda msg: Logger.error(msg, Exception(msg)))
+        self.worker.log.connect(lambda msg: Logger.info(msg))
 
-            except Exception as e:
-                QMessageBox.critical(
-                    self.ui, "Error",
-                    f"❌ Failed to fetch MT5 Data Folder.\nError: {str(e)}"
-                )
-                Logger.error("Error while detecting MT5 Data Folder", e)
+        # Cleanup after finish
+        self.worker.finished.connect(self.thread.quit)
+    
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
 
-            # Try to connect MT5 after setting terminal path
-            success = self.mt5.connect(file_path)
-            if success:
-                self.ui.deposit_info = self.mt5.get_deposit()
-                self.ui.deposit_input.setText(str(self.ui.deposit_info["balance"]))
-                self.ui.currency_input.setText(self.ui.deposit_info["currency"])
-                self.ui.leverage_input.setValue(self.ui.deposit_info["leverage"])
-                QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
-                Logger.success("MT5 connected successfully")
-            else:
-                QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
-                Logger.error("Failed to connect MT5")
+
+        # Start thread
+        self.thread.start()
+
+        Logger.info("MT5 worker thread started")
+    
+    def on_mt5_connected(self, success, data_folder):
+        try:
+            self.ui.deposit_info = self.mt5.get_deposit()
+            self.ui.deposit_input.setText(str(self.ui.deposit_info["balance"]))
+            self.ui.currency_input.setText(self.ui.deposit_info["currency"])
+            self.ui.leverage_input.setValue(self.ui.deposit_info["leverage"])
+            # QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
+            Logger.success("MT5 connected successfully")
+
+            if data_folder:
+                QMessageBox.information(self.ui, "MT5 Data Folder", f"Auto-selected Data Folder:\n{data_folder}")
+                Logger.success(f"Auto-detected MT5 Data Folder: {data_folder}")
+                self.ui.data_input.setText(data_folder)
+                os.makedirs(os.path.join(data_folder, "Agent Finder Results"), exist_ok=True)
+
+            def refocus():
+                main_window = self.ui.window()
+                main_window.showNormal()
+                main_window.raise_()
+                main_window.activateWindow()
+
+            QTimer.singleShot(1000, refocus)
+        except Exception as e:
+            QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
+            Logger.error("Failed to connect MT5", e)
+
 
     # ----------------------------
     # Browse MT5 data folder manually
@@ -465,35 +539,92 @@ class AutoBatchController:
         else:
             raise Exception(f"Error {response.status_code}: Unable to fetch data")
     
-    def show_correlation_popup(self,market="forex",period=50, symbols=None):
-        try:
-            # Fetch correlation data
-            df = self.get_correlation(
-                market="forex",
-                period=50,
+    
+    # def show_correlation_popup(self,market="forex",period=50, symbols=None):
+    #     try:
+    #         # Fetch correlation data
+    #         df = self.get_correlation(
+    #             market="forex",
+    #             period=50,
+    #             symbols=symbols
+    #         )
+
+    #         corr_df = df.pivot(index="pair1", columns="pair2", values="day")
+
+    #         plt.figure(figsize=(6, 4))
+
+    #         sns.heatmap(
+    #             corr_df,
+    #             annot=True,
+    #             cmap="RdBu",  
+    #             center=0,       
+    #             vmin=-100,      
+    #             vmax=100,       
+    #             linewidths=0.5       
+    #         )
+    #         plt.title("Correlation Heatmap (Day)")
+    #         plt.tight_layout()
+    #         plt.show()
+
+    #     except Exception as e:
+    #         QMessageBox.critical(self, "Error", str(e))
+    def show_correlation_popup(self, market="forex", period=50, symbols=None):
+            if getattr(self, "_correlation_busy", False):
+                QMessageBox.warning(self.ui, "Please wait", "Correlation is already running...")
+                return
+       
+            self._correlation_busy = True
+            # --- Setup thread + worker ---
+            self.thread = QThread()
+            self.worker = CorrelationWorker(
+                market=market,
+                period=period,
                 symbols=symbols
             )
+            self.worker.moveToThread(self.thread)
 
-            corr_df = df.pivot(index="pair1", columns="pair2", values="day")
+            # Connect signals
+            self.thread.started.connect(self.worker.run)
+            self.worker.finished.connect(self.on_correlation_ready)
+            self.worker.error.connect(self.on_correlation_error)
+            self.worker.finished.connect(self.thread.quit)
+            self.worker.finished.connect(self.worker.deleteLater)
+            self.thread.finished.connect(self.thread.deleteLater)
 
-            plt.figure(figsize=(6, 4))
+            self.thread.finished.connect(lambda: setattr(self, "_correlation_busy", False))
 
-            sns.heatmap(
-                corr_df,
-                annot=True,
-                cmap="RdBu",  
-                center=0,       
-                vmin=-100,      
-                vmax=100,       
-                linewidths=0.5       
-            )
-            plt.title("Correlation Heatmap (Day)")
-            plt.tight_layout()
-            plt.show()
 
-        except Exception as e:
-            QMessageBox.critical(self, "Error", str(e))
+            # Start thread
+            self.thread.start()
+            Logger.info("Correlation worker thread started")
+    def on_correlation_ready(self, df):
+            try:
+                corr_df = df.pivot(index="pair1", columns="pair2", values="day")
 
+                plt.figure(figsize=(6, 4))
+
+                sns.heatmap(
+                    corr_df,
+                    annot=True,
+                    cmap="RdBu",  
+                    center=0,       
+                    vmin=-100,      
+                    vmax=100,       
+                    linewidths=0.5       
+                )
+                plt.title("Correlation Heatmap (Day)")
+                plt.tight_layout()
+                plt.show()
+
+            except Exception as e:
+                QMessageBox.critical(self.ui, "Error", str(e))
+
+
+    def on_correlation_error(self, msg):
+            QMessageBox.critical(self.ui, "Error", msg)
+            Logger.error(msg, Exception(msg))
+
+            
     def show_quantity_popup(self, title, text):
         if(self.mt5.connected):
             results = {

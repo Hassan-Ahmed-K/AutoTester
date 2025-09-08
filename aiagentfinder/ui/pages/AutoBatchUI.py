@@ -18,6 +18,7 @@ class AutoBatchUI(BaseTab):
 
     def __init__(self, parent=None):
         super().__init__("Auto Batch", parent)
+    
         
         
         self.experts = {}
@@ -61,6 +62,7 @@ class AutoBatchUI(BaseTab):
                 border-radius: 5px;
                 color: #ffffff;
                 padding: 6px 12px;
+                font-size: 8pt;
             }
 
             QPushButton:hover {
@@ -94,10 +96,10 @@ class AutoBatchUI(BaseTab):
                 height: 24px;
                 width: 100px;
                 color: white;
-                font-size: 12px;
-                icon-size: 18px, 18px;
+                font-size: 10px;
+                icon-size: 18px;
                 background-color: #444444;
-                # border-radius: 5px;
+                /* border-radius: 5px; */
             }
 
             
@@ -141,12 +143,12 @@ class AutoBatchUI(BaseTab):
         header_label.setObjectName("headerTitle")
         header_label.setAlignment(Qt.AlignCenter)  
         header_layout.addWidget(header_label)
-        # header_layout.setContentsMargins(0, 0, 0, 20)  
+        header_layout.setContentsMargins(0, 0, 0, 15)  
 
         # ================= MT5 Block =================
         mt5_block_layout = QVBoxLayout()
-        mt5_block_layout.setSpacing(10)  # space between MT5 rows
-        mt5_block_layout.setContentsMargins(0, 10, 0, 10)
+        # mt5_block_layout.setSpacing(10)  # space between MT5 rows
+        # mt5_block_layout.setContentsMargins(0, 0, 0, 10)
 
         # MT5 Directory
         mt5_layout = QHBoxLayout()
@@ -156,7 +158,7 @@ class AutoBatchUI(BaseTab):
         self.mt5_dir_btn = QPushButton("Browse")
         icon = self.mt5_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.mt5_dir_btn.setIcon(icon)
-        self.mt5_dir_btn.setMinimumWidth(150) 
+        self.mt5_dir_btn.setMinimumWidth(100) 
         mt5_layout.addWidget(self.mt5_dir_input)
         mt5_layout.addWidget(self.mt5_dir_btn)
         mt5_block_layout.addLayout(mt5_layout)
@@ -169,7 +171,7 @@ class AutoBatchUI(BaseTab):
         self.data_btn = QPushButton("Browse")
         icon = self.data_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.data_btn.setIcon(icon)
-        self.data_btn.setMinimumWidth(150) 
+        self.data_btn.setMinimumWidth(100) 
         data_layout.addWidget(self.data_input)
         data_layout.addWidget(self.data_btn)
         mt5_block_layout.addLayout(data_layout)
@@ -182,7 +184,7 @@ class AutoBatchUI(BaseTab):
         self.report_btn = QPushButton("Browse")
         icon = self.report_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
         self.report_btn.setIcon(icon)
-        self.report_btn.setMinimumWidth(150) 
+        self.report_btn.setMinimumWidth(100) 
         report_layout.addWidget(self.report_input)
         report_layout.addWidget(self.report_btn)
         mt5_block_layout.addLayout(report_layout)
@@ -196,8 +198,8 @@ class AutoBatchUI(BaseTab):
         self.queue_list = QListWidget()
         self.queue_list.setObjectName("queueList")
         self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.queue_list.setMinimumHeight(250)
-        self.queue_list.setMinimumWidth(250)
+        self.queue_list.setMinimumHeight(190)
+        # self.queue_list.setMinimumWidth(250)
         left_layout.addWidget(self.queue_list)
 
         # Queue controls
@@ -232,13 +234,13 @@ class AutoBatchUI(BaseTab):
         queue_controls.addWidget(self.non_corr_btn, 3, 3, 1, 3)   
         queue_controls.addWidget(self.corr_btn, 5, 0, 1, 6)      
 
-        left_layout.addLayout(queue_controls)
+        left_layout.addLayout(queue_controls)  # Add the queue controls layout to the left layout (with stretch=1))
 
         # ================= Right Panel =================
         right_layout = QGridLayout()
         right_layout.setHorizontalSpacing(10)
         right_layout.setVerticalSpacing(10)
-        right_layout.setContentsMargins(0, 0, 0, 0)
+        right_layout.setContentsMargins(0, 5, 0, 0)
 
 
         self.testfile_input = QLineEdit()
@@ -460,7 +462,7 @@ class AutoBatchUI(BaseTab):
 
         # ================= Combine All =================
         main_layout = QHBoxLayout()
-        main_layout.setSpacing(20)
+        main_layout.setSpacing(25)
         main_layout.addLayout(left_layout, 2)
         main_layout.addLayout(right_layout, 3)
 

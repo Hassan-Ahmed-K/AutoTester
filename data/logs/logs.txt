@@ -666,3 +666,93 @@
 [2025-09-08 03:09:58] [INFO] Best symbol found: OEUR
 [2025-09-08 03:10:02] [SUCCESS] ✅ Test 'EUR' added to queue.
 [2025-09-08 03:10:06] [INFO] Starting queued tests...
+[2025-09-08 10:20:46] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 10:20:48] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 10:21:16] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 12:27:44] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 12:27:44] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 12:27:44] [INFO] Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 12:27:48] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 13:12:34] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:12:37] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:13:34] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:13:35] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:15:03] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:15:05] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 13:15:07] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:15:42] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:15:44] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 13:15:52] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:16:56] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:16:58] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 13:17:10] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:23:44] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:23:58] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:26:54] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-08 13:27:02] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 13:35:05] [INFO] MT5 worker thread started
+[2025-09-08 13:35:09] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 13:35:14] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:17:43] [INFO] MT5 worker thread started
+[2025-09-08 14:17:43] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:17:46] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:22:44] [INFO] MT5 worker thread started
+[2025-09-08 14:22:44] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:22:46] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:31:30] [INFO] MT5 worker thread started
+[2025-09-08 14:31:30] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:31:33] [SUCCESS] ✅ MT5 Data Folder
+[2025-09-08 14:31:53] [ERROR] Failed to connect MT5 | OSError: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'Auto-selected Data Folder:\nC:' (File: <frozen os>, Line: 225)
+[2025-09-08 14:35:39] [INFO] MT5 worker thread started
+[2025-09-08 14:35:39] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:35:41] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:37:40] [INFO] MT5 worker thread started
+[2025-09-08 14:37:40] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:37:42] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:48:14] [INFO] MT5 worker thread started
+[2025-09-08 14:48:14] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:48:16] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:48:19] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 14:53:33] [INFO] MT5 worker thread started
+[2025-09-08 14:53:33] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 14:53:35] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 14:53:37] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:02:53] [INFO] MT5 worker thread started
+[2025-09-08 15:03:00] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:03:03] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:03:05] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:08:33] [INFO] MT5 worker thread started
+[2025-09-08 15:08:33] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:08:35] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:08:37] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:09:52] [INFO] MT5 worker thread started
+[2025-09-08 15:09:56] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:14:05] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:14:06] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:16:05] [INFO] MT5 worker thread started
+[2025-09-08 15:16:10] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:16:27] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:16:29] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:20:37] [INFO] MT5 worker thread started
+[2025-09-08 15:20:37] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:20:39] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:20:40] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:21:25] [INFO] MT5 worker thread started
+[2025-09-08 15:21:29] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:21:45] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:21:48] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:32:33] [INFO] MT5 worker thread started
+[2025-09-08 15:32:33] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:32:52] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:32:54] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 15:41:23] [INFO] MT5 worker thread started
+[2025-09-08 15:41:27] [INFO] ⏳ Connecting MT5 terminal...
+[2025-09-08 15:41:27] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 15:41:42] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 18:39:39] [INFO] Correlation worker thread started
+[2025-09-08 19:26:53] [SUCCESS] ✅ Correlation worker thread completed
+[2025-09-08 19:26:53] [INFO] Correlation worker thread started
+[2025-09-08 19:36:03] [INFO] Correlation worker thread started
+[2025-09-08 19:36:06] [INFO] Correlation worker thread started
+[2025-09-08 19:36:08] [INFO] Correlation worker thread started
+[2025-09-08 19:36:57] [INFO] Correlation worker thread started
