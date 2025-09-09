@@ -796,3 +796,9 @@
 [2025-09-09 21:11:48] [SUCCESS] ✅ MT5 connected successfully
 [2025-09-09 21:11:49] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
 [2025-09-09 21:12:05] [INFO] Expert file selected: ExpertMAPSAR.mq5
+[2025-09-10 04:54:16] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-10 04:54:16] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-10 04:54:16] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-10 04:54:36] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-10 04:54:46] [INFO] Param folder found: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Tester
+[2025-09-10 04:55:18] [WARNING] Please select a valid Param File.
