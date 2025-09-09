@@ -14,12 +14,16 @@ from aiagentfinder.utils.QuantityDialog import QuantityDialog
 from aiagentfinder.utils.TextDialog import TextDialog
 from aiagentfinder.utils.RadioDialog import RadioDialog
 import os, glob , datetime
-from apscheduler.schedulers.background import BackgroundScheduler
+from aiagentfinder.utils.workerThread import Worker, ThreadRunner
+
 
 class AutoBatchController:
     def __init__(self, ui):
         self.ui = ui
         self.mt5 = MT5Manager()
+        self.runner = ThreadRunner()
+
+        
         
         self.symbols= []
         self.queue = QueueManager(ui) 
@@ -110,13 +114,6 @@ class AutoBatchController:
                 self.ui.data_input.setText(data_folder)
                 os.makedirs(os.path.join(data_folder, "Agent Finder Results"), exist_ok=True)
 
-            def refocus():
-                main_window = self.ui.window()
-                main_window.showNormal()
-                main_window.raise_()
-                main_window.activateWindow()
-
-            QTimer.singleShot(1000, refocus)
         except Exception as e:
             QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
             Logger.error("Failed to connect MT5", e)
@@ -131,6 +128,33 @@ class AutoBatchController:
             self.ui.data_input.setText(folder)
 
             Logger.info(f"Data folder selected: {folder}")
+
+    # def browse_data_folder(self):
+    #     folder = QFileDialog.getExistingDirectory(self.ui, "Select Data Folder")
+    #     if not folder:
+    #         return
+
+    #     # Background task (no UI here!)
+    #     def task():
+    #         if not os.path.exists(folder):
+    #             raise Exception(f"⚠ Data folder not found: {folder}")
+    #         Logger.info(f"Data folder selected: {folder}")
+    #         return folder
+
+    #     # Run in thread
+    #     self.runner.run(task)
+
+    #     # ✅ Update UI safely when done
+    #     self.runner.worker.finished.connect(
+    #         lambda result: self.ui.data_input.setText(result)
+    #     )
+
+
+
+    def _on_data_folder_selected(self, folder):
+        """This runs in the main thread -> safe for UI updates"""
+        self.ui.data_input.setText(folder)
+        Logger.success(f"Data folder set in UI: {folder}")
 
 
     # ----------------------------
@@ -183,55 +207,115 @@ class AutoBatchController:
 
         if file_path:
             # Update expert input field in UI (if you have one)
-            if hasattr(self.ui, "expert_input"):
-                self.ui.expert_input.setText(file_path)
-                Logger.info(f"Expert file selected: {file_path}")
+            file_name = os.path.basename(file_path)
+            if self.ui.expert_input.count() == 1 and self.ui.expert_input.itemText(0) == "Please Attach Data File":
+                    self.ui.expert_input.clear()
 
-            return file_path
+                # Avoid duplicates
+            if self.ui.expert_input.findText(file_path) == -1:
+                    self.ui.expert_input.addItem(file_name)
 
+            # Set the newly selected item as current
+            self.ui.expert_input.setCurrentText(file_name)
+
+            Logger.info(f"Expert file selected: {file_name}")
         return None
 
 
+
+
+    # def browse_param_file(self):
+    #     data_folder = self.ui.data_input.text()
+
+    #     if not data_folder:
+    #         QMessageBox.warning(self.ui, "Error", "Please set the Data Folder first.")
+
+    #         Logger.warning("Data folder is not set.")
+
+    #         return None
+
+    #     # Possible locations for .set files
+    #     paths_to_check = [
+    #         os.path.join(data_folder, "Tester"),                       # common
+    #         os.path.join(data_folder, "MQL5", "Profiles", "Tester"),   # fallback
+    #     ]
+
+    #     # Pick the first one that exists
+    #     default_path = None
+    #     for path in paths_to_check:
+    #         if os.path.exists(path):
+    #             Logger.info(f"Param folder found: {path}")
+
+    #             default_path = path
+    #             break
+
+    #     if not default_path:
+    #         QMessageBox.warning(self.ui, "Error", "❌ No Param folder found in Data Folder.")
+    #         Logger.warning("No Param folder found in Data Folder.")
+
+    #         return None
+
+    #     # Open dialog
+    #     file_path, _ = QFileDialog.getOpenFileName(
+    #         self.ui, "Select Param File", default_path,
+    #         "Set Files (*.set);;All Files (*)"
+    #     )
+    #     if file_path:
+    #         self.ui.param_input.setText(file_path)
+
+    #         Logger.info(f"Param file selected: {file_path}")
     def browse_param_file(self):
         data_folder = self.ui.data_input.text()
 
         if not data_folder:
             QMessageBox.warning(self.ui, "Error", "Please set the Data Folder first.")
-
             Logger.warning("Data folder is not set.")
+            return
 
-            return None
+        # Background task
+        def task():
 
-        # Possible locations for .set files
-        paths_to_check = [
-            os.path.join(data_folder, "Tester"),                       # common
-            os.path.join(data_folder, "MQL5", "Profiles", "Tester"),   # fallback
-        ]
+            # Possible locations for .set files
+            paths_to_check = [
+                os.path.join(data_folder, "Tester"),
+                os.path.join(data_folder, "MQL5", "Profiles", "Tester"),
+            ]
 
-        # Pick the first one that exists
-        default_path = None
-        for path in paths_to_check:
-            if os.path.exists(path):
-                Logger.info(f"Param folder found: {path}")
+            # Find default path
+            default_path = None
+            for path in paths_to_check:
+                if os.path.exists(path):
+                    Logger.info(f"Param folder found: {path}")
+                    default_path = path
+                    break
 
-                default_path = path
-                break
+            if not default_path:
+                raise Exception("❌ No Param folder found in Data Folder.")
 
-        if not default_path:
-            QMessageBox.warning(self.ui, "Error", "❌ No Param folder found in Data Folder.")
-            Logger.warning("No Param folder found in Data Folder.")
+            return default_path
 
-            return None
+        # Success callback — runs in main thread
+        def _on_finished(default_path):
+            file_path, _ = QFileDialog.getOpenFileName(
+                self.ui,
+                "Select Param File",
+                default_path,
+                "Set Files (*.set);;All Files (*)"
+            )
+            if file_path:
+                self.ui.param_input.setText(file_path)
+                Logger.info(f"Param file selected: {file_path}")
 
-        # Open dialog
-        file_path, _ = QFileDialog.getOpenFileName(
-            self.ui, "Select Param File", default_path,
-            "Set Files (*.set);;All Files (*)"
-        )
-        if file_path:
-            self.ui.param_input.setText(file_path)
+        # Error callback
+        def _on_error(err_msg):
+            QMessageBox.warning(self.ui, "Error", err_msg)
+            Logger.warning(err_msg)
 
-            Logger.info(f"Param file selected: {file_path}")
+        # Run threaded
+        self.runner.run(task, _on_finished, _on_error)
+
+
+
 
     def test_settings(self):
         test_name = self.ui.testfile_input.text().strip()
