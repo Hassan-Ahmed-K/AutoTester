@@ -756,3 +756,322 @@
 [2025-09-08 19:36:06] [INFO] Correlation worker thread started
 [2025-09-08 19:36:08] [INFO] Correlation worker thread started
 [2025-09-08 19:36:57] [INFO] Correlation worker thread started
+[2025-09-08 22:47:49] [INFO] MT5 worker thread started
+[2025-09-08 22:47:55] [INFO] Connecting MT5 terminal...
+[2025-09-08 22:47:55] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 22:47:57] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 22:48:11] [INFO] Correlation worker thread started
+[2025-09-08 22:49:14] [INFO] MT5 worker thread started
+[2025-09-08 22:49:20] [INFO] Connecting MT5 terminal...
+[2025-09-08 22:49:20] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-08 22:49:22] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-08 22:50:31] [SUCCESS] ✅ Test 'USDPLNEURCAD_trend' added to queue.
+[2025-09-09 01:22:49] [ERROR] The tests list is empty. Nothing to export.
+[2025-09-09 01:23:45] [INFO] Correlation worker thread started
+[2025-09-09 01:24:20] [ERROR] The tests list is empty. Nothing to export.
+[2025-09-09 01:45:03] [WARNING] Data folder is not set.
+[2025-09-09 01:45:20] [INFO] MT5 worker thread started
+[2025-09-09 01:45:31] [INFO] Connecting MT5 terminal...
+[2025-09-09 01:45:31] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 01:45:35] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 01:45:40] [INFO] Param folder found: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Tester
+[2025-09-09 01:46:06] [ERROR] The tests list is empty. Nothing to export.
+[2025-09-09 01:46:30] [SUCCESS] ✅ Test 'USDtest_mahahe' added to queue.
+[2025-09-09 01:46:37] [SUCCESS] ✅ Export completed successfully!
+[2025-09-09 01:47:06] [SUCCESS] ✅ Export completed successfully!
+[2025-09-09 01:59:58] [SUCCESS] ✅ Test 'nnnnnnn' added to queue.
+[2025-09-09 02:01:55] [INFO] MT5 worker thread started
+[2025-09-09 02:01:55] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:01:55] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:01:57] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:02:04] [SUCCESS] ✅ Test 'nnnnnnn' added to queue.
+[2025-09-09 02:05:08] [SUCCESS] ✅ Export completed successfully!
+[2025-09-09 02:18:45] [INFO] MT5 worker thread started
+[2025-09-09 02:18:45] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:18:45] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:18:48] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:19:05] [INFO] Exact match found: H
+[2025-09-09 02:19:05] [INFO] Best symbol found: H
+[2025-09-09 02:19:05] [INFO] Exact match found: HF
+[2025-09-09 02:19:05] [INFO] Best symbol found: HF
+[2025-09-09 02:19:05] [INFO] Closest match found: HF
+[2025-09-09 02:19:05] [INFO] Best symbol found: HF
+[2025-09-09 02:19:05] [INFO] Closest match found: HF
+[2025-09-09 02:19:05] [INFO] Best symbol found: HF
+[2025-09-09 02:19:06] [INFO] Closest match found: CHFHUF
+[2025-09-09 02:19:06] [INFO] Best symbol found: CHFHUF
+[2025-09-09 02:19:06] [INFO] Closest match found: HHH
+[2025-09-09 02:19:06] [INFO] Best symbol found: HHH
+[2025-09-09 02:19:06] [INFO] Closest match found: CHFHUF
+[2025-09-09 02:19:06] [INFO] Best symbol found: CHFHUF
+[2025-09-09 02:19:06] [INFO] Closest match found: CHFHUF
+[2025-09-09 02:19:06] [INFO] Best symbol found: CHFHUF
+[2025-09-09 02:19:07] [INFO] Closest match found: CHFHUF
+[2025-09-09 02:19:07] [INFO] Best symbol found: CHFHUF
+[2025-09-09 02:19:07] [INFO] Closest match found: CHFHUF
+[2025-09-09 02:19:07] [INFO] Best symbol found: CHFHUF
+[2025-09-09 02:19:07] [INFO] Closest match found: CHFHUF
+[2025-09-09 02:19:07] [INFO] Best symbol found: CHFHUF
+[2025-09-09 02:19:21] [INFO] Param folder found: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Tester
+[2025-09-09 02:19:54] [SUCCESS] ✅ Test 'hfhhfhhfhhf' added to queue.
+[2025-09-09 02:20:01] [INFO] Starting queued tests...
+[2025-09-09 02:20:58] [SUCCESS] ✅ All tests completed.
+[2025-09-09 02:24:20] [INFO] MT5 worker thread started
+[2025-09-09 02:24:20] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:24:20] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:24:23] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:24:32] [INFO] Exact match found: H
+[2025-09-09 02:24:32] [INFO] Best symbol found: H
+[2025-09-09 02:24:32] [INFO] Exact match found: HG
+[2025-09-09 02:24:32] [INFO] Best symbol found: HG
+[2025-09-09 02:24:33] [INFO] Closest match found: HYGH
+[2025-09-09 02:24:33] [INFO] Best symbol found: HYGH
+[2025-09-09 02:24:33] [INFO] Closest match found: GHG
+[2025-09-09 02:24:33] [INFO] Best symbol found: GHG
+[2025-09-09 02:24:33] [INFO] Closest match found: HHH
+[2025-09-09 02:24:33] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:33] [INFO] Closest match found: HHH
+[2025-09-09 02:24:33] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:33] [INFO] Closest match found: HHH
+[2025-09-09 02:24:33] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:34] [INFO] Closest match found: HHH
+[2025-09-09 02:24:34] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:34] [INFO] Closest match found: HHH
+[2025-09-09 02:24:34] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:34] [INFO] Closest match found: HHH
+[2025-09-09 02:24:34] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:34] [INFO] Closest match found: HHH
+[2025-09-09 02:24:34] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:34] [INFO] Closest match found: GHG
+[2025-09-09 02:24:34] [INFO] Best symbol found: GHG
+[2025-09-09 02:24:37] [INFO] Closest match found: GHG
+[2025-09-09 02:24:37] [INFO] Best symbol found: GHG
+[2025-09-09 02:24:37] [INFO] Closest match found: HHH
+[2025-09-09 02:24:37] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:37] [INFO] Closest match found: HHH
+[2025-09-09 02:24:37] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:38] [INFO] Closest match found: HHH
+[2025-09-09 02:24:38] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:38] [INFO] Closest match found: HHH
+[2025-09-09 02:24:38] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:38] [INFO] Closest match found: HHH
+[2025-09-09 02:24:38] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:38] [INFO] Closest match found: HHH
+[2025-09-09 02:24:38] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:39] [INFO] Closest match found: HHH
+[2025-09-09 02:24:39] [INFO] Best symbol found: HHH
+[2025-09-09 02:24:39] [INFO] Closest match found: GHG
+[2025-09-09 02:24:39] [INFO] Best symbol found: GHG
+[2025-09-09 02:24:39] [INFO] Closest match found: HYGH
+[2025-09-09 02:24:39] [INFO] Best symbol found: HYGH
+[2025-09-09 02:24:39] [INFO] Exact match found: HG
+[2025-09-09 02:24:39] [INFO] Best symbol found: HG
+[2025-09-09 02:24:40] [INFO] Exact match found: H
+[2025-09-09 02:24:40] [INFO] Best symbol found: H
+[2025-09-09 02:24:41] [INFO] Exact match found: H
+[2025-09-09 02:24:41] [INFO] Best symbol found: H
+[2025-09-09 02:24:42] [INFO] Closest match found: HCA
+[2025-09-09 02:24:42] [INFO] Best symbol found: HCA
+[2025-09-09 02:24:42] [INFO] Exact match found: HAS
+[2025-09-09 02:24:42] [INFO] Best symbol found: HAS
+[2025-09-09 02:24:42] [INFO] Closest match found: HAS
+[2025-09-09 02:24:42] [INFO] Best symbol found: HAS
+[2025-09-09 02:24:42] [INFO] Closest match found: HAS
+[2025-09-09 02:24:42] [INFO] Best symbol found: HAS
+[2025-09-09 02:24:43] [INFO] Closest match found: ASAN
+[2025-09-09 02:24:43] [INFO] Best symbol found: ASAN
+[2025-09-09 02:26:22] [SUCCESS] ✅ Test 'hassan' added to queue.
+[2025-09-09 02:26:26] [INFO] Starting queued tests...
+[2025-09-09 02:34:28] [INFO] MT5 worker thread started
+[2025-09-09 02:34:28] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:34:28] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:34:30] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:34:40] [INFO] Exact match found: H
+[2025-09-09 02:34:40] [INFO] Best symbol found: H
+[2025-09-09 02:34:40] [INFO] Closest match found: HCA
+[2025-09-09 02:34:40] [INFO] Best symbol found: HCA
+[2025-09-09 02:34:41] [INFO] Exact match found: HAS
+[2025-09-09 02:34:41] [INFO] Best symbol found: HAS
+[2025-09-09 02:34:41] [INFO] Closest match found: HAS
+[2025-09-09 02:34:41] [INFO] Best symbol found: HAS
+[2025-09-09 02:34:41] [INFO] Closest match found: HAS
+[2025-09-09 02:34:41] [INFO] Best symbol found: HAS
+[2025-09-09 02:34:42] [INFO] Closest match found: ASAN
+[2025-09-09 02:34:42] [INFO] Best symbol found: ASAN
+[2025-09-09 02:34:59] [SUCCESS] ✅ Test 'hassan' added to queue.
+[2025-09-09 02:35:04] [INFO] Starting queued tests...
+[2025-09-09 02:39:30] [INFO] MT5 worker thread started
+[2025-09-09 02:39:40] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:39:40] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:39:47] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:39:53] [INFO] Exact match found: H
+[2025-09-09 02:39:53] [INFO] Best symbol found: H
+[2025-09-09 02:39:54] [INFO] Closest match found: HCA
+[2025-09-09 02:39:54] [INFO] Best symbol found: HCA
+[2025-09-09 02:39:54] [INFO] Exact match found: HAS
+[2025-09-09 02:39:54] [INFO] Best symbol found: HAS
+[2025-09-09 02:39:54] [INFO] Closest match found: HAS
+[2025-09-09 02:39:54] [INFO] Best symbol found: HAS
+[2025-09-09 02:39:54] [INFO] Closest match found: HAS
+[2025-09-09 02:39:54] [INFO] Best symbol found: HAS
+[2025-09-09 02:39:55] [INFO] Closest match found: HAS
+[2025-09-09 02:39:55] [INFO] Best symbol found: HAS
+[2025-09-09 02:39:55] [INFO] Closest match found: ASAN
+[2025-09-09 02:39:55] [INFO] Best symbol found: ASAN
+[2025-09-09 02:40:04] [SUCCESS] ✅ Test 'hasssan' added to queue.
+[2025-09-09 02:40:08] [INFO] Starting queued tests...
+[2025-09-09 02:42:21] [INFO] MT5 worker thread started
+[2025-09-09 02:42:21] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:42:21] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:42:22] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:42:29] [INFO] Exact match found: H
+[2025-09-09 02:42:29] [INFO] Best symbol found: H
+[2025-09-09 02:42:29] [INFO] Closest match found: HCA
+[2025-09-09 02:42:29] [INFO] Best symbol found: HCA
+[2025-09-09 02:42:30] [INFO] Exact match found: HAS
+[2025-09-09 02:42:30] [INFO] Best symbol found: HAS
+[2025-09-09 02:42:30] [INFO] Closest match found: HAS
+[2025-09-09 02:42:30] [INFO] Best symbol found: HAS
+[2025-09-09 02:42:30] [INFO] Closest match found: HAS
+[2025-09-09 02:42:30] [INFO] Best symbol found: HAS
+[2025-09-09 02:42:30] [INFO] Closest match found: ASAN
+[2025-09-09 02:42:30] [INFO] Best symbol found: ASAN
+[2025-09-09 02:42:38] [SUCCESS] ✅ Test 'hassan' added to queue.
+[2025-09-09 02:42:42] [INFO] Starting queued tests...
+[2025-09-09 02:46:13] [INFO] MT5 worker thread started
+[2025-09-09 02:46:13] [INFO] Connecting MT5 terminal...
+[2025-09-09 02:46:13] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 02:46:15] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 02:46:23] [INFO] Exact match found: H
+[2025-09-09 02:46:23] [INFO] Best symbol found: H
+[2025-09-09 02:46:23] [INFO] Closest match found: HCA
+[2025-09-09 02:46:23] [INFO] Best symbol found: HCA
+[2025-09-09 02:46:23] [INFO] Exact match found: HAS
+[2025-09-09 02:46:23] [INFO] Best symbol found: HAS
+[2025-09-09 02:46:23] [INFO] Closest match found: HAS
+[2025-09-09 02:46:23] [INFO] Best symbol found: HAS
+[2025-09-09 02:46:24] [INFO] Closest match found: HAS
+[2025-09-09 02:46:24] [INFO] Best symbol found: HAS
+[2025-09-09 02:46:24] [INFO] Closest match found: ASAN
+[2025-09-09 02:46:24] [INFO] Best symbol found: ASAN
+[2025-09-09 02:46:36] [SUCCESS] ✅ Test 'hassan' added to queue.
+[2025-09-09 02:46:39] [INFO] Starting queued tests...
+[2025-09-09 02:49:36] [SUCCESS] ✅ All tests completed.
+[2025-09-09 03:19:07] [INFO] MT5 worker thread started
+[2025-09-09 03:19:07] [INFO] Connecting MT5 terminal...
+[2025-09-09 03:19:07] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 03:19:09] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 03:19:17] [INFO] Exact match found: J
+[2025-09-09 03:19:17] [INFO] Best symbol found: J
+[2025-09-09 03:19:17] [INFO] Closest match found: XJH
+[2025-09-09 03:19:17] [INFO] Best symbol found: XJH
+[2025-09-09 03:19:17] [INFO] Closest match found: XJH
+[2025-09-09 03:19:17] [INFO] Best symbol found: XJH
+[2025-09-09 03:19:17] [INFO] Closest match found: XJH
+[2025-09-09 03:19:17] [INFO] Best symbol found: XJH
+[2025-09-09 03:19:17] [INFO] Closest match found: JHHY
+[2025-09-09 03:19:17] [INFO] Best symbol found: JHHY
+[2025-09-09 03:19:17] [INFO] Closest match found: JHHY
+[2025-09-09 03:19:17] [INFO] Best symbol found: JHHY
+[2025-09-09 03:19:18] [INFO] Closest match found: JHHY
+[2025-09-09 03:19:18] [INFO] Best symbol found: JHHY
+[2025-09-09 03:19:18] [INFO] Closest match found: HHH
+[2025-09-09 03:19:18] [INFO] Best symbol found: HHH
+[2025-09-09 03:19:23] [SUCCESS] ✅ Test 'jhjjhjjh' added to queue.
+[2025-09-09 03:19:25] [INFO] Exact match found: H
+[2025-09-09 03:19:25] [INFO] Best symbol found: H
+[2025-09-09 03:19:25] [INFO] Closest match found: HCA
+[2025-09-09 03:19:25] [INFO] Best symbol found: HCA
+[2025-09-09 03:19:26] [INFO] Exact match found: HAS
+[2025-09-09 03:19:26] [INFO] Best symbol found: HAS
+[2025-09-09 03:19:26] [INFO] Closest match found: HAS
+[2025-09-09 03:19:26] [INFO] Best symbol found: HAS
+[2025-09-09 03:19:27] [INFO] Closest match found: SAA
+[2025-09-09 03:19:27] [INFO] Best symbol found: SAA
+[2025-09-09 03:19:34] [SUCCESS] ✅ Test 'hasaa' added to queue.
+[2025-09-09 03:20:29] [SUCCESS] ✅ Uncorrelated pairs calculated successfully!
+[2025-09-09 03:29:01] [INFO] MT5 worker thread started
+[2025-09-09 03:29:01] [INFO] Connecting MT5 terminal...
+[2025-09-09 03:29:01] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 03:29:03] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 03:29:10] [INFO] Exact match found: M
+[2025-09-09 03:29:10] [INFO] Best symbol found: M
+[2025-09-09 03:29:10] [INFO] Closest match found: YMM
+[2025-09-09 03:29:10] [INFO] Best symbol found: YMM
+[2025-09-09 03:29:10] [INFO] Exact match found: MMM
+[2025-09-09 03:29:10] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:10] [INFO] Closest match found: MMM
+[2025-09-09 03:29:10] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:10] [INFO] Closest match found: MMM
+[2025-09-09 03:29:10] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:15] [SUCCESS] ✅ Test 'mmmmm' added to queue.
+[2025-09-09 03:29:21] [INFO] Closest match found: MMM
+[2025-09-09 03:29:21] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:21] [INFO] Closest match found: MMM
+[2025-09-09 03:29:21] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:21] [INFO] Closest match found: MMM
+[2025-09-09 03:29:21] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:22] [INFO] Closest match found: MMM
+[2025-09-09 03:29:22] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:22] [INFO] Closest match found: MMM
+[2025-09-09 03:29:22] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:22] [INFO] Closest match found: MMM
+[2025-09-09 03:29:22] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:23] [INFO] Closest match found: MMM
+[2025-09-09 03:29:23] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:23] [INFO] Exact match found: MMM
+[2025-09-09 03:29:23] [INFO] Best symbol found: MMM
+[2025-09-09 03:29:23] [INFO] Closest match found: YMM
+[2025-09-09 03:29:23] [INFO] Best symbol found: YMM
+[2025-09-09 03:29:23] [INFO] Exact match found: M
+[2025-09-09 03:29:23] [INFO] Best symbol found: M
+[2025-09-09 03:29:24] [INFO] Exact match found: M
+[2025-09-09 03:29:24] [INFO] Best symbol found: M
+[2025-09-09 03:29:25] [INFO] Exact match found: MD
+[2025-09-09 03:29:25] [INFO] Best symbol found: MD
+[2025-09-09 03:29:25] [INFO] Closest match found: EMDM
+[2025-09-09 03:29:25] [INFO] Best symbol found: EMDM
+[2025-09-09 03:29:25] [INFO] Closest match found: EMDM
+[2025-09-09 03:29:25] [INFO] Best symbol found: EMDM
+[2025-09-09 03:29:25] [INFO] Closest match found: MMD
+[2025-09-09 03:29:25] [INFO] Best symbol found: MMD
+[2025-09-09 03:29:31] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-09 03:30:06] [SUCCESS] ✅ Uncorrelated pairs calculated successfully!
+[2025-09-09 03:30:08] [SUCCESS] ✅ Test 'EURNOKUSDHUF_trend' added to queue.
+[2025-09-09 03:39:54] [INFO] Correlation worker thread started
+[2025-09-09 03:41:35] [INFO] Correlation worker thread started
+[2025-09-09 03:42:51] [INFO] Correlation worker thread started
+[2025-09-09 03:44:41] [INFO] Correlation worker thread started
+[2025-09-09 03:45:28] [INFO] Correlation worker thread started
+[2025-09-09 03:51:17] [INFO] Correlation worker thread started
+[2025-09-09 03:51:22] [INFO] Correlation worker thread started
+[2025-09-09 03:52:40] [INFO] Correlation worker thread started
+[2025-09-09 03:58:01] [INFO] MT5 worker thread started
+[2025-09-09 03:58:01] [INFO] Connecting MT5 terminal...
+[2025-09-09 03:58:01] [SUCCESS] ✅ MT5 connected successfully
+[2025-09-09 03:58:02] [SUCCESS] ✅ Auto-detected MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-09 03:58:08] [INFO] Exact match found: H
+[2025-09-09 03:58:08] [INFO] Best symbol found: H
+[2025-09-09 03:58:08] [INFO] Closest match found: HCA
+[2025-09-09 03:58:08] [INFO] Best symbol found: HCA
+[2025-09-09 03:58:09] [INFO] Closest match found: SAH
+[2025-09-09 03:58:09] [INFO] Best symbol found: SAH
+[2025-09-09 03:58:09] [INFO] Closest match found: AHH
+[2025-09-09 03:58:09] [INFO] Best symbol found: AHH
+[2025-09-09 03:58:09] [INFO] Closest match found: AHH
+[2025-09-09 03:58:09] [INFO] Best symbol found: AHH
+[2025-09-09 03:58:09] [INFO] Closest match found: HHH
+[2025-09-09 03:58:09] [INFO] Best symbol found: HHH
+[2025-09-09 03:58:21] [SUCCESS] ✅ Test 'hahhah' added to queue.
+[2025-09-09 03:58:25] [INFO] Exact match found: A
+[2025-09-09 03:58:25] [INFO] Best symbol found: A
+[2025-09-09 03:58:25] [INFO] Exact match found: AU
+[2025-09-09 03:58:25] [INFO] Best symbol found: AU
+[2025-09-09 03:58:26] [INFO] Closest match found: AUNA
+[2025-09-09 03:58:26] [INFO] Best symbol found: AUNA
+[2025-09-09 03:58:32] [SUCCESS] ✅ Test 'aun' added to queue.
+[2025-09-09 03:59:34] [SUCCESS] ✅ Uncorrelated pairs calculated successfully!
+[2025-09-09 03:59:38] [SUCCESS] ✅ Test 'EURPLNNZDCHF_trend' added to queue.
+[2025-09-09 03:59:40] [SUCCESS] ✅ Test 'EURNOKUSDHUF_trend' added to queue.
+[2025-09-09 03:59:45] [INFO] Correlation worker thread started
+[2025-09-09 03:59:50] [INFO] Correlation worker thread started

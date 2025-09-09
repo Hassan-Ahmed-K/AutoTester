@@ -1,0 +1,2 @@
+test_name,expert,param_file,symbol_prefix,symbol_suffix,symbol,timeframe,date_from,date_to,forward,delay,model,deposit,currency,leverage,optimization,criterion
+USDtest_mahahe,ExpertMACD.ex5,,,,hghghgh,M1,2025-09-09,2025-09-09,No,0,Every tick,100000.0,USD,100.00,Disabled,Balance Max

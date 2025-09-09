@@ -2,7 +2,7 @@ import json
 import os
 from PyQt5.QtWidgets import QInputDialog, QFileDialog, QMessageBox
 import matplotlib.pyplot as plt
-
+from aiagentfinder.utils import Logger
 
 class QueueManager:
     def __init__(self, ui):
@@ -69,11 +69,26 @@ class QueueManager:
     def export_template(self):
         path, _ = QFileDialog.getSaveFileName(self.ui, "Export Template", "", "CSV Files (*.csv)")
         if path:
-            with open(path, "w") as f:
-                f.write("Symbol,Expert\n")
-                for test in self.tests:
-                    f.write(f"{test['symbol']},{test['expert']}\n")
+            try:
+                if not self.tests:
+                    QMessageBox.warning(self.ui, "Error", "The tests list is empty. Nothing to export.")
+                    raise ValueError("The tests list is empty. Nothing to export.")
+                
+                with open(path, "w") as f:
+                    # Write header
+                    f.write(",".join(self.tests[0].keys()) + "\n")
+                    
+                    # Write each row
+                    for test in self.tests:
+                        f.write(",".join(str(value) for value in test.values()) + "\n")
+                
+                Logger.success("Export completed successfully!")
 
+            except ValueError as ve:
+                Logger.error(str(ve))
+
+            except Exception as e:
+                Logger.error(f"Error exporting template: {str(e)}")
     # ---------------- Extra Features ----------------
     def create_non_correlated_list(self):
         result = {t["symbol"]: t for t in self.tests}.values()  # deduplicate by symbol

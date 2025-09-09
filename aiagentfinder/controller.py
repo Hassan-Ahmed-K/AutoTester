@@ -1,6 +1,6 @@
 # type : ignore
-from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog
-from PyQt5.QtCore import QDate ,  QThread , QTimer
+from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog,QProgressDialog
+from PyQt5.QtCore import QDate ,  QThread , QTimer , Qt
 from aiagentfinder.utils import MT5Manager , Logger , MT5Worker, CorrelationWorker
 from aiagentfinder.queue_manager import QueueManager
 import difflib
@@ -14,13 +14,12 @@ from aiagentfinder.utils.QuantityDialog import QuantityDialog
 from aiagentfinder.utils.TextDialog import TextDialog
 from aiagentfinder.utils.RadioDialog import RadioDialog
 import os, glob , datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 
 class AutoBatchController:
     def __init__(self, ui):
         self.ui = ui
         self.mt5 = MT5Manager()
-
-        
         
         self.symbols= []
         self.queue = QueueManager(ui) 
@@ -28,6 +27,10 @@ class AutoBatchController:
         self.non_correlated_popus_option = {}
         self.ui.mt5_dir_input
 
+
+        self.scheduler = BackgroundScheduler()
+        self.scheduler.start() 
+        
 
         # --- Connect UI buttons ---
         self.ui.mt5_dir_btn.clicked.connect(self.browse_mt5_dir)
@@ -53,7 +56,7 @@ class AutoBatchController:
         self.ui.corr_btn.clicked.connect(lambda:self.show_correlation_popup(market="forex",period=50, symbols=None))
         self.ui.non_corr_btn.clicked.connect(lambda: self.show_quantity_popup(title="Test Pairs", text="How many pairs will be in you test list: "))
         self.ui.start_btn.clicked.connect(lambda: self.on_start_button_clicked(data_path = self.ui.data_input.text(), mt5_path =self.ui.mt5_dir_input.text(), report_path = self.ui.report_input.text() ))
-
+        self.ui.schedule_date.dateChanged.connect(self.schedule_test)
 
 
     # ----------------------------
@@ -460,33 +463,33 @@ class AutoBatchController:
         else:
             QMessageBox.information(self.ui, "List Item Not Selected",f"Please Select List Item")
 
-    def get_correlation( self,
-        market="forex",
-        period=50,
-        symbols=None,
-        output_format="csv",
-        endpoint="snapshot"
-    ):
+    # def get_correlation( self,
+    #     market="forex",
+    #     period=50,
+    #     symbols=None,
+    #     output_format="csv",
+    #     endpoint="snapshot"
+    # ):
        
-        if symbols is None:
-            symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # default if nothing provided
+    #     if symbols is None:
+    #         symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # default if nothing provided
 
-        # Join symbols with |
-        symbol_str = "|".join(symbols)
+    #     # Join symbols with |
+    #     symbol_str = "|".join(symbols)
 
-        # Build the URL
-        url = f"https://www.mataf.io/api/tools/{output_format}/correl/{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
+    #     # Build the URL
+    #     url = f"https://www.mataf.io/api/tools/{output_format}/correl/{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
 
-        # Request the URL
-        response = requests.get(url)
+    #     # Request the URL
+    #     response = requests.get(url)
 
-        if response.status_code == 200:
-            lines = response.text.splitlines()
-            csv_data = "\n".join(lines[3:])  # drop metadata
-            df = pd.read_csv(StringIO(csv_data))
-            return df
-        else:
-            raise Exception(f"Error {response.status_code}: Unable to fetch data")
+    #     if response.status_code == 200:
+    #         lines = response.text.splitlines()
+    #         csv_data = "\n".join(lines[3:])  # drop metadata
+    #         df = pd.read_csv(StringIO(csv_data))
+    #         return df
+    #     else:
+    #         raise Exception(f"Error {response.status_code}: Unable to fetch data")
     
     
     def show_correlation_popup(self, market="forex", period=50, symbols=None):
@@ -495,6 +498,16 @@ class AutoBatchController:
                 return
        
             self._correlation_busy = True
+            self.loading_dialog = QProgressDialog("Generating correlation heatmap...", None, 0, 0, self.ui)
+            self.loading_dialog.setWindowTitle("Please Wait")
+            self.loading_dialog.setWindowModality(Qt.ApplicationModal)
+            self.loading_dialog.setCancelButton(None)   # disable cancel button
+            self.loading_dialog.setMinimumDuration(0)   # show immediately
+            self.loading_dialog.show()
+            
+            if getattr(self, "loading_dialog", None):
+                self.loading_dialog.close()
+                self.loading_dialog = None
             # --- Setup thread + worker ---
             self.thread = QThread()
             self.worker = CorrelationWorker(
@@ -628,59 +641,102 @@ class AutoBatchController:
 
             print("symbols = ",symbols)
 
-            correlation = self.get_correlation(
+            self.thread = QThread()
+            self.worker = CorrelationWorker(
                 market="forex",
                 period=50,
                 symbols=symbols,
                 output_format="csv",
                 endpoint="snapshot"
             )
+            self.worker.moveToThread(self.thread)
 
-    
-            uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
-                                                                        correlation,
-                                                                        results["correlationFilter"],
-                                                                        results["test_symbol_quantity"]
-                                                                    )
+            # connections
+            self.thread.started.connect(self.worker.run)
+            self.worker.finished.connect(self.on_worker_finished)
+            self.worker.error.connect(self.on_worker_error)
 
-            if uncorrelated_pairs.empty:
-                QMessageBox.warning(
-                    self.ui,
-                    "No Pairs Found",
-                    f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-                )
-                Logger.warning(f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}.")
-                return  # exit early
+            # cleanup
+            self.worker.finished.connect(self.thread.quit)
+            self.worker.finished.connect(self.worker.deleteLater)
+            self.thread.finished.connect(self.thread.deleteLater)
 
-            print(f"uncorrelated_pairs = {uncorrelated_pairs}")
+            self.thread.start()
 
-            for _, row in uncorrelated_pairs.iterrows():
-                uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
-                settings = {
-                    "test_name": f"{uncorrelated_pair}_trend",
-                    "expert": self.ui.expert_input.currentText().strip(),
-                    "param_file": self.ui.param_input.text().strip(),
-                    "symbol_prefix": self.ui.symbol_prefix.text().strip(),
-                    "symbol_suffix": self.ui.symbol_suffix.text().strip(),
-                    "symbol": uncorrelated_pair,
-                    "timeframe": self.ui.timeframe_combo.currentText(),
-                    "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
-                    "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
-                    "forward": self.ui.forward_combo.currentText(),
-                    "delay": self.ui.delay_input.value(),
-                    "model": self.ui.model_combo.currentText(),
-                    "deposit": self.ui.deposit_input.text(),
-                    "currency": self.ui.currency_input.text().strip(),
-                    "leverage": self.ui.leverage_input.text().strip(),
-                    "optimization": self.ui.optim_combo.currentText(),
-                    "criterion": self.ui.criterion_input.currentText(),
-                }
+        return
+            # uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+            #                                                             correlation,
+            #                                                             results["correlationFilter"],
+            #                                                             results["test_symbol_quantity"]
+            #                                                         )
 
-                if settings:
-                    self.queue.add_test_to_queue(settings)
-                    QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
-                    Logger.success(f"Test '{settings['test_name']}' added to queue.")
-        
+            # if uncorrelated_pairs.empty:
+            #     QMessageBox.warning(
+            #         self.ui,
+            #         "No Pairs Found",
+            #         f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
+            #     )
+            #     Logger.warning(f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}.")
+            #     return  # exit early
+
+            # print(f"uncorrelated_pairs = {uncorrelated_pairs}")
+    def on_worker_finished(self, df):
+        results = self.non_correlated_popus_option
+        uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+            df,
+            results["correlationFilter"],
+            results["test_symbol_quantity"]
+        )
+
+        if uncorrelated_pairs.empty:
+            QMessageBox.warning(
+                self.ui,
+                "No Pairs Found",
+                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
+            )
+            Logger.warning(
+                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
+            )
+            return
+
+        print("Uncorrelated pairs:", uncorrelated_pairs)
+        QMessageBox.information(self.ui, "Success", "Uncorrelated pairs calculated successfully!")
+        Logger.success("Uncorrelated pairs calculated successfully!")
+
+    # Add tests to queue
+        for _, row in uncorrelated_pairs.iterrows():
+            uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
+            settings = {
+                "test_name": f"{uncorrelated_pair}_trend",
+                "expert": self.ui.expert_input.currentText().strip(),
+                "param_file": self.ui.param_input.text().strip(),
+                "symbol_prefix": self.ui.symbol_prefix.text().strip(),
+                "symbol_suffix": self.ui.symbol_suffix.text().strip(),
+                "symbol": uncorrelated_pair,
+                "timeframe": self.ui.timeframe_combo.currentText(),
+                "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
+                "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
+                "forward": self.ui.forward_combo.currentText(),
+                "delay": self.ui.delay_input.value(),
+                "model": self.ui.model_combo.currentText(),
+                "deposit": self.ui.deposit_input.text(),
+                "currency": self.ui.currency_input.text().strip(),
+                "leverage": self.ui.leverage_input.text().strip(),
+                "optimization": self.ui.optim_combo.currentText(),
+                "criterion": self.ui.criterion_input.currentText(),
+            }
+
+            if settings:
+                self.queue.add_test_to_queue(settings)
+                QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
+                Logger.success(f"Test '{settings['test_name']}' added to queue.")
+
+
+    def on_worker_error(self, msg):
+        QMessageBox.warning(self.ui, "Error", msg)
+        Logger.error(f"Worker error: {msg}")
+
+
     def get_symbols_for_option(self, option):
         if option == "FX Only":
             return self.mt5.get_fx_symbols()
@@ -693,11 +749,12 @@ class AutoBatchController:
         else:
             return self.mt5.get_fx_symbols()
 
-    def get_top_uncorrelated_pairs_day(self,df,correlation=60,top_n=5):
+
+    def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
         df_filtered = df[df["pair1"] != df["pair2"]].copy()
         df_filtered["abs_day"] = df_filtered["day"].abs()
-        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=False)
-
+        # sort ascending → least correlated pairs first
+        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=True)
         return df_filtered[["pair1", "pair2", "day"]].head(top_n)
 
 
@@ -721,5 +778,25 @@ class AutoBatchController:
 
         QMessageBox.information(self.ui, "Finished", "All tests completed.")
         Logger.success("All tests completed.")
+    
+
+    def schedule_test(self):
+        selected_date = self.ui.schedule_date.date().toPyDate()
+        
+        # Default time at 9:00 AM (you can change it)
+        run_time = datetime.combine(selected_date, time(hour=0, minute=0))
+        now = datetime.now()
+        
+        if run_time <= now:
+            print("Selected date/time is in the past!")
+            return
+        
+        # Schedule the job
+        self.scheduler.add_job(self.my_function, 'date', run_date=run_time)
+        print(f"Function scheduled for {run_time}")
+
+    def my_function(self):
+        print("huzaifa")
+
 
 
