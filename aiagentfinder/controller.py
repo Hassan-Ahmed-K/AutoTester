@@ -1,5 +1,5 @@
 # type : ignore
-from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog,QProgressDialog
+from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog,QApplication
 from PyQt5.QtCore import QDate ,  QThread , QTimer , Qt
 from aiagentfinder.utils import MT5Manager , Logger , MT5Worker, CorrelationWorker
 from aiagentfinder.queue_manager import QueueManager
@@ -232,52 +232,49 @@ class AutoBatchController:
                 "deposit_info": None,
             }
 
-            # --- Try auto-detect Data Folder ---
             try:
-                roaming = os.path.join(os.environ["APPDATA"], "MetaQuotes", "Terminal")
-                candidates = glob.glob(os.path.join(roaming, "*"))
+                success = self.mt5.connect(file_path)
+                if success:
+                    dataPath = self.mt5.get_dataPath()
+                    if dataPath:
+                        result["data_folder"] = dataPath
+                        os.makedirs(os.path.join(dataPath, "Agent Finder Results"), exist_ok=True)
+                        Logger.success(f"MT5 Data Folder: {dataPath}")
+                    else:
+                        Logger.warning("Could not retrieve terminal_info from MT5")
 
-                for folder in candidates:
-                    if os.path.isdir(os.path.join(folder, "config")):
-                        result["data_folder"] = folder
-                        os.makedirs(os.path.join(folder, "Agent Finder Results"), exist_ok=True)
-                        Logger.success(f"Auto-detected MT5 Data Folder: {folder}")
-                        break
-
-                if not result["data_folder"]:
-                    Logger.warning("Failed to auto-detect MT5 Data Folder")
+                    # --- Deposit info ---
+                    result["deposit_info"] = self.mt5.get_deposit()
+                    if result["deposit_info"]:
+                        Logger.success("Deposit info retrieved successfully")
+                    else:
+                        Logger.warning("No deposit info retrieved")
+                else:
+                    Logger.error(f"Failed to connect to MT5: {self.mt5.last_error()}")
 
             except Exception as e:
-                Logger.error(f"Error while detecting MT5 Data Folder: {e}")
-
-            # --- Try to connect MT5 ---
-            success = self.mt5.connect(file_path)
-            if success:
-                result["deposit_info"] = self.mt5.get_deposit()
-                Logger.success("MT5 connected successfully")
-            else:
-                Logger.error("Failed to connect MT5")
+                Logger.error(f"Error while connecting to MT5: {e}")
 
             return result
+
 
         # ---------------------------
         # CALLBACKS (main thread)
         # ---------------------------
         def on_done(result):
-            # ✅ Update Data Folder if found
             if result["data_folder"]:
                 self.ui.data_input.setText(result["data_folder"])
-                QMessageBox.information(
-                    self.ui, "MT5 Data Folder",
-                    f"Auto-selected Data Folder:\n{result['data_folder']}"
-                )
+                # QMessageBox.information(
+                #     self.ui, "MT5 Data Folder",
+                #     f"Auto-selected Data Folder:\n{result['data_folder']}"
+                # )
+                Logger.info(f"Auto-selected Data Folder: {result['data_folder']}")
             else:
                 QMessageBox.warning(
                     self.ui, "MT5 Data Folder",
                     "⚠️ Could not detect Data Folder automatically. Please set it manually."
                 )
 
-            # ✅ Update MT5 connection info
             if result["deposit_info"]:
                 self.ui.deposit_info = result["deposit_info"]
                 self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))
@@ -286,7 +283,7 @@ class AutoBatchController:
                 QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
             else:
                 QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
-
+            QApplication.processEvents()
         def on_error(err):
             QMessageBox.critical(
                 self.ui, "Error",
@@ -524,7 +521,7 @@ class AutoBatchController:
 
             
             def on_done(result):
-                file_path = result["file_path"]
+                # file_path = result["file_path"]
                 file_name = result["file_name"]
 
                 # Clean placeholder
@@ -581,17 +578,14 @@ class AutoBatchController:
    
         def task(data_folder):
             paths_to_check = [
-                os.path.join(data_folder, "Tester"),                     # common
                 os.path.join(data_folder, "MQL5", "Profiles", "Tester"), # fallback
             ]
 
-            default_path = None
             for path in paths_to_check:
                 if os.path.exists(path):
-                    default_path = path
-                    break
+                 return path
 
-            return default_path
+            return None
 
     
         def on_done(default_path):
@@ -609,9 +603,9 @@ class AutoBatchController:
                 default_path,
                 "Set Files (*.set);;All Files (*)"
             )
-
-            if file_path:
-                self.ui.param_input.setText(file_path)
+            
+            if (file_path):
+                self.ui.param_input.setText(os.path.basename(file_path))
                 Logger.info(f"Param file selected: {file_path}")
             else:
                 QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Param File.")
@@ -699,7 +693,7 @@ class AutoBatchController:
 
 
 
-    def get_best_symbol(self,user_input: str) -> str | None:
+    def get_best_symbol(self,user_input: str) -> str :
         symbols = [s.name for s in self.mt5.mt5.symbols_get()]
         user_input = user_input.upper().strip()
 
@@ -1139,74 +1133,49 @@ class AutoBatchController:
 
         # First dialog
         dialog1 = QuantityDialog(parent=self.ui, title=title, text=text)
-        if dialog1.exec_() == QDialog.Accepted:
-            qty1 = dialog1.get_value()
-            results["test_symbol_quantity"] = qty1
-            print("First quantity:", qty1)
+        if dialog1.exec_() != QDialog.Accepted:
+            return
+        results["test_symbol_quantity"] = dialog1.get_value()
 
-            # Second dialog
-            text = "How many strategies are you running"
-            title = "Strategies Count"
-            dialog2 = QuantityDialog(parent=self.ui, title=title, text=text)
-            if dialog2.exec_() == QDialog.Accepted:
-                qty2 = dialog2.get_value()
-                results["strategies_count"] = qty2
-                print("Second quantity:", qty2)
+        # Second dialog
+        dialog2 = QuantityDialog(parent=self.ui, title="Strategies Count", text="How many strategies are you running")
+        if dialog2.exec_() != QDialog.Accepted:
+            return
+        results["strategies_count"] = dialog2.get_value()
 
-                # Strategy names
-                for i in range(qty2):
-                    text = f"Please Name Strategy {i+1}"
-                    title = f"Strategy {i+1} Name"
+        # Strategy names
+        for i in range(results["strategies_count"]):
+            dialog3 = TextDialog(parent=self.ui, title=f"Strategy {i+1} Name", text=f"Please Name Strategy {i+1}")
+            if dialog3.exec_() != QDialog.Accepted:
+                return
+            results["strategies"].append(dialog3.get_value())
 
-                    dialog3 = TextDialog(parent=self.ui, title=title, text=text)
-                    if dialog3.exec_() == QDialog.Accepted:
-                        strategy_name = dialog3.get_value()
-                        results["strategies"].append(strategy_name)
-                        print("Strategy name:", strategy_name)
-                    else:
-                        print("Strategy dialog cancelled")
-                        return  # stop immediately if cancelled
+        # Symbol type radio dialog
+        options = ["FX Only", "FX + Metals", "FX + Indices", "FX + Metal + Indices"]
+        radio_dialog = RadioDialog(
+            parent=self.ui,
+            title="Symbols to Test",
+            text="Which symbol do you want to include:",
+            options=options
+        )
+        if radio_dialog.exec_() != QDialog.Accepted:
+            return
+        results["symbol_type"] = radio_dialog.get_value()
 
-                # Symbol type radio dialog
-                options = ["FX Only", "FX + Metals", "FX + Indices", "FX + Metal + Indices"]
-                radio_dialog = RadioDialog(
-                    parent=self.ui,
-                    title="Symbols to Test",
-                    text="Which symbol do you want to include:",
-                    options=options
-                )
-                if radio_dialog.exec_() == QDialog.Accepted:
-                    symbol_type = radio_dialog.get_value()
-                    results["symbol_type"] = symbol_type
-                    print("Selected type for all strategies:", symbol_type)
+        # Correlation filter dialog
+        correlationFilterDialog = QuantityDialog(
+            parent=self.ui,
+            title="Correlation Filter",
+            text="""Enter a value between 0-100 to filter out highly correlated pairs.
+                    1) If the correlation is high (above 80) and positive then the currencies move in the same way.
+                    2) If the correlation is high (above 80) and negative then the currencies move in the opposite way.
+                    3) If the correlation is low (below 60) then the currencies don't move in the same way."""
+        )
+        if correlationFilterDialog.exec_() != QDialog.Accepted:
+            return
+        results["correlationFilter"] = correlationFilterDialog.get_value()
 
-                    # Correlation filter dialog
-                    correlationFilterDialog = QuantityDialog(
-                        parent=self.ui,
-                        title="Correlation Filter",
-                        text="""Enter a value between 0-100 to filter out highly correlated pairs.
-                                1) If the correlation is high (above 80) and positive then the currencies move in the same way.
-                                2) If the correlation is high (above 80) and negative then the currencies move in the opposite way.
-                                3) If the correlation is low (below 60) then the currencies don't move in the same way."""
-                    )
-                    if correlationFilterDialog.exec_() == QDialog.Accepted:   
-                        correlationFilter = correlationFilterDialog.get_value()
-                        results["correlationFilter"] = correlationFilter
-                        print("Correlation Filter:", correlationFilter)
-                    else:
-                        print("Correlation filter dialog cancelled")
-                else:
-                    print("Radio dialog cancelled")
-            else:
-                print("Second dialog cancelled")
-        else:
-            print("First dialog cancelled")
-
-        print("Final results:", results)
         self.non_correlated_popus_option = results
-
-        symbols = self.get_symbols_for_option(results["symbol_type"])
-        print("symbols = ", symbols)
 
         # Read all UI values before threading
         ui_values = {
@@ -1236,100 +1205,12 @@ class AutoBatchController:
         def task(symbols, results, ui_values):
             # blocking fetch in background
             df = self.fetch_correlation(
-
                 market="forex",
                 period=50,
                 symbols=symbols,
                 output_format="csv",
                 endpoint="snapshot",
             )
-            self.worker.moveToThread(self.thread)
-
-            # connections
-            self.thread.started.connect(self.worker.run)
-            self.worker.finished.connect(self.on_worker_finished)
-            self.worker.error.connect(self.on_worker_error)
-
-            # cleanup
-            self.worker.finished.connect(self.thread.quit)
-            self.worker.finished.connect(self.worker.deleteLater)
-            self.thread.finished.connect(self.thread.deleteLater)
-
-            self.thread.start()
-
-        return
-            # uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
-            #                                                             correlation,
-            #                                                             results["correlationFilter"],
-            #                                                             results["test_symbol_quantity"]
-            #                                                         )
-
-            # if uncorrelated_pairs.empty:
-            #     QMessageBox.warning(
-            #         self.ui,
-            #         "No Pairs Found",
-            #         f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-            #     )
-            #     Logger.warning(f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}.")
-            #     return  # exit early
-
-            # print(f"uncorrelated_pairs = {uncorrelated_pairs}")
-    def on_worker_finished(self, df):
-        results = self.non_correlated_popus_option
-        uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
-            df,
-            results["correlationFilter"],
-            results["test_symbol_quantity"]
-        )
-
-        if uncorrelated_pairs.empty:
-            QMessageBox.warning(
-                self.ui,
-                "No Pairs Found",
-                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-            )
-            Logger.warning(
-                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-            )
-            return
-
-        print("Uncorrelated pairs:", uncorrelated_pairs)
-        QMessageBox.information(self.ui, "Success", "Uncorrelated pairs calculated successfully!")
-        Logger.success("Uncorrelated pairs calculated successfully!")
-
-    # Add tests to queue
-        for _, row in uncorrelated_pairs.iterrows():
-            uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
-            settings = {
-                "test_name": f"{uncorrelated_pair}_trend",
-                "expert": self.ui.expert_input.currentText().strip(),
-                "param_file": self.ui.param_input.text().strip(),
-                "symbol_prefix": self.ui.symbol_prefix.text().strip(),
-                "symbol_suffix": self.ui.symbol_suffix.text().strip(),
-                "symbol": uncorrelated_pair,
-                "timeframe": self.ui.timeframe_combo.currentText(),
-                "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
-                "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
-                "forward": self.ui.forward_combo.currentText(),
-                "delay": self.ui.delay_input.value(),
-                "model": self.ui.model_combo.currentText(),
-                "deposit": self.ui.deposit_input.text(),
-                "currency": self.ui.currency_input.text().strip(),
-                "leverage": self.ui.leverage_input.text().strip(),
-                "optimization": self.ui.optim_combo.currentText(),
-                "criterion": self.ui.criterion_input.currentText(),
-            }
-
-            if settings:
-                self.queue.add_test_to_queue(settings)
-                QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
-                Logger.success(f"Test '{settings['test_name']}' added to queue.")
-
-
-    def on_worker_error(self, msg):
-        QMessageBox.warning(self.ui, "Error", msg)
-        Logger.error(f"Worker error: {msg}")
-
 
             # compute uncorrelated pairs
             uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
@@ -1398,7 +1279,6 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task, symbols, results, ui_values)
-
 
 
 
