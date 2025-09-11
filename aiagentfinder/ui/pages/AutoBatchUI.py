@@ -286,6 +286,8 @@ class AutoBatchUI(BaseTab):
         self.date_combo.addItems([
             "Entire history",
             "Last month",
+            "Last 3 months",
+            "Last 6 months",
             "Last year",
             "Custom period"
         ])
