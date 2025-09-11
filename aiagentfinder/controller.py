@@ -1,5 +1,5 @@
 # type : ignore
-from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog,QProgressDialog
+from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog,QApplication
 from PyQt5.QtCore import QDate ,  QThread , QTimer , Qt
 from aiagentfinder.utils import MT5Manager , Logger , MT5Worker, CorrelationWorker
 from aiagentfinder.queue_manager import QueueManager
@@ -63,7 +63,8 @@ class AutoBatchController:
         self.ui.corr_btn.clicked.connect(lambda:self.get_correlation(market="forex",period=50, symbols=None))
         self.ui.non_corr_btn.clicked.connect(lambda: self.show_quantity_popup(title="Test Pairs", text="How many pairs will be in you test list: "))
         self.ui.start_btn.clicked.connect(lambda: self.on_start_button_clicked(data_path = self.ui.data_input.text(), mt5_path =self.ui.mt5_dir_input.text(), report_path = self.ui.report_input.text() ))
-
+        # self.ui.schedule_date.dateChanged.connect(self.schedule_test)
+        self.ui.queue_list.itemClicked.connect(self.on_test_selected)
 
 
     # ----------------------------
@@ -121,6 +122,96 @@ class AutoBatchController:
     #         QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
     #         Logger.error("Failed to connect MT5", e)
 
+    # def browse_mt5_dir(self):
+    #     file_path, _ = QFileDialog.getOpenFileName(
+    #         self.ui, "Select MT5 Terminal", "", "Executable Files (*.exe)"
+    #     )
+    #     if not file_path:
+    #         return
+
+    #     self.ui.mt5_dir_input.setText(file_path)
+    #     Logger.info(f"MT5 terminal selected: {file_path}")
+
+    #     # ---------------------------
+    #     # TASK for background thread
+    #     # ---------------------------
+    #     def task(file_path ):
+    #         result = {
+    #             "file_path": file_path,
+    #             "data_folder": None,
+    #             "deposit_info": None,
+    #         }
+
+    #         # --- Try auto-detect Data Folder ---
+    #         try:
+    #             # --- Try to connect MT5 ---
+    #             success = self.mt5.connect(file_path)
+    #             if success:
+    #                 result["deposit_info"] = self.mt5.get_deposit()
+    #                 Logger.success("MT5 connected successfully")
+    #             else:
+    #                 Logger.error("Failed to connect MT5")
+
+    #             roaming = os.path.join(os.environ["APPDATA"], "MetaQuotes", "Terminal")
+    #             candidates = glob.glob(os.path.join(roaming, "*"))
+
+    #             for folder in candidates:
+    #                 if os.path.isdir(os.path.join(folder, "config")):
+    #                     result["data_folder"] = folder
+    #                     os.makedirs(os.path.join(folder, "Agent Finder Results"), exist_ok=True)
+    #                     Logger.success(f"Auto-detected MT5 Data Folder: {folder}")
+    #                     break
+
+    #             if not result["data_folder"]:
+    #                 Logger.warning("Failed to auto-detect MT5 Data Folder")
+
+    #         except Exception as e:
+    #             Logger.error(f"Error while detecting MT5 Data Folder: {e}")
+
+
+    #         return result
+
+    #     # ---------------------------
+    #     # CALLBACKS (main thread)
+    #     # ---------------------------
+    #     def on_done(result):
+    #         if result["data_folder"]:
+    #             self.ui.data_input.setText(result["data_folder"])
+    #             QMessageBox.information(
+    #                 self.ui, "MT5 Data Folder",
+    #                 f"Auto-selected Data Folder:\n{result['data_folder']}"
+    #             )
+    #         else:
+    #             QMessageBox.warning(
+    #                 self.ui, "MT5 Data Folder",
+    #                 "⚠️ Could not detect Data Folder automatically. Please set it manually."
+    #             )
+
+    #         if result["deposit_info"]:
+    #             self.ui.deposit_info = result["deposit_info"]
+    #             self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))
+    #             self.ui.currency_input.setText(result["deposit_info"]["currency"])
+    #             self.ui.leverage_input.setValue(result["deposit_info"]["leverage"])
+    #             QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
+    #         else:
+    #             QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
+
+    #     def on_error(err):
+    #         QMessageBox.critical(
+    #             self.ui, "Error",
+    #             f"❌ Failed during MT5 setup.\nError: {str(err)}"
+    #         )
+    #         Logger.error(str(err))
+
+    #     # ---------------------------
+    #     # Run threaded
+    #     # ---------------------------
+    #     self.runner = ThreadRunner(self.ui)
+    #     self.runner.on_result = on_done
+    #     self.runner.on_error = on_error
+    #     self.runner.run(task, file_path)
+
+
     def browse_mt5_dir(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self.ui, "Select MT5 Terminal", "", "Executable Files (*.exe)"
@@ -141,50 +232,51 @@ class AutoBatchController:
                 "deposit_info": None,
             }
 
-            # --- Try auto-detect Data Folder ---
             try:
-                roaming = os.path.join(os.environ["APPDATA"], "MetaQuotes", "Terminal")
-                candidates = glob.glob(os.path.join(roaming, "*"))
+                success = self.mt5.connect(file_path)
+                if success:
+                    dataPath = self.mt5.get_dataPath()
+                    if dataPath:
+                        result["data_folder"] = dataPath
+                        os.makedirs(os.path.join(dataPath, "Agent Finder Results"), exist_ok=True)
+                        Logger.success(f"MT5 Data Folder: {dataPath}")
+                    else:
+                        Logger.warning("Could not retrieve terminal_info from MT5")
 
-                for folder in candidates:
-                    if os.path.isdir(os.path.join(folder, "config")):
-                        result["data_folder"] = folder
-                        os.makedirs(os.path.join(folder, "Agent Finder Results"), exist_ok=True)
-                        Logger.success(f"Auto-detected MT5 Data Folder: {folder}")
-                        break
-
-                if not result["data_folder"]:
-                    Logger.warning("Failed to auto-detect MT5 Data Folder")
+                    # --- Deposit info ---
+                    result["deposit_info"] = self.mt5.get_deposit()
+                    if result["deposit_info"]:
+                        Logger.success("Deposit info retrieved successfully")
+                    else:
+                        Logger.warning("No deposit info retrieved")
+                else:
+                    Logger.error(f"Failed to connect to MT5: {self.mt5.last_error()}")
 
             except Exception as e:
-                Logger.error(f"Error while detecting MT5 Data Folder: {e}")
-
-            # --- Try to connect MT5 ---
-            success = self.mt5.connect(file_path)
-            if success:
-                result["deposit_info"] = self.mt5.get_deposit()
-                Logger.success("MT5 connected successfully")
-            else:
-                Logger.error("Failed to connect MT5")
+                Logger.error(f"Error while connecting to MT5: {e}")
 
             return result
+
 
         # ---------------------------
         # CALLBACKS (main thread)
         # ---------------------------
         def on_done(result):
+            # ✅ Update Data Folder if found
             if result["data_folder"]:
                 self.ui.data_input.setText(result["data_folder"])
-                QMessageBox.information(
-                    self.ui, "MT5 Data Folder",
-                    f"Auto-selected Data Folder:\n{result['data_folder']}"
-                )
+                # QMessageBox.information(
+                #     self.ui, "MT5 Data Folder",
+                #     f"Auto-selected Data Folder:\n{result['data_folder']}"
+                # )
+                Logger.info(f"Auto-selected Data Folder: {result['data_folder']}")
             else:
                 QMessageBox.warning(
                     self.ui, "MT5 Data Folder",
                     "⚠️ Could not detect Data Folder automatically. Please set it manually."
                 )
 
+            # ✅ Update MT5 connection info
             if result["deposit_info"]:
                 self.ui.deposit_info = result["deposit_info"]
                 self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))
@@ -193,7 +285,7 @@ class AutoBatchController:
                 QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
             else:
                 QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
-
+            QApplication.processEvents()
         def on_error(err):
             QMessageBox.critical(
                 self.ui, "Error",
@@ -431,7 +523,7 @@ class AutoBatchController:
 
             
             def on_done(result):
-                file_path = result["file_path"]
+                # file_path = result["file_path"]
                 file_name = result["file_name"]
 
                 # Clean placeholder
@@ -487,19 +579,15 @@ class AutoBatchController:
    
    
         def task(data_folder):
-            import os
             paths_to_check = [
-                os.path.join(data_folder, "Tester"),                     # common
                 os.path.join(data_folder, "MQL5", "Profiles", "Tester"), # fallback
             ]
 
-            default_path = None
             for path in paths_to_check:
                 if os.path.exists(path):
-                    default_path = path
-                    break
+                 return path
 
-            return default_path
+            return None
 
     
         def on_done(default_path):
@@ -517,9 +605,9 @@ class AutoBatchController:
                 default_path,
                 "Set Files (*.set);;All Files (*)"
             )
-
-            if file_path:
-                self.ui.param_input.setText(file_path)
+            
+            if (file_path):
+                self.ui.param_input.setText(os.path.basename(file_path))
                 Logger.info(f"Param file selected: {file_path}")
             else:
                 QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Param File.")
@@ -607,7 +695,7 @@ class AutoBatchController:
 
 
 
-    def get_best_symbol(self,user_input: str) -> str | None:
+    def get_best_symbol(self,user_input: str) -> str :
         symbols = [s.name for s in self.mt5.mt5.symbols_get()]
         user_input = user_input.upper().strip()
 
@@ -721,26 +809,31 @@ class AutoBatchController:
             self.ui.date_to.setDate(today)
 
         elif text == "Last month":
-            # first and last day of last month
-            first_day_last_month = today.addMonths(-1)
-            first_day_last_month = QDate(first_day_last_month.year(), first_day_last_month.month(), 1)
 
-            last_day_last_month = QDate(first_day_last_month.year(), first_day_last_month.month(),
-                                        first_day_last_month.daysInMonth())
+            date_from = today.addMonths(-1)
+            self.ui.date_from.setDate(date_from)
+            self.ui.date_to.setDate(today)
 
-            self.ui.date_from.setDate(first_day_last_month)
-            self.ui.date_to.setDate(last_day_last_month)
+        elif text == "Last 3 months":
+            self.ui.date_from.setEnabled(False)
+            self.ui.date_to.setEnabled(False)
+            self.ui.date_from.setDate(today.addMonths(-3))
+            self.ui.date_to.setDate(today)
+
+        elif text == "Last 6 months":
+            self.ui.date_from.setEnabled(False)
+            self.ui.date_to.setEnabled(False)
+            self.ui.date_from.setDate(today.addMonths(-6))
+            self.ui.date_to.setDate(today)    
 
         elif text == "Last year":
             # Disable pickers, set range to last year
             self.ui.date_from.setEnabled(False)
             self.ui.date_to.setEnabled(False)
 
-            first_day_last_year = QDate(today.year() - 1, 1, 1)
-            last_day_last_year = QDate(today.year() - 1, 12, 31)
-
-            self.ui.date_from.setDate(first_day_last_year)
-            self.ui.date_to.setDate(last_day_last_year)
+            date_from = today.addYears(-1)
+            self.ui.date_from.setDate(date_from)
+            self.ui.date_to.setDate(today)
 
         elif text == "Custom period":
             # Enable pickers, let user choose
@@ -929,15 +1022,15 @@ class AutoBatchController:
     #         return df
     #     else:
     #         raise Exception(f"Error {response.status_code}: Unable to fetch data")
+
+
     def fetch_correlation(self, market="forex", period=50, symbols=None,
                       output_format="csv", endpoint="snapshot"):
         """Blocking: returns a dataframe"""
-        import requests
-        import pandas as pd
-        from io import StringIO
 
-        if symbols is None:
-            symbols = ["EURUSD", "EURGBP", "AUDNZD"]
+        if not symbols:
+            symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # fallback
+
 
         symbol_str = "|".join(symbols)
         url = (
@@ -946,8 +1039,10 @@ class AutoBatchController:
         )
 
         response = requests.get(url, timeout=30)
+        
         response.raise_for_status()
         lines = response.text.splitlines()
+        print(lines)
         csv_data = "\n".join(lines[3:])
         return pd.read_csv(StringIO(csv_data))
 
@@ -955,7 +1050,19 @@ class AutoBatchController:
     def get_correlation(self, market="forex", period=50, symbols=None,
                         output_format="csv", endpoint="snapshot",
                         on_done=None, on_error=None):
-        """Non-blocking version"""
+        
+        symbols = ["EURUSD", "EURGBP", "AUDNZD"]
+        for test in self.queue.tests: 
+            if test["symbol"] not in symbols:
+                symbols.append(test["symbol"])
+
+        print(symbols)
+
+
+        # if not symbols:
+        #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
+           
+        
 
         def task():
             return self.fetch_correlation(market, period, symbols, output_format, endpoint)
@@ -977,6 +1084,7 @@ class AutoBatchController:
                         sns.heatmap(
                             corr_df,
                             annot=True,
+                            fmt=".0f",
                             cmap="RdBu",
                             center=0,
                             vmin=-100,
@@ -1027,74 +1135,49 @@ class AutoBatchController:
 
         # First dialog
         dialog1 = QuantityDialog(parent=self.ui, title=title, text=text)
-        if dialog1.exec_() == QDialog.Accepted:
-            qty1 = dialog1.get_value()
-            results["test_symbol_quantity"] = qty1
-            print("First quantity:", qty1)
+        if dialog1.exec_() != QDialog.Accepted:
+            return
+        results["test_symbol_quantity"] = dialog1.get_value()
 
-            # Second dialog
-            text = "How many strategies are you running"
-            title = "Strategies Count"
-            dialog2 = QuantityDialog(parent=self.ui, title=title, text=text)
-            if dialog2.exec_() == QDialog.Accepted:
-                qty2 = dialog2.get_value()
-                results["strategies_count"] = qty2
-                print("Second quantity:", qty2)
+        # Second dialog
+        dialog2 = QuantityDialog(parent=self.ui, title="Strategies Count", text="How many strategies are you running")
+        if dialog2.exec_() != QDialog.Accepted:
+            return
+        results["strategies_count"] = dialog2.get_value()
 
-                # Strategy names
-                for i in range(qty2):
-                    text = f"Please Name Strategy {i+1}"
-                    title = f"Strategy {i+1} Name"
+        # Strategy names
+        for i in range(results["strategies_count"]):
+            dialog3 = TextDialog(parent=self.ui, title=f"Strategy {i+1} Name", text=f"Please Name Strategy {i+1}")
+            if dialog3.exec_() != QDialog.Accepted:
+                return
+            results["strategies"].append(dialog3.get_value())
 
-                    dialog3 = TextDialog(parent=self.ui, title=title, text=text)
-                    if dialog3.exec_() == QDialog.Accepted:
-                        strategy_name = dialog3.get_value()
-                        results["strategies"].append(strategy_name)
-                        print("Strategy name:", strategy_name)
-                    else:
-                        print("Strategy dialog cancelled")
-                        return  # stop immediately if cancelled
+        # Symbol type radio dialog
+        options = ["FX Only", "FX + Metals", "FX + Indices", "FX + Metal + Indices"]
+        radio_dialog = RadioDialog(
+            parent=self.ui,
+            title="Symbols to Test",
+            text="Which symbol do you want to include:",
+            options=options
+        )
+        if radio_dialog.exec_() != QDialog.Accepted:
+            return
+        results["symbol_type"] = radio_dialog.get_value()
 
-                # Symbol type radio dialog
-                options = ["FX Only", "FX + Metals", "FX + Indices", "FX + Metal + Indices"]
-                radio_dialog = RadioDialog(
-                    parent=self.ui,
-                    title="Symbols to Test",
-                    text="Which symbol do you want to include:",
-                    options=options
-                )
-                if radio_dialog.exec_() == QDialog.Accepted:
-                    symbol_type = radio_dialog.get_value()
-                    results["symbol_type"] = symbol_type
-                    print("Selected type for all strategies:", symbol_type)
+        # Correlation filter dialog
+        correlationFilterDialog = QuantityDialog(
+            parent=self.ui,
+            title="Correlation Filter",
+            text="""Enter a value between 0-100 to filter out highly correlated pairs.
+                    1) If the correlation is high (above 80) and positive then the currencies move in the same way.
+                    2) If the correlation is high (above 80) and negative then the currencies move in the opposite way.
+                    3) If the correlation is low (below 60) then the currencies don't move in the same way."""
+        )
+        if correlationFilterDialog.exec_() != QDialog.Accepted:
+            return
+        results["correlationFilter"] = correlationFilterDialog.get_value()
 
-                    # Correlation filter dialog
-                    correlationFilterDialog = QuantityDialog(
-                        parent=self.ui,
-                        title="Correlation Filter",
-                        text="""Enter a value between 0-100 to filter out highly correlated pairs.
-                                1) If the correlation is high (above 80) and positive then the currencies move in the same way.
-                                2) If the correlation is high (above 80) and negative then the currencies move in the opposite way.
-                                3) If the correlation is low (below 60) then the currencies don't move in the same way."""
-                    )
-                    if correlationFilterDialog.exec_() == QDialog.Accepted:   
-                        correlationFilter = correlationFilterDialog.get_value()
-                        results["correlationFilter"] = correlationFilter
-                        print("Correlation Filter:", correlationFilter)
-                    else:
-                        print("Correlation filter dialog cancelled")
-                else:
-                    print("Radio dialog cancelled")
-            else:
-                print("Second dialog cancelled")
-        else:
-            print("First dialog cancelled")
-
-        print("Final results:", results)
         self.non_correlated_popus_option = results
-
-        symbols = self.get_symbols_for_option(results["symbol_type"])
-        print("symbols = ", symbols)
 
         # Read all UI values before threading
         ui_values = {
@@ -1124,100 +1207,12 @@ class AutoBatchController:
         def task(symbols, results, ui_values):
             # blocking fetch in background
             df = self.fetch_correlation(
-
                 market="forex",
                 period=50,
                 symbols=symbols,
                 output_format="csv",
                 endpoint="snapshot",
             )
-            self.worker.moveToThread(self.thread)
-
-            # connections
-            self.thread.started.connect(self.worker.run)
-            self.worker.finished.connect(self.on_worker_finished)
-            self.worker.error.connect(self.on_worker_error)
-
-            # cleanup
-            self.worker.finished.connect(self.thread.quit)
-            self.worker.finished.connect(self.worker.deleteLater)
-            self.thread.finished.connect(self.thread.deleteLater)
-
-            self.thread.start()
-
-        return
-            # uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
-            #                                                             correlation,
-            #                                                             results["correlationFilter"],
-            #                                                             results["test_symbol_quantity"]
-            #                                                         )
-
-            # if uncorrelated_pairs.empty:
-            #     QMessageBox.warning(
-            #         self.ui,
-            #         "No Pairs Found",
-            #         f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-            #     )
-            #     Logger.warning(f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}.")
-            #     return  # exit early
-
-            # print(f"uncorrelated_pairs = {uncorrelated_pairs}")
-    def on_worker_finished(self, df):
-        results = self.non_correlated_popus_option
-        uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
-            df,
-            results["correlationFilter"],
-            results["test_symbol_quantity"]
-        )
-
-        if uncorrelated_pairs.empty:
-            QMessageBox.warning(
-                self.ui,
-                "No Pairs Found",
-                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-            )
-            Logger.warning(
-                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
-            )
-            return
-
-        print("Uncorrelated pairs:", uncorrelated_pairs)
-        QMessageBox.information(self.ui, "Success", "Uncorrelated pairs calculated successfully!")
-        Logger.success("Uncorrelated pairs calculated successfully!")
-
-    # Add tests to queue
-        for _, row in uncorrelated_pairs.iterrows():
-            uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
-            settings = {
-                "test_name": f"{uncorrelated_pair}_trend",
-                "expert": self.ui.expert_input.currentText().strip(),
-                "param_file": self.ui.param_input.text().strip(),
-                "symbol_prefix": self.ui.symbol_prefix.text().strip(),
-                "symbol_suffix": self.ui.symbol_suffix.text().strip(),
-                "symbol": uncorrelated_pair,
-                "timeframe": self.ui.timeframe_combo.currentText(),
-                "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
-                "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
-                "forward": self.ui.forward_combo.currentText(),
-                "delay": self.ui.delay_input.value(),
-                "model": self.ui.model_combo.currentText(),
-                "deposit": self.ui.deposit_input.text(),
-                "currency": self.ui.currency_input.text().strip(),
-                "leverage": self.ui.leverage_input.text().strip(),
-                "optimization": self.ui.optim_combo.currentText(),
-                "criterion": self.ui.criterion_input.currentText(),
-            }
-
-            if settings:
-                self.queue.add_test_to_queue(settings)
-                QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
-                Logger.success(f"Test '{settings['test_name']}' added to queue.")
-
-
-    def on_worker_error(self, msg):
-        QMessageBox.warning(self.ui, "Error", msg)
-        Logger.error(f"Worker error: {msg}")
-
 
             # compute uncorrelated pairs
             uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
@@ -1289,7 +1284,6 @@ class AutoBatchController:
 
 
 
-
     def get_symbols_for_option(self, option):
         if option == "FX Only":
             return self.mt5.get_fx_symbols()
@@ -1334,7 +1328,44 @@ class AutoBatchController:
 
         QMessageBox.information(self.ui, "Finished", "All tests completed.")
         Logger.success("All tests completed.")
-    
+
+
+    def on_test_selected(self, index):
+        index = self.ui.queue_list.currentRow()  # Which item was clicked
+        if 0 <= index < len(self.queue.tests):
+            test_data = self.queue.tests[index]  # Get the selected test
+            self.load_test_parameters(test_data)  # Show it on the form
+        
+
+
+    def load_test_parameters(self, test_data):
+        # Expert & param files
+        try: 
+                self.ui.testfile_input.setText(test_data["test_name"])
+                self.ui.expert_input.setCurrentText(test_data["expert"])
+                self.ui.param_input.setText(test_data["param_file"])
+                self.ui.symbol_prefix.setText(test_data["symbol_prefix"])
+                self.ui.symbol_suffix.setText(test_data["symbol_suffix"])
+                self.ui.symbol_input.setText(str(test_data["symbol"]))
+                self.ui.timeframe_combo.setCurrentText(str(test_data["timeframe"]))
+                self.ui.date_from.setDate(QDate.fromString(test_data["date_from"], "yyyy-MM-dd"))
+                self.ui.date_to.setDate(QDate.fromString(test_data["date_to"], "yyyy-MM-dd"))
+                self.ui.forward_date.setDate(QDate.fromString(test_data["forward"], "yyyy-MM-dd"))
+                self.ui.delay_input.setValue(int(test_data["delay"]))
+                self.ui.model_combo.setCurrentText(test_data["model"])
+                self.ui.deposit_input.setText(str(test_data["deposit"]))
+                self.ui.currency_input.setText(test_data["currency"])
+                self.ui.leverage_input.setValue(float(test_data["leverage"]))
+                self.ui.optim_combo.setCurrentText(str(test_data["optimization"]))
+                self.ui.criterion_input.setCurrentText(str(test_data["criterion"]))
+
+        except Exception as e:
+               Logger.error(str(e))
+       
+
+
+
+        # Do this for all the other parameter fields
 
     # def schedule_test(self):
     #     selected_date = self.ui.schedule_date.date().toPyDate()

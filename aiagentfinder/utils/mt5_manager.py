@@ -39,6 +39,13 @@ class MT5Manager:
             "currency": account_info.currency,
             "leverage": account_info.leverage
         }
+    
+    def get_dataPath(self):
+        if not self.connected:
+            raise RuntimeError("Not connected to MT5 terminal")
+        dataPath=self.mt5.terminal_info().data_path
+        return dataPath
+
 
     
     def get_fx_symbols(self):
