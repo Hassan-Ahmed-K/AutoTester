@@ -262,6 +262,7 @@ class AutoBatchController:
         # CALLBACKS (main thread)
         # ---------------------------
         def on_done(result):
+            # ✅ Update Data Folder if found
             if result["data_folder"]:
                 self.ui.data_input.setText(result["data_folder"])
                 # QMessageBox.information(
@@ -275,6 +276,7 @@ class AutoBatchController:
                     "⚠️ Could not detect Data Folder automatically. Please set it manually."
                 )
 
+            # ✅ Update MT5 connection info
             if result["deposit_info"]:
                 self.ui.deposit_info = result["deposit_info"]
                 self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))

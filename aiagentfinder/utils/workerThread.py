@@ -50,7 +50,9 @@ class ThreadRunner:
         self.dialog.setModal(True)
         self.dialog.setMinimumDuration(0)
         
-           
+        self.dialog.setRange(0, 0)  # moving bar
+         
+        QApplication.processEvents()
         
         self.dialog.canceled.connect(self.worker.stop)
 
