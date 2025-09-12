@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QObject, QThread, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QProgressDialog
+from PyQt5.QtWidgets import QProgressDialog ,QApplication
 import traceback
 import os
 
@@ -29,7 +29,6 @@ class Worker(QObject):
     def stop(self):
         self._is_running = False
 
-
 class ThreadRunner:
     def __init__(self, parent=None):
         self.parent = parent
@@ -47,6 +46,12 @@ class ThreadRunner:
         self.dialog = QProgressDialog("Processing...", "Cancel", 0, 0, self.parent)
         self.dialog.setWindowTitle("Please Wait")
         self.dialog.setModal(True)
+        self.dialog.setMinimumDuration(0)
+        
+        self.dialog.setRange(0, 0)  # moving bar
+         
+        QApplication.processEvents()
+        
         self.dialog.canceled.connect(self.worker.stop)
 
         # Connections
