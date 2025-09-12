@@ -755,4 +755,559 @@
 [2025-09-08 19:36:03] [INFO] Correlation worker thread started
 [2025-09-08 19:36:06] [INFO] Correlation worker thread started
 [2025-09-08 19:36:08] [INFO] Correlation worker thread started
-[2025-09-08 19:36:57] [INFO] Correlation worker thread started
+[2025-09-08 19:36:57] [INFO] Correlation worker thread started[2025-09-13 00:11:17] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 00:11:29] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 00:11:29] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 00:11:30] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 00:14:01] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 00:14:11] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 00:14:11] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 00:14:11] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 00:39:22] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 00:39:37] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 00:39:37] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 00:39:37] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:07:56] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:07:56] [ERROR] Error while getting MT5 Data Path: Not connected to MT5 terminal
+[2025-09-13 01:11:59] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:11:59] [ERROR] Error while getting MT5 Data Path: Not connected to MT5 terminal
+[2025-09-13 01:19:29] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:19:40] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:19:41] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:19:41] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:30:34] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:30:45] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:30:45] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:30:46] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:31:49] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:32:01] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:32:01] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:32:02] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:40:24] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:40:37] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:40:37] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:40:38] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:51:52] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:52:03] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:52:03] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:52:05] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:54:13] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:54:24] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:54:24] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:54:26] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:55:53] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:56:04] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:56:04] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:56:05] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:57:57] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:58:09] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:58:09] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:58:10] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:59:30] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 01:59:42] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 01:59:42] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 01:59:44] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 02:03:41] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 02:03:52] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 02:03:52] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 02:03:54] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 02:04:01] [INFO] Exact match found: E
+[2025-09-13 02:04:01] [INFO] Best symbol found: E
+[2025-09-13 02:04:01] [INFO] Exact match found: EU
+[2025-09-13 02:04:01] [INFO] Best symbol found: EU
+[2025-09-13 02:04:02] [INFO] Closest match found: OEUR
+[2025-09-13 02:04:02] [INFO] Best symbol found: OEUR
+[2025-09-13 02:04:03] [INFO] Exact match found: EU
+[2025-09-13 02:04:03] [INFO] Best symbol found: EU
+[2025-09-13 02:04:03] [INFO] Exact match found: E
+[2025-09-13 02:04:03] [INFO] Best symbol found: E
+[2025-09-13 02:04:05] [INFO] Exact match found: E
+[2025-09-13 02:04:05] [INFO] Best symbol found: E
+[2025-09-13 02:04:06] [INFO] Exact match found: EU
+[2025-09-13 02:04:06] [INFO] Best symbol found: EU
+[2025-09-13 02:04:06] [INFO] Closest match found: OEUR
+[2025-09-13 02:04:06] [INFO] Best symbol found: OEUR
+[2025-09-13 02:04:08] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:08] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:08] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:08] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:09] [INFO] Exact match found: EURUSD
+[2025-09-13 02:04:09] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:11] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:11] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:12] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:12] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:13] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:13] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:14] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:14] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:14] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:14] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:15] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:15] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:15] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:15] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:16] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:04:16] [INFO] Closest match found: EURUSD
+[2025-09-13 02:04:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:05:34] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 02:05:45] [INFO] Closest match found: EURUSD
+[2025-09-13 02:05:45] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:05:52] [INFO] Starting queued tests...
+[2025-09-13 02:06:55] [SUCCESS] ✅ All tests completed.
+[2025-09-13 02:07:33] [SUCCESS] ✅ Test 'EURUSD_TRENDING2' added to queue.
+[2025-09-13 02:07:36] [INFO] Closest match found: EURUSD
+[2025-09-13 02:07:36] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:07:41] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 02:07:42] [INFO] Closest match found: EURUSD
+[2025-09-13 02:07:42] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:07:43] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-13 02:07:47] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-13 02:41:58] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 02:42:09] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 02:42:09] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 02:42:11] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 02:42:20] [INFO] Exact match found: E
+[2025-09-13 02:42:20] [INFO] Best symbol found: E
+[2025-09-13 02:42:20] [INFO] Exact match found: EU
+[2025-09-13 02:42:20] [INFO] Best symbol found: EU
+[2025-09-13 02:42:21] [INFO] Closest match found: OEUR
+[2025-09-13 02:42:21] [INFO] Best symbol found: OEUR
+[2025-09-13 02:42:22] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:22] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:22] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:22] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:22] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:22] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:23] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:23] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:23] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:23] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:23] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:23] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:24] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:24] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:24] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:24] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:24] [INFO] Exact match found: EURUSD
+[2025-09-13 02:42:24] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:26] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:26] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:26] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:26] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:26] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:26] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:27] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:27] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:28] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:28] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:29] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:29] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:29] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:29] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:29] [INFO] Closest match found: EURUSD
+[2025-09-13 02:42:29] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:42:53] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 02:43:01] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-13 02:43:03] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 02:43:06] [INFO] Closest match found: EURUSD
+[2025-09-13 02:43:06] [INFO] Best symbol found: EURUSD
+[2025-09-13 02:43:12] [SUCCESS] ✅ Test 'EURUSD_TRENDING2' added to queue.
+[2025-09-13 02:43:15] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-13 02:43:19] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-13 02:43:40] [INFO] Starting queued tests...
+[2025-09-13 02:47:20] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:22:05] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:22:15] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:22:15] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:22:17] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:22:23] [INFO] Exact match found: E
+[2025-09-13 03:22:23] [INFO] Best symbol found: E
+[2025-09-13 03:22:23] [INFO] Exact match found: EU
+[2025-09-13 03:22:23] [INFO] Best symbol found: EU
+[2025-09-13 03:22:23] [INFO] Closest match found: OEUR
+[2025-09-13 03:22:23] [INFO] Best symbol found: OEUR
+[2025-09-13 03:22:24] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:24] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:24] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:24] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:24] [INFO] Exact match found: EURUSD
+[2025-09-13 03:22:24] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:27] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:27] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:27] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:27] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:28] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:28] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:28] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:28] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:28] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:28] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:28] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:29] [INFO] Closest match found: EURUSD
+[2025-09-13 03:22:29] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:22:45] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:22:47] [INFO] Starting queued tests...
+[2025-09-13 03:24:44] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:25:20] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:25:31] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:25:31] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:25:32] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:25:36] [INFO] Exact match found: E
+[2025-09-13 03:25:36] [INFO] Best symbol found: E
+[2025-09-13 03:25:36] [INFO] Exact match found: EU
+[2025-09-13 03:25:36] [INFO] Best symbol found: EU
+[2025-09-13 03:25:37] [INFO] Closest match found: OEUR
+[2025-09-13 03:25:37] [INFO] Best symbol found: OEUR
+[2025-09-13 03:25:37] [INFO] Closest match found: EURUSD
+[2025-09-13 03:25:37] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:25:38] [INFO] Closest match found: EURUSD
+[2025-09-13 03:25:38] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:25:38] [INFO] Exact match found: EURUSD
+[2025-09-13 03:25:38] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:25:46] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2025-09-13 03:25:50] [INFO] Starting queued tests...
+[2025-09-13 03:27:13] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:27:39] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:27:50] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:27:50] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:27:51] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:27:56] [INFO] Exact match found: E
+[2025-09-13 03:27:56] [INFO] Best symbol found: E
+[2025-09-13 03:27:57] [INFO] Exact match found: EU
+[2025-09-13 03:27:57] [INFO] Best symbol found: EU
+[2025-09-13 03:27:57] [INFO] Closest match found: OEUR
+[2025-09-13 03:27:57] [INFO] Best symbol found: OEUR
+[2025-09-13 03:27:57] [INFO] Closest match found: EURUSD
+[2025-09-13 03:27:57] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:27:58] [INFO] Closest match found: OEUR
+[2025-09-13 03:27:58] [INFO] Best symbol found: OEUR
+[2025-09-13 03:27:58] [INFO] Exact match found: EU
+[2025-09-13 03:27:58] [INFO] Best symbol found: EU
+[2025-09-13 03:27:58] [INFO] Exact match found: E
+[2025-09-13 03:27:58] [INFO] Best symbol found: E
+[2025-09-13 03:28:00] [INFO] Exact match found: E
+[2025-09-13 03:28:00] [INFO] Best symbol found: E
+[2025-09-13 03:28:00] [INFO] Exact match found: EU
+[2025-09-13 03:28:00] [INFO] Best symbol found: EU
+[2025-09-13 03:28:01] [INFO] Closest match found: OEUR
+[2025-09-13 03:28:01] [INFO] Best symbol found: OEUR
+[2025-09-13 03:28:01] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:01] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:01] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:01] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:01] [INFO] Exact match found: EURUSD
+[2025-09-13 03:28:01] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:28:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:28:16] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:28:24] [INFO] Starting queued tests...
+[2025-09-13 03:28:50] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:29:24] [INFO] Param folder found: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2025-09-13 03:29:28] [INFO] Param file selected: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester/parameter2.set
+[2025-09-13 03:29:42] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:29:44] [INFO] Starting queued tests...
+[2025-09-13 03:31:53] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:33:35] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:33:36] [INFO] Starting queued tests...
+[2025-09-13 03:36:26] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:36:34] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:36:36] [INFO] Starting queued tests...
+[2025-09-13 03:37:48] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:38:52] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:39:03] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:39:03] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:39:04] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:39:12] [INFO] Exact match found: E
+[2025-09-13 03:39:12] [INFO] Best symbol found: E
+[2025-09-13 03:39:12] [INFO] Exact match found: EU
+[2025-09-13 03:39:12] [INFO] Best symbol found: EU
+[2025-09-13 03:39:13] [INFO] Closest match found: OEUR
+[2025-09-13 03:39:13] [INFO] Best symbol found: OEUR
+[2025-09-13 03:39:13] [INFO] Exact match found: EU
+[2025-09-13 03:39:13] [INFO] Best symbol found: EU
+[2025-09-13 03:39:13] [INFO] Exact match found: E
+[2025-09-13 03:39:13] [INFO] Best symbol found: E
+[2025-09-13 03:39:15] [INFO] Exact match found: E
+[2025-09-13 03:39:15] [INFO] Best symbol found: E
+[2025-09-13 03:39:15] [INFO] Exact match found: EU
+[2025-09-13 03:39:15] [INFO] Best symbol found: EU
+[2025-09-13 03:39:16] [INFO] Closest match found: OEUR
+[2025-09-13 03:39:16] [INFO] Best symbol found: OEUR
+[2025-09-13 03:39:17] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:17] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:17] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:17] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:17] [INFO] Exact match found: EURUSD
+[2025-09-13 03:39:17] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:20] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:20] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:20] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:20] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:20] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:20] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:21] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:21] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:21] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:21] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:21] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:21] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:21] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:21] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:22] [INFO] Closest match found: EURUSD
+[2025-09-13 03:39:22] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:39:32] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:39:33] [INFO] Starting queued tests...
+[2025-09-13 03:41:07] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:41:36] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:41:46] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:41:46] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:41:47] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:41:56] [INFO] Exact match found: E
+[2025-09-13 03:41:56] [INFO] Best symbol found: E
+[2025-09-13 03:41:56] [INFO] Exact match found: EU
+[2025-09-13 03:41:56] [INFO] Best symbol found: EU
+[2025-09-13 03:41:56] [INFO] Closest match found: OEUR
+[2025-09-13 03:41:56] [INFO] Best symbol found: OEUR
+[2025-09-13 03:41:57] [INFO] Exact match found: EU
+[2025-09-13 03:41:57] [INFO] Best symbol found: EU
+[2025-09-13 03:41:57] [INFO] Exact match found: E
+[2025-09-13 03:41:57] [INFO] Best symbol found: E
+[2025-09-13 03:41:58] [INFO] Exact match found: E
+[2025-09-13 03:41:58] [INFO] Best symbol found: E
+[2025-09-13 03:41:59] [INFO] Exact match found: EU
+[2025-09-13 03:41:59] [INFO] Best symbol found: EU
+[2025-09-13 03:41:59] [INFO] Closest match found: OEUR
+[2025-09-13 03:41:59] [INFO] Best symbol found: OEUR
+[2025-09-13 03:42:00] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:00] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:00] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:00] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:00] [INFO] Exact match found: EURUSD
+[2025-09-13 03:42:00] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:04] [INFO] Closest match found: EURUSD
+[2025-09-13 03:42:04] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:42:09] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:42:15] [INFO] Starting queued tests...
+[2025-09-13 03:44:29] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:44:40] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:44:40] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:44:41] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:45:26] [INFO] Exact match found: E
+[2025-09-13 03:45:26] [INFO] Best symbol found: E
+[2025-09-13 03:45:26] [INFO] Exact match found: EU
+[2025-09-13 03:45:26] [INFO] Best symbol found: EU
+[2025-09-13 03:45:26] [INFO] Closest match found: OEUR
+[2025-09-13 03:45:26] [INFO] Best symbol found: OEUR
+[2025-09-13 03:45:27] [INFO] Closest match found: EURUSD
+[2025-09-13 03:45:27] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:45:27] [INFO] Closest match found: EURUSD
+[2025-09-13 03:45:27] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:45:27] [INFO] Exact match found: EURUSD
+[2025-09-13 03:45:27] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:45:33] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2025-09-13 03:45:35] [INFO] Starting queued tests...
+[2025-09-13 03:51:57] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:51:58] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:51:58] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:51:59] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:52:08] [INFO] Exact match found: E
+[2025-09-13 03:52:08] [INFO] Best symbol found: E
+[2025-09-13 03:52:08] [INFO] Exact match found: EU
+[2025-09-13 03:52:08] [INFO] Best symbol found: EU
+[2025-09-13 03:52:08] [INFO] Closest match found: OEUR
+[2025-09-13 03:52:08] [INFO] Best symbol found: OEUR
+[2025-09-13 03:52:08] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:08] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:09] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:09] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:09] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:09] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:09] [INFO] Closest match found: OEUR
+[2025-09-13 03:52:09] [INFO] Best symbol found: OEUR
+[2025-09-13 03:52:09] [INFO] Exact match found: EU
+[2025-09-13 03:52:09] [INFO] Best symbol found: EU
+[2025-09-13 03:52:09] [INFO] Exact match found: E
+[2025-09-13 03:52:09] [INFO] Best symbol found: E
+[2025-09-13 03:52:11] [INFO] Exact match found: E
+[2025-09-13 03:52:11] [INFO] Best symbol found: E
+[2025-09-13 03:52:11] [INFO] Exact match found: EU
+[2025-09-13 03:52:11] [INFO] Best symbol found: EU
+[2025-09-13 03:52:11] [INFO] Closest match found: OEUR
+[2025-09-13 03:52:11] [INFO] Best symbol found: OEUR
+[2025-09-13 03:52:12] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:12] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:12] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:12] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:13] [INFO] Exact match found: EURUSD
+[2025-09-13 03:52:13] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:14] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:14] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:15] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:15] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:15] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:15] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:15] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:15] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:16] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:16] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:17] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:17] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:17] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:17] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:18] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:18] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:18] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:18] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:52:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:52:24] [SUCCESS] ✅ Test 'EURUSD_TESTING' added to queue.
+[2025-09-13 03:52:33] [INFO] Starting queued tests...
+[2025-09-13 03:53:14] [SUCCESS] ✅ All tests completed.
+[2025-09-13 03:53:38] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:53:49] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:53:49] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:53:51] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:53:57] [INFO] Exact match found: E
+[2025-09-13 03:53:57] [INFO] Best symbol found: E
+[2025-09-13 03:53:57] [INFO] Exact match found: EU
+[2025-09-13 03:53:57] [INFO] Best symbol found: EU
+[2025-09-13 03:53:57] [INFO] Closest match found: OEUR
+[2025-09-13 03:53:57] [INFO] Best symbol found: OEUR
+[2025-09-13 03:53:58] [INFO] Closest match found: EURUSD
+[2025-09-13 03:53:58] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:53:58] [INFO] Closest match found: OEUR
+[2025-09-13 03:53:58] [INFO] Best symbol found: OEUR
+[2025-09-13 03:53:58] [INFO] Exact match found: EU
+[2025-09-13 03:53:58] [INFO] Best symbol found: EU
+[2025-09-13 03:53:59] [INFO] Exact match found: E
+[2025-09-13 03:53:59] [INFO] Best symbol found: E
+[2025-09-13 03:53:59] [INFO] Exact match found: E
+[2025-09-13 03:53:59] [INFO] Best symbol found: E
+[2025-09-13 03:54:00] [INFO] Exact match found: EU
+[2025-09-13 03:54:00] [INFO] Best symbol found: EU
+[2025-09-13 03:54:00] [INFO] Closest match found: OEUR
+[2025-09-13 03:54:00] [INFO] Best symbol found: OEUR
+[2025-09-13 03:54:00] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:00] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:01] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:01] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:01] [INFO] Exact match found: EURUSD
+[2025-09-13 03:54:01] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:02] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:02] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:03] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:03] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:05] [INFO] Closest match found: EURUSD
+[2025-09-13 03:54:05] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:54:18] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:54:19] [INFO] Starting queued tests...
+[2025-09-13 03:55:53] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 03:56:04] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:56:04] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 03:56:05] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 03:56:10] [INFO] Exact match found: E
+[2025-09-13 03:56:10] [INFO] Best symbol found: E
+[2025-09-13 03:56:10] [INFO] Exact match found: EU
+[2025-09-13 03:56:10] [INFO] Best symbol found: EU
+[2025-09-13 03:56:10] [INFO] Closest match found: OEUR
+[2025-09-13 03:56:10] [INFO] Best symbol found: OEUR
+[2025-09-13 03:56:13] [INFO] Exact match found: EU
+[2025-09-13 03:56:13] [INFO] Best symbol found: EU
+[2025-09-13 03:56:13] [INFO] Exact match found: E
+[2025-09-13 03:56:13] [INFO] Best symbol found: E
+[2025-09-13 03:56:15] [INFO] Exact match found: E
+[2025-09-13 03:56:15] [INFO] Best symbol found: E
+[2025-09-13 03:56:15] [INFO] Exact match found: EU
+[2025-09-13 03:56:15] [INFO] Best symbol found: EU
+[2025-09-13 03:56:16] [INFO] Closest match found: OEUR
+[2025-09-13 03:56:16] [INFO] Best symbol found: OEUR
+[2025-09-13 03:56:16] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:16] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:16] [INFO] Exact match found: EURUSD
+[2025-09-13 03:56:16] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:18] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:18] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:18] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:18] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:18] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:18] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:18] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:18] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:19] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:19] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:20] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:20] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:20] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:20] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:20] [INFO] Closest match found: EURUSD
+[2025-09-13 03:56:20] [INFO] Best symbol found: EURUSD
+[2025-09-13 03:56:26] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-13 03:56:36] [INFO] Starting queued tests...
+[2025-09-13 04:11:27] [SUCCESS] ✅ All tests completed.

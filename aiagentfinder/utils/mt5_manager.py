@@ -6,12 +6,15 @@ import subprocess
 import time
 import json
 from datetime import datetime
+import re
+from pathlib import Path
 
 class MT5Manager:
 
     def __init__(self):
         self.connected = False
         self.mt5 = mt5
+        self.symbol_list = []
 
     def connect(self, path):
         if mt5.initialize(path):
@@ -41,22 +44,56 @@ class MT5Manager:
             "leverage": account_info.leverage
         }
 
-    
     def get_dataPath(self):
         if not self.connected:
             raise RuntimeError("Not connected to MT5 terminal")
         dataPath=self.mt5.terminal_info().data_path
         return dataPath
     
+    def save_symbols_to_json(file_name="symbols.json"):
+        # fetch symbols
+        symbols = mt5.symbols_get()
+        if symbols is None:
+            print(f"Failed to get symbols: {mt5.last_error()}")
+            return False
+
+        # convert to dict (symbol object → dict)
+        symbols_list = [s._asdict() for s in symbols]
+
+        # save to JSON
+        with open(file_name, "w", encoding="utf-8") as f:
+            json.dump(symbols_list, f, indent=4, ensure_ascii=False)
+
+        print(f"✅ Saved {len(symbols_list)} symbols to {os.path.abspath(file_name)}")
+        return True
+    
+    def load_symbols_from_json(file_name="symbols.json"):
+        """Load saved MT5 symbols from JSON file"""
+        if not os.path.exists(file_name):
+            print(f"❌ File not found: {file_name}")
+            return None
+
+        try:
+            with open(file_name, "r", encoding="utf-8") as f:
+                symbols_list = json.load(f)
+            print(f"✅ Loaded {len(symbols_list)} symbols from {os.path.abspath(file_name)}")
+            return symbols_list
+        except Exception as e:
+            print(f"⚠️ Failed to load symbols: {e}")
+            return None
+    
+    def get_symbol_list(self):
+        self.symbol_list = [s.name for s in mt5.symbols_get()]
+
     def get_fx_symbols(self):
-        return [s.name for s in mt5.symbols_get() if any(cur in s.name for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
+        return [s.name for s in self.symbol_list if any(cur in s.name for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
 
     def get_metals_symbols(self):
-        return [s.name for s in mt5.symbols_get() if "XAU" in s.name or "XAG" in s.name]
+        return [s.name for s in self.symbol_list if "XAU" in s.name or "XAG" in s.name]
 
     def get_indices_symbols(self):
         indices_keywords = ["US500", "NAS100", "DJ30", "DE30", "UK100"]
-        return [s.name for s in mt5.symbols_get() if any(idx in s.name for idx in indices_keywords)]
+        return [s.name for s in self.symbol_list if any(idx in s.name for idx in indices_keywords)]
     
     def run_test(self, settings: dict, data_path:str, mt5_path:str, report_path:str):
         try:
@@ -160,16 +197,19 @@ class MT5Manager:
             os.makedirs(folder, exist_ok=True)
 
             config_dir = os.path.join(data_path, "config")
+            logs_dir = Path(os.path.join(data_path, "logs"))
             os.makedirs(config_dir, exist_ok=True)
 
             config_path = os.path.join(config_dir, f"{test_name}.ini")
-            report_file = os.path.join(folder, f"{test_name}_report.html")
+            report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_report.xml")
+
+
 
             # --- Debug info ---
             print("----------------------------------------------------")
             print("Settings = ", settings)
             print(f"Config path  = {config_path}")
-            print(f"Report file  = {report_file}")
+            print(f"Report file  = {report_path}")
             print(f"Expert       = {expert}")
             print(f"Symbol       = {symbol}")
             print(f"Timeframe    = {timeframe}")
@@ -201,10 +241,13 @@ class MT5Manager:
             ForwardMode={forward}
             OptCriterion={criterion}
             StartTesting=1
-            Report={report_file}
+            Report={report_path}
             ReportMode=4
             ReplaceReport=1
+            ShutdownTerminal=1
             """
+
+            # 
 
             # Add ForwardDate only if Custom forward selected
             if forward == 4 and forward_date:
@@ -219,15 +262,53 @@ class MT5Manager:
             with open(config_path, "w") as f:
                 f.write(ini_content.strip())
         
-            # --- Run MT5 with config ---
-            subprocess.Popen([mt5_path, f"/config:{config_path}"])
+            # # --- Run MT5 with config ---
+            # subprocess.Popen([mt5_path, f"/config:{config_path}"])
 
-            # --- Wait for report (up to 30 seconds) ---
-            timeout = 60
-            start_time = time.time()
-            while not os.path.exists(report_path) and (time.time() - start_time) < timeout:
-                time.sleep(1)
-             
+            # # --- Wait for report (up to 30 seconds) ---
+            # timeout = 60
+            # start_time = time.time()
+            # while not os.path.exists(report_path) and (time.time() - start_time) < timeout:
+            #     time.sleep(1)
+
+            proc = subprocess.Popen([mt5_path, f"/config:{config_path}"])
+            print(f"🚀 Backtest started. Tracking report: {report_path}")
+
+            last_progress = 0
+            last_log_size = 0
+
+            while proc.poll() is None:  # ⬅️ no timeout
+                # --- Check XML report progress
+                if os.path.exists(report_path):
+                    try:
+                        with open(report_path, "r", encoding="utf-16") as f:
+                            content = f.read()
+                            match = re.search(r'progress="(\d+)"', content)
+                            if match:
+                                progress = int(match.group(1))
+                                if progress != last_progress:
+                                    print(f"📊 Progress: {progress}%")
+                                    last_progress = progress
+                    except Exception:
+                        pass
+
+                # --- Check MT5 logs for new lines
+                if logs_dir.exists():
+                    log_files = sorted(logs_dir.glob("*.log"), key=os.path.getmtime, reverse=True)
+                    if log_files:
+                        latest_log = log_files[0]
+                        try:
+                            with open(latest_log, "r", encoding="utf-16") as f:
+                                f.seek(last_log_size)
+                                new_lines = f.readlines()
+                                if new_lines:
+                                    for line in new_lines:
+                                        print(f"📝 Log: {line.strip()}")
+                                last_log_size = f.tell()
+                        except Exception:
+                            pass
+
+                time.sleep(2)
             if os.path.exists(os.path.join(data_path, report_path)):
                 print(f"✅ Test completed. Report saved at {report_path}")
                 return {"status": "success", "report": report_path}
