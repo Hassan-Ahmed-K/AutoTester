@@ -30,65 +30,6 @@ class Worker(QObject):
         self._is_running = False
 
 
-
-
-
-# class ThreadRunner:
-#     """
-#     Run any function in a QThread with a progress dialog,
-#     with optional success/error/warning callbacks.
-#     """
-#     def __init__(self, parent=None):
-#         self.parent = parent
-#         self.thread = None
-#         self.worker = None
-#         self.progress = None
-
-#     def run(self, fn, on_finished=None, on_error=None, on_warning=None, *args, **kwargs):
-#         """Run fn(*args, **kwargs) in a thread with a progress dialog."""
-
-#         # Create progress dialog
-#         self.progress = QProgressDialog("Processing...", "Cancel", 0, 0, self.parent)
-#         self.progress.setWindowTitle("Please Wait")
-#         self.progress.setModal(True)
-#         self.progress.setMinimumDuration(0)
-#         self.progress.show()
-
-#         # Thread + Worker
-#         self.thread = QThread()
-#         self.worker = Worker(fn, *args, **kwargs)
-#         self.worker.moveToThread(self.thread)
-
-#         # Connect base signals
-#         self.thread.started.connect(self.worker.run)
-#         self.worker.finished.connect(self.thread.quit)
-#         self.worker.error.connect(self.thread.quit)
-#         self.worker.warning.connect(self.thread.quit)
-#         self.worker.finished.connect(self.worker.deleteLater)
-#         self.worker.error.connect(self.worker.deleteLater)
-#         self.worker.warning.connect(self.worker.deleteLater)
-#         self.thread.finished.connect(self.thread.deleteLater)
-
-#         # Cancel button
-#         self.progress.canceled.connect(self.thread.terminate)
-
-#         # Connect optional callbacks
-#         if on_finished:
-#             self.worker.finished.connect(lambda result: self._wrap_callback(on_finished, result))
-#         if on_error:
-#             self.worker.error.connect(lambda msg: self._wrap_callback(on_error, msg))
-#         if on_warning:
-#             self.worker.warning.connect(lambda msg: self._wrap_callback(on_warning, msg))
-
-#         # Start
-#         self.thread.start()
-
-#     def _wrap_callback(self, callback, *args):
-#         """Close progress dialog safely and call user callback."""
-#         if self.progress:
-#             self.progress.close()
-#         callback(*args)
-
 class ThreadRunner:
     def __init__(self, parent=None):
         self.parent = parent
