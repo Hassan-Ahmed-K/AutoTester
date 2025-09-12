@@ -29,8 +29,6 @@ class Worker(QObject):
     def stop(self):
         self._is_running = False
 
-
-
 class ThreadRunner:
     def __init__(self, parent=None):
         self.parent = parent

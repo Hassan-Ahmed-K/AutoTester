@@ -358,35 +358,6 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, folder)
 
-    # ----------------------------
-    # Browse MT5 report folder
-    # ----------------------------
-    # def browse_report_folder(self):
-    #     try:
-    #         folder = QFileDialog.getExistingDirectory(self.ui, "Select Report Folder")
-    #         if folder:
-    #             self.ui.report_input.setText(folder)
-    #             Logger.info(f"Report folder selected: {folder}")
-    #         else : 
-    #             QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Report Folder.")
-    #             Logger.warning("Please select a valid Report Folder.")
-
-    #     except Exception as e:
-    #         Logger.error(f"Error while selecting Report Folder: {e}")
-    #         QMessageBox.critical(self.ui, "Error", f"❌ Failed to select Report Folder.\nError: {str(e)}")
-
-
-    # def get_report_root(self, data_folder):
-    #     try:
-    #         """Return or create the main report root"""
-    #         report_root = os.path.join(data_folder, "Agent Finder Results")
-    #         os.makedirs(report_root, exist_ok=True)
-    #         Logger.info(f"Report root folder: {report_root}")
-    #         return report_root
-
-    #     except Exception as e:  
-    #         Logger.error(f"Error while creating report root: {e}")            
-    #         QMessageBox.critical(self.ui, "Error", f"❌ Failed to create report root.\nError: {str(e)}")
 
     def browse_report_folder(self):
         try:
@@ -564,10 +535,6 @@ class AutoBatchController:
                 f"❌ Failed to select Expert File.\nError: {str(e)}"
             )
 
-
-
-
-
     def browse_param_file(self):
         data_folder = self.ui.data_input.text()
 
@@ -627,10 +594,6 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, data_folder)
 
-
-
-
-
     def test_settings(self):
         test_name = self.ui.testfile_input.text().strip()
         if not test_name:
@@ -652,10 +615,12 @@ class AutoBatchController:
             "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
             "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
             "forward": self.ui.forward_combo.currentText(),
+            "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd"),
+            "delay_mode": self.ui.delay_combo.currentText(),
             "delay": self.ui.delay_input.value(),
+
             "model": self.ui.model_combo.currentText(),
             "deposit": self.ui.deposit_input.text(),
-
             "currency": self.ui.currency_input.text().strip(),
             "leverage": self.ui.leverage_input.text().strip(),
             "optimization": self.ui.optim_combo.currentText(),
@@ -678,6 +643,9 @@ class AutoBatchController:
 
         def task():
             # The long/slow part of work
+
+            print("settings = ", settings)
+
             self.queue.add_test_to_queue(settings)
             return settings["test_name"]
 
@@ -743,24 +711,7 @@ class AutoBatchController:
                 index = self.ui.expert_input.findText(current_expert)
                 self.ui.expert_input.setCurrentIndex(index)
 
-    # def load_experts(self, expert_folder):
-    #     if not expert_folder or not isinstance(expert_folder, str):
-    #         Logger.warning("Invalid expert folder path")
-    #         return None
 
-    #     expert_files = glob.glob(os.path.join(expert_folder, "*.ex5"))
-    #     experts_dict = {os.path.basename(f): f for f in expert_files}
-    #     self.ui.experts = experts_dict
-
-    #     if not expert_files:
-    #         return None
-
-    #     # Get the latest file
-    #     latest_file = max(expert_files, key=os.path.getmtime)
-    #     latest_name = os.path.basename(latest_file)
-
-    #     self.ui.expert_input.setText(latest_name)
-    #     return latest_file
     def load_experts(self, expert_folder):
         if not expert_folder or not isinstance(expert_folder, str):
             Logger.warning("Invalid expert folder path")
@@ -1057,16 +1008,11 @@ class AutoBatchController:
                 symbols.append(test["symbol"])
 
         print(symbols)
-
-
-        # if not symbols:
-        #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
            
         
 
         def task():
             return self.fetch_correlation(market, period, symbols, output_format, endpoint)
-
 
         def _on_done(df):
             if on_done:
@@ -1077,8 +1023,6 @@ class AutoBatchController:
                     corr_df = df.pivot(index="pair1", columns="pair2", values="day")
 
                     def show_plot():
-                        import matplotlib.pyplot as plt
-                        import seaborn as sns
 
                         plt.figure(figsize=(6, 4))
                         sns.heatmap(
@@ -1113,7 +1057,6 @@ class AutoBatchController:
         self.runner.on_result = _on_done
         self.runner.on_error = _on_error
         self.runner.run(task)
-
 
             
     def show_quantity_popup(self, title, text):
@@ -1213,6 +1156,81 @@ class AutoBatchController:
                 output_format="csv",
                 endpoint="snapshot",
             )
+            self.worker.moveToThread(self.thread)
+
+            # connections
+            self.thread.started.connect(self.worker.run)
+            self.worker.finished.connect(self.on_worker_finished)
+            self.worker.error.connect(self.on_worker_error)
+
+            # cleanup
+            self.worker.finished.connect(self.thread.quit)
+            self.worker.finished.connect(self.worker.deleteLater)
+            self.thread.finished.connect(self.thread.deleteLater)
+
+            self.thread.start()
+
+        return
+    
+    def on_worker_finished(self, df):
+        results = self.non_correlated_popus_option
+        uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+            df,
+            results["correlationFilter"],
+            results["test_symbol_quantity"]
+        )
+
+        if uncorrelated_pairs.empty:
+            QMessageBox.warning(
+                self.ui,
+                "No Pairs Found",
+                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
+            )
+            Logger.warning(
+                f"No uncorrelated pairs found with correlation ≤ {results['correlationFilter']}."
+            )
+            return
+
+        print("Uncorrelated pairs:", uncorrelated_pairs)
+        QMessageBox.information(self.ui, "Success", "Uncorrelated pairs calculated successfully!")
+        Logger.success("Uncorrelated pairs calculated successfully!")
+
+        # Add tests to queue
+        for _, row in uncorrelated_pairs.iterrows():
+            uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
+            settings = {
+                "test_name": f"{uncorrelated_pair}_trend",
+                "expert": self.ui.expert_input.currentText().strip(),
+                "param_file": self.ui.param_input.text().strip(),
+                "symbol_prefix": self.ui.symbol_prefix.text().strip(),
+                "symbol_suffix": self.ui.symbol_suffix.text().strip(),
+                "symbol": uncorrelated_pair,
+                "timeframe": self.ui.timeframe_combo.currentText(),
+                "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
+                "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
+                "forward": self.ui.forward_combo.currentText(),
+                "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd"),
+                "delay": self.ui.delay_input.value(),
+                "model": self.ui.model_combo.currentText(),
+                "deposit": self.ui.deposit_input.text(),
+                "currency": self.ui.currency_input.text().strip(),
+                "leverage": self.ui.leverage_input.text().strip(),
+                "optimization": self.ui.optim_combo.currentText(),
+                "criterion": self.ui.criterion_input.currentText(),
+            }
+
+            print("settings = ", settings)
+
+            if settings:
+                self.queue.add_test_to_queue(settings)
+                QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
+                Logger.success(f"Test '{settings['test_name']}' added to queue.")
+
+    def on_worker_error(self, msg):
+            QMessageBox.warning(self.ui, "Error", msg)
+            Logger.error(f"Worker error: {msg}")
+
+
 
             # compute uncorrelated pairs
             uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
@@ -1254,7 +1272,7 @@ class AutoBatchController:
                 "settings": settings_list,
             }
 
-        def on_done(payload):
+    def on_done(payload):
             pairs = payload.get("pairs", [])
             settings_list = payload.get("settings", [])
 
@@ -1272,15 +1290,15 @@ class AutoBatchController:
                 QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
                 Logger.success(f"Test '{settings['test_name']}' added to queue.")
 
-        def on_error(err):
+    def on_error(err):
             QMessageBox.critical(self.ui, "Error", f"Failed to process correlation data:\n{err}")
             Logger.error(str(err))
 
-        # run threaded
-        self.runner = ThreadRunner(self.ui)
-        self.runner.on_result = on_done
-        self.runner.on_error = on_error
-        self.runner.run(task, symbols, results, ui_values)
+            # run threaded
+            self.runner = ThreadRunner(self.ui)
+            self.runner.on_result = on_done
+            self.runner.on_error = on_error
+            self.runner.run(task, symbols, results, ui_values)
 
 
 
