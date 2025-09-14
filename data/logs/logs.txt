@@ -2006,3 +2006,30 @@
 [2025-09-14 04:51:36] [SUCCESS] ✅ Moved item at index 2 down
 [2025-09-14 04:51:38] [SUCCESS] ✅ Moved item at index 1 up
 [2025-09-14 04:51:39] [SUCCESS] ✅ Moved item at index 0 up
+[2025-09-14 05:37:53] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 05:38:02] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 05:38:02] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 05:38:03] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 05:41:51] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:41:52] [SUCCESS] ✅ Test 'AUDNZD_trend' added to queue.
+[2025-09-14 05:41:59] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-14 05:42:41] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:42:42] [SUCCESS] ✅ Test 'AUDNZD_trend' added to queue.
+[2025-09-14 05:42:43] [SUCCESS] ✅ Test 'EURGBP_trend' added to queue.
+[2025-09-14 05:42:44] [SUCCESS] ✅ Test 'AUDNZD_trend' added to queue.
+[2025-09-14 05:42:45] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:47:42] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 05:47:50] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 05:47:50] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 05:47:51] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 05:50:37] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:50:39] [SUCCESS] ✅ Test 'AUDNZD_trend' added to queue.
+[2025-09-14 05:50:39] [SUCCESS] ✅ Test 'EURGBP_trend' added to queue.
+[2025-09-14 05:50:40] [SUCCESS] ✅ Test 'AUDNZD_trend' added to queue.
+[2025-09-14 05:50:41] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:51:09] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:51:11] [SUCCESS] ✅ Test 'AUDNZD_trend' added to queue.
+[2025-09-14 05:51:19] [WARNING] Test file name is not set
+[2025-09-14 05:51:36] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+[2025-09-14 05:51:42] [WARNING] Test file name is not set
+[2025-09-14 05:52:04] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.

@@ -779,8 +779,6 @@ class AutoBatchController:
             if test["symbol"] not in symbols:
                 symbols.append(test["symbol"])
 
-        print(symbols)
-
 
         # if not symbols:
         #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
@@ -838,10 +836,6 @@ class AutoBatchController:
         self.runner.run(task)
       
     def show_quantity_popup(self, title, text):
-        if not self.mt5.connected:
-            QMessageBox.warning(self.ui, "Error", "MT5 is not connected.")
-            return
-
         results = {
             "test_symbol_quantity": None,
             "strategies_count": None,
@@ -892,7 +886,8 @@ class AutoBatchController:
             text="""Enter a value between 0-100 to filter out highly correlated pairs.
                     1) If the correlation is high (above 80) and positive then the currencies move in the same way.
                     2) If the correlation is high (above 80) and negative then the currencies move in the opposite way.
-                    3) If the correlation is low (below 60) then the currencies don't move in the same way."""
+                    3) If the correlation is low (below 60) then the currencies don't move in the same way.""",
+            default_value=60
         )
         if correlationFilterDialog.exec_() != QDialog.Accepted:
             return
@@ -1030,26 +1025,6 @@ class AutoBatchController:
 
         return df_filtered[["pair1", "pair2", "day"]].head(top_n)
 
-    # def on_start_button_clicked(self, data_path, mt5_path, report_path):
-    #     print("data_path = ",data_path)
-    #     print("mt5_path = ",mt5_path)
-    #     print("report_path = ",report_path)
-
-
-    #     if not hasattr(self, "queue") or self.queue.is_empty():
-    #         QMessageBox.warning(self.ui, "No Tests", "No tests in the queue. Please add tests first.")
-    #         return
-
-    #     QMessageBox.information(self.ui, "Starting", "Running tests in queue...")
-    #     Logger.info("Starting queued tests...")
-
-    #     # Example: run tests one by one
-    #     while not self.queue.is_empty():
-    #         test_settings = self.queue.get_next_test()
-    #         self.mt5.run_test(test_settings, data_path, mt5_path, report_path)
-
-    #     QMessageBox.information(self.ui, "Finished", "All tests completed.")
-    #     Logger.success("All tests completed.")
 
     def on_start_button_clicked(self, data_path, mt5_path, report_path):
         print("data_path = ", data_path)

@@ -86,14 +86,14 @@ class MT5Manager:
         self.symbol_list = [s.name for s in mt5.symbols_get()]
 
     def get_fx_symbols(self):
-        return [s.name for s in self.symbol_list if any(cur in s.name for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
+        return [s for s in self.symbol_list if any(cur in s for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
 
     def get_metals_symbols(self):
-        return [s.name for s in self.symbol_list if "XAU" in s.name or "XAG" in s.name]
+        return [s for s in self.symbol_list if "XAU" in s or "XAG" in s]
 
     def get_indices_symbols(self):
         indices_keywords = ["US500", "NAS100", "DJ30", "DE30", "UK100"]
-        return [s.name for s in self.symbol_list if any(idx in s.name for idx in indices_keywords)]
+        return [s for s in self.symbol_list if any(idx in s for idx in indices_keywords)]
     
     def run_test(self, settings: dict, data_path:str, mt5_path:str, report_path:str):
         try:
