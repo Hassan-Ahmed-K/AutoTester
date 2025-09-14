@@ -13,7 +13,7 @@ import seaborn as sns
 from aiagentfinder.utils.QuantityDialog import QuantityDialog
 from aiagentfinder.utils.TextDialog import TextDialog
 from aiagentfinder.utils.RadioDialog import RadioDialog
-import os, glob , datetime
+import os, glob , datetime, re
 import psutil
 
 from aiagentfinder.utils.workerThread import Worker, ThreadRunner
@@ -39,14 +39,19 @@ class AutoBatchController:
         self.ui.data_btn.clicked.connect(self.browse_data_folder)
         self.ui.report_btn.clicked.connect(self.browse_report_folder)
         self.ui.expert_button.clicked.connect(self.browse_expert_file)
+        self.ui.exper_copy_to_all.clicked.connect(lambda: self.copy_parameter({"expert": self.ui.expert_input.currentText()}))
         self.ui.param_button.clicked.connect(self.browse_param_file)
         self.ui.add_btn.clicked.connect(self.add_test_to_queue)
         self.ui.testfile_input.textChanged.connect(self.update_clean_symbol)
         self.ui.data_input.textChanged.connect(self.update_expert_list)
-        self.ui.refresh_btn.clicked.connect(self.load_experts)
+        self.ui.refresh_btn.clicked.connect(self.refresh_expert)
         self.ui.date_combo.currentTextChanged.connect(self.toggle_date_fields)
         self.ui.forward_combo.currentTextChanged.connect(self.adjust_forward_date)
+        self.ui.forward_copy_down.clicked.connect(lambda: self.copy_parameter({"forward": self.ui.forward_combo.currentText(), "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd")}))
+        self.ui.model_copy_to_all.clicked.connect(lambda: self.copy_parameter({"model": self.ui.model_combo.currentText()}))
         self.ui.delay_combo.currentTextChanged.connect(self.update_delay_input)
+        self.ui.optim_copy_to_all.clicked.connect(lambda: self.copy_parameter({"optimization": self.ui.optim_combo.currentText()}))
+        self.ui.criterion_copy_to_all.clicked.connect(lambda: self.copy_parameter({"criterion": self.ui.criterion_input.currentText()}))
         self.ui.queue_list.itemClicked.connect(self.on_item_clicked)
         self.ui.move_up_btn.clicked.connect(self.move_up)
         self.ui.move_down_btn.clicked.connect(self.move_down)
@@ -469,16 +474,25 @@ class AutoBatchController:
 
     def update_expert_list(self):
         data_folder = self.ui.data_input.text()
-        expert_folder = os.path.join(data_folder, "MQL5", r"Experts\Advisors")
+        expert_folder = os.path.join(data_folder, "MQL5", "Experts")
 
         if not os.path.exists(expert_folder):
             return
 
-        # Find all .ex5 and .mq5 files
-        expert_files = glob.glob(os.path.join(expert_folder, "*.ex5"))
-        self.ui.experts = {os.path.basename(f): f for f in expert_files}
-        # Extract just the filenames
-        expert_names = self.ui.experts.keys()
+        # Find all .ex5 files in Experts and subfolders
+        expert_files = glob.glob(os.path.join(expert_folder, "**", "*.ex5"), recursive=True)
+
+        # Store filename → {path, modified date}
+        self.ui.experts = {
+            os.path.basename(f): {
+                "path": f,
+                "modified": datetime.datetime.fromtimestamp(os.path.getmtime(f))
+            }
+            for f in expert_files
+        }
+
+        # Just show filenames in combo box
+        expert_names = list(self.ui.experts.keys())
 
         # Update the combo box
         if hasattr(self.ui, "expert_input") and isinstance(self.ui.expert_input, QComboBox):
@@ -488,6 +502,53 @@ class AutoBatchController:
             # Try to restore previous selection if still available
             if current_expert in expert_names:
                 index = self.ui.expert_input.findText(current_expert)
+                self.ui.expert_input.setCurrentIndex(index)
+
+    def refresh_expert(self):
+        
+        if not hasattr(self.ui, "expert_input") or not self.ui.experts:
+            return
+
+        current_text = self.ui.expert_input.currentText()
+        if not current_text:
+            return
+
+        # Remove extension for matching base names
+        base_name, ext = os.path.splitext(current_text)
+
+        # Pattern: capture "_number" at the end if present
+        version_pattern = re.compile(r"^(.*)_(\d+)$")
+
+        match = version_pattern.match(base_name)
+        if match:
+            # Case 1: Expert has versions
+            prefix = match.group(1)
+            versions = []
+            for name, info in self.ui.experts.items():
+                name_base, _ = os.path.splitext(name)
+                m = version_pattern.match(name_base)
+                if m and m.group(1) == prefix:
+                    versions.append((int(m.group(2)), name))
+
+            if versions:
+                # Pick highest version
+                latest_name = max(versions, key=lambda x: x[0])[1]
+                index = self.ui.expert_input.findText(latest_name)
+                if index != -1:
+                    self.ui.expert_input.setCurrentIndex(index)
+                    return
+
+        # Case 2: No versions → pick latest modified among matches
+        matches = [
+            (info["modified"], name)
+            for name, info in self.ui.experts.items()
+            if name.startswith(base_name)
+        ]
+
+        if matches:
+            latest_name = max(matches, key=lambda x: x[0])[1]
+            index = self.ui.expert_input.findText(latest_name)
+            if index != -1:
                 self.ui.expert_input.setCurrentIndex(index)
 
     def load_experts(self, expert_folder):
@@ -624,11 +685,12 @@ class AutoBatchController:
 
         def task(index):
             self.queue.move_up(index)
-            return index
+            return index - 1
 
         def on_done(index):
             Logger.success(f"Moved item at index {index} up")
             self.selected_queue_item_index = index
+            self.ui.queue_list.setCurrentRow(index)
 
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
@@ -641,10 +703,12 @@ class AutoBatchController:
 
         def task(index):
             self.queue.move_down(index)
-            return index
+            return index + 1
 
         def on_done(index):
             Logger.success(f"Moved item at index {index} down")
+            self.selected_queue_item_index = index
+            self.ui.queue_list.setCurrentRow(index)
 
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
@@ -1004,6 +1068,7 @@ class AutoBatchController:
             while not self.queue.is_empty():
                 test_settings = self.queue.get_next_test()
                 self.mt5.run_test(test_settings, data_path, mt5_path, report_path)
+                self.queue.refresh_queue()
             return True  # signal finished
 
         def on_done(_):
@@ -1071,3 +1136,6 @@ class AutoBatchController:
 
 
 
+    def copy_parameter(self, property:dict):
+        print("property : ", property)
+        self.queue.update_all_tests(property)

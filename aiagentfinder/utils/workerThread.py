@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QObject, QThread, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QProgressDialog ,QApplication
+from PyQt5.QtCore import Qt, QObject, QThread, pyqtSignal, pyqtSlot
+from PyQt5.QtWidgets import QProgressDialog ,QApplication, QProgressBar
 import traceback
 import os
 
@@ -49,6 +49,12 @@ class ThreadRunner:
         self.dialog.setMinimumDuration(0)
         
         self.dialog.setRange(0, 0)  # moving bar
+
+        progress_bar = self.dialog.findChild(QProgressBar)
+        if progress_bar:
+            progress_bar.setAlignment(Qt.AlignCenter)
+            # progress_bar.setMinimumWidth(self.dialog.width()-20px)
+            progress_bar.setStyleSheet("QProgressBar { min-height: 20px; }")
          
         QApplication.processEvents()
         

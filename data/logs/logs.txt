@@ -1311,3 +1311,698 @@
 [2025-09-13 03:56:26] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
 [2025-09-13 03:56:36] [INFO] Starting queued tests...
 [2025-09-13 04:11:27] [SUCCESS] ✅ All tests completed.
+[2025-09-13 21:16:56] [WARNING] Invalid expert folder path
+[2025-09-13 21:17:16] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:17:27] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:17:27] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:17:29] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:20:47] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:20:53] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:20:53] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:20:54] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:21:08] [WARNING] Invalid expert folder path
+[2025-09-13 21:21:13] [WARNING] Please select a valid Expert File.
+[2025-09-13 21:30:46] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:30:53] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:30:53] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:30:54] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:31:55] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:32:02] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:32:02] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:32:03] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:33:18] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:33:26] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:33:26] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:33:27] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:43:56] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:44:03] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:44:03] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:44:04] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:52:11] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:52:18] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:52:18] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:52:19] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:55:21] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 21:55:27] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 21:55:28] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 21:55:29] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:38:41] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 22:38:51] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:38:51] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 22:38:52] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:41:27] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 22:41:34] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:41:34] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 22:41:35] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:42:31] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 22:42:38] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:42:38] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 22:42:39] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:47:31] [WARNING] Test file name is not set
+[2025-09-13 22:48:14] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-13 22:48:22] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:48:22] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-13 22:48:23] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-13 22:51:23] [INFO] Closest match found: USDCRE
+[2025-09-13 22:51:23] [INFO] Best symbol found: USDCRE
+[2025-09-13 22:55:46] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-13 23:03:22] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:22] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:24] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:24] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:24] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:24] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:25] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:25] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:28] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:28] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:28] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:28] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:29] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:29] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:29] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:29] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:30] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:30] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:35] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:35] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:36] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:36] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:37] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:37] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:38] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:38] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:38] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:38] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:39] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:39] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:40] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:40] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:41] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:41] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:42] [INFO] Closest match found: USDHKD
+[2025-09-13 23:03:42] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:03:42] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:42] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:43] [INFO] Closest match found: USDCRE
+[2025-09-13 23:03:43] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:03:46] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-13 23:03:50] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-13 23:04:16] [INFO] Closest match found: USDCRE
+[2025-09-13 23:04:16] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:04:20] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-13 23:04:22] [INFO] Closest match found: USDHKD
+[2025-09-13 23:04:22] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:04:23] [SUCCESS] ✅ Moved item at index 3 up
+[2025-09-13 23:05:21] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-13 23:05:36] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-13 23:05:37] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-13 23:05:38] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-13 23:05:39] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-13 23:05:39] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-13 23:05:40] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-13 23:05:41] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-13 23:05:42] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-13 23:05:44] [INFO] Closest match found: USDCRE
+[2025-09-13 23:05:44] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:05:48] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-13 23:05:49] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-13 23:11:16] [INFO] Closest match found: USDCRE
+[2025-09-13 23:11:16] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:11:18] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-13 23:12:09] [INFO] Closest match found: USDCRE
+[2025-09-13 23:12:09] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:12:12] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-13 23:12:13] [INFO] Closest match found: USDHKD
+[2025-09-13 23:12:13] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:12:15] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-13 23:12:15] [INFO] Closest match found: USDHKD
+[2025-09-13 23:12:15] [INFO] Best symbol found: USDHKD
+[2025-09-13 23:12:17] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-13 23:12:18] [INFO] Closest match found: USDCRE
+[2025-09-13 23:12:18] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:12:20] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-13 23:12:23] [INFO] Closest match found: USDCRE
+[2025-09-13 23:12:23] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:12:24] [INFO] Closest match found: USDCRE
+[2025-09-13 23:12:24] [INFO] Best symbol found: USDCRE
+[2025-09-13 23:12:24] [INFO] Closest match found: NZDUSD
+[2025-09-13 23:12:24] [INFO] Best symbol found: NZDUSD
+[2025-09-13 23:12:24] [INFO] Closest match found: NZDUSD
+[2025-09-13 23:12:24] [INFO] Best symbol found: NZDUSD
+[2025-09-13 23:12:24] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:12:24] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:12:24] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:12:24] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:12:25] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:12:25] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:12:25] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:12:25] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:12:25] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:12:25] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:12:31] [SUCCESS] ✅ Test 'AUD_trend' added to queue.
+[2025-09-13 23:13:36] [INFO] Closest match found: UTRE
+[2025-09-13 23:13:36] [INFO] Best symbol found: UTRE
+[2025-09-13 23:13:37] [INFO] Closest match found: UTRE
+[2025-09-13 23:13:37] [INFO] Best symbol found: UTRE
+[2025-09-13 23:13:37] [INFO] Closest match found: USDTRY
+[2025-09-13 23:13:37] [INFO] Best symbol found: USDTRY
+[2025-09-13 23:13:37] [INFO] Closest match found: ADT
+[2025-09-13 23:13:37] [INFO] Best symbol found: ADT
+[2025-09-13 23:13:37] [INFO] Closest match found: AUUD
+[2025-09-13 23:13:37] [INFO] Best symbol found: AUUD
+[2025-09-13 23:13:37] [INFO] Closest match found: AUUD
+[2025-09-13 23:13:37] [INFO] Best symbol found: AUUD
+[2025-09-13 23:13:37] [INFO] Exact match found: AU
+[2025-09-13 23:13:38] [INFO] Best symbol found: AU
+[2025-09-13 23:13:38] [INFO] Exact match found: A
+[2025-09-13 23:13:38] [INFO] Best symbol found: A
+[2025-09-13 23:13:38] [INFO] Exact match found: E
+[2025-09-13 23:13:38] [INFO] Best symbol found: E
+[2025-09-13 23:13:39] [INFO] Exact match found: EU
+[2025-09-13 23:13:39] [INFO] Best symbol found: EU
+[2025-09-13 23:13:39] [INFO] Closest match found: EUDV
+[2025-09-13 23:13:39] [INFO] Best symbol found: EUDV
+[2025-09-13 23:13:39] [INFO] Exact match found: EU
+[2025-09-13 23:13:39] [INFO] Best symbol found: EU
+[2025-09-13 23:13:39] [INFO] Exact match found: E
+[2025-09-13 23:13:39] [INFO] Best symbol found: E
+[2025-09-13 23:13:40] [INFO] Exact match found: E
+[2025-09-13 23:13:40] [INFO] Best symbol found: E
+[2025-09-13 23:13:41] [INFO] Exact match found: EU
+[2025-09-13 23:13:41] [INFO] Best symbol found: EU
+[2025-09-13 23:13:41] [INFO] Closest match found: ZEUS
+[2025-09-13 23:13:41] [INFO] Best symbol found: ZEUS
+[2025-09-13 23:13:45] [INFO] Exact match found: EU
+[2025-09-13 23:13:45] [INFO] Best symbol found: EU
+[2025-09-13 23:13:46] [INFO] Closest match found: OEUR
+[2025-09-13 23:13:46] [INFO] Best symbol found: OEUR
+[2025-09-13 23:13:49] [INFO] Closest match found: OEUR
+[2025-09-13 23:13:49] [INFO] Best symbol found: OEUR
+[2025-09-13 23:13:49] [INFO] Closest match found: EURTRY
+[2025-09-13 23:13:49] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:13:49] [INFO] Closest match found: EURTRY
+[2025-09-13 23:13:49] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:13:49] [INFO] Closest match found: EURTRY
+[2025-09-13 23:13:49] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:13:50] [INFO] Closest match found: EURTRY
+[2025-09-13 23:13:50] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:13:50] [INFO] Closest match found: EURTRY
+[2025-09-13 23:13:50] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:13:54] [SUCCESS] ✅ Test 'EUR_TREND' added to queue.
+[2025-09-13 23:14:09] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-13 23:14:13] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:14:13] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:14:17] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-13 23:14:41] [INFO] Closest match found: EURTRY
+[2025-09-13 23:14:41] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:14:42] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:14:42] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:14:42] [INFO] Closest match found: EURTRY
+[2025-09-13 23:14:42] [INFO] Best symbol found: EURTRY
+[2025-09-13 23:14:43] [INFO] Closest match found: AUDNZD
+[2025-09-13 23:14:43] [INFO] Best symbol found: AUDNZD
+[2025-09-13 23:14:47] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-13 23:15:29] [SUCCESS] ✅ Export completed successfully!
+[2025-09-14 03:56:29] [INFO] Closest match found: EURTRY
+[2025-09-14 03:56:29] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:56:30] [INFO] Closest match found: AUDNZD
+[2025-09-14 03:56:30] [INFO] Best symbol found: AUDNZD
+[2025-09-14 03:56:36] [INFO] Closest match found: EURTRY
+[2025-09-14 03:56:36] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:56:37] [INFO] Closest match found: AUDNZD
+[2025-09-14 03:56:37] [INFO] Best symbol found: AUDNZD
+[2025-09-14 03:56:39] [INFO] Closest match found: EURTRY
+[2025-09-14 03:56:39] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:57:03] [INFO] Closest match found: AUDNZD
+[2025-09-14 03:57:03] [INFO] Best symbol found: AUDNZD
+[2025-09-14 03:57:04] [INFO] Closest match found: EURTRY
+[2025-09-14 03:57:04] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:58:44] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 03:58:55] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 03:58:55] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 03:58:57] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 03:59:06] [INFO] Exact match found: E
+[2025-09-14 03:59:06] [INFO] Best symbol found: E
+[2025-09-14 03:59:12] [INFO] Exact match found: O
+[2025-09-14 03:59:12] [INFO] Best symbol found: O
+[2025-09-14 03:59:13] [INFO] Closest match found: VOE
+[2025-09-14 03:59:13] [INFO] Best symbol found: VOE
+[2025-09-14 03:59:15] [INFO] Closest match found: OEUR
+[2025-09-14 03:59:15] [INFO] Best symbol found: OEUR
+[2025-09-14 03:59:18] [INFO] Exact match found: OEUR
+[2025-09-14 03:59:18] [INFO] Best symbol found: OEUR
+[2025-09-14 03:59:19] [INFO] Closest match found: OEUR
+[2025-09-14 03:59:19] [INFO] Best symbol found: OEUR
+[2025-09-14 03:59:20] [INFO] Closest match found: OEUR
+[2025-09-14 03:59:20] [INFO] Best symbol found: OEUR
+[2025-09-14 03:59:20] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:20] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:20] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:20] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:21] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:21] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:21] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:21] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:22] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:22] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:22] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:22] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:22] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:22] [INFO] Best symbol found: EURTRY
+[2025-09-14 03:59:32] [SUCCESS] ✅ Test 'OEUR_TRENDING' added to queue.
+[2025-09-14 03:59:52] [INFO] Closest match found: EURTRY
+[2025-09-14 03:59:52] [INFO] Best symbol found: EURTRY
+[2025-09-14 04:00:01] [SUCCESS] ✅ Test 'EUR_TRENDING' added to queue.
+[2025-09-14 04:00:05] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-14 04:00:13] [SUCCESS] ✅ Test 'EUR_TRENDING' added to queue.
+[2025-09-14 04:00:15] [INFO] Closest match found: EURTRY
+[2025-09-14 04:00:15] [INFO] Best symbol found: EURTRY
+[2025-09-14 04:00:16] [INFO] Closest match found: EURTRY
+[2025-09-14 04:00:16] [INFO] Best symbol found: EURTRY
+[2025-09-14 04:00:17] [INFO] Closest match found: EURTRY
+[2025-09-14 04:00:17] [INFO] Best symbol found: EURTRY
+[2025-09-14 04:01:57] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:02:07] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:02:07] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:02:09] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:02:15] [INFO] Exact match found: E
+[2025-09-14 04:02:15] [INFO] Best symbol found: E
+[2025-09-14 04:02:16] [INFO] Exact match found: EU
+[2025-09-14 04:02:16] [INFO] Best symbol found: EU
+[2025-09-14 04:02:16] [INFO] Closest match found: OEUR
+[2025-09-14 04:02:16] [INFO] Best symbol found: OEUR
+[2025-09-14 04:02:17] [INFO] Closest match found: OEUR
+[2025-09-14 04:02:17] [INFO] Best symbol found: OEUR
+[2025-09-14 04:02:18] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:18] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:18] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:18] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:18] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:18] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:21] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:21] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:22] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:22] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:22] [INFO] Closest match found: OEUR
+[2025-09-14 04:02:22] [INFO] Best symbol found: OEUR
+[2025-09-14 04:02:22] [INFO] Closest match found: OEUR
+[2025-09-14 04:02:22] [INFO] Best symbol found: OEUR
+[2025-09-14 04:02:22] [INFO] Exact match found: EU
+[2025-09-14 04:02:22] [INFO] Best symbol found: EU
+[2025-09-14 04:02:24] [INFO] Closest match found: OEUR
+[2025-09-14 04:02:24] [INFO] Best symbol found: OEUR
+[2025-09-14 04:02:24] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:24] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:24] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:24] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:24] [INFO] Exact match found: EURUSD
+[2025-09-14 04:02:24] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:27] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:27] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:28] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:28] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:28] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:28] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:28] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:28] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:28] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:28] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:28] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:28] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:29] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:29] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:29] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:29] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:29] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:29] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:30] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:30] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:31] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:31] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:39] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-14 04:02:42] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:42] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:42] [INFO] Closest match found: EURUSD
+[2025-09-14 04:02:42] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:02:42] [INFO] Closest match found: EURTRY
+[2025-09-14 04:02:42] [INFO] Best symbol found: EURTRY
+[2025-09-14 04:02:51] [SUCCESS] ✅ Test 'EUR_TRENDING' added to queue.
+[2025-09-14 04:03:19] [INFO] Closest match found: EURUSD
+[2025-09-14 04:03:19] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:03:20] [INFO] Closest match found: EURTRY
+[2025-09-14 04:03:20] [INFO] Best symbol found: EURTRY
+[2025-09-14 04:03:21] [INFO] Closest match found: EURUSD
+[2025-09-14 04:03:21] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:18:38] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:18:46] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:18:46] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:18:47] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:19:01] [INFO] Exact match found: E
+[2025-09-14 04:19:01] [INFO] Best symbol found: E
+[2025-09-14 04:19:01] [INFO] Exact match found: EU
+[2025-09-14 04:19:01] [INFO] Best symbol found: EU
+[2025-09-14 04:19:01] [INFO] Closest match found: OEUR
+[2025-09-14 04:19:01] [INFO] Best symbol found: OEUR
+[2025-09-14 04:19:02] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:02] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:02] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:02] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:02] [INFO] Exact match found: EURUSD
+[2025-09-14 04:19:02] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:04] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:04] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:04] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:04] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:05] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:05] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:05] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:05] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:05] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:05] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:05] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:05] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:06] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:06] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:06] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:06] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:22] [SUCCESS] ✅ Test 'EURUSD_TESTING' added to queue.
+[2025-09-14 04:19:26] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:26] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:27] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:27] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:27] [INFO] Closest match found: EURSGD
+[2025-09-14 04:19:27] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:19:38] [SUCCESS] ✅ Test 'EUR_TESTING' added to queue.
+[2025-09-14 04:19:49] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:49] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:19:56] [INFO] Closest match found: EURSGD
+[2025-09-14 04:19:56] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:19:57] [INFO] Closest match found: EURUSD
+[2025-09-14 04:19:57] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:20:08] [INFO] Closest match found: EURSGD
+[2025-09-14 04:20:08] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:20:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:20:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:20:14] [INFO] Closest match found: EURSGD
+[2025-09-14 04:20:14] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:20:35] [INFO] Closest match found: EURUSD
+[2025-09-14 04:20:35] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:20:36] [INFO] Closest match found: EURSGD
+[2025-09-14 04:20:36] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:20:37] [INFO] Closest match found: EURUSD
+[2025-09-14 04:20:37] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:20:37] [INFO] Closest match found: EURSGD
+[2025-09-14 04:20:37] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:20:47] [INFO] Closest match found: EURUSD
+[2025-09-14 04:20:47] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:20:48] [INFO] Closest match found: EURSGD
+[2025-09-14 04:20:48] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:20:55] [INFO] Closest match found: EURUSD
+[2025-09-14 04:20:55] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:20:55] [INFO] Closest match found: EURSGD
+[2025-09-14 04:20:55] [INFO] Best symbol found: EURSGD
+[2025-09-14 04:20:56] [INFO] Closest match found: EURUSD
+[2025-09-14 04:20:56] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:23:46] [INFO] Param folder found: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2025-09-14 04:23:53] [INFO] Param file selected: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester/parameter2.set
+[2025-09-14 04:23:56] [INFO] Starting queued tests...
+[2025-09-14 04:31:17] [SUCCESS] ✅ All tests completed.
+[2025-09-14 04:33:09] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:35:11] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:35:19] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:35:19] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:35:20] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:35:34] [INFO] Exact match found: E
+[2025-09-14 04:35:34] [INFO] Best symbol found: E
+[2025-09-14 04:35:35] [INFO] Exact match found: EU
+[2025-09-14 04:35:35] [INFO] Best symbol found: EU
+[2025-09-14 04:35:35] [INFO] Closest match found: OEUR
+[2025-09-14 04:35:35] [INFO] Best symbol found: OEUR
+[2025-09-14 04:35:36] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:36] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:36] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:36] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:36] [INFO] Exact match found: EURUSD
+[2025-09-14 04:35:36] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:38] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:38] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:38] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:38] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:39] [INFO] Closest match found: EURUSD
+[2025-09-14 04:35:39] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:35:45] [SUCCESS] ✅ Test 'EURUSD_TRENDING' added to queue.
+[2025-09-14 04:35:48] [INFO] Starting queued tests...
+[2025-09-14 04:36:53] [SUCCESS] ✅ All tests completed.
+[2025-09-14 04:37:28] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:37:37] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:37:37] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:37:38] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:37:49] [INFO] Exact match found: E
+[2025-09-14 04:37:49] [INFO] Best symbol found: E
+[2025-09-14 04:37:49] [INFO] Exact match found: EU
+[2025-09-14 04:37:49] [INFO] Best symbol found: EU
+[2025-09-14 04:37:50] [INFO] Closest match found: OEUR
+[2025-09-14 04:37:50] [INFO] Best symbol found: OEUR
+[2025-09-14 04:37:51] [INFO] Exact match found: EU
+[2025-09-14 04:37:51] [INFO] Best symbol found: EU
+[2025-09-14 04:37:51] [INFO] Exact match found: E
+[2025-09-14 04:37:51] [INFO] Best symbol found: E
+[2025-09-14 04:37:51] [INFO] Exact match found: EU
+[2025-09-14 04:37:51] [INFO] Best symbol found: EU
+[2025-09-14 04:37:51] [INFO] Closest match found: ZEUS
+[2025-09-14 04:37:51] [INFO] Best symbol found: ZEUS
+[2025-09-14 04:37:52] [INFO] Exact match found: EU
+[2025-09-14 04:37:52] [INFO] Best symbol found: EU
+[2025-09-14 04:37:52] [INFO] Closest match found: OEUR
+[2025-09-14 04:37:52] [INFO] Best symbol found: OEUR
+[2025-09-14 04:37:54] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:54] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:54] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:54] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:55] [INFO] Exact match found: EURUSD
+[2025-09-14 04:37:55] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:56] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:56] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:56] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:56] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:57] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:57] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:57] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:57] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:57] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:57] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:58] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:58] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:58] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:58] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:37:58] [INFO] Closest match found: EURUSD
+[2025-09-14 04:37:58] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:38:04] [SUCCESS] ✅ Test 'EURUSD_TESTING' added to queue.
+[2025-09-14 04:38:08] [INFO] Starting queued tests...
+[2025-09-14 04:38:45] [SUCCESS] ✅ All tests completed.
+[2025-09-14 04:39:15] [SUCCESS] ✅ Test 'EURUSD_TESTING' added to queue.
+[2025-09-14 04:39:17] [INFO] Closest match found: EURUSD
+[2025-09-14 04:39:17] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:39:25] [SUCCESS] ✅ Test 'EURUSD_TESTING2' added to queue.
+[2025-09-14 04:39:31] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-14 04:41:24] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-14 04:41:25] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-14 04:41:28] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-14 04:41:30] [SUCCESS] ✅ Moved item at index 0 up
+[2025-09-14 04:41:30] [SUCCESS] ✅ Moved item at index 0 up
+[2025-09-14 04:43:50] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:44:00] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:44:01] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:44:02] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:44:12] [INFO] Exact match found: E
+[2025-09-14 04:44:12] [INFO] Best symbol found: E
+[2025-09-14 04:44:12] [INFO] Exact match found: EU
+[2025-09-14 04:44:12] [INFO] Best symbol found: EU
+[2025-09-14 04:44:12] [INFO] Closest match found: OEUR
+[2025-09-14 04:44:12] [INFO] Best symbol found: OEUR
+[2025-09-14 04:44:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:13] [INFO] Exact match found: EURUSD
+[2025-09-14 04:44:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:14] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:14] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:14] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:14] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:15] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:15] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:15] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:15] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:15] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:15] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:15] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:15] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:16] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:16] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:21] [SUCCESS] ✅ Test 'EURUSD_TESTING' added to queue.
+[2025-09-14 04:44:23] [INFO] Closest match found: EURUSD
+[2025-09-14 04:44:23] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:44:30] [SUCCESS] ✅ Test 'EURUSD_TESTING2' added to queue.
+[2025-09-14 04:44:33] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-14 04:44:35] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-14 04:44:36] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-14 04:44:36] [SUCCESS] ✅ Moved item at index -1 down
+[2025-09-14 04:44:42] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-14 04:44:43] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-14 04:44:44] [SUCCESS] ✅ Moved item at index 0 down
+[2025-09-14 04:44:45] [SUCCESS] ✅ Moved item at index -1 down
+[2025-09-14 04:46:34] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:46:42] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:46:42] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:46:43] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:46:49] [INFO] Exact match found: E
+[2025-09-14 04:46:49] [INFO] Best symbol found: E
+[2025-09-14 04:46:49] [INFO] Exact match found: EU
+[2025-09-14 04:46:49] [INFO] Best symbol found: EU
+[2025-09-14 04:46:49] [INFO] Closest match found: OEUR
+[2025-09-14 04:46:49] [INFO] Best symbol found: OEUR
+[2025-09-14 04:46:50] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:50] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:50] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:50] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:50] [INFO] Exact match found: EURUSD
+[2025-09-14 04:46:50] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:52] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:52] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:52] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:52] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:52] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:52] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:53] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:53] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:53] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:53] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:53] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:53] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:53] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:53] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:53] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:53] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:54] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:54] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:46:58] [SUCCESS] ✅ Test 'EURUSD_TESTING1' added to queue.
+[2025-09-14 04:46:59] [INFO] Closest match found: EURUSD
+[2025-09-14 04:46:59] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:47:00] [INFO] Closest match found: EURUSD
+[2025-09-14 04:47:00] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:47:03] [SUCCESS] ✅ Test 'EURUSD_TESTING2' added to queue.
+[2025-09-14 04:47:04] [INFO] Closest match found: EURUSD
+[2025-09-14 04:47:04] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:47:05] [INFO] Closest match found: EURUSD
+[2025-09-14 04:47:05] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:47:08] [SUCCESS] ✅ Test 'EURUSD_TESTING3' added to queue.
+[2025-09-14 04:47:09] [INFO] Closest match found: EURUSD
+[2025-09-14 04:47:09] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:47:11] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-14 04:47:12] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-14 04:47:15] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-14 04:47:15] [SUCCESS] ✅ Moved item at index 0 up
+[2025-09-14 04:47:18] [INFO] Closest match found: EURUSD
+[2025-09-14 04:47:18] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:47:19] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-14 04:50:41] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-14 04:50:49] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:50:49] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-14 04:50:51] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-14 04:51:04] [INFO] Exact match found: E
+[2025-09-14 04:51:04] [INFO] Best symbol found: E
+[2025-09-14 04:51:05] [INFO] Exact match found: EU
+[2025-09-14 04:51:05] [INFO] Best symbol found: EU
+[2025-09-14 04:51:05] [INFO] Closest match found: OEUR
+[2025-09-14 04:51:05] [INFO] Best symbol found: OEUR
+[2025-09-14 04:51:06] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:06] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:06] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:06] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:06] [INFO] Exact match found: EURUSD
+[2025-09-14 04:51:06] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:07] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:07] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:08] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:08] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:08] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:08] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:08] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:08] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:08] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:08] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:08] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:08] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:09] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:09] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:09] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:09] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:09] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:09] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:11] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:11] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:11] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:11] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:11] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:11] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:11] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:11] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:11] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:11] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:11] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:11] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:12] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:12] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:12] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:12] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:13] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:13] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:14] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:14] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:14] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:14] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:14] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:14] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:15] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:15] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:20] [SUCCESS] ✅ Test 'EURUSD_TESTING1' added to queue.
+[2025-09-14 04:51:21] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:21] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:22] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:22] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:25] [SUCCESS] ✅ Test 'EURUSD_TESTING2' added to queue.
+[2025-09-14 04:51:26] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:26] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:27] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:27] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:30] [SUCCESS] ✅ Test 'EURUSD_TESTING3' added to queue.
+[2025-09-14 04:51:32] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:32] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:32] [INFO] Closest match found: EURUSD
+[2025-09-14 04:51:32] [INFO] Best symbol found: EURUSD
+[2025-09-14 04:51:36] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-14 04:51:36] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-14 04:51:38] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-14 04:51:39] [SUCCESS] ✅ Moved item at index 0 up

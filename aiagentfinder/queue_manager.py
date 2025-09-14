@@ -52,6 +52,17 @@ class QueueManager:
             self.refresh_queue()
             self.ui.queue_list.setCurrentRow(index + 1)
 
+    def update_all_tests(self, updates: dict):
+        if not self.tests:
+            return
+
+        for i, test in enumerate(self.tests):
+            for key, value in updates.items():
+                if key in test:
+                    self.tests[i][key] = value
+        self.refresh_queue()
+
+
     # ---------------- File Operations ----------------
     def save_queue(self):
         path, _ = QFileDialog.getSaveFileName(self.ui, "Save Queue", "", "JSON Files (*.json)")
