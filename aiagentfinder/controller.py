@@ -15,7 +15,6 @@ from aiagentfinder.utils.TextDialog import TextDialog
 from aiagentfinder.utils.RadioDialog import RadioDialog
 import os, glob , datetime, re
 import psutil
-
 from aiagentfinder.utils.workerThread import Worker, ThreadRunner
 
 
@@ -23,6 +22,7 @@ from aiagentfinder.utils.workerThread import Worker, ThreadRunner
 class AutoBatchController:
     def __init__(self, ui):
         self.ui = ui
+        self.current_index = None
         self.mt5 = MT5Manager()
         self.runner = ThreadRunner()
 
@@ -430,23 +430,106 @@ class AutoBatchController:
 
         return settings
     
+
+    # def add_test_to_queue(self):
+    #     settings = self.test_settings()
+    #     if not settings:
+    #         return
+    #     def task(self):
+    #         if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
+    #             old = self.queue.tests[self.current_index]
+    #             old_name = old.get("test_name", "")
+    #             new_name = settings.get("test_name", "")
+
+    #             if new_name == old_name:
+    #                 self.queue.tests[self.current_index] = settings
+
+    #                 # Update QListWidget item text
+    #                 item = self.ui.queue_list.item(self.current_index)
+    #                 if item:
+    #                     item.setText(new_name)
+
+    #                 self.queue.refresh_queue()
+    #                 self.ui.queue_list.setCurrentRow(self.current_index)
+
+    #                 Logger.success(f"✅ Test '{new_name}' updated at index {self.current_index}.")
+
+    #             else:
+    #                 self.queue.tests.append(settings)
+    #                 new_index = len(self.queue.tests) - 1
+    #                 self.queue.refresh_queue()
+    #                 self.ui.queue_list.setCurrentRow(new_index)
+    #                 self.current_index = new_index
+    #                 Logger.success(f"✅ Test '{new_name}' added to queue (name changed).")
+
+    #         else:
+    #             self.queue.tests.append(settings)
+    #             new_index = len(self.queue.tests) - 1
+    #             self.queue.refresh_queue()
+    #             self.ui.queue_list.setCurrentRow(new_index)
+    #             self.current_index = new_index
+    #             Logger.success(f"✅ Test '{settings['test_name']}' added to queue.")
+
     def add_test_to_queue(self):
         settings = self.test_settings()
         if not settings:
             return
 
         def task():
-            # The long/slow part of work
-            self.queue.add_test_to_queue(settings)
-            return settings["test_name"]
 
-        def on_done(test_name):
-            QMessageBox.information(self.ui, "Added", f"Test '{test_name}' added to queue.")
-            Logger.success(f"Test '{test_name}' added to queue.")
+            # This runs in background thread
+            if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
+                old = self.queue.tests[self.current_index]
+                old_name = old.get("test_name", "")
+                new_name = settings.get("test_name", "")
 
-        # Run in background with progress dialog
-        self.runner = ThreadRunner(self.ui)   # make sure you initialized in __init__
-        self.runner.on_result = on_done       # hook result handler
+                if new_name == old_name:
+                    self.queue.tests[self.current_index] = settings
+                    return ("updated", new_name, self.current_index)
+            
+                else:
+                    self.queue.tests.append(settings)
+                    new_index = len(self.queue.tests) - 1
+                    return ("added_changed", new_name, new_index)
+            else:
+                self.queue.tests.append(settings)
+                new_index = len(self.queue.tests) - 1
+                return ("added", settings["test_name"], new_index)
+
+        def on_done(result):
+            # This runs back in the GUI thread
+            status, name, index = result
+
+            if status == "updated":
+                item = self.ui.queue_list.item(index)
+                if item:
+                    item.setText(name)
+                self.queue.refresh_queue()
+                self.ui.queue_list.setCurrentRow(index)
+                Logger.success(f"✅ Test '{name}' updated at index {index}.")
+
+            elif status == "added_changed":
+                self.queue.refresh_queue()
+                self.ui.queue_list.setCurrentRow(index)
+                self.current_index = index
+                QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue")
+                Logger.success(f"✅ Test '{name}' added to queue")
+
+            elif status == "added":
+                self.queue.refresh_queue()
+                self.ui.queue_list.setCurrentRow(index)
+                self.current_index = index
+                QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue.")
+                Logger.success(f"✅ Test '{name}' added to queue.")
+
+        def on_error(err):
+            QMessageBox.critical(self.ui, "Error", str(err))
+            Logger.error(str(err))
+
+        # Run in background
+        self.runner = ThreadRunner(self.ui)
+        self.runner.on_result = on_done
+        self.runner.on_error = on_error
         self.runner.run(task)
 
     def get_best_symbol(self,user_input: str) -> str :
@@ -557,7 +640,7 @@ class AutoBatchController:
             return None
 
         def task(folder):
-            import glob, os
+      
             expert_files = glob.glob(os.path.join(folder, "*.ex5"))
             experts_dict = {os.path.basename(f): f for f in expert_files}
 
@@ -774,10 +857,11 @@ class AutoBatchController:
                         output_format="csv", endpoint="snapshot",
                         on_done=None, on_error=None):
         
-        symbols = ["EURUSD", "EURGBP", "AUDNZD"]
+        symbols = []
         for test in self.queue.tests: 
             if test["symbol"] not in symbols:
                 symbols.append(test["symbol"])
+        print("symbols = ", symbols)
 
 
         # if not symbols:
@@ -951,26 +1035,28 @@ class AutoBatchController:
                 # uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
                 uncorrelated_pair = f"{row['pair1']}"
 
-                settings = {
-                    "test_name": f"{uncorrelated_pair}_trend",
-                    "expert": ui_values["expert"],
-                    "param_file": ui_values["param_file"],
-                    "symbol_prefix": ui_values["symbol_prefix"],
-                    "symbol_suffix": ui_values["symbol_suffix"],
-                    "symbol": uncorrelated_pair,
-                    "timeframe": ui_values["timeframe"],
-                    "date_from": ui_values["date_from"],
-                    "date_to": ui_values["date_to"],
-                    "forward": ui_values["forward"],
-                    "delay": ui_values["delay"],
-                    "model": ui_values["model"],
-                    "deposit": ui_values["deposit"],
-                    "currency": ui_values["currency"],
-                    "leverage": ui_values["leverage"],
-                    "optimization": ui_values["optimization"],
-                    "criterion": ui_values["criterion"],
-                }
-                settings_list.append(settings)
+                for strategy in results["strategies"]:
+                    settings = {
+                        "test_name": f"{strategy}_trend",
+                        "expert": ui_values["expert"],
+                        "param_file": ui_values["param_file"],
+                        "symbol_prefix": ui_values["symbol_prefix"],
+                        "symbol_suffix": ui_values["symbol_suffix"],
+                        "symbol": uncorrelated_pair,
+                        "timeframe": ui_values["timeframe"],
+                        "date_from": ui_values["date_from"],
+                        "date_to": ui_values["date_to"],
+                        "forward": ui_values["forward"],
+                        "delay": ui_values["delay"],
+                        "model": ui_values["model"],
+                        "deposit": ui_values["deposit"],
+                        "currency": ui_values["currency"],
+                        "leverage": ui_values["leverage"],
+                        "optimization": ui_values["optimization"],
+                        "criterion": ui_values["criterion"],
+                    }
+                    settings_list.append(settings)
+
 
             return {
                 "pairs": uncorrelated_pairs[["pair1", "pair2", "day"]].to_dict("records"),
@@ -992,8 +1078,8 @@ class AutoBatchController:
 
             for settings in settings_list:
                 self.queue.add_test_to_queue(settings)
-                QMessageBox.information(self.ui, "Added", f"Test '{settings['test_name']}' added to queue.")
                 Logger.success(f"Test '{settings['test_name']}' added to queue.")
+            QMessageBox.information(self.ui, "Added", f"{len(settings_list)} Test cases added to queue.")
 
         def on_error(err):
             QMessageBox.critical(self.ui, "Error", f"Failed to process correlation data:\n{err}")
@@ -1004,6 +1090,40 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task, symbols, results, ui_values)
+
+
+
+    def get_fx_symbols(self):
+
+    # --- Majors ---
+        MAJOR_PAIRS = [
+            "EURUSD", "GBPUSD", "NZDUSD", "AUDUSD",
+            "USDJPY", "USDCHF", "USDCAD"
+        ]
+
+        # --- Minors ---
+        MINOR_PAIRS = [
+            "EURGBP", "EURJPY", "EURCHF", "EURAUD", "EURCAD", "EURNZD",
+            "GBPJPY", "GBPCHF", "GBPAUD", "GBPCAD", "GBPNZD",
+            "AUDJPY", "AUDCHF", "AUDCAD", "AUDNZD",
+            "NZDJPY", "NZDCHF", "NZDCAD",
+            "CADJPY", "CADCHF", "CHFJPY"
+        ]
+
+        ALL_FX_PAIRS = MAJOR_PAIRS + MINOR_PAIRS
+
+        # --- check which pairs exist on this broker/terminal ---
+        try:
+            available_symbols = [s.name for s in self.mt5.get_fx_symbols()]
+        except Exception:
+            available_symbols = []
+
+        # return only the intersection (so we don’t include pairs broker doesn’t support)
+        fx_symbols = [s for s in ALL_FX_PAIRS if s in available_symbols]
+
+        # fallback: if intersection is empty, just return the full list
+        return fx_symbols if fx_symbols else ALL_FX_PAIRS
+
 
     def get_symbols_for_option(self, option):
         if option == "FX Only":
@@ -1058,8 +1178,10 @@ class AutoBatchController:
     def on_test_selected(self, index):
         index = self.ui.queue_list.currentRow()  # Which item was clicked
         if 0 <= index < len(self.queue.tests):
+            self.current_index = index
             test_data = self.queue.tests[index]  # Get the selected test
             self.load_test_parameters(test_data)  # Show it on the form
+            print(test_data)
         
     def load_test_parameters(self, test_data):
         # Expert & param files
@@ -1073,7 +1195,9 @@ class AutoBatchController:
                 self.ui.timeframe_combo.setCurrentText(str(test_data["timeframe"]))
                 self.ui.date_from.setDate(QDate.fromString(test_data["date_from"], "yyyy-MM-dd"))
                 self.ui.date_to.setDate(QDate.fromString(test_data["date_to"], "yyyy-MM-dd"))
+                self.ui.forward_combo.setCurrentText(test_data["forward"])
                 self.ui.forward_date.setDate(QDate.fromString(test_data["forward"], "yyyy-MM-dd"))
+                self.ui.delay_combo.setCurrentText(test_data["delay_mode"])
                 self.ui.delay_input.setValue(int(test_data["delay"]))
                 self.ui.model_combo.setCurrentText(test_data["model"])
                 self.ui.deposit_input.setText(str(test_data["deposit"]))
@@ -1084,6 +1208,8 @@ class AutoBatchController:
 
         except Exception as e:
                Logger.error(str(e))
+
+        
        
 
 

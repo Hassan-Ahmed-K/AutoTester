@@ -2033,3 +2033,825 @@
 [2025-09-14 05:51:36] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
 [2025-09-14 05:51:42] [WARNING] Test file name is not set
 [2025-09-14 05:52:04] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+
+[2025-09-16 15:49:33] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 15:49:33] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 15:49:33] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 15:49:33] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 15:49:33] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 15:49:38] [INFO] Exact match found: V
+[2025-09-16 15:49:38] [INFO] Best symbol found: V
+[2025-09-16 15:49:38] [INFO] Closest match found: VYM
+[2025-09-16 15:49:38] [INFO] Best symbol found: VYM
+[2025-09-16 15:49:38] [INFO] Closest match found: QVMM
+[2025-09-16 15:49:38] [INFO] Best symbol found: QVMM
+[2025-09-16 15:49:38] [INFO] Closest match found: VFMF
+[2025-09-16 15:49:38] [INFO] Best symbol found: VFMF
+[2025-09-16 15:49:38] [INFO] Closest match found: MMM
+[2025-09-16 15:49:38] [INFO] Best symbol found: MMM
+[2025-09-16 15:49:40] [INFO] Added new test
+[2025-09-16 15:49:42] [SUCCESS] ✅ Test 'vmmfm' added to queue.
+[2025-09-16 15:49:46] [INFO] Exact match found: F
+[2025-09-16 15:49:46] [INFO] Best symbol found: F
+[2025-09-16 15:49:46] [INFO] Closest match found: SFM
+[2025-09-16 15:49:46] [INFO] Best symbol found: SFM
+[2025-09-16 15:49:46] [INFO] Closest match found: FMTM
+[2025-09-16 15:49:46] [INFO] Best symbol found: FMTM
+[2025-09-16 15:49:46] [INFO] Closest match found: FMF
+[2025-09-16 15:49:46] [INFO] Best symbol found: FMF
+[2025-09-16 15:49:46] [INFO] Closest match found: MMM
+[2025-09-16 15:49:46] [INFO] Best symbol found: MMM
+[2025-09-16 15:49:49] [INFO] Added new test
+[2025-09-16 15:49:51] [SUCCESS] ✅ Test 'fmmfm' added to queue.
+[2025-09-16 15:54:14] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 15:54:14] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 15:54:14] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 15:54:14] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 15:54:14] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 15:54:18] [INFO] Exact match found: J
+[2025-09-16 15:54:18] [INFO] Best symbol found: J
+[2025-09-16 15:54:18] [INFO] Closest match found: XJH
+[2025-09-16 15:54:18] [INFO] Best symbol found: XJH
+[2025-09-16 15:54:18] [INFO] Closest match found: XJH
+[2025-09-16 15:54:18] [INFO] Best symbol found: XJH
+[2025-09-16 15:54:19] [INFO] Closest match found: JHHY
+[2025-09-16 15:54:19] [INFO] Best symbol found: JHHY
+[2025-09-16 15:54:21] [INFO] Added new test
+[2025-09-16 15:54:23] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 15:57:44] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 15:57:44] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 15:57:44] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 15:57:44] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 15:57:44] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 15:57:47] [INFO] Closest match found: SN
+[2025-09-16 15:57:47] [INFO] Best symbol found: SN
+[2025-09-16 15:57:47] [INFO] Exact match found: NX
+[2025-09-16 15:57:47] [INFO] Best symbol found: NX
+[2025-09-16 15:57:47] [INFO] Exact match found: NXN
+[2025-09-16 15:57:47] [INFO] Best symbol found: NXN
+[2025-09-16 15:57:48] [INFO] Closest match found: NXN
+[2025-09-16 15:57:48] [INFO] Best symbol found: NXN
+[2025-09-16 15:57:48] [INFO] Closest match found: NXN
+[2025-09-16 15:57:48] [INFO] Best symbol found: NXN
+[2025-09-16 15:57:50] [INFO] Added new test
+[2025-09-16 15:57:52] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 15:57:56] [INFO] Exact match found: J
+[2025-09-16 15:57:56] [INFO] Best symbol found: J
+[2025-09-16 15:57:57] [INFO] Closest match found: RJF
+[2025-09-16 15:57:57] [INFO] Best symbol found: RJF
+[2025-09-16 15:57:57] [INFO] Closest match found: RJF
+[2025-09-16 15:57:57] [INFO] Best symbol found: RJF
+[2025-09-16 15:57:57] [INFO] Closest match found: JJSF
+[2025-09-16 15:57:57] [INFO] Best symbol found: JJSF
+[2025-09-16 15:57:59] [INFO] Added new test
+[2025-09-16 15:58:03] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 15:58:05] [INFO] Closest match found: NXN
+[2025-09-16 15:58:05] [INFO] Best symbol found: NXN
+[2025-09-16 15:58:08] [INFO] Closest match found: NXN
+[2025-09-16 15:58:08] [INFO] Best symbol found: NXN
+[2025-09-16 15:58:08] [INFO] Closest match found: NNNN
+[2025-09-16 15:58:08] [INFO] Best symbol found: NNNN
+[2025-09-16 15:58:08] [INFO] Closest match found: NXN
+[2025-09-16 15:58:08] [INFO] Best symbol found: NXN
+[2025-09-16 15:58:09] [INFO] Closest match found: NXN
+[2025-09-16 15:58:09] [INFO] Best symbol found: NXN
+[2025-09-16 15:58:11] [INFO] Updated test at index 0
+[2025-09-16 15:58:13] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 16:09:48] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 16:09:48] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 16:09:48] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 16:09:48] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 16:09:48] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 16:09:52] [INFO] Exact match found: H
+[2025-09-16 16:09:52] [INFO] Best symbol found: H
+[2025-09-16 16:09:52] [INFO] Closest match found: PHH
+[2025-09-16 16:09:52] [INFO] Best symbol found: PHH
+[2025-09-16 16:09:52] [INFO] Closest match found: PHH
+[2025-09-16 16:09:52] [INFO] Best symbol found: PHH
+[2025-09-16 16:09:52] [INFO] Closest match found: HHH
+[2025-09-16 16:09:52] [INFO] Best symbol found: HHH
+[2025-09-16 16:09:53] [INFO] Closest match found: HHH
+[2025-09-16 16:09:53] [INFO] Best symbol found: HHH
+[2025-09-16 16:09:54] [INFO] Added new test
+[2025-09-16 16:09:58] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 16:10:01] [INFO] Exact match found: J
+[2025-09-16 16:10:01] [INFO] Best symbol found: J
+[2025-09-16 16:10:02] [INFO] Closest match found: XJH
+[2025-09-16 16:10:02] [INFO] Best symbol found: XJH
+[2025-09-16 16:10:02] [INFO] Closest match found: XJH
+[2025-09-16 16:10:02] [INFO] Best symbol found: XJH
+[2025-09-16 16:10:02] [INFO] Closest match found: JHHY
+[2025-09-16 16:10:02] [INFO] Best symbol found: JHHY
+[2025-09-16 16:10:04] [INFO] Added new test
+[2025-09-16 16:10:06] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 16:12:47] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 16:12:47] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 16:12:47] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 16:12:47] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 16:12:47] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 16:12:52] [INFO] Exact match found: J
+[2025-09-16 16:12:52] [INFO] Best symbol found: J
+[2025-09-16 16:12:53] [INFO] Closest match found: ZJK
+[2025-09-16 16:12:53] [INFO] Best symbol found: ZJK
+[2025-09-16 16:12:53] [INFO] Closest match found: JAKK
+[2025-09-16 16:12:53] [INFO] Best symbol found: JAKK
+[2025-09-16 16:12:53] [INFO] Closest match found: JAKK
+[2025-09-16 16:12:53] [INFO] Best symbol found: JAKK
+[2025-09-16 16:12:55] [INFO] Added new test
+[2025-09-16 16:12:59] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 16:13:05] [INFO] Added new test
+[2025-09-16 16:13:07] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 16:13:53] [INFO] Added new test
+[2025-09-16 16:13:55] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 17:57:16] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 17:57:16] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 17:57:16] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 17:57:16] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 17:57:16] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 17:57:19] [INFO] Exact match found: M
+[2025-09-16 17:57:19] [INFO] Best symbol found: M
+[2025-09-16 17:57:20] [INFO] Closest match found: YMM
+[2025-09-16 17:57:20] [INFO] Best symbol found: YMM
+[2025-09-16 17:57:20] [INFO] Closest match found: MYMG
+[2025-09-16 17:57:20] [INFO] Best symbol found: MYMG
+[2025-09-16 17:57:20] [INFO] Closest match found: MMM
+[2025-09-16 17:57:20] [INFO] Best symbol found: MMM
+[2025-09-16 17:57:22] [INFO] Added new test
+[2025-09-16 17:57:24] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 17:59:38] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 17:59:38] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 17:59:38] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 17:59:38] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 17:59:38] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 17:59:41] [INFO] Exact match found: M
+[2025-09-16 17:59:41] [INFO] Best symbol found: M
+[2025-09-16 17:59:42] [INFO] Exact match found: MD
+[2025-09-16 17:59:42] [INFO] Best symbol found: MD
+[2025-09-16 17:59:42] [INFO] Closest match found: EMDM
+[2025-09-16 17:59:42] [INFO] Best symbol found: EMDM
+[2025-09-16 17:59:42] [INFO] Closest match found: EMDM
+[2025-09-16 17:59:42] [INFO] Best symbol found: EMDM
+[2025-09-16 17:59:42] [INFO] Closest match found: MMD
+[2025-09-16 17:59:42] [INFO] Best symbol found: MMD
+[2025-09-16 17:59:44] [INFO] Added new test
+[2025-09-16 18:00:03] [INFO] Closest match found: MMD
+[2025-09-16 18:00:03] [INFO] Best symbol found: MMD
+[2025-09-16 18:00:03] [INFO] Closest match found: MMD
+[2025-09-16 18:00:03] [INFO] Best symbol found: MMD
+[2025-09-16 18:00:11] [INFO] Added new test
+[2025-09-16 18:00:14] [INFO] Closest match found: MMD
+[2025-09-16 18:00:14] [INFO] Best symbol found: MMD
+[2025-09-16 18:00:19] [INFO] Updated test at index 0
+[2025-09-16 18:00:23] [INFO] Closest match found: MMD
+[2025-09-16 18:00:23] [INFO] Best symbol found: MMD
+[2025-09-16 18:00:24] [INFO] Closest match found: MMD
+[2025-09-16 18:00:24] [INFO] Best symbol found: MMD
+[2025-09-16 18:03:36] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 18:03:36] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:03:36] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 18:03:36] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 18:03:36] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:03:43] [INFO] Exact match found: J
+[2025-09-16 18:03:43] [INFO] Best symbol found: J
+[2025-09-16 18:03:43] [INFO] Closest match found: XJH
+[2025-09-16 18:03:43] [INFO] Best symbol found: XJH
+[2025-09-16 18:03:43] [INFO] Closest match found: XJH
+[2025-09-16 18:03:43] [INFO] Best symbol found: XJH
+[2025-09-16 18:03:43] [INFO] Closest match found: JHHY
+[2025-09-16 18:03:43] [INFO] Best symbol found: JHHY
+[2025-09-16 18:03:43] [INFO] Closest match found: JHHY
+[2025-09-16 18:03:43] [INFO] Best symbol found: JHHY
+[2025-09-16 18:03:44] [INFO] Closest match found: HHH
+[2025-09-16 18:03:44] [INFO] Best symbol found: HHH
+[2025-09-16 18:03:50] [SUCCESS] ✅ Test 'jhjhjh' added to queue.
+[2025-09-16 18:03:50] [INFO] Added new test
+[2025-09-16 18:03:52] [INFO] Closest match found: JHHY
+[2025-09-16 18:03:52] [INFO] Best symbol found: JHHY
+[2025-09-16 18:03:52] [INFO] Closest match found: JHHY
+[2025-09-16 18:03:52] [INFO] Best symbol found: JHHY
+[2025-09-16 18:03:53] [INFO] Closest match found: XJH
+[2025-09-16 18:03:53] [INFO] Best symbol found: XJH
+[2025-09-16 18:03:53] [INFO] Closest match found: XJH
+[2025-09-16 18:03:53] [INFO] Best symbol found: XJH
+[2025-09-16 18:03:53] [INFO] Exact match found: J
+[2025-09-16 18:03:53] [INFO] Best symbol found: J
+[2025-09-16 18:03:54] [INFO] Exact match found: K
+[2025-09-16 18:03:54] [INFO] Best symbol found: K
+[2025-09-16 18:03:54] [INFO] Closest match found: SKK
+[2025-09-16 18:03:54] [INFO] Best symbol found: SKK
+[2025-09-16 18:03:55] [INFO] Closest match found: SKK
+[2025-09-16 18:03:55] [INFO] Best symbol found: SKK
+[2025-09-16 18:03:55] [INFO] Closest match found: DKKSEK
+[2025-09-16 18:03:55] [INFO] Best symbol found: DKKSEK
+[2025-09-16 18:03:55] [INFO] Closest match found: DKKSEK
+[2025-09-16 18:03:55] [INFO] Best symbol found: DKKSEK
+[2025-09-16 18:04:01] [SUCCESS] ✅ Test 'kkkkk' added to queue.
+[2025-09-16 18:04:01] [INFO] Added new test
+[2025-09-16 18:06:23] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 18:06:23] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:06:23] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 18:06:23] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 18:06:23] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:06:26] [INFO] Exact match found: M
+[2025-09-16 18:06:26] [INFO] Best symbol found: M
+[2025-09-16 18:06:26] [INFO] Closest match found: TMF
+[2025-09-16 18:06:26] [INFO] Best symbol found: TMF
+[2025-09-16 18:06:26] [INFO] Exact match found: MFM
+[2025-09-16 18:06:26] [INFO] Best symbol found: MFM
+[2025-09-16 18:06:27] [INFO] Closest match found: MFM
+[2025-09-16 18:06:27] [INFO] Best symbol found: MFM
+[2025-09-16 18:06:29] [INFO] Added new test
+[2025-09-16 18:06:30] [SUCCESS] ✅ Test 'mfmf' added to queue.
+[2025-09-16 18:10:45] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 18:10:45] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:10:45] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 18:10:45] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 18:10:45] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:10:47] [INFO] Exact match found: C
+[2025-09-16 18:10:47] [INFO] Best symbol found: C
+[2025-09-16 18:10:47] [INFO] Exact match found: CM
+[2025-09-16 18:10:47] [INFO] Best symbol found: CM
+[2025-09-16 18:10:48] [INFO] Exact match found: CMC
+[2025-09-16 18:10:48] [INFO] Best symbol found: CMC
+[2025-09-16 18:10:48] [INFO] Exact match found: CMCM
+[2025-09-16 18:10:48] [INFO] Best symbol found: CMCM
+[2025-09-16 18:10:48] [INFO] Closest match found: CMCM
+[2025-09-16 18:10:48] [INFO] Best symbol found: CMCM
+[2025-09-16 18:10:48] [INFO] Closest match found: CMCM
+[2025-09-16 18:10:48] [INFO] Best symbol found: CMCM
+[2025-09-16 18:10:50] [INFO] Added new test
+[2025-09-16 18:10:52] [SUCCESS] ✅ Test 'cmcmmc' added to queue.
+[2025-09-16 18:10:55] [INFO] Exact match found: K
+[2025-09-16 18:10:55] [INFO] Best symbol found: K
+[2025-09-16 18:10:55] [INFO] Exact match found: KF
+[2025-09-16 18:10:55] [INFO] Best symbol found: KF
+[2025-09-16 18:10:55] [INFO] Closest match found: KF
+[2025-09-16 18:10:55] [INFO] Best symbol found: KF
+[2025-09-16 18:10:55] [INFO] Closest match found: KFFB
+[2025-09-16 18:10:55] [INFO] Best symbol found: KFFB
+[2025-09-16 18:10:55] [INFO] Closest match found: KFFB
+[2025-09-16 18:10:55] [INFO] Best symbol found: KFFB
+[2025-09-16 18:10:56] [INFO] Closest match found: KFFB
+[2025-09-16 18:10:56] [INFO] Best symbol found: KFFB
+[2025-09-16 18:10:57] [INFO] Added new test
+[2025-09-16 18:10:59] [SUCCESS] ✅ Test 'kfkfkf' added to queue.
+[2025-09-16 18:11:02] [INFO] Exact match found: K
+[2025-09-16 18:11:02] [INFO] Best symbol found: K
+[2025-09-16 18:11:02] [INFO] Closest match found: SKK
+[2025-09-16 18:11:02] [INFO] Best symbol found: SKK
+[2025-09-16 18:11:02] [INFO] Closest match found: SKK
+[2025-09-16 18:11:02] [INFO] Best symbol found: SKK
+[2025-09-16 18:11:02] [INFO] Closest match found: DKKSEK
+[2025-09-16 18:11:02] [INFO] Best symbol found: DKKSEK
+[2025-09-16 18:11:05] [INFO] Added new test
+[2025-09-16 18:11:07] [SUCCESS] ✅ Test 'kkkk' added to queue.
+[2025-09-16 18:11:09] [INFO] Closest match found: KFFB
+[2025-09-16 18:11:09] [INFO] Best symbol found: KFFB
+[2025-09-16 18:11:14] [INFO] Updated test at index 1
+[2025-09-16 18:11:16] [SUCCESS] ✅ Test 'kfkfkf' added to queue.
+[2025-09-16 18:11:51] [INFO] Added new test
+[2025-09-16 18:11:52] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-16 18:11:58] [INFO] Added new test
+[2025-09-16 18:12:00] [SUCCESS] ✅ Test 'llllll' added to queue.
+[2025-09-16 18:12:07] [INFO] Updated test at index 0
+[2025-09-16 18:12:14] [INFO] Added new test
+[2025-09-16 18:12:42] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-16 18:12:56] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 18:13:03] [INFO] Updated test at index 0
+[2025-09-16 18:13:11] [INFO] Updated test at index 1
+[2025-09-16 18:13:18] [INFO] Added new test
+[2025-09-16 18:13:20] [SUCCESS] ✅ Test 'jhjh' added to queue.
+[2025-09-16 18:19:32] [SUCCESS] ✅ Test 'mdmmdd' added to queue.
+[2025-09-16 18:19:36] [INFO] Updated test at index 0
+[2025-09-16 18:19:36] [SUCCESS] ✅ ✅ Test 'mdmmdd' updated.
+[2025-09-16 18:19:42] [INFO] Updated test at index 0
+[2025-09-16 18:19:42] [SUCCESS] ✅ ✅ Test 'mdmmdd' updated.
+[2025-09-16 18:19:49] [INFO] Updated test at index 0
+[2025-09-16 18:19:49] [SUCCESS] ✅ ✅ Test 'mdmmdd' updated.
+[2025-09-16 18:19:50] [INFO] Updated test at index 0
+[2025-09-16 18:19:50] [SUCCESS] ✅ ✅ Test 'mdmmdd' updated.
+[2025-09-16 18:19:50] [INFO] Updated test at index 0
+[2025-09-16 18:19:50] [SUCCESS] ✅ ✅ Test 'mdmmdd' updated.
+[2025-09-16 18:19:50] [INFO] Updated test at index 0
+[2025-09-16 18:19:50] [SUCCESS] ✅ ✅ Test 'mdmmdd' updated.
+[2025-09-16 18:20:02] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 18:34:02] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 18:34:02] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:34:02] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 18:34:02] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 18:34:02] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 18:34:05] [INFO] Exact match found: V
+[2025-09-16 18:34:05] [INFO] Best symbol found: V
+[2025-09-16 18:34:06] [INFO] Closest match found: VTN
+[2025-09-16 18:34:06] [INFO] Best symbol found: VTN
+[2025-09-16 18:34:06] [INFO] Closest match found: NN
+[2025-09-16 18:34:06] [INFO] Best symbol found: NN
+[2025-09-16 18:34:06] [INFO] Closest match found: VONV
+[2025-09-16 18:34:06] [INFO] Best symbol found: VONV
+[2025-09-16 18:34:11] [SUCCESS] ✅ Test 'vnnv' added to queue.
+[2025-09-16 18:34:15] [INFO] Closest match found: NN
+[2025-09-16 18:34:15] [INFO] Best symbol found: NN
+[2025-09-16 18:34:15] [INFO] Closest match found: VTN
+[2025-09-16 18:34:15] [INFO] Best symbol found: VTN
+[2025-09-16 18:34:15] [INFO] Exact match found: V
+[2025-09-16 18:34:15] [INFO] Best symbol found: V
+[2025-09-16 18:34:17] [INFO] Closest match found: SN
+[2025-09-16 18:34:17] [INFO] Best symbol found: SN
+[2025-09-16 18:34:17] [INFO] Exact match found: NN
+[2025-09-16 18:34:17] [INFO] Best symbol found: NN
+[2025-09-16 18:34:17] [INFO] Exact match found: NNN
+[2025-09-16 18:34:17] [INFO] Best symbol found: NNN
+[2025-09-16 18:34:18] [INFO] Exact match found: NNNN
+[2025-09-16 18:34:18] [INFO] Best symbol found: NNNN
+[2025-09-16 18:34:18] [INFO] Closest match found: NNNN
+[2025-09-16 18:34:18] [INFO] Best symbol found: NNNN
+[2025-09-16 18:34:20] [SUCCESS] ✅ ✅ Test 'nnnne' updated.
+[2025-09-16 18:34:23] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 18:34:29] [SUCCESS] ✅ ✅ Test 'nnnne' updated.
+[2025-09-16 18:34:32] [SUCCESS] ✅ Test 'None' added to queue.
+[2025-09-16 18:38:47] [SUCCESS] ✅ Test '('added', 'dmdmd')' added to queue.
+[2025-09-16 18:40:35] [SUCCESS] ✅ Test 'ndnnd' added to queue.
+[2025-09-16 18:40:40] [SUCCESS] ✅ ✅ Test 'kskks' updated.
+[2025-09-16 18:40:40] [SUCCESS] ✅ Test 'kskks' updated in queue.
+[2025-09-16 18:40:50] [SUCCESS] ✅ ✅ Test 'kkkk' updated.
+[2025-09-16 18:40:50] [SUCCESS] ✅ Test 'kkkk' updated in queue.
+[2025-09-16 19:02:14] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 19:02:14] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:02:14] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 19:02:14] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 19:02:14] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:02:19] [INFO] Exact match found: J
+[2025-09-16 19:02:19] [INFO] Best symbol found: J
+[2025-09-16 19:02:19] [INFO] Exact match found: JG
+[2025-09-16 19:02:19] [INFO] Best symbol found: JG
+[2025-09-16 19:02:19] [INFO] Closest match found: JG
+[2025-09-16 19:02:19] [INFO] Best symbol found: JG
+[2025-09-16 19:02:20] [INFO] Closest match found: JG
+[2025-09-16 19:02:20] [INFO] Best symbol found: JG
+[2025-09-16 19:02:24] [SUCCESS] ✅ ✅ Test 'jgjg' added to queue.
+[2025-09-16 19:02:28] [INFO] Exact match found: K
+[2025-09-16 19:02:28] [INFO] Best symbol found: K
+[2025-09-16 19:02:28] [INFO] Closest match found: SKK
+[2025-09-16 19:02:28] [INFO] Best symbol found: SKK
+[2025-09-16 19:02:29] [INFO] Closest match found: SKK
+[2025-09-16 19:02:29] [INFO] Best symbol found: SKK
+[2025-09-16 19:02:29] [INFO] Closest match found: KD
+[2025-09-16 19:02:29] [INFO] Best symbol found: KD
+[2025-09-16 19:02:29] [INFO] Closest match found: KODK
+[2025-09-16 19:02:29] [INFO] Best symbol found: KODK
+[2025-09-16 19:02:29] [INFO] Closest match found: KPDD
+[2025-09-16 19:02:29] [INFO] Best symbol found: KPDD
+[2025-09-16 19:02:32] [INFO] Updated test at index 0
+[2025-09-16 19:02:32] [SUCCESS] ✅ ✅ Test 'kkkdkd' updated.
+[2025-09-16 19:03:10] [INFO] Closest match found: KODK
+[2025-09-16 19:03:10] [INFO] Best symbol found: KODK
+[2025-09-16 19:03:10] [INFO] Closest match found: KD
+[2025-09-16 19:03:10] [INFO] Best symbol found: KD
+[2025-09-16 19:03:10] [INFO] Closest match found: SKK
+[2025-09-16 19:03:10] [INFO] Best symbol found: SKK
+[2025-09-16 19:03:10] [INFO] Closest match found: SKK
+[2025-09-16 19:03:10] [INFO] Best symbol found: SKK
+[2025-09-16 19:03:11] [INFO] Exact match found: K
+[2025-09-16 19:03:11] [INFO] Best symbol found: K
+[2025-09-16 19:03:12] [INFO] Exact match found: K
+[2025-09-16 19:03:12] [INFO] Best symbol found: K
+[2025-09-16 19:03:12] [INFO] Exact match found: KF
+[2025-09-16 19:03:12] [INFO] Best symbol found: KF
+[2025-09-16 19:03:12] [INFO] Closest match found: KF
+[2025-09-16 19:03:12] [INFO] Best symbol found: KF
+[2025-09-16 19:03:12] [INFO] Closest match found: KFFB
+[2025-09-16 19:03:12] [INFO] Best symbol found: KFFB
+[2025-09-16 19:03:13] [INFO] Closest match found: KFFB
+[2025-09-16 19:03:13] [INFO] Best symbol found: KFFB
+[2025-09-16 19:03:13] [INFO] Closest match found: KFFB
+[2025-09-16 19:03:13] [INFO] Best symbol found: KFFB
+[2025-09-16 19:03:15] [INFO] Updated test at index 0
+[2025-09-16 19:03:15] [SUCCESS] ✅ ✅ Test 'kfkfkf' updated.
+[2025-09-16 19:03:16] [INFO] Updated test at index 0
+[2025-09-16 19:03:16] [SUCCESS] ✅ ✅ Test 'kfkfkf' updated.
+[2025-09-16 19:03:24] [INFO] Updated test at index 0
+[2025-09-16 19:03:24] [SUCCESS] ✅ ✅ Test 'kfkfkf' updated.
+[2025-09-16 19:03:25] [INFO] Updated test at index 0
+[2025-09-16 19:03:25] [SUCCESS] ✅ ✅ Test 'kfkfkf' updated.
+[2025-09-16 19:03:27] [INFO] Updated test at index 0
+[2025-09-16 19:03:27] [SUCCESS] ✅ ✅ Test 'kfkfkf' updated.
+[2025-09-16 19:24:36] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 19:24:36] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:24:36] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 19:24:37] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 19:24:37] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:24:40] [INFO] Exact match found: M
+[2025-09-16 19:24:40] [INFO] Best symbol found: M
+[2025-09-16 19:24:40] [INFO] Closest match found: TMF
+[2025-09-16 19:24:40] [INFO] Best symbol found: TMF
+[2025-09-16 19:24:40] [INFO] Exact match found: MFM
+[2025-09-16 19:24:40] [INFO] Best symbol found: MFM
+[2025-09-16 19:24:41] [INFO] Closest match found: MFM
+[2025-09-16 19:24:41] [INFO] Best symbol found: MFM
+[2025-09-16 19:24:41] [INFO] Closest match found: MMM
+[2025-09-16 19:24:41] [INFO] Best symbol found: MMM
+[2025-09-16 19:24:43] [SUCCESS] ✅ ✅ Test 'mfmfm' added to queue.
+[2025-09-16 19:24:51] [INFO] Exact match found: J
+[2025-09-16 19:24:51] [INFO] Best symbol found: J
+[2025-09-16 19:24:51] [INFO] Closest match found: RJF
+[2025-09-16 19:24:51] [INFO] Best symbol found: RJF
+[2025-09-16 19:24:52] [INFO] Closest match found: RJF
+[2025-09-16 19:24:52] [INFO] Best symbol found: RJF
+[2025-09-16 19:24:52] [INFO] Closest match found: FLJJ
+[2025-09-16 19:24:52] [INFO] Best symbol found: FLJJ
+[2025-09-16 19:24:52] [INFO] Closest match found: JJSF
+[2025-09-16 19:24:52] [INFO] Best symbol found: JJSF
+[2025-09-16 19:24:54] [SUCCESS] ✅ ✅ Test 'jfjjf' updated.
+[2025-09-16 19:29:02] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 19:29:02] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:29:02] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 19:29:02] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 19:29:02] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:29:29] [INFO] Closest match found: EMDM
+[2025-09-16 19:29:29] [INFO] Best symbol found: EMDM
+[2025-09-16 19:29:29] [INFO] Closest match found: EMDM
+[2025-09-16 19:29:29] [INFO] Best symbol found: EMDM
+[2025-09-16 19:29:29] [INFO] Exact match found: MD
+[2025-09-16 19:29:29] [INFO] Best symbol found: MD
+[2025-09-16 19:29:29] [INFO] Exact match found: M
+[2025-09-16 19:29:29] [INFO] Best symbol found: M
+[2025-09-16 19:29:30] [INFO] Exact match found: K
+[2025-09-16 19:29:30] [INFO] Best symbol found: K
+[2025-09-16 19:29:30] [INFO] Closest match found: SKK
+[2025-09-16 19:29:30] [INFO] Best symbol found: SKK
+[2025-09-16 19:29:30] [INFO] Closest match found: SKK
+[2025-09-16 19:29:30] [INFO] Best symbol found: SKK
+[2025-09-16 19:32:26] [SUCCESS] ✅ ✅ Test 'dmdmd' added to queue.
+[2025-09-16 19:32:35] [SUCCESS] ✅ ✅ Test 'dmdmd' updated at index 0.
+[2025-09-16 19:32:43] [SUCCESS] ✅ ✅ Test 'kskks' added to queue (name changed).
+[2025-09-16 19:33:12] [SUCCESS] ✅ ✅ Test 'kskks' updated at index 1.
+[2025-09-16 19:33:18] [SUCCESS] ✅ ✅ Test 'kskks' updated at index 1.
+[2025-09-16 19:41:33] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 19:41:33] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:41:33] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 19:41:33] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 19:41:33] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 19:41:36] [INFO] Exact match found: M
+[2025-09-16 19:41:36] [INFO] Best symbol found: M
+[2025-09-16 19:41:36] [INFO] Exact match found: MX
+[2025-09-16 19:41:36] [INFO] Best symbol found: MX
+[2025-09-16 19:41:36] [INFO] Closest match found: MX
+[2025-09-16 19:41:36] [INFO] Best symbol found: MX
+[2025-09-16 19:41:40] [SUCCESS] ✅ ✅ Test 'mxm' added to queue.
+[2025-09-16 19:41:43] [INFO] Exact match found: K
+[2025-09-16 19:41:43] [INFO] Best symbol found: K
+[2025-09-16 19:41:44] [INFO] Closest match found: SKK
+[2025-09-16 19:41:44] [INFO] Best symbol found: SKK
+[2025-09-16 19:41:44] [INFO] Closest match found: SKK
+[2025-09-16 19:41:44] [INFO] Best symbol found: SKK
+[2025-09-16 19:41:44] [INFO] Closest match found: DKKSEK
+[2025-09-16 19:41:44] [INFO] Best symbol found: DKKSEK
+[2025-09-16 19:41:44] [INFO] Closest match found: SKK
+[2025-09-16 19:41:44] [INFO] Best symbol found: SKK
+[2025-09-16 19:41:44] [INFO] Closest match found: SKK
+[2025-09-16 19:41:44] [INFO] Best symbol found: SKK
+[2025-09-16 19:41:45] [INFO] Closest match found: DKKSEK
+[2025-09-16 19:41:45] [INFO] Best symbol found: DKKSEK
+[2025-09-16 19:41:45] [INFO] Closest match found: DKKSEK
+[2025-09-16 19:41:45] [INFO] Best symbol found: DKKSEK
+[2025-09-16 19:41:47] [SUCCESS] ✅ ✅ Test 'kkskksks' added to queue (name changed).
+[2025-09-16 19:42:27] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-16 23:04:16] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-16 23:04:16] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 23:04:16] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-16 23:04:16] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-16 23:04:16] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-16 23:05:16] [SUCCESS] ✅ Test 't1_trend' added to queue.
+[2025-09-16 23:05:17] [SUCCESS] ✅ Test 't2_trend' added to queue.
+[2025-09-16 23:05:17] [SUCCESS] ✅ Test 't3_trend' added to queue.
+[2025-09-16 23:05:18] [SUCCESS] ✅ Test 't4_trend' added to queue.
+[2025-09-16 23:05:18] [SUCCESS] ✅ Test 't5_trend' added to queue.
+[2025-09-16 23:05:19] [SUCCESS] ✅ Test 't6_trend' added to queue.
+[2025-09-16 23:05:19] [SUCCESS] ✅ Test 't1_trend' added to queue.
+[2025-09-16 23:05:20] [SUCCESS] ✅ Test 't2_trend' added to queue.
+[2025-09-16 23:05:20] [SUCCESS] ✅ Test 't3_trend' added to queue.
+[2025-09-16 23:05:21] [SUCCESS] ✅ Test 't4_trend' added to queue.
+[2025-09-16 23:05:21] [SUCCESS] ✅ Test 't5_trend' added to queue.
+[2025-09-16 23:05:22] [SUCCESS] ✅ Test 't6_trend' added to queue.
+[2025-09-16 23:05:22] [SUCCESS] ✅ Test 't1_trend' added to queue.
+[2025-09-16 23:05:22] [SUCCESS] ✅ Test 't2_trend' added to queue.
+[2025-09-16 23:05:23] [SUCCESS] ✅ Test 't3_trend' added to queue.
+[2025-09-16 23:05:23] [SUCCESS] ✅ Test 't4_trend' added to queue.
+[2025-09-16 23:05:24] [SUCCESS] ✅ Test 't5_trend' added to queue.
+[2025-09-16 23:05:24] [SUCCESS] ✅ Test 't6_trend' added to queue.
+[2025-09-16 23:05:24] [SUCCESS] ✅ Test 't1_trend' added to queue.
+[2025-09-16 23:05:25] [SUCCESS] ✅ Test 't2_trend' added to queue.
+[2025-09-16 23:05:25] [SUCCESS] ✅ Test 't3_trend' added to queue.
+[2025-09-16 23:05:25] [SUCCESS] ✅ Test 't4_trend' added to queue.
+[2025-09-16 23:05:25] [SUCCESS] ✅ Test 't5_trend' added to queue.
+[2025-09-16 23:05:25] [SUCCESS] ✅ Test 't6_trend' added to queue.
+[2025-09-16 23:39:22] [INFO] Closest match found: TRND
+[2025-09-16 23:39:22] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:23] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:27] [INFO] Closest match found: TRND
+[2025-09-16 23:39:27] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:28] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:30] [INFO] Closest match found: TRND
+[2025-09-16 23:39:30] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:32] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:33] [INFO] Closest match found: TRND
+[2025-09-16 23:39:33] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:34] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:37] [INFO] Closest match found: TRND
+[2025-09-16 23:39:37] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:39] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:41] [INFO] Closest match found: TRND
+[2025-09-16 23:39:41] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:43] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-16 23:39:44] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-16 23:39:50] [INFO] Closest match found: TRND
+[2025-09-16 23:39:50] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:51] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:52] [INFO] Closest match found: TRND
+[2025-09-16 23:39:52] [INFO] Best symbol found: TRND
+[2025-09-16 23:39:53] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:39:58] [INFO] Closest match found: TRND
+[2025-09-16 23:39:58] [INFO] Best symbol found: TRND
+[2025-09-16 23:40:04] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-16 23:40:11] [INFO] Closest match found: TRND
+[2025-09-16 23:40:11] [INFO] Best symbol found: TRND
+[2025-09-16 23:40:13] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-16 23:40:14] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-16 23:40:15] [SUCCESS] ✅ Moved item at index 3 down
+[2025-09-16 23:40:16] [SUCCESS] ✅ Moved item at index 4 down
+[2025-09-16 23:40:17] [SUCCESS] ✅ Moved item at index 5 down
+[2025-09-16 23:40:17] [SUCCESS] ✅ Moved item at index 6 down
+[2025-09-16 23:40:18] [SUCCESS] ✅ Moved item at index 7 down
+[2025-09-16 23:40:19] [SUCCESS] ✅ Moved item at index 6 up
+[2025-09-16 23:40:19] [SUCCESS] ✅ Moved item at index 5 up
+[2025-09-16 23:40:19] [SUCCESS] ✅ Moved item at index 4 up
+[2025-09-16 23:40:20] [SUCCESS] ✅ Moved item at index 3 up
+[2025-09-16 23:40:20] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-16 23:40:29] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-16 23:40:30] [SUCCESS] ✅ Moved item at index 0 up
+[2025-09-16 23:40:31] [SUCCESS] ✅ Moved item at index -1 up
+[2025-09-16 23:40:46] [SUCCESS] ✅ ✅ Test 't4_trend' updated at index 0.
+[2025-09-16 23:40:49] [INFO] Closest match found: TRND
+[2025-09-16 23:40:49] [INFO] Best symbol found: TRND
+[2025-09-16 23:40:50] [INFO] Closest match found: TRND
+[2025-09-16 23:40:50] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:10] [INFO] Closest match found: TRND
+[2025-09-16 23:41:10] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:17] [SUCCESS] ✅ ✅ Test 't2_trend' updated at index 4.
+[2025-09-16 23:41:25] [INFO] Closest match found: TRND
+[2025-09-16 23:41:25] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:29] [INFO] Closest match found: TRND
+[2025-09-16 23:41:29] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:41] [INFO] Closest match found: TRND
+[2025-09-16 23:41:41] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:44] [INFO] Closest match found: TRND
+[2025-09-16 23:41:44] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:50] [INFO] Closest match found: TRND
+[2025-09-16 23:41:50] [INFO] Best symbol found: TRND
+[2025-09-16 23:41:59] [INFO] Closest match found: TRND
+[2025-09-16 23:41:59] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:09] [SUCCESS] ✅ ✅ Test 't5_trend' updated at index 7.
+[2025-09-16 23:42:11] [INFO] Closest match found: TRND
+[2025-09-16 23:42:11] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:13] [INFO] Closest match found: TRND
+[2025-09-16 23:42:13] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:25] [SUCCESS] ✅ ✅ Test 't5_trend' updated at index 7.
+[2025-09-16 23:42:27] [INFO] Closest match found: TRND
+[2025-09-16 23:42:27] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:28] [INFO] Closest match found: TRND
+[2025-09-16 23:42:28] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:31] [INFO] Closest match found: TRND
+[2025-09-16 23:42:31] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:36] [INFO] Closest match found: TRND
+[2025-09-16 23:42:36] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:52] [INFO] Closest match found: TRND
+[2025-09-16 23:42:52] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:54] [INFO] Closest match found: TRND
+[2025-09-16 23:42:54] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:56] [INFO] Closest match found: TRND
+[2025-09-16 23:42:56] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:57] [INFO] Closest match found: TRND
+[2025-09-16 23:42:57] [INFO] Best symbol found: TRND
+[2025-09-16 23:42:59] [INFO] Closest match found: TRND
+[2025-09-16 23:42:59] [INFO] Best symbol found: TRND
+[2025-09-16 23:44:06] [INFO] Closest match found: TRND
+[2025-09-16 23:44:06] [INFO] Best symbol found: TRND
+[2025-09-16 23:44:07] [INFO] Closest match found: TRND
+[2025-09-16 23:44:07] [INFO] Best symbol found: TRND
+[2025-09-16 23:44:08] [INFO] Closest match found: TRND
+[2025-09-16 23:44:08] [INFO] Best symbol found: TRND
+[2025-09-16 23:44:10] [INFO] Closest match found: TRND
+[2025-09-16 23:44:10] [INFO] Best symbol found: TRND
+[2025-09-16 23:45:55] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-17 00:12:29] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 00:12:29] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:12:29] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 00:12:29] [ERROR] Error while connecting to MT5: name 'psutil' is not defined
+[2025-09-17 00:12:29] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:26:17] [SUCCESS] ✅ ✅ Test 'mmgmg' added to queue.
+[2025-09-17 00:26:24] [SUCCESS] ✅ ✅ Test 'jhjhj' added to queue (name changed).
+[2025-09-17 00:26:37] [SUCCESS] ✅ ✅ Test 'mmgmg' updated at index 0.
+[2025-09-17 00:27:39] [SUCCESS] ✅ ✅ Test 'jhjhj' updated at index 1.
+[2025-09-17 00:28:09] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 00:28:09] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:28:09] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 00:28:10] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:28:47] [SUCCESS] ✅ ✅ Test 'mmgmg' updated at index 0.
+[2025-09-17 00:28:49] [INFO] Closest match found: JHHY
+[2025-09-17 00:28:49] [INFO] Best symbol found: JHHY
+[2025-09-17 00:35:47] [INFO] Exact match found: J
+[2025-09-17 00:35:47] [INFO] Best symbol found: J
+[2025-09-17 00:35:47] [INFO] Closest match found: XJH
+[2025-09-17 00:35:47] [INFO] Best symbol found: XJH
+[2025-09-17 00:35:47] [INFO] Closest match found: XJH
+[2025-09-17 00:35:47] [INFO] Best symbol found: XJH
+[2025-09-17 00:35:48] [INFO] Closest match found: JHHY
+[2025-09-17 00:35:48] [INFO] Best symbol found: JHHY
+[2025-09-17 00:35:53] [INFO] Closest match found: XJH
+[2025-09-17 00:35:53] [INFO] Best symbol found: XJH
+[2025-09-17 00:35:53] [INFO] Closest match found: XJH
+[2025-09-17 00:35:53] [INFO] Best symbol found: XJH
+[2025-09-17 00:35:54] [INFO] Exact match found: J
+[2025-09-17 00:35:54] [INFO] Best symbol found: J
+[2025-09-17 00:35:54] [INFO] Exact match found: H
+[2025-09-17 00:35:54] [INFO] Best symbol found: H
+[2025-09-17 00:35:55] [INFO] Closest match found: HCA
+[2025-09-17 00:35:55] [INFO] Best symbol found: HCA
+[2025-09-17 00:35:55] [INFO] Exact match found: HAS
+[2025-09-17 00:35:55] [INFO] Best symbol found: HAS
+[2025-09-17 00:35:55] [INFO] Closest match found: HAS
+[2025-09-17 00:35:55] [INFO] Best symbol found: HAS
+[2025-09-17 00:35:55] [INFO] Closest match found: HAS
+[2025-09-17 00:35:55] [INFO] Best symbol found: HAS
+[2025-09-17 00:35:55] [INFO] Closest match found: ASAN
+[2025-09-17 00:35:55] [INFO] Best symbol found: ASAN
+[2025-09-17 00:36:32] [INFO] Closest match found: JHHY
+[2025-09-17 00:36:32] [INFO] Best symbol found: JHHY
+[2025-09-17 00:38:55] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 00:39:16] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:39:16] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 00:39:17] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:39:21] [INFO] Exact match found: J
+[2025-09-17 00:39:21] [INFO] Best symbol found: J
+[2025-09-17 00:39:22] [INFO] Closest match found: XJH
+[2025-09-17 00:39:22] [INFO] Best symbol found: XJH
+[2025-09-17 00:39:22] [INFO] Exact match found: JHS
+[2025-09-17 00:39:22] [INFO] Best symbol found: JHS
+[2025-09-17 00:39:22] [INFO] Closest match found: JHS
+[2025-09-17 00:39:22] [INFO] Best symbol found: JHS
+[2025-09-17 00:39:26] [SUCCESS] ✅ ✅ Test 'jhsj' added to queue.
+[2025-09-17 00:39:29] [INFO] Exact match found: K
+[2025-09-17 00:39:29] [INFO] Best symbol found: K
+[2025-09-17 00:39:29] [INFO] Closest match found: KSS
+[2025-09-17 00:39:29] [INFO] Best symbol found: KSS
+[2025-09-17 00:39:29] [INFO] Closest match found: SZK
+[2025-09-17 00:39:29] [INFO] Best symbol found: SZK
+[2025-09-17 00:39:29] [INFO] Closest match found: KSS
+[2025-09-17 00:39:29] [INFO] Best symbol found: KSS
+[2025-09-17 00:39:29] [INFO] Closest match found: SKK
+[2025-09-17 00:39:29] [INFO] Best symbol found: SKK
+[2025-09-17 00:39:30] [INFO] Closest match found: SKK
+[2025-09-17 00:39:30] [INFO] Best symbol found: SKK
+[2025-09-17 00:39:33] [SUCCESS] ✅ ✅ Test 'ksksks' added to queue (name changed).
+[2025-09-17 00:39:35] [INFO] Closest match found: JHS
+[2025-09-17 00:39:35] [INFO] Best symbol found: JHS
+[2025-09-17 00:40:59] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 00:41:05] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:41:05] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 00:41:06] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:41:08] [INFO] Exact match found: M
+[2025-09-17 00:41:08] [INFO] Best symbol found: M
+[2025-09-17 00:41:09] [INFO] Closest match found: YMM
+[2025-09-17 00:41:09] [INFO] Best symbol found: YMM
+[2025-09-17 00:41:09] [INFO] Exact match found: MMD
+[2025-09-17 00:41:09] [INFO] Best symbol found: MMD
+[2025-09-17 00:41:09] [INFO] Closest match found: MMM
+[2025-09-17 00:41:09] [INFO] Best symbol found: MMM
+[2025-09-17 00:41:09] [INFO] Closest match found: MMM
+[2025-09-17 00:41:09] [INFO] Best symbol found: MMM
+[2025-09-17 00:41:13] [SUCCESS] ✅ ✅ Test 'mmdmd' added to queue.
+[2025-09-17 00:41:15] [INFO] Closest match found: MMM
+[2025-09-17 00:41:15] [INFO] Best symbol found: MMM
+[2025-09-17 00:41:15] [INFO] Exact match found: MMD
+[2025-09-17 00:41:16] [INFO] Best symbol found: MMD
+[2025-09-17 00:41:16] [INFO] Closest match found: YMM
+[2025-09-17 00:41:16] [INFO] Best symbol found: YMM
+[2025-09-17 00:41:16] [INFO] Exact match found: M
+[2025-09-17 00:41:16] [INFO] Best symbol found: M
+[2025-09-17 00:41:16] [INFO] Exact match found: K
+[2025-09-17 00:41:16] [INFO] Best symbol found: K
+[2025-09-17 00:41:17] [INFO] Closest match found: SKK
+[2025-09-17 00:41:17] [INFO] Best symbol found: SKK
+[2025-09-17 00:41:17] [INFO] Closest match found: SKK
+[2025-09-17 00:41:17] [INFO] Best symbol found: SKK
+[2025-09-17 00:41:17] [INFO] Closest match found: DKKSEK
+[2025-09-17 00:41:17] [INFO] Best symbol found: DKKSEK
+[2025-09-17 00:41:19] [SUCCESS] ✅ ✅ Test 'kkkk' added to queue (name changed).
+[2025-09-17 00:41:21] [INFO] Closest match found: MMM
+[2025-09-17 00:41:21] [INFO] Best symbol found: MMM
+[2025-09-17 00:41:27] [INFO] Closest match found: DKKSEK
+[2025-09-17 00:41:27] [INFO] Best symbol found: DKKSEK
+[2025-09-17 00:41:30] [INFO] Closest match found: MMM
+[2025-09-17 00:41:30] [INFO] Best symbol found: MMM
+[2025-09-17 00:41:37] [INFO] Closest match found: DKKSEK
+[2025-09-17 00:41:37] [INFO] Best symbol found: DKKSEK
+[2025-09-17 00:41:39] [INFO] Closest match found: MMM
+[2025-09-17 00:41:39] [INFO] Best symbol found: MMM
+[2025-09-17 00:44:00] [INFO] Closest match found: DKKSEK
+[2025-09-17 00:44:00] [INFO] Best symbol found: DKKSEK
+[2025-09-17 00:48:45] [SUCCESS] ✅ ✅ Test 'mfmmf' added to queue.
+[2025-09-17 00:48:47] [ERROR] 'AutoBatchUI' object has no attribute 'delay_mode_combo'
+[2025-09-17 00:51:30] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 00:51:36] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:51:36] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 00:51:37] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:53:53] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 00:53:59] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:53:59] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 00:53:59] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 00:54:07] [INFO] Exact match found: H
+[2025-09-17 00:54:07] [INFO] Best symbol found: H
+[2025-09-17 00:54:08] [INFO] Exact match found: HF
+[2025-09-17 00:54:08] [INFO] Best symbol found: HF
+[2025-09-17 00:54:08] [INFO] Closest match found: HF
+[2025-09-17 00:54:08] [INFO] Best symbol found: HF
+[2025-09-17 00:54:08] [INFO] Closest match found: CHFHUF
+[2025-09-17 00:54:08] [INFO] Best symbol found: CHFHUF
+[2025-09-17 00:54:08] [INFO] Closest match found: HHH
+[2025-09-17 00:54:08] [INFO] Best symbol found: HHH
+[2025-09-17 00:54:36] [SUCCESS] ✅ ✅ Test 'hfhfh' added to queue.
+[2025-09-17 00:54:39] [INFO] Exact match found: A
+[2025-09-17 00:54:39] [INFO] Best symbol found: A
+[2025-09-17 00:54:39] [INFO] Exact match found: AA
+[2025-09-17 00:54:39] [INFO] Best symbol found: AA
+[2025-09-17 00:54:39] [INFO] Exact match found: AAA
+[2025-09-17 00:54:39] [INFO] Best symbol found: AAA
+[2025-09-17 00:54:39] [INFO] Closest match found: AAA
+[2025-09-17 00:54:39] [INFO] Best symbol found: AAA
+[2025-09-17 00:54:41] [SUCCESS] ✅ ✅ Test 'aaaa' added to queue (name changed).
+[2025-09-17 00:54:45] [INFO] Exact match found: U
+[2025-09-17 00:54:45] [INFO] Best symbol found: U
+[2025-09-17 00:54:45] [INFO] Closest match found: UNH
+[2025-09-17 00:54:45] [INFO] Best symbol found: UNH
+[2025-09-17 00:54:45] [INFO] Closest match found: HUHU
+[2025-09-17 00:54:45] [INFO] Best symbol found: HUHU
+[2025-09-17 00:54:45] [INFO] Closest match found: HUHU
+[2025-09-17 00:54:45] [INFO] Best symbol found: HUHU
+[2025-09-17 00:54:52] [SUCCESS] ✅ ✅ Test 'uhuh' added to queue (name changed).
+[2025-09-17 00:54:53] [INFO] Closest match found: HHH
+[2025-09-17 00:54:53] [INFO] Best symbol found: HHH
+[2025-09-17 00:55:02] [SUCCESS] ✅ ✅ Test 'hfhfh' updated at index 0.
+[2025-09-17 00:55:04] [INFO] Closest match found: AAA
+[2025-09-17 00:55:04] [INFO] Best symbol found: AAA
+[2025-09-17 00:55:06] [INFO] Closest match found: HUHU
+[2025-09-17 00:55:06] [INFO] Best symbol found: HUHU
+[2025-09-17 00:55:09] [INFO] Closest match found: HHH
+[2025-09-17 00:55:09] [INFO] Best symbol found: HHH
+[2025-09-17 00:55:15] [SUCCESS] ✅ ✅ Test 'hfhfh' updated at index 0.
+[2025-09-17 00:55:17] [INFO] Closest match found: AAA
+[2025-09-17 00:55:17] [INFO] Best symbol found: AAA
+[2025-09-17 00:55:19] [INFO] Closest match found: HUHU
+[2025-09-17 00:55:19] [INFO] Best symbol found: HUHU
+[2025-09-17 01:00:39] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:00:45] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 01:00:45] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-17 01:00:46] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-17 01:00:50] [INFO] Exact match found: J
+[2025-09-17 01:00:50] [INFO] Best symbol found: J
+[2025-09-17 01:00:51] [INFO] Exact match found: JG
+[2025-09-17 01:00:51] [INFO] Best symbol found: JG
+[2025-09-17 01:00:51] [INFO] Exact match found: JGH
+[2025-09-17 01:00:51] [INFO] Best symbol found: JGH
+[2025-09-17 01:00:51] [INFO] Closest match found: JGH
+[2025-09-17 01:00:51] [INFO] Best symbol found: JGH
+[2025-09-17 01:00:51] [INFO] Closest match found: JHG
+[2025-09-17 01:00:51] [INFO] Best symbol found: JHG
+[2025-09-17 01:00:54] [SUCCESS] ✅ ✅ Test 'jghjg' added to queue.
+[2025-09-17 01:01:30] [SUCCESS] ✅ Test 't1_trend' added to queue.
+[2025-09-17 01:01:30] [SUCCESS] ✅ Test 't2_trend' added to queue.
+[2025-09-17 01:01:30] [SUCCESS] ✅ Test 't1_trend' added to queue.
+[2025-09-17 01:01:30] [SUCCESS] ✅ Test 't2_trend' added to queue.
+[2025-09-17 01:26:38] [SUCCESS] ✅ ✅ Test 'dmmd' added to queue.
+[2025-09-17 01:26:47] [SUCCESS] ✅ ✅ Test 'kdkkd' added to queue (name changed).
+[2025-09-17 01:26:55] [SUCCESS] ✅ ✅ Test 'dmmd' updated at index 0.
+[2025-09-17 01:38:01] [SUCCESS] ✅ ✅ Test 'mdmmd' added to queue.
+[2025-09-17 01:38:29] [SUCCESS] ✅ ✅ Test 'mdmd' added to queue (name changed).
+[2025-09-17 01:38:46] [SUCCESS] ✅ ✅ Test 'mmmccc' added to queue (name changed).
+[2025-09-17 01:39:44] [SUCCESS] ✅ ✅ Test 'jjhh' added to queue (name changed).
+[2025-09-17 01:40:38] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:40:42] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-17 01:41:20] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:41:20] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-17 01:41:31] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:41:31] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-17 01:41:42] [SUCCESS] ✅ ✅ Test 'mdmmdm' added to queue.
+[2025-09-17 01:44:58] [SUCCESS] ✅ ✅ Test 'mcmmc' added to queue.
+[2025-09-17 01:45:06] [SUCCESS] ✅ ✅ Test 'kkkkkkk' added to queue
+[2025-09-17 01:45:12] [SUCCESS] ✅ ✅ Test 'kkkkkkk' updated at index 1.
+[2025-09-17 01:45:19] [SUCCESS] ✅ Duplicated item at index 1
+[2025-09-17 01:45:25] [SUCCESS] ✅ Duplicated item at index 1
+[2025-09-17 01:45:33] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-17 01:45:40] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-17 01:45:44] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-17 01:45:49] [SUCCESS] ✅ Deleted item at index 0
+
