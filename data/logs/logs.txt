@@ -2033,6 +2033,7 @@
 [2025-09-14 05:51:36] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
 [2025-09-14 05:51:42] [WARNING] Test file name is not set
 [2025-09-14 05:52:04] [SUCCESS] ✅ Test 'EURUSD_trend' added to queue.
+
 [2025-09-16 15:49:33] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
 [2025-09-16 15:49:33] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
 [2025-09-16 15:49:33] [SUCCESS] ✅ Deposit info retrieved successfully
@@ -2853,3 +2854,4 @@
 [2025-09-17 01:45:40] [SUCCESS] ✅ Deleted item at index 1
 [2025-09-17 01:45:44] [SUCCESS] ✅ Deleted item at index 1
 [2025-09-17 01:45:49] [SUCCESS] ✅ Deleted item at index 0
+

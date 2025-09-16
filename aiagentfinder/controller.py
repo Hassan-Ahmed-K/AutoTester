@@ -430,6 +430,7 @@ class AutoBatchController:
 
         return settings
     
+
     # def add_test_to_queue(self):
     #     settings = self.test_settings()
     #     if not settings:
@@ -468,12 +469,14 @@ class AutoBatchController:
     #             self.ui.queue_list.setCurrentRow(new_index)
     #             self.current_index = new_index
     #             Logger.success(f"✅ Test '{settings['test_name']}' added to queue.")
+
     def add_test_to_queue(self):
         settings = self.test_settings()
         if not settings:
             return
 
         def task():
+
             # This runs in background thread
             if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
                 old = self.queue.tests[self.current_index]
@@ -528,12 +531,6 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task)
-
-        
-
-            
-                
-
 
     def get_best_symbol(self,user_input: str) -> str :
         symbols = self.mt5.symbol_list
@@ -866,6 +863,7 @@ class AutoBatchController:
                 symbols.append(test["symbol"])
         print("symbols = ", symbols)
 
+
         # if not symbols:
         #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
            
@@ -1036,6 +1034,7 @@ class AutoBatchController:
             for _, row in uncorrelated_pairs.iterrows():
                 # uncorrelated_pair = f"{row['pair1']}{row['pair2']}"
                 uncorrelated_pair = f"{row['pair1']}"
+
                 for strategy in results["strategies"]:
                     settings = {
                         "test_name": f"{strategy}_trend",
@@ -1057,6 +1056,7 @@ class AutoBatchController:
                         "criterion": ui_values["criterion"],
                     }
                     settings_list.append(settings)
+
 
             return {
                 "pairs": uncorrelated_pairs[["pair1", "pair2", "day"]].to_dict("records"),
@@ -1092,6 +1092,7 @@ class AutoBatchController:
         self.runner.run(task, symbols, results, ui_values)
 
 
+
     def get_fx_symbols(self):
 
     # --- Majors ---
@@ -1122,6 +1123,7 @@ class AutoBatchController:
 
         # fallback: if intersection is empty, just return the full list
         return fx_symbols if fx_symbols else ALL_FX_PAIRS
+
 
     def get_symbols_for_option(self, option):
         if option == "FX Only":
