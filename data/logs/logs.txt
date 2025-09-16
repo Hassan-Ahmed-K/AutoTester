@@ -2833,3 +2833,23 @@
 [2025-09-17 01:26:38] [SUCCESS] ✅ ✅ Test 'dmmd' added to queue.
 [2025-09-17 01:26:47] [SUCCESS] ✅ ✅ Test 'kdkkd' added to queue (name changed).
 [2025-09-17 01:26:55] [SUCCESS] ✅ ✅ Test 'dmmd' updated at index 0.
+[2025-09-17 01:38:01] [SUCCESS] ✅ ✅ Test 'mdmmd' added to queue.
+[2025-09-17 01:38:29] [SUCCESS] ✅ ✅ Test 'mdmd' added to queue (name changed).
+[2025-09-17 01:38:46] [SUCCESS] ✅ ✅ Test 'mmmccc' added to queue (name changed).
+[2025-09-17 01:39:44] [SUCCESS] ✅ ✅ Test 'jjhh' added to queue (name changed).
+[2025-09-17 01:40:38] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:40:42] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-17 01:41:20] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:41:20] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-17 01:41:31] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 01:41:31] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-17 01:41:42] [SUCCESS] ✅ ✅ Test 'mdmmdm' added to queue.
+[2025-09-17 01:44:58] [SUCCESS] ✅ ✅ Test 'mcmmc' added to queue.
+[2025-09-17 01:45:06] [SUCCESS] ✅ ✅ Test 'kkkkkkk' added to queue
+[2025-09-17 01:45:12] [SUCCESS] ✅ ✅ Test 'kkkkkkk' updated at index 1.
+[2025-09-17 01:45:19] [SUCCESS] ✅ Duplicated item at index 1
+[2025-09-17 01:45:25] [SUCCESS] ✅ Duplicated item at index 1
+[2025-09-17 01:45:33] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-17 01:45:40] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-17 01:45:44] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-17 01:45:49] [SUCCESS] ✅ Deleted item at index 0

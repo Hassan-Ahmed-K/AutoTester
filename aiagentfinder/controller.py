@@ -483,6 +483,7 @@ class AutoBatchController:
                 if new_name == old_name:
                     self.queue.tests[self.current_index] = settings
                     return ("updated", new_name, self.current_index)
+            
                 else:
                     self.queue.tests.append(settings)
                     new_index = len(self.queue.tests) - 1
@@ -508,12 +509,14 @@ class AutoBatchController:
                 self.queue.refresh_queue()
                 self.ui.queue_list.setCurrentRow(index)
                 self.current_index = index
-                Logger.success(f"✅ Test '{name}' added to queue (name changed).")
+                QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue")
+                Logger.success(f"✅ Test '{name}' added to queue")
 
             elif status == "added":
                 self.queue.refresh_queue()
                 self.ui.queue_list.setCurrentRow(index)
                 self.current_index = index
+                QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue.")
                 Logger.success(f"✅ Test '{name}' added to queue.")
 
         def on_error(err):
