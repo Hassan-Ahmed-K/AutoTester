@@ -2855,3 +2855,637 @@
 [2025-09-17 01:45:44] [SUCCESS] ✅ Deleted item at index 1
 [2025-09-17 01:45:49] [SUCCESS] ✅ Deleted item at index 0
 
+[2025-09-17 23:55:27] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-17 23:56:34] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-18 00:22:41] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 00:22:59] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:22:59] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 00:23:02] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:31:32] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 00:31:44] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:31:44] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 00:31:46] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:48:06] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 00:48:18] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:48:18] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 00:48:20] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:48:26] [INFO] Exact match found: T
+[2025-09-18 00:48:26] [INFO] Best symbol found: T
+[2025-09-18 00:48:27] [INFO] Exact match found: TE
+[2025-09-18 00:48:27] [INFO] Best symbol found: TE
+[2025-09-18 00:48:27] [INFO] Closest match found: VTES
+[2025-09-18 00:48:27] [INFO] Best symbol found: VTES
+[2025-09-18 00:48:28] [INFO] Closest match found: WEST
+[2025-09-18 00:48:28] [INFO] Best symbol found: WEST
+[2025-09-18 00:48:28] [INFO] Closest match found: TTI
+[2025-09-18 00:48:28] [INFO] Best symbol found: TTI
+[2025-09-18 00:48:28] [INFO] Closest match found: TTI
+[2025-09-18 00:48:28] [INFO] Best symbol found: TTI
+[2025-09-18 00:48:28] [INFO] Closest match found: STNG
+[2025-09-18 00:48:28] [INFO] Best symbol found: STNG
+[2025-09-18 00:48:34] [SUCCESS] ✅ ✅ Test 'testing' added to queue.
+[2025-09-18 00:48:41] [SUCCESS] ✅ ✅ Test 'testing' updated at index 0.
+[2025-09-18 00:48:48] [INFO] Closest match found: STNG
+[2025-09-18 00:48:48] [INFO] Best symbol found: STNG
+[2025-09-18 00:48:49] [INFO] Closest match found: TTGT
+[2025-09-18 00:48:49] [INFO] Best symbol found: TTGT
+[2025-09-18 00:48:49] [INFO] Closest match found: TINT
+[2025-09-18 00:48:49] [INFO] Best symbol found: TINT
+[2025-09-18 00:48:49] [INFO] Closest match found: TINT
+[2025-09-18 00:48:49] [INFO] Best symbol found: TINT
+[2025-09-18 00:48:54] [SUCCESS] ✅ ✅ Test 'testing_ttt' added to queue
+[2025-09-18 00:48:57] [INFO] Closest match found: STNG
+[2025-09-18 00:48:57] [INFO] Best symbol found: STNG
+[2025-09-18 00:48:58] [INFO] Closest match found: TINT
+[2025-09-18 00:48:58] [INFO] Best symbol found: TINT
+[2025-09-18 00:49:03] [SUCCESS] ✅ ✅ Test 'testing_ttt' updated at index 1.
+[2025-09-18 00:49:06] [INFO] Closest match found: STNG
+[2025-09-18 00:49:06] [INFO] Best symbol found: STNG
+[2025-09-18 00:49:07] [INFO] Closest match found: TINT
+[2025-09-18 00:49:07] [INFO] Best symbol found: TINT
+[2025-09-18 00:49:09] [INFO] Closest match found: STNG
+[2025-09-18 00:49:09] [INFO] Best symbol found: STNG
+[2025-09-18 00:49:10] [INFO] Closest match found: TINT
+[2025-09-18 00:49:10] [INFO] Best symbol found: TINT
+[2025-09-18 00:49:12] [INFO] Closest match found: STNG
+[2025-09-18 00:49:12] [INFO] Best symbol found: STNG
+[2025-09-18 00:49:12] [INFO] Closest match found: TINT
+[2025-09-18 00:49:12] [INFO] Best symbol found: TINT
+[2025-09-18 00:49:22] [INFO] Closest match found: STNG
+[2025-09-18 00:49:22] [INFO] Best symbol found: STNG
+[2025-09-18 00:49:23] [INFO] Closest match found: TINT
+[2025-09-18 00:49:23] [INFO] Best symbol found: TINT
+[2025-09-18 00:49:26] [INFO] Closest match found: STNG
+[2025-09-18 00:49:26] [INFO] Best symbol found: STNG
+[2025-09-18 00:49:27] [INFO] Closest match found: TINT
+[2025-09-18 00:49:27] [INFO] Best symbol found: TINT
+[2025-09-18 00:55:08] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 00:55:19] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:55:19] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 00:55:21] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 00:59:55] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 01:00:06] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:00:06] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 01:00:08] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:08:25] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 01:08:38] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:08:38] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 01:08:39] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:15:07] [SUCCESS] ✅ Test 'Strategy1_trend' added to queue.
+[2025-09-18 01:15:07] [SUCCESS] ✅ Test 'Strategy2_trend' added to queue.
+[2025-09-18 01:15:07] [SUCCESS] ✅ Test 'Strategy1_trend' added to queue.
+[2025-09-18 01:15:07] [SUCCESS] ✅ Test 'Strategy2_trend' added to queue.
+[2025-09-18 01:17:41] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 01:17:54] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:17:54] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 01:17:56] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:19:43] [ERROR] Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1103, in task
+    "test_name": f"{results["symbol"]}_{strategy}_trend",
+                    ~~~~~~~^^^^^^^^^^
+KeyError: 'symbol'
+
+[2025-09-18 01:20:09] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 01:20:21] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:20:21] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 01:20:24] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'EURSEK_Strategy1_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'EURSEK_Strategy2_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'EURSEK_Strategy3_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'ZARJPY_Strategy1_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'ZARJPY_Strategy2_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'ZARJPY_Strategy3_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'XAGEUR_Strategy1_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'XAGEUR_Strategy2_trend' added to queue.
+[2025-09-18 01:21:09] [SUCCESS] ✅ Test 'XAGEUR_Strategy3_trend' added to queue.
+[2025-09-18 01:49:48] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 01:50:50] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:50:50] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 01:50:51] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:51:01] [INFO] Exact match found: R
+[2025-09-18 01:51:01] [INFO] Best symbol found: R
+[2025-09-18 01:51:02] [INFO] Closest match found: RWX
+[2025-09-18 01:51:02] [INFO] Best symbol found: RWX
+[2025-09-18 01:51:03] [INFO] Exact match found: R
+[2025-09-18 01:51:03] [INFO] Best symbol found: R
+[2025-09-18 01:51:03] [INFO] Exact match found: R
+[2025-09-18 01:51:03] [INFO] Best symbol found: R
+[2025-09-18 01:51:05] [INFO] Exact match found: T
+[2025-09-18 01:51:05] [INFO] Best symbol found: T
+[2025-09-18 01:51:05] [INFO] Exact match found: TW
+[2025-09-18 01:51:05] [INFO] Best symbol found: TW
+[2025-09-18 01:51:06] [INFO] Exact match found: T
+[2025-09-18 01:51:06] [INFO] Best symbol found: T
+[2025-09-18 01:51:06] [INFO] Exact match found: TE
+[2025-09-18 01:51:06] [INFO] Best symbol found: TE
+[2025-09-18 01:51:06] [INFO] Closest match found: VTES
+[2025-09-18 01:51:06] [INFO] Best symbol found: VTES
+[2025-09-18 01:51:07] [INFO] Closest match found: WEST
+[2025-09-18 01:51:07] [INFO] Best symbol found: WEST
+[2025-09-18 01:51:08] [INFO] Closest match found: TTI
+[2025-09-18 01:51:08] [INFO] Best symbol found: TTI
+[2025-09-18 01:51:08] [INFO] Closest match found: TTI
+[2025-09-18 01:51:08] [INFO] Best symbol found: TTI
+[2025-09-18 01:51:08] [INFO] Closest match found: STNG
+[2025-09-18 01:51:08] [INFO] Best symbol found: STNG
+[2025-09-18 01:51:20] [SUCCESS] ✅ ✅ Test 'testing' added to queue.
+[2025-09-18 01:51:22] [INFO] Starting queued tests...
+[2025-09-18 01:55:57] [SUCCESS] ✅ All tests completed.
+[2025-09-18 01:57:58] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 01:58:10] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:58:10] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 01:58:11] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 01:58:51] [INFO] Exact match found: T
+[2025-09-18 01:58:51] [INFO] Best symbol found: T
+[2025-09-18 01:58:52] [INFO] Exact match found: TE
+[2025-09-18 01:58:52] [INFO] Best symbol found: TE
+[2025-09-18 01:58:52] [INFO] Closest match found: VTES
+[2025-09-18 01:58:52] [INFO] Best symbol found: VTES
+[2025-09-18 01:58:52] [INFO] Closest match found: WEST
+[2025-09-18 01:58:52] [INFO] Best symbol found: WEST
+[2025-09-18 01:58:54] [INFO] Closest match found: TTI
+[2025-09-18 01:58:54] [INFO] Best symbol found: TTI
+[2025-09-18 01:58:54] [INFO] Closest match found: TTI
+[2025-09-18 01:58:54] [INFO] Best symbol found: TTI
+[2025-09-18 01:58:54] [INFO] Closest match found: STNG
+[2025-09-18 01:58:54] [INFO] Best symbol found: STNG
+[2025-09-18 01:59:05] [SUCCESS] ✅ ✅ Test 'testing' added to queue.
+[2025-09-18 01:59:14] [INFO] Starting queued tests...
+[2025-09-18 02:00:39] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:01:09] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 02:01:21] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:01:21] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 02:01:22] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:01:30] [INFO] Exact match found: T
+[2025-09-18 02:01:30] [INFO] Best symbol found: T
+[2025-09-18 02:01:30] [INFO] Exact match found: TE
+[2025-09-18 02:01:30] [INFO] Best symbol found: TE
+[2025-09-18 02:01:30] [INFO] Closest match found: VTES
+[2025-09-18 02:01:30] [INFO] Best symbol found: VTES
+[2025-09-18 02:01:30] [INFO] Closest match found: WEST
+[2025-09-18 02:01:30] [INFO] Best symbol found: WEST
+[2025-09-18 02:01:30] [INFO] Closest match found: ETJ
+[2025-09-18 02:01:30] [INFO] Best symbol found: ETJ
+[2025-09-18 02:01:32] [INFO] Closest match found: TSN
+[2025-09-18 02:01:32] [INFO] Best symbol found: TSN
+[2025-09-18 02:01:32] [INFO] Closest match found: STNG
+[2025-09-18 02:01:32] [INFO] Best symbol found: STNG
+[2025-09-18 02:01:36] [SUCCESS] ✅ ✅ Test 'testjng' added to queue.
+[2025-09-18 02:01:43] [INFO] Starting queued tests...
+[2025-09-18 02:01:47] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:01:59] [SUCCESS] ✅ ✅ Test 'testjng' added to queue.
+[2025-09-18 02:02:02] [INFO] Starting queued tests...
+[2025-09-18 02:02:03] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:03:32] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 02:03:45] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:03:45] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 02:03:46] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:03:56] [INFO] Exact match found: T
+[2025-09-18 02:03:56] [INFO] Best symbol found: T
+[2025-09-18 02:03:57] [INFO] Exact match found: TE
+[2025-09-18 02:03:57] [INFO] Best symbol found: TE
+[2025-09-18 02:03:57] [INFO] Closest match found: VTES
+[2025-09-18 02:03:57] [INFO] Best symbol found: VTES
+[2025-09-18 02:03:58] [INFO] Closest match found: WEST
+[2025-09-18 02:03:58] [INFO] Best symbol found: WEST
+[2025-09-18 02:03:59] [INFO] Closest match found: TTI
+[2025-09-18 02:03:59] [INFO] Best symbol found: TTI
+[2025-09-18 02:03:59] [INFO] Closest match found: TTI
+[2025-09-18 02:03:59] [INFO] Best symbol found: TTI
+[2025-09-18 02:03:59] [INFO] Closest match found: STNG
+[2025-09-18 02:03:59] [INFO] Best symbol found: STNG
+[2025-09-18 02:04:04] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 02:04:06] [INFO] Starting queued tests...
+[2025-09-18 02:04:51] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:05:18] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 02:05:29] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:05:29] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 02:05:30] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:05:39] [INFO] Exact match found: T
+[2025-09-18 02:05:39] [INFO] Best symbol found: T
+[2025-09-18 02:05:40] [INFO] Exact match found: TE
+[2025-09-18 02:05:40] [INFO] Best symbol found: TE
+[2025-09-18 02:05:40] [INFO] Closest match found: VTES
+[2025-09-18 02:05:40] [INFO] Best symbol found: VTES
+[2025-09-18 02:05:41] [INFO] Closest match found: WEST
+[2025-09-18 02:05:41] [INFO] Best symbol found: WEST
+[2025-09-18 02:05:42] [INFO] Closest match found: TTI
+[2025-09-18 02:05:42] [INFO] Best symbol found: TTI
+[2025-09-18 02:05:42] [INFO] Closest match found: TTI
+[2025-09-18 02:05:42] [INFO] Best symbol found: TTI
+[2025-09-18 02:05:42] [INFO] Closest match found: STNG
+[2025-09-18 02:05:42] [INFO] Best symbol found: STNG
+[2025-09-18 02:05:47] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 02:06:09] [INFO] Starting queued tests...
+[2025-09-18 02:06:11] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:12:01] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 02:12:13] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:12:13] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 02:12:15] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:12:19] [INFO] Exact match found: T
+[2025-09-18 02:12:19] [INFO] Best symbol found: T
+[2025-09-18 02:12:19] [INFO] Exact match found: TE
+[2025-09-18 02:12:19] [INFO] Best symbol found: TE
+[2025-09-18 02:12:19] [INFO] Closest match found: VTES
+[2025-09-18 02:12:19] [INFO] Best symbol found: VTES
+[2025-09-18 02:12:20] [INFO] Closest match found: WEST
+[2025-09-18 02:12:20] [INFO] Best symbol found: WEST
+[2025-09-18 02:12:20] [INFO] Closest match found: TTI
+[2025-09-18 02:12:20] [INFO] Best symbol found: TTI
+[2025-09-18 02:12:21] [INFO] Closest match found: TTI
+[2025-09-18 02:12:21] [INFO] Best symbol found: TTI
+[2025-09-18 02:12:22] [INFO] Closest match found: STNG
+[2025-09-18 02:12:22] [INFO] Best symbol found: STNG
+[2025-09-18 02:12:28] [SUCCESS] ✅ ✅ Test 'testing' added to queue.
+[2025-09-18 02:12:30] [INFO] Starting queued tests...
+[2025-09-18 02:14:24] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:15:26] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 02:15:38] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:15:38] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 02:15:39] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 02:15:45] [INFO] Exact match found: T
+[2025-09-18 02:15:45] [INFO] Best symbol found: T
+[2025-09-18 02:15:45] [INFO] Exact match found: TE
+[2025-09-18 02:15:45] [INFO] Best symbol found: TE
+[2025-09-18 02:15:46] [INFO] Closest match found: VTES
+[2025-09-18 02:15:46] [INFO] Best symbol found: VTES
+[2025-09-18 02:15:47] [INFO] Closest match found: WEST
+[2025-09-18 02:15:47] [INFO] Best symbol found: WEST
+[2025-09-18 02:15:47] [INFO] Closest match found: TTI
+[2025-09-18 02:15:47] [INFO] Best symbol found: TTI
+[2025-09-18 02:15:47] [INFO] Closest match found: TTI
+[2025-09-18 02:15:47] [INFO] Best symbol found: TTI
+[2025-09-18 02:15:47] [INFO] Closest match found: STNG
+[2025-09-18 02:15:47] [INFO] Best symbol found: STNG
+[2025-09-18 02:15:51] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 02:16:01] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 02:16:05] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 02:16:10] [INFO] Starting queued tests...
+[2025-09-18 02:19:35] [SUCCESS] ✅ All tests completed.
+[2025-09-18 02:20:19] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 02:20:54] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 11:37:32] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 11:37:46] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 11:37:46] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 11:37:49] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 11:37:53] [INFO] Exact match found: T
+[2025-09-18 11:37:53] [INFO] Best symbol found: T
+[2025-09-18 11:37:53] [INFO] Exact match found: TE
+[2025-09-18 11:37:53] [INFO] Best symbol found: TE
+[2025-09-18 11:37:54] [INFO] Closest match found: VTES
+[2025-09-18 11:37:54] [INFO] Best symbol found: VTES
+[2025-09-18 11:37:54] [INFO] Closest match found: WEST
+[2025-09-18 11:37:54] [INFO] Best symbol found: WEST
+[2025-09-18 11:37:55] [INFO] Closest match found: TTI
+[2025-09-18 11:37:55] [INFO] Best symbol found: TTI
+[2025-09-18 11:37:56] [INFO] Closest match found: TTI
+[2025-09-18 11:37:56] [INFO] Best symbol found: TTI
+[2025-09-18 11:37:56] [INFO] Closest match found: STNG
+[2025-09-18 11:37:56] [INFO] Best symbol found: STNG
+[2025-09-18 11:38:34] [SUCCESS] ✅ ✅ Test 'testing' added to queue.
+[2025-09-18 11:38:41] [SUCCESS] ✅ Duplicated item at index 0
+[2025-09-18 11:43:50] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 11:44:01] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 11:44:01] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 11:44:03] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 11:44:10] [INFO] Exact match found: T
+[2025-09-18 11:44:10] [INFO] Best symbol found: T
+[2025-09-18 11:44:11] [INFO] Exact match found: TE
+[2025-09-18 11:44:11] [INFO] Best symbol found: TE
+[2025-09-18 11:44:11] [INFO] Closest match found: VTES
+[2025-09-18 11:44:11] [INFO] Best symbol found: VTES
+[2025-09-18 11:44:12] [INFO] Closest match found: WEST
+[2025-09-18 11:44:12] [INFO] Best symbol found: WEST
+[2025-09-18 11:44:12] [INFO] Closest match found: TTI
+[2025-09-18 11:44:12] [INFO] Best symbol found: TTI
+[2025-09-18 11:44:12] [INFO] Closest match found: TTI
+[2025-09-18 11:44:12] [INFO] Best symbol found: TTI
+[2025-09-18 11:44:12] [INFO] Closest match found: STNG
+[2025-09-18 11:44:12] [INFO] Best symbol found: STNG
+[2025-09-18 11:44:18] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 11:44:23] [SUCCESS] ✅ Duplicated item at index 0
+[2025-09-18 11:44:30] [INFO] Closest match found: UTSI
+[2025-09-18 11:44:30] [INFO] Best symbol found: UTSI
+[2025-09-18 11:44:33] [INFO] Closest match found: STNG
+[2025-09-18 11:44:33] [INFO] Best symbol found: STNG
+[2025-09-18 11:44:34] [INFO] Closest match found: UTSI
+[2025-09-18 11:44:34] [INFO] Best symbol found: UTSI
+[2025-09-18 11:45:41] [SUCCESS] ✅ Test 'GBPZAR_Strategy1_trend' added to queue.
+[2025-09-18 11:45:41] [SUCCESS] ✅ Test 'GBPZAR_Strategy2_trend' added to queue.
+[2025-09-18 11:45:41] [SUCCESS] ✅ Test 'CADCHF_Strategy1_trend' added to queue.
+[2025-09-18 11:45:41] [SUCCESS] ✅ Test 'CADCHF_Strategy2_trend' added to queue.
+[2025-09-18 11:45:49] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:45:49] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:45:50] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:45:50] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:45:51] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:45:51] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:45:53] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:45:53] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:45:54] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:45:54] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:45:55] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:45:55] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:46:10] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 11:46:22] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:46:22] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:46:25] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:46:25] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:46:26] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:46:26] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:46:28] [INFO] Closest match found: UTSI
+[2025-09-18 11:46:28] [INFO] Best symbol found: UTSI
+[2025-09-18 11:46:47] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 11:47:07] [SUCCESS] ✅ ✅ Test 'dup_Testing' updated at index 1.
+[2025-09-18 11:47:10] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:10] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:11] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:11] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:14] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:47:14] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:47:14] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:47:15] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:47:15] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:47:16] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:47:16] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:16] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:17] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:17] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:19] [INFO] Closest match found: UTSI
+[2025-09-18 11:47:19] [INFO] Best symbol found: UTSI
+[2025-09-18 11:47:20] [INFO] Closest match found: STNG
+[2025-09-18 11:47:20] [INFO] Best symbol found: STNG
+[2025-09-18 11:47:21] [INFO] Closest match found: UTSI
+[2025-09-18 11:47:21] [INFO] Best symbol found: UTSI
+[2025-09-18 11:47:22] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:22] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:24] [INFO] Closest match found: UTSI
+[2025-09-18 11:47:24] [INFO] Best symbol found: UTSI
+[2025-09-18 11:47:25] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:25] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:27] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:27] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:29] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:47:29] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:47:30] [INFO] Closest match found: CHFTRY
+[2025-09-18 11:47:30] [INFO] Best symbol found: CHFTRY
+[2025-09-18 11:47:33] [INFO] Closest match found: STNG
+[2025-09-18 11:47:33] [INFO] Best symbol found: STNG
+[2025-09-18 11:47:35] [INFO] Closest match found: UTSI
+[2025-09-18 11:47:35] [INFO] Best symbol found: UTSI
+[2025-09-18 11:47:37] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:37] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:42] [INFO] Closest match found: UTSI
+[2025-09-18 11:47:42] [INFO] Best symbol found: UTSI
+[2025-09-18 11:47:45] [INFO] Closest match found: STNG
+[2025-09-18 11:47:45] [INFO] Best symbol found: STNG
+[2025-09-18 11:47:47] [INFO] Closest match found: UTSI
+[2025-09-18 11:47:47] [INFO] Best symbol found: UTSI
+[2025-09-18 11:47:49] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:49] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:47:51] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:47:51] [INFO] Best symbol found: GBPZAR
+[2025-09-18 11:48:36] [INFO] Closest match found: STNG
+[2025-09-18 11:48:36] [INFO] Best symbol found: STNG
+[2025-09-18 11:48:39] [INFO] Closest match found: UTSI
+[2025-09-18 11:48:39] [INFO] Best symbol found: UTSI
+[2025-09-18 11:48:42] [INFO] Closest match found: GBPZAR
+[2025-09-18 11:48:42] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:09:20] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 12:09:29] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:09:29] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 12:09:30] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:09:41] [INFO] Exact match found: T
+[2025-09-18 12:09:41] [INFO] Best symbol found: T
+[2025-09-18 12:09:41] [INFO] Exact match found: TE
+[2025-09-18 12:09:41] [INFO] Best symbol found: TE
+[2025-09-18 12:09:42] [INFO] Closest match found: VTES
+[2025-09-18 12:09:42] [INFO] Best symbol found: VTES
+[2025-09-18 12:09:42] [INFO] Closest match found: WEST
+[2025-09-18 12:09:42] [INFO] Best symbol found: WEST
+[2025-09-18 12:09:42] [INFO] Closest match found: TTI
+[2025-09-18 12:09:42] [INFO] Best symbol found: TTI
+[2025-09-18 12:09:42] [INFO] Closest match found: TTI
+[2025-09-18 12:09:42] [INFO] Best symbol found: TTI
+[2025-09-18 12:09:43] [INFO] Closest match found: STNG
+[2025-09-18 12:09:43] [INFO] Best symbol found: STNG
+[2025-09-18 12:09:48] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 12:10:03] [SUCCESS] ✅ Duplicated item at index 0
+[2025-09-18 12:10:06] [INFO] Closest match found: UTSI
+[2025-09-18 12:10:06] [INFO] Best symbol found: UTSI
+[2025-09-18 12:10:10] [SUCCESS] ✅ ✅ Test 'dup_Testing' updated at index 1.
+[2025-09-18 12:10:18] [INFO] Closest match found: STNG
+[2025-09-18 12:10:18] [INFO] Best symbol found: STNG
+[2025-09-18 12:10:19] [INFO] Closest match found: UTSI
+[2025-09-18 12:10:19] [INFO] Best symbol found: UTSI
+[2025-09-18 12:11:28] [SUCCESS] ✅ Test 'GBPZAR_Strategy1_trend' added to queue.
+[2025-09-18 12:11:28] [SUCCESS] ✅ Test 'GBPZAR_Strategy2_trend' added to queue.
+[2025-09-18 12:11:28] [SUCCESS] ✅ Test 'GBPZAR_Strategy3_trend' added to queue.
+[2025-09-18 12:11:28] [SUCCESS] ✅ Test 'CADCHF_Strategy1_trend' added to queue.
+[2025-09-18 12:11:28] [SUCCESS] ✅ Test 'CADCHF_Strategy2_trend' added to queue.
+[2025-09-18 12:11:28] [SUCCESS] ✅ Test 'CADCHF_Strategy3_trend' added to queue.
+[2025-09-18 12:11:33] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:11:33] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:11:34] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:11:34] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:11:35] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:11:35] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:11:36] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:11:36] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:11:37] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:11:37] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:11:38] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:11:38] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:11:41] [INFO] Closest match found: UTSI
+[2025-09-18 12:11:41] [INFO] Best symbol found: UTSI
+[2025-09-18 12:11:44] [INFO] Closest match found: STNG
+[2025-09-18 12:11:44] [INFO] Best symbol found: STNG
+[2025-09-18 12:11:47] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 12:11:57] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:11:57] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:03] [SUCCESS] ✅ ✅ Test 'GBPZAR_Strategy1_trend' updated at index 2.
+[2025-09-18 12:12:04] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:04] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:05] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:05] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:07] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:07] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:13] [SUCCESS] ✅ ✅ Test 'GBPZAR_Strategy2_trend' updated at index 3.
+[2025-09-18 12:12:16] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:16] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:18] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:18] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:19] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:19] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:25] [SUCCESS] ✅ ✅ Test 'GBPZAR_Strategy3_trend' updated at index 4.
+[2025-09-18 12:12:28] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:12:28] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:12:35] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy1_trend' updated at index 5.
+[2025-09-18 12:12:37] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:12:37] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:12:42] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy2_trend' updated at index 6.
+[2025-09-18 12:12:44] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:12:44] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:12:51] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy3_trend' updated at index 7.
+[2025-09-18 12:12:52] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:12:52] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:12:54] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:12:54] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:12:54] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:12:54] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:12:55] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:12:55] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:01] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy3_trend' updated at index 7.
+[2025-09-18 12:13:03] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:03] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:04] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:04] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:07] [INFO] Param folder found: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2025-09-18 12:13:09] [INFO] Param file selected: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester/parameter2.set
+[2025-09-18 12:13:14] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy3_trend' updated at index 7.
+[2025-09-18 12:13:25] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:25] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:26] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:26] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:27] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:27] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:28] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:28] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:29] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:29] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:29] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:13:29] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:13:32] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:32] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:34] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:34] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:35] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:35] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:41] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy3_trend' updated at index 7.
+[2025-09-18 12:13:46] [SUCCESS] ✅ ✅ Test 'CADCHF_Strategy3_trend' updated at index 7.
+[2025-09-18 12:13:48] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:48] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:50] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:13:50] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:13:51] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:13:51] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:16:18] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 12:20:25] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 12:20:33] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:20:33] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 12:20:35] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:20:43] [INFO] Exact match found: T
+[2025-09-18 12:20:43] [INFO] Best symbol found: T
+[2025-09-18 12:20:44] [INFO] Exact match found: TE
+[2025-09-18 12:20:44] [INFO] Best symbol found: TE
+[2025-09-18 12:20:44] [INFO] Closest match found: VTES
+[2025-09-18 12:20:44] [INFO] Best symbol found: VTES
+[2025-09-18 12:20:45] [INFO] Closest match found: WEST
+[2025-09-18 12:20:45] [INFO] Best symbol found: WEST
+[2025-09-18 12:20:45] [INFO] Closest match found: TTI
+[2025-09-18 12:20:45] [INFO] Best symbol found: TTI
+[2025-09-18 12:20:45] [INFO] Closest match found: TTI
+[2025-09-18 12:20:45] [INFO] Best symbol found: TTI
+[2025-09-18 12:20:46] [INFO] Closest match found: STNG
+[2025-09-18 12:20:46] [INFO] Best symbol found: STNG
+[2025-09-18 12:20:50] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 12:21:34] [SUCCESS] ✅ Test 'GBPZAR_Strategy1_trend' added to queue.
+[2025-09-18 12:21:34] [SUCCESS] ✅ Test 'GBPZAR_Strategy2_trend' added to queue.
+[2025-09-18 12:21:34] [SUCCESS] ✅ Test 'CADCHF_Strategy1_trend' added to queue.
+[2025-09-18 12:21:34] [SUCCESS] ✅ Test 'CADCHF_Strategy2_trend' added to queue.
+[2025-09-18 12:21:40] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:21:40] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:21:43] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:21:43] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:21:44] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:21:44] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:21:48] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 12:24:34] [INFO] Closest match found: STNG
+[2025-09-18 12:24:34] [INFO] Best symbol found: STNG
+[2025-09-18 12:24:37] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 12:24:52] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 12:33:35] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 12:33:45] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:33:45] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 12:33:47] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:34:31] [ERROR] Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1032, in task
+    df = self.fetch_correlation(
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 870, in fetch_correlation
+    df = df[(df['pair1'] not in  symbols) | (df['pair2'] not in  symbols)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+[2025-09-18 12:34:54] [ERROR] Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1032, in task
+    df = self.fetch_correlation(
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 870, in fetch_correlation
+    df = df[(df['pair1'] not in  symbols) | (df['pair2'] not in  symbols)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+[2025-09-18 12:34:57] [WARNING] Test file name is not set
+[2025-09-18 12:35:21] [ERROR] Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1032, in task
+    df = self.fetch_correlation(
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 870, in fetch_correlation
+    df = df[(df['pair1'] not in  symbols) | (df['pair2'] not in  symbols)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+[2025-09-18 12:37:50] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 12:38:00] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:38:00] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 12:38:02] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:38:31] [SUCCESS] ✅ Test 'GBPZAR_Strategy1_trend' added to queue.
+[2025-09-18 12:38:31] [SUCCESS] ✅ Test 'GBPZAR_Strategy1_trend' added to queue.
+[2025-09-18 12:38:31] [SUCCESS] ✅ Test 'CADCHF_Strategy1_trend' added to queue.
+[2025-09-18 12:38:31] [SUCCESS] ✅ Test 'CADCHF_Strategy1_trend' added to queue.
+[2025-09-18 12:38:42] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 12:39:40] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 12:39:49] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:39:49] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 12:39:50] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 12:40:11] [SUCCESS] ✅ Test 'GBPZAR_Strategy1_trend' added to queue.
+[2025-09-18 12:40:11] [SUCCESS] ✅ Test 'GBPZAR_Strategy2_trend' added to queue.
+[2025-09-18 12:40:11] [SUCCESS] ✅ Test 'CADCHF_Strategy1_trend' added to queue.
+[2025-09-18 12:40:11] [SUCCESS] ✅ Test 'CADCHF_Strategy2_trend' added to queue.
+[2025-09-18 12:40:15] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:40:15] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:40:16] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:40:16] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:40:18] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:40:18] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:40:21] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 12:40:36] [SUCCESS] ✅ Deleted item at index 3
+[2025-09-18 12:40:38] [INFO] Closest match found: CHFTRY
+[2025-09-18 12:40:38] [INFO] Best symbol found: CHFTRY
+[2025-09-18 12:40:44] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-18 12:40:45] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:40:45] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:40:47] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 12:40:49] [INFO] Closest match found: GBPZAR
+[2025-09-18 12:40:49] [INFO] Best symbol found: GBPZAR
+[2025-09-18 12:40:50] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 12:41:12] [SUCCESS] ✅ Correlation heatmap generated

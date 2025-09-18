@@ -95,12 +95,12 @@ class MT5Manager:
         indices_keywords = ["US500", "NAS100", "DJ30", "DE30", "UK100"]
         return [s for s in self.symbol_list if any(idx in s for idx in indices_keywords)]
     
-    def run_test(self, settings: dict, data_path:str, mt5_path:str, report_path:str):
+    def run_test(self, settings: dict, data_path:str, mt5_path:str, report_path:str, expert_path):
         try:
             # Logger.info(f"Running test: {settings['test_name']} on {settings['symbol']}")
             print(f"Running test: {settings['test_name']} on {settings['symbol']}")
             # Your actual test execution logic here
-            result = self.run_strategy(settings, data_path, mt5_path,report_path)
+            result = self.run_strategy(settings, data_path, mt5_path,report_path, expert_path)
 
             print(f"Test '{settings['test_name']}' completed successfully.")
             # Logger.success(f"Test '{settings['test_name']}' completed successfully.")
@@ -111,7 +111,7 @@ class MT5Manager:
             # QMessageBox.critical(self.ui, "Error", f"Test failed: {e}")
             return None
 
-    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path:str):
+    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path:str, expert_path):
         
         try:
 
@@ -158,6 +158,9 @@ class MT5Manager:
                 "Complex Criterion max": 7
             }
 
+
+            
+
             # --- Extract settings ---
             test_name     = settings.get("test_name", "StrategyTest")
             expert        = settings["expert"]
@@ -201,7 +204,7 @@ class MT5Manager:
             os.makedirs(config_dir, exist_ok=True)
 
             config_path = os.path.join(config_dir, f"{test_name}.ini")
-            report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_report.xml")
+            report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_{test_name}_{forward_str}_report.xml")
 
 
 
@@ -211,6 +214,7 @@ class MT5Manager:
             print(f"Config path  = {config_path}")
             print(f"Report file  = {report_path}")
             print(f"Expert       = {expert}")
+            print("Expert Path = ", Path(*Path(expert_path[expert]["path"]).parts[-2:]))
             print(f"Symbol       = {symbol}")
             print(f"Timeframe    = {timeframe}")
             print(f"Model        = {model} ({model_str})")
@@ -227,7 +231,7 @@ class MT5Manager:
             AutoConfiguration=1
 
             [Tester]
-            Expert=Advisors\\{expert}
+            Expert={Path(*Path(expert_path[expert]["path"]).parts[-2:])}
             Inputs={param_file}
             Symbol={symbol}
             Period={timeframe}

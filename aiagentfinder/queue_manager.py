@@ -45,10 +45,22 @@ class QueueManager:
             self.refresh_queue()
             self.ui.queue_list.setCurrentRow(index + 1)
 
-    def duplicate_test(self, index: int):
+    # def duplicate_test(self, index: int):
 
+    #     if 0 <= index < len(self.tests):
+    #         self.tests.insert(index + 1, dict(self.tests[index]))
+    #         self.refresh_queue()
+    #         self.ui.queue_list.setCurrentRow(index + 1)
+
+    def duplicate_test(self, index: int):
         if 0 <= index < len(self.tests):
-            self.tests.insert(index + 1, dict(self.tests[index]))
+            new_test = dict(self.tests[index])  # copy original test
+
+            # Add "dup_" to the name (if it has one)
+            if "test_name" in new_test:
+                new_test["test_name"] = f"dup_{new_test['test_name']}"
+
+            self.tests.insert(index + 1, new_test)
             self.refresh_queue()
             self.ui.queue_list.setCurrentRow(index + 1)
 

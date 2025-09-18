@@ -404,6 +404,8 @@ class AutoBatchController:
             Logger.warning("Test file name is not set")
 
             return None
+        
+        
 
         settings = {
             "test_name": test_name,
@@ -414,12 +416,13 @@ class AutoBatchController:
             "symbol_suffix": self.ui.symbol_suffix.text().strip(),
             "symbol": self.ui.symbol_input.text().strip(),
             "timeframe": self.ui.timeframe_combo.currentText(),
+            "date": self.ui.date_combo.currentText(),
             "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
             "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
             "forward": self.ui.forward_combo.currentText(),
             "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd"),
-            "delay_mode": self.ui.delay_combo.currentText(),
             "delay": self.ui.delay_input.value(),
+            "delay_mode": self.ui.delay_combo.currentText(),
             "model": self.ui.model_combo.currentText(),
             "deposit": self.ui.deposit_input.text(),
             "currency": self.ui.currency_input.text().strip(),
@@ -430,46 +433,6 @@ class AutoBatchController:
 
         return settings
     
-
-    # def add_test_to_queue(self):
-    #     settings = self.test_settings()
-    #     if not settings:
-    #         return
-    #     def task(self):
-    #         if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
-    #             old = self.queue.tests[self.current_index]
-    #             old_name = old.get("test_name", "")
-    #             new_name = settings.get("test_name", "")
-
-    #             if new_name == old_name:
-    #                 self.queue.tests[self.current_index] = settings
-
-    #                 # Update QListWidget item text
-    #                 item = self.ui.queue_list.item(self.current_index)
-    #                 if item:
-    #                     item.setText(new_name)
-
-    #                 self.queue.refresh_queue()
-    #                 self.ui.queue_list.setCurrentRow(self.current_index)
-
-    #                 Logger.success(f"✅ Test '{new_name}' updated at index {self.current_index}.")
-
-    #             else:
-    #                 self.queue.tests.append(settings)
-    #                 new_index = len(self.queue.tests) - 1
-    #                 self.queue.refresh_queue()
-    #                 self.ui.queue_list.setCurrentRow(new_index)
-    #                 self.current_index = new_index
-    #                 Logger.success(f"✅ Test '{new_name}' added to queue (name changed).")
-
-    #         else:
-    #             self.queue.tests.append(settings)
-    #             new_index = len(self.queue.tests) - 1
-    #             self.queue.refresh_queue()
-    #             self.ui.queue_list.setCurrentRow(new_index)
-    #             self.current_index = new_index
-    #             Logger.success(f"✅ Test '{settings['test_name']}' added to queue.")
-
     def add_test_to_queue(self):
         settings = self.test_settings()
         if not settings:
@@ -577,6 +540,8 @@ class AutoBatchController:
         # Just show filenames in combo box
         expert_names = list(self.ui.experts.keys())
 
+        print("expert_names = ", expert_names)
+
         # Update the combo box
         if hasattr(self.ui, "expert_input") and isinstance(self.ui.expert_input, QComboBox):
             current_expert = self.ui.expert_input.currentText()
@@ -588,7 +553,6 @@ class AutoBatchController:
                 self.ui.expert_input.setCurrentIndex(index)
 
     def refresh_expert(self):
-        
         if not hasattr(self.ui, "expert_input") or not self.ui.experts:
             return
 
@@ -597,42 +561,53 @@ class AutoBatchController:
             return
 
         # Remove extension for matching base names
-        base_name, ext = os.path.splitext(current_text)
+        base_name, _ = os.path.splitext(current_text)
 
-        # Pattern: capture "_number" at the end if present
-        version_pattern = re.compile(r"^(.*)_(\d+)$")
+        # Regex for versions like 1, 2.1, 3.2.5 etc.
+        version_pattern = re.compile(r'[_ -]?(\d+(?:\.\d+)*)$')
 
-        match = version_pattern.match(base_name)
+        def parse_version(v):
+            """Convert version string like '2.1.5' -> tuple (2,1,5)."""
+            return tuple(map(int, v.split('.')))
+
+        # --- Step 1: Detect prefix and versions ---
+        match = version_pattern.search(base_name)
         if match:
-            # Case 1: Expert has versions
-            prefix = match.group(1)
-            versions = []
-            for name, info in self.ui.experts.items():
-                name_base, _ = os.path.splitext(name)
-                m = version_pattern.match(name_base)
-                if m and m.group(1) == prefix:
-                    versions.append((int(m.group(2)), name))
+            prefix = base_name[:match.start()].strip(" _-")
+        else:
+            prefix = base_name.strip(" _-")
 
-            if versions:
-                # Pick highest version
-                latest_name = max(versions, key=lambda x: x[0])[1]
-                index = self.ui.expert_input.findText(latest_name)
-                if index != -1:
-                    self.ui.expert_input.setCurrentIndex(index)
-                    return
+        versions = []
+        plain_matches = []
 
-        # Case 2: No versions → pick latest modified among matches
-        matches = [
-            (info["modified"], name)
-            for name, info in self.ui.experts.items()
-            if name.startswith(base_name)
-        ]
+        for name, info in self.ui.experts.items():
+            name_base, _ = os.path.splitext(name)
+            m = version_pattern.search(name_base)
+            if m and name_base[:m.start()].strip(" _-") == prefix:
+                # Found versioned match
+                try:
+                    version_val = parse_version(m.group(1))
+                except Exception:
+                    version_val = ()
+                versions.append((version_val, name))
+            elif name_base.strip(" _-") == prefix:
+                # Non-versioned base expert
+                plain_matches.append((info["modified"], name))
 
-        if matches:
-            latest_name = max(matches, key=lambda x: x[0])[1]
-            index = self.ui.expert_input.findText(latest_name)
-            if index != -1:
-                self.ui.expert_input.setCurrentIndex(index)
+        # --- Step 2: Pick best ---
+        if versions:
+            # Case A: Use highest version
+            latest_name = max(versions, key=lambda x: x[0])[1]
+        elif plain_matches:
+            # Case B: No versions → pick latest modified
+            latest_name = max(plain_matches, key=lambda x: x[0])[1]
+        else:
+            return  # No match found
+
+        # --- Step 3: Update UI ---
+        index = self.ui.expert_input.findText(latest_name)
+        if index != -1:
+            self.ui.expert_input.setCurrentIndex(index)
 
     def load_experts(self, expert_folder):
         if not expert_folder or not isinstance(expert_folder, str):
@@ -840,6 +815,7 @@ class AutoBatchController:
 
 
         symbol_str = "|".join(symbols)
+
         url = (
             f"https://www.mataf.io/api/tools/{output_format}/correl/"
             f"{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
@@ -851,7 +827,13 @@ class AutoBatchController:
         lines = response.text.splitlines()
         print(lines)
         csv_data = "\n".join(lines[3:])
-        return pd.read_csv(StringIO(csv_data))
+
+        df = pd.read_csv(StringIO(csv_data))
+
+        # Remove any rows where either pair is EURUSD
+        df = df[df['pair1'].isin(symbols) & df['pair2'].isin(symbols)]
+
+        return df
  
     def get_correlation(self, market="forex", period=50, symbols=None,
                         output_format="csv", endpoint="snapshot",
@@ -882,8 +864,6 @@ class AutoBatchController:
                     corr_df = df.pivot(index="pair1", columns="pair2", values="day")
 
                     def show_plot():
-                        import matplotlib.pyplot as plt
-                        import seaborn as sns
 
                         plt.figure(figsize=(6, 4))
                         sns.heatmap(
@@ -980,6 +960,7 @@ class AutoBatchController:
         self.non_correlated_popus_option = results
 
         # Read all UI values before threading
+        
         ui_values = {
             "expert": self.ui.expert_input.currentText().strip(),
             "param_file": self.ui.param_input.text().strip(),
@@ -987,6 +968,7 @@ class AutoBatchController:
             "symbol_suffix": self.ui.symbol_suffix.text().strip(),
             "symbol": self.ui.symbol_input.text().strip(),
             "timeframe": self.ui.timeframe_combo.currentText(),
+            "date": self.ui.date_combo.currentText(),
             "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
             "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
             "forward": self.ui.forward_combo.currentText(),
@@ -1036,18 +1018,24 @@ class AutoBatchController:
                 uncorrelated_pair = f"{row['pair1']}"
 
                 for strategy in results["strategies"]:
+                    
+
+
                     settings = {
-                        "test_name": f"{strategy}_trend",
+                        "test_name": f"{uncorrelated_pair}_{strategy}_trend",
                         "expert": ui_values["expert"],
                         "param_file": ui_values["param_file"],
                         "symbol_prefix": ui_values["symbol_prefix"],
                         "symbol_suffix": ui_values["symbol_suffix"],
                         "symbol": uncorrelated_pair,
                         "timeframe": ui_values["timeframe"],
+                        "date": ui_values["date"],
                         "date_from": ui_values["date_from"],
                         "date_to": ui_values["date_to"],
                         "forward": ui_values["forward"],
+                        "forward_date": ui_values["forward_date"],
                         "delay": ui_values["delay"],
+                        "delay_mode": ui_values["delay_mode"],
                         "model": ui_values["model"],
                         "deposit": ui_values["deposit"],
                         "currency": ui_values["currency"],
@@ -1055,6 +1043,7 @@ class AutoBatchController:
                         "optimization": ui_values["optimization"],
                         "criterion": ui_values["criterion"],
                     }
+
                     settings_list.append(settings)
 
 
@@ -1091,8 +1080,6 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, symbols, results, ui_values)
 
-
-
     def get_fx_symbols(self):
 
     # --- Majors ---
@@ -1124,7 +1111,6 @@ class AutoBatchController:
         # fallback: if intersection is empty, just return the full list
         return fx_symbols if fx_symbols else ALL_FX_PAIRS
 
-
     def get_symbols_for_option(self, option):
         if option == "FX Only":
             return self.mt5.get_fx_symbols()
@@ -1145,7 +1131,6 @@ class AutoBatchController:
 
         return df_filtered[["pair1", "pair2", "day"]].head(top_n)
 
-
     def on_start_button_clicked(self, data_path, mt5_path, report_path):
         print("data_path = ", data_path)
         print("mt5_path = ", mt5_path)
@@ -1162,7 +1147,7 @@ class AutoBatchController:
             # Run tests one by one in the thread
             while not self.queue.is_empty():
                 test_settings = self.queue.get_next_test()
-                self.mt5.run_test(test_settings, data_path, mt5_path, report_path)
+                self.mt5.run_test(test_settings, data_path, mt5_path, report_path,self.ui.experts)
                 self.queue.refresh_queue()
             return True  # signal finished
 
@@ -1174,7 +1159,6 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.run(task)
 
-
     def on_test_selected(self, index):
         index = self.ui.queue_list.currentRow()  # Which item was clicked
         if 0 <= index < len(self.queue.tests):
@@ -1182,32 +1166,63 @@ class AutoBatchController:
             test_data = self.queue.tests[index]  # Get the selected test
             self.load_test_parameters(test_data)  # Show it on the form
             print(test_data)
-        
+
     def load_test_parameters(self, test_data):
         # Expert & param files
         try: 
-                self.ui.testfile_input.setText(test_data["test_name"])
-                self.ui.expert_input.setCurrentText(test_data["expert"])
-                self.ui.param_input.setText(test_data["param_file"])
-                self.ui.symbol_prefix.setText(test_data["symbol_prefix"])
-                self.ui.symbol_suffix.setText(test_data["symbol_suffix"])
-                self.ui.symbol_input.setText(str(test_data["symbol"]))
-                self.ui.timeframe_combo.setCurrentText(str(test_data["timeframe"]))
-                self.ui.date_from.setDate(QDate.fromString(test_data["date_from"], "yyyy-MM-dd"))
-                self.ui.date_to.setDate(QDate.fromString(test_data["date_to"], "yyyy-MM-dd"))
-                self.ui.forward_combo.setCurrentText(test_data["forward"])
-                self.ui.forward_date.setDate(QDate.fromString(test_data["forward"], "yyyy-MM-dd"))
-                self.ui.delay_combo.setCurrentText(test_data["delay_mode"])
-                self.ui.delay_input.setValue(int(test_data["delay"]))
-                self.ui.model_combo.setCurrentText(test_data["model"])
-                self.ui.deposit_input.setText(str(test_data["deposit"]))
-                self.ui.currency_input.setText(test_data["currency"])
-                self.ui.leverage_input.setValue(float(test_data["leverage"]))
-                self.ui.optim_combo.setCurrentText(str(test_data["optimization"]))
-                self.ui.criterion_input.setCurrentText(str(test_data["criterion"]))
+
+                self.ui.testfile_input.setText(test_data.get("test_name", ""))
+                self.ui.expert_input.setCurrentText(test_data.get("expert", ""))
+                self.ui.param_input.setText(test_data.get("param_file", ""))
+                self.ui.symbol_input.setText(str(test_data.get("symbol", "")))
+                
+                self.ui.timeframe_combo.setCurrentText(test_data.get("timeframe", ""))
+                self.ui.symbol_prefix.setText(test_data.get("symbol_prefix", ""))
+                self.ui.symbol_suffix.setText(test_data.get("symbol_suffix", ""))
+              
+                self.ui.date_combo.setCurrentText(test_data.get("date", "")) 
+                date_from_str = test_data.get("date_from", "")
+                date_from = QDate.fromString(date_from_str, "yyyy-MM-dd")
+                if date_from.isValid():
+                    self.ui.date_from.setDate(date_from)
+                else:
+                    self.ui.date_from.setDate(QDate(2000, 1, 1)) 
+
+                # Handle date_to
+                date_to_str = test_data.get("date_to", "")
+                date_to = QDate.fromString(date_to_str, "yyyy-MM-dd")
+                if date_to.isValid():
+                    self.ui.date_to.setDate(date_to)
+                else:
+                    self.ui.date_to.setDate(QDate(2000, 1, 1))
+
+                # Handle forward_date
+                self.ui.forward_combo.setCurrentText(test_data.get("forward", ""))
+                forward_str = test_data.get("forward_date", "")
+                forward_date = QDate.fromString(forward_str, "yyyy-MM-dd")
+                if forward_date.isValid():
+                    self.ui.forward_date.setDate(forward_date)
+                else:
+                    self.ui.forward_date.setDate(QDate(2000, 1, 1))
+                # self.ui.date_from.setDate(QDate.fromString(test_data.get("date_from", "2000-01-01"), "yyyy-MM-dd"))
+                # self.ui.date_to.setDate(QDate.fromString(test_data.get("date_to", "2000-01-01"), "yyyy-MM-dd"))
+                # self.ui.forward_date.setDate(QDate.fromString(test_data.get("forward_date", "2000-01-01"), "yyyy-MM-dd"))
+
+                self.ui.delay_combo.setCurrentText(test_data.get("delay_mode", ""))
+                self.ui.delay_input.setValue(int(test_data.get("delay", 0)))
+                self.ui.model_combo.setCurrentText(test_data.get("model", ""))
+                self.ui.deposit_input.setText(str(test_data.get("deposit", "")))
+                self.ui.currency_input.setText(test_data.get("currency", ""))
+                self.ui.leverage_input.setValue(float(test_data.get("leverage", 0)))
+                self.ui.optim_combo.setCurrentText(str(test_data.get("optimization", "")))
+                self.ui.criterion_input.setCurrentText(str(test_data.get("criterion", "")))
+
 
         except Exception as e:
-               Logger.error(str(e))
+               Logger.error(f"Error loading test parameters: {str(e)}")
+
+
+
 
         
        
