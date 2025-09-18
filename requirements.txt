@@ -1,6 +1,5 @@
 matplotlib==3.10.6
-MetaTrader5==5.0.5200
-MetaTrader5==5.0.5260
+MetaTrader5
 pandas==2.3.2
 psutil==7.0.0
 PyQt5==5.15.11
