@@ -783,7 +783,7 @@ class AutoBatchController:
 
         def on_done(index):
             Logger.success(f"Duplicated item at index {index}")
-            self.selected_queue_item_index = -1
+           
 
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
@@ -800,7 +800,9 @@ class AutoBatchController:
 
         def on_done(index):
             Logger.success(f"Deleted item at index {index}")
-            self.selected_queue_item_index = -1
+            # self.selected_queue_item_index = index + 1
+            if(index == len(self.queue)):
+                self.selected_queue_item_index = index - 1
 
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
@@ -1022,7 +1024,7 @@ class AutoBatchController:
 
 
                     settings = {
-                        "test_name": f"{uncorrelated_pair}_{strategy}_trend",
+                        "test_name": f"{uncorrelated_pair}_{strategy}",
                         "expert": ui_values["expert"],
                         "param_file": ui_values["param_file"],
                         "symbol_prefix": ui_values["symbol_prefix"],

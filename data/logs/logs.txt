@@ -3489,3 +3489,120 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-09-18 12:40:49] [INFO] Best symbol found: GBPZAR
 [2025-09-18 12:40:50] [SUCCESS] ✅ Deleted item at index 0
 [2025-09-18 12:41:12] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-18 17:40:36] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 17:41:58] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 17:41:58] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 17:42:10] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 17:43:49] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 17:44:04] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 17:44:04] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 17:44:08] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 17:44:13] [INFO] Exact match found: T
+[2025-09-18 17:44:13] [INFO] Best symbol found: T
+[2025-09-18 17:44:13] [INFO] Exact match found: TE
+[2025-09-18 17:44:13] [INFO] Best symbol found: TE
+[2025-09-18 17:44:13] [INFO] Closest match found: VTES
+[2025-09-18 17:44:13] [INFO] Best symbol found: VTES
+[2025-09-18 17:44:13] [INFO] Closest match found: WEST
+[2025-09-18 17:44:13] [INFO] Best symbol found: WEST
+[2025-09-18 17:44:14] [INFO] Closest match found: TTI
+[2025-09-18 17:44:14] [INFO] Best symbol found: TTI
+[2025-09-18 17:44:15] [INFO] Closest match found: TTI
+[2025-09-18 17:44:15] [INFO] Best symbol found: TTI
+[2025-09-18 17:44:15] [INFO] Closest match found: STNG
+[2025-09-18 17:44:15] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:20] [SUCCESS] ✅ ✅ Test 'testing' added to queue.
+[2025-09-18 17:44:22] [INFO] Closest match found: STNG
+[2025-09-18 17:44:22] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:26] [SUCCESS] ✅ ✅ Test 'testing1' added to queue
+[2025-09-18 17:44:28] [INFO] Closest match found: STNG
+[2025-09-18 17:44:28] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:28] [INFO] Closest match found: STNG
+[2025-09-18 17:44:28] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:32] [SUCCESS] ✅ ✅ Test 'testing2' added to queue
+[2025-09-18 17:44:34] [INFO] Closest match found: STNG
+[2025-09-18 17:44:34] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:36] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:44:38] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:44:39] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:44:47] [INFO] Closest match found: STNG
+[2025-09-18 17:44:47] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:51] [SUCCESS] ✅ ✅ Test 'testing1' added to queue.
+[2025-09-18 17:44:52] [INFO] Closest match found: STNG
+[2025-09-18 17:44:52] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:52] [INFO] Closest match found: STNG
+[2025-09-18 17:44:52] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:55] [SUCCESS] ✅ ✅ Test 'testing2' added to queue
+[2025-09-18 17:44:57] [INFO] Closest match found: STNG
+[2025-09-18 17:44:57] [INFO] Best symbol found: STNG
+[2025-09-18 17:44:57] [INFO] Closest match found: STNG
+[2025-09-18 17:44:57] [INFO] Best symbol found: STNG
+[2025-09-18 17:45:00] [SUCCESS] ✅ ✅ Test 'testing3' added to queue
+[2025-09-18 17:45:02] [INFO] Closest match found: STNG
+[2025-09-18 17:45:02] [INFO] Best symbol found: STNG
+[2025-09-18 17:45:02] [INFO] Closest match found: STNG
+[2025-09-18 17:45:02] [INFO] Best symbol found: STNG
+[2025-09-18 17:45:05] [SUCCESS] ✅ ✅ Test 'testing4' added to queue
+[2025-09-18 17:45:13] [SUCCESS] ✅ Deleted item at index 3
+[2025-09-18 17:45:17] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:45:18] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:45:18] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:49:17] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-18 17:49:29] [SUCCESS] ✅ MT5 Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 17:49:29] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-18 17:49:30] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-18 17:49:43] [INFO] Exact match found: T
+[2025-09-18 17:49:43] [INFO] Best symbol found: T
+[2025-09-18 17:49:44] [INFO] Exact match found: TE
+[2025-09-18 17:49:44] [INFO] Best symbol found: TE
+[2025-09-18 17:49:44] [INFO] Closest match found: VTES
+[2025-09-18 17:49:44] [INFO] Best symbol found: VTES
+[2025-09-18 17:49:44] [INFO] Closest match found: WEST
+[2025-09-18 17:49:44] [INFO] Best symbol found: WEST
+[2025-09-18 17:49:44] [INFO] Closest match found: TTI
+[2025-09-18 17:49:44] [INFO] Best symbol found: TTI
+[2025-09-18 17:49:45] [INFO] Closest match found: TTI
+[2025-09-18 17:49:45] [INFO] Best symbol found: TTI
+[2025-09-18 17:49:45] [INFO] Closest match found: STNG
+[2025-09-18 17:49:45] [INFO] Best symbol found: STNG
+[2025-09-18 17:49:48] [SUCCESS] ✅ ✅ Test 'Testing' added to queue.
+[2025-09-18 17:49:49] [INFO] Closest match found: STNG
+[2025-09-18 17:49:49] [INFO] Best symbol found: STNG
+[2025-09-18 17:49:53] [SUCCESS] ✅ ✅ Test 'Testing1' added to queue
+[2025-09-18 17:49:55] [INFO] Closest match found: STNG
+[2025-09-18 17:49:55] [INFO] Best symbol found: STNG
+[2025-09-18 17:49:55] [INFO] Closest match found: STNG
+[2025-09-18 17:49:55] [INFO] Best symbol found: STNG
+[2025-09-18 17:49:56] [INFO] Closest match found: STNG
+[2025-09-18 17:49:56] [INFO] Best symbol found: STNG
+[2025-09-18 17:49:56] [INFO] Closest match found: STNG
+[2025-09-18 17:49:56] [INFO] Best symbol found: STNG
+[2025-09-18 17:49:59] [SUCCESS] ✅ ✅ Test 'Testing2' added to queue
+[2025-09-18 17:50:01] [INFO] Closest match found: STNG
+[2025-09-18 17:50:01] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:01] [INFO] Closest match found: STNG
+[2025-09-18 17:50:01] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:11] [SUCCESS] ✅ ✅ Test 'Testing3' added to queue
+[2025-09-18 17:50:14] [SUCCESS] ✅ Deleted item at index 3
+[2025-09-18 17:50:15] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-18 17:50:16] [INFO] Closest match found: STNG
+[2025-09-18 17:50:16] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:18] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:50:26] [INFO] Closest match found: STNG
+[2025-09-18 17:50:26] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:35] [SUCCESS] ✅ ✅ Test 'Testing1' updated at index 0.
+[2025-09-18 17:50:38] [INFO] Closest match found: STNG
+[2025-09-18 17:50:38] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:38] [INFO] Closest match found: STNG
+[2025-09-18 17:50:38] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:42] [SUCCESS] ✅ ✅ Test 'Testing2' added to queue
+[2025-09-18 17:50:45] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 17:50:52] [INFO] Closest match found: STNG
+[2025-09-18 17:50:52] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:53] [INFO] Closest match found: STNG
+[2025-09-18 17:50:53] [INFO] Best symbol found: STNG
+[2025-09-18 17:50:56] [SUCCESS] ✅ ✅ Test 'Testing1' added to queue.
+[2025-09-18 17:50:59] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-18 17:51:01] [INFO] Closest match found: STNG
+[2025-09-18 17:51:01] [INFO] Best symbol found: STNG
+[2025-09-18 17:51:02] [SUCCESS] ✅ Deleted item at index 0

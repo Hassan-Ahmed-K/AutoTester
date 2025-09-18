@@ -35,7 +35,8 @@ class AutoBatchUI(BaseTab):
                 color: #e0dcdc;
                 font-family: Inter;
 
-                font-size: 8pt;
+                font-size: 10px;
+                line-height: 16px
 
             }
 
@@ -43,7 +44,7 @@ class AutoBatchUI(BaseTab):
             QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
                 border: 2px solid #555555;       /* nice gray border */
                 border-radius: 5px;              /* rounded corners */
-                padding: 6px;                    /* internal padding */
+                padding: 4px 6px;                    /* internal padding */
 
                 background-color: #2b2b2b;
                 color: #ffffff;
@@ -77,6 +78,13 @@ class AutoBatchUI(BaseTab):
                 font-size: 30px;
                 padding: 4px;
             }
+                           
+            QComboBox QAbstractItemView {
+               background-color: #2b2b2b;
+               border: 1px solid #555555;
+               selection-background-color: #ffcc00;
+               selection-color: black;
+           }
 
             /* ================= Calendar Styling ================= */
             QCalendarWidget QWidget { 
@@ -94,11 +102,10 @@ class AutoBatchUI(BaseTab):
             }
 
             QCalendarWidget QToolButton {
-                height: 24px;
-                width: 100px;
+                
                 color: white;
-                font-size: 10px;
-                icon-size: 18px;
+                font-size: 8px;
+                icon-size: 12px;
                 background-color: #444444;
                 /* border-radius: 5px; */
             }
@@ -130,7 +137,8 @@ class AutoBatchUI(BaseTab):
             }
         """)
 
-
+        # height: 24px;
+        #         width: 100px;
         self.deposit_info = {
         "balance": 0,
         "equity": 0,
