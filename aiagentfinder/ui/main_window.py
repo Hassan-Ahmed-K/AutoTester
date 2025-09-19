@@ -1,13 +1,14 @@
 # aiagentfinder/ui/main_window.py
 
-from PyQt5.QtWidgets import QMainWindow, QTabWidget
+from PyQt5.QtWidgets import QMainWindow, QTabWidget , QScrollArea, QSizePolicy
 from aiagentfinder.ui.pages.AutoBatchUI import AutoBatchUI
+from PyQt5.QtCore import Qt , QEvent
 # Import more tabs here as needed
 # from aiagentfinder.ui.pages.other_tab import OtherTabUI
 
 
 class MainWindow(QMainWindow):
-     def __init__(self):
+    def __init__(self):
         super().__init__()
 
         self.tabs = QTabWidget()
@@ -34,3 +35,7 @@ class MainWindow(QMainWindow):
         # self.tabs.setStyleSheet("QTabWidget::pane { background: transparent; }")
 
         self.setCentralWidget(self.tabs)
+        self.tabs = QTabWidget()
+    
+
+        
