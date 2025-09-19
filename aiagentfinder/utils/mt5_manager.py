@@ -83,10 +83,34 @@ class MT5Manager:
             return None
     
     def get_symbol_list(self):
-        self.symbol_list = [s.name for s in mt5.symbols_get()]
+        try:
+        # Get all symbols from broker once
+                self.symbol_list = [s.name for s in mt5.symbols_get()]
+        except Exception:
+            self.symbol_list = []
+
+        fx_symbols = self.get_fx_symbols()  # fixed list (28 pairs)
+        metals = self.get_metals_symbols()  # filtered from broker list
+        indices = self.get_indices_symbols()  # filtered from broker list
+
+        return fx_symbols + metals + indices
 
     def get_fx_symbols(self):
-        return [s for s in self.symbol_list if any(cur in s for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
+        # return [s for s in self.symbol_list if any(cur in s for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
+        MAJOR_PAIRS = [
+            "EURUSD", "GBPUSD", "NZDUSD", "AUDUSD",
+            "USDJPY", "USDCHF", "USDCAD"
+        ]
+
+        MINOR_PAIRS = [
+            "EURGBP", "EURJPY", "EURCHF", "EURAUD", "EURCAD", "EURNZD",
+            "GBPJPY", "GBPCHF", "GBPAUD", "GBPCAD", "GBPNZD",
+            "AUDJPY", "AUDCHF", "AUDCAD", "AUDNZD",
+            "NZDJPY", "NZDCHF", "NZDCAD",
+            "CADJPY", "CADCHF", "CHFJPY"
+        ]
+
+        return MAJOR_PAIRS + MINOR_PAIRS
 
     def get_metals_symbols(self):
         return [s for s in self.symbol_list if "XAU" in s or "XAG" in s]

@@ -433,66 +433,85 @@ class AutoBatchController:
 
         return settings
     
+    # def add_test_to_queue(self):
+    #     settings = self.test_settings()
+    #     if not settings:
+    #         return
+
+    #     def task():
+
+    #         # This runs in background thread
+    #         if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
+    #             old = self.queue.tests[self.current_index]
+    #             old_name = old.get("test_name", "")
+    #             new_name = settings.get("test_name", "")
+
+    #             if new_name == old_name:
+    #                 self.queue.tests[self.current_index] = settings
+    #                 return ("updated", new_name, self.current_index)
+            
+    #             else:
+    #                 self.queue.tests.append(settings)
+    #                 new_index = len(self.queue.tests) - 1
+    #                 return ("added_changed", new_name, new_index)
+    #         else:
+    #             self.queue.tests.append(settings)
+    #             new_index = len(self.queue.tests) - 1
+    #             return ("added", settings["test_name"], new_index)
+
+    #     def on_done(result):
+    #         # This runs back in the GUI thread
+    #         status, name, index = result
+
+    #         if status == "updated":
+    #             item = self.ui.queue_list.item(index)
+    #             if item:
+    #                 item.setText(name)
+    #             self.queue.refresh_queue()
+    #             self.ui.queue_list.setCurrentRow(index)
+    #             Logger.success(f"✅ Test '{name}' updated at index {index}.")
+
+    #         elif status == "added_changed":
+    #             self.queue.refresh_queue()
+    #             self.ui.queue_list.setCurrentRow(index)
+    #             self.current_index = index
+    #             QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue")
+    #             Logger.success(f"✅ Test '{name}' added to queue")
+
+    #         elif status == "added":
+    #             self.queue.refresh_queue()
+    #             self.ui.queue_list.setCurrentRow(index)
+    #             self.current_index = index
+    #             QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue.")
+    #             Logger.success(f"✅ Test '{name}' added to queue.")
+
+    #     def on_error(err):
+    #         QMessageBox.critical(self.ui, "Error", str(err))
+    #         Logger.error(str(err))
+
+    #     # Run in background
+    #     self.runner = ThreadRunner(self.ui)
+    #     self.runner.on_result = on_done
+    #     self.runner.on_error = on_error
+    #     self.runner.run(task)
+
     def add_test_to_queue(self):
         settings = self.test_settings()
         if not settings:
             return
 
         def task():
+            # The long/slow part of work
+            self.queue.add_test_to_queue(settings)
+            return settings["test_name"]
 
-            # This runs in background thread
-            if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
-                old = self.queue.tests[self.current_index]
-                old_name = old.get("test_name", "")
-                new_name = settings.get("test_name", "")
+        def on_done(test_name):
+            QMessageBox.information(self.ui, "Success", f"✅ Test {test_name} added to queue")
+            Logger.success(f"Test '{test_name}' added to queue.")
 
-                if new_name == old_name:
-                    self.queue.tests[self.current_index] = settings
-                    return ("updated", new_name, self.current_index)
-            
-                else:
-                    self.queue.tests.append(settings)
-                    new_index = len(self.queue.tests) - 1
-                    return ("added_changed", new_name, new_index)
-            else:
-                self.queue.tests.append(settings)
-                new_index = len(self.queue.tests) - 1
-                return ("added", settings["test_name"], new_index)
-
-        def on_done(result):
-            # This runs back in the GUI thread
-            status, name, index = result
-
-            if status == "updated":
-                item = self.ui.queue_list.item(index)
-                if item:
-                    item.setText(name)
-                self.queue.refresh_queue()
-                self.ui.queue_list.setCurrentRow(index)
-                Logger.success(f"✅ Test '{name}' updated at index {index}.")
-
-            elif status == "added_changed":
-                self.queue.refresh_queue()
-                self.ui.queue_list.setCurrentRow(index)
-                self.current_index = index
-                QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue")
-                Logger.success(f"✅ Test '{name}' added to queue")
-
-            elif status == "added":
-                self.queue.refresh_queue()
-                self.ui.queue_list.setCurrentRow(index)
-                self.current_index = index
-                QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue.")
-                Logger.success(f"✅ Test '{name}' added to queue.")
-
-        def on_error(err):
-            QMessageBox.critical(self.ui, "Error", str(err))
-            Logger.error(str(err))
-
-        # Run in background
-        self.runner = ThreadRunner(self.ui)
-        self.runner.on_result = on_done
-        self.runner.on_error = on_error
+        # Run in background with progress dialog
+        self.runner = ThreadRunner(self.ui)   # make sure you initialized in __init__
+        self.runner.on_result = on_done       # hook result handler
         self.runner.run(task)
 
     def get_best_symbol(self,user_input: str) -> str :
@@ -644,9 +663,7 @@ class AutoBatchController:
     
     # --- helper method ---
     def toggle_date_fields(self, text):
-        """Enable/disable date pickers and adjust dates based on combo selection."""
         today = QDate.currentDate()
-
         if text == "Entire history":
             # Disable pickers, set from a very old date to today
             self.ui.date_from.setEnabled(False)
@@ -712,24 +729,26 @@ class AutoBatchController:
             self.ui.forward_date.setEnabled(True)  # let user pick manually
 
     def update_delay_input(self, text):
-        """Enable spinbox only when 'Custom Delay' is selected"""
-        if text == "Custom Delay":
-            self.delay_input.setEnabled(True)
+        try:
+            if text == "Custom Delay":
+                self.ui.delay_input.setEnabled(True)
 
-        elif text == "Random delay":
-            value = random.randint(0, 1000)
-            self.ui.delay_input.setValue(value)
-            self.ui.delay_input.setEnabled(False)
+            elif text == "Random delay":
+                value = random.randint(0, 1000)
+                self.ui.delay_input.setValue(value)
+                self.ui.delay_input.setEnabled(False)
 
-        elif "ms" in text:  
-            # Extract number from string like "50 ms"
-            value = int(text.replace(" ms", "").strip())
-            self.ui.delay_input.setValue(value)
-            self.ui.delay_input.setEnabled(False)
-        else:
-            # For Zero latency, Random delay, etc.
-            self.ui.delay_input.setValue(0)
-            self.ui.delay_input.setEnabled(False)
+            elif "ms" in text:  
+                # Extract number from string like "50 ms"
+                value = int(text.replace(" ms", "").strip())
+                self.ui.delay_input.setValue(value)
+                self.ui.delay_input.setEnabled(False)
+            else:
+                # For Zero latency, Random delay, etc.
+                self.ui.delay_input.setValue(0)
+                self.ui.delay_input.setEnabled(False)
+        except Exception as e:
+            Logger.error(f"Error updating delay input: {str(e)}")
 
     def on_item_clicked(self, item):
         row = self.queue.get_element_index(item.text())
@@ -1082,36 +1101,6 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, symbols, results, ui_values)
 
-    def get_fx_symbols(self):
-
-    # --- Majors ---
-        MAJOR_PAIRS = [
-            "EURUSD", "GBPUSD", "NZDUSD", "AUDUSD",
-            "USDJPY", "USDCHF", "USDCAD"
-        ]
-
-        # --- Minors ---
-        MINOR_PAIRS = [
-            "EURGBP", "EURJPY", "EURCHF", "EURAUD", "EURCAD", "EURNZD",
-            "GBPJPY", "GBPCHF", "GBPAUD", "GBPCAD", "GBPNZD",
-            "AUDJPY", "AUDCHF", "AUDCAD", "AUDNZD",
-            "NZDJPY", "NZDCHF", "NZDCAD",
-            "CADJPY", "CADCHF", "CHFJPY"
-        ]
-
-        ALL_FX_PAIRS = MAJOR_PAIRS + MINOR_PAIRS
-
-        # --- check which pairs exist on this broker/terminal ---
-        try:
-            available_symbols = [s.name for s in self.mt5.get_fx_symbols()]
-        except Exception:
-            available_symbols = []
-
-        # return only the intersection (so we don’t include pairs broker doesn’t support)
-        fx_symbols = [s for s in ALL_FX_PAIRS if s in available_symbols]
-
-        # fallback: if intersection is empty, just return the full list
-        return fx_symbols if fx_symbols else ALL_FX_PAIRS
 
     def get_symbols_for_option(self, option):
         if option == "FX Only":
@@ -1163,6 +1152,9 @@ class AutoBatchController:
 
     def on_test_selected(self, index):
         index = self.ui.queue_list.currentRow()  # Which item was clicked
+        if hasattr(self, "current_index") and self.current_index is not None:
+            if 0 <= self.current_index < len(self.queue.tests):
+                self.update_current_test_parameters(self.current_index)
         if 0 <= index < len(self.queue.tests):
             self.current_index = index
             test_data = self.queue.tests[index]  # Get the selected test
@@ -1222,6 +1214,34 @@ class AutoBatchController:
 
         except Exception as e:
                Logger.error(f"Error loading test parameters: {str(e)}")
+        
+    def update_current_test_parameters(self, index):
+        """Save the current form values into the test at given index."""
+        try:
+            self.queue.tests[index] = {
+                "test_name": self.ui.testfile_input.text(),
+                "expert": self.ui.expert_input.currentText(),
+                "param_file": self.ui.param_input.text(),
+                "symbol": self.ui.symbol_input.text(),
+                "timeframe": self.ui.timeframe_combo.currentText(),
+                "symbol_prefix": self.ui.symbol_prefix.text(),
+                "symbol_suffix": self.ui.symbol_suffix.text(),
+                "date": self.ui.date_combo.currentText(),
+                "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
+                "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
+                "forward": self.ui.forward_combo.currentText(),
+                "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd"),
+                "delay_mode": self.ui.delay_combo.currentText(),
+                "delay": self.ui.delay_input.value(),
+                "model": self.ui.model_combo.currentText(),
+                "deposit": self.ui.deposit_input.text(),
+                "currency": self.ui.currency_input.text(),
+                "leverage": self.ui.leverage_input.value(),
+                "optimization": self.ui.optim_combo.currentText(),
+                "criterion": self.ui.criterion_input.currentText(),
+            }
+        except Exception as e:
+            print(f"Error saving test parameters: {e}")
 
 
 

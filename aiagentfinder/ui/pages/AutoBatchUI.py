@@ -35,8 +35,8 @@ class AutoBatchUI(BaseTab):
                 color: #e0dcdc;
                 font-family: Inter;
 
-                font-size: 10px;
-                line-height: 16px
+                font-size: 12px;
+                line-height: 14px
 
             }
 
@@ -45,6 +45,7 @@ class AutoBatchUI(BaseTab):
                 border: 2px solid #555555;       /* nice gray border */
                 border-radius: 5px;              /* rounded corners */
                 padding: 4px 6px;                    /* internal padding */
+                font-size:11px;
 
                 background-color: #2b2b2b;
                 color: #ffffff;
@@ -75,8 +76,8 @@ class AutoBatchUI(BaseTab):
 
             /* Header title */
             QLabel#headerTitle {
-                font-size: 30px;
-                padding: 4px;
+                font-size: 32px;
+                padding: px;
             }
                            
             QComboBox QAbstractItemView {
@@ -85,6 +86,13 @@ class AutoBatchUI(BaseTab):
                selection-background-color: #ffcc00;
                selection-color: black;
            }
+                           
+
+
+            QListWidget{
+                    font-size : 12px       
+                    }
+           
 
             /* ================= Calendar Styling ================= */
             QCalendarWidget QWidget { 
@@ -153,16 +161,16 @@ class AutoBatchUI(BaseTab):
         header_label.setObjectName("headerTitle")
         header_label.setAlignment(Qt.AlignCenter)  
         header_layout.addWidget(header_label)
-        header_layout.setContentsMargins(0, 0, 0, 15)  
+        header_layout.setContentsMargins(0, 5, 0, 5)  
 
         # ================= MT5 Block =================
         mt5_block_layout = QVBoxLayout()
         # mt5_block_layout.setSpacing(10)  # space between MT5 rows
-        # mt5_block_layout.setContentsMargins(0, 0, 0, 10)
+        # mt5_block_layout.setContentsMargins(0, 0, 0,10)
 
         # MT5 Directory
         mt5_layout = QHBoxLayout()
-        mt5_layout.setSpacing(10)
+        # mt5_layout.setSpacing(10)
         mt5_layout.addWidget(QLabel("MT5 Directory:"))
         self.mt5_dir_input = QLineEdit()
         self.mt5_dir_btn = QPushButton("Browse")
@@ -176,7 +184,7 @@ class AutoBatchUI(BaseTab):
 
         # Data Folder
         data_layout = QHBoxLayout()
-        data_layout.setSpacing(10)
+        # data_layout.setSpacing(10)
         data_layout.addWidget(QLabel("Data Folder:"))
         self.data_input = QLineEdit()
         self.data_btn = QPushButton("Browse")
@@ -191,7 +199,7 @@ class AutoBatchUI(BaseTab):
 
         # Report Folder
         report_layout = QHBoxLayout()
-        report_layout.setSpacing(10)
+        # report_layout.setSpacing(10)
         report_layout.addWidget(QLabel("Report Folder:"))
         self.report_input = QLineEdit("Agent Finder Results")
         self.report_btn = QPushButton("Browse")
@@ -205,7 +213,7 @@ class AutoBatchUI(BaseTab):
 
         # ================= Left Panel =================
         left_layout = QVBoxLayout()
-        left_layout.setSpacing(10)
+        # left_layout.setSpacing(10)
         left_layout.setContentsMargins(0, 0, 10, 0)
         left_layout.addWidget(QLabel("Pairs to Test:"))
 
@@ -213,7 +221,7 @@ class AutoBatchUI(BaseTab):
         self.queue_list.setObjectName("queueList")
         self.queue_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        self.queue_list.setMinimumHeight(190)
+        # self.queue_list.setMinimumHeight(190)
         # self.queue_list.setMinimumWidth(250)
 
         left_layout.addWidget(self.queue_list)
@@ -465,7 +473,7 @@ class AutoBatchUI(BaseTab):
         
         # ================= Bottom =================
         bottom_layout = QHBoxLayout()
-        bottom_layout.setContentsMargins(10, 30, 10, 10)
+        # bottom_layout.setContentsMargins(10, 10, 10, 5)
         bottom_layout.setSpacing(15)
         bottom_layout.setAlignment(Qt.AlignCenter)  # type: ignore
         self.start_btn = QPushButton("START")

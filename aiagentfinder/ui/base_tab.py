@@ -1,25 +1,127 @@
-# aiagentfinder/ui/base_tab.py
+# # aiagentfinder/ui/base_tab.py
 from abc import abstractmethod
-from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from PyQt5.QtWidgets import (
+    QWidget, QVBoxLayout, QScrollArea, QSizePolicy
+)
+from PyQt5.QtCore import QTimer, Qt
 from PyQt5.QtGui import QPalette, QColor
 
 
-class BaseTab(QWidget):
-    """Abstract base class for tabs."""
+# class BaseTab(QWidget):
+#     """Abstract base class for tabs."""
     
 
+#     def __init__(self, title: str, parent=None):
+#         super().__init__(parent)
+
+#         self.title = title
+#         self.layout = QVBoxLayout(self)
+#         self.setAutoFillBackground(True)
+#         self.layout.setContentsMargins(10, 5 , 10,  10)
+
+#         self.setStyleSheet("background-color: #1e1e1e;") 
+#         self.init_ui()   
+
+
+
+#     @abstractmethod
+#     def init_ui(self):
+#         """Each tab must implement this."""
+#         pass
+
+class BaseTab(QWidget):
     def __init__(self, title: str, parent=None):
         super().__init__(parent)
 
         self.title = title
-        self.layout = QVBoxLayout(self)
-        self.setAutoFillBackground(True)
-        self.layout.setContentsMargins(10, 5 , 10,  10)
 
-        self.setStyleSheet("background-color: #1e1e1e;") 
-        self.init_ui()   #
+        # Outer layout
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
 
-    @abstractmethod
+        # Scroll Area
+        self.scroll = QScrollArea(self)
+        self.scroll.setWidgetResizable(True)
+        self.scroll.setFrameShape(QScrollArea.NoFrame)
+        self.scroll.setStyleSheet("""
+                QScrollArea {
+                border: 0px;
+                background: white;
+            }
+
+            QScrollBar:vertical {
+                border: 0px;
+                background: #e0e0e0;
+                width: 2px;         /* make scrollbar thin */
+                margin: 0px;
+            }
+
+            QScrollBar::handle:vertical {
+                background: #888;   /* scrollbar thumb */
+                min-height: 20px;
+                border-radius: 3px;
+            }
+
+            QScrollBar::handle:vertical:hover {
+                background: #555;   /* darker when hover */
+            }
+
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                height: 0px;        /* remove top/bottom arrows */
+            }
+
+            # QScrollBar:horizontal {
+            #     border: 0px;
+            #     background: #e0e0e0;
+            #     height: 0px;        /* thin horizontal bar */
+            #     margin: 0px;
+            # }
+
+            # QScrollBar::handle:horizontal {
+            #     background: #888;
+            #     min-width: 20px;
+            #     border-radius: 3px;
+            # }
+
+            # QScrollBar::handle:horizontal:hover {
+            #     background: #555;
+            # }
+
+            # QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+            #     width: 0px;         /* remove arrows */
+            # }
+""")
+        main_layout.addWidget(self.scroll)
+
+        # Content widget inside scroll
+        self.content = QWidget()
+        self.content.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        # Use a safe attribute name (avoid overwriting QWidget.layout())
+        self.layout = QVBoxLayout(self.content)
+        self.layout.setContentsMargins(10, 5, 10, 10)
+
+        self.scroll.setWidget(self.content)
+
+        self.setStyleSheet("background-color: #1e1e1e;")
+
+        self.init_ui()
+
     def init_ui(self):
-        """Each tab must implement this."""
+        """Each tab must implement this and add widgets to self.main_layout."""
         pass
+
+    def resizeEvent(self, event):
+        """Adjust scrollbars only when window is resized."""
+        self.update_scrollbars()
+        super().resizeEvent(event)
+
+    def update_scrollbars(self):
+            # Window not maximized → scroll only if content > viewport
+        if self.content.sizeHint().height() > self.scroll.viewport().height():
+            self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        else:
+            self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        # horizontal: keep it off (vertical only)
+        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)

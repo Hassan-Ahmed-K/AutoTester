@@ -3606,3 +3606,159 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-09-18 17:51:01] [INFO] Closest match found: STNG
 [2025-09-18 17:51:01] [INFO] Best symbol found: STNG
 [2025-09-18 17:51:02] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-18 21:14:46] [SUCCESS] ✅ ✅ Test 'mdmmd' added to queue.
+[2025-09-19 22:58:39] [SUCCESS] ✅ Test 'jjgjjg' added to queue.
+[2025-09-19 22:59:03] [SUCCESS] ✅ Test 'iuiui' added to queue.
+[2025-09-19 23:00:44] [SUCCESS] ✅ Test 'jhjfhf' added to queue.
+[2025-09-19 23:00:52] [SUCCESS] ✅ Test 'ksmkms' added to queue.
+[2025-09-19 23:02:14] [SUCCESS] ✅ Test 'kjkj' added to queue.
+[2025-09-19 23:02:21] [SUCCESS] ✅ Test 'llllll' added to queue.
+[2025-09-19 23:07:49] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-19 23:07:58] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-19 23:08:30] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-20 00:29:08] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-20 00:29:17] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 00:29:17] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-20 00:29:17] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 00:29:26] [INFO] Exact match found: M
+[2025-09-20 00:29:26] [INFO] Best symbol found: M
+[2025-09-20 00:29:26] [INFO] Exact match found: MD
+[2025-09-20 00:29:26] [INFO] Best symbol found: MD
+[2025-09-20 00:29:26] [INFO] Closest match found: EMDM
+[2025-09-20 00:29:26] [INFO] Best symbol found: EMDM
+[2025-09-20 00:29:27] [INFO] Closest match found: UMDD
+[2025-09-20 00:29:27] [INFO] Best symbol found: UMDD
+[2025-09-20 00:29:27] [INFO] Closest match found: MMM
+[2025-09-20 00:29:27] [INFO] Best symbol found: MMM
+[2025-09-20 00:29:27] [INFO] Closest match found: UMDD
+[2025-09-20 00:29:27] [INFO] Best symbol found: UMDD
+[2025-09-20 00:29:31] [SUCCESS] ✅ Test 'mdmdmm' added to queue.
+[2025-09-20 00:29:34] [INFO] Exact match found: T
+[2025-09-20 00:29:34] [INFO] Best symbol found: T
+[2025-09-20 00:29:34] [INFO] Exact match found: TE
+[2025-09-20 00:29:34] [INFO] Best symbol found: TE
+[2025-09-20 00:29:35] [INFO] Closest match found: VTES
+[2025-09-20 00:29:35] [INFO] Best symbol found: VTES
+[2025-09-20 00:29:35] [INFO] Closest match found: WEST
+[2025-09-20 00:29:35] [INFO] Best symbol found: WEST
+[2025-09-20 00:29:36] [INFO] Closest match found: WEST
+[2025-09-20 00:29:36] [INFO] Best symbol found: WEST
+[2025-09-20 00:29:42] [SUCCESS] ✅ Test 'test2' added to queue.
+[2025-09-20 00:30:19] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-20 00:30:25] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 00:30:25] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-20 00:30:25] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 00:30:28] [INFO] Exact match found: M
+[2025-09-20 00:30:28] [INFO] Best symbol found: M
+[2025-09-20 00:30:28] [INFO] Exact match found: MD
+[2025-09-20 00:30:28] [INFO] Best symbol found: MD
+[2025-09-20 00:30:29] [INFO] Closest match found: EMDM
+[2025-09-20 00:30:29] [INFO] Best symbol found: EMDM
+[2025-09-20 00:30:29] [INFO] Closest match found: EMDM
+[2025-09-20 00:30:29] [INFO] Best symbol found: EMDM
+[2025-09-20 00:30:29] [INFO] Closest match found: MMD
+[2025-09-20 00:30:29] [INFO] Best symbol found: MMD
+[2025-09-20 00:30:32] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-20 00:30:34] [INFO] Closest match found: EMDM
+[2025-09-20 00:30:34] [INFO] Best symbol found: EMDM
+[2025-09-20 00:30:34] [INFO] Closest match found: EMDM
+[2025-09-20 00:30:34] [INFO] Best symbol found: EMDM
+[2025-09-20 00:30:34] [INFO] Exact match found: MD
+[2025-09-20 00:30:34] [INFO] Best symbol found: MD
+[2025-09-20 00:30:34] [INFO] Exact match found: M
+[2025-09-20 00:30:34] [INFO] Best symbol found: M
+[2025-09-20 00:30:35] [INFO] Exact match found: U
+[2025-09-20 00:30:35] [INFO] Best symbol found: U
+[2025-09-20 00:30:36] [INFO] Exact match found: UA
+[2025-09-20 00:30:36] [INFO] Best symbol found: UA
+[2025-09-20 00:30:36] [INFO] Closest match found: USAU
+[2025-09-20 00:30:36] [INFO] Best symbol found: USAU
+[2025-09-20 00:30:36] [INFO] Closest match found: UAVS
+[2025-09-20 00:30:36] [INFO] Best symbol found: UAVS
+[2025-09-20 00:30:37] [INFO] Closest match found: USAU
+[2025-09-20 00:30:37] [INFO] Best symbol found: USAU
+[2025-09-20 00:30:38] [INFO] Closest match found: XAUAUD
+[2025-09-20 00:30:38] [INFO] Best symbol found: XAUAUD
+[2025-09-20 00:30:43] [SUCCESS] ✅ Test 'uaud' added to queue.
+[2025-09-20 00:31:15] [SUCCESS] ✅ Test 'CADCHF_t1' added to queue.
+[2025-09-20 00:31:15] [SUCCESS] ✅ Test 'CADCHF_t2' added to queue.
+[2025-09-20 00:31:15] [SUCCESS] ✅ Test 'AUDJPY_t1' added to queue.
+[2025-09-20 00:31:15] [SUCCESS] ✅ Test 'AUDJPY_t2' added to queue.
+[2025-09-20 00:31:21] [INFO] Closest match found: CADCHF
+[2025-09-20 00:31:21] [INFO] Best symbol found: CADCHF
+[2025-09-20 00:31:22] [INFO] Closest match found: CADCHF
+[2025-09-20 00:31:22] [INFO] Best symbol found: CADCHF
+[2025-09-20 00:31:23] [INFO] Closest match found: AUDJPY
+[2025-09-20 00:31:23] [INFO] Best symbol found: AUDJPY
+[2025-09-20 00:31:24] [INFO] Closest match found: AUDJPY
+[2025-09-20 00:31:24] [INFO] Best symbol found: AUDJPY
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'CADCHF_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'CADCHF_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDJPY_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDJPY_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'NZDCAD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'NZDCAD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'NZDCHF_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'NZDCHF_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDUSD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDUSD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDNZD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDNZD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'GBPJPY_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'GBPJPY_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'EURCAD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'EURCAD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDCAD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDCAD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'CHFJPY_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'CHFJPY_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'NZDCAD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'NZDCAD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'GBPNZD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'GBPNZD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'EURNZD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'EURNZD_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'CADCHF_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'CADCHF_t2' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDCAD_t1' added to queue.
+[2025-09-20 00:59:11] [SUCCESS] ✅ Test 'AUDCAD_t2' added to queue.
+[2025-09-20 01:00:20] [INFO] Closest match found: GBPNZD
+[2025-09-20 01:00:20] [INFO] Best symbol found: GBPNZD
+[2025-09-20 01:00:22] [INFO] Closest match found: GBPNZD
+[2025-09-20 01:00:22] [INFO] Best symbol found: GBPNZD
+[2025-09-20 01:00:28] [INFO] Closest match found: GBPNZD
+[2025-09-20 01:00:28] [INFO] Best symbol found: GBPNZD
+[2025-09-20 01:00:30] [INFO] Closest match found: GBPNZD
+[2025-09-20 01:00:30] [INFO] Best symbol found: GBPNZD
+[2025-09-20 01:00:31] [INFO] Closest match found: EURNZD
+[2025-09-20 01:00:31] [INFO] Best symbol found: EURNZD
+[2025-09-20 01:00:32] [INFO] Closest match found: EURNZD
+[2025-09-20 01:00:32] [INFO] Best symbol found: EURNZD
+[2025-09-20 01:00:35] [INFO] Closest match found: CADCHF
+[2025-09-20 01:00:35] [INFO] Best symbol found: CADCHF
+[2025-09-20 01:00:36] [INFO] Closest match found: AUDCAD
+[2025-09-20 01:00:36] [INFO] Best symbol found: AUDCAD
+[2025-09-20 01:00:38] [INFO] Closest match found: CADCHF
+[2025-09-20 01:00:38] [INFO] Best symbol found: CADCHF
+[2025-09-20 01:00:40] [INFO] Closest match found: CHFJPY
+[2025-09-20 01:00:40] [INFO] Best symbol found: CHFJPY
+[2025-09-20 01:00:41] [INFO] Closest match found: NZDCAD
+[2025-09-20 01:00:41] [INFO] Best symbol found: NZDCAD
+[2025-09-20 01:00:43] [INFO] Closest match found: GBPNZD
+[2025-09-20 01:00:43] [INFO] Best symbol found: GBPNZD
+[2025-09-20 01:00:43] [INFO] Closest match found: GBPNZD
+[2025-09-20 01:00:43] [INFO] Best symbol found: GBPNZD
+[2025-09-20 01:00:58] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-20 01:04:32] [SUCCESS] ✅ Test 'CADCHF_tt1' added to queue.
+[2025-09-20 01:04:32] [SUCCESS] ✅ Test 'CADCHF_tt2' added to queue.
+[2025-09-20 01:04:32] [SUCCESS] ✅ Test 'AUDJPY_tt1' added to queue.
+[2025-09-20 01:04:32] [SUCCESS] ✅ Test 'AUDJPY_tt2' added to queue.
+[2025-09-20 01:04:55] [INFO] Closest match found: AUDJPY
+[2025-09-20 01:04:55] [INFO] Best symbol found: AUDJPY
+[2025-09-20 01:04:57] [INFO] Closest match found: AUDJPY
+[2025-09-20 01:04:57] [INFO] Best symbol found: AUDJPY
+[2025-09-20 01:04:58] [INFO] Closest match found: CADCHF
+[2025-09-20 01:04:58] [INFO] Best symbol found: CADCHF
+[2025-09-20 01:05:01] [INFO] Closest match found: CADCHF
+[2025-09-20 01:05:01] [INFO] Best symbol found: CADCHF
+[2025-09-20 01:33:50] [SUCCESS] ✅ Test 'mmmmm' added to queue.
