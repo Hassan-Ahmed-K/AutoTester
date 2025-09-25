@@ -86,32 +86,75 @@ class QueueManager:
         path, _ = QFileDialog.getOpenFileName(self.ui, "Load Queue", "", "JSON Files (*.json)")
         if path and os.path.exists(path):
             with open(path, "r") as f:
-                self.tests = json.load(f)
+                self.tests =self.tests + json.load(f)
             self.refresh_queue()
 
+    # def export_template(self):
+    #     path, _ = QFileDialog.getSaveFileName(self.ui, "Export Template", "", "CSV Files (*.csv)")
+    #     if path:
+    #         try:
+    #             if not self.tests:
+    #                 QMessageBox.warning(self.ui, "Error", "The tests list is empty. Nothing to export.")
+    #                 raise ValueError("The tests list is empty. Nothing to export.")
+                
+    #             with open(path, "w") as f:
+    #                 # Write header
+    #                 f.write(",".join(self.tests[0].keys()) + "\n")
+                    
+    #                 # Write each row
+    #                 for test in self.tests:
+                        
+    #                     f.write(",".join(str(value) for value in test.values()) + "\n")
+                
+    #             Logger.success("Export completed successfully!")
+
+    #         except ValueError as ve:
+    #             Logger.error(str(ve))
+
+    #         except Exception as e:
+    #             Logger.error(f"Error exporting template: {str(e)}")
+
     def export_template(self):
+        Logger.info("📤 Export template initiated.")
         path, _ = QFileDialog.getSaveFileName(self.ui, "Export Template", "", "CSV Files (*.csv)")
+        Logger.debug(f"Save dialog returned path: {path}")
+
         if path:
             try:
                 if not self.tests:
+                    Logger.warning("⚠️ The tests list is empty. Nothing to export.")
                     QMessageBox.warning(self.ui, "Error", "The tests list is empty. Nothing to export.")
                     raise ValueError("The tests list is empty. Nothing to export.")
-                
-                with open(path, "w") as f:
+
+                # Ensure consistent column order from the first test
+                header_keys = list(self.tests[0].keys())
+                Logger.debug(f"Using header keys: {header_keys}")
+
+                Logger.info(f"Writing {len(self.tests)} tests to {path}")
+
+                with open(path, "w", encoding="utf-8") as f:
                     # Write header
-                    f.write(",".join(self.tests[0].keys()) + "\n")
-                    
-                    # Write each row
-                    for test in self.tests:
-                        f.write(",".join(str(value) for value in test.values()) + "\n")
-                
-                Logger.success("Export completed successfully!")
+                    header = ",".join(header_keys)
+                    f.write(header + "\n")
+                    Logger.debug(f"Header written: {header}")
+
+                    # Write each row by following header key order
+                    for idx, test in enumerate(self.tests, start=1):
+                        row = ",".join(str(test.get(key, "")) for key in header_keys)
+                        f.write(row + "\n")
+                        Logger.debug(f"Row {idx} written: {row}")
+
+                Logger.success(f"✅ Export completed successfully! File saved at {path}")
 
             except ValueError as ve:
-                Logger.error(str(ve))
+                Logger.error(f"❌ Export aborted: {ve}")
 
             except Exception as e:
-                Logger.error(f"Error exporting template: {str(e)}")
+                Logger.error(f"❌ Unexpected error exporting template: {e}")
+        else:
+            Logger.info("Export template cancelled by user.")
+
+
     # ---------------- Extra Features ----------------
     def create_non_correlated_list(self):
         result = {t["symbol"]: t for t in self.tests}.values()  # deduplicate by symbol
