@@ -1,0 +1,9 @@
+side bar 
+toggle bar
+login page ---> email ---> validate 
+                           passwords ---->validate 
+                           sigin in ---> token --
+                    cache  return dict { authentication , validation time}
+
+flag , false true --> main window 
+open app check cahche if token validate then false true 	

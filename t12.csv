@@ -1,0 +1,7 @@
+test_name,expert,param_file,symbol_prefix,symbol_suffix,symbol,timeframe,date,date_from,date_to,forward,forward_date,delay,delay_mode,model,deposit,currency,leverage,optimization,criterion
+CADCHF_,Please Attach Data File,,,,CADCHF,M1,Entire history,1970-01-01,2025-09-20,No,2025-09-20,0,"Zero latency, ideal execution",Every tick,0,USD,0.00,Disabled,Balance Max
+CADCHF_,Please Attach Data File,,,,CADCHF,M1,Entire history,1970-01-01,2025-09-20,No,2025-09-20,0,"Zero latency, ideal execution",Every tick,0,USD,0.00,Disabled,Balance Max
+CADCHF_,Please Attach Data File,,,,CADCHF,M1,Entire history,1970-01-01,2025-09-20,No,2025-09-20,0,"Zero latency, ideal execution",Every tick,0,USD,0.00,Disabled,Balance Max
+AUDJPY_,Please Attach Data File,,,,AUDJPY,M1,Entire history,1970-01-01,2025-09-20,No,2025-09-20,0,"Zero latency, ideal execution",Every tick,0,USD,0.00,Disabled,Balance Max
+AUDJPY_,Please Attach Data File,,,,AUDJPY,M1,Entire history,1970-01-01,2025-09-20,No,2025-09-20,0,"Zero latency, ideal execution",Every tick,0,USD,0.00,Disabled,Balance Max
+AUDJPY_,Please Attach Data File,,,,AUDJPY,M1,Entire history,1970-01-01,2025-09-20,No,2025-09-20,0,"Zero latency, ideal execution",Every tick,0,USD,0.00,Disabled,Balance Max

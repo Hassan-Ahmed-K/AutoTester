@@ -3,6 +3,7 @@ import os
 from PyQt5.QtWidgets import QInputDialog, QFileDialog, QMessageBox
 import matplotlib.pyplot as plt
 from aiagentfinder.utils import Logger
+import csv
 
 class QueueManager:
     def __init__(self, ui):
@@ -97,14 +98,13 @@ class QueueManager:
                     QMessageBox.warning(self.ui, "Error", "The tests list is empty. Nothing to export.")
                     raise ValueError("The tests list is empty. Nothing to export.")
                 
-                with open(path, "w") as f:
-                    # Write header
-                    f.write(",".join(self.tests[0].keys()) + "\n")
-                    
-                    # Write each row
-                    for test in self.tests:
-                        f.write(",".join(str(value) for value in test.values()) + "\n")
+                headers = list(self.tests[0].keys())
                 
+                with open(path, "w", newline="", encoding="utf-8") as f:
+                    writer = csv.DictWriter(f, fieldnames=headers, quoting=csv.QUOTE_MINIMAL)
+                    writer.writeheader()
+                    writer.writerows(self.tests)
+            
                 Logger.success("Export completed successfully!")
 
             except ValueError as ve:

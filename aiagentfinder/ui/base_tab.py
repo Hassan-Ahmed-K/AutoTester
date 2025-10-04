@@ -1,7 +1,7 @@
 # # aiagentfinder/ui/base_tab.py
 from abc import abstractmethod
 from PyQt5.QtWidgets import (
-    QWidget, QVBoxLayout, QScrollArea, QSizePolicy
+    QWidget, QVBoxLayout, QScrollArea, QSizePolicy,QLabel,QHBoxLayout
 )
 from PyQt5.QtCore import QTimer, Qt
 from PyQt5.QtGui import QPalette, QColor
@@ -37,7 +37,23 @@ class BaseTab(QWidget):
 
         # Outer layout
         main_layout = QVBoxLayout(self)
+        self.setAutoFillBackground(True)
         main_layout.setContentsMargins(0, 0, 0, 0)
+       
+
+        # Header label
+        self.topbar = QWidget()
+        self.topbar.setFixedHeight(30)
+        self.topbar.setStyleSheet("""
+            background-color: #2b2b2b;
+            border-radius: 3px;
+        """)
+
+        header_layout = QHBoxLayout(self.topbar)
+        header_layout.setContentsMargins(10, 0, 10, 0)
+        header_layout.addStretch()
+
+        main_layout.addWidget(self.topbar)
 
         # Scroll Area
         self.scroll = QScrollArea(self)
