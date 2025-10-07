@@ -46,6 +46,7 @@ class AutoBatchController:
         self.ui.data_input.textChanged.connect(self.update_expert_list)
         self.ui.refresh_btn.clicked.connect(self.refresh_expert)
         self.ui.date_combo.currentTextChanged.connect(self.toggle_date_fields)
+        self.ui.date_combo.currentTextChanged.connect(self.adjust_forward_date)
         self.ui.forward_combo.currentTextChanged.connect(self.adjust_forward_date)
         self.ui.forward_copy_down.clicked.connect(lambda: self.copy_parameter({"forward": self.ui.forward_combo.currentText(), "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd")}))
         self.ui.model_copy_to_all.clicked.connect(lambda: self.copy_parameter({"model": self.ui.model_combo.currentText()}))
@@ -827,40 +828,90 @@ class AutoBatchController:
             Logger.error(f"Error in toggle_date_fields with option '{text}': {e}")
 
 
+    # def adjust_forward_date(self, text):
+    #     """Adjust forward_date depending on combo selection."""
+    #     today = QDate.currentDate()
+    #     Logger.info(f"Adjusting forward date: option selected = {text}")
+
+    #     if text == "No":
+    #         self.ui.forward_date.setEnabled(False)
+    #         self.ui.forward_date.setDate(today)
+    #         Logger.debug("Forward date disabled, set to today")
+
+    #     elif text == "1/4":
+    #         self.ui.forward_date.setEnabled(False)
+    #         new_date = today.addMonths(3)
+    #         self.ui.forward_date.setDate(new_date)
+    #         Logger.debug(f"Forward date set to {new_date.toString('yyyy-MM-dd')} (1/4 year)")
+
+    #     elif text == "1/3":
+    #         self.ui.forward_date.setEnabled(False)
+    #         new_date = today.addMonths(4)
+    #         self.ui.forward_date.setDate(new_date)
+    #         Logger.debug(f"Forward date set to {new_date.toString('yyyy-MM-dd')} (1/3 year)")
+
+    #     elif text == "1/2":
+    #         self.ui.forward_date.setEnabled(False)
+    #         new_date = today.addMonths(6)
+    #         self.ui.forward_date.setDate(new_date)
+    #         Logger.debug(f"Forward date set to {new_date.toString('yyyy-MM-dd')} (1/2 year)")
+
+    #     elif text == "Custom":
+    #         self.ui.forward_date.setEnabled(True)  # let user pick manually
+    #         Logger.info("Forward date enabled for custom selection")
+
+    #     else:
+    #         Logger.warning(f"Unknown forward date option: {text}")
+
+
     def adjust_forward_date(self, text):
-        """Adjust forward_date depending on combo selection."""
-        today = QDate.currentDate()
-        Logger.info(f"Adjusting forward date: option selected = {text}")
+        """Adjust forward_date based on selected testing period and forward fraction."""
+        try:
+            Logger.info(f"Adjusting forward date based on selection: {text}")
 
-        if text == "No":
-            self.ui.forward_date.setEnabled(False)
-            self.ui.forward_date.setDate(today)
-            Logger.debug("Forward date disabled, set to today")
+            # Get testing period
+            date_from = self.ui.date_from.date()
+            date_to = self.ui.date_to.date()
 
-        elif text == "1/4":
-            self.ui.forward_date.setEnabled(False)
-            new_date = today.addMonths(3)
-            self.ui.forward_date.setDate(new_date)
-            Logger.debug(f"Forward date set to {new_date.toString('yyyy-MM-dd')} (1/4 year)")
+            # Calculate total testing duration in days
+            total_days = date_from.daysTo(date_to)
+            if total_days <= 0:
+                Logger.warning("Invalid test period: date_from >= date_to")
+                return
 
-        elif text == "1/3":
-            self.ui.forward_date.setEnabled(False)
-            new_date = today.addMonths(4)
-            self.ui.forward_date.setDate(new_date)
-            Logger.debug(f"Forward date set to {new_date.toString('yyyy-MM-dd')} (1/3 year)")
+            # Handle forward options
+            if text == "No":
+                self.ui.forward_date.setEnabled(False)
+                self.ui.forward_date.setDate(date_to)  # No forward, same as test end
+                Logger.debug("Forward date disabled, set to test end date")
 
-        elif text == "1/2":
-            self.ui.forward_date.setEnabled(False)
-            new_date = today.addMonths(6)
-            self.ui.forward_date.setDate(new_date)
-            Logger.debug(f"Forward date set to {new_date.toString('yyyy-MM-dd')} (1/2 year)")
+            elif text in ("1/4", "1/3", "1/2"):
+                self.ui.forward_date.setEnabled(False)
 
-        elif text == "Custom":
-            self.ui.forward_date.setEnabled(True)  # let user pick manually
-            Logger.info("Forward date enabled for custom selection")
+                # Convert "1/3" -> 1/3 fraction
+                fraction = eval(text)  # safe here since only predefined values are allowed
 
-        else:
-            Logger.warning(f"Unknown forward date option: {text}")
+                # Forward starts after (1 - fraction) of period completed
+                forward_start_offset = int(total_days * (1 - fraction))
+
+                # New forward date = test period start + offset
+                new_forward_date = date_from.addDays(forward_start_offset)
+                self.ui.forward_date.setDate(new_forward_date)
+
+                Logger.debug(
+                    f"Forward date set to {new_forward_date.toString('yyyy-MM-dd')} "
+                    f"({text} of test period from {date_from.toString()} → {date_to.toString()})"
+                )
+
+            elif text == "Custom":
+                self.ui.forward_date.setEnabled(True)
+                Logger.info("Forward date enabled for custom selection")
+
+            else:
+                Logger.warning(f"Unknown forward date option: {text}")
+
+        except Exception as e:
+            Logger.error(f"Error adjusting forward date for '{text}': {e}")
 
     def update_delay_input(self, text):
         Logger.info(f"Updating delay input: option selected = {text}")
@@ -1329,22 +1380,74 @@ class AutoBatchController:
     def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
         Logger.info(f"Finding top {top_n} uncorrelated pairs with correlation ≤ {correlation}")
 
+        # df.to_csv("correlation_raw.csv", index=False)  # for debugging
+
         # Filter out identical pairs
         df_filtered = df[df["pair1"] != df["pair2"]].copy()
         Logger.debug(f"Filtered out identical pairs, remaining rows: {len(df_filtered)}")
+
+        # Normalize pair order (so A,B and B,A become the same)
+        df_filtered["pair_min"] = df_filtered[["pair1", "pair2"]].min(axis=1)
+        df_filtered["pair_max"] = df_filtered[["pair1", "pair2"]].max(axis=1)
+
+        # Drop duplicates after normalization
+        df_filtered = df_filtered.drop_duplicates(subset=["pair_min", "pair_max"])
 
         # Add absolute correlation values
         df_filtered["abs_day"] = df_filtered["day"].abs()
 
         # Filter by correlation threshold
-        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=False)
+        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=True)
         Logger.debug(f"After applying correlation filter ≤ {correlation}, rows left: {len(df_filtered)}")
 
+
+        corr_df = df_filtered.pivot(index="pair1", columns="pair2", values="day")
+        # corr_df.to_csv("corr_df.csv", index=False)
+
+
         # Select top_n
-        top_pairs = df_filtered[["pair1", "pair2", "day"]].head(top_n)
+        top_pairs = df_filtered[["pair_min", "pair_max", "day"]].head(top_n)
+        top_pairs = top_pairs.rename(columns={"pair_min": "pair1", "pair_max": "pair2"})
+
+        top_pairs.to_csv("correlation.csv", index=False)
         Logger.success(f"Top {len(top_pairs)} uncorrelated pairs selected")
 
         return top_pairs
+
+
+    # def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
+    #     """
+    #     Return top N uncorrelated pairs based on 'day' correlation values.
+    #     Keeps same columns as input (pair1, pair2, day) to avoid breaking controller.
+    #     """
+    #     Logger.info(f"Finding top {top_n} uncorrelated pairs with correlation ≤ {correlation}")
+
+    #     try:
+    #         df_filtered = df[df["pair1"] != df["pair2"]].copy()
+    #         df_filtered["abs_day"] = df_filtered["day"].abs()
+
+    #         # Filter for low correlation
+    #         df_filtered = df_filtered[df_filtered["abs_day"] <= correlation]
+
+    #         if df_filtered.empty:
+    #             Logger.warning("No pairs found under the correlation threshold.")
+    #             return pd.DataFrame(columns=["pair1", "pair2", "day"])
+
+    #         # Sort ascending by correlation magnitude
+    #         df_filtered = df_filtered.sort_values("abs_day", ascending=True)
+
+    #         # Select top N pairs
+    #         top_pairs = df_filtered.head(top_n)[["pair1", "pair2", "day"]].reset_index(drop=True)
+
+    #         top_pairs.to_csv("uncorrelated_pairs.csv", index=False)
+    #         Logger.success(f"Top {len(top_pairs)} uncorrelated pairs found: {top_pairs[['pair1','pair2']].values.tolist()}")
+
+    #         return top_pairs
+
+    #     except Exception as e:
+    #         Logger.error(f"Error in get_top_uncorrelated_pairs_day: {e}")
+    #         return pd.DataFrame(columns=["pair1", "pair2", "day"])
+
 
 
     def on_start_button_clicked(self, data_path, mt5_path, report_path):

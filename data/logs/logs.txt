@@ -8877,3 +8877,1157 @@ gy2
 [2025-09-24 04:37:48] [INFO] Updating delay input: option selected = Zero latency, ideal execution
 [2025-09-24 04:37:48] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
 [2025-09-24 04:37:48] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 00:40:30] [INFO] Application started.
+[2025-09-27 00:40:31] [INFO] Date range option selected: Entire history
+[2025-09-27 00:40:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 00:40:31] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 00:40:31] [DEBUG] Forward date disabled, set to today
+[2025-09-27 00:40:31] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 00:40:31] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 00:40:31] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 00:40:41] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 00:40:45] [INFO] Test symbol quantity set to: 5
+[2025-09-27 00:40:48] [INFO] Strategies count set to: 5
+[2025-09-27 00:41:02] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 00:41:04] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 00:41:06] [INFO] Strategy 3 set to: Strategy3
+[2025-09-27 00:41:09] [INFO] Strategy 4 set to: Strategy4
+[2025-09-27 00:41:15] [INFO] Strategy 5 set to: Strategy5
+[2025-09-27 00:41:18] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 00:41:19] [INFO] Correlation filter set to: 60
+[2025-09-27 00:41:19] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 5, 'strategies': ['Strategy1', 'Strategy2', 'Strategy3', 'Strategy4', 'Strategy5'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 00:41:19] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 00:41:19] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 00:41:19] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 00:41:19] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 00:41:19] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 00:41:20] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 00:41:20] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 00:41:20] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 00:41:32] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 00:41:32] [DEBUG] Received 788 lines of response data
+[2025-09-27 00:41:32] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 00:41:32] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 00:41:32] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 00:41:32] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 00:41:32] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 00:41:32] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 00:41:32] [DEBUG] After applying correlation filter ≤ 60, rows left: 548
+[2025-09-27 00:41:32] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-09-27 00:41:32] [INFO] Uncorrelated pairs found: 5
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: EURCHF_Strategy3
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: EURCHF_Strategy4
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: EURCHF_Strategy5
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDCHF_Strategy3
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDCHF_Strategy4
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDCHF_Strategy5
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: CHFJPY_Strategy1
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: CHFJPY_Strategy2
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: CHFJPY_Strategy3
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: CHFJPY_Strategy4
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: CHFJPY_Strategy5
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDUSD_Strategy1
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDUSD_Strategy2
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDUSD_Strategy3
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDUSD_Strategy4
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDUSD_Strategy5
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDNZD_Strategy1
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDNZD_Strategy2
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDNZD_Strategy3
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDNZD_Strategy4
+[2025-09-27 00:41:32] [DEBUG] Generated test settings: AUDNZD_Strategy5
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'EURCHF_Strategy3' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'EURCHF_Strategy4' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'EURCHF_Strategy5' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'AUDCHF_Strategy3' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'AUDCHF_Strategy4' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'AUDCHF_Strategy5' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'CHFJPY_Strategy1' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'CHFJPY_Strategy2' added to queue.
+[2025-09-27 00:41:32] [SUCCESS] ✅ Test 'CHFJPY_Strategy3' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'CHFJPY_Strategy4' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'CHFJPY_Strategy5' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDUSD_Strategy1' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDUSD_Strategy2' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDUSD_Strategy3' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDUSD_Strategy4' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDUSD_Strategy5' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDNZD_Strategy1' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDNZD_Strategy2' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDNZD_Strategy3' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDNZD_Strategy4' added to queue.
+[2025-09-27 00:41:33] [SUCCESS] ✅ Test 'AUDNZD_Strategy5' added to queue.
+[2025-09-27 00:41:36] [INFO] Added 25 test cases to queue successfully.
+[2025-09-27 00:41:39] [INFO] Preparing to fetch correlation for symbols: ['EURCHF', 'AUDCHF', 'CHFJPY', 'AUDUSD', 'AUDNZD'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-09-27 00:41:39] [DEBUG] Starting correlation fetch in background thread
+[2025-09-27 00:41:39] [DEBUG] Starting background correlation fetch task
+[2025-09-27 00:41:39] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURCHF|AUDCHF|CHFJPY|AUDUSD|AUDNZD, format=csv, endpoint=snapshot
+[2025-09-27 00:41:39] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURCHF|AUDCHF|CHFJPY|AUDUSD|AUDNZD
+[2025-09-27 00:41:51] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 00:41:51] [DEBUG] Received 40 lines of response data
+[2025-09-27 00:41:51] [INFO] Parsed CSV into DataFrame with 36 rows
+[2025-09-27 00:41:51] [DEBUG] Filtered DataFrame from 36 → 25 rows (symbol filtering)
+[2025-09-27 00:41:51] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 00:41:51] [DEBUG] Background task finished, DataFrame shape=(25, 8)
+[2025-09-27 00:41:51] [SUCCESS] ✅ Correlation data received with 25 rows
+[2025-09-27 00:41:51] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-09-27 00:41:51] [INFO] Pivoted correlation DataFrame to shape (5, 5)
+[2025-09-27 00:41:51] [DEBUG] Rendering correlation heatmap
+[2025-09-27 00:41:52] [SUCCESS] ✅ Correlation heatmap generated successfully
+[2025-09-27 01:00:33] [INFO] Application started.
+[2025-09-27 01:00:34] [INFO] Date range option selected: Entire history
+[2025-09-27 01:00:34] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 01:00:34] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 01:00:34] [DEBUG] Forward date disabled, set to today
+[2025-09-27 01:00:34] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 01:00:34] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 01:00:34] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 01:00:38] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 01:00:42] [INFO] Test symbol quantity set to: 5
+[2025-09-27 01:00:45] [INFO] Strategies count set to: 2
+[2025-09-27 01:00:57] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 01:00:59] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 01:01:02] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 01:01:04] [INFO] Correlation filter set to: 60
+[2025-09-27 01:01:04] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 01:01:04] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 01:01:04] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 01:01:04] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 01:01:04] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 01:01:04] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 01:01:04] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 01:01:04] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:01:04] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 01:01:06] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:01:06] [DEBUG] Received 788 lines of response data
+[2025-09-27 01:01:06] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 01:01:06] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 01:01:06] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:01:06] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 01:01:06] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 01:01:06] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 01:01:06] [ERROR] Failed to process correlation data: Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1237, in task
+    uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1342, in get_top_uncorrelated_pairs_day
+    df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=TRUE)
+                                                                                                      ^^^^
+NameError: name 'TRUE' is not defined. Did you mean: 'True'?
+
+[2025-09-27 01:01:33] [INFO] Application started.
+[2025-09-27 01:01:34] [INFO] Date range option selected: Entire history
+[2025-09-27 01:01:34] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 01:01:34] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 01:01:34] [DEBUG] Forward date disabled, set to today
+[2025-09-27 01:01:34] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 01:01:34] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 01:01:34] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 01:01:39] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 01:01:43] [INFO] Test symbol quantity set to: 5
+[2025-09-27 01:01:47] [INFO] Strategies count set to: 2
+[2025-09-27 01:01:49] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 01:01:51] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 01:01:54] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 01:01:56] [INFO] Correlation filter set to: 60
+[2025-09-27 01:01:56] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 01:01:56] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 01:01:56] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 01:01:56] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 01:01:56] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 01:01:56] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 01:01:56] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 01:01:56] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:01:56] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 01:01:57] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:01:57] [DEBUG] Received 788 lines of response data
+[2025-09-27 01:01:57] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 01:01:57] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 01:01:57] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:01:57] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 01:01:57] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 01:01:57] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 01:01:57] [DEBUG] After applying correlation filter ≤ 60, rows left: 548
+[2025-09-27 01:01:57] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-09-27 01:01:57] [INFO] Uncorrelated pairs found: 5
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: CADCHF_Strategy1
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: CADCHF_Strategy2
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:01:57] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:01:57] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'CADCHF_Strategy1' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'CADCHF_Strategy2' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:01:58] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:02:05] [INFO] Added 10 test cases to queue successfully.
+[2025-09-27 01:04:35] [INFO] Preparing to fetch correlation for symbols: ['EURCHF', 'EURNZD', 'AUDCHF', 'CADCHF'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-09-27 01:04:35] [DEBUG] Starting correlation fetch in background thread
+[2025-09-27 01:04:35] [DEBUG] Starting background correlation fetch task
+[2025-09-27 01:04:35] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURCHF|EURNZD|AUDCHF|CADCHF, format=csv, endpoint=snapshot
+[2025-09-27 01:04:36] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURCHF|EURNZD|AUDCHF|CADCHF
+[2025-09-27 01:04:48] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:04:48] [DEBUG] Received 29 lines of response data
+[2025-09-27 01:04:48] [INFO] Parsed CSV into DataFrame with 25 rows
+[2025-09-27 01:04:48] [DEBUG] Filtered DataFrame from 25 → 16 rows (symbol filtering)
+[2025-09-27 01:04:48] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:04:48] [DEBUG] Background task finished, DataFrame shape=(16, 8)
+[2025-09-27 01:04:48] [SUCCESS] ✅ Correlation data received with 16 rows
+[2025-09-27 01:04:48] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-09-27 01:04:48] [INFO] Pivoted correlation DataFrame to shape (4, 4)
+[2025-09-27 01:04:48] [DEBUG] Rendering correlation heatmap
+[2025-09-27 01:04:49] [SUCCESS] ✅ Correlation heatmap generated successfully
+[2025-09-27 01:07:05] [INFO] Application started.
+[2025-09-27 01:07:06] [INFO] Date range option selected: Entire history
+[2025-09-27 01:07:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 01:07:06] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 01:07:06] [DEBUG] Forward date disabled, set to today
+[2025-09-27 01:07:06] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 01:07:06] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 01:07:06] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 01:07:19] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 01:07:23] [INFO] Test symbol quantity set to: 5
+[2025-09-27 01:07:28] [INFO] Strategies count set to: 3
+[2025-09-27 01:07:33] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 01:07:35] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 01:07:38] [INFO] Strategy 3 set to: Strategy3
+[2025-09-27 01:07:43] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 01:07:46] [INFO] Correlation filter set to: 60
+[2025-09-27 01:07:46] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 3, 'strategies': ['Strategy1', 'Strategy2', 'Strategy3'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 01:07:46] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 01:07:46] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 01:07:46] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 01:07:46] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 01:07:46] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 01:07:46] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 01:07:46] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:07:46] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 01:07:47] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:07:47] [DEBUG] Received 788 lines of response data
+[2025-09-27 01:07:47] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 01:07:47] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 01:07:47] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:07:47] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 01:07:47] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 01:07:47] [ERROR] Failed to process correlation data: Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1237, in task
+    uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1332, in get_top_uncorrelated_pairs_day
+    df.to_csv("correlation_raw.csv", index=False)  # for debugging
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\generic.py", line 3986, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\io\formats\format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+         ^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+PermissionError: [Errno 13] Permission denied: 'correlation_raw.csv'
+
+[2025-09-27 01:08:22] [INFO] Application started.
+[2025-09-27 01:08:23] [INFO] Date range option selected: Entire history
+[2025-09-27 01:08:23] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 01:08:23] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 01:08:23] [DEBUG] Forward date disabled, set to today
+[2025-09-27 01:08:23] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 01:08:23] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 01:08:23] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 01:08:29] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 01:08:33] [INFO] Test symbol quantity set to: 5
+[2025-09-27 01:08:40] [INFO] Strategies count set to: 3
+[2025-09-27 01:08:47] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 01:08:50] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 01:08:53] [INFO] Strategy 3 set to: Strategy3
+[2025-09-27 01:08:56] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 01:08:58] [INFO] Correlation filter set to: 60
+[2025-09-27 01:08:58] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 3, 'strategies': ['Strategy1', 'Strategy2', 'Strategy3'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 01:08:58] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 01:08:58] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 01:08:58] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 01:08:58] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 01:08:58] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 01:08:58] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 01:08:58] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:08:58] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 01:08:59] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:08:59] [DEBUG] Received 788 lines of response data
+[2025-09-27 01:08:59] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 01:08:59] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 01:08:59] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:08:59] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 01:08:59] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 01:08:59] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 01:08:59] [DEBUG] After applying correlation filter ≤ 60, rows left: 548
+[2025-09-27 01:08:59] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-09-27 01:08:59] [INFO] Uncorrelated pairs found: 5
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURCHF_Strategy3
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURNZD_Strategy3
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: AUDCHF_Strategy3
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: CADCHF_Strategy1
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: CADCHF_Strategy2
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: CADCHF_Strategy3
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:08:59] [DEBUG] Generated test settings: EURNZD_Strategy3
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURCHF_Strategy3' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURNZD_Strategy3' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'AUDCHF_Strategy3' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'CADCHF_Strategy1' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'CADCHF_Strategy2' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'CADCHF_Strategy3' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:08:59] [SUCCESS] ✅ Test 'EURNZD_Strategy3' added to queue.
+[2025-09-27 01:09:02] [INFO] Added 15 test cases to queue successfully.
+[2025-09-27 01:11:35] [INFO] Preparing to fetch correlation for symbols: ['EURCHF', 'EURNZD', 'AUDCHF', 'CADCHF'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-09-27 01:11:35] [DEBUG] Starting correlation fetch in background thread
+[2025-09-27 01:11:35] [DEBUG] Starting background correlation fetch task
+[2025-09-27 01:11:35] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURCHF|EURNZD|AUDCHF|CADCHF, format=csv, endpoint=snapshot
+[2025-09-27 01:11:35] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURCHF|EURNZD|AUDCHF|CADCHF
+[2025-09-27 01:11:36] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:11:36] [DEBUG] Received 29 lines of response data
+[2025-09-27 01:11:36] [INFO] Parsed CSV into DataFrame with 25 rows
+[2025-09-27 01:11:36] [DEBUG] Filtered DataFrame from 25 → 16 rows (symbol filtering)
+[2025-09-27 01:11:36] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:11:36] [DEBUG] Background task finished, DataFrame shape=(16, 8)
+[2025-09-27 01:11:36] [SUCCESS] ✅ Correlation data received with 16 rows
+[2025-09-27 01:11:36] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-09-27 01:11:36] [INFO] Pivoted correlation DataFrame to shape (4, 4)
+[2025-09-27 01:11:36] [DEBUG] Rendering correlation heatmap
+[2025-09-27 01:11:36] [SUCCESS] ✅ Correlation heatmap generated successfully
+[2025-09-27 01:15:13] [INFO] Application started.
+[2025-09-27 01:15:14] [INFO] Date range option selected: Entire history
+[2025-09-27 01:15:14] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 01:15:14] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 01:15:14] [DEBUG] Forward date disabled, set to today
+[2025-09-27 01:15:14] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 01:15:14] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 01:15:14] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 01:15:19] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 01:15:24] [INFO] Test symbol quantity set to: 5
+[2025-09-27 01:15:28] [INFO] Strategies count set to: 3
+[2025-09-27 01:15:37] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 01:15:38] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 01:15:40] [INFO] Strategy 3 set to: Strategy3
+[2025-09-27 01:15:43] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 01:15:45] [INFO] Correlation filter set to: 60
+[2025-09-27 01:15:45] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 3, 'strategies': ['Strategy1', 'Strategy2', 'Strategy3'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 01:15:45] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 01:15:45] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 01:15:45] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 01:15:45] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 01:15:45] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 01:15:45] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 01:15:45] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:15:45] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 01:15:47] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:15:47] [DEBUG] Received 788 lines of response data
+[2025-09-27 01:15:47] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 01:15:47] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 01:15:47] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:15:47] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 01:15:47] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 01:15:47] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 01:15:47] [DEBUG] After applying correlation filter ≤ 60, rows left: 548
+[2025-09-27 01:15:47] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-09-27 01:15:47] [INFO] Uncorrelated pairs found: 5
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURCHF_Strategy3
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURNZD_Strategy3
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: AUDCHF_Strategy3
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: CADCHF_Strategy1
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: CADCHF_Strategy2
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: CADCHF_Strategy3
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:15:47] [DEBUG] Generated test settings: EURNZD_Strategy3
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURCHF_Strategy3' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURNZD_Strategy3' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'AUDCHF_Strategy3' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'CADCHF_Strategy1' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'CADCHF_Strategy2' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'CADCHF_Strategy3' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:15:47] [SUCCESS] ✅ Test 'EURNZD_Strategy3' added to queue.
+[2025-09-27 01:15:50] [INFO] Added 15 test cases to queue successfully.
+[2025-09-27 01:27:29] [INFO] Application started.
+[2025-09-27 01:27:30] [INFO] Date range option selected: Entire history
+[2025-09-27 01:27:30] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 01:27:30] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 01:27:30] [DEBUG] Forward date disabled, set to today
+[2025-09-27 01:27:30] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 01:27:30] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 01:27:30] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 01:27:38] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 01:27:42] [INFO] Test symbol quantity set to: 5
+[2025-09-27 01:27:45] [INFO] Strategies count set to: 2
+[2025-09-27 01:27:52] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 01:27:55] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 01:27:58] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 01:28:00] [INFO] Correlation filter set to: 60
+[2025-09-27 01:28:00] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 01:28:00] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 01:28:00] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 01:28:00] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 01:28:00] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 01:28:01] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 01:28:01] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 01:28:01] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:28:01] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 01:28:02] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:28:02] [DEBUG] Received 788 lines of response data
+[2025-09-27 01:28:02] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 01:28:02] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 01:28:02] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:28:02] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 01:28:02] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 01:28:02] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 01:28:02] [DEBUG] After applying correlation filter ≤ 60, rows left: 274
+[2025-09-27 01:28:02] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-09-27 01:28:02] [INFO] Uncorrelated pairs found: 5
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: EURAUD_Strategy1
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: EURAUD_Strategy2
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: GBPJPY_Strategy1
+[2025-09-27 01:28:02] [DEBUG] Generated test settings: GBPJPY_Strategy2
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'EURAUD_Strategy1' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'EURAUD_Strategy2' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'GBPJPY_Strategy1' added to queue.
+[2025-09-27 01:28:02] [SUCCESS] ✅ Test 'GBPJPY_Strategy2' added to queue.
+[2025-09-27 01:29:05] [INFO] Added 10 test cases to queue successfully.
+[2025-09-27 01:29:07] [INFO] Preparing to fetch correlation for symbols: ['EURCHF', 'AUDCHF', 'EURNZD', 'EURAUD', 'GBPJPY'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-09-27 01:29:07] [DEBUG] Starting correlation fetch in background thread
+[2025-09-27 01:29:07] [DEBUG] Starting background correlation fetch task
+[2025-09-27 01:29:07] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURCHF|AUDCHF|EURNZD|EURAUD|GBPJPY, format=csv, endpoint=snapshot
+[2025-09-27 01:29:07] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURCHF|AUDCHF|EURNZD|EURAUD|GBPJPY
+[2025-09-27 01:29:22] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 01:29:22] [DEBUG] Received 40 lines of response data
+[2025-09-27 01:29:22] [INFO] Parsed CSV into DataFrame with 36 rows
+[2025-09-27 01:29:22] [DEBUG] Filtered DataFrame from 36 → 25 rows (symbol filtering)
+[2025-09-27 01:29:22] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 01:29:22] [DEBUG] Background task finished, DataFrame shape=(25, 8)
+[2025-09-27 01:29:22] [SUCCESS] ✅ Correlation data received with 25 rows
+[2025-09-27 01:29:22] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-09-27 01:29:22] [INFO] Pivoted correlation DataFrame to shape (5, 5)
+[2025-09-27 01:29:22] [DEBUG] Rendering correlation heatmap
+[2025-09-27 01:29:23] [SUCCESS] ✅ Correlation heatmap generated successfully
+[2025-09-27 02:12:25] [INFO] Application started.
+[2025-09-27 02:12:26] [INFO] Date range option selected: Entire history
+[2025-09-27 02:12:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Sep 27 2025
+[2025-09-27 02:12:26] [INFO] Adjusting forward date: option selected = No
+[2025-09-27 02:12:26] [DEBUG] Forward date disabled, set to today
+[2025-09-27 02:12:27] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-09-27 02:12:27] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-09-27 02:12:27] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-09-27 02:12:30] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-09-27 02:12:34] [INFO] Test symbol quantity set to: 5
+[2025-09-27 02:12:36] [INFO] Strategies count set to: 3
+[2025-09-27 02:12:46] [INFO] Strategy 1 set to: Strategy1
+[2025-09-27 02:12:48] [INFO] Strategy 2 set to: Strategy2
+[2025-09-27 02:12:56] [INFO] Strategy 3 set to: Strategy3
+[2025-09-27 02:12:59] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-09-27 02:13:01] [INFO] Correlation filter set to: 60
+[2025-09-27 02:13:01] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 3, 'strategies': ['Strategy1', 'Strategy2', 'Strategy3'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-09-27 02:13:01] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-09-27', 'forward': 'No', 'forward_date': '2025-09-27', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-09-27 02:13:01] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-09-27 02:13:01] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-09-27 02:13:01] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-09-27 02:13:01] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-09-27 02:13:01] [DEBUG] Starting background task: fetching correlation data
+[2025-09-27 02:13:01] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-09-27 02:13:01] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-09-27 02:13:02] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-09-27 02:13:02] [DEBUG] Received 788 lines of response data
+[2025-09-27 02:13:02] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-09-27 02:13:02] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-09-27 02:13:02] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-09-27 02:13:02] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-09-27 02:13:02] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-09-27 02:13:02] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-09-27 02:13:02] [DEBUG] After applying correlation filter ≤ 60, rows left: 274
+[2025-09-27 02:13:02] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-09-27 02:13:02] [INFO] Uncorrelated pairs found: 5
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURCHF_Strategy3
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: AUDCHF_Strategy3
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURNZD_Strategy1
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURNZD_Strategy2
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURNZD_Strategy3
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURAUD_Strategy1
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURAUD_Strategy2
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: EURAUD_Strategy3
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: GBPJPY_Strategy1
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: GBPJPY_Strategy2
+[2025-09-27 02:13:03] [DEBUG] Generated test settings: GBPJPY_Strategy3
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURCHF_Strategy3' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'AUDCHF_Strategy3' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURNZD_Strategy1' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURNZD_Strategy2' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURNZD_Strategy3' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURAUD_Strategy1' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURAUD_Strategy2' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'EURAUD_Strategy3' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'GBPJPY_Strategy1' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'GBPJPY_Strategy2' added to queue.
+[2025-09-27 02:13:03] [SUCCESS] ✅ Test 'GBPJPY_Strategy3' added to queue.
+[2025-09-27 02:13:05] [INFO] Added 15 test cases to queue successfully.
+[2025-10-08 00:27:42] [INFO] Application started.
+[2025-10-08 00:27:45] [INFO] Date range option selected: Entire history
+[2025-10-08 00:27:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 00:27:45] [INFO] Adjusting forward date: option selected = No
+[2025-10-08 00:27:45] [DEBUG] Forward date disabled, set to today
+[2025-10-08 00:27:45] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 00:27:45] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 00:27:45] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 00:28:56] [INFO] Adjusting forward date: option selected = 1/4
+[2025-10-08 00:28:56] [DEBUG] Forward date set to 2026-01-08 (1/4 year)
+[2025-10-08 00:28:59] [INFO] Adjusting forward date: option selected = 1/3
+[2025-10-08 00:28:59] [DEBUG] Forward date set to 2026-02-08 (1/3 year)
+[2025-10-08 00:33:28] [INFO] Opening file dialog to select MT5 terminal...
+[2025-10-08 00:33:39] [SUCCESS] ✅ MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-10-08 00:33:39] [INFO] Starting MT5 setup in background thread...
+[2025-10-08 00:33:39] [DEBUG] Background task started for MT5 file: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-10-08 00:33:39] [INFO] Attempting to connect to MT5...
+[2025-10-08 00:33:54] [SUCCESS] ✅ Successfully connected to MT5.
+[2025-10-08 00:33:54] [SUCCESS] ✅ MT5 Data Folder detected: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-10-08 00:33:54] [INFO] Fetching deposit info...
+[2025-10-08 00:33:54] [SUCCESS] ✅ Deposit info retrieved: Balance=100000.0, Currency=USD, Leverage=100
+[2025-10-08 00:33:54] [INFO] Fetching symbol list...
+[2025-10-08 00:33:56] [DEBUG] Disconnecting from MT5...
+[2025-10-08 00:33:56] [INFO] Disconnected from MT5.
+[2025-10-08 00:33:56] [DEBUG] Looking for MT5 process: terminal64.exe
+[2025-10-08 00:33:58] [SUCCESS] ✅ Closed MT5 process: terminal64.exe (PID: 7784)
+[2025-10-08 00:33:58] [DEBUG] Background task finished.
+[2025-10-08 00:33:59] [DEBUG] on_done callback triggered with result.
+[2025-10-08 00:33:59] [INFO] Starting update_expert_list...
+[2025-10-08 00:33:59] [DEBUG] Data folder: 'C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075'
+[2025-10-08 00:33:59] [DEBUG] Looking for Experts in: 'C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Experts'
+[2025-10-08 00:33:59] [INFO] Found 44 expert file(s).
+[2025-10-08 00:33:59] [DEBUG] Expert names: ['ExpertMACD.ex5', 'ExpertMACD_2.1.1.ex5', 'ExpertMACD_2.2.1.ex5', 'ExpertMAMA.ex5', 'ExpertMAPSARSizeOptimized.ex5', 'ExpertMAPSARSizeOptimized_1.ex5', 'ExpertMAPSARSizeOptimized_2.ex5', 'ExpertMAPSAR_2.1.ex5', 'ExpertMAPSAR_2.2.ex5', 'ChartInChart.ex5', 'Controls.ex5', 'Correlation Matrix 3D.ex5', 'MACD Sample.ex5', 'Math 3D.ex5', 'Math 3D Morpher.ex5', 'Moving Average.ex5', 'BlackCrows WhiteSoldiers CCI.ex5', 'BlackCrows WhiteSoldiers MFI.ex5', 'BlackCrows WhiteSoldiers RSI.ex5', 'BlackCrows WhiteSoldiers Stoch.ex5', 'BullishBearish Engulfing CCI.ex5', 'BullishBearish Engulfing MFI.ex5', 'BullishBearish Engulfing RSI.ex5', 'BullishBearish Engulfing Stoch.ex5', 'BullishBearish Harami CCI.ex5', 'BullishBearish Harami MFI.ex5', 'BullishBearish Harami RSI.ex5', 'BullishBearish Harami Stoch.ex5', 'BullishBearish MeetingLines CCI.ex5', 'BullishBearish MeetingLines MFI.ex5', 'BullishBearish MeetingLines RSI.ex5', 'BullishBearish MeetingLines Stoch.ex5', 'DarkCloud PiercingLine CCI.ex5', 'DarkCloud PiercingLine MFI.ex5', 'DarkCloud PiercingLine RSI.ex5', 'DarkCloud PiercingLine Stoch.ex5', 'HangingMan Hammer CCI.ex5', 'HangingMan Hammer MFI.ex5', 'HangingMan Hammer RSI.ex5', 'HangingMan Hammer Stoch.ex5', 'MorningEvening StarDoji CCI.ex5', 'MorningEvening StarDoji MFI.ex5', 'MorningEvening StarDoji RSI.ex5', 'MorningEvening StarDoji Stoch.ex5']
+[2025-10-08 00:33:59] [DEBUG] Current expert selection: 'Please Attach Data File'
+[2025-10-08 00:33:59] [INFO] Previous expert selection not found in updated list.
+[2025-10-08 00:33:59] [SUCCESS] ✅ Expert list updated successfully.
+[2025-10-08 00:33:59] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-10-08 00:34:01] [SUCCESS] ✅ MT5 connection completed successfully and UI updated.
+[2025-10-08 00:45:54] [INFO] Application started.
+[2025-10-08 00:45:55] [INFO] Date range option selected: Entire history
+[2025-10-08 00:45:55] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 00:45:55] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 00:45:55] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 00:45:55] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 00:45:55] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 00:45:55] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 00:46:04] [INFO] Adjusting forward date based on selection: 1/4
+[2025-10-08 00:46:04] [DEBUG] Forward date set to 2011-10-29 (1/4 of test period from Thu Jan 1 1970 → Wed Oct 8 2025)
+[2025-10-08 00:46:10] [INFO] Adjusting forward date based on selection: 1/3
+[2025-10-08 00:46:10] [DEBUG] Forward date set to 2007-03-07 (1/3 of test period from Thu Jan 1 1970 → Wed Oct 8 2025)
+[2025-10-08 00:46:20] [INFO] Adjusting forward date based on selection: 1/2
+[2025-10-08 00:46:20] [DEBUG] Forward date set to 1997-11-19 (1/2 of test period from Thu Jan 1 1970 → Wed Oct 8 2025)
+[2025-10-08 00:46:28] [INFO] Date range option selected: Last 6 months
+[2025-10-08 00:46:28] [SUCCESS] ✅ Date range set: Tue Apr 8 2025 → Wed Oct 8 2025
+[2025-10-08 00:46:41] [INFO] Adjusting forward date based on selection: 1/4
+[2025-10-08 00:46:41] [DEBUG] Forward date set to 2025-08-23 (1/4 of test period from Tue Apr 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:46:44] [INFO] Adjusting forward date based on selection: 1/2
+[2025-10-08 00:46:44] [DEBUG] Forward date set to 2025-07-08 (1/2 of test period from Tue Apr 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:48:05] [INFO] Date range option selected: Last month
+[2025-10-08 00:48:05] [SUCCESS] ✅ Date range set: Mon Sep 8 2025 → Wed Oct 8 2025
+[2025-10-08 00:48:12] [INFO] Adjusting forward date based on selection: 1/3
+[2025-10-08 00:48:12] [DEBUG] Forward date set to 2025-09-28 (1/3 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:48:22] [INFO] Adjusting forward date based on selection: 1/2
+[2025-10-08 00:48:22] [DEBUG] Forward date set to 2025-09-23 (1/2 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:48:40] [INFO] Adjusting forward date based on selection: 1/4
+[2025-10-08 00:48:40] [DEBUG] Forward date set to 2025-09-30 (1/4 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:48:43] [INFO] Adjusting forward date based on selection: 1/2
+[2025-10-08 00:48:43] [DEBUG] Forward date set to 2025-09-23 (1/2 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:50:02] [INFO] Adjusting forward date based on selection: 1/3
+[2025-10-08 00:50:02] [DEBUG] Forward date set to 2025-09-28 (1/3 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:50:39] [INFO] Application started.
+[2025-10-08 00:50:40] [INFO] Date range option selected: Entire history
+[2025-10-08 00:50:40] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 00:50:40] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 00:50:40] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 00:50:40] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 00:50:40] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 00:50:40] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 00:50:45] [INFO] Date range option selected: Last month
+[2025-10-08 00:50:45] [SUCCESS] ✅ Date range set: Mon Sep 8 2025 → Wed Oct 8 2025
+[2025-10-08 00:50:51] [INFO] Adjusting forward date based on selection: 1/4
+[2025-10-08 00:50:51] [DEBUG] Forward date set to 2025-09-15 (1/4 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:51:01] [INFO] Adjusting forward date based on selection: 1/3
+[2025-10-08 00:51:01] [DEBUG] Forward date set to 2025-09-18 (1/3 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:51:03] [INFO] Adjusting forward date based on selection: 1/2
+[2025-10-08 00:51:03] [DEBUG] Forward date set to 2025-09-23 (1/2 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:51:11] [INFO] Adjusting forward date based on selection: 1/3
+[2025-10-08 00:51:11] [DEBUG] Forward date set to 2025-09-18 (1/3 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:51:23] [INFO] Adjusting forward date based on selection: 1/4
+[2025-10-08 00:51:23] [DEBUG] Forward date set to 2025-09-15 (1/4 of test period from Mon Sep 8 2025 → Wed Oct 8 2025)
+[2025-10-08 00:56:15] [INFO] Application started.
+[2025-10-08 00:56:16] [INFO] Date range option selected: Entire history
+[2025-10-08 00:56:16] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 00:56:16] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 00:56:16] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 00:56:16] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 00:56:16] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 00:56:16] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 00:56:21] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 00:56:25] [INFO] Test symbol quantity set to: 5
+[2025-10-08 00:56:29] [INFO] Strategies count set to: 3
+[2025-10-08 00:56:37] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 00:56:40] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 00:56:42] [INFO] Strategy 3 set to: Strategy3
+[2025-10-08 00:56:47] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 00:56:49] [INFO] Correlation filter set to: 60
+[2025-10-08 00:56:49] [DEBUG] Collected popup results: {'test_symbol_quantity': 5, 'strategies_count': 3, 'strategies': ['Strategy1', 'Strategy2', 'Strategy3'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 00:56:49] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 00:56:49] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 00:56:49] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 00:56:49] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 00:56:49] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 00:56:49] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 00:56:50] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 00:56:50] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 00:57:02] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 00:57:02] [DEBUG] Received 788 lines of response data
+[2025-10-08 00:57:02] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 00:57:02] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 00:57:02] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 00:57:02] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 00:57:02] [INFO] Finding top 5 uncorrelated pairs with correlation ≤ 60
+[2025-10-08 00:57:02] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-10-08 00:57:02] [DEBUG] After applying correlation filter ≤ 60, rows left: 250
+[2025-10-08 00:57:02] [SUCCESS] ✅ Top 5 uncorrelated pairs selected
+[2025-10-08 00:57:02] [INFO] Uncorrelated pairs found: 5
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: EURUSD_Strategy1
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: EURUSD_Strategy2
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: EURUSD_Strategy3
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: AUDUSD_Strategy1
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: AUDUSD_Strategy2
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: AUDUSD_Strategy3
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: CADJPY_Strategy3
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: CADJPY_Strategy3
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: GBPAUD_Strategy1
+[2025-10-08 00:57:02] [DEBUG] Generated test settings: GBPAUD_Strategy2
+[2025-10-08 00:57:03] [DEBUG] Generated test settings: GBPAUD_Strategy3
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'EURUSD_Strategy1' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'EURUSD_Strategy2' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'EURUSD_Strategy3' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'AUDUSD_Strategy1' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'AUDUSD_Strategy2' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'AUDUSD_Strategy3' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'CADJPY_Strategy3' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'CADJPY_Strategy3' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'GBPAUD_Strategy1' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'GBPAUD_Strategy2' added to queue.
+[2025-10-08 00:57:03] [SUCCESS] ✅ Test 'GBPAUD_Strategy3' added to queue.
+[2025-10-08 00:57:08] [INFO] Added 15 test cases to queue successfully.
+[2025-10-08 00:57:13] [INFO] Preparing to fetch correlation for symbols: ['EURUSD', 'AUDUSD', 'CADJPY', 'GBPAUD'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-10-08 00:57:13] [DEBUG] Starting correlation fetch in background thread
+[2025-10-08 00:57:13] [DEBUG] Starting background correlation fetch task
+[2025-10-08 00:57:13] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|AUDUSD|CADJPY|GBPAUD, format=csv, endpoint=snapshot
+[2025-10-08 00:57:14] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|AUDUSD|CADJPY|GBPAUD
+[2025-10-08 00:57:26] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 00:57:26] [DEBUG] Received 20 lines of response data
+[2025-10-08 00:57:26] [INFO] Parsed CSV into DataFrame with 16 rows
+[2025-10-08 00:57:26] [DEBUG] Filtered DataFrame from 16 → 16 rows (symbol filtering)
+[2025-10-08 00:57:26] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 00:57:26] [DEBUG] Background task finished, DataFrame shape=(16, 8)
+[2025-10-08 00:57:26] [SUCCESS] ✅ Correlation data received with 16 rows
+[2025-10-08 00:57:26] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-10-08 00:57:26] [INFO] Pivoted correlation DataFrame to shape (4, 4)
+[2025-10-08 00:57:26] [DEBUG] Rendering correlation heatmap
+[2025-10-08 00:57:26] [SUCCESS] ✅ Correlation heatmap generated successfully
+[2025-10-08 01:09:47] [INFO] Application started.
+[2025-10-08 01:10:27] [INFO] Application started.
+[2025-10-08 01:10:27] [INFO] Date range option selected: Entire history
+[2025-10-08 01:10:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:10:27] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:10:27] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:10:27] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:10:27] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:10:28] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:11:20] [INFO] Application started.
+[2025-10-08 01:11:21] [INFO] Date range option selected: Entire history
+[2025-10-08 01:11:21] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:11:21] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:11:21] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:11:21] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:11:21] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:11:21] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:11:30] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 01:11:36] [INFO] Test symbol quantity set to: 20
+[2025-10-08 01:11:39] [INFO] Strategies count set to: 2
+[2025-10-08 01:11:48] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 01:11:51] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 01:11:55] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 01:11:57] [INFO] Correlation filter set to: 60
+[2025-10-08 01:11:57] [DEBUG] Collected popup results: {'test_symbol_quantity': 20, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 01:11:57] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 01:11:57] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 01:11:57] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 01:11:57] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 01:11:57] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 01:11:57] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 01:11:57] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 01:11:57] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 01:11:58] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:11:58] [DEBUG] Received 788 lines of response data
+[2025-10-08 01:11:58] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 01:11:58] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 01:11:58] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:11:58] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 01:11:58] [ERROR] Failed to process correlation data: Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1288, in task
+    uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AutoBatchController' object has no attribute 'get_top_uncorrelated_pairs_day'. Did you mean: 'get_top_uncorrelated_symbols_day'?
+
+[2025-10-08 01:12:44] [INFO] Application started.
+[2025-10-08 01:12:45] [INFO] Date range option selected: Entire history
+[2025-10-08 01:12:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:12:45] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:12:45] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:12:45] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:12:45] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:12:45] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:12:51] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 01:12:57] [INFO] Test symbol quantity set to: 20
+[2025-10-08 01:13:00] [INFO] Strategies count set to: 2
+[2025-10-08 01:13:12] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 01:13:15] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 01:13:18] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 01:13:20] [INFO] Correlation filter set to: 60
+[2025-10-08 01:13:20] [DEBUG] Collected popup results: {'test_symbol_quantity': 20, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 01:13:20] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 01:13:20] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 01:13:20] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 01:13:20] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 01:13:20] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 01:13:20] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 01:13:20] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 01:13:20] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 01:13:21] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:13:21] [DEBUG] Received 788 lines of response data
+[2025-10-08 01:13:21] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 01:13:21] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 01:13:21] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:13:21] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 01:13:21] [ERROR] Failed to process correlation data: Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1288, in task
+    uncorrelated_pairs = self.get_top_uncorrelated_pairs_day(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AutoBatchController.get_top_uncorrelated_pairs_day() got an unexpected keyword argument 'correlation'
+
+[2025-10-08 01:16:51] [INFO] Application started.
+[2025-10-08 01:16:52] [INFO] Date range option selected: Entire history
+[2025-10-08 01:16:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:16:52] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:16:52] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:16:52] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:16:52] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:16:52] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:17:05] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 01:17:11] [INFO] Test symbol quantity set to: 20
+[2025-10-08 01:17:13] [INFO] Strategies count set to: 2
+[2025-10-08 01:17:20] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 01:17:24] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 01:17:29] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 01:17:31] [INFO] Correlation filter set to: 60
+[2025-10-08 01:17:31] [DEBUG] Collected popup results: {'test_symbol_quantity': 20, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 01:17:31] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 01:17:31] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 01:17:31] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 01:17:31] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 01:17:31] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 01:17:31] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 01:17:31] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 01:17:31] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 01:17:32] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:17:32] [DEBUG] Received 788 lines of response data
+[2025-10-08 01:17:32] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 01:17:32] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 01:17:32] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:17:32] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 01:17:32] [INFO] Finding top 20 uncorrelated symbols with correlation ≤ 60
+[2025-10-08 01:17:33] [SUCCESS] ✅ Selected top 20 uncorrelated symbols: ['CADJPY', 'NZDJPY', 'AUDCHF', 'NZDCAD', 'GBPUSD', 'GBPAUD', 'USDJPY', 'NZDUSD', 'USDCHF', 'EURAUD', 'AUDUSD', 'GBPNZD', 'EURUSD', 'CADCHF', 'NZDCHF', 'AUDCAD', 'EURGBP', 'GBPJPY', 'EURCHF', 'USDCAD']
+[2025-10-08 01:17:33] [INFO] Uncorrelated pairs found: 20
+[2025-10-08 01:17:33] [ERROR] Failed to process correlation data: Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1295, in task
+    if uncorrelated_pairs.empty:
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'empty'
+
+[2025-10-08 01:19:35] [INFO] Application started.
+[2025-10-08 01:19:36] [INFO] Date range option selected: Entire history
+[2025-10-08 01:19:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:19:36] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:19:36] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:19:36] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:19:36] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:19:36] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:19:43] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 01:19:47] [INFO] Test symbol quantity set to: 20
+[2025-10-08 01:19:50] [INFO] Strategies count set to: 2
+[2025-10-08 01:19:59] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 01:20:00] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 01:20:04] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 01:20:05] [INFO] Correlation filter set to: 60
+[2025-10-08 01:20:05] [DEBUG] Collected popup results: {'test_symbol_quantity': 20, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 01:20:05] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 01:20:05] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 01:20:05] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 01:20:05] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 01:20:05] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 01:20:05] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 01:20:05] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 01:20:05] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 01:20:06] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:20:06] [DEBUG] Received 788 lines of response data
+[2025-10-08 01:20:06] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 01:20:07] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 01:20:07] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:20:07] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 01:20:07] [INFO] Finding top 20 uncorrelated symbols with correlation ≤ 60
+[2025-10-08 01:20:07] [SUCCESS] ✅ Top 20 uncorrelated symbols: ['CADJPY', 'NZDJPY', 'AUDCHF', 'NZDCAD', 'GBPUSD', 'GBPAUD', 'USDJPY', 'NZDUSD', 'USDCHF', 'EURAUD', 'AUDUSD', 'GBPNZD', 'EURUSD', 'CADCHF', 'NZDCHF', 'AUDCAD', 'EURGBP', 'GBPJPY', 'EURCHF', 'USDCAD']
+[2025-10-08 01:20:07] [INFO] Uncorrelated pairs found: 20
+[2025-10-08 01:20:07] [ERROR] Failed to process correlation data: Traceback (most recent call last):
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'pair1'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Hassan Work\AutoTester\aiagentfinder\utils\workerThread.py", line 21, in run
+    res = self.func(*self.args, **self.kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hassan Work\AutoTester\aiagentfinder\controller.py", line 1302, in task
+    uncorrelated_pair = f"{row['pair1']}"
+                           ~~~^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\series.py", line 1130, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\series.py", line 1246, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naveed Computers\anaconda3\envs\AutoTester\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'pair1'
+
+[2025-10-08 01:22:27] [INFO] Application started.
+[2025-10-08 01:22:28] [INFO] Date range option selected: Entire history
+[2025-10-08 01:22:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:22:28] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:22:28] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:22:28] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:22:28] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:22:28] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:22:31] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 01:22:34] [INFO] Test symbol quantity set to: 20
+[2025-10-08 01:22:38] [INFO] Strategies count set to: 2
+[2025-10-08 01:23:00] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 01:23:03] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 01:23:05] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 01:23:07] [INFO] Correlation filter set to: 60
+[2025-10-08 01:23:07] [DEBUG] Collected popup results: {'test_symbol_quantity': 20, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 01:23:07] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 01:23:07] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 01:23:07] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 01:23:07] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 01:23:07] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 01:23:07] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 01:23:07] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 01:23:07] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 01:23:09] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:23:09] [DEBUG] Received 788 lines of response data
+[2025-10-08 01:23:09] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 01:23:09] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 01:23:09] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:23:09] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 01:23:09] [INFO] Finding top 20 uncorrelated pairs with correlation ≤ 60
+[2025-10-08 01:23:09] [SUCCESS] ✅ Top 20 uncorrelated pairs found: [['NZDJPY', 'EURUSD'], ['EURUSD', 'NZDJPY'], ['NZDCAD', 'GBPAUD'], ['USDJPY', 'AUDUSD'], ['EURGBP', 'CADJPY'], ['CADJPY', 'EURGBP'], ['CADJPY', 'NZDUSD'], ['NZDUSD', 'CADJPY'], ['AUDUSD', 'USDJPY'], ['GBPAUD', 'NZDCAD'], ['EURAUD', 'GBPNZD'], ['GBPNZD', 'EURAUD'], ['AUDCHF', 'USDJPY'], ['USDJPY', 'AUDCHF'], ['USDJPY', 'USDCHF'], ['USDCHF', 'USDJPY'], ['EURCHF', 'GBPUSD'], ['GBPCHF', 'CADJPY'], ['NZDCAD', 'USDCHF'], ['GBPUSD', 'EURCHF']]
+[2025-10-08 01:23:09] [INFO] Uncorrelated pairs found: 20
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDJPY_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDJPY_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURUSD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURUSD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDCAD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDCAD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDJPY_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDJPY_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURGBP_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURGBP_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDUSD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDUSD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: AUDUSD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: AUDUSD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPAUD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPAUD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURAUD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURAUD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPNZD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPNZD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDJPY_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDJPY_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDJPY_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDJPY_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDCHF_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: USDCHF_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURCHF_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: EURCHF_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPCHF_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPCHF_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDCAD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: NZDCAD_Strategy2
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPUSD_Strategy1
+[2025-10-08 01:23:09] [DEBUG] Generated test settings: GBPUSD_Strategy2
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'NZDJPY_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'NZDJPY_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'EURUSD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'EURUSD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'NZDCAD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'NZDCAD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDJPY_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDJPY_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'EURGBP_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'EURGBP_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'NZDUSD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'NZDUSD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'AUDUSD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'AUDUSD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'GBPAUD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'GBPAUD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'EURAUD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'EURAUD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'GBPNZD_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'GBPNZD_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDJPY_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDJPY_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDJPY_Strategy1' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDJPY_Strategy2' added to queue.
+[2025-10-08 01:23:09] [SUCCESS] ✅ Test 'USDCHF_Strategy1' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'USDCHF_Strategy2' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'EURCHF_Strategy1' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'EURCHF_Strategy2' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'GBPCHF_Strategy1' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'GBPCHF_Strategy2' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'NZDCAD_Strategy1' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'NZDCAD_Strategy2' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'GBPUSD_Strategy1' added to queue.
+[2025-10-08 01:23:10] [SUCCESS] ✅ Test 'GBPUSD_Strategy2' added to queue.
+[2025-10-08 01:23:18] [INFO] Added 40 test cases to queue successfully.
+[2025-10-08 01:23:31] [INFO] Preparing to fetch correlation for symbols: ['NZDJPY', 'EURUSD', 'NZDCAD', 'USDJPY', 'EURGBP', 'CADJPY', 'NZDUSD', 'AUDUSD', 'GBPAUD', 'EURAUD', 'GBPNZD', 'AUDCHF', 'USDCHF', 'EURCHF', 'GBPCHF', 'GBPUSD'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-10-08 01:23:31] [DEBUG] Starting correlation fetch in background thread
+[2025-10-08 01:23:31] [DEBUG] Starting background correlation fetch task
+[2025-10-08 01:23:31] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=NZDJPY|EURUSD|NZDCAD|USDJPY|EURGBP|CADJPY|NZDUSD|AUDUSD|GBPAUD|EURAUD|GBPNZD|AUDCHF|USDCHF|EURCHF|GBPCHF|GBPUSD, format=csv, endpoint=snapshot
+[2025-10-08 01:23:31] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=NZDJPY|EURUSD|NZDCAD|USDJPY|EURGBP|CADJPY|NZDUSD|AUDUSD|GBPAUD|EURAUD|GBPNZD|AUDCHF|USDCHF|EURCHF|GBPCHF|GBPUSD
+[2025-10-08 01:23:43] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:23:43] [DEBUG] Received 260 lines of response data
+[2025-10-08 01:23:43] [INFO] Parsed CSV into DataFrame with 256 rows
+[2025-10-08 01:23:43] [DEBUG] Filtered DataFrame from 256 → 256 rows (symbol filtering)
+[2025-10-08 01:23:43] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:23:43] [DEBUG] Background task finished, DataFrame shape=(256, 8)
+[2025-10-08 01:23:43] [SUCCESS] ✅ Correlation data received with 256 rows
+[2025-10-08 01:23:43] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-10-08 01:23:43] [INFO] Pivoted correlation DataFrame to shape (16, 16)
+[2025-10-08 01:23:43] [DEBUG] Rendering correlation heatmap
+[2025-10-08 01:23:44] [SUCCESS] ✅ Correlation heatmap generated successfully
+[2025-10-08 01:25:27] [INFO] Application started.
+[2025-10-08 01:25:28] [INFO] Date range option selected: Entire history
+[2025-10-08 01:25:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 8 2025
+[2025-10-08 01:25:28] [INFO] Adjusting forward date based on selection: No
+[2025-10-08 01:25:28] [DEBUG] Forward date disabled, set to test end date
+[2025-10-08 01:25:28] [INFO] Updating delay input: option selected = Zero latency, ideal execution
+[2025-10-08 01:25:28] [DEBUG] Unknown/Zero latency option → set value = 0 ms, input disabled
+[2025-10-08 01:25:28] [SUCCESS] ✅ Delay input updated successfully (current value = 0 ms)
+[2025-10-08 01:25:33] [INFO] Opening quantity popup: Test Pairs - How many pairs will be in you test list: 
+[2025-10-08 01:25:40] [INFO] Test symbol quantity set to: 10
+[2025-10-08 01:25:42] [INFO] Strategies count set to: 2
+[2025-10-08 01:25:51] [INFO] Strategy 1 set to: Strategy1
+[2025-10-08 01:25:53] [INFO] Strategy 2 set to: Strategy2
+[2025-10-08 01:25:56] [INFO] Symbol type selected: FX + Metal + Indices
+[2025-10-08 01:25:58] [INFO] Correlation filter set to: 60
+[2025-10-08 01:25:58] [DEBUG] Collected popup results: {'test_symbol_quantity': 10, 'strategies_count': 2, 'strategies': ['Strategy1', 'Strategy2'], 'symbol_type': 'FX + Metal + Indices', 'correlationFilter': 60}
+[2025-10-08 01:25:58] [DEBUG] Collected UI values: {'expert': 'Please Attach Data File', 'param_file': '', 'symbol_prefix': '', 'symbol_suffix': '', 'symbol': '', 'timeframe': 'M1', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-10-08', 'forward': 'No', 'forward_date': '2025-10-08', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '0', 'currency': 'USD', 'leverage': '0.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2025-10-08 01:25:58] [INFO] Fetching symbols for option: FX + Metal + Indices
+[2025-10-08 01:25:58] [SUCCESS] ✅ Retrieved 28 FX + Metals + Indices symbols
+[2025-10-08 01:25:58] [INFO] Symbols resolved for type 'FX + Metal + Indices': ['EURUSD', 'GBPUSD', 'NZDUSD', 'AUDUSD', 'USDJPY', 'USDCHF', 'USDCAD', 'EURGBP', 'EURJPY', 'EURCHF', 'EURAUD', 'EURCAD', 'EURNZD', 'GBPJPY', 'GBPCHF', 'GBPAUD', 'GBPCAD', 'GBPNZD', 'AUDJPY', 'AUDCHF', 'AUDCAD', 'AUDNZD', 'NZDJPY', 'NZDCHF', 'NZDCAD', 'CADJPY', 'CADCHF', 'CHFJPY']
+[2025-10-08 01:25:58] [DEBUG] Launching threaded task for correlation and uncorrelated pair processing
+[2025-10-08 01:25:58] [DEBUG] Starting background task: fetching correlation data
+[2025-10-08 01:25:58] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY, format=csv, endpoint=snapshot
+[2025-10-08 01:25:59] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|GBPUSD|NZDUSD|AUDUSD|USDJPY|USDCHF|USDCAD|EURGBP|EURJPY|EURCHF|EURAUD|EURCAD|EURNZD|GBPJPY|GBPCHF|GBPAUD|GBPCAD|GBPNZD|AUDJPY|AUDCHF|AUDCAD|AUDNZD|NZDJPY|NZDCHF|NZDCAD|CADJPY|CADCHF|CHFJPY
+[2025-10-08 01:26:00] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:26:00] [DEBUG] Received 788 lines of response data
+[2025-10-08 01:26:00] [INFO] Parsed CSV into DataFrame with 784 rows
+[2025-10-08 01:26:00] [DEBUG] Filtered DataFrame from 784 → 784 rows (symbol filtering)
+[2025-10-08 01:26:00] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:26:00] [SUCCESS] ✅ Correlation data fetched, DataFrame shape=(784, 8)
+[2025-10-08 01:26:00] [INFO] Finding top 10 uncorrelated pairs with correlation ≤ 60
+[2025-10-08 01:26:00] [DEBUG] Filtered out identical pairs, remaining rows: 756
+[2025-10-08 01:26:00] [DEBUG] After applying correlation filter ≤ 60, rows left: 250
+[2025-10-08 01:26:00] [SUCCESS] ✅ Top 10 uncorrelated pairs selected
+[2025-10-08 01:26:00] [INFO] Uncorrelated pairs found: 10
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: EURUSD_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: EURUSD_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: AUDUSD_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: AUDUSD_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: GBPAUD_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: GBPAUD_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: EURAUD_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: EURAUD_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: AUDCHF_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: AUDCHF_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: USDCHF_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: USDCHF_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: CADJPY_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: CADJPY_Strategy2
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: NZDCAD_Strategy1
+[2025-10-08 01:26:00] [DEBUG] Generated test settings: NZDCAD_Strategy2
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'EURUSD_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'EURUSD_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'AUDUSD_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'AUDUSD_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'GBPAUD_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'GBPAUD_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'EURAUD_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'EURAUD_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'AUDCHF_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'AUDCHF_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'USDCHF_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'USDCHF_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'CADJPY_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'CADJPY_Strategy2' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'NZDCAD_Strategy1' added to queue.
+[2025-10-08 01:26:00] [SUCCESS] ✅ Test 'NZDCAD_Strategy2' added to queue.
+[2025-10-08 01:26:03] [INFO] Added 20 test cases to queue successfully.
+[2025-10-08 01:26:06] [INFO] Preparing to fetch correlation for symbols: ['EURUSD', 'AUDUSD', 'CADJPY', 'GBPAUD', 'EURAUD', 'AUDCHF', 'USDCHF', 'NZDCAD'] (market=forex, period=50, format=csv, endpoint=snapshot)
+[2025-10-08 01:26:06] [DEBUG] Starting correlation fetch in background thread
+[2025-10-08 01:26:06] [DEBUG] Starting background correlation fetch task
+[2025-10-08 01:26:06] [DEBUG] Fetching correlation with params → market=forex, period=50, symbols=EURUSD|AUDUSD|CADJPY|GBPAUD|EURAUD|AUDCHF|USDCHF|NZDCAD, format=csv, endpoint=snapshot
+[2025-10-08 01:26:06] [INFO] Requesting correlation data from URL: https://www.mataf.io/api/tools/csv/correl/snapshot/forex/50/correlation.csv?symbol=EURUSD|AUDUSD|CADJPY|GBPAUD|EURAUD|AUDCHF|USDCHF|NZDCAD
+[2025-10-08 01:26:18] [SUCCESS] ✅ Successfully fetched correlation data from API
+[2025-10-08 01:26:18] [DEBUG] Received 68 lines of response data
+[2025-10-08 01:26:18] [INFO] Parsed CSV into DataFrame with 64 rows
+[2025-10-08 01:26:18] [DEBUG] Filtered DataFrame from 64 → 64 rows (symbol filtering)
+[2025-10-08 01:26:18] [SUCCESS] ✅ Correlation DataFrame prepared successfully
+[2025-10-08 01:26:18] [DEBUG] Background task finished, DataFrame shape=(64, 8)
+[2025-10-08 01:26:18] [SUCCESS] ✅ Correlation data received with 64 rows
+[2025-10-08 01:26:18] [DEBUG] No custom on_done handler, generating default heatmap
+[2025-10-08 01:26:18] [INFO] Pivoted correlation DataFrame to shape (8, 8)
+[2025-10-08 01:26:18] [DEBUG] Rendering correlation heatmap
+[2025-10-08 01:26:19] [SUCCESS] ✅ Correlation heatmap generated successfully
