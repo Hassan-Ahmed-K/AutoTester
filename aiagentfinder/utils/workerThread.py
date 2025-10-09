@@ -36,29 +36,29 @@ class ThreadRunner:
         self.worker = None
         self.dialog = None
 
-    def run(self, func, *args, **kwargs):
+    def run(self, func, *args, show_dialog=True, **kwargs):
         # Create QThread + Worker
         self.thread = QThread()
         self.worker = Worker(func, *args, **kwargs)
         self.worker.moveToThread(self.thread)
 
-        # Progress Dialog
-        self.dialog = QProgressDialog("Processing...", "Cancel", 0, 0, self.parent)
-        self.dialog.setWindowTitle("Please Wait")
-        self.dialog.setModal(True)
-        self.dialog.setMinimumDuration(0)
-        
-        self.dialog.setRange(0, 0)  # moving bar
+        # Create progress dialog only if requested
+        if show_dialog:
+            self.dialog = QProgressDialog("Processing...", "Cancel", 0, 0, self.parent)
+            self.dialog.setWindowTitle("Please Wait")
+            self.dialog.setModal(True)
+            self.dialog.setMinimumDuration(0)
+            self.dialog.setRange(0, 0)
 
-        progress_bar = self.dialog.findChild(QProgressBar)
-        if progress_bar:
-            progress_bar.setAlignment(Qt.AlignCenter)
-            # progress_bar.setMinimumWidth(self.dialog.width()-20px)
-            progress_bar.setStyleSheet("QProgressBar { min-height: 20px; }")
-         
-        QApplication.processEvents()
-        
-        self.dialog.canceled.connect(self.worker.stop)
+            progress_bar = self.dialog.findChild(QProgressBar)
+            if progress_bar:
+                progress_bar.setAlignment(Qt.AlignCenter)
+                progress_bar.setStyleSheet("QProgressBar { min-height: 20px; }")
+
+            QApplication.processEvents()
+            self.dialog.canceled.connect(self.worker.stop)
+        else:
+            self.dialog = None  # make it explicit
 
         # Connections
         self.thread.started.connect(self.worker.run)
@@ -66,9 +66,12 @@ class ThreadRunner:
         self.worker.error.connect(self.on_error)
         self.worker.finished.connect(self.cleanup)
 
-        # Start
+        # Start the thread
         self.thread.start()
-        self.dialog.show()
+
+        # Show dialog only if it exists
+        if self.dialog:
+            self.dialog.show()
 
     def on_result(self, result):
         print("Worker result:", result)
@@ -77,9 +80,9 @@ class ThreadRunner:
         print("Worker error:", err)
 
     def cleanup(self):
-        self.dialog.close()
+        if self.dialog:
+            self.dialog.close()
         self.thread.quit()
         self.thread.wait()
         self.worker.deleteLater()
         self.thread.deleteLater()
-

@@ -3762,3 +3762,712 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-09-20 01:05:01] [INFO] Closest match found: CADCHF
 [2025-09-20 01:05:01] [INFO] Best symbol found: CADCHF
 [2025-09-20 01:33:50] [SUCCESS] ✅ Test 'mmmmm' added to queue.
+[2025-09-20 01:55:29] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-20 01:55:36] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 01:55:36] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-20 01:55:37] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 01:55:42] [INFO] Exact match found: M
+[2025-09-20 01:55:42] [INFO] Best symbol found: M
+[2025-09-20 01:55:42] [INFO] Exact match found: MD
+[2025-09-20 01:55:42] [INFO] Best symbol found: MD
+[2025-09-20 01:55:43] [INFO] Closest match found: EMDM
+[2025-09-20 01:55:43] [INFO] Best symbol found: EMDM
+[2025-09-20 01:55:43] [INFO] Closest match found: EMDM
+[2025-09-20 01:55:43] [INFO] Best symbol found: EMDM
+[2025-09-20 01:55:43] [INFO] Closest match found: MMD
+[2025-09-20 01:55:43] [INFO] Best symbol found: MMD
+[2025-09-20 01:55:46] [SUCCESS] ✅ Test 'mdmmd' added to queue.
+[2025-09-20 01:55:49] [INFO] Closest match found: EMDM
+[2025-09-20 01:55:49] [INFO] Best symbol found: EMDM
+[2025-09-20 01:55:49] [INFO] Closest match found: EMDM
+[2025-09-20 01:55:49] [INFO] Best symbol found: EMDM
+[2025-09-20 01:55:49] [INFO] Exact match found: MD
+[2025-09-20 01:55:49] [INFO] Best symbol found: MD
+[2025-09-20 01:55:49] [INFO] Exact match found: M
+[2025-09-20 01:55:49] [INFO] Best symbol found: M
+[2025-09-20 01:55:50] [INFO] Exact match found: L
+[2025-09-20 01:55:50] [INFO] Best symbol found: L
+[2025-09-20 01:55:51] [INFO] Closest match found: LTL
+[2025-09-20 01:55:51] [INFO] Best symbol found: LTL
+[2025-09-20 01:55:51] [INFO] Closest match found: DLLL
+[2025-09-20 01:55:51] [INFO] Best symbol found: DLLL
+[2025-09-20 01:55:51] [INFO] Closest match found: DLLL
+[2025-09-20 01:55:51] [INFO] Best symbol found: DLLL
+[2025-09-20 01:55:51] [INFO] Closest match found: DLLL
+[2025-09-20 01:55:51] [INFO] Best symbol found: DLLL
+[2025-09-20 01:55:51] [INFO] Closest match found: DLLL
+[2025-09-20 01:55:51] [INFO] Best symbol found: DLLL
+[2025-09-20 01:55:55] [SUCCESS] ✅ Test 'llllll' added to queue.
+[2025-09-20 01:55:59] [INFO] Closest match found: MMD
+[2025-09-20 01:55:59] [INFO] Best symbol found: MMD
+[2025-09-20 01:56:00] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-20 01:56:01] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-20 01:56:04] [INFO] Exact match found: K
+[2025-09-20 01:56:04] [INFO] Best symbol found: K
+[2025-09-20 01:56:04] [INFO] Exact match found: KD
+[2025-09-20 01:56:04] [INFO] Best symbol found: KD
+[2025-09-20 01:56:04] [INFO] Closest match found: KODK
+[2025-09-20 01:56:04] [INFO] Best symbol found: KODK
+[2025-09-20 01:56:04] [INFO] Closest match found: NOKDKK
+[2025-09-20 01:56:04] [INFO] Best symbol found: NOKDKK
+[2025-09-20 01:56:04] [INFO] Closest match found: NOKDKK
+[2025-09-20 01:56:04] [INFO] Best symbol found: NOKDKK
+[2025-09-20 01:56:08] [SUCCESS] ✅ Test 'kdkkd' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'USDCHF_t1' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'USDCHF_t2' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'USDCHF_t3' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'EURAUD_t1' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'EURAUD_t2' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'EURAUD_t3' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'XAUGBP_t1' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'XAUGBP_t2' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'XAUGBP_t3' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'XAUAUD_t1' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'XAUAUD_t2' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'XAUAUD_t3' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'GBPAUD_t1' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'GBPAUD_t2' added to queue.
+[2025-09-20 01:56:41] [SUCCESS] ✅ Test 'GBPAUD_t3' added to queue.
+[2025-09-20 01:57:35] [INFO] Closest match found: XAUAUD
+[2025-09-20 01:57:35] [INFO] Best symbol found: XAUAUD
+[2025-09-20 01:57:40] [INFO] Closest match found: XAUAUD
+[2025-09-20 01:57:40] [INFO] Best symbol found: XAUAUD
+[2025-09-20 01:57:42] [INFO] Closest match found: XAUAUD
+[2025-09-20 01:57:42] [INFO] Best symbol found: XAUAUD
+[2025-09-20 01:57:51] [INFO] Closest match found: XAUAUD
+[2025-09-20 01:57:51] [INFO] Best symbol found: XAUAUD
+[2025-09-20 01:57:53] [INFO] Closest match found: XAUAUD
+[2025-09-20 01:57:53] [INFO] Best symbol found: XAUAUD
+[2025-09-20 01:58:14] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-20 01:58:20] [SUCCESS] ✅ Moved item at index 10 up
+[2025-09-20 01:58:22] [INFO] Closest match found: EURAUD
+[2025-09-20 01:58:22] [INFO] Best symbol found: EURAUD
+[2025-09-20 01:58:24] [SUCCESS] ✅ Moved item at index 3 up
+[2025-09-20 01:58:25] [SUCCESS] ✅ Moved item at index 2 up
+[2025-09-20 01:58:26] [SUCCESS] ✅ Moved item at index 1 up
+[2025-09-20 01:58:27] [SUCCESS] ✅ Moved item at index 0 up
+[2025-09-20 01:58:28] [SUCCESS] ✅ Moved item at index -1 up
+[2025-09-20 01:58:33] [SUCCESS] ✅ Moved item at index 1 down
+[2025-09-20 01:58:34] [SUCCESS] ✅ Moved item at index 2 down
+[2025-09-20 01:58:36] [SUCCESS] ✅ Moved item at index 3 down
+[2025-09-20 01:58:36] [SUCCESS] ✅ Moved item at index 4 down
+[2025-09-20 01:58:37] [SUCCESS] ✅ Moved item at index 5 down
+[2025-09-20 01:58:37] [SUCCESS] ✅ Moved item at index 6 down
+[2025-09-20 01:58:37] [SUCCESS] ✅ Moved item at index 7 down
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'CADCHF_t1' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'CADCHF_t2' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'AUDJPY_t1' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'AUDJPY_t2' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'NZDCAD_t1' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'NZDCAD_t2' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'NZDCHF_t1' added to queue.
+[2025-09-20 02:22:20] [SUCCESS] ✅ Test 'NZDCHF_t2' added to queue.
+[2025-09-20 02:22:32] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 02:35:53] [SUCCESS] ✅ Test 'CADCHF_1' added to queue.
+[2025-09-20 02:35:53] [SUCCESS] ✅ Test 'CADCHF_2' added to queue.
+[2025-09-20 02:35:53] [SUCCESS] ✅ Test 'AUDJPY_1' added to queue.
+[2025-09-20 02:35:53] [SUCCESS] ✅ Test 'AUDJPY_2' added to queue.
+[2025-09-20 02:35:53] [SUCCESS] ✅ Test 'NZDCAD_1' added to queue.
+[2025-09-20 02:35:53] [SUCCESS] ✅ Test 'NZDCAD_2' added to queue.
+[2025-09-20 02:36:10] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'CADCHF_1' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'CADCHF_2 ' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'CADCHF_3' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'CADCHF_4' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'AUDJPY_1' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'AUDJPY_2 ' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'AUDJPY_3' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'AUDJPY_4' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCAD_1' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCAD_2 ' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCAD_3' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCAD_4' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCHF_1' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCHF_2 ' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCHF_3' added to queue.
+[2025-09-20 03:57:05] [SUCCESS] ✅ Test 'NZDCHF_4' added to queue.
+[2025-09-20 03:57:25] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 03:58:38] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 03:59:10] [SUCCESS] ✅ Test 'AUDJPY_3' added to queue.
+[2025-09-20 03:59:19] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:00:08] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:01:12] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:06:15] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:06:38] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:11:13] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:11:13] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:11:13] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:11:13] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:11:13] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:11:13] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:11:29] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:14:58] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:14:58] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:14:58] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:14:58] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:24:21] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:24:21] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:24:21] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:24:21] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:27:42] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:27:42] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:27:42] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:27:42] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:36:50] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:36:50] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:36:50] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:36:50] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:37:41] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:43:06] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:43:46] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:44:44] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDNZD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDNZD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDNZD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDNZD_' added to queue.
+[2025-09-20 04:58:55] [SUCCESS] ✅ Test 'AUDNZD_' added to queue.
+[2025-09-20 04:59:33] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 05:00:32] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 05:01:56] [SUCCESS] ✅ Test 'ffff' added to queue.
+[2025-09-20 05:02:14] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-09-20 05:02:20] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 05:02:20] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-20 05:02:21] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-09-20 05:02:37] [INFO] Exact match found: D
+[2025-09-20 05:02:37] [INFO] Best symbol found: D
+[2025-09-20 05:02:37] [INFO] Exact match found: DD
+[2025-09-20 05:02:37] [INFO] Best symbol found: DD
+[2025-09-20 05:02:37] [INFO] Exact match found: DDD
+[2025-09-20 05:02:37] [INFO] Best symbol found: DDD
+[2025-09-20 05:02:41] [SUCCESS] ✅ Test 'ddd' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'AUDJPY_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'NZDCAD_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'NZDCHF_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 05:03:12] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-20 05:04:03] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-20 05:04:33] [SUCCESS] ✅ Export completed successfully!
+[2025-09-20 05:04:42] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-20 05:04:46] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-20 05:04:49] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-20 05:05:09] [INFO] Param folder found: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2025-09-20 05:05:14] [INFO] Param file selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester/ExpertMACD.set
+[2025-09-20 19:04:24] [SUCCESS] ✅ Test 'mxmd' added to queue.
+[2025-09-20 19:04:34] [SUCCESS] ✅ Test 'yyyy' added to queue.
+[2025-09-22 17:17:51] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 17:18:38] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 17:18:38] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-22 17:18:39] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 17:18:48] [INFO] Exact match found: J
+[2025-09-22 17:18:48] [INFO] Best symbol found: J
+[2025-09-22 17:18:48] [INFO] Closest match found: XJH
+[2025-09-22 17:18:48] [INFO] Best symbol found: XJH
+[2025-09-22 17:18:49] [INFO] Closest match found: XJH
+[2025-09-22 17:18:49] [INFO] Best symbol found: XJH
+[2025-09-22 17:18:49] [INFO] Closest match found: JHHY
+[2025-09-22 17:18:49] [INFO] Best symbol found: JHHY
+[2025-09-22 17:18:53] [SUCCESS] ✅ Test 'jhjh' added to queue.
+[2025-09-22 17:19:17] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-22 17:19:40] [INFO] Exact match found: K
+[2025-09-22 17:19:40] [INFO] Best symbol found: K
+[2025-09-22 17:19:41] [INFO] Closest match found: KJUN
+[2025-09-22 17:19:41] [INFO] Best symbol found: KJUN
+[2025-09-22 17:19:41] [INFO] Closest match found: ZJK
+[2025-09-22 17:19:41] [INFO] Best symbol found: ZJK
+[2025-09-22 17:19:41] [INFO] Closest match found: ZJK
+[2025-09-22 17:19:41] [INFO] Best symbol found: ZJK
+[2025-09-22 17:19:42] [INFO] Closest match found: JG
+[2025-09-22 17:19:42] [INFO] Best symbol found: JG
+[2025-09-22 17:19:42] [INFO] Closest match found: JAKK
+[2025-09-22 17:19:42] [INFO] Best symbol found: JAKK
+[2025-09-22 17:19:45] [SUCCESS] ✅ Test 'kjkjgk' added to queue.
+[2025-09-22 17:20:03] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-22 17:21:23] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-22 17:21:24] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:21:32] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'AUDUSD_t1' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'AUDUSD_t2' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'AUDUSD_t3' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'AUDCHF_t1' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'AUDCHF_t2' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'AUDCHF_t3' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'EURJPY_t1' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'EURJPY_t2' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'EURJPY_t3' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'GBPUSD_t1' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'GBPUSD_t2' added to queue.
+[2025-09-22 17:22:28] [SUCCESS] ✅ Test 'GBPUSD_t3' added to queue.
+[2025-09-22 17:22:56] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-22 17:23:14] [INFO] Exact match found: T
+[2025-09-22 17:23:14] [INFO] Best symbol found: T
+[2025-09-22 17:23:14] [INFO] Exact match found: TE
+[2025-09-22 17:23:14] [INFO] Best symbol found: TE
+[2025-09-22 17:23:14] [INFO] Closest match found: VTES
+[2025-09-22 17:23:14] [INFO] Best symbol found: VTES
+[2025-09-22 17:23:15] [INFO] Closest match found: WEST
+[2025-09-22 17:23:15] [INFO] Best symbol found: WEST
+[2025-09-22 17:23:15] [INFO] Closest match found: WEST
+[2025-09-22 17:23:15] [INFO] Best symbol found: WEST
+[2025-09-22 17:23:20] [SUCCESS] ✅ Test 'test1' added to queue.
+[2025-09-22 17:23:24] [INFO] Param folder found: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A\MQL5\Profiles\Tester
+[2025-09-22 17:23:26] [INFO] Param file selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/MQL5/Profiles/Tester/ExpertMACD.set
+[2025-09-22 17:24:06] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-22 17:44:45] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 17:44:55] [SUCCESS] ✅ MT5 Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 17:44:55] [SUCCESS] ✅ Deposit info retrieved successfully
+[2025-09-22 17:44:56] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 17:44:59] [INFO] Exact match found: M
+[2025-09-22 17:44:59] [INFO] Best symbol found: M
+[2025-09-22 17:44:59] [INFO] Closest match found: TMF
+[2025-09-22 17:44:59] [INFO] Best symbol found: TMF
+[2025-09-22 17:44:59] [INFO] Exact match found: MFM
+[2025-09-22 17:44:59] [INFO] Best symbol found: MFM
+[2025-09-22 17:44:59] [INFO] Closest match found: MFM
+[2025-09-22 17:44:59] [INFO] Best symbol found: MFM
+[2025-09-22 17:44:59] [INFO] Closest match found: MFM
+[2025-09-22 17:44:59] [INFO] Best symbol found: MFM
+[2025-09-22 17:45:03] [SUCCESS] ✅ Test 'mfmmf' added to queue.
+[2025-09-22 17:45:05] [INFO] Closest match found: MFM
+[2025-09-22 17:45:05] [INFO] Best symbol found: MFM
+[2025-09-22 17:45:05] [INFO] Exact match found: MFM
+[2025-09-22 17:45:05] [INFO] Best symbol found: MFM
+[2025-09-22 17:45:05] [INFO] Closest match found: TMF
+[2025-09-22 17:45:05] [INFO] Best symbol found: TMF
+[2025-09-22 17:45:05] [INFO] Exact match found: M
+[2025-09-22 17:45:05] [INFO] Best symbol found: M
+[2025-09-22 17:45:06] [INFO] Exact match found: K
+[2025-09-22 17:45:06] [INFO] Best symbol found: K
+[2025-09-22 17:45:07] [INFO] Closest match found: PKG
+[2025-09-22 17:45:07] [INFO] Best symbol found: PKG
+[2025-09-22 17:45:07] [INFO] Closest match found: GK
+[2025-09-22 17:45:07] [INFO] Best symbol found: GK
+[2025-09-22 17:45:07] [INFO] Closest match found: GK
+[2025-09-22 17:45:07] [INFO] Best symbol found: GK
+[2025-09-22 17:45:07] [INFO] Closest match found: GK
+[2025-09-22 17:45:07] [INFO] Best symbol found: GK
+[2025-09-22 17:45:11] [SUCCESS] ✅ Test 'kgkkg' added to queue.
+[2025-09-22 17:45:15] [INFO] Exact match found: K
+[2025-09-22 17:45:15] [INFO] Best symbol found: K
+[2025-09-22 17:45:15] [INFO] Closest match found: PKG
+[2025-09-22 17:45:15] [INFO] Best symbol found: PKG
+[2025-09-22 17:45:15] [INFO] Closest match found: GK
+[2025-09-22 17:45:15] [INFO] Best symbol found: GK
+[2025-09-22 17:45:15] [INFO] Closest match found: GK
+[2025-09-22 17:45:15] [INFO] Best symbol found: GK
+[2025-09-22 17:45:22] [SUCCESS] ✅ Test 'kgkg' added to queue.
+[2025-09-22 17:46:08] [INFO] Exact match found: K
+[2025-09-22 17:46:08] [INFO] Best symbol found: K
+[2025-09-22 17:46:08] [INFO] Closest match found: KJUN
+[2025-09-22 17:46:08] [INFO] Best symbol found: KJUN
+[2025-09-22 17:46:08] [INFO] Closest match found: ZJK
+[2025-09-22 17:46:08] [INFO] Best symbol found: ZJK
+[2025-09-22 17:46:08] [INFO] Closest match found: ZJK
+[2025-09-22 17:46:08] [INFO] Best symbol found: ZJK
+[2025-09-22 17:46:22] [SUCCESS] ✅ Test 'kjkj' added to queue.
+[2025-09-22 17:46:36] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-22 17:46:36] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-22 17:46:37] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-22 17:46:37] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:46:52] [SUCCESS] ✅ Test 'kjkj' added to queue.
+[2025-09-22 17:46:55] [INFO] Exact match found: O
+[2025-09-22 17:46:55] [INFO] Best symbol found: O
+[2025-09-22 17:46:55] [INFO] Exact match found: OI
+[2025-09-22 17:46:55] [INFO] Best symbol found: OI
+[2025-09-22 17:46:55] [INFO] Closest match found: OCIO
+[2025-09-22 17:46:55] [INFO] Best symbol found: OCIO
+[2025-09-22 17:46:55] [INFO] Closest match found: OII
+[2025-09-22 17:46:55] [INFO] Best symbol found: OII
+[2025-09-22 17:46:55] [INFO] Closest match found: OII
+[2025-09-22 17:46:55] [INFO] Best symbol found: OII
+[2025-09-22 17:46:58] [SUCCESS] ✅ Test 'oioio' added to queue.
+[2025-09-22 17:47:00] [INFO] Closest match found: OII
+[2025-09-22 17:47:00] [INFO] Best symbol found: OII
+[2025-09-22 17:47:00] [INFO] Closest match found: OCIO
+[2025-09-22 17:47:00] [INFO] Best symbol found: OCIO
+[2025-09-22 17:47:01] [INFO] Exact match found: OI
+[2025-09-22 17:47:01] [INFO] Best symbol found: OI
+[2025-09-22 17:47:01] [INFO] Exact match found: O
+[2025-09-22 17:47:01] [INFO] Best symbol found: O
+[2025-09-22 17:47:01] [INFO] Exact match found: L
+[2025-09-22 17:47:01] [INFO] Best symbol found: L
+[2025-09-22 17:47:02] [INFO] Closest match found: XLK
+[2025-09-22 17:47:02] [INFO] Best symbol found: XLK
+[2025-09-22 17:47:02] [INFO] Closest match found: XLK
+[2025-09-22 17:47:02] [INFO] Best symbol found: XLK
+[2025-09-22 17:47:02] [INFO] Closest match found: LLYVK
+[2025-09-22 17:47:02] [INFO] Best symbol found: LLYVK
+[2025-09-22 17:47:06] [SUCCESS] ✅ Test 'lklk' added to queue.
+[2025-09-22 17:47:23] [INFO] Exact match found: K
+[2025-09-22 17:47:23] [INFO] Best symbol found: K
+[2025-09-22 17:47:23] [INFO] Closest match found: SKK
+[2025-09-22 17:47:23] [INFO] Best symbol found: SKK
+[2025-09-22 17:47:23] [INFO] Closest match found: KF
+[2025-09-22 17:47:23] [INFO] Best symbol found: KF
+[2025-09-22 17:47:24] [INFO] Closest match found: KF
+[2025-09-22 17:47:24] [INFO] Best symbol found: KF
+[2025-09-22 17:47:24] [INFO] Closest match found: KFFB
+[2025-09-22 17:47:24] [INFO] Best symbol found: KFFB
+[2025-09-22 17:47:31] [SUCCESS] ✅ Test 'kkfkf' added to queue.
+[2025-09-22 17:47:35] [INFO] Exact match found: O
+[2025-09-22 17:47:35] [INFO] Best symbol found: O
+[2025-09-22 17:47:35] [INFO] Closest match found: VOO
+[2025-09-22 17:47:35] [INFO] Best symbol found: VOO
+[2025-09-22 17:47:35] [INFO] Closest match found: DOOO
+[2025-09-22 17:47:35] [INFO] Best symbol found: DOOO
+[2025-09-22 17:47:35] [INFO] Closest match found: DOOO
+[2025-09-22 17:47:35] [INFO] Best symbol found: DOOO
+[2025-09-22 17:47:36] [INFO] Closest match found: DOOO
+[2025-09-22 17:47:36] [INFO] Best symbol found: DOOO
+[2025-09-22 17:47:43] [SUCCESS] ✅ Test 'ooooo' added to queue.
+[2025-09-22 17:48:02] [INFO] Closest match found: YI
+[2025-09-22 17:48:02] [INFO] Best symbol found: YI
+[2025-09-22 17:48:02] [INFO] Closest match found: SII
+[2025-09-22 17:48:02] [INFO] Best symbol found: SII
+[2025-09-22 17:48:03] [INFO] Exact match found: III
+[2025-09-22 17:48:03] [INFO] Best symbol found: III
+[2025-09-22 17:48:03] [INFO] Closest match found: III
+[2025-09-22 17:48:03] [INFO] Best symbol found: III
+[2025-09-22 17:48:03] [INFO] Closest match found: III
+[2025-09-22 17:48:03] [INFO] Best symbol found: III
+[2025-09-22 17:48:03] [INFO] Closest match found: III
+[2025-09-22 17:48:03] [INFO] Best symbol found: III
+[2025-09-22 17:48:03] [INFO] Closest match found: III
+[2025-09-22 17:48:03] [INFO] Best symbol found: III
+[2025-09-22 17:48:08] [SUCCESS] ✅ Test 'iiiiiii' added to queue.
+[2025-09-22 17:48:11] [INFO] Closest match found: XP
+[2025-09-22 17:48:11] [INFO] Best symbol found: XP
+[2025-09-22 17:48:11] [INFO] Closest match found: XPP
+[2025-09-22 17:48:11] [INFO] Best symbol found: XPP
+[2025-09-22 17:48:11] [INFO] Closest match found: SPPP
+[2025-09-22 17:48:11] [INFO] Best symbol found: SPPP
+[2025-09-22 17:48:11] [INFO] Closest match found: SPPP
+[2025-09-22 17:48:11] [INFO] Best symbol found: SPPP
+[2025-09-22 17:48:11] [INFO] Closest match found: SPPP
+[2025-09-22 17:48:11] [INFO] Best symbol found: SPPP
+[2025-09-22 17:48:16] [SUCCESS] ✅ Test 'ppppp' added to queue.
+[2025-09-22 17:49:12] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:12] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:13] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:13] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:14] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:14] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:15] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDUSD_t1' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDUSD_t2' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDUSD_t3' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDUSD_t4' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDUSD_t5' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDCHF_t1' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDCHF_t2' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDCHF_t3' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDCHF_t4' added to queue.
+[2025-09-22 17:49:46] [SUCCESS] ✅ Test 'AUDCHF_t5' added to queue.
+[2025-09-22 17:50:17] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-22 17:50:18] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-22 17:50:18] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-22 17:50:19] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-22 17:50:19] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-22 17:50:19] [SUCCESS] ✅ Deleted item at index 4
+[2025-09-22 17:50:20] [SUCCESS] ✅ Deleted item at index 3
+[2025-09-22 17:50:20] [SUCCESS] ✅ Deleted item at index 2
+[2025-09-22 17:50:21] [SUCCESS] ✅ Deleted item at index 1
+[2025-09-22 17:50:21] [SUCCESS] ✅ Deleted item at index 0
+[2025-09-22 17:50:26] [INFO] Exact match found: T
+[2025-09-22 17:50:26] [INFO] Best symbol found: T
+[2025-09-22 17:50:27] [INFO] Closest match found: T
+[2025-09-22 17:50:27] [INFO] Best symbol found: T
+[2025-09-22 17:50:31] [SUCCESS] ✅ Test 't1' added to queue.
+[2025-09-22 17:50:33] [INFO] Exact match found: T
+[2025-09-22 17:50:33] [INFO] Best symbol found: T
+[2025-09-22 17:50:33] [INFO] Closest match found: T
+[2025-09-22 17:50:33] [INFO] Best symbol found: T
+[2025-09-22 17:50:37] [SUCCESS] ✅ Test 't2' added to queue.
+[2025-09-22 17:50:40] [INFO] Exact match found: T
+[2025-09-22 17:50:40] [INFO] Best symbol found: T
+[2025-09-22 17:50:41] [INFO] Closest match found: T
+[2025-09-22 17:50:41] [INFO] Best symbol found: T
+[2025-09-22 17:50:44] [SUCCESS] ✅ Test 't3' added to queue.
+[2025-09-22 17:50:47] [INFO] Exact match found: T
+[2025-09-22 17:50:47] [INFO] Best symbol found: T
+[2025-09-22 17:50:47] [INFO] Closest match found: T
+[2025-09-22 17:50:47] [INFO] Best symbol found: T
+[2025-09-22 17:50:50] [SUCCESS] ✅ Test 't4' added to queue.
+[2025-09-22 17:50:52] [INFO] Exact match found: T
+[2025-09-22 17:50:52] [INFO] Best symbol found: T
+[2025-09-22 17:50:52] [INFO] Closest match found: T
+[2025-09-22 17:50:52] [INFO] Best symbol found: T
+[2025-09-22 17:50:56] [SUCCESS] ✅ Test 't5' added to queue.
+[2025-09-22 17:50:58] [INFO] Exact match found: T
+[2025-09-22 17:50:58] [INFO] Best symbol found: T
+[2025-09-22 17:50:59] [INFO] Closest match found: YQ
+[2025-09-22 17:50:59] [INFO] Best symbol found: YQ
+[2025-09-22 17:50:59] [INFO] Closest match found: YQ
+[2025-09-22 17:50:59] [INFO] Best symbol found: YQ
+[2025-09-22 17:51:00] [INFO] Closest match found: YQ
+[2025-09-22 17:51:00] [INFO] Best symbol found: YQ
+[2025-09-22 17:51:01] [INFO] Exact match found: T
+[2025-09-22 17:51:01] [INFO] Best symbol found: T
+[2025-09-22 17:51:01] [INFO] Closest match found: T
+[2025-09-22 17:51:01] [INFO] Best symbol found: T
+[2025-09-22 17:51:06] [SUCCESS] ✅ Test 't6' added to queue.
+[2025-09-22 17:51:11] [INFO] Exact match found: T
+[2025-09-22 17:51:11] [INFO] Best symbol found: T
+[2025-09-22 17:51:12] [INFO] Exact match found: TT
+[2025-09-22 17:51:12] [INFO] Best symbol found: TT
+[2025-09-22 17:51:14] [INFO] Closest match found: TT
+[2025-09-22 17:51:14] [INFO] Best symbol found: TT
+[2025-09-22 17:51:16] [INFO] Exact match found: TT
+[2025-09-22 17:51:16] [INFO] Best symbol found: TT
+[2025-09-22 17:51:16] [INFO] Exact match found: T
+[2025-09-22 17:51:16] [INFO] Best symbol found: T
+[2025-09-22 17:51:17] [INFO] Closest match found: T
+[2025-09-22 17:51:17] [INFO] Best symbol found: T
+[2025-09-22 17:51:22] [SUCCESS] ✅ Test 't7' added to queue.
+[2025-09-22 17:57:10] [SUCCESS] ✅ Test 't1' added to queue.
+[2025-09-22 17:57:15] [SUCCESS] ✅ Test 't2' added to queue.
+[2025-09-22 17:57:24] [SUCCESS] ✅ Test 't3' added to queue.
+[2025-09-22 17:57:32] [SUCCESS] ✅ Test 't4' added to queue.
+[2025-09-22 17:57:38] [SUCCESS] ✅ Test 't5' added to queue.
+[2025-09-22 17:57:44] [SUCCESS] ✅ Test 't6' added to queue.
+[2025-09-22 17:57:54] [SUCCESS] ✅ Test 't7' added to queue.
+[2025-09-22 17:58:57] [SUCCESS] ✅ Test 't5' added to queue.
+[2025-09-22 18:00:23] [SUCCESS] ✅ Test 't6' added to queue.
+[2025-09-22 18:00:34] [SUCCESS] ✅ Test 't7' added to queue.
+[2025-09-22 18:01:02] [SUCCESS] ✅ Test 't8' added to queue.
+[2025-09-22 18:01:08] [SUCCESS] ✅ Test 't9' added to queue.
+[2025-09-22 18:01:15] [SUCCESS] ✅ Test 't10' added to queue.
+[2025-09-22 18:02:07] [SUCCESS] ✅ Export completed successfully!
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'AUDCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'GBPUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'GBPUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'GBPUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'GBPUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'GBPUSD_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'EURJPY_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'EURJPY_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'EURJPY_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'EURJPY_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'EURJPY_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-22 18:09:01] [SUCCESS] ✅ Test 'CADCHF_' added to queue.
+[2025-09-22 18:09:21] [SUCCESS] ✅ Correlation heatmap generated
+[2025-09-22 18:48:21] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 18:48:21] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-22 18:48:29] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 18:48:29] [ERROR] Error while connecting to MT5: 'MT5Manager' object has no attribute 'last_error'
+[2025-09-22 19:14:37] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 19:14:44] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 19:15:05] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 19:15:13] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 19:20:38] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 19:20:46] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-09-22 20:04:32] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-22 20:07:57] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-09-30 00:56:08] [SUCCESS] ✅ Correlation heatmap generated
+[2025-10-04 04:16:27] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 04:16:30] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:16:30] [DEBUG] Switching to stack page 0
+[2025-10-04 04:16:30] [INFO] No valid cache found, user not authenticated
+[2025-10-04 04:17:16] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 04:17:20] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:17:20] [DEBUG] Switching to stack page 0
+[2025-10-04 04:17:20] [INFO] No valid cache found, user not authenticated
+[2025-10-04 04:17:42] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 04:17:44] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:17:44] [DEBUG] Switching to stack page 0
+[2025-10-04 04:17:44] [INFO] No valid cache found, user not authenticated
+[2025-10-04 04:21:06] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 04:21:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:21:09] [DEBUG] Switching to stack page 0
+[2025-10-04 04:21:10] [INFO] No valid cache found, user not authenticated
+[2025-10-04 04:21:41] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 04:21:41] [INFO] User authenticated via cache
+[2025-10-04 04:22:44] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 04:22:44] [INFO] User authenticated via cache
+[2025-10-04 04:22:46] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-04 04:22:46] [DEBUG] Switching to stack page 1
+[2025-10-04 04:22:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-04 04:22:47] [DEBUG] Switching to stack page 0
+[2025-10-04 04:22:51] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-04 04:22:51] [DEBUG] Switching to stack page 1
+[2025-10-04 04:22:56] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-04 04:22:56] [DEBUG] Switching to stack page 0
+[2025-10-04 04:22:58] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-04 04:22:58] [DEBUG] Switching to stack page 1
+[2025-10-04 04:23:06] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-04 04:23:06] [DEBUG] Switching to stack page 0
+[2025-10-04 04:23:09] [INFO] Logging out...
+[2025-10-04 04:23:09] [INFO] Keyring cache deleted
+[2025-10-04 04:25:55] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 04:25:58] [INFO] Cache loaded: None
+[2025-10-04 04:25:59] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:25:59] [DEBUG] Switching to stack page 0
+[2025-10-04 04:25:59] [INFO] No valid cache found, user not authenticated
+[2025-10-04 04:26:05] [DEBUG] Attempting to switch to page index: 1, Authenticated: False
+[2025-10-04 04:26:05] [WARNING] Unauthorized access attempt to restricted page
+[2025-10-04 04:26:05] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:26:05] [DEBUG] Switching to stack page 0
+[2025-10-04 04:26:34] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 04:26:34] [INFO] Cache loaded: {'authenticated': True, 'token': '2e7a5183-24fb-4a25-a714-34a96c1407d5', 'validation_time': 1759533990.9766712}
+[2025-10-04 04:26:34] [INFO] User authenticated via cache
+[2025-10-04 04:26:36] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-04 04:26:36] [DEBUG] Switching to stack page 1
+[2025-10-04 04:26:37] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-04 04:26:37] [DEBUG] Switching to stack page 0
+[2025-10-04 04:41:16] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-04 04:41:20] [INFO] Cache loaded: {'authenticated': True, 'token': '2e7a5183-24fb-4a25-a714-34a96c1407d5', 'validation_time': 1759533990.9766712}
+[2025-10-04 04:41:21] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-04 04:41:21] [DEBUG] Switching to stack page 0
+[2025-10-04 04:41:21] [INFO] User authenticated via cache
+[2025-10-04 04:42:46] [INFO] Logging out...
+[2025-10-04 04:42:46] [INFO] Keyring cache deleted
+[2025-10-04 04:42:51] [INFO] Logging out...
+[2025-10-04 04:43:41] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 04:43:47] [INFO] Cache loaded: None
+[2025-10-04 04:43:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 04:43:47] [DEBUG] Switching to stack page 0
+[2025-10-04 04:43:48] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:35:20] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:35:21] [INFO] Cache loaded: None
+[2025-10-04 13:35:21] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:35:21] [DEBUG] Switching to stack page 0
+[2025-10-04 13:35:21] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:35:24] [DEBUG] Attempting to switch to page index: 1, Authenticated: False
+[2025-10-04 13:35:24] [WARNING] Unauthorized access attempt to restricted page
+[2025-10-04 13:35:24] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:35:24] [DEBUG] Switching to stack page 0
+[2025-10-04 13:35:54] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 13:35:54] [INFO] Cache loaded: {'authenticated': True, 'token': '5a78f5a8-ba60-4d3c-a88c-4f9babd24055', 'validation_time': 1759566952.2896469}
+[2025-10-04 13:35:54] [INFO] User authenticated via cache
+[2025-10-04 13:37:41] [INFO] Logging out...
+[2025-10-04 13:37:41] [INFO] Keyring cache deleted
+[2025-10-04 13:38:57] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:38:57] [INFO] Cache loaded: None
+[2025-10-04 13:38:57] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:38:57] [DEBUG] Switching to stack page 0
+[2025-10-04 13:38:58] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:39:21] [WARNING] Invalid password for email: admin@example.com
+[2025-10-04 13:39:27] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 13:39:27] [INFO] Cache loaded: {'authenticated': True, 'token': 'f5f66d86-e274-4f7d-8dc5-e70438e1bd44', 'validation_time': 1759567166.136344}
+[2025-10-04 13:39:27] [INFO] User authenticated via cache
+[2025-10-04 13:39:29] [INFO] Logging out...
+[2025-10-04 13:39:29] [INFO] Keyring cache deleted
+[2025-10-04 13:39:29] [INFO] User logged out
+[2025-10-04 13:42:15] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:42:16] [INFO] Cache loaded: None
+[2025-10-04 13:42:16] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:42:16] [DEBUG] Switching to stack page 0
+[2025-10-04 13:42:16] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:42:18] [INFO] Logging out...
+[2025-10-04 13:42:18] [INFO] No cache found in keyring
+[2025-10-04 13:42:18] [INFO] User logged out
+[2025-10-04 13:45:24] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:45:25] [INFO] Cache loaded: None
+[2025-10-04 13:45:25] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:45:25] [DEBUG] Switching to stack page 0
+[2025-10-04 13:45:25] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:45:56] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 13:45:58] [INFO] User interface updated after login
+[2025-10-04 13:46:00] [INFO] Logging out...
+[2025-10-04 13:46:00] [INFO] Keyring cache deleted
+[2025-10-04 13:46:00] [INFO] User logged out
+[2025-10-04 13:47:38] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:49:56] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:49:57] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:49:57] [DEBUG] Switching to stack page 0
+[2025-10-04 13:50:32] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:50:32] [INFO] Cache loaded: None
+[2025-10-04 13:50:32] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:50:32] [DEBUG] Switching to stack page 0
+[2025-10-04 13:50:32] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:55:45] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-04 13:55:46] [INFO] Cache loaded: None
+[2025-10-04 13:55:46] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-04 13:55:46] [DEBUG] Switching to stack page 0
+[2025-10-04 13:55:46] [INFO] No valid cache found, user not authenticated
+[2025-10-04 13:56:23] [INFO] User admin@example.com logged in successfully.
+[2025-10-04 13:56:25] [INFO] User interface updated after login
+[2025-10-04 13:56:32] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-04 13:56:32] [DEBUG] Switching to stack page 1
+[2025-10-04 13:57:07] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-04 13:57:07] [DEBUG] Switching to stack page 0
+[2025-10-09 14:14:29] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-09 14:14:33] [INFO] Cache loaded: {'authenticated': True, 'token': '1b9ab59f-6f50-4341-bc5e-9b79c216ba71', 'validation_time': 1759959598.2572935}
+[2025-10-09 14:14:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-09 14:14:33] [DEBUG] Switching to stack page 0
+[2025-10-09 14:14:34] [INFO] No valid cache found, user not authenticated
+[2025-10-09 14:15:23] [DEBUG] Attempting to switch to page index: 1, Authenticated: False
+[2025-10-09 14:15:23] [WARNING] Unauthorized access attempt to restricted page
+[2025-10-09 14:15:23] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-09 14:15:23] [DEBUG] Switching to stack page 0
+[2025-10-09 14:46:05] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-09 14:46:05] [INFO] Cache loaded: {'authenticated': True, 'token': '1b9ab59f-6f50-4341-bc5e-9b79c216ba71', 'validation_time': 1759959598.2572935}
+[2025-10-09 14:46:05] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-09 14:46:05] [DEBUG] Switching to stack page 0
+[2025-10-09 14:46:05] [INFO] No valid cache found, user not authenticated
+[2025-10-09 14:46:17] [INFO] User admin@example.com logged in successfully.
+[2025-10-09 14:46:19] [INFO] User interface updated after login
+[2025-10-09 14:46:20] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-09 14:46:20] [DEBUG] Switching to stack page 1

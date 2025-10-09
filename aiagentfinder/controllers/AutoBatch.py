@@ -1,7 +1,7 @@
 # type : ignore
 from PyQt5.QtWidgets import QMessageBox, QFileDialog,QComboBox, QListWidget, QListWidgetItem, QDialog,QApplication
 from PyQt5.QtCore import QDate ,  QThread , QTimer , Qt
-from aiagentfinder.utils import MT5Manager , Logger , MT5Worker, CorrelationWorker
+from aiagentfinder.utils import MT5Manager , Logger 
 from aiagentfinder.queue_manager import QueueManager
 import difflib
 import random
@@ -26,7 +26,7 @@ class AutoBatchController:
         self.mt5 = MT5Manager()
         self.runner = ThreadRunner()
 
-
+        self.setup_connections()
         
         self.symbols= []
         self.queue = QueueManager(ui) 
@@ -79,79 +79,138 @@ class AutoBatchController:
         # ---------------------------
         # TASK for background thread
         # ---------------------------
+        # def task(file_path):
+        #     result = {
+        #         "file_path": file_path,
+        #         "data_folder": None,
+        #         "deposit_info": None,
+        #     }
+
+        #     try:
+        #         success = self.mt5.connect(file_path)
+        #         if success:
+        #             dataPath = self.mt5.get_dataPath()
+                    
+        #             if dataPath:
+        #                 result["data_folder"] = dataPath
+        #                 os.makedirs(os.path.join(dataPath, "Agent Finder Results"), exist_ok=True)
+        #                 Logger.success(f"MT5 Data Folder: {dataPath}")
+        #             else:
+        #                 Logger.warning("Could not retrieve terminal_info from MT5")
+        #             # --- Deposit info ---
+        #             result["deposit_info"] = self.mt5.get_deposit()
+                    
+        #             if result["deposit_info"]:
+        #                 Logger.success("Deposit info retrieved successfully")
+        #             else:
+        #                 Logger.warning("No deposit info retrieved")
+
+        #             self.mt5.get_symbol_list()
+
+        #             print("Disconnecting")
+        #             self.mt5.disconnect()
+
+        #             exe_name = os.path.basename(file_path)
+
+        #             for proc in psutil.process_iter(['pid', 'name']):
+        #                 if proc.info['name'] == exe_name:
+        #                     try:
+        #                         proc.terminate()
+        #                         print(f"Closed MT5 window: {exe_name}")
+        #                     except Exception as e:
+        #                         print(f"Could not close MT5 window: {e}")
+
+        #         else:
+        #             Logger.error(f"Failed to connect to MT5: {self.mt5.last_error()}")
+
+        #     except Exception as e:
+        #         Logger.error(f"Error while connecting to MT5: {e}")
+
+        #     return result
+
+
+        # # ---------------------------
+        # # CALLBACKS (main thread)
+        # # ---------------------------
+        # def on_done(result):
+        #     if result["data_folder"]:
+        #         self.ui.data_input.setText(result["data_folder"])
+        #         Logger.info(f"Auto-selected Data Folder: {result['data_folder']}")
+        #     else:
+        #         QMessageBox.warning(
+        #             self.ui, "MT5 Data Folder",
+        #             "⚠️ Could not detect Data Folder automatically. Please set it manually."
+        #         )
+
+        #     if result["deposit_info"]:
+        #         self.ui.deposit_info = result["deposit_info"]
+        #         self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))
+        #         self.ui.currency_input.setText(result["deposit_info"]["currency"])
+        #         self.ui.leverage_input.setValue(result["deposit_info"]["leverage"])
+        #         QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
+        #     else:
+        #         QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
+        #     QApplication.processEvents()
         def task(file_path):
             result = {
                 "file_path": file_path,
                 "data_folder": None,
                 "deposit_info": None,
+                "error": None,
             }
-
             try:
                 success = self.mt5.connect(file_path)
                 if success:
                     dataPath = self.mt5.get_dataPath()
-                    
                     if dataPath:
                         result["data_folder"] = dataPath
                         os.makedirs(os.path.join(dataPath, "Agent Finder Results"), exist_ok=True)
-                        Logger.success(f"MT5 Data Folder: {dataPath}")
-                    else:
-                        Logger.warning("Could not retrieve terminal_info from MT5")
-                    # --- Deposit info ---
+
                     result["deposit_info"] = self.mt5.get_deposit()
-                    
-                    if result["deposit_info"]:
-                        Logger.success("Deposit info retrieved successfully")
-                    else:
-                        Logger.warning("No deposit info retrieved")
 
-                    self.mt5.get_symbol_list()
+                    # Copy symbol list safely (avoid UI logging here)
+                    _ = self.mt5.get_symbol_list()
 
-                    print("Disconnecting")
                     self.mt5.disconnect()
-
-                    exe_name = os.path.basename(file_path)
-
-                    for proc in psutil.process_iter(['pid', 'name']):
-                        if proc.info['name'] == exe_name:
-                            try:
-                                proc.terminate()
-                                print(f"Closed MT5 window: {exe_name}")
-                            except Exception as e:
-                                print(f"Could not close MT5 window: {e}")
-
                 else:
-                    Logger.error(f"Failed to connect to MT5: {self.mt5.last_error()}")
+                    result["error"] = f"Failed to connect: {self.mt5.last_error()}"
 
             except Exception as e:
-                Logger.error(f"Error while connecting to MT5: {e}")
+                result["error"] = str(e)
 
             return result
 
 
-        # ---------------------------
-        # CALLBACKS (main thread)
-        # ---------------------------
         def on_done(result):
+            if result.get("error"):
+                QMessageBox.critical(self.ui, "MT5 Connection", f"❌ {result['error']}")
+                return
+
             if result["data_folder"]:
                 self.ui.data_input.setText(result["data_folder"])
                 Logger.info(f"Auto-selected Data Folder: {result['data_folder']}")
-            else:
-                QMessageBox.warning(
-                    self.ui, "MT5 Data Folder",
-                    "⚠️ Could not detect Data Folder automatically. Please set it manually."
-                )
 
             if result["deposit_info"]:
-                self.ui.deposit_info = result["deposit_info"]
-                self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))
-                self.ui.currency_input.setText(result["deposit_info"]["currency"])
-                self.ui.leverage_input.setValue(result["deposit_info"]["leverage"])
+                info = result["deposit_info"]
+                self.ui.deposit_info = info
+                self.ui.deposit_input.setText(str(info.get("balance", 0)))
+                self.ui.currency_input.setText(info.get("currency", ""))
+                self.ui.leverage_input.setValue(info.get("leverage", 0))
                 QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
             else:
-                QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
-            QApplication.processEvents()
-        
+                QMessageBox.warning(self.ui, "MT5 Connection", "⚠️ No deposit info retrieved")
+
+            # Optional: safely close MT5 here if you really want
+            exe_name = os.path.basename(result["file_path"])
+            for proc in psutil.process_iter(['pid', 'name']):
+                if proc.info['name'] == exe_name:
+                    try:
+                        proc.terminate()
+                        print(f"Closed MT5 window: {exe_name}")
+                    except Exception as e:
+                        Logger.error(f"Could not close MT5 window: {e}")
+
+                
         def on_error(err):
             QMessageBox.critical(
                 self.ui, "Error",
@@ -412,10 +471,10 @@ class AutoBatchController:
 
             "expert": self.ui.expert_input.currentText().strip(),
             "param_file": self.ui.param_input.text().strip(),
-            "symbol_prefix": self.ui.symbol_prefix.text().strip(),
-            "symbol_suffix": self.ui.symbol_suffix.text().strip(),
             "symbol": self.ui.symbol_input.text().strip(),
             "timeframe": self.ui.timeframe_combo.currentText(),
+            "symbol_prefix": self.ui.symbol_prefix.text().strip(),
+            "symbol_suffix": self.ui.symbol_suffix.text().strip(),
             "date": self.ui.date_combo.currentText(),
             "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
             "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
@@ -1150,20 +1209,61 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.run(task)
 
-    def on_test_selected(self, index):
-        index = self.ui.queue_list.currentRow()  # Which item was clicked
+    def setup_connections(self):
+    # Text fields
+        self.ui.testfile_input.textChanged.connect(self.save_current_test)
+        self.ui.param_input.textChanged.connect(self.save_current_test)
+        self.ui.symbol_input.textChanged.connect(self.save_current_test)
+        self.ui.symbol_prefix.textChanged.connect(self.save_current_test)
+        self.ui.symbol_suffix.textChanged.connect(self.save_current_test)
+        self.ui.deposit_input.textChanged.connect(self.save_current_test)
+        self.ui.currency_input.textChanged.connect(self.save_current_test)
+
+        # Combo boxes
+        self.ui.expert_input.currentTextChanged.connect(self.save_current_test)
+        self.ui.timeframe_combo.currentTextChanged.connect(self.save_current_test)
+        self.ui.date_combo.currentTextChanged.connect(self.save_current_test)
+        self.ui.forward_combo.currentTextChanged.connect(self.save_current_test)
+        self.ui.delay_combo.currentTextChanged.connect(self.save_current_test)
+        self.ui.model_combo.currentTextChanged.connect(self.save_current_test)
+        self.ui.optim_combo.currentTextChanged.connect(self.save_current_test)
+        self.ui.criterion_input.currentTextChanged.connect(self.save_current_test)
+
+        # SpinBoxes / DateEdits
+        self.ui.delay_input.valueChanged.connect(self.save_current_test)
+        self.ui.leverage_input.valueChanged.connect(self.save_current_test)
+        self.ui.date_from.dateChanged.connect(self.save_current_test)
+        self.ui.date_to.dateChanged.connect(self.save_current_test)
+        self.ui.forward_date.dateChanged.connect(self.save_current_test)
+
+
+    def save_current_test(self, *args):
         if hasattr(self, "current_index") and self.current_index is not None:
             if 0 <= self.current_index < len(self.queue.tests):
                 self.update_current_test_parameters(self.current_index)
+
+    def on_test_selected(self, index):
+        index = self.ui.queue_list.currentRow()  # Which item was clicked
         if 0 <= index < len(self.queue.tests):
             self.current_index = index
             test_data = self.queue.tests[index]  # Get the selected test
             self.load_test_parameters(test_data)  # Show it on the form
-            print(test_data)
+            # print(test_data)
 
     def load_test_parameters(self, test_data):
         # Expert & param files
-        try: 
+        try:
+                
+            for widget in [
+                self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
+                self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
+                self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
+                self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
+                self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
+                self.ui.delay_input, self.ui.leverage_input,
+                self.ui.date_from, self.ui.date_to, self.ui.forward_date
+            ]:
+                widget.blockSignals(True)
 
                 self.ui.testfile_input.setText(test_data.get("test_name", ""))
                 self.ui.expert_input.setCurrentText(test_data.get("expert", ""))
@@ -1214,6 +1314,17 @@ class AutoBatchController:
 
         except Exception as e:
                Logger.error(f"Error loading test parameters: {str(e)}")
+        finally:
+            for widget in [
+                self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
+                self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
+                self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
+                self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
+                self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
+                self.ui.delay_input, self.ui.leverage_input,
+                self.ui.date_from, self.ui.date_to, self.ui.forward_date
+            ]:
+                widget.blockSignals(False)
         
     def update_current_test_parameters(self, index):
         """Save the current form values into the test at given index."""
@@ -1242,8 +1353,7 @@ class AutoBatchController:
             }
         except Exception as e:
             print(f"Error saving test parameters: {e}")
-
-
+    
 
 
         

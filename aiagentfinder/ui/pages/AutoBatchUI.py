@@ -10,7 +10,7 @@ from PyQt5.QtCore import QDate, Qt
 from PyQt5.QtGui import QPalette, QColor
 
 from aiagentfinder.ui.base_tab import BaseTab
-from aiagentfinder.controller import AutoBatchController
+from aiagentfinder.controllers.AutoBatch import AutoBatchController
 
 class AutoBatchUI(BaseTab):
     """UI for the AutoBatch tab, inherits from BaseTab."""
@@ -34,9 +34,8 @@ class AutoBatchUI(BaseTab):
                 background-color: #1e1e1e;
                 color: #e0dcdc;
                 font-family: Inter;
-
                 font-size: 12px;
-                line-height: 14px
+                line-height: 14px;
 
             }
 
@@ -44,8 +43,9 @@ class AutoBatchUI(BaseTab):
             QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
                 border: 2px solid #555555;       /* nice gray border */
                 border-radius: 5px;              /* rounded corners */
-                padding: 4px 6px;                    /* internal padding */
-                font-size:11px;
+                padding: 2px 4px;     /* 🔽 reduced padding */
+                font-size: 10px;      /* 🔽 smaller text */
+                min-height: 20px;     /* 🔽 keeps them compact */
 
                 background-color: #2b2b2b;
                 color: #ffffff;
@@ -59,19 +59,19 @@ class AutoBatchUI(BaseTab):
 
             /* Buttons */
             QPushButton {
-                background-color: #808791;
-                border: 2px solid #ffffff;
-                border-radius: 5px;
+               background-color: #808791;
+                border: 1px solid #ffffff;
+                border-radius: 4px;
                 color: #ffffff;
-                padding: 6px 12px;
-                font-size: 8pt;
-
+                padding: 2px 6px;     /* 🔽 smaller padding */
+                font-size: 10px;      /* 🔽 smaller text */
+                min-height: 20px;     /* ensures consistent smaller height */
             }
 
             QPushButton:hover {
                 background-color: #a0a8b0;
                 color: black;
-                border: 2px solid #ffcc00;
+                border: 1px solid #ffcc00;
             }
 
             /* Header title */
@@ -269,7 +269,7 @@ class AutoBatchUI(BaseTab):
 
         self.testfile_input = QLineEdit()
         self.expert_input = QComboBox()
-        self.expert_input.setMinimumWidth(400)  # Set the minimum width()
+        self.expert_input.setMinimumWidth(350)  # Set the minimum width()
         self.expert_input.addItems(["Please Attach Data File"])
         self.expert_button = QPushButton("Browse")
         icon = self.expert_button.style().standardIcon(QStyle.SP_FileDialogNewFolder)  # type: ignore
@@ -333,7 +333,7 @@ class AutoBatchUI(BaseTab):
         self.forward_copy_down = QPushButton("Copy Down")
         icon = self.forward_copy_down.style().standardIcon(QStyle.SP_ArrowDown)  # type: ignore
         self.forward_copy_down.setIcon(icon)
-        self.forward_copy_down.setMinimumWidth(150) 
+        # self.forward_copy_down.setMinimumWidth(150) 
 
         
         self.delay_combo = QComboBox()
@@ -482,7 +482,7 @@ class AutoBatchUI(BaseTab):
 
         self.schedule_date.setCalendarPopup(True)
 
-        self.schedule_date.setMinimumWidth(200) 
+        # self.schedule_date.setMinimumWidth(200) 
         bottom_layout.addWidget(self.start_btn)
         bottom_layout.addWidget(QLabel("Schedule Testing?"))
         
@@ -494,6 +494,7 @@ class AutoBatchUI(BaseTab):
         main_layout = QHBoxLayout()
 
         main_layout.setSpacing(25)
+        
 
         main_layout.addLayout(left_layout, 2)
         main_layout.addLayout(right_layout, 3)
