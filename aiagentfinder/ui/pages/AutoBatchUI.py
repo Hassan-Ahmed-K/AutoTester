@@ -43,10 +43,10 @@ class AutoBatchUI(BaseTab):
             QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
                 border: 2px solid #555555;       /* nice gray border */
                 border-radius: 5px;              /* rounded corners */
-                padding: 2px 4px;     /* 🔽 reduced padding */
+                padding: 1px 2px;     /* 🔽 reduced padding */
                 font-size: 10px;      /* 🔽 smaller text */
+                font-weight: bold;
                 min-height: 20px;     /* 🔽 keeps them compact */
-
                 background-color: #2b2b2b;
                 color: #ffffff;
             }
@@ -63,6 +63,7 @@ class AutoBatchUI(BaseTab):
                 border: 1px solid #ffffff;
                 border-radius: 4px;
                 color: #ffffff;
+                
                 padding: 2px 6px;     /* 🔽 smaller padding */
                 font-size: 10px;      /* 🔽 smaller text */
                 min-height: 20px;     /* ensures consistent smaller height */

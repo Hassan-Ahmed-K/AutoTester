@@ -33,13 +33,25 @@ class Logger:
 
     @staticmethod
     def error(message: str, exc: Exception = None):
-        """Logs an error, with optional exception details (file + line)."""
+        """Logs an error message with optional exception details (file + line)."""
         if exc:
-            tb = traceback.extract_tb(exc.__traceback__)[-1]  # last call in traceback
-            filename = os.path.basename(tb.filename)
-            line_no = tb.lineno
-            error_type = type(exc).__name__
-            error_msg = f"{message} | {error_type}: {exc} (File: {filename}, Line: {line_no})"
+            try:
+                tb = traceback.extract_tb(exc.__traceback__)
+                if tb:
+                    last_call = tb[-1]
+                    filename = os.path.basename(last_call.filename)
+                    line_no = last_call.lineno
+                    error_type = type(exc).__name__
+                    error_msg = (
+                        f"{message} | {error_type}: {exc} "
+                        f"(File: {filename}, Line: {line_no})"
+                    )
+                else:
+                    # Fallback if traceback is missing
+                    error_msg = f"{message} | {type(exc).__name__}: {exc}"
+            except Exception as e:
+                # Fallback if anything goes wrong during traceback extraction
+                error_msg = f"{message} | Failed to extract traceback: {e}"
         else:
             error_msg = message
 
