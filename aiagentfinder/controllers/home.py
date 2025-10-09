@@ -178,16 +178,19 @@ class HomeController:
                 self.main_window.authenticated = True
                 self.ui.notice_label.show()
                 self.ui.login_widget.hide()
+                self.ui.logout.show()
             else:
                 Logger.info("No valid cache found, user not authenticated")
                 self.main_window.authenticated = False
                 self.ui.notice_label.hide()
                 self.ui.login_widget.show()
+                self.ui.logout.hide()
 
         def on_error(e):
             Logger.error("Error loading cache", e)
             self.ui.notice_label.hide()
             self.ui.login_widget.show()
+            self.ui.logout.hide()
 
         self.runner = ThreadRunner()
         self.runner.on_result = on_done

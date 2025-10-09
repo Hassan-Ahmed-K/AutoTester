@@ -5911,3 +5911,50 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-10 04:03:13] [INFO] User authenticated via cache
 [2025-10-10 04:03:17] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
 [2025-10-10 04:03:17] [DEBUG] Switching to stack page 2
+[2025-10-10 04:09:37] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-10 04:09:39] [INFO] Cache loaded: {'authenticated': True, 'token': '5b593540-7c81-4807-8c3d-2c48dd628a01', 'validation_time': 1760048058.015506}
+[2025-10-10 04:09:39] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-10 04:09:39] [DEBUG] Switching to stack page 0
+[2025-10-10 04:09:40] [INFO] User authenticated via cache
+[2025-10-10 04:09:46] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-10 04:09:46] [DEBUG] Switching to stack page 1
+[2025-10-10 04:09:47] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-10 04:09:47] [DEBUG] Switching to stack page 2
+[2025-10-10 04:09:49] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-10 04:09:49] [DEBUG] Switching to stack page 0
+[2025-10-10 04:11:34] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-10 04:11:36] [INFO] Cache loaded: {'authenticated': True, 'token': '5b593540-7c81-4807-8c3d-2c48dd628a01', 'validation_time': 1760048058.015506}
+[2025-10-10 04:11:37] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-10 04:11:37] [DEBUG] Switching to stack page 0
+[2025-10-10 04:11:37] [INFO] User authenticated via cache
+[2025-10-10 04:11:40] [INFO] Logging out...
+[2025-10-10 04:11:40] [INFO] Keyring cache deleted
+[2025-10-10 04:11:40] [INFO] User logged out
+[2025-10-10 04:13:06] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-10 04:13:08] [INFO] Cache loaded: None
+[2025-10-10 04:13:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-10 04:13:09] [DEBUG] Switching to stack page 0
+[2025-10-10 04:13:09] [INFO] No valid cache found, user not authenticated
+[2025-10-10 04:13:45] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-10 04:13:46] [INFO] Cache loaded: None
+[2025-10-10 04:13:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-10 04:13:47] [DEBUG] Switching to stack page 0
+[2025-10-10 04:13:48] [INFO] No valid cache found, user not authenticated
+[2025-10-10 04:14:04] [INFO] User admin@example.com logged in successfully.
+[2025-10-10 04:14:05] [INFO] User interface updated after login
+[2025-10-10 04:14:07] [INFO] Logging out...
+[2025-10-10 04:14:08] [INFO] Keyring cache deleted
+[2025-10-10 04:14:08] [INFO] User logged out
+[2025-10-10 04:14:16] [INFO] Logging out...
+[2025-10-10 04:14:16] [INFO] No cache found in keyring
+[2025-10-10 04:14:16] [INFO] User logged out
+[2025-10-10 04:15:33] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-10 04:15:35] [INFO] Cache loaded: None
+[2025-10-10 04:15:36] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-10 04:15:36] [DEBUG] Switching to stack page 0
+[2025-10-10 04:15:36] [INFO] No valid cache found, user not authenticated
+[2025-10-10 04:15:55] [INFO] User admin@example.com logged in successfully.
+[2025-10-10 04:15:57] [INFO] User interface updated after login
+[2025-10-10 04:15:58] [INFO] Logging out...
+[2025-10-10 04:15:58] [INFO] Keyring cache deleted
+[2025-10-10 04:15:58] [INFO] User logged out
