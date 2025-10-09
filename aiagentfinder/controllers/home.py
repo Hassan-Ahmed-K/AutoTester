@@ -110,6 +110,7 @@ class HomeController:
             self.main_window.authenticated = True
             self.ui.notice_label.show()
             self.ui.login_widget.hide()
+            self.ui.logout.show()
             Logger.info("User interface updated after login")
 
         def on_error(err):
@@ -152,6 +153,7 @@ class HomeController:
             # Update UI directly
             self.ui.notice_label.hide()
             self.ui.login_widget.show()
+            self.ui.logout.hide()
             Logger.info("User logged out")
             QMessageBox.information(self.ui, "Logged Out", "You have been logged out.")
 
@@ -192,22 +194,13 @@ class HomeController:
         self.runner.on_error = on_error
         self.runner.run(task, show_dialog=False)
 
-    # def check_cache(self):
-    #     data = self.load_cache()
-    #     print(data)
-    #     if data and data.get("authenticated") and time.time() - data["validation_time"] < 3600:
-    #         Logger.info("User authenticated via cache")
-    #         return True
-    #     else:
-    #         Logger.info("No valid cache found, user not authenticated")
-    #         return False
-
-
     def check_login(self):
         if self.check_cache():
             self.ui.notice_label.show()
             self.ui.login_widget.hide()
+            self.ui.logout.show()
         else:
            self.ui.notice_label.hide()
            self.ui.login_widget.show()
+           self.ui.logout.hide()
             
