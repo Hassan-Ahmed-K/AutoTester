@@ -4453,3 +4453,21 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-04 13:56:32] [DEBUG] Switching to stack page 1
 [2025-10-04 13:57:07] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
 [2025-10-04 13:57:07] [DEBUG] Switching to stack page 0
+[2025-10-09 14:14:29] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-09 14:14:33] [INFO] Cache loaded: {'authenticated': True, 'token': '1b9ab59f-6f50-4341-bc5e-9b79c216ba71', 'validation_time': 1759959598.2572935}
+[2025-10-09 14:14:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-09 14:14:33] [DEBUG] Switching to stack page 0
+[2025-10-09 14:14:34] [INFO] No valid cache found, user not authenticated
+[2025-10-09 14:15:23] [DEBUG] Attempting to switch to page index: 1, Authenticated: False
+[2025-10-09 14:15:23] [WARNING] Unauthorized access attempt to restricted page
+[2025-10-09 14:15:23] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-09 14:15:23] [DEBUG] Switching to stack page 0
+[2025-10-09 14:46:05] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-09 14:46:05] [INFO] Cache loaded: {'authenticated': True, 'token': '1b9ab59f-6f50-4341-bc5e-9b79c216ba71', 'validation_time': 1759959598.2572935}
+[2025-10-09 14:46:05] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-09 14:46:05] [DEBUG] Switching to stack page 0
+[2025-10-09 14:46:05] [INFO] No valid cache found, user not authenticated
+[2025-10-09 14:46:17] [INFO] User admin@example.com logged in successfully.
+[2025-10-09 14:46:19] [INFO] User interface updated after login
+[2025-10-09 14:46:20] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-09 14:46:20] [DEBUG] Switching to stack page 1

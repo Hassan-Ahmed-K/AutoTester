@@ -190,7 +190,7 @@ class HomeController:
         self.runner = ThreadRunner()
         self.runner.on_result = on_done
         self.runner.on_error = on_error
-        self.runner.run(task)
+        self.runner.run(task, show_dialog=False)
 
     # def check_cache(self):
     #     data = self.load_cache()

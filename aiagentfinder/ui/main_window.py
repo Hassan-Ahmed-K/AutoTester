@@ -54,7 +54,6 @@ class MainWindow(QMainWindow):
         self.SERVICE_NAME = os.getenv("SERVICE_NAME")
         self.CACHE_KEY = os.getenv("CACHE_KEY")
         self.authenticated = False
-        self.test = "huzaifa"
         self.check_cache()  # Check cache on startup
 
          # Main container and layout
