@@ -228,7 +228,7 @@ class MT5Manager:
             os.makedirs(config_dir, exist_ok=True)
 
             config_path = os.path.join(config_dir, f"{test_name}.ini")
-            report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_{test_name}_{forward_str}_report.xml")
+            report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_{test_name}_{forward_str}_report")
 
 
 
