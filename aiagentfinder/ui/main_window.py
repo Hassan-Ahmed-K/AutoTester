@@ -123,10 +123,6 @@ class MainWindow(QMainWindow):
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder"))
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator"))
         
-        self.nav_list.setIconSize(QSize(20,20))
-        self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  
-        self.nav_list.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  
-        
 
         self.nav_list.setIconSize(QSize(20,20))
         self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff) 

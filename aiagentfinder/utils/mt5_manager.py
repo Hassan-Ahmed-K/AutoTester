@@ -8,6 +8,7 @@ import json
 from datetime import datetime
 import re
 from pathlib import Path
+from .logger import Logger
 
 class MT5Manager:
 
@@ -51,49 +52,60 @@ class MT5Manager:
         return dataPath
     
     def save_symbols_to_json(file_name="symbols.json"):
-        # fetch symbols
-        symbols = mt5.symbols_get()
-        if symbols is None:
-            print(f"Failed to get symbols: {mt5.last_error()}")
+        """Fetch MT5 symbols and save them to a JSON file"""
+        try:
+            # fetch symbols
+            symbols = mt5.symbols_get()
+            if symbols is None:
+                Logger.error(f"❌ Failed to get symbols: {mt5.last_error()}")
+                return False
+
+            # convert to dict (symbol object → dict)
+            symbols_list = [s._asdict() for s in symbols]
+
+            # save to JSON
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(symbols_list, f, indent=4, ensure_ascii=False)
+
+            Logger.success(f"✅ Saved {len(symbols_list)} symbols to {os.path.abspath(file_name)}")
+            return True
+
+        except Exception as e:
+            Logger.error(f"⚠️ Error saving symbols to {file_name}: {e}")
             return False
 
-        # convert to dict (symbol object → dict)
-        symbols_list = [s._asdict() for s in symbols]
-
-        # save to JSON
-        with open(file_name, "w", encoding="utf-8") as f:
-            json.dump(symbols_list, f, indent=4, ensure_ascii=False)
-
-        print(f"✅ Saved {len(symbols_list)} symbols to {os.path.abspath(file_name)}")
-        return True
     
     def load_symbols_from_json(file_name="symbols.json"):
         """Load saved MT5 symbols from JSON file"""
         if not os.path.exists(file_name):
-            print(f"❌ File not found: {file_name}")
+            Logger.error(f"❌ File not found: {file_name}")
             return None
 
         try:
             with open(file_name, "r", encoding="utf-8") as f:
                 symbols_list = json.load(f)
-            print(f"✅ Loaded {len(symbols_list)} symbols from {os.path.abspath(file_name)}")
+
+            Logger.success(f"✅ Loaded {len(symbols_list)} symbols from {os.path.abspath(file_name)}")
             return symbols_list
+
         except Exception as e:
-            print(f"⚠️ Failed to load symbols: {e}")
+            Logger.error(f"⚠️ Failed to load symbols from {file_name}: {e}")
             return None
+
     
     def get_symbol_list(self):
         try:
         # Get all symbols from broker once
-                self.symbol_list = [s.name for s in mt5.symbols_get()]
+            self.symbol_list = [s.name for s in mt5.symbols_get()]
+            fx_symbols = self.get_fx_symbols()  # fixed list (28 pairs)
+            metals = self.get_metals_symbols()  
+            indices = self.get_indices_symbols()  
+            self.symbol_list = fx_symbols + metals + indices
         except Exception:
             self.symbol_list = []
-
-        fx_symbols = self.get_fx_symbols()  # fixed list (28 pairs)
-        metals = self.get_metals_symbols()  # filtered from broker list
-        indices = self.get_indices_symbols()  # filtered from broker list
-
-        return fx_symbols + metals + indices
+        
+        return self.symbol_list
+        
 
     def get_fx_symbols(self):
         # return [s for s in self.symbol_list if any(cur in s for cur in ["USD","EUR","GBP","JPY","AUD","NZD","CAD","CHF"])]
@@ -119,25 +131,22 @@ class MT5Manager:
         indices_keywords = ["US500", "NAS100", "DJ30", "DE30", "UK100"]
         return [s for s in self.symbol_list if any(idx in s for idx in indices_keywords)]
     
-    def run_test(self, settings: dict, data_path:str, mt5_path:str, report_path:str, expert_path):
+    def run_test(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path):
         try:
-            # Logger.info(f"Running test: {settings['test_name']} on {settings['symbol']}")
-            print(f"Running test: {settings['test_name']} on {settings['symbol']}")
-            # Your actual test execution logic here
-            result = self.run_strategy(settings, data_path, mt5_path,report_path, expert_path)
+            Logger.info(f"▶️ Running test: {settings.get('test_name', 'Unnamed')} on {settings.get('symbol', 'Unknown')}")
+            
+            result = self.run_strategy(settings, data_path, mt5_path, report_path, expert_path)
 
-            print(f"Test '{settings['test_name']}' completed successfully.")
-            # Logger.success(f"Test '{settings['test_name']}' completed successfully.")
+            Logger.success(f"✅ Test '{settings.get('test_name', 'Unnamed')}' completed successfully.")
             return result
+
         except Exception as e:
-            print(f"Error running test '{settings['test_name']}': {e}")
-            # Logger.error(f"Error running test '{settings['test_name']}': {e}")
-            # QMessageBox.critical(self.ui, "Error", f"Test failed: {e}")
+            Logger.error(f"❌ Error running test '{settings.get('test_name', 'Unnamed')}': {e}")
             return None
 
-    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path:str, expert_path):
-        
+    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path):
         try:
+            Logger.info("Starting run_strategy...")
 
             # --- Mapping dictionaries ---
             MODEL_MAP = {
@@ -145,8 +154,7 @@ class MT5Manager:
                 "1 minute OHLC": 1,
                 "Open prices only": 2,
                 "Every tick": None,
-                "Every tick based on real ticks":4,
-                
+                "Every tick based on real ticks": 4,
             }
 
             FORWARD_MAP = {
@@ -156,13 +164,6 @@ class MT5Manager:
                 "1/4": 3,
                 "Custom": 4
             }
-
-            # OPTIMIZATION_MAP = {
-            #     "Disabled": 0,
-            #     "Fast genetic based algorithm": 1,
-            #     "Slow complete algorithm": 2,
-            #     "All symbols selected in MarketWatch": 3
-            # }
 
             OPTIMIZATION_MAP = {
                 "Disabled": 0,
@@ -182,39 +183,36 @@ class MT5Manager:
                 "Complex Criterion max": 7
             }
 
-
-            
-
             # --- Extract settings ---
-            test_name     = settings.get("test_name", "StrategyTest")
-            expert        = settings["expert"]
-            param_file        = settings["param_file"]
-            symbol        = settings["symbol"]
-            timeframe     = settings.get("timeframe", "H1")
+            test_name = settings.get("test_name", "StrategyTest")
+            expert = settings["expert"]
+            param_file = settings["param_file"]
+            symbol = settings["symbol"]
+            timeframe = settings.get("timeframe", "H1")
 
-            from_date     = datetime.strptime(settings.get("date_from", "2023-01-01"), "%Y-%m-%d").strftime("%Y.%m.%d")
-            to_date       = datetime.strptime(settings.get("date_to", "2023-12-31"), "%Y-%m-%d").strftime("%Y.%m.%d")
-            forward_str   = settings.get("forward", "Disabled")
-            forward       = FORWARD_MAP.get(forward_str, 0)
+            from_date = datetime.strptime(settings.get("date_from", "2023-01-01"), "%Y-%m-%d").strftime("%Y.%m.%d")
+            to_date = datetime.strptime(settings.get("date_to", "2023-12-31"), "%Y-%m-%d").strftime("%Y.%m.%d")
+            forward_str = settings.get("forward", "Disabled")
+            forward = FORWARD_MAP.get(forward_str, 0)
 
-            forward_date  = settings.get("forward_date", None)
+            forward_date = settings.get("forward_date", None)
             if forward_date:
                 forward_date = datetime.strptime(forward_date, "%Y-%m-%d").strftime("%Y.%m.%d")
 
-            deposit       = settings.get("deposit", 10000)
-            delay         = settings.get("delay", 0)
-            model_str     = settings.get("model", "Every tick")
-            currency      = settings.get("currency", "USD")
-            leverage      = settings.get("leverage", "100.00")
-            optim_str     = settings.get("optimization", "Disabled")
+            deposit = settings.get("deposit", 10000)
+            delay = settings.get("delay", 0)
+            model_str = settings.get("model", "Every tick")
+            currency = settings.get("currency", "USD")
+            leverage = settings.get("leverage", "100.00")
+            optim_str = settings.get("optimization", "Disabled")
             criterion_str = settings.get("criterion", "Balance Max")
 
             execution_mode = 1 if int(delay) > 0 else 0
 
             # --- Map text -> numeric values ---
-            model         = MODEL_MAP.get(model_str, 0)
-            optimization  = OPTIMIZATION_MAP.get(optim_str, 0)
-            criterion     = CRITERION_MAP.get(criterion_str, 0)
+            model = MODEL_MAP.get(model_str, 0)
+            optimization = OPTIMIZATION_MAP.get(optim_str, 0)
+            criterion = CRITERION_MAP.get(criterion_str, 0)
 
             # --- Timestamp for unique folder ---
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -230,24 +228,20 @@ class MT5Manager:
             config_path = os.path.join(config_dir, f"{test_name}.ini")
             report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_{test_name}_{forward_str}_report")
 
-
-
             # --- Debug info ---
-            print("----------------------------------------------------")
-            print("Settings = ", settings)
-            print(f"Config path  = {config_path}")
-            print(f"Report file  = {report_path}")
-            print(f"Expert       = {expert}")
-            print("Expert Path = ", Path(*Path(expert_path[expert]["path"]).parts[-2:]))
-            print(f"Symbol       = {symbol}")
-            print(f"Timeframe    = {timeframe}")
-            print(f"Model        = {model} ({model_str})")
-            print(f"Optimization = {optimization} ({optim_str})")
-            print(f"Criterion    = {criterion} ({criterion_str})")
-            print(f"Forward      = {forward} ({forward_str})")
+            Logger.debug(f"Settings: {settings}")
+            Logger.debug(f"Config path  = {config_path}")
+            Logger.debug(f"Report file  = {report_path}")
+            Logger.debug(f"Expert       = {expert}")
+            Logger.debug(f"Expert Path  = {Path(*Path(expert_path[expert]['path']).parts[-2:])}")
+            Logger.debug(f"Symbol       = {symbol}")
+            Logger.debug(f"Timeframe    = {timeframe}")
+            Logger.debug(f"Model        = {model} ({model_str})")
+            Logger.debug(f"Optimization = {optimization} ({optim_str})")
+            Logger.debug(f"Criterion    = {criterion} ({criterion_str})")
+            Logger.debug(f"Forward      = {forward} ({forward_str})")
             if forward == 4 and forward_date:
-                print(f"Forward Date = {forward_date}")
-            print("----------------------------------------------------")
+                Logger.debug(f"Forward Date = {forward_date}")
 
             # --- Write INI config file ---
             ini_content = f"""
@@ -275,37 +269,24 @@ class MT5Manager:
             ShutdownTerminal=1
             """
 
-            # 
-
-            # Add ForwardDate only if Custom forward selected
             if forward == 4 and forward_date:
                 ini_content += f"\nForwardDate={forward_date}\n"
 
             if model:
                 ini_content += f"\nModel={model}\n"
 
-            # Optional auto-shutdown after test
-            # ini_content += "ShutdownTerminal=1\n"
-
             with open(config_path, "w") as f:
                 f.write(ini_content.strip())
-        
-            # # --- Run MT5 with config ---
-            # subprocess.Popen([mt5_path, f"/config:{config_path}"])
 
-            # # --- Wait for report (up to 30 seconds) ---
-            # timeout = 60
-            # start_time = time.time()
-            # while not os.path.exists(report_path) and (time.time() - start_time) < timeout:
-            #     time.sleep(1)
+            Logger.info(f"INI config file written: {config_path}")
 
             proc = subprocess.Popen([mt5_path, f"/config:{config_path}"])
-            print(f"🚀 Backtest started. Tracking report: {report_path}")
+            Logger.success(f"🚀 Backtest started. Tracking report: {report_path}")
 
             last_progress = 0
             last_log_size = 0
 
-            while proc.poll() is None:  # ⬅️ no timeout
+            while proc.poll() is None:  # no timeout
                 # --- Check XML report progress
                 if os.path.exists(report_path):
                     try:
@@ -315,10 +296,10 @@ class MT5Manager:
                             if match:
                                 progress = int(match.group(1))
                                 if progress != last_progress:
-                                    print(f"📊 Progress: {progress}%")
+                                    Logger.info(f"📊 Progress: {progress}%")
                                     last_progress = progress
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        Logger.warning(f"Error reading progress from report: {e}")
 
                 # --- Check MT5 logs for new lines
                 if logs_dir.exists():
@@ -331,20 +312,20 @@ class MT5Manager:
                                 new_lines = f.readlines()
                                 if new_lines:
                                     for line in new_lines:
-                                        print(f"📝 Log: {line.strip()}")
+                                        Logger.debug(f"📝 Log: {line.strip()}")
                                 last_log_size = f.tell()
-                        except Exception:
-                            pass
+                        except Exception as e:
+                            Logger.warning(f"Error reading MT5 log file: {e}")
 
                 time.sleep(2)
+
             if os.path.exists(os.path.join(data_path, report_path)):
-                print(f"✅ Test completed. Report saved at {report_path}")
+                Logger.success(f"✅ Test completed. Report saved at {report_path}")
                 return {"status": "success", "report": report_path}
             else:
-                print("❌ Report not found.")
+                Logger.error("❌ Report not found.")
                 return {"status": "error", "message": "Report not generated"}
 
         except Exception as e:
-            print("❌ Error running test:", str(e))
+            Logger.error(f"❌ Error running test: {str(e)}")
             return {"status": "error", "message": str(e)}
-        

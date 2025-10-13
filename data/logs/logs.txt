@@ -5911,3 +5911,8 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-10 04:03:13] [INFO] User authenticated via cache
 [2025-10-10 04:03:17] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
 [2025-10-10 04:03:17] [DEBUG] Switching to stack page 2
+[2025-10-14 02:52:29] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-14 02:52:31] [INFO] Cache loaded: {'authenticated': True, 'token': '62a3a1cd-431f-4343-9b52-d14d89cc29c9', 'validation_time': 1760391406.223543}
+[2025-10-14 02:52:31] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-14 02:52:31] [DEBUG] Switching to stack page 0
+[2025-10-14 02:52:31] [INFO] User authenticated via cache
