@@ -123,6 +123,7 @@ class BaseTab(QWidget):
 
         self.init_ui()
 
+    @abstractmethod
     def init_ui(self):
         """Each tab must implement this and add widgets to self.main_layout."""
         pass
