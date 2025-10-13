@@ -3,6 +3,7 @@
 from PyQt5.QtWidgets import QMainWindow, QTabWidget , QScrollArea, QSizePolicy,QWidget,QHBoxLayout,QListWidget,QListWidgetItem,QStackedWidget,QVBoxLayout,QPushButton,QSplitter
 from PyQt5.QtGui import QIcon
 from aiagentfinder.ui.pages.AutoBatchUI import AutoBatchUI
+from aiagentfinder.ui.pages.SetGeneratorUI import SetGenerator
 from aiagentfinder.ui.pages.HomeUI import HomeUI
 from aiagentfinder.ui.pages.SetFinder import SetFinderUI
 from PyQt5.QtCore import Qt, QPropertyAnimation
@@ -51,6 +52,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setMinimumSize(1300, 650)
+        self.setWindowTitle("AI Agent Finder")
         self.setStyleSheet("background-color:#1e1e1e;")
         self.SERVICE_NAME = os.getenv("SERVICE_NAME")
         self.CACHE_KEY = os.getenv("CACHE_KEY")
@@ -119,9 +121,16 @@ class MainWindow(QMainWindow):
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\home-7-24.png"), "Home"))
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch"))
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder"))
+        self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator"))
+        
         self.nav_list.setIconSize(QSize(20,20))
         self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  
         self.nav_list.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  
+        
+
+        self.nav_list.setIconSize(QSize(20,20))
+        self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff) 
+        self.nav_list.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)    
         # self.nav_list.setWordWrap(False) 
         self.sidebar_layout.addWidget(self.nav_list)
 
@@ -131,12 +140,12 @@ class MainWindow(QMainWindow):
 
         # Stacked Pages
         self.stack = QStackedWidget()
+
         self.stack.addWidget(self.home_page)  
         self.stack.addWidget(AutoBatchUI())
         self.stack.addWidget(self.setFinder_page)
-
-
-
+        self.stack.addWidget(SetGenerator())
+        
         self.nav_list.currentRowChanged.connect(self.switch_page)
         self.nav_list.setCurrentRow(0)
 
