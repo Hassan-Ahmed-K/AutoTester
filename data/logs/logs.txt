@@ -5916,3 +5916,57 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-14 02:52:31] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
 [2025-10-14 02:52:31] [DEBUG] Switching to stack page 0
 [2025-10-14 02:52:31] [INFO] User authenticated via cache
+[2025-10-15 01:40:18] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-15 01:40:21] [INFO] Cache loaded: {'authenticated': True, 'token': '38755c62-d2df-4936-b070-46189c8f3597', 'validation_time': 1760109462.854537}
+[2025-10-15 01:40:21] [INFO] Date range option selected: Entire history
+[2025-10-15 01:40:21] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 01:40:21] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 01:40:21] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 01:40:22] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-15 01:40:22] [DEBUG] Switching to stack page 0
+[2025-10-15 01:40:23] [INFO] No valid cache found, user not authenticated
+[2025-10-15 01:40:40] [INFO] User admin@example.com logged in successfully.
+[2025-10-15 01:40:42] [INFO] User interface updated after login
+[2025-10-15 01:40:44] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:40:44] [DEBUG] Switching to stack page 3
+[2025-10-15 01:41:04] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:41:04] [DEBUG] Switching to stack page 2
+[2025-10-15 01:41:10] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:41:10] [DEBUG] Switching to stack page 1
+[2025-10-15 01:41:12] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 01:41:12] [DEBUG] Switching to stack page 0
+[2025-10-15 01:41:13] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:41:13] [DEBUG] Switching to stack page 1
+[2025-10-15 01:41:13] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:41:13] [DEBUG] Switching to stack page 2
+[2025-10-15 01:41:23] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:41:23] [DEBUG] Switching to stack page 1
+[2025-10-15 01:41:29] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:41:29] [DEBUG] Switching to stack page 3
+[2025-10-15 01:41:33] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:41:33] [DEBUG] Switching to stack page 1
+[2025-10-15 01:41:34] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:41:34] [DEBUG] Switching to stack page 2
+[2025-10-15 01:41:40] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 01:41:40] [DEBUG] Switching to stack page 0
+[2025-10-15 01:41:41] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:41:41] [DEBUG] Switching to stack page 1
+[2025-10-15 01:41:53] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:41:53] [DEBUG] Switching to stack page 2
+[2025-10-15 01:46:31] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 01:46:33] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 01:46:33] [INFO] Date range option selected: Entire history
+[2025-10-15 01:46:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 01:46:33] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 01:46:33] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 01:46:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 01:46:33] [DEBUG] Switching to stack page 0
+[2025-10-15 01:46:34] [INFO] User authenticated via cache
+[2025-10-15 01:46:35] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:46:35] [DEBUG] Switching to stack page 2
+[2025-10-15 01:46:59] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:46:59] [DEBUG] Switching to stack page 3
+[2025-10-15 01:47:08] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:47:08] [DEBUG] Switching to stack page 2
+[2025-10-15 01:47:11] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:47:11] [DEBUG] Switching to stack page 3

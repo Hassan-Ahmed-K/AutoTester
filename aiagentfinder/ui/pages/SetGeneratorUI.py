@@ -284,15 +284,20 @@ class SetGenerator(BaseTab):
         self.experts = {}
     def init_ui(self):
         self.setStyleSheet("""
-               SetGenerator {
+            SetGenerator {
             background-color: #1e1e1e;
         }
         QWidget {
             background-color: #1e1e1e;
-            color: #dcdcdc;
+            color: #e0dcdc;;
             font-family: Inter, Arial, sans-serif;
             font-size: 12px;
         }
+        QPushButton:hover {
+                background-color: #a0a8b0;
+                color: black;
+                border: 1px solid #ffcc00;
+            }
         QLabel {
             color: #dcdcdc;
             font-size: 12px;

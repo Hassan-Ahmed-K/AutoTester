@@ -35,7 +35,7 @@ class AutoBatchUI(BaseTab):
                 color: #e0dcdc;
                 font-family: Inter;
                 font-size: 12px;
-                line-height: 14px;
+                line-height: 12px;
 
             }
 

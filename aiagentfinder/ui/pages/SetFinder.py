@@ -17,6 +17,7 @@ class SetFinderUI(BaseTab):
         self.setStyleSheet(""" 
             SetFinderUI {
                 background-color: #1e1e1e;
+                color: #e0dcdc;
             }
 
             QWidget {
@@ -24,7 +25,7 @@ class SetFinderUI(BaseTab):
                 color: #e0dcdc;
                 font-family: Inter;
                 font-size: 12px;
-                line-height: 14px;
+                line-height: 12px;
             }
 
             QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
