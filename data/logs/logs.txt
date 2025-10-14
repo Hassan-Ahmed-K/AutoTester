@@ -5970,3 +5970,268 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-15 01:47:08] [DEBUG] Switching to stack page 2
 [2025-10-15 01:47:11] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
 [2025-10-15 01:47:11] [DEBUG] Switching to stack page 3
+[2025-10-15 01:57:01] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 01:57:01] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 01:57:01] [INFO] Date range option selected: Entire history
+[2025-10-15 01:57:01] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 01:57:01] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 01:57:01] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 01:57:02] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 01:57:02] [DEBUG] Switching to stack page 0
+[2025-10-15 01:57:02] [INFO] User authenticated via cache
+[2025-10-15 01:57:04] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:57:04] [DEBUG] Switching to stack page 3
+[2025-10-15 01:57:14] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:57:14] [DEBUG] Switching to stack page 2
+[2025-10-15 01:57:21] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:57:21] [DEBUG] Switching to stack page 3
+[2025-10-15 01:57:23] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:57:23] [DEBUG] Switching to stack page 2
+[2025-10-15 01:57:24] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:57:24] [DEBUG] Switching to stack page 3
+[2025-10-15 01:57:29] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:57:29] [DEBUG] Switching to stack page 2
+[2025-10-15 01:57:34] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:57:34] [DEBUG] Switching to stack page 1
+[2025-10-15 01:57:38] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 01:57:38] [DEBUG] Switching to stack page 2
+[2025-10-15 01:57:40] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 01:57:40] [DEBUG] Switching to stack page 1
+[2025-10-15 01:57:44] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 01:57:44] [DEBUG] Switching to stack page 3
+[2025-10-15 02:01:45] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:01:45] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:01:45] [INFO] Date range option selected: Entire history
+[2025-10-15 02:01:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:01:45] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:01:45] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:01:46] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:01:46] [DEBUG] Switching to stack page 0
+[2025-10-15 02:01:46] [INFO] User authenticated via cache
+[2025-10-15 02:01:47] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:01:47] [DEBUG] Switching to stack page 3
+[2025-10-15 02:02:10] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:02:10] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:02:10] [INFO] Date range option selected: Entire history
+[2025-10-15 02:02:10] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:02:10] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:02:10] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:02:11] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:02:11] [DEBUG] Switching to stack page 0
+[2025-10-15 02:02:11] [INFO] User authenticated via cache
+[2025-10-15 02:02:12] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:02:12] [DEBUG] Switching to stack page 3
+[2025-10-15 02:03:06] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:03:06] [DEBUG] Switching to stack page 0
+[2025-10-15 02:03:08] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:03:08] [DEBUG] Switching to stack page 1
+[2025-10-15 02:03:19] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:03:19] [DEBUG] Switching to stack page 3
+[2025-10-15 02:03:29] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:03:29] [DEBUG] Switching to stack page 0
+[2025-10-15 02:03:30] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:03:30] [DEBUG] Switching to stack page 1
+[2025-10-15 02:03:31] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:03:32] [DEBUG] Switching to stack page 2
+[2025-10-15 02:03:39] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:03:39] [DEBUG] Switching to stack page 3
+[2025-10-15 02:07:26] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:07:26] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:07:26] [INFO] Date range option selected: Entire history
+[2025-10-15 02:07:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:07:26] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:07:26] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:07:27] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:07:27] [DEBUG] Switching to stack page 0
+[2025-10-15 02:07:27] [INFO] User authenticated via cache
+[2025-10-15 02:07:28] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:07:28] [DEBUG] Switching to stack page 2
+[2025-10-15 02:08:53] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:08:53] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:08:53] [INFO] Date range option selected: Entire history
+[2025-10-15 02:08:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:08:53] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:08:53] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:08:53] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:08:53] [DEBUG] Switching to stack page 0
+[2025-10-15 02:08:54] [INFO] User authenticated via cache
+[2025-10-15 02:08:55] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:08:55] [DEBUG] Switching to stack page 3
+[2025-10-15 02:08:57] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:08:57] [DEBUG] Switching to stack page 2
+[2025-10-15 02:12:14] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:12:15] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:12:15] [INFO] Date range option selected: Entire history
+[2025-10-15 02:12:15] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:12:15] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:12:15] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:12:15] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:12:15] [DEBUG] Switching to stack page 0
+[2025-10-15 02:12:15] [INFO] User authenticated via cache
+[2025-10-15 02:12:17] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:12:17] [DEBUG] Switching to stack page 3
+[2025-10-15 02:12:20] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:12:20] [DEBUG] Switching to stack page 2
+[2025-10-15 02:12:37] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:12:37] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:12:37] [INFO] Date range option selected: Entire history
+[2025-10-15 02:12:37] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:12:37] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:12:37] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:12:37] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:12:37] [DEBUG] Switching to stack page 0
+[2025-10-15 02:12:38] [INFO] User authenticated via cache
+[2025-10-15 02:12:39] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:12:39] [DEBUG] Switching to stack page 3
+[2025-10-15 02:12:40] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:12:40] [DEBUG] Switching to stack page 2
+[2025-10-15 02:12:43] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:12:43] [DEBUG] Switching to stack page 1
+[2025-10-15 02:12:44] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:12:44] [DEBUG] Switching to stack page 2
+[2025-10-15 02:12:54] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:12:54] [DEBUG] Switching to stack page 3
+[2025-10-15 02:13:29] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:13:29] [DEBUG] Switching to stack page 2
+[2025-10-15 02:13:37] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:13:37] [DEBUG] Switching to stack page 3
+[2025-10-15 02:15:16] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:15:16] [DEBUG] Switching to stack page 2
+[2025-10-15 02:17:48] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:17:48] [DEBUG] Switching to stack page 3
+[2025-10-15 02:17:52] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:17:52] [DEBUG] Switching to stack page 2
+[2025-10-15 02:17:54] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:17:54] [DEBUG] Switching to stack page 1
+[2025-10-15 02:17:56] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:17:56] [DEBUG] Switching to stack page 3
+[2025-10-15 02:17:59] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:17:59] [DEBUG] Switching to stack page 1
+[2025-10-15 02:18:04] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:18:04] [DEBUG] Switching to stack page 3
+[2025-10-15 02:18:44] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:18:44] [DEBUG] Switching to stack page 2
+[2025-10-15 02:20:03] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:20:03] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:20:03] [INFO] Date range option selected: Entire history
+[2025-10-15 02:20:03] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:20:03] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:20:03] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:20:03] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:20:03] [DEBUG] Switching to stack page 0
+[2025-10-15 02:20:03] [INFO] User authenticated via cache
+[2025-10-15 02:20:05] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:20:05] [DEBUG] Switching to stack page 3
+[2025-10-15 02:20:06] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:20:06] [DEBUG] Switching to stack page 2
+[2025-10-15 02:26:21] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:26:21] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:26:21] [INFO] Date range option selected: Entire history
+[2025-10-15 02:26:21] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:26:21] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:26:21] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:26:21] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:26:21] [DEBUG] Switching to stack page 0
+[2025-10-15 02:26:22] [INFO] User authenticated via cache
+[2025-10-15 02:28:44] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:28:44] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:28:45] [INFO] Date range option selected: Entire history
+[2025-10-15 02:28:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:28:45] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:28:45] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:28:45] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:28:45] [DEBUG] Switching to stack page 0
+[2025-10-15 02:28:45] [INFO] User authenticated via cache
+[2025-10-15 02:29:46] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:29:47] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:29:47] [INFO] Date range option selected: Entire history
+[2025-10-15 02:29:47] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:29:47] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:29:47] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:29:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:29:47] [DEBUG] Switching to stack page 0
+[2025-10-15 02:29:47] [INFO] User authenticated via cache
+[2025-10-15 02:30:21] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:30:22] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:30:22] [INFO] Date range option selected: Entire history
+[2025-10-15 02:30:22] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:30:22] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:30:22] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:30:22] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:30:22] [DEBUG] Switching to stack page 0
+[2025-10-15 02:30:22] [INFO] User authenticated via cache
+[2025-10-15 02:30:37] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:30:37] [DEBUG] Switching to stack page 2
+[2025-10-15 02:30:44] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:30:44] [DEBUG] Switching to stack page 1
+[2025-10-15 02:30:47] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:30:47] [DEBUG] Switching to stack page 2
+[2025-10-15 02:30:49] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:30:49] [DEBUG] Switching to stack page 3
+[2025-10-15 02:30:50] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:30:50] [DEBUG] Switching to stack page 0
+[2025-10-15 02:30:51] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:30:51] [DEBUG] Switching to stack page 1
+[2025-10-15 02:30:52] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:30:52] [DEBUG] Switching to stack page 2
+[2025-10-15 02:30:53] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:30:53] [DEBUG] Switching to stack page 3
+[2025-10-15 02:32:05] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:32:05] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:32:05] [INFO] Date range option selected: Entire history
+[2025-10-15 02:32:05] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:32:05] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:32:05] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:32:05] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:32:05] [DEBUG] Switching to stack page 0
+[2025-10-15 02:32:05] [INFO] User authenticated via cache
+[2025-10-15 02:32:07] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:32:07] [DEBUG] Switching to stack page 1
+[2025-10-15 02:32:08] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:32:08] [DEBUG] Switching to stack page 2
+[2025-10-15 02:32:10] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:32:10] [DEBUG] Switching to stack page 3
+[2025-10-15 02:32:15] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:32:15] [DEBUG] Switching to stack page 0
+[2025-10-15 02:32:15] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:32:15] [DEBUG] Switching to stack page 1
+[2025-10-15 02:32:18] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:32:18] [DEBUG] Switching to stack page 3
+[2025-10-15 02:32:20] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:32:20] [DEBUG] Switching to stack page 2
+[2025-10-15 02:33:37] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:33:37] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:33:37] [INFO] Date range option selected: Entire history
+[2025-10-15 02:33:37] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:33:37] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:33:37] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:33:38] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:33:38] [DEBUG] Switching to stack page 0
+[2025-10-15 02:33:38] [INFO] User authenticated via cache
+[2025-10-15 02:33:45] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:33:45] [DEBUG] Switching to stack page 2
+[2025-10-15 02:35:59] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-15 02:35:59] [INFO] Cache loaded: {'authenticated': True, 'token': 'f05e6652-7f82-4b3b-a353-1ce5a5e718c5', 'validation_time': 1760474440.2735558}
+[2025-10-15 02:35:59] [INFO] Date range option selected: Entire history
+[2025-10-15 02:35:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Wed Oct 15 2025
+[2025-10-15 02:35:59] [INFO] Adjusting forward date based on selection: No
+[2025-10-15 02:35:59] [DEBUG] Forward date disabled, set to test end date
+[2025-10-15 02:35:59] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:35:59] [DEBUG] Switching to stack page 0
+[2025-10-15 02:36:00] [INFO] User authenticated via cache
+[2025-10-15 02:36:01] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:36:01] [DEBUG] Switching to stack page 1
+[2025-10-15 02:36:03] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:36:03] [DEBUG] Switching to stack page 2
+[2025-10-15 02:36:10] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:36:10] [DEBUG] Switching to stack page 3
+[2025-10-15 02:36:20] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:36:20] [DEBUG] Switching to stack page 0
+[2025-10-15 02:36:21] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-15 02:36:21] [DEBUG] Switching to stack page 1
+[2025-10-15 02:36:22] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-15 02:36:22] [DEBUG] Switching to stack page 2
+[2025-10-15 02:36:24] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-15 02:36:24] [DEBUG] Switching to stack page 3
+[2025-10-15 02:36:26] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-15 02:36:26] [DEBUG] Switching to stack page 0

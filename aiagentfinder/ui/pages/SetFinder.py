@@ -33,7 +33,8 @@ class SetFinderUI(BaseTab):
                 border-radius: 5px;
                 padding: 2px 4px;
                 font-size: 10px;
-                min-height: 22px;
+                min-height: 20px;
+                line-height: 12px;
                 background-color: #2b2b2b;
                 color: #ffffff;
             }
@@ -87,13 +88,13 @@ class SetFinderUI(BaseTab):
         main_layout.addWidget(header_label)
 
         # ====== htm DIRECTORY ======
-        htm_dir_label = QLabel("Select htm File Directory:")
-        htm_dir_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
+        htm_dir_label = QLabel("Select html File Directory:")
+        # htm_dir_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
         main_layout.addWidget(htm_dir_label)
 
         htm_dir_row = QHBoxLayout()
         self.htm_dir_input = QLineEdit()
-        self.htm_dir_input.setPlaceholderText("Path to MT5 htm directory...")
+        self.htm_dir_input.setPlaceholderText("Path to MT5 html directory...")
 
         self.htm_dir_btn = QPushButton("Browse")
         icon = self.htm_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)
@@ -140,7 +141,7 @@ class SetFinderUI(BaseTab):
         start_date_layout.setSpacing(0)
         start_date_layout.setContentsMargins(0, 0, 0, 0)
         start_label = QLabel("Start Date (DD/MM/YYYY)")
-        start_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # start_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         start_date_layout.addWidget(start_label)
         start_date_layout.addWidget(self.start_date_input)
 
@@ -148,7 +149,7 @@ class SetFinderUI(BaseTab):
         end_date_layout.setSpacing(0)
         end_date_layout.setContentsMargins(0, 0, 0, 0)
         end_label = QLabel("End Date (DD/MM/YYYY)")
-        end_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # end_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         end_date_layout.addWidget(end_label)
         end_date_layout.addWidget(self.end_date_input)
 
@@ -156,7 +157,7 @@ class SetFinderUI(BaseTab):
         forward_layout.setSpacing(0)
         forward_layout.setContentsMargins(0, 0, 0, 0)
         forward_label = QLabel("Forward Period")
-        forward_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # forward_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         forward_layout.addWidget(forward_label)
         forward_layout.addWidget(self.account_dropdown)
 
@@ -164,7 +165,7 @@ class SetFinderUI(BaseTab):
         balance_layout.setSpacing(0)
         balance_layout.setContentsMargins(0, 0, 0, 0)
         balance_label = QLabel("Account Balance")
-        balance_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # balance_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         balance_layout.addWidget(balance_label)
         balance_layout.addWidget(self.balance_input)
 
@@ -177,7 +178,7 @@ class SetFinderUI(BaseTab):
         target_dd_layout.setSpacing(0)
         target_dd_layout.setContentsMargins(0, 0, 0, 0)
         target_dd_label = QLabel("Target DD")
-        target_dd_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # target_dd_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         target_dd_layout.addWidget(target_dd_label)
         target_dd_layout.addWidget(self.trade_input)
 
@@ -187,7 +188,7 @@ class SetFinderUI(BaseTab):
         risk_trade_layout.setSpacing(0)
         risk_trade_layout.setContentsMargins(0, 0, 0, 0)
         risk_trade_label = QLabel("Risk Trade")
-        risk_trade_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # risk_trade_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         risk_trade_layout.addWidget(risk_trade_label)
         risk_trade_layout.addWidget(self.risk_trade_input)
 
@@ -197,7 +198,7 @@ class SetFinderUI(BaseTab):
         max_consec_loss_layout.setSpacing(0)
         max_consec_loss_layout.setContentsMargins(0, 0, 0, 0)
         max_consec_loss_label = QLabel("Est. Max Consec Loss")
-        max_consec_loss_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
+        # max_consec_loss_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         max_consec_loss_layout.addWidget(max_consec_loss_label)
         max_consec_loss_layout.addWidget(self.max_consec_loss_input)
 
@@ -238,13 +239,13 @@ class SetFinderUI(BaseTab):
         toggle_row.setSpacing(10)
 
         self.message_label = QLabel("Message Log")
-        self.message_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
+        # self.message_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
 
         right_toggle_layout = QHBoxLayout()
         right_toggle_layout.setSpacing(5)
 
         self.toggle_label = QLabel("Filter For 1 Trade Approach:")
-        self.toggle_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
+        # self.toggle_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
 
         self.toggle_btn = QCheckBox()
         self.toggle_btn.setChecked(False)
@@ -279,20 +280,7 @@ class SetFinderUI(BaseTab):
 
         self.start_button = QPushButton("Start")
         self.start_button.setMinimumWidth(120)
-        self.start_button.setStyleSheet("""
-            QPushButton {
-                background-color: #4CAF50;
-                color: white;
-                border-radius: 6px;
-                padding: 6px 12px;
-                font-size: 12px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #66BB6A;
-                border: 1px solid #ffcc00;
-            }
-        """)
+   
         start_button_row.addWidget(self.start_button)
 
         main_layout.addLayout(start_button_row)

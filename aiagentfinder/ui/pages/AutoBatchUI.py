@@ -45,7 +45,6 @@ class AutoBatchUI(BaseTab):
                 border-radius: 5px;              /* rounded corners */
                 padding: 1px 2px;     /* 🔽 reduced padding */
                 font-size: 10px;      /* 🔽 smaller text */
-                font-weight: bold;
                 min-height: 20px;     /* 🔽 keeps them compact */
                 background-color: #2b2b2b;
                 color: #ffffff;
@@ -87,8 +86,6 @@ class AutoBatchUI(BaseTab):
                selection-background-color: #ffcc00;
                selection-color: black;
            }
-                           
-
 
             QListWidget{
                     font-size : 12px       

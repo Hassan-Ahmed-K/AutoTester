@@ -12,9 +12,6 @@ class SetFinderController:
         self.ui = ui
         self.runner = ThreadRunner()
         self.main_window = self.ui.parent()
-
-
-
         self.ui.htm_dir_btn.clicked.connect(self.browse_report_directory)
         self.ui.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)
 

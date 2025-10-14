@@ -293,11 +293,6 @@ class SetGenerator(BaseTab):
             font-family: Inter, Arial, sans-serif;
             font-size: 12px;
         }
-        QPushButton:hover {
-                background-color: #a0a8b0;
-                color: black;
-                border: 1px solid #ffcc00;
-            }
         QLabel {
             color: #dcdcdc;
             font-size: 12px;
@@ -319,21 +314,24 @@ class SetGenerator(BaseTab):
             padding: 6px;
         }
         QPushButton {
-            background-color: #3c3c3c;
-            border: 1px solid #555555;
+            color: #ffffff;
+            background-color: #808791;
+            border: 1px solid #ffffff;
             border-radius: 4px;
             padding: 4px 8px;
-            font-size: 12px;
+            font-size: 10px;
             color: #ffffff;
             height: 10px
         }
         QPushButton:hover {
-            background-color: #555555;
-        }
+                background-color: #a0a8b0;
+                color: black;
+                border: 1px solid #ffcc00;
+            }
+        
         QLineEdit {
-            background-color: #2b2b2b;
-            border: 1px solid #555555;
-            border-radius: 4px;
+            border: 2px solid #555555;
+            border-radius: 5px;
             padding: 4px 6px;
             color: #ffffff;
             font-size: 12px;
@@ -341,9 +339,8 @@ class SetGenerator(BaseTab):
             width:20px
         }
         QTextEdit {
-            background-color: #2b2b2b;
             border: 1px solid #555555;
-            border-radius: 4px;
+            border-radius: 5px;
             color: #ffffff;
             font-family: Consolas;
             font-size: 12px;
@@ -392,10 +389,10 @@ class SetGenerator(BaseTab):
         self.api_key = QLineEdit()
         self.select_files_btn = QPushButton("SELECT OPTIMISATION FILES")
         self.opt_files = QListWidget()
-        
-        self.pairs_box.setMaximumHeight(120)
-        self.opt_files.setMaximumHeight(65)
-         
+
+        self.pairs_box.setMaximumHeight(115)
+        self.opt_files.setMaximumHeight(66)
+
         # ---------- SIZE POLICIES ----------
         self.pairs_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.opt_files.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
@@ -403,14 +400,15 @@ class SetGenerator(BaseTab):
 
         # ---------- LEFT SECTION ----------
         pairs_header = QHBoxLayout()
+        pairs_header.setSpacing(1)
         pairs_header.addWidget(QLabel("Pairs/Tests Detected:"))
         pairs_header.addStretch()
         pairs_header.addWidget(QLabel("Show All:"))
         pairs_header.addWidget(self.show_all)
 
         left_layout = QVBoxLayout()
-        left_layout.setContentsMargins(0, 15, 0, 10)
-        left_layout.setSpacing(8)
+        left_layout.setContentsMargins(0, 8, 0, 15)
+        left_layout.setSpacing(1)
         left_layout.addLayout(pairs_header)
         left_layout.addWidget(self.pairs_box)
         left_layout.addStretch()
@@ -420,27 +418,31 @@ class SetGenerator(BaseTab):
 
         # ---------- RIGHT SECTION ----------
         api_layout = QVBoxLayout()
-        api_layout.setContentsMargins(0, 10, 0, 0)
+        api_layout.setContentsMargins(0, 0, 0, 5)
         api_layout.addWidget(QLabel("API Key:"))
-        api_layout.addWidget(self.api_key)
+
+
+        # api_layout.setSpacing(5) 
 
         opt_header = QHBoxLayout()
-        opt_header.setContentsMargins(0, 0, 0, 0)
+        # opt_header.setContentsMargins(0, 0, 0, 0)
         opt_header.addWidget(QLabel("Opt Files Used:"))
         opt_header.addStretch()
         opt_header.addWidget(self.select_files_btn)
+        # opt_header.setSpacing(0)
 
         right_layout = QVBoxLayout()
-        right_layout.setContentsMargins(0, 12, 0, 5)
-        right_layout.setSpacing(10)
+        right_layout.setContentsMargins(0, 14, 0, 11)
+        right_layout.setSpacing(4)
         right_layout.addLayout(api_layout)
+        right_layout.addWidget(self.api_key)
         right_layout.addLayout(opt_header)
         right_layout.addWidget(self.opt_files)
         right_layout.addStretch()
 
         right_widget = QWidget()
         right_widget.setLayout(right_layout)
-
+    
         # ---------- SPLITTER ----------
         splitter = QSplitter(Qt.Horizontal)
         splitter.addWidget(left_widget)
@@ -450,8 +452,8 @@ class SetGenerator(BaseTab):
         splitter.setSizes([500, 500])
 
         # ---------- MAIN LAYOUT ----------
-        headerlayout = QVBoxLayout()
-        headerlayout.setContentsMargins(0, 0, 0, 0)
+        headerlayout = QHBoxLayout()
+        # headerlayout.setContentsMargins(10, 10, 10, 10)
         headerlayout.addWidget(splitter)
 
         self.layout.addLayout(headerlayout)
