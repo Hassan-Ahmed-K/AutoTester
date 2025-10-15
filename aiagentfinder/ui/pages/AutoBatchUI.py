@@ -21,7 +21,6 @@ class AutoBatchUI(BaseTab):
 
     def init_ui(self):
         
-        """Override BaseTab's init_ui with AutoBatch-specific layout."""
 
 
         self.setStyleSheet("""
@@ -46,6 +45,7 @@ class AutoBatchUI(BaseTab):
                 padding: 1px 2px;     /* 🔽 reduced padding */
                 font-size: 10px;      /* 🔽 smaller text */
                 min-height: 20px;     /* 🔽 keeps them compact */
+                height: 10px;
                 background-color: #2b2b2b;
                 color: #ffffff;
             }

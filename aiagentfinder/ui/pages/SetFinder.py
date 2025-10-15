@@ -17,15 +17,13 @@ class SetFinderUI(BaseTab):
         self.setStyleSheet(""" 
             SetFinderUI {
                 background-color: #1e1e1e;
-                color: #e0dcdc;
             }
 
             QWidget {
                 background-color: #1e1e1e;
-                color: #e0dcdc;
+                 color: #ffffff;
                 font-family: Inter;
                 font-size: 12px;
-                line-height: 12px;
             }
 
             QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
@@ -33,10 +31,9 @@ class SetFinderUI(BaseTab):
                 border-radius: 5px;
                 padding: 2px 4px;
                 font-size: 10px;
-                min-height: 20px;
-                line-height: 12px;
                 background-color: #2b2b2b;
                 color: #ffffff;
+                height: 14px;
             }
 
             QPushButton {
@@ -74,7 +71,11 @@ class SetFinderUI(BaseTab):
                 color: #ffffff;
                 font-size: 11px;
                 padding: 6px;
+
             }
+             QLabel {
+               color: #ffffff;
+             }
         """)
 
         # ========== MAIN LAYOUT ==========
@@ -279,7 +280,7 @@ class SetFinderUI(BaseTab):
         start_button_row.setContentsMargins(0, 10, 0, 0)
 
         self.start_button = QPushButton("Start")
-        self.start_button.setMinimumWidth(120)
+        self.start_button.setMinimumWidth(200)
    
         start_button_row.addWidget(self.start_button)
 
