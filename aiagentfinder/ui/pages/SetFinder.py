@@ -14,70 +14,6 @@ class SetFinderUI(BaseTab):
         super().__init__("Set Finder", parent)
 
     def init_ui(self):
-        self.setStyleSheet(""" 
-            SetFinderUI {
-                background-color: #1e1e1e;
-            }
-
-            QWidget {
-                background-color: #1e1e1e;
-                 color: #ffffff;
-                font-family: Inter;
-                font-size: 12px;
-            }
-
-            QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
-                border: 2px solid #555555;
-                border-radius: 5px;
-                padding: 2px 4px;
-                font-size: 10px;
-                background-color: #2b2b2b;
-                color: #ffffff;
-                height: 14px;
-            }
-
-            QPushButton {
-                background-color: #808791;
-                border: 1px solid #ffffff;
-                border-radius: 4px;
-                color: #ffffff;
-                padding: 2px 6px;
-                font-size: 10px;
-                min-height: 22px;
-            }
-
-            QPushButton:hover {
-                background-color: #a0a8b0;
-                color: black;
-                border: 1px solid #ffcc00;
-            }
-
-            QLabel#headerTitle {
-                font-size: 32px;
-                padding: 5px;
-            }
-
-            QComboBox QAbstractItemView {
-                background-color: #2b2b2b;
-                border: 1px solid #555555;
-                selection-background-color: #ffcc00;
-                selection-color: black;
-            }
-
-            QTextEdit {
-                background-color: #2b2b2b;
-                border: 2px solid #555555;
-                border-radius: 5px;
-                color: #ffffff;
-                font-size: 11px;
-                padding: 6px;
-
-            }
-             QLabel {
-               color: #ffffff;
-             }
-        """)
-
         # ========== MAIN LAYOUT ==========
         main_layout = self.layout
         main_layout.setAlignment(Qt.AlignTop)
@@ -85,6 +21,7 @@ class SetFinderUI(BaseTab):
         # ====== HEADER ======
         header_label = QLabel("SetFinder")
         header_label.setObjectName("headerTitle")
+        header_label.setStyleSheet("font-size: 40px;")
         header_label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(header_label)
 

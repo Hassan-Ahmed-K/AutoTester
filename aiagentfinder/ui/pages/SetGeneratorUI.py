@@ -14,87 +14,87 @@ class SetGenerator(BaseTab):
         super().__init__("Home Page", parent)
         self.experts = {}
     def init_ui(self):
-        self.setStyleSheet("""
-            SetGenerator {
-            background-color: #1e1e1e;
-        }
-        QWidget {
-            background-color: #1e1e1e;
-            color: #e0dcdc;;
-            font-family: Inter, Arial, sans-serif;
-            font-size: 12px;
-        }
-        QLabel {
-            color: #dcdcdc;
-            font-size: 12px;
-        }
-        QLabel#title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        QLabel#subtitle {
-            font-size: 12px;
-            color: #a0a0a0;
-        }
-        QWidget#card {
-            background-color: #2b2b2b;
-            color: #000000;
-            border: 1px solid #3c3c3c;
-            border-radius: 6px;
-            padding: 6px;
-        }
-        QPushButton {
-            color: #ffffff;
-            background-color: #808791;
-            border: 1px solid #ffffff;
-            border-radius: 4px;
-            padding: 4px 8px;
-            font-size: 10px;
-            color: #ffffff;
-            height: 10px
-        }
-        QPushButton:hover {
-                background-color: #a0a8b0;
-                color: black;
-                border: 1px solid #ffcc00;
-            }
+    #     self.setStyleSheet("""
+    #         SetGenerator {
+    #         background-color: #1e1e1e;
+    #     }
+    #     QWidget {
+    #         background-color: #1e1e1e;
+    #         color: #e0dcdc;;
+    #         font-family: Inter, Arial, sans-serif;
+    #         font-size: 12px;
+    #     }
+    #     QLabel {
+    #         color: #dcdcdc;
+    #         font-size: 12px;
+    #     }
+    #     QLabel#title {
+    #         font-size: 28px;
+    #         font-weight: bold;
+    #         color: #ffffff;
+    #     }
+    #     QLabel#subtitle {
+    #         font-size: 12px;
+    #         color: #a0a0a0;
+    #     }
+    #     QWidget#card {
+    #         background-color: #2b2b2b;
+    #         color: #000000;
+    #         border: 1px solid #3c3c3c;
+    #         border-radius: 6px;
+    #         padding: 6px;
+    #     }
+    #     QPushButton {
+    #         color: #ffffff;
+    #         background-color: #808791;
+    #         border: 1px solid #ffffff;
+    #         border-radius: 4px;
+    #         padding: 4px 8px;
+    #         font-size: 10px;
+    #         color: #ffffff;
+    #         height: 10px
+    #     }
+    #     QPushButton:hover {
+    #             background-color: #a0a8b0;
+    #             color: black;
+    #             border: 1px solid #ffcc00;
+    #         }
         
-        QLineEdit {
-            border: 2px solid #555555;
-            border-radius: 5px;
-            padding: 4px 6px;
-            color: #ffffff;
-            font-size: 12px;
-            height: 10px;
-            width:20px
-        }
-        QTextEdit {
-            border: 1px solid #555555;
-            border-radius: 5px;
-            color: #ffffff;
-            font-family: Consolas;
-            font-size: 12px;
-        }
-        QTableWidget {
-            background-color: #2b2b2b;
-            color: #dcdcdc;
-            gridline-color: #444;
-            font-size: 12px;
-        }
-        QHeaderView::section {
-            background-color: #333;
-            color: #dcdcdc;
-            padding: 2px;
-            font-size: 12px;
-        }
-        QLabel#label {
-            margin-bottom: 0%;
-        }
-        QLineEdit#api_key {
-        margin-bottom: 0%;
-    }
-    """)
+    #     QLineEdit {
+    #         border: 2px solid #555555;
+    #         border-radius: 5px;
+    #         padding: 4px 6px;
+    #         color: #ffffff;
+    #         font-size: 12px;
+    #         height: 10px;
+    #         width:20px
+    #     }
+    #     QTextEdit {
+    #         border: 1px solid #555555;
+    #         border-radius: 5px;
+    #         color: #ffffff;
+    #         font-family: Consolas;
+    #         font-size: 12px;
+    #     }
+    #     QTableWidget {
+    #         background-color: #2b2b2b;
+    #         color: #dcdcdc;
+    #         gridline-color: #444;
+    #         font-size: 12px;
+    #     }
+        # QHeaderView::section {
+        #     background-color: #333;
+        #     color: #dcdcdc;
+        #     padding: 2px;
+        #     font-size: 12px;
+        # }
+    #     QLabel#label {
+    #         margin-bottom: 0%;
+    #     }
+    #     QLineEdit#api_key {
+    #     margin-bottom: 0%;
+    # }
+    # """)
 
         # self.layout.setContentsMargins(10, 10, 10, 10)
         
@@ -103,6 +103,7 @@ class SetGenerator(BaseTab):
         header = QVBoxLayout()
         header.setContentsMargins(0,0,0,0)
         title = QLabel("SetGenerator")
+        title.setStyleSheet("font-size: 40px;")
         title.setAlignment(Qt.AlignCenter)
         title.setObjectName("title")
         subtitle = QLabel("Results below are ranked by a proprietary POW Scoring system...")
@@ -121,8 +122,8 @@ class SetGenerator(BaseTab):
         self.select_files_btn = QPushButton("SELECT OPTIMISATION FILES")
         self.opt_files = QListWidget()
 
-        self.pairs_box.setMaximumHeight(115)
-        self.opt_files.setMaximumHeight(66)
+        self.pairs_box.setMaximumHeight(120)
+        self.opt_files.setMaximumHeight(61)
 
         # ---------- SIZE POLICIES ----------
         self.pairs_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
