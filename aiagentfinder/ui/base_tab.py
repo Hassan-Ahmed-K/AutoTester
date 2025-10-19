@@ -3,31 +3,8 @@ from abc import abstractmethod
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QScrollArea, QSizePolicy,QLabel,QHBoxLayout
 )
-from PyQt5.QtCore import QTimer, Qt
-from PyQt5.QtGui import QPalette, QColor
+from PyQt5.QtCore import Qt
 
-
-# class BaseTab(QWidget):
-#     """Abstract base class for tabs."""
-    
-
-#     def __init__(self, title: str, parent=None):
-#         super().__init__(parent)
-
-#         self.title = title
-#         self.layout = QVBoxLayout(self)
-#         self.setAutoFillBackground(True)
-#         self.layout.setContentsMargins(10, 5 , 10,  10)
-
-#         self.setStyleSheet("background-color: #1e1e1e;") 
-#         self.init_ui()   
-
-
-
-#     @abstractmethod
-#     def init_ui(self):
-#         """Each tab must implement this."""
-#         pass
 
 class BaseTab(QWidget):
     def __init__(self, title: str, parent=None):

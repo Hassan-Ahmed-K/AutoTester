@@ -230,3 +230,9 @@ output.csv
 t12.csv
 testing.json
 todos.txt
+*.ipynb
+parsed_report.csv
+xml_retrived_table.csv
+Examples/usdcadas.forward.xml
+Examples/New folder/xml_retrieved_table.csv
+Examples/New folder/usdcadas.xml

@@ -11,46 +11,25 @@ import keyring,json,time,os
 from PyQt5.QtCore import QSize,QTimer
 from aiagentfinder.utils.logger import Logger
 from dotenv import load_dotenv
+import pandas as pd
+
+
+import inspect
 
 load_dotenv()
-# Import more tabs here as needed
-# from aiagentfinder.ui.pages.other_tab import OtherTabUI
 
-
-# class MainWindow(QMainWindow):
-#     def __init__(self):
-#         super().__init__()
-#         self.setMinimumSize(1300, 650)
-
-#         self.tabs = QTabWidget()
-#         self.tabs.addTab(AutoBatchUI(), "Auto Batch")
-#         # self.tabs.addTab(OtherTabUI(), "Other Tab")
-
-#         # Make the QTabWidget pane transparent so each tab's background shows
-#         self.tabs.setStyleSheet("""
-#                 QTabWidget::pane {
-#                     border: 0;
-#                     background: #1e1e1e; /* set the main tab area background */
-#                 }
-#                 QTabBar::tab {
-#                     background: #2b2b2b;
-#                     color: #e0dcdc;
-#                     padding: 5px;
-#                 }
-#                 QTabBar::tab:selected {
-#                     background: #3c3c3c;
-#                 }
-#             """)
-
-
-#         # self.tabs.setStyleSheet("QTabWidget::pane { background: transparent; }")
-
-#         self.setCentralWidget(self.tabs)
-#         self.tabs = QTabWidget()
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        
+        self.report_name = None  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
+        self.report_df = pd.DataFrame()  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
+        self.file_path = None
+
+
+
         self.setMinimumSize(1300, 650)
         self.setWindowTitle("AI Agent Finder")
         self.setStyleSheet("background-color:#1e1e1e;")
@@ -123,10 +102,6 @@ class MainWindow(QMainWindow):
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder"))
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator"))
         
-        self.nav_list.setIconSize(QSize(20,20))
-        self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  
-        self.nav_list.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  
-        
 
         self.nav_list.setIconSize(QSize(20,20))
         self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff) 
@@ -144,7 +119,7 @@ class MainWindow(QMainWindow):
         self.stack.addWidget(self.home_page)  
         self.stack.addWidget(AutoBatchUI())
         self.stack.addWidget(self.setFinder_page)
-        self.stack.addWidget(SetGenerator())
+        self.stack.addWidget(SetGenerator(self))
         
         self.nav_list.currentRowChanged.connect(self.switch_page)
         self.nav_list.setCurrentRow(0)
@@ -193,14 +168,36 @@ class MainWindow(QMainWindow):
         return None     
     
     
+    # def switch_page(self, index):
+    #     Logger.debug(f"Attempting to switch to page index: {index}, Authenticated: {self.authenticated}")
+    #     if not self.authenticated and index != 0:
+    #         Logger.warning("Unauthorized access attempt to restricted page")
+    #         self.nav_list.setCurrentRow(0)
+    #     else:
+    #         Logger.debug(f"Switching to stack page {index}")
+    #         self.stack.setCurrentIndex(index)
+
     def switch_page(self, index):
         Logger.debug(f"Attempting to switch to page index: {index}, Authenticated: {self.authenticated}")
+        
         if not self.authenticated and index != 0:
             Logger.warning("Unauthorized access attempt to restricted page")
             self.nav_list.setCurrentRow(0)
-        else:
-            Logger.debug(f"Switching to stack page {index}")
-            self.stack.setCurrentIndex(index)
+            return
+
+        Logger.debug(f"Switching to stack page {index}")
+        self.stack.setCurrentIndex(index)
+
+        # === Handle Page Open Events ===
+        current_widget = self.stack.widget(index)
+
+        print(f"Switched to page index: {index}, Widget: {type(current_widget).__name__}")
+
+        # Example: when SetFinder page opens, check report_name
+        if isinstance(current_widget, SetGenerator):
+                current_widget.controller.update_pairs_box(self.report_name)
+                current_widget.controller.show_dataframe_in_table(self.report_df)
+
 
     def check_cache(self):
         data = self.load_cache()

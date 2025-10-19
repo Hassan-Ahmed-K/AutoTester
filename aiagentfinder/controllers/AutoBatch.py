@@ -46,6 +46,7 @@ class AutoBatchController:
         self.ui.data_input.textChanged.connect(self.update_expert_list)
         self.ui.refresh_btn.clicked.connect(self.refresh_expert)
         self.ui.date_combo.currentTextChanged.connect(self.toggle_date_fields)
+        self.ui.date_combo.currentTextChanged.connect(self.adjust_forward_date)
         self.ui.forward_combo.currentTextChanged.connect(self.adjust_forward_date)
         self.ui.forward_copy_down.clicked.connect(lambda: self.copy_parameter({"forward": self.ui.forward_combo.currentText(), "forward_date": self.ui.forward_date.date().toString("yyyy-MM-dd")}))
         self.ui.model_copy_to_all.clicked.connect(lambda: self.copy_parameter({"model": self.ui.model_combo.currentText()}))
@@ -226,66 +227,186 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, file_path)
 
+    # def browse_data_folder(self):
+    #     folder = QFileDialog.getExistingDirectory(self.ui, "Select Data Folder")
+    #     if not folder:
+    #         QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Data Folder.")
+    #         Logger.warning("Please select a valid Data Folder.")
+    #         return
+
+    #     def task(folder):
+    #         try:
+    #             # Ensure folder exists and prepare Agent Finder Results directory
+    #             if not os.path.isdir(folder):
+    #                 raise FileNotFoundError(f"Folder does not exist: {folder}")
+
+    #             results_dir = os.path.join(folder, "Agent Finder Results")
+    #             os.makedirs(results_dir, exist_ok=True)
+
+    #             Logger.success(f"Data folder ready: {folder}")
+    #             return folder
+    #         except Exception as e:
+    #             Logger.error(f"Error while validating Data Folder: {e}")
+    #             raise
+
+    #     def on_done(folder):
+    #         # Update UI safely on main thread
+    #         self.ui.data_input.setText(folder)
+    #         QMessageBox.information(self.ui, "Data Folder", f"✅ Data folder set:\n{folder}")
+    #         Logger.info(f"Data folder selected: {folder}")
+
+    #     def on_error(err):
+    #         QMessageBox.critical(self.ui, "Error", f"❌ Failed to select Data Folder.\nError: {str(err)}")
+    #         Logger.error(f"Failed to select Data Folder: {err}")
+
+    #     # Run threaded
+    #     self.runner = ThreadRunner(self.ui)
+    #     self.runner.on_result = on_done
+    #     self.runner.on_error = on_error
+    #     self.runner.run(task, folder)
+
+
+
     def browse_data_folder(self):
+        Logger.info("Opening folder dialog to select Data Folder...")
+
         folder = QFileDialog.getExistingDirectory(self.ui, "Select Data Folder")
         if not folder:
             QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Data Folder.")
-            Logger.warning("Please select a valid Data Folder.")
+            Logger.warning("User cancelled Data Folder selection or chose invalid folder.")
             return
 
+        Logger.success(f"Data Folder selected by user: {folder}")
+
+        # ---------------------------
+        # TASK for background thread
+        # ---------------------------
         def task(folder):
+            Logger.debug(f"Background task started for Data Folder: {folder}")
             try:
-                # Ensure folder exists and prepare Agent Finder Results directory
                 if not os.path.isdir(folder):
+                    Logger.error(f"Folder does not exist: {folder}")
                     raise FileNotFoundError(f"Folder does not exist: {folder}")
 
                 results_dir = os.path.join(folder, "Agent Finder Results")
                 os.makedirs(results_dir, exist_ok=True)
+                Logger.success(f"'Agent Finder Results' directory ready at: {results_dir}")
 
-                Logger.success(f"Data folder ready: {folder}")
+                Logger.debug("Background task completed successfully.")
                 return folder
+
             except Exception as e:
-                Logger.error(f"Error while validating Data Folder: {e}")
+                Logger.error("Exception while validating Data Folder", e)
                 raise
 
+        # ---------------------------
+        # CALLBACKS (main thread)
+        # ---------------------------
         def on_done(folder):
-            # Update UI safely on main thread
-            self.ui.data_input.setText(folder)
-            QMessageBox.information(self.ui, "Data Folder", f"✅ Data folder set:\n{folder}")
-            Logger.info(f"Data folder selected: {folder}")
+            Logger.debug("on_done callback triggered for Data Folder.")
+            try:
+                self.ui.data_input.setText(folder)
+                QMessageBox.information(self.ui, "Data Folder", f"✅ Data folder set:\n{folder}")
+                Logger.success(f"Data Folder confirmed and set in UI: {folder}")
+            except Exception as e:
+                Logger.error("Error while updating UI with Data Folder", e)
+                QMessageBox.critical(self.ui, "Error", f"❌ Failed to update UI.\nError: {str(e)}")
 
         def on_error(err):
-            QMessageBox.critical(self.ui, "Error", f"❌ Failed to select Data Folder.\nError: {str(err)}")
-            Logger.error(f"Failed to select Data Folder: {err}")
+            Logger.error(f"Error in Data Folder setup thread: {err}")
+            QMessageBox.critical(
+                self.ui, "Error",
+                f"❌ Failed to select Data Folder.\nError: {str(err)}"
+            )
 
+        # ---------------------------
         # Run threaded
+        # ---------------------------
+        Logger.info("Starting Data Folder validation in background thread...")
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task, folder)
 
+
+    # def browse_report_folder(self):
+    #     try:
+    #         folder = QFileDialog.getExistingDirectory(self.ui, "Select Report Folder")
+    #         if not folder:
+    #             QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Report Folder.")
+    #             Logger.warning("Please select a valid Report Folder.")
+    #             return
+
+    #         # Define Background task
+    #         def task(folder):
+    #             if not os.path.isdir(folder):
+    #                 raise FileNotFoundError(f"Folder does not exist: {folder}")
+
+    #             # Ensure subfolder exists (optional, for consistency)
+    #             os.makedirs(os.path.join(folder, "AI Agent Reports"), exist_ok=True)
+
+    #             return folder
+
+        
+    #         def on_done(result_folder):
+    #             self.ui.report_input.setText(result_folder)
+    #             Logger.success(f"Report folder selected: {result_folder}")
+    #             QMessageBox.information(
+    #                 self.ui,
+    #                 "Report Folder",
+    #                 f"✅ Report folder set:\n{result_folder}"
+    #             )
+
+    #         def on_error(err):
+    #             Logger.error(f"Error while selecting Report Folder: {err}")
+    #             QMessageBox.critical(
+    #                 self.ui,
+    #                 "Error",
+    #                 f"❌ Failed to select Report Folder.\nError: {str(err)}"
+    #             )
+    #         self.runner = ThreadRunner(self.ui)
+    #         self.runner.on_result = on_done
+    #         self.runner.on_error = on_error
+    #         self.runner.run(task, folder)
+
+    #     except Exception as e:
+    #         Logger.error(f"Error while opening Report Folder dialog: {e}")
+    #         QMessageBox.critical(
+    #             self.ui,
+    #             "Error",
+    #             f"❌ Failed to open Report Folder dialog.\nError: {str(e)}"
+    #         )
+
+
     def browse_report_folder(self):
+        Logger.info("Opening Report Folder selection dialog...")  # Log start
         try:
             folder = QFileDialog.getExistingDirectory(self.ui, "Select Report Folder")
+            Logger.debug(f"User selected folder: {folder}")  # Log raw user selection
+
             if not folder:
                 QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Report Folder.")
-                Logger.warning("Please select a valid Report Folder.")
+                Logger.warning("No folder selected. User must choose a valid Report Folder.")
                 return
 
             # Define Background task
             def task(folder):
+                Logger.info(f"Starting background task for folder: {folder}")
                 if not os.path.isdir(folder):
+                    Logger.error(f"Folder does not exist: {folder}")
                     raise FileNotFoundError(f"Folder does not exist: {folder}")
 
-                # Ensure subfolder exists (optional, for consistency)
-                os.makedirs(os.path.join(folder, "AI Agent Reports"), exist_ok=True)
+                # Ensure subfolder exists
+                subfolder = os.path.join(folder, "AI Agent Reports")
+                os.makedirs(subfolder, exist_ok=True)
+                Logger.success(f"Verified folder and ensured subfolder exists: {subfolder}")
 
                 return folder
 
-        
             def on_done(result_folder):
+                Logger.info(f"Background task completed. Folder ready: {result_folder}")
                 self.ui.report_input.setText(result_folder)
-                Logger.success(f"Report folder selected: {result_folder}")
+                Logger.success(f"Report folder set successfully: {result_folder}")
                 QMessageBox.information(
                     self.ui,
                     "Report Folder",
@@ -293,16 +414,19 @@ class AutoBatchController:
                 )
 
             def on_error(err):
-                Logger.error(f"Error while selecting Report Folder: {err}")
+                Logger.error(f"Background task failed with error: {err}")
                 QMessageBox.critical(
                     self.ui,
                     "Error",
                     f"❌ Failed to select Report Folder.\nError: {str(err)}"
                 )
+
+            Logger.info("Initializing ThreadRunner for folder task...")
             self.runner = ThreadRunner(self.ui)
             self.runner.on_result = on_done
             self.runner.on_error = on_error
             self.runner.run(task, folder)
+            Logger.info("ThreadRunner started for report folder task.")
 
         except Exception as e:
             Logger.error(f"Error while opening Report Folder dialog: {e}")
@@ -311,6 +435,7 @@ class AutoBatchController:
                 "Error",
                 f"❌ Failed to open Report Folder dialog.\nError: {str(e)}"
             )
+
 
     def create_batch_subfolder(self, report_root):
         try:
@@ -720,72 +845,164 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.run(task, expert_folder)
     
-    # --- helper method ---
     def toggle_date_fields(self, text):
-        today = QDate.currentDate()
-        if text == "Entire history":
-            # Disable pickers, set from a very old date to today
-            self.ui.date_from.setEnabled(False)
-            self.ui.date_to.setEnabled(False)
-            self.ui.date_from.setDate(QDate(1970, 1, 1))  # or your earliest supported date
-            self.ui.date_to.setDate(today)
+        try:
+            today = QDate.currentDate()
+            Logger.info(f"Date range option selected: {text}")
 
-        elif text == "Last month":
+            if text == "Entire history":
+                # Disable pickers, set from a very old date to today
+                self.ui.date_from.setEnabled(False)
+                self.ui.date_to.setEnabled(False)
+                self.ui.date_from.setDate(QDate(1970, 1, 1))
+                self.ui.date_to.setDate(today)
+                Logger.success(f"Date range set: 1970-01-01 → {today.toString()}")
 
-            date_from = today.addMonths(-1)
-            self.ui.date_from.setDate(date_from)
-            self.ui.date_to.setDate(today)
+            elif text == "Last month":
+                date_from = today.addMonths(-1)
+                self.ui.date_from.setDate(date_from)
+                self.ui.date_to.setDate(today)
+                Logger.success(f"Date range set: {date_from.toString()} → {today.toString()}")
 
-        elif text == "Last 3 months":
-            self.ui.date_from.setEnabled(False)
-            self.ui.date_to.setEnabled(False)
-            self.ui.date_from.setDate(today.addMonths(-3))
-            self.ui.date_to.setDate(today)
+            elif text == "Last 3 months":
+                self.ui.date_from.setEnabled(False)
+                self.ui.date_to.setEnabled(False)
+                date_from = today.addMonths(-3)
+                self.ui.date_from.setDate(date_from)
+                self.ui.date_to.setDate(today)
+                Logger.success(f"Date range set: {date_from.toString()} → {today.toString()}")
 
-        elif text == "Last 6 months":
-            self.ui.date_from.setEnabled(False)
-            self.ui.date_to.setEnabled(False)
-            self.ui.date_from.setDate(today.addMonths(-6))
-            self.ui.date_to.setDate(today)    
+            elif text == "Last 6 months":
+                self.ui.date_from.setEnabled(False)
+                self.ui.date_to.setEnabled(False)
+                date_from = today.addMonths(-6)
+                self.ui.date_from.setDate(date_from)
+                self.ui.date_to.setDate(today)
+                Logger.success(f"Date range set: {date_from.toString()} → {today.toString()}")
 
-        elif text == "Last year":
-            # Disable pickers, set range to last year
-            self.ui.date_from.setEnabled(False)
-            self.ui.date_to.setEnabled(False)
+            elif text == "Last year":
+                # Disable pickers, set range to last year
+                self.ui.date_from.setEnabled(False)
+                self.ui.date_to.setEnabled(False)
+                date_from = today.addYears(-1)
+                self.ui.date_from.setDate(date_from)
+                self.ui.date_to.setDate(today)
+                Logger.success(f"Date range set: {date_from.toString()} → {today.toString()}")
 
-            date_from = today.addYears(-1)
-            self.ui.date_from.setDate(date_from)
-            self.ui.date_to.setDate(today)
+            elif text == "Custom period":
+                # Enable pickers, let user choose
+                self.ui.date_from.setEnabled(True)
+                self.ui.date_to.setEnabled(True)
+                self.ui.date_from.setDate(today)
+                self.ui.date_to.setDate(today)
+                Logger.info("Custom period enabled, defaulting both pickers to today.")
 
-        elif text == "Custom period":
-            # Enable pickers, let user choose
-            self.ui.date_from.setEnabled(True)
-            self.ui.date_to.setEnabled(True)
-            self.ui.date_from.setDate(today)   # default both to today
-            self.ui.date_to.setDate(today)
+            else:
+                Logger.warning(f"Unknown date range option: {text}")
+
+        except Exception as e:
+            Logger.error(f"Error in toggle_date_fields with option '{text}': {e}")
+
+
+
+    # def adjust_forward_date(self, text):
+    #     """Adjust forward_date based on selected testing period and forward fraction."""
+    #     try:
+    #         Logger.info(f"Adjusting forward date based on selection: {text}")
+
+    #         # Get testing period
+    #         date_from = self.ui.date_from.date()
+    #         date_to = self.ui.date_to.date()
+
+    #         # Calculate total testing duration in days
+    #         total_days = date_from.daysTo(date_to)
+    #         if total_days <= 0:
+    #             Logger.warning("Invalid test period: date_from >= date_to")
+    #             return
+
+    #         # Handle forward options
+    #         if text == "No":
+    #             self.ui.forward_date.setEnabled(False)
+    #             self.ui.forward_date.setDate(date_to)  # No forward, same as test end
+    #             Logger.debug("Forward date disabled, set to test end date")
+
+    #         elif text in ("1/4", "1/3", "1/2"):
+    #             self.ui.forward_date.setEnabled(False)
+
+    #             # Convert "1/3" -> 1/3 fraction
+    #             fraction = eval(text)  # safe here since only predefined values are allowed
+
+    #             # Forward starts after (1 - fraction) of period completed
+    #             forward_start_offset = int(total_days * (1 - fraction))
+
+    #             # New forward date = test period start + offset
+    #             new_forward_date = date_from.addDays(forward_start_offset)
+    #             self.ui.forward_date.setDate(new_forward_date)
+
+    #             Logger.debug(
+    #                 f"Forward date set to {new_forward_date.toString('yyyy-MM-dd')} "
+    #                 f"({text} of test period from {date_from.toString()} → {date_to.toString()})"
+    #             )
+
+    #         elif text == "Custom":
+    #             self.ui.forward_date.setEnabled(True)
+    #             Logger.info("Forward date enabled for custom selection")
+
+    #         else:
+    #             Logger.warning(f"Unknown forward date option: {text}")
+
+    #     except Exception as e:
+    #         Logger.error(f"Error adjusting forward date for '{text}': {e}")
+
 
     def adjust_forward_date(self, text):
-        """Adjust forward_date depending on combo selection."""
-        today = QDate.currentDate()
+        """Adjust forward_date based on selected testing period and forward fraction."""
+        try:
+            Logger.info(f"Adjusting forward date based on selection: {text}")
 
-        if text == "No":
-            self.ui.forward_date.setEnabled(False)
-            self.ui.forward_date.setDate(today)
+            # Get testing period
+            date_from = self.ui.date_from.date()
+            date_to = self.ui.date_to.date()
 
-        elif text == "1/4":
-            self.ui.forward_date.setEnabled(False)
-            self.ui.forward_date.setDate(today.addMonths(3))  # 1/4 year = 3 months
+            # Calculate total testing duration in days
+            total_days = date_from.daysTo(date_to)
+            if total_days <= 0:
+                Logger.warning("Invalid test period: date_from >= date_to")
+                return
 
-        elif text == "1/3":
-            self.ui.forward_date.setEnabled(False)
-            self.ui.forward_date.setDate(today.addMonths(4))  # 1/3 year ≈ 4 months
+            # Handle forward options
+            if text == "No":
+                self.ui.forward_date.setEnabled(False)
+                self.ui.forward_date.setDate(date_to)  # No forward, same as test end
+                Logger.debug("Forward date disabled, set to test end date")
 
-        elif text == "1/2":
-            self.ui.forward_date.setEnabled(False)
-            self.ui.forward_date.setDate(today.addMonths(6))  # half year
+            elif text in ("1/4", "1/3", "1/2"):
+                self.ui.forward_date.setEnabled(False)
 
-        elif text == "Custom":
-            self.ui.forward_date.setEnabled(True)  # let user pick manually
+                # Convert "1/3" -> 1/3 fraction
+                fraction = eval(text)  # safe here since only predefined values are allowed
+
+                # Forward starts after (1 - fraction) of period completed
+                forward_start_offset = int(total_days * (1 - fraction))
+
+                # New forward date = test period start + offset
+                new_forward_date = date_from.addDays(forward_start_offset)
+                self.ui.forward_date.setDate(new_forward_date)
+
+                Logger.debug(
+                    f"Forward date set to {new_forward_date.toString('yyyy-MM-dd')} "
+                    f"({text} of test period from {date_from.toString()} → {date_to.toString()})"
+                )
+
+            elif text == "Custom":
+                self.ui.forward_date.setEnabled(True)
+                Logger.info("Forward date enabled for custom selection")
+
+            else:
+                Logger.warning(f"Unknown forward date option: {text}")
+
+        except Exception as e:
+            Logger.error(f"Error adjusting forward date for '{text}': {e}")
 
     def update_delay_input(self, text):
         try:
@@ -886,99 +1103,222 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.run(task, self.selected_queue_item_index)
 
+    # def fetch_correlation(self, market="forex", period=50, symbols=None,
+    #                   output_format="csv", endpoint="snapshot"):
+    #     """Blocking: returns a dataframe"""
+
+    #     if not symbols:
+    #         symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # fallback
+
+
+    #     symbol_str = "|".join(symbols)
+
+    #     url = (
+    #         f"https://www.mataf.io/api/tools/{output_format}/correl/"
+    #         f"{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
+    #     )
+
+    #     response = requests.get(url, timeout=30)
+        
+    #     response.raise_for_status()
+    #     lines = response.text.splitlines()
+    #     print(lines)
+    #     csv_data = "\n".join(lines[3:])
+
+    #     df = pd.read_csv(StringIO(csv_data))
+
+    #     # Remove any rows where either pair is EURUSD
+    #     df = df[df['pair1'].isin(symbols) & df['pair2'].isin(symbols)]
+
+    #     return df
+ 
+    # def get_correlation(self, market="forex", period=50, symbols=None,
+    #                     output_format="csv", endpoint="snapshot",
+    #                     on_done=None, on_error=None):
+        
+    #     symbols = []
+    #     for test in self.queue.tests: 
+    #         if test["symbol"] not in symbols:
+    #             symbols.append(test["symbol"])
+    #     print("symbols = ", symbols)
+
+
+    #     # if not symbols:
+    #     #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
+           
+        
+
+    #     def task():
+    #         return self.fetch_correlation(market, period, symbols, output_format, endpoint)
+
+
+    #     def _on_done(df):
+    #         if on_done:
+    #             on_done(df)  # delegate
+    #         else:
+    #             # default: show heatmap
+    #             try:
+    #                 corr_df = df.pivot(index="pair1", columns="pair2", values="day")
+
+    #                 def show_plot():
+
+    #                     plt.figure(figsize=(6, 4))
+    #                     sns.heatmap(
+    #                         corr_df,
+    #                         annot=True,
+    #                         fmt=".0f",
+    #                         cmap="RdBu",
+    #                         center=0,
+    #                         vmin=-100,
+    #                         vmax=100,
+    #                         linewidths=0.5
+    #                     )
+    #                     plt.title("Correlation Heatmap (Day)")
+    #                     plt.tight_layout()
+    #                     plt.show()
+
+    #                     Logger.success("Correlation heatmap generated")
+
+    #                 QTimer.singleShot(0, show_plot)
+
+    #             except Exception as e:
+    #                 QMessageBox.critical(self.ui, "Error", str(e))
+    #                 Logger.error(str(e))
+
+    #     def _on_error(err):
+    #         if on_error:
+    #             on_error(err)
+    #         else:
+    #             QMessageBox.critical(self.ui, "Error", str(err))
+
+    #     self.runner = ThreadRunner(self.ui)
+    #     self.runner.on_result = _on_done
+    #     self.runner.on_error = _on_error
+    #     self.runner.run(task)
+      
     def fetch_correlation(self, market="forex", period=50, symbols=None,
                       output_format="csv", endpoint="snapshot"):
         """Blocking: returns a dataframe"""
 
-        if not symbols:
-            symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # fallback
+        try:
+            if not symbols:
+                symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # fallback
+                Logger.warning("No symbols provided, using fallback symbols: EURUSD, EURGBP, AUDNZD")
 
+            symbol_str = "|".join(symbols)
+            Logger.debug(f"Fetching correlation with params → market={market}, period={period}, "
+                        f"symbols={symbol_str}, format={output_format}, endpoint={endpoint}")
 
-        symbol_str = "|".join(symbols)
+            url = (
+                f"https://www.mataf.io/api/tools/{output_format}/correl/"
+                f"{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
+            )
+            Logger.info(f"Requesting correlation data from URL: {url}")
 
-        url = (
-            f"https://www.mataf.io/api/tools/{output_format}/correl/"
-            f"{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
-        )
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            Logger.success("Successfully fetched correlation data from API")
 
-        response = requests.get(url, timeout=30)
-        
-        response.raise_for_status()
-        lines = response.text.splitlines()
-        print(lines)
-        csv_data = "\n".join(lines[3:])
+            lines = response.text.splitlines()
+            Logger.debug(f"Received {len(lines)} lines of response data")
 
-        df = pd.read_csv(StringIO(csv_data))
+            # Skip first 3 metadata lines
+            csv_data = "\n".join(lines[3:])
+            df = pd.read_csv(StringIO(csv_data))
+            Logger.info(f"Parsed CSV into DataFrame with {len(df)} rows")
 
-        # Remove any rows where either pair is EURUSD
-        df = df[df['pair1'].isin(symbols) & df['pair2'].isin(symbols)]
+            # Filter symbols
+            before_count = len(df)
+            df = df[df['pair1'].isin(symbols) & df['pair2'].isin(symbols)]
+            after_count = len(df)
+            Logger.debug(f"Filtered DataFrame from {before_count} → {after_count} rows (symbol filtering)")
 
-        return df
+            Logger.success("Correlation DataFrame prepared successfully")
+            return df
+
+        except requests.exceptions.RequestException as e:
+            Logger.error(f"Network error while fetching correlation data: {e}")
+            raise
+        except Exception as e:
+            Logger.error(f"Unexpected error in fetch_correlation: {e}")
+            raise
+
  
     def get_correlation(self, market="forex", period=50, symbols=None,
-                        output_format="csv", endpoint="snapshot",
-                        on_done=None, on_error=None):
-        
-        symbols = []
-        for test in self.queue.tests: 
-            if test["symbol"] not in symbols:
-                symbols.append(test["symbol"])
-        print("symbols = ", symbols)
+                    output_format="csv", endpoint="snapshot",
+                    on_done=None, on_error=None):
+        try:
+            # Collect unique symbols from queue
+            symbols = []
+            for test in self.queue.tests: 
+                if test["symbol"] not in symbols:
+                    symbols.append(test["symbol"])
+
+            Logger.info(f"Preparing to fetch correlation for symbols: {symbols} "
+                        f"(market={market}, period={period}, format={output_format}, endpoint={endpoint})")
+
+            def task():
+                Logger.debug("Starting background correlation fetch task")
+                df = self.fetch_correlation(market, period, symbols, output_format, endpoint)
+                Logger.debug(f"Background task finished, DataFrame shape={df.shape}")
+                return df
+
+            def _on_done(df):
+                Logger.success(f"Correlation data received with {len(df)} rows")
+                if on_done:
+                    Logger.debug("Delegating correlation result to custom on_done handler")
+                    on_done(df)
+                else:
+                    Logger.debug("No custom on_done handler, generating default heatmap")
+                    try:
+                        corr_df = df.pivot(index="pair1", columns="pair2", values="day")
+                        Logger.info(f"Pivoted correlation DataFrame to shape {corr_df.shape}")
+
+                        def show_plot():
+                            Logger.debug("Rendering correlation heatmap")
+                            plt.figure(figsize=(6, 4))
+                            sns.heatmap(
+                                corr_df,
+                                annot=True,
+                                fmt=".0f",
+                                cmap="RdBu",
+                                center=0,
+                                vmin=-100,
+                                vmax=100,
+                                linewidths=0.5
+                            )
+                            plt.title("Correlation Heatmap (Day)")
+                            plt.tight_layout()
+                            plt.show()
+                            Logger.success("Correlation heatmap generated successfully")
+
+                        QTimer.singleShot(0, show_plot)
+
+                    except Exception as e:
+                        Logger.error(f"Error generating correlation heatmap: {e}")
+                        QMessageBox.critical(self.ui, "Error", str(e))
+
+            def _on_error(err):
+                Logger.error(f"Correlation fetch failed: {err}")
+                if on_error:
+                    Logger.debug("Delegating error to custom on_error handler")
+                    on_error(err)
+                else:
+                    QMessageBox.critical(self.ui, "Error", str(err))
+
+            Logger.debug("Starting correlation fetch in background thread")
+            self.runner = ThreadRunner(self.ui)
+            self.runner.on_result = _on_done
+            self.runner.on_error = _on_error
+            self.runner.run(task)
+
+        except Exception as e:
+            Logger.error(f"Unexpected error in get_correlation: {e}")
+            QMessageBox.critical(self.ui, "Error", str(e))
 
 
-        # if not symbols:
-        #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
-           
-        
 
-        def task():
-            return self.fetch_correlation(market, period, symbols, output_format, endpoint)
-
-
-        def _on_done(df):
-            if on_done:
-                on_done(df)  # delegate
-            else:
-                # default: show heatmap
-                try:
-                    corr_df = df.pivot(index="pair1", columns="pair2", values="day")
-
-                    def show_plot():
-
-                        plt.figure(figsize=(6, 4))
-                        sns.heatmap(
-                            corr_df,
-                            annot=True,
-                            fmt=".0f",
-                            cmap="RdBu",
-                            center=0,
-                            vmin=-100,
-                            vmax=100,
-                            linewidths=0.5
-                        )
-                        plt.title("Correlation Heatmap (Day)")
-                        plt.tight_layout()
-                        plt.show()
-
-                        Logger.success("Correlation heatmap generated")
-
-                    QTimer.singleShot(0, show_plot)
-
-                except Exception as e:
-                    QMessageBox.critical(self.ui, "Error", str(e))
-                    Logger.error(str(e))
-
-        def _on_error(err):
-            if on_error:
-                on_error(err)
-            else:
-                QMessageBox.critical(self.ui, "Error", str(err))
-
-        self.runner = ThreadRunner(self.ui)
-        self.runner.on_result = _on_done
-        self.runner.on_error = _on_error
-        self.runner.run(task)
-      
+    
     def show_quantity_popup(self, title, text):
         results = {
             "test_symbol_quantity": None,
@@ -1173,13 +1513,51 @@ class AutoBatchController:
         else:
             return self.mt5.get_fx_symbols()
 
-    def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
-        df_filtered = df[df["pair1"] != df["pair2"]].copy()
-        df_filtered["abs_day"] = df_filtered["day"].abs()
+    # def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
+    #     df_filtered = df[df["pair1"] != df["pair2"]].copy()
+    #     df_filtered["abs_day"] = df_filtered["day"].abs()
         
-        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=False)
+    #     df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=False)
 
-        return df_filtered[["pair1", "pair2", "day"]].head(top_n)
+    #     return df_filtered[["pair1", "pair2", "day"]].head(top_n)
+
+    def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
+        Logger.info(f"Finding top {top_n} uncorrelated pairs with correlation ≤ {correlation}")
+
+        # df.to_csv("correlation_raw.csv", index=False)  # for debugging
+
+        # Filter out identical pairs
+        df_filtered = df[df["pair1"] != df["pair2"]].copy()
+        Logger.debug(f"Filtered out identical pairs, remaining rows: {len(df_filtered)}")
+
+        # Normalize pair order (so A,B and B,A become the same)
+        df_filtered["pair_min"] = df_filtered[["pair1", "pair2"]].min(axis=1)
+        df_filtered["pair_max"] = df_filtered[["pair1", "pair2"]].max(axis=1)
+
+        # Drop duplicates after normalization
+        df_filtered = df_filtered.drop_duplicates(subset=["pair_min", "pair_max"])
+
+        # Add absolute correlation values
+        df_filtered["abs_day"] = df_filtered["day"].abs()
+
+        # Filter by correlation threshold
+        df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=True)
+        Logger.debug(f"After applying correlation filter ≤ {correlation}, rows left: {len(df_filtered)}")
+
+
+        corr_df = df_filtered.pivot(index="pair1", columns="pair2", values="day")
+        # corr_df.to_csv("corr_df.csv", index=False)
+
+
+        # Select top_n
+        top_pairs = df_filtered[["pair_min", "pair_max", "day"]].head(top_n)
+        top_pairs = top_pairs.rename(columns={"pair_min": "pair1", "pair_max": "pair2"})
+
+        top_pairs.to_csv("correlation.csv", index=False)
+        Logger.success(f"Top {len(top_pairs)} uncorrelated pairs selected")
+
+        return top_pairs
+
 
     def on_start_button_clicked(self, data_path, mt5_path, report_path):
         print("data_path = ", data_path)
@@ -1250,82 +1628,161 @@ class AutoBatchController:
             self.load_test_parameters(test_data)  # Show it on the form
             # print(test_data)
 
-    def load_test_parameters(self, test_data):
-        # Expert & param files
-        try:
+    # def load_test_parameters(self, test_data):
+    #     # Expert & param files
+    #     try:
                 
-            for widget in [
-                self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
-                self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
-                self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
-                self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
-                self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
-                self.ui.delay_input, self.ui.leverage_input,
-                self.ui.date_from, self.ui.date_to, self.ui.forward_date
-            ]:
-                widget.blockSignals(True)
+    #         for widget in [
+    #             self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
+    #             self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
+    #             self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
+    #             self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
+    #             self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
+    #             self.ui.delay_input, self.ui.leverage_input,
+    #             self.ui.date_from, self.ui.date_to, self.ui.forward_date
+    #         ]:
+    #             widget.blockSignals(True)
 
-                self.ui.testfile_input.setText(test_data.get("test_name", ""))
-                self.ui.expert_input.setCurrentText(test_data.get("expert", ""))
-                self.ui.param_input.setText(test_data.get("param_file", ""))
-                self.ui.symbol_input.setText(str(test_data.get("symbol", "")))
+    #             self.ui.testfile_input.setText(test_data.get("test_name", ""))
+    #             self.ui.expert_input.setCurrentText(test_data.get("expert", ""))
+    #             self.ui.param_input.setText(test_data.get("param_file", ""))
+    #             self.ui.symbol_input.setText(str(test_data.get("symbol", "")))
                 
-                self.ui.timeframe_combo.setCurrentText(test_data.get("timeframe", ""))
-                self.ui.symbol_prefix.setText(test_data.get("symbol_prefix", ""))
-                self.ui.symbol_suffix.setText(test_data.get("symbol_suffix", ""))
+    #             self.ui.timeframe_combo.setCurrentText(test_data.get("timeframe", ""))
+    #             self.ui.symbol_prefix.setText(test_data.get("symbol_prefix", ""))
+    #             self.ui.symbol_suffix.setText(test_data.get("symbol_suffix", ""))
               
-                self.ui.date_combo.setCurrentText(test_data.get("date", "")) 
-                date_from_str = test_data.get("date_from", "")
-                date_from = QDate.fromString(date_from_str, "yyyy-MM-dd")
-                if date_from.isValid():
-                    self.ui.date_from.setDate(date_from)
-                else:
-                    self.ui.date_from.setDate(QDate(2000, 1, 1)) 
+    #             self.ui.date_combo.setCurrentText(test_data.get("date", "")) 
+    #             date_from_str = test_data.get("date_from", "")
+    #             date_from = QDate.fromString(date_from_str, "yyyy-MM-dd")
+    #             if date_from.isValid():
+    #                 self.ui.date_from.setDate(date_from)
+    #             else:
+    #                 self.ui.date_from.setDate(QDate(2000, 1, 1)) 
 
-                # Handle date_to
-                date_to_str = test_data.get("date_to", "")
-                date_to = QDate.fromString(date_to_str, "yyyy-MM-dd")
-                if date_to.isValid():
-                    self.ui.date_to.setDate(date_to)
-                else:
-                    self.ui.date_to.setDate(QDate(2000, 1, 1))
+    #             # Handle date_to
+    #             date_to_str = test_data.get("date_to", "")
+    #             date_to = QDate.fromString(date_to_str, "yyyy-MM-dd")
+    #             if date_to.isValid():
+    #                 self.ui.date_to.setDate(date_to)
+    #             else:
+    #                 self.ui.date_to.setDate(QDate(2000, 1, 1))
 
-                # Handle forward_date
-                self.ui.forward_combo.setCurrentText(test_data.get("forward", ""))
-                forward_str = test_data.get("forward_date", "")
-                forward_date = QDate.fromString(forward_str, "yyyy-MM-dd")
-                if forward_date.isValid():
-                    self.ui.forward_date.setDate(forward_date)
-                else:
-                    self.ui.forward_date.setDate(QDate(2000, 1, 1))
-                # self.ui.date_from.setDate(QDate.fromString(test_data.get("date_from", "2000-01-01"), "yyyy-MM-dd"))
-                # self.ui.date_to.setDate(QDate.fromString(test_data.get("date_to", "2000-01-01"), "yyyy-MM-dd"))
-                # self.ui.forward_date.setDate(QDate.fromString(test_data.get("forward_date", "2000-01-01"), "yyyy-MM-dd"))
+    #             # Handle forward_date
+    #             self.ui.forward_combo.setCurrentText(test_data.get("forward", ""))
+    #             forward_str = test_data.get("forward_date", "")
+    #             forward_date = QDate.fromString(forward_str, "yyyy-MM-dd")
+    #             if forward_date.isValid():
+    #                 self.ui.forward_date.setDate(forward_date)
+    #             else:
+    #                 self.ui.forward_date.setDate(QDate(2000, 1, 1))
+    #             # self.ui.date_from.setDate(QDate.fromString(test_data.get("date_from", "2000-01-01"), "yyyy-MM-dd"))
+    #             # self.ui.date_to.setDate(QDate.fromString(test_data.get("date_to", "2000-01-01"), "yyyy-MM-dd"))
+    #             # self.ui.forward_date.setDate(QDate.fromString(test_data.get("forward_date", "2000-01-01"), "yyyy-MM-dd"))
 
-                self.ui.delay_combo.setCurrentText(test_data.get("delay_mode", ""))
-                self.ui.delay_input.setValue(int(test_data.get("delay", 0)))
-                self.ui.model_combo.setCurrentText(test_data.get("model", ""))
-                self.ui.deposit_input.setText(str(test_data.get("deposit", "")))
-                self.ui.currency_input.setText(test_data.get("currency", ""))
-                self.ui.leverage_input.setValue(float(test_data.get("leverage", 0)))
-                self.ui.optim_combo.setCurrentText(str(test_data.get("optimization", "")))
-                self.ui.criterion_input.setCurrentText(str(test_data.get("criterion", "")))
+    #             self.ui.delay_combo.setCurrentText(test_data.get("delay_mode", ""))
+    #             self.ui.delay_input.setValue(int(test_data.get("delay", 0)))
+    #             self.ui.model_combo.setCurrentText(test_data.get("model", ""))
+    #             self.ui.deposit_input.setText(str(test_data.get("deposit", "")))
+    #             self.ui.currency_input.setText(test_data.get("currency", ""))
+    #             self.ui.leverage_input.setValue(float(test_data.get("leverage", 0)))
+    #             self.ui.optim_combo.setCurrentText(str(test_data.get("optimization", "")))
+    #             self.ui.criterion_input.setCurrentText(str(test_data.get("criterion", "")))
 
+
+    #     except Exception as e:
+    #            Logger.error(f"Error loading test parameters: {str(e)}")
+    #     finally:
+    #         for widget in [
+    #             self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
+    #             self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
+    #             self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
+    #             self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
+    #             self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
+    #             self.ui.delay_input, self.ui.leverage_input,
+    #             self.ui.date_from, self.ui.date_to, self.ui.forward_date
+    #         ]:
+    #             widget.blockSignals(False)
+        
+
+    def load_test_parameters(self, test_data):
+        Logger.info(f"Loading test parameters for: {test_data.get('test_name', 'Unnamed Test')}")
+
+        try:
+            # Expert & param files
+            self.ui.testfile_input.setText(test_data.get("test_name", ""))
+            Logger.debug(f"Set test_name: {test_data.get('test_name', '')}")
+
+            self.ui.expert_input.setCurrentText(test_data.get("expert", ""))
+            Logger.debug(f"Set expert: {test_data.get('expert', '')}")
+
+            self.ui.param_input.setText(test_data.get("param_file", ""))
+            Logger.debug(f"Set param_file: {test_data.get('param_file', '')}")
+
+            self.ui.symbol_input.setText(str(test_data.get("symbol", "")))
+            Logger.debug(f"Set symbol: {test_data.get('symbol', '')}")
+
+            self.ui.timeframe_combo.setCurrentText(test_data.get("timeframe", ""))
+            Logger.debug(f"Set timeframe: {test_data.get('timeframe', '')}")
+
+            self.ui.symbol_prefix.setText(test_data.get("symbol_prefix", ""))
+            self.ui.symbol_suffix.setText(test_data.get("symbol_suffix", ""))
+            Logger.debug(f"Set symbol prefix/suffix: {test_data.get('symbol_prefix', '')}/{test_data.get('symbol_suffix', '')}")
+
+            self.ui.date_combo.setCurrentText(test_data.get("date", ""))
+            Logger.debug(f"Set date: {test_data.get('date', '')}")
+
+            # Handle date_from
+            date_from_str = test_data.get("date_from", "")
+            date_from = QDate.fromString(date_from_str, "yyyy-MM-dd")
+            if date_from.isValid():
+                self.ui.date_from.setDate(date_from)
+                Logger.debug(f"Set date_from: {date_from_str}")
+            else:
+                self.ui.date_from.setDate(QDate(2000, 1, 1))
+                Logger.warning(f"Invalid date_from '{date_from_str}', set to default 2000-01-01")
+
+            # Handle date_to
+            date_to_str = test_data.get("date_to", "")
+            date_to = QDate.fromString(date_to_str, "yyyy-MM-dd")
+            if date_to.isValid():
+                self.ui.date_to.setDate(date_to)
+                Logger.debug(f"Set date_to: {date_to_str}")
+            else:
+                self.ui.date_to.setDate(QDate(2000, 1, 1))
+                Logger.warning(f"Invalid date_to '{date_to_str}', set to default 2000-01-01")
+
+            # Handle forward_date
+            self.ui.forward_combo.setCurrentText(test_data.get("forward", ""))
+            forward_str = test_data.get("forward_date", "")
+            forward_date = QDate.fromString(forward_str, "yyyy-MM-dd")
+            if forward_date.isValid():
+                self.ui.forward_date.setDate(forward_date)
+                Logger.debug(f"Set forward_date: {forward_str}")
+            else:
+                self.ui.forward_date.setDate(QDate(2000, 1, 1))
+                Logger.warning(f"Invalid forward_date '{forward_str}', set to default 2000-01-01")
+
+            self.ui.delay_combo.setCurrentText(test_data.get("delay_mode", ""))
+            self.ui.delay_input.setValue(int(test_data.get("delay", 0)))
+            Logger.debug(f"Set delay: {test_data.get('delay', 0)} mode: {test_data.get('delay_mode', '')}")
+
+            self.ui.model_combo.setCurrentText(test_data.get("model", ""))
+            self.ui.deposit_input.setText(str(test_data.get("deposit", "")))
+            self.ui.currency_input.setText(test_data.get("currency", ""))
+            self.ui.leverage_input.setValue(float(test_data.get("leverage", 0)))
+            Logger.debug(f"Set model: {test_data.get('model', '')}, deposit: {test_data.get('deposit', '')}, "
+                        f"currency: {test_data.get('currency', '')}, leverage: {test_data.get('leverage', 0)}")
+
+            self.ui.optim_combo.setCurrentText(str(test_data.get("optimization", "")))
+            self.ui.criterion_input.setCurrentText(str(test_data.get("criterion", "")))
+            Logger.debug(f"Set optimization: {test_data.get('optimization', '')}, criterion: {test_data.get('criterion', '')}")
+
+            Logger.success(f"Successfully loaded parameters for test '{test_data.get('test_name', 'Unnamed Test')}'")
 
         except Exception as e:
-               Logger.error(f"Error loading test parameters: {str(e)}")
-        finally:
-            for widget in [
-                self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
-                self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
-                self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
-                self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
-                self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
-                self.ui.delay_input, self.ui.leverage_input,
-                self.ui.date_from, self.ui.date_to, self.ui.forward_date
-            ]:
-                widget.blockSignals(False)
-        
+            Logger.error(f"Error loading test parameters: {str(e)}")
+
     def update_current_test_parameters(self, index):
         """Save the current form values into the test at given index."""
         try:
