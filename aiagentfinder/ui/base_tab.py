@@ -12,9 +12,6 @@ class BaseTab(QWidget):
 
         self.title = title
 
-        self.report_name = ""  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
-        self.report_df = None  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
-
         # Outer layout
         main_layout = QVBoxLayout(self)
         self.setAutoFillBackground(True)

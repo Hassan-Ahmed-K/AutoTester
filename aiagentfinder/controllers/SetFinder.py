@@ -12,9 +12,8 @@ class SetFinderController:
         self.ui = ui
         self.runner = ThreadRunner()
         self.main_window = self.ui.parent()
-        self.runner = ThreadRunner()
 
-        self.file_path = None
+        # self.file_path = None
         self.doc_properties = {}
 
 
@@ -69,10 +68,11 @@ class SetFinderController:
             )
             return
 
-        self.ui.report_name = report_files[0]
+        self.main_window.report_name = report_files[0]
         self.ui.report_dir_input.setText(dir_path)
-        self.file_path = os.path.join(dir_path, report_files[0])
-        Logger.info(f"📄 Report file selected: {self.file_path}")
+        self.main_window.file_path = os.path.join(dir_path, report_files[0])
+        Logger.info(f"📄 Report file selected: {self.main_window.file_path}")
+        Logger.info(f"📄 Report file self.ui.report_name: {self.main_window.report_name}")
 
         # ✅ Just start async read — do not unpack result here
         self.read_xml()
@@ -80,18 +80,18 @@ class SetFinderController:
     def read_xml(self):
         """Parses the selected XML file (self.file_path) in a background thread."""
 
-        if not self.file_path or not os.path.exists(self.file_path):
+        if not self.main_window.file_path or not os.path.exists(self.main_window.file_path):
             Logger.error("❌ No valid XML file selected.")
             return
 
-        Logger.info(f"📂 Starting XML parsing for: {self.file_path}")
+        Logger.info(f"📂 Starting XML parsing for: {self.main_window.file_path}")
         self.ui.start_button.setText("Reading XML...")
         self.ui.start_button.setEnabled(False)
 
         def task():
             try:
-                Logger.debug(f"Parsing XML file: {self.file_path}")
-                tree = ET.parse(self.file_path)
+                Logger.debug(f"Parsing XML file: {self.main_window.file_path}")
+                tree = ET.parse(self.main_window.file_path)
                 root = tree.getroot()
 
                 namespaces = {
@@ -212,43 +212,112 @@ class SetFinderController:
             )
 
         # --- Guard clause ---
-        if not self.file_path or not os.path.exists(self.file_path):
+        if not self.main_window.file_path or not os.path.exists(self.main_window.file_path):
             log_to_ui("❌ No valid XML file path found. Please select a valid report file first.")
             return
 
         # --- Update UI button states ---
         self.ui.start_button.setText("Processing...")
         self.ui.start_button.setEnabled(False)
-        log_to_ui(f"🚀 Starting XML table extraction thread for: {self.file_path}")
+        log_to_ui(f"🚀 Starting XML table extraction thread for: {self.main_window.file_path}")
 
         # ============================
         # TASK (runs in background)
         # ============================
         def task():
-            log_to_ui(f"📂 Reading XML file: {self.file_path}")
-            tree = ET.parse(self.file_path)
-            root = tree.getroot()
+            """Reads XML, processes table, merges duplicate columns, shows empty cells if no value, and saves CSV."""
+            try:
+                # --- Step 1: Read XML ---
+                log_to_ui(f"📂 Reading XML file: {self.main_window.file_path}")
+                tree = ET.parse(self.main_window.file_path)
+                root = tree.getroot()
 
-            ns = {'ss': 'urn:schemas-microsoft-com:office:spreadsheet'}
-            rows = []
+                ns = {'ss': 'urn:schemas-microsoft-com:office:spreadsheet'}
+                rows = []
 
-            for row in root.findall('.//ss:Row', ns):
-                cells = [
-                    (cell.find('ss:Data', ns).text if cell.find('ss:Data', ns) is not None else '')
-                    for cell in row.findall('ss:Cell', ns)
-                ]
-                rows.append(cells)
+                for row in root.findall('.//ss:Row', ns):
+                    cells = [
+                        (cell.find('ss:Data', ns).text if cell.find('ss:Data', ns) is not None else '')
+                        for cell in row.findall('ss:Cell', ns)
+                    ]
+                    rows.append(cells)
 
-            df = pd.DataFrame(rows)
-            log_to_ui(f"✅ Extracted {len(df)} rows from XML table.")
+                if not rows:
+                    log_to_ui("⚠️ No rows found in XML file.")
+                    Logger.warning("XML file appears to be empty.")
+                    return None
 
-            # --- Save to CSV ---
-            output_csv = os.path.join(os.path.dirname(self.file_path), "xml_retrieved_table.csv")
-            df.to_csv(output_csv, index=False, encoding='utf-8-sig')
-            log_to_ui(f"💾 Table data saved successfully to: {output_csv}")
+                # --- Step 2: Convert rows to DataFrame ---
+                df = pd.DataFrame(rows)
 
-            Logger.info("🧾 First few rows:\n" + df.head().to_string(index=False))
-            return df
+                # --- Step 3: Set first row as header ---
+                if len(df) > 1:
+                    new_header = df.iloc[0]
+                    df = df[1:]
+                    df.columns = new_header
+                    df.reset_index(drop=True, inplace=True)
+                    Logger.info("✅ Header successfully set from the first row.")
+                else:
+                    Logger.warning("⚠️ XML file contains only one row. Using generic column names.")
+
+                # --- Step 4: Merge duplicate columns ---
+
+                # Merge Trades
+                trades_cols = [c for c in ['Bk Trades', 'Fwd Trades'] if c in df.columns]
+                if trades_cols:
+                    df['Trades'] = df[trades_cols].fillna(0).astype(float).sum(axis=1)
+                    Logger.info(f"✅ Merged Trades columns: {trades_cols}")
+
+                # Merge Profit
+                profit_cols = [c for c in ['Total Profit', 'Est Bk Weekly Profit'] if c in df.columns]
+                if profit_cols:
+                    df['Profit'] = df[profit_cols].fillna(0).astype(float).sum(axis=1)
+                    Logger.info(f"✅ Merged Profit columns: {profit_cols}")
+
+                # --- Step 5: Define final column mapping ---
+                column_mapping = {
+                    "Pass No": "Pass",
+                    "Bk Recovery": "Recovery Factor",
+                    "Fwd Recovery": "Sharpe Ratio",
+                    "Total Profit": "Profit",                       # merged column
+                    "Est Fwd Weekly Profit": "Expected Payoff",
+                    "Est Bwd Weekly Profit": "Expected Payoff",
+                    "Trades": "Trades", 
+                    "Multiplier": "Profit Factor",
+                    "POW Score": "Custom"
+                }
+
+                # --- Step 6: Add missing columns ---
+                df_copy = df.copy()
+                for col in column_mapping.values():
+                    if col not in df_copy.columns:
+                        df_copy[col] = ""
+
+                # --- Step 7: Filter, rename, and replace NaN with empty string ---
+                filtered_df = df_copy[list(column_mapping.values())].rename(
+                    columns={v: k for k, v in column_mapping.items()}
+                )
+                filtered_df.reset_index(drop=True, inplace=True)
+                filtered_df = filtered_df.fillna("")  # replace any remaining NaN with empty string
+
+                Logger.info(f"✅ Filtered DataFrame with {len(filtered_df.columns)} columns.")
+                Logger.info(f"Headers: {filtered_df.columns.tolist()}")
+                Logger.info("\n" + filtered_df.head().to_string(index=False))
+
+                # --- Step 8: Save to CSV ---
+                output_csv = os.path.join(os.path.dirname(self.main_window.file_path), "xml_retrieved_table.csv")
+                filtered_df.to_csv(output_csv, index=False, encoding='utf-8-sig')
+                log_to_ui(f"💾 Table data saved successfully to: {output_csv}")
+                Logger.info(f"🧾 CSV saved. Total rows: {len(filtered_df)}")
+
+                return filtered_df
+
+            except Exception as e:
+                Logger.error(f"❌ Error processing XML: {str(e)}")
+                log_to_ui(f"❌ Error: {str(e)}")
+                return None
+
+
 
         # ============================
         # CALLBACKS (main thread)
@@ -258,9 +327,9 @@ class SetFinderController:
                 log_to_ui("✅ XML table extraction completed successfully.")
                 self.ui.start_button.hide()
                 self.ui.reset_button.show()
-                self.ui.report_df = result
-                Logger.info(f"Report name set to: {self.ui.report_name}")
-                Logger.info(f"Report DataFrame set with {len(self.ui.report_df)} rows.")
+                self.main_window.report_df = result
+                Logger.info(f"Report name set to: {self.main_window.report_name}")
+                Logger.info(f"Report DataFrame set with {len(self.main_window.report_df)} rows.")
             else:
                 log_to_ui("⚠️ No data extracted from XML file.")
             self.ui.start_button.setText("Start")
@@ -311,6 +380,7 @@ class SetFinderController:
             # --- Reset Start/Reset buttons ---
             self.ui.start_button.setText("Start")
             self.ui.reset_button.hide()
+            self.ui.start_button.show()
 
             Logger.info("✅ All input fields successfully reset.")
             self.ui.log_text.append("✅ All fields have been reset to default values.")
