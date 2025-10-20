@@ -3,8 +3,6 @@ from abc import abstractmethod
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QScrollArea, QSizePolicy,QLabel,QHBoxLayout
 )
-from PyQt5.QtCore import QTimer, Qt
-import os
 from PyQt5.QtCore import Qt
 
 
@@ -14,7 +12,6 @@ class BaseTab(QWidget):
 
         self.title = title
 
-        self.load_stylesheet()
         # Outer layout
         main_layout = QVBoxLayout(self)
         self.setAutoFillBackground(True)
@@ -99,7 +96,7 @@ class BaseTab(QWidget):
 
         self.scroll.setWidget(self.content)
 
-        # self.setStyleSheet("background-color: #1e1e1e;")
+        self.setStyleSheet("background-color: #1e1e1e;")
 
         self.init_ui()
 
@@ -122,12 +119,3 @@ class BaseTab(QWidget):
 
         # horizontal: keep it off (vertical only)
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-
-    def load_stylesheet(self):
-        base_dir = os.path.dirname(os.path.dirname(__file__))  
-        qss_path = os.path.join(base_dir, "style", "style.qss")
-        if os.path.exists(qss_path):
-            with open(qss_path, "r") as f:
-                self.setStyleSheet(f.read())
-        else:
-            print(f"⚠️ QSS file not found at {qss_path}")

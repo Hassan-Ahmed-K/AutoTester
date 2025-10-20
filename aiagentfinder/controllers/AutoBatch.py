@@ -1619,7 +1619,6 @@ class AutoBatchController:
         if hasattr(self, "current_index") and self.current_index is not None:
             if 0 <= self.current_index < len(self.queue.tests):
                 self.update_current_test_parameters(self.current_index)
-        
 
     def on_test_selected(self, index):
         index = self.ui.queue_list.currentRow()  # Which item was clicked
@@ -1811,6 +1810,13 @@ class AutoBatchController:
             }
         except Exception as e:
             print(f"Error saving test parameters: {e}")
+    
+
+
+        
+       
+
+
 
         # Do this for all the other parameter fields
 

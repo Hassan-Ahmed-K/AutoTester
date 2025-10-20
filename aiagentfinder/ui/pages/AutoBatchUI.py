@@ -21,127 +21,130 @@ class AutoBatchUI(BaseTab):
 
     def init_ui(self):
         
+        """Override BaseTab's init_ui with AutoBatch-specific layout."""
 
 
-        # self.setStyleSheet("""
-        #     AutoBatchUI {
-        #         background-color: #1e1e1e;
-        #     }
+        self.setStyleSheet("""
+            AutoBatchUI {
+                background-color: #1e1e1e;
+            }
 
-        #     /* Base widget style */
-        #     QWidget {
-        #         background-color: #1e1e1e;
-        #         color: #e0dcdc;
-        #         font-family: Inter;
-        #         font-size: 12px;
-        #         line-height: 12px;
+            /* Base widget style */
+            QWidget {
+                background-color: #1e1e1e;
+                color: #e0dcdc;
+                font-family: Inter;
+                font-size: 12px;
+                line-height: 14px;
 
-        #     }
+            }
 
-        #     /* File inputs and normal inputs */
-        #     QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
-        #         border: 2px solid #555555;       /* nice gray border */
-        #         border-radius: 5px;              /* rounded corners */
-        #         padding: 1px 2px;     /* 🔽 reduced padding */
-        #         font-size: 10px;      /* 🔽 smaller text */
-        #         min-height: 20px;     /* 🔽 keeps them compact */
-        #         height: 10px;
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #     }
+            /* File inputs and normal inputs */
+            QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
+                border: 2px solid #555555;       /* nice gray border */
+                border-radius: 5px;              /* rounded corners */
+                padding: 1px 2px;     /* 🔽 reduced padding */
+                font-size: 10px;      /* 🔽 smaller text */
+                font-weight: bold;
+                min-height: 20px;     /* 🔽 keeps them compact */
+                background-color: #2b2b2b;
+                color: #ffffff;
+            }
 
-        #     QLineEdit#queueList, QListWidget {
-        #         border: 1px solid #808791;
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #     }
+            QLineEdit#queueList, QListWidget {
+                border: 1px solid #808791;
+                background-color: #2b2b2b;
+                color: #ffffff;
+            }
 
-        #     /* Buttons */
-        #     QPushButton {
-        #        background-color: #808791;
-        #         border: 1px solid #ffffff;
-        #         border-radius: 4px;
-        #         color: #ffffff;
+            /* Buttons */
+            QPushButton {
+               background-color: #808791;
+                border: 1px solid #ffffff;
+                border-radius: 4px;
+                color: #ffffff;
                 
-        #         padding: 2px 6px;     /* 🔽 smaller padding */
-        #         font-size: 10px;      /* 🔽 smaller text */
-        #         min-height: 20px;     /* ensures consistent smaller height */
-        #     }
+                padding: 2px 6px;     /* 🔽 smaller padding */
+                font-size: 10px;      /* 🔽 smaller text */
+                min-height: 20px;     /* ensures consistent smaller height */
+            }
 
-        #     QPushButton:hover {
-        #         background-color: #a0a8b0;
-        #         color: black;
-        #         border: 1px solid #ffcc00;
-        #     }
+            QPushButton:hover {
+                background-color: #a0a8b0;
+                color: black;
+                border: 1px solid #ffcc00;
+            }
 
-        #     /* Header title */
-        #     QLabel#headerTitle {
-        #         font-size: 32px;
-        #         padding: px;
-        #     }
+            /* Header title */
+            QLabel#headerTitle {
+                font-size: 32px;
+                padding: px;
+            }
                            
-        #     QComboBox QAbstractItemView {
-        #        background-color: #2b2b2b;
-        #        border: 1px solid #555555;
-        #        selection-background-color: #ffcc00;
-        #        selection-color: black;
-        #    }
+            QComboBox QAbstractItemView {
+               background-color: #2b2b2b;
+               border: 1px solid #555555;
+               selection-background-color: #ffcc00;
+               selection-color: black;
+           }
+                           
 
-        #     QListWidget{
-        #             font-size : 12px       
-        #             }
+
+            QListWidget{
+                    font-size : 12px       
+                    }
            
 
-        #     /* ================= Calendar Styling ================= */
-        #     QCalendarWidget QWidget { 
-        #         background-color: #2b2b2b; 
-        #         alternate-background-color: #1e1e1e;
-        #     }
+            /* ================= Calendar Styling ================= */
+            QCalendarWidget QWidget { 
+                background-color: #2b2b2b; 
+                alternate-background-color: #1e1e1e;
+            }
 
-        #     QCalendarWidget QAbstractItemView:enabled {
-        #         font-size: 12px;
-        #         color: #e0dcdc;
-        #         background-color: #2b2b2b;
-        #         selection-background-color: #ffcc00;
-        #         selection-color: black;
-        #         gridline-color: #555555;
-        #     }
+            QCalendarWidget QAbstractItemView:enabled {
+                font-size: 12px;
+                color: #e0dcdc;
+                background-color: #2b2b2b;
+                selection-background-color: #ffcc00;
+                selection-color: black;
+                gridline-color: #555555;
+            }
 
-        #     QCalendarWidget QToolButton {
+            QCalendarWidget QToolButton {
                 
-        #         color: white;
-        #         font-size: 8px;
-        #         icon-size: 12px;
-        #         background-color: #444444;
-        #         /* border-radius: 5px; */
-        #     }
+                color: white;
+                font-size: 8px;
+                icon-size: 12px;
+                background-color: #444444;
+                /* border-radius: 5px; */
+            }
 
             
 
-        #     QCalendarWidget QMenu {
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #         border: 1px solid #555555;
-        #     }
+            QCalendarWidget QMenu {
+                background-color: #2b2b2b;
+                color: #ffffff;
+                border: 1px solid #555555;
+            }
 
-        #     QCalendarWidget QSpinBox { 
-        #         width: 70px; 
-        #         font-size: 12px; 
-        #         color: #ffffff;
-        #         background-color: #2b2b2b;
-        #         border: 1px solid #555555;
-        #     }
+            QCalendarWidget QSpinBox { 
+                width: 70px; 
+                font-size: 12px; 
+                color: #ffffff;
+                background-color: #2b2b2b;
+                border: 1px solid #555555;
+            }
 
-        #     QCalendarWidget QSpinBox::up-button {
-        #         subcontrol-origin: border;
-        #         subcontrol-position: top right;
-        #     }
+            QCalendarWidget QSpinBox::up-button {
+                subcontrol-origin: border;
+                subcontrol-position: top right;
+            }
 
-        #     QCalendarWidget QSpinBox::down-button {
-        #         subcontrol-origin: border;
-        #         subcontrol-position: bottom right;
-        #     }
-        # """)
+            QCalendarWidget QSpinBox::down-button {
+                subcontrol-origin: border;
+                subcontrol-position: bottom right;
+            }
+        """)
 
         # height: 24px;
         #         width: 100px;
@@ -156,7 +159,6 @@ class AutoBatchUI(BaseTab):
         # ================= Header =================
         header_layout = QHBoxLayout()
         header_label = QLabel("AutoTestQ")
-        header_label.setStyleSheet("font-size: 40px;")
         header_label.setObjectName("headerTitle")
         header_label.setAlignment(Qt.AlignCenter)  
         header_layout.addWidget(header_label)

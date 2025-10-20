@@ -17,90 +17,6 @@ class SetGenerator(BaseTab):
         self.experts = {}
 
     def init_ui(self):
-    #     self.setStyleSheet("""
-    #         SetGenerator {
-    #         background-color: #1e1e1e;
-    #     }
-    #     QWidget {
-    #         background-color: #1e1e1e;
-    #         color: #e0dcdc;;
-    #         font-family: Inter, Arial, sans-serif;
-    #         font-size: 12px;
-    #     }
-    #     QLabel {
-    #         color: #dcdcdc;
-    #         font-size: 12px;
-    #     }
-    #     QLabel#title {
-    #         font-size: 28px;
-    #         font-weight: bold;
-    #         color: #ffffff;
-    #     }
-    #     QLabel#subtitle {
-    #         font-size: 12px;
-    #         color: #a0a0a0;
-    #     }
-    #     QWidget#card {
-    #         background-color: #2b2b2b;
-    #         color: #000000;
-    #         border: 1px solid #3c3c3c;
-    #         border-radius: 6px;
-    #         padding: 6px;
-    #     }
-    #     QPushButton {
-    #         color: #ffffff;
-    #         background-color: #808791;
-    #         border: 1px solid #ffffff;
-    #         border-radius: 4px;
-    #         padding: 4px 8px;
-    #         font-size: 10px;
-    #         color: #ffffff;
-    #         height: 10px
-    #     }
-    #     QPushButton:hover {
-    #             background-color: #a0a8b0;
-    #             color: black;
-    #             border: 1px solid #ffcc00;
-    #         }
-        
-    #     QLineEdit {
-    #         border: 2px solid #555555;
-    #         border-radius: 5px;
-    #         padding: 4px 6px;
-    #         color: #ffffff;
-    #         font-size: 12px;
-    #         height: 10px;
-    #         width:20px
-    #     }
-    #     QTextEdit {
-    #         border: 1px solid #555555;
-    #         border-radius: 5px;
-    #         color: #ffffff;
-    #         font-family: Consolas;
-    #         font-size: 12px;
-    #     }
-    #     QTableWidget {
-    #         background-color: #2b2b2b;
-    #         color: #dcdcdc;
-    #         gridline-color: #444;
-    #         font-size: 12px;
-    #     }
-        # QHeaderView::section {
-        #     background-color: #333;
-        #     color: #dcdcdc;
-        #     padding: 2px;
-        #     font-size: 12px;
-        # }
-    #     QLabel#label {
-    #         margin-bottom: 0%;
-    #     }
-    #     QLineEdit#api_key {
-    #     margin-bottom: 0%;
-    # }
-    # """)
-
-        # self.layout.setContentsMargins(10, 10, 10, 10)
-        
         self.setStyleSheet("""
             SetGenerator {
                 background-color: #1e1e1e;
@@ -179,7 +95,6 @@ class SetGenerator(BaseTab):
         header = QVBoxLayout()
         header.setContentsMargins(0, 0, 0, 0)
         title = QLabel("SetGenerator")
-        title.setStyleSheet("font-size: 40px;")
         title.setAlignment(Qt.AlignCenter)
         title.setObjectName("title")
         subtitle = QLabel("Results below are ranked by a proprietary POW Scoring system...")
@@ -197,9 +112,6 @@ class SetGenerator(BaseTab):
         self.opt_files = QListWidget()
 
         self.pairs_box.setMaximumHeight(120)
-        self.opt_files.setMaximumHeight(61)
-
-        # ---------- SIZE POLICIES ----------
         self.opt_files.setMaximumHeight(65)
 
         self.pairs_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -227,15 +139,14 @@ class SetGenerator(BaseTab):
 
         # ---------- LEFT SECTION ----------
         pairs_header = QHBoxLayout()
-        pairs_header.setSpacing(1)
         pairs_header.addWidget(QLabel("Pairs/Tests Detected:"))
         pairs_header.addStretch()
         pairs_header.addWidget(QLabel("Show All:"))
         pairs_header.addWidget(self.show_all)
 
         left_layout = QVBoxLayout()
-        left_layout.setContentsMargins(0, 8, 0, 15)
-        left_layout.setSpacing(1)
+        left_layout.setContentsMargins(0, 15, 0, 10)
+        left_layout.setSpacing(8)
         left_layout.addLayout(pairs_header)
         left_layout.addWidget(self.pairs_box)
         left_layout.addStretch()
@@ -245,31 +156,27 @@ class SetGenerator(BaseTab):
 
         # ---------- RIGHT SECTION ----------
         api_layout = QVBoxLayout()
-        api_layout.setContentsMargins(0, 0, 0, 5)
+        api_layout.setContentsMargins(0, 10, 0, 0)
         api_layout.addWidget(QLabel("API Key:"))
-
-
-        # api_layout.setSpacing(5) 
+        api_layout.addWidget(self.api_key)
 
         opt_header = QHBoxLayout()
-        # opt_header.setContentsMargins(0, 0, 0, 0)
+        opt_header.setContentsMargins(0, 0, 0, 0)
         opt_header.addWidget(QLabel("Opt Files Used:"))
         opt_header.addStretch()
         opt_header.addWidget(self.select_files_btn)
-        # opt_header.setSpacing(0)
 
         right_layout = QVBoxLayout()
-        right_layout.setContentsMargins(0, 14, 0, 11)
-        right_layout.setSpacing(4)
+        right_layout.setContentsMargins(0, 12, 0, 5)
+        right_layout.setSpacing(10)
         right_layout.addLayout(api_layout)
-        right_layout.addWidget(self.api_key)
         right_layout.addLayout(opt_header)
         right_layout.addWidget(self.opt_files)
         right_layout.addStretch()
 
         right_widget = QWidget()
         right_widget.setLayout(right_layout)
-    
+
         # ---------- SPLITTER ----------
         splitter = QSplitter(Qt.Horizontal)
         splitter.addWidget(left_widget)
@@ -278,9 +185,8 @@ class SetGenerator(BaseTab):
         splitter.setStretchFactor(1, 1)
         splitter.setSizes([500, 500])
 
-        # ---------- MAIN LAYOUT ----------
-        headerlayout = QHBoxLayout()
-        # headerlayout.setContentsMargins(10, 10, 10, 10)
+        headerlayout = QVBoxLayout()
+        headerlayout.setContentsMargins(0, 0, 0, 0)
         headerlayout.addWidget(splitter)
         self.layout.addLayout(headerlayout)
 
@@ -307,9 +213,7 @@ class SetGenerator(BaseTab):
         right_layout = QHBoxLayout()
         right_layout.setContentsMargins(0, 20, 0, 0)
         self.sift_btn = QPushButton("SIFT SETS")
-        self.sift_btn.setFixedWidth(100)
         self.auto_sift_btn = QPushButton("AUTO SIFT")
-        self.auto_sift_btn.setFixedWidth(100)
         right_layout.addWidget(self.sift_btn)
         right_layout.addWidget(self.auto_sift_btn)
         filters.addLayout(right_layout)
