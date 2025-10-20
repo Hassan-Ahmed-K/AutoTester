@@ -93,6 +93,21 @@ class HomeUI(BaseTab):
         self.logout=QWidget()
         self.logout_layout=QHBoxLayout(self.logout)
         self.logout_btn = QPushButton("Logout")
+        self.logout_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #66BB6A;
+                border: 1px solid #ffcc00;
+            }
+        """)
+    
         self.logout_btn.setFixedHeight(40)
         self.logout_btn.setFixedWidth(300)
         self.logout_layout.addWidget(self.logout_btn)
