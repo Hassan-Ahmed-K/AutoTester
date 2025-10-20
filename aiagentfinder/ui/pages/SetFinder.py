@@ -31,8 +31,8 @@ class SetFinderUI(BaseTab):
         main_layout.addWidget(htm_dir_label)
 
         htm_dir_row = QHBoxLayout()
-        self.htm_dir_input = QLineEdit()
-        self.htm_dir_input.setPlaceholderText("Path to MT5 html directory...")
+        self.report_dir_input = QLineEdit()
+        self.report_dir_input.setPlaceholderText("Path to MT5 htm directory...")
 
         self.htm_dir_btn = QPushButton("Browse")
         icon = self.htm_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)
@@ -40,7 +40,7 @@ class SetFinderUI(BaseTab):
         self.htm_dir_btn.setMinimumWidth(100)
         # self.htm_dir_btn.clicked.connect(self.browse_htm_directory)
 
-        htm_dir_row.addWidget(self.htm_dir_input)
+        htm_dir_row.addWidget(self.report_dir_input)
         htm_dir_row.addWidget(self.htm_dir_btn)
         main_layout.addLayout(htm_dir_row)
         main_layout.addSpacing(20)
@@ -218,8 +218,45 @@ class SetFinderUI(BaseTab):
 
         self.start_button = QPushButton("Start")
         self.start_button.setMinimumWidth(200)
-   
+        self.start_button.setStyleSheet("""
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #66BB6A;
+                border: 1px solid #ffcc00;
+            }
+        """)
         start_button_row.addWidget(self.start_button)
+
+
+        self.reset_button = QPushButton("Reset")
+        self.reset_button.setMinimumWidth(200)
+        self.reset_button.setStyleSheet("""
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #66BB6A;
+                border: 1px solid #ffcc00;
+            }
+        """)
+
+        
+        self.reset_button.hide()
+        
+        start_button_row.addWidget(self.reset_button)
+
 
         main_layout.addLayout(start_button_row)
 

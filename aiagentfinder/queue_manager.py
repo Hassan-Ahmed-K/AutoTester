@@ -183,6 +183,7 @@ class QueueManager:
                     QMessageBox.warning(self.ui, "Error", "The tests list is empty. Nothing to export.")
                     raise ValueError("The tests list is empty. Nothing to export.")
 
+
                 # Ensure consistent column order from the first test
                 header_keys = list(self.tests[0].keys())
                 Logger.debug(f"Using header keys: {header_keys}")
@@ -190,21 +191,13 @@ class QueueManager:
                 Logger.info(f"Writing {len(self.tests)} tests to {path}")
 
                 with open(path, "w", encoding="utf-8") as f:
-                    # Write header
                     header = ",".join(header_keys)
                     f.write(header + "\n")
                     Logger.debug(f"Header written: {header}")
 
                     # Write each row by following header key order
                     for idx, test in enumerate(self.tests, start=1):
-                        row_values = []
-                        for key in header_keys:
-                            value = str(test.get(key, ""))
-                            # ✅ If value contains a comma, quote it
-                            if "," in value or '"' in value:
-                                value = '"' + value.replace('"', '""') + '"'  # escape quotes
-                            row_values.append(value)
-                        row = ",".join(row_values)
+                        row = ",".join(str(test.get(key, "")) for key in header_keys)
                         f.write(row + "\n")
                         Logger.debug(f"Row {idx} written: {row}")
 
