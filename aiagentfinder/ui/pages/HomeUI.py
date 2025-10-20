@@ -13,74 +13,74 @@ class HomeUI(BaseTab):
         # self.experts = {}
     def init_ui(self):
         
-        self.setStyleSheet("""
-         HomeUI {
-            background-color: #1e1e1e;
-        }
+    #     self.setStyleSheet("""
+    #      HomeUI {
+    #         background-color: #1e1e1e;
+    #     }
                            
-        /* General widgets */
-        QWidget {
-            background-color: #1e1e1e;   /* card-like grey */
-            color: #dcdcdc;
-            font-family: Inter, Arial, sans-serif;
-            font-size: 18px;
-        }
+    #     /* General widgets */
+    #     QWidget {
+    #         background-color: #1e1e1e;   /* card-like grey */
+    #         color: #dcdcdc;
+    #         font-family: Inter, Arial, sans-serif;
+    #         font-size: 18px;
+    #     }
                            
-        QLabel {
-            color: #dcdcdc;
-            font-size: 15px;
-        }
+    #     QLabel {
+    #         color: #dcdcdc;
+    #         font-size: 15px;
+    #     }
 
-        /* Header Label */
-        QLabel#headerLabel {
-            font-size: 40px;
-            font-weight: bold;
-            color: #ffffff;
-        }
+    #     /* Header Label */
+    #     QLabel#headerLabel {
+    #         font-size: 40px;
+    #         font-weight: bold;
+    #         color: #ffffff;
+    #     }
 
-        /* Login Label */
-        QLabel#loginLabel {
-            font-size: 30px;
-            font-weight: bold;
-            width: 500px;
-            color: #e6e6e6;
-            border: 5px
-        }
+    #     /* Login Label */
+    #     QLabel#loginLabel {
+    #         font-size: 30px;
+    #         font-weight: bold;
+    #         width: 500px;
+    #         color: #e6e6e6;
+    #         border: 5px
+    #     }
 
-        /* LineEdits (Email & Password) */
-        QLineEdit {
-            background-color: #2b2b2b;
-            border: 2px solid #555555;
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-size: 16px;
-            color: #ffffff;
-        }
-        QLineEdit:focus {
-            border: 2px solid #808791;
-            background-color: #242424;
-        }
+    #     /* LineEdits (Email & Password) */
+    #     QLineEdit {
+    #         background-color: #2b2b2b;
+    #         border: 2px solid #555555;
+    #         border-radius: 6px;
+    #         padding: 8px 12px;
+    #         font-size: 16px;
+    #         color: #ffffff;
+    #     }
+    #     QLineEdit:focus {
+    #         border: 2px solid #808791;
+    #         background-color: #242424;
+    #     }
 
-        /* Buttons */
-        QPushButton {
-            background-color: #808791;
-            border: none;
-            border-radius: 6px;
-            color: #ffffff;
-            padding: 8px 16px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        QPushButton:hover {
-            background-color: #9a9fa6;  /* lighter grey */
-        }
-        QPushButton:pressed {
-            background-color: #6b6f75;  /* darker grey */
-        }
-        QMessageBox { font-size: 12px; }
-        QMessageBox QPushButton { font-size: 14px; }
+    #     /* Buttons */
+    #     QPushButton {
+    #         background-color: #808791;
+    #         border: none;
+    #         border-radius: 6px;
+    #         color: #ffffff;
+    #         padding: 8px 16px;
+    #         font-size: 16px;
+    #         font-weight: bold;
+    #     }
+    #     QPushButton:hover {
+    #         background-color: #9a9fa6;  /* lighter grey */
+    #     }
+    #     QPushButton:pressed {
+    #         background-color: #6b6f75;  /* darker grey */
+    #     }
+    #     QMessageBox { font-size: 12px; }
+    #     QMessageBox QPushButton { font-size: 14px; }
         
-    """)
+    # """)
 
         # ========== LAYOUT ==========
 
@@ -92,7 +92,8 @@ class HomeUI(BaseTab):
         # ---------- Header ----------
         header_layout = QHBoxLayout()
         header_label = QLabel("AI Agent Finder")
-        header_label.setObjectName("headerLabel")  
+        header_label.setObjectName("headerLabel") 
+        header_label.setStyleSheet("font-size: 40px;") 
         header_label.setAlignment(Qt.AlignCenter)
         header_layout.addWidget(header_label)
         main_layout.addLayout(header_layout)
@@ -153,7 +154,7 @@ class HomeUI(BaseTab):
 
 
         # Apply final layout
-        self.layout.addLayout(main_layout)
+        self.main_layout.addLayout(main_layout)
 
      
         self.controller = HomeController(self)

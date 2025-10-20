@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QScrollArea, QSizePolicy,QLabel,QHBoxLayout
 )
 from PyQt5.QtCore import Qt
+import os
 
 
 class BaseTab(QWidget):
@@ -11,7 +12,8 @@ class BaseTab(QWidget):
         super().__init__(parent)
 
         self.title = title
-
+        
+        self.load_stylesheet()
         # Outer layout
         main_layout = QVBoxLayout(self)
         self.setAutoFillBackground(True)
@@ -91,12 +93,14 @@ class BaseTab(QWidget):
         self.content.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         # Use a safe attribute name (avoid overwriting QWidget.layout())
-        self.layout = QVBoxLayout(self.content)
-        self.layout.setContentsMargins(10, 5, 10, 10)
+        self.main_layout = QVBoxLayout(self.content)
+        self.content.setLayout(self.main_layout)
+        self.main_layout.setContentsMargins(10, 5, 10, 10)
+
+
 
         self.scroll.setWidget(self.content)
 
-        self.setStyleSheet("background-color: #1e1e1e;")
 
         self.init_ui()
 
@@ -119,3 +123,12 @@ class BaseTab(QWidget):
 
         # horizontal: keep it off (vertical only)
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+    def load_stylesheet(self):
+        base_dir = os.path.dirname(os.path.dirname(__file__))  
+        qss_path = os.path.join(base_dir, "style", "style.qss")
+        if os.path.exists(qss_path):
+            with open(qss_path, "r") as f:
+                self.setStyleSheet(f.read())
+        else:
+            print(f"⚠️ QSS file not found at {qss_path}")
+
