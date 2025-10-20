@@ -7865,3 +7865,467 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-20 19:10:14] [DEBUG] Switching to stack page 3
 [2025-10-20 19:10:14] [INFO] Pairs box updated with report name: None
 [2025-10-20 19:10:14] [INFO] ⚠️ No data to display.
+[2025-10-20 21:33:56] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:33:56] [DEBUG] Switching to stack page 0
+[2025-10-20 21:33:57] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:33:57] [DEBUG] Switching to stack page 1
+[2025-10-20 21:35:31] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-20 21:35:33] [INFO] Cache loaded: {'authenticated': True, 'token': '77ad52ca-8f3d-44ae-83d4-07b58898f806', 'validation_time': 1760966427.2986052}
+[2025-10-20 21:35:34] [INFO] Date range option selected: Entire history
+[2025-10-20 21:35:34] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:35:34] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:35:34] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:35:34] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:35:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-20 21:35:35] [DEBUG] Switching to stack page 0
+[2025-10-20 21:35:36] [INFO] No valid cache found, user not authenticated
+[2025-10-20 21:35:47] [INFO] User admin@example.com logged in successfully.
+[2025-10-20 21:35:49] [INFO] User interface updated after login
+[2025-10-20 21:35:50] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:35:50] [DEBUG] Switching to stack page 1
+[2025-10-20 21:37:20] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:37:22] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:37:22] [INFO] Date range option selected: Entire history
+[2025-10-20 21:37:22] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:37:22] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:37:22] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:37:23] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:37:23] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:37:23] [DEBUG] Switching to stack page 0
+[2025-10-20 21:37:24] [INFO] User authenticated via cache
+[2025-10-20 21:37:26] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:37:26] [DEBUG] Switching to stack page 1
+[2025-10-20 21:38:04] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:38:07] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:38:07] [INFO] Date range option selected: Entire history
+[2025-10-20 21:38:07] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:38:07] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:38:07] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:38:08] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:38:08] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:38:08] [DEBUG] Switching to stack page 0
+[2025-10-20 21:38:09] [INFO] User authenticated via cache
+[2025-10-20 21:38:13] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:38:13] [DEBUG] Switching to stack page 1
+[2025-10-20 21:38:22] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-20 21:38:22] [DEBUG] Switching to stack page 2
+[2025-10-20 21:38:26] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 21:38:26] [DEBUG] Switching to stack page 3
+[2025-10-20 21:38:26] [INFO] Pairs box updated with report name: None
+[2025-10-20 21:38:26] [INFO] ⚠️ No data to display.
+[2025-10-20 21:38:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:38:35] [DEBUG] Switching to stack page 0
+[2025-10-20 21:38:36] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:38:36] [DEBUG] Switching to stack page 1
+[2025-10-20 21:39:33] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:39:35] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:39:35] [INFO] Date range option selected: Entire history
+[2025-10-20 21:39:35] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:39:35] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:39:35] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:39:35] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:39:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:39:35] [DEBUG] Switching to stack page 0
+[2025-10-20 21:39:36] [INFO] User authenticated via cache
+[2025-10-20 21:39:38] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:39:38] [DEBUG] Switching to stack page 1
+[2025-10-20 21:39:51] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-20 21:39:51] [DEBUG] Switching to stack page 2
+[2025-10-20 21:40:29] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:40:32] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:40:32] [INFO] Date range option selected: Entire history
+[2025-10-20 21:40:32] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:40:32] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:40:32] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:40:33] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:40:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:40:33] [DEBUG] Switching to stack page 0
+[2025-10-20 21:40:33] [INFO] User authenticated via cache
+[2025-10-20 21:40:35] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:40:35] [DEBUG] Switching to stack page 1
+[2025-10-20 21:47:17] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:47:20] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:47:20] [INFO] Date range option selected: Entire history
+[2025-10-20 21:47:20] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:47:20] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:47:20] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:47:21] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:47:21] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:47:21] [DEBUG] Switching to stack page 0
+[2025-10-20 21:47:22] [INFO] User authenticated via cache
+[2025-10-20 21:47:24] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:47:24] [DEBUG] Switching to stack page 1
+[2025-10-20 21:49:42] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:49:44] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:49:44] [INFO] Date range option selected: Entire history
+[2025-10-20 21:49:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:49:44] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:49:44] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 21:49:45] [INFO] Set Generator Controller Initialized
+[2025-10-20 21:49:45] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 21:49:45] [DEBUG] Switching to stack page 0
+[2025-10-20 21:49:46] [INFO] User authenticated via cache
+[2025-10-20 21:49:48] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 21:49:48] [DEBUG] Switching to stack page 1
+[2025-10-20 21:50:08] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-20 21:50:08] [DEBUG] Switching to stack page 2
+[2025-10-20 21:50:09] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 21:50:09] [DEBUG] Switching to stack page 3
+[2025-10-20 21:50:09] [INFO] Pairs box updated with report name: None
+[2025-10-20 21:50:09] [INFO] ⚠️ No data to display.
+[2025-10-20 21:51:46] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-20 21:51:46] [DEBUG] Switching to stack page 2
+[2025-10-20 21:59:13] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 21:59:16] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 21:59:16] [INFO] Date range option selected: Entire history
+[2025-10-20 21:59:16] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 21:59:16] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 21:59:16] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:00:05] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:00:08] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:00:08] [INFO] Date range option selected: Entire history
+[2025-10-20 22:00:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:00:08] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:00:08] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:00:09] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:00:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:00:09] [DEBUG] Switching to stack page 0
+[2025-10-20 22:00:09] [INFO] User authenticated via cache
+[2025-10-20 22:00:11] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:00:11] [DEBUG] Switching to stack page 3
+[2025-10-20 22:00:11] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:00:11] [INFO] ⚠️ No data to display.
+[2025-10-20 22:00:59] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:01:01] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:01:02] [INFO] Date range option selected: Entire history
+[2025-10-20 22:01:02] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:01:02] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:01:02] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:01:02] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:01:02] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:01:02] [DEBUG] Switching to stack page 0
+[2025-10-20 22:01:03] [INFO] User authenticated via cache
+[2025-10-20 22:01:04] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:01:04] [DEBUG] Switching to stack page 3
+[2025-10-20 22:01:04] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:01:04] [INFO] ⚠️ No data to display.
+[2025-10-20 22:01:31] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:01:34] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:01:34] [INFO] Date range option selected: Entire history
+[2025-10-20 22:01:34] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:01:34] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:01:34] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:01:35] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:01:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:01:35] [DEBUG] Switching to stack page 0
+[2025-10-20 22:01:36] [INFO] User authenticated via cache
+[2025-10-20 22:01:38] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:01:38] [DEBUG] Switching to stack page 3
+[2025-10-20 22:01:38] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:01:38] [INFO] ⚠️ No data to display.
+[2025-10-20 22:02:06] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:02:09] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:02:09] [INFO] Date range option selected: Entire history
+[2025-10-20 22:02:09] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:02:09] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:02:09] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:02:09] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:02:10] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:02:10] [DEBUG] Switching to stack page 0
+[2025-10-20 22:02:10] [INFO] User authenticated via cache
+[2025-10-20 22:02:12] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:02:12] [DEBUG] Switching to stack page 3
+[2025-10-20 22:02:12] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:02:12] [INFO] ⚠️ No data to display.
+[2025-10-20 22:02:28] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-20 22:02:28] [DEBUG] Switching to stack page 2
+[2025-10-20 22:02:29] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-10-20 22:02:29] [DEBUG] Switching to stack page 1
+[2025-10-20 22:06:34] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:06:34] [DEBUG] Switching to stack page 3
+[2025-10-20 22:06:34] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:06:34] [INFO] ⚠️ No data to display.
+[2025-10-20 22:12:13] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:12:16] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:12:16] [INFO] Date range option selected: Entire history
+[2025-10-20 22:12:16] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:12:16] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:12:16] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:12:17] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:12:17] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:12:17] [DEBUG] Switching to stack page 0
+[2025-10-20 22:12:18] [INFO] User authenticated via cache
+[2025-10-20 22:12:20] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:12:20] [DEBUG] Switching to stack page 3
+[2025-10-20 22:12:20] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:12:20] [INFO] ⚠️ No data to display.
+[2025-10-20 22:14:36] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:14:38] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:14:38] [INFO] Date range option selected: Entire history
+[2025-10-20 22:14:38] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:14:38] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:14:38] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:14:39] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:14:39] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:14:39] [DEBUG] Switching to stack page 0
+[2025-10-20 22:14:40] [INFO] User authenticated via cache
+[2025-10-20 22:14:42] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:14:42] [DEBUG] Switching to stack page 3
+[2025-10-20 22:14:42] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:14:42] [INFO] ⚠️ No data to display.
+[2025-10-20 22:27:43] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:27:46] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:27:46] [INFO] Date range option selected: Entire history
+[2025-10-20 22:27:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:27:46] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:27:46] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:27:47] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:27:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:27:47] [DEBUG] Switching to stack page 0
+[2025-10-20 22:27:47] [INFO] User authenticated via cache
+[2025-10-20 22:27:51] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:27:51] [DEBUG] Switching to stack page 3
+[2025-10-20 22:27:51] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:27:51] [INFO] ⚠️ No data to display.
+[2025-10-20 22:29:21] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:29:24] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:29:24] [INFO] Date range option selected: Entire history
+[2025-10-20 22:29:24] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:29:24] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:29:24] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:29:25] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:29:26] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:29:26] [DEBUG] Switching to stack page 0
+[2025-10-20 22:29:26] [INFO] User authenticated via cache
+[2025-10-20 22:29:30] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:29:30] [DEBUG] Switching to stack page 3
+[2025-10-20 22:29:30] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:29:30] [INFO] ⚠️ No data to display.
+[2025-10-20 22:30:45] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:30:48] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:30:49] [INFO] Date range option selected: Entire history
+[2025-10-20 22:30:49] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:30:49] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:30:49] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:30:50] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:30:50] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:30:50] [DEBUG] Switching to stack page 0
+[2025-10-20 22:30:51] [INFO] User authenticated via cache
+[2025-10-20 22:30:54] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:30:54] [DEBUG] Switching to stack page 3
+[2025-10-20 22:30:54] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:30:54] [INFO] ⚠️ No data to display.
+[2025-10-20 22:34:27] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:34:29] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:34:29] [INFO] Date range option selected: Entire history
+[2025-10-20 22:34:29] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:34:29] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:34:29] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:34:30] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:34:30] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:34:30] [DEBUG] Switching to stack page 0
+[2025-10-20 22:34:31] [INFO] User authenticated via cache
+[2025-10-20 22:34:33] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:34:33] [DEBUG] Switching to stack page 3
+[2025-10-20 22:34:33] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:34:33] [INFO] ⚠️ No data to display.
+[2025-10-20 22:38:14] [INFO] ❌ No valid cache found, user not authenticated
+[2025-10-20 22:38:16] [INFO] Cache loaded: {'authenticated': True, 'token': '76071cca-e6ea-4d07-84da-875995dd0e26', 'validation_time': 1760978147.0281982}
+[2025-10-20 22:38:17] [INFO] Date range option selected: Entire history
+[2025-10-20 22:38:17] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:38:17] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:38:17] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:38:17] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:38:17] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-10-20 22:38:17] [DEBUG] Switching to stack page 0
+[2025-10-20 22:38:18] [INFO] No valid cache found, user not authenticated
+[2025-10-20 22:38:30] [INFO] User admin@example.com logged in successfully.
+[2025-10-20 22:38:32] [INFO] User interface updated after login
+[2025-10-20 22:38:33] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:38:33] [DEBUG] Switching to stack page 3
+[2025-10-20 22:38:33] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:38:33] [INFO] ⚠️ No data to display.
+[2025-10-20 22:46:09] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:46:12] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:46:12] [INFO] Date range option selected: Entire history
+[2025-10-20 22:46:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:46:12] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:46:12] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:47:18] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:47:18] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:47:19] [INFO] Date range option selected: Entire history
+[2025-10-20 22:47:19] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:47:19] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:47:19] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:48:55] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:48:56] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:48:56] [INFO] Date range option selected: Entire history
+[2025-10-20 22:48:56] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:48:56] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:48:56] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:48:56] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:48:56] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:48:56] [DEBUG] Switching to stack page 0
+[2025-10-20 22:48:56] [INFO] User authenticated via cache
+[2025-10-20 22:48:58] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:48:58] [DEBUG] Switching to stack page 3
+[2025-10-20 22:48:58] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:48:58] [INFO] ⚠️ No data to display.
+[2025-10-20 22:50:43] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:50:43] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:50:43] [INFO] Date range option selected: Entire history
+[2025-10-20 22:50:43] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:50:43] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:50:43] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:51:05] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:51:06] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:51:06] [INFO] Date range option selected: Entire history
+[2025-10-20 22:51:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:51:06] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:51:06] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:51:06] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:51:06] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:51:06] [DEBUG] Switching to stack page 0
+[2025-10-20 22:51:06] [INFO] User authenticated via cache
+[2025-10-20 22:51:08] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:51:08] [DEBUG] Switching to stack page 3
+[2025-10-20 22:51:08] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:51:08] [INFO] ⚠️ No data to display.
+[2025-10-20 22:52:09] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:52:09] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:52:09] [INFO] Date range option selected: Entire history
+[2025-10-20 22:52:09] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:52:09] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:52:09] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:52:09] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:52:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:52:09] [DEBUG] Switching to stack page 0
+[2025-10-20 22:52:09] [INFO] User authenticated via cache
+[2025-10-20 22:52:11] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:52:11] [DEBUG] Switching to stack page 3
+[2025-10-20 22:52:11] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:52:11] [INFO] ⚠️ No data to display.
+[2025-10-20 22:53:01] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:53:01] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:53:01] [INFO] Date range option selected: Entire history
+[2025-10-20 22:53:01] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:53:01] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:53:01] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:53:01] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:53:02] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:53:02] [DEBUG] Switching to stack page 0
+[2025-10-20 22:53:02] [INFO] User authenticated via cache
+[2025-10-20 22:53:04] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:53:04] [DEBUG] Switching to stack page 3
+[2025-10-20 22:53:04] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:53:04] [INFO] ⚠️ No data to display.
+[2025-10-20 22:53:20] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:53:21] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:53:21] [INFO] Date range option selected: Entire history
+[2025-10-20 22:53:21] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:53:21] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:53:21] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:53:21] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:53:21] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:53:21] [DEBUG] Switching to stack page 0
+[2025-10-20 22:53:21] [INFO] User authenticated via cache
+[2025-10-20 22:53:23] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-10-20 22:53:23] [DEBUG] Switching to stack page 2
+[2025-10-20 22:53:24] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:53:24] [DEBUG] Switching to stack page 3
+[2025-10-20 22:53:24] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:53:24] [INFO] ⚠️ No data to display.
+[2025-10-20 22:53:57] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:53:57] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:53:57] [INFO] Date range option selected: Entire history
+[2025-10-20 22:53:57] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:53:57] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:53:57] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:53:57] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:53:57] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:53:57] [DEBUG] Switching to stack page 0
+[2025-10-20 22:53:58] [INFO] User authenticated via cache
+[2025-10-20 22:53:59] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:53:59] [DEBUG] Switching to stack page 3
+[2025-10-20 22:53:59] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:53:59] [INFO] ⚠️ No data to display.
+[2025-10-20 22:54:17] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 22:54:18] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 22:54:18] [INFO] Date range option selected: Entire history
+[2025-10-20 22:54:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 22:54:18] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 22:54:18] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 22:54:18] [INFO] Set Generator Controller Initialized
+[2025-10-20 22:54:18] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-20 22:54:18] [DEBUG] Switching to stack page 0
+[2025-10-20 22:54:18] [INFO] User authenticated via cache
+[2025-10-20 22:54:20] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-20 22:54:20] [DEBUG] Switching to stack page 3
+[2025-10-20 22:54:20] [INFO] Pairs box updated with report name: None
+[2025-10-20 22:54:20] [INFO] ⚠️ No data to display.
+[2025-10-20 23:17:32] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:17:32] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:17:32] [INFO] Date range option selected: Entire history
+[2025-10-20 23:17:32] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:17:32] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:17:32] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:19:01] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:19:02] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:19:02] [INFO] Date range option selected: Entire history
+[2025-10-20 23:19:02] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:19:02] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:19:02] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:19:15] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:19:16] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:19:16] [INFO] Date range option selected: Entire history
+[2025-10-20 23:19:16] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:19:16] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:19:16] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:21:07] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:21:08] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:21:08] [INFO] Date range option selected: Entire history
+[2025-10-20 23:21:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:21:08] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:21:08] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:23:43] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:23:43] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:23:43] [INFO] Date range option selected: Entire history
+[2025-10-20 23:23:43] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:23:43] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:23:43] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:25:29] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:25:31] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:25:31] [INFO] Date range option selected: Entire history
+[2025-10-20 23:25:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:25:31] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:25:31] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:28:04] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:28:06] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:28:06] [INFO] Date range option selected: Entire history
+[2025-10-20 23:28:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:28:06] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:28:06] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:29:19] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:29:19] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:29:20] [INFO] Date range option selected: Entire history
+[2025-10-20 23:29:20] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:29:20] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:29:20] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:31:32] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:31:33] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:31:33] [INFO] Date range option selected: Entire history
+[2025-10-20 23:31:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:31:33] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:31:33] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:34:06] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:34:07] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:34:07] [INFO] Date range option selected: Entire history
+[2025-10-20 23:34:07] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:34:07] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:34:07] [DEBUG] Forward date disabled, set to test end date
+[2025-10-20 23:37:33] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-20 23:37:33] [INFO] Cache loaded: {'authenticated': True, 'token': '1a9500f2-0d41-4919-bf6e-af25be5eac2b', 'validation_time': 1760981910.6240506}
+[2025-10-20 23:37:33] [INFO] Date range option selected: Entire history
+[2025-10-20 23:37:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Oct 20 2025
+[2025-10-20 23:37:33] [INFO] Adjusting forward date based on selection: No
+[2025-10-20 23:37:33] [DEBUG] Forward date disabled, set to test end date

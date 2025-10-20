@@ -215,7 +215,7 @@ class AutoBatchUI(BaseTab):
 
         # ================= Left Panel =================
         left_layout = QVBoxLayout()
-        # left_layout.setSpacing(10)
+        left_layout.setSpacing(10)
         left_layout.setContentsMargins(0, 0, 10, 0)
         left_layout.addWidget(QLabel("Pairs to Test:"))
 
@@ -230,9 +230,9 @@ class AutoBatchUI(BaseTab):
 
         # Queue controls
         queue_controls = QGridLayout()
-        queue_controls.setSpacing(5)
-        # queue_controls.setHorizontalSpacing(8)
-        # queue_controls.setVerticalSpacing(8)
+        # queue_controls.setSpacing(5)
+        queue_controls.setHorizontalSpacing(8)
+        queue_controls.setVerticalSpacing(8)
 
         # Define buttons
         self.move_up_btn = QPushButton("MOVE ▲")
@@ -272,7 +272,7 @@ class AutoBatchUI(BaseTab):
 
         self.testfile_input = QLineEdit()
         self.expert_input = QComboBox()
-        # self.expert_input.setMinimumWidth(350)  # Set the minimum width()
+        self.expert_input.setMinimumWidth(350)  # Set the minimum width()
         self.expert_input.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.expert_input.addItems(["Please Attach Data File"])
         self.expert_button = QPushButton("Browse")
@@ -425,12 +425,15 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(self.symbol_input, 3, 1, 1, 2)
         right_layout.addWidget(QLabel("Timeframe:"), 3, 3)
         right_layout.addWidget(self.timeframe_combo, 3, 4, 1, 2)
+        
+
 
         # Row 4: Symbol Prefix & Suffix
         right_layout.addWidget(QLabel("Symbol Prefix:"), 4, 0)
         right_layout.addWidget(self.symbol_prefix, 4, 1, 1, 2)
         right_layout.addWidget(QLabel("Symbol Suffix:"), 4, 3)
         right_layout.addWidget(self.symbol_suffix, 4, 4, 1, 2)
+
 
         # Row 5: Date From & To
 
@@ -474,6 +477,8 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(QLabel("Optimization Criterion:"), 12, 0)
         right_layout.addWidget(self.criterion_input, 12, 1, 1, 3)
         right_layout.addWidget(self.criterion_copy_to_all, 12, 4, 1, 2)
+
+
         
         # ================= Bottom =================
         bottom_layout = QHBoxLayout()
