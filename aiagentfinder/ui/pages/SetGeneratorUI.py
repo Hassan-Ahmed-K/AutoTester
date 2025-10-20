@@ -549,6 +549,7 @@ class SetGenerator(BaseTab):
         # ----- TABLE -----
         self.table_widget = QWidget()
         table_layout = QVBoxLayout(self.table_widget)
+        table_layout.setAlignment(Qt.AlignTop)
         table_layout.setContentsMargins(0, 0, 0, 0)
 
         self.table = QTableWidget(0, 10)

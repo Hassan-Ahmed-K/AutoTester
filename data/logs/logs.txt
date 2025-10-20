@@ -8442,3 +8442,18 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 [2025-10-21 00:07:46] [DEBUG] Switching to stack page 3
 [2025-10-21 00:07:46] [INFO] Pairs box updated with report name: None
 [2025-10-21 00:07:46] [INFO] ⚠️ No data to display.
+[2025-10-21 00:13:27] [INFO] ✅ Valid cache found, user authenticated
+[2025-10-21 00:13:29] [INFO] Cache loaded: {'authenticated': True, 'token': '48296443-61a2-47f9-b0f9-fd1307d0fee4', 'validation_time': 1760986280.9975953}
+[2025-10-21 00:13:29] [INFO] Date range option selected: Entire history
+[2025-10-21 00:13:29] [SUCCESS] ✅ Date range set: 1970-01-01 → Tue Oct 21 2025
+[2025-10-21 00:13:29] [INFO] Adjusting forward date based on selection: No
+[2025-10-21 00:13:29] [DEBUG] Forward date disabled, set to test end date
+[2025-10-21 00:13:30] [INFO] Set Generator Controller Initialized
+[2025-10-21 00:13:30] [INFO] Set Generator Controller Initialized
+[2025-10-21 00:13:30] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-10-21 00:13:30] [DEBUG] Switching to stack page 0
+[2025-10-21 00:13:30] [INFO] User authenticated via cache
+[2025-10-21 00:13:32] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-10-21 00:13:32] [DEBUG] Switching to stack page 3
+[2025-10-21 00:13:32] [INFO] Pairs box updated with report name: None
+[2025-10-21 00:13:32] [INFO] ⚠️ No data to display.
