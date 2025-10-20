@@ -1,6 +1,6 @@
 # aiagentfinder/ui/main_window.py
 
-from PyQt5.QtWidgets import QMainWindow, QTabWidget , QScrollArea, QSizePolicy,QWidget,QHBoxLayout,QListWidget,QListWidgetItem,QStackedWidget,QVBoxLayout,QPushButton,QSplitter
+from PyQt5.QtWidgets import QMainWindow, QTabWidget , QScrollArea, QSizePolicy,QWidget,QHBoxLayout,QListWidget,QListWidgetItem,QStackedWidget,QVBoxLayout,QPushButton
 from PyQt5.QtGui import QIcon
 from aiagentfinder.ui.pages.AutoBatchUI import AutoBatchUI
 from aiagentfinder.ui.pages.SetGeneratorUI import SetGenerator
@@ -95,7 +95,34 @@ class MainWindow(QMainWindow):
                 background: #787a7d;
                 color: white;
             }
+             QToolTip {
+                background-color:#2b2b2b;
+                color: #dcdcdc;
+                border: 1px solid #555555;
+                border-radius: 4px;
+                font-size: 10px;
+            }
         """)
+
+        # Home
+        home_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\home-7-24.png"), "Home")
+        home_item.setToolTip("Home")
+        self.nav_list.addItem(home_item)
+
+        # Auto Batch
+        batch_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch")
+        batch_item.setToolTip("Auto Batch")
+        self.nav_list.addItem(batch_item)
+
+        # Set Finder
+        finder_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder")
+        finder_item.setToolTip("Set Finder")
+        self.nav_list.addItem(finder_item)
+
+        # Set Generator
+        generator_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator")
+        generator_item.setToolTip("Set Generator")
+        self.nav_list.addItem(generator_item)
 
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\home-7-24.png"), "Home"))
         self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch"))

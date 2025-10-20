@@ -90,6 +90,87 @@ class QueueManager:
                 self.tests =self.tests + json.load(f)
             self.refresh_queue()
 
+    # def export_template(self):
+    #     Logger.info("📤 Export template initiated.")
+    #     path, _ = QFileDialog.getSaveFileName(self.ui, "Export Template", "", "CSV Files (*.csv)")
+    #     Logger.debug(f"Save dialog returned path: {path}")
+
+    #     if path:
+    #         try:
+    #             if not self.tests:
+    #                 Logger.warning("⚠️ The tests list is empty. Nothing to export.")
+    #                 QMessageBox.warning(self.ui, "Error", "The tests list is empty. Nothing to export.")
+    #                 raise ValueError("The tests list is empty. Nothing to export.")
+
+
+    #             # Ensure consistent column order from the first test
+    #             header_keys = list(self.tests[0].keys())
+    #             Logger.debug(f"Using header keys: {header_keys}")
+
+    #             Logger.info(f"Writing {len(self.tests)} tests to {path}")
+
+    #             with open(path, "w", encoding="utf-8") as f:
+            
+    #                 header = ",".join(header_keys)
+    #                 f.write(header + "\n")
+    #                 Logger.debug(f"Header written: {header}")
+
+    #                 # Write each row by following header key order
+    #                 for idx, test in enumerate(self.tests, start=1):
+    #                     row = ",".join(str(test.get(key, "")) for key in header_keys)
+    #                     f.write(row + "\n")
+    #                     Logger.debug(f"Row {idx} written: {row}")
+
+    #             Logger.success(f"✅ Export completed successfully! File saved at {path}")
+
+    #         except ValueError as ve:
+    #             Logger.error(f"❌ Export aborted: {ve}")
+
+    #         except Exception as e:
+    #             Logger.error(f"❌ Unexpected error exporting template: {e}")
+    #     else:
+    #         Logger.info("Export template cancelled 
+    # def export_template(self):
+    #     Logger.info("📤 Export template initiated.")
+        
+    #     # Let user choose save location
+    #     path, _ = QFileDialog.getSaveFileName(self.ui, "Export Template", "", "CSV Files (*.csv)")
+    #     Logger.debug(f"Save dialog returned path: {path}")
+
+    #     if not path:
+    #         Logger.info("Export template cancelled by user.")
+    #         return
+
+    #     try:
+    #         # Validate tests list
+    #         if not hasattr(self, "tests") or not self.tests:
+    #             Logger.warning("⚠️ The tests list is empty. Nothing to export.")
+    #             QMessageBox.warning(self.ui, "Export Error", "The tests list is empty. Nothing to export.")
+    #             raise ValueError("The tests list is empty. Nothing to export.")
+
+    #         # Use consistent header order from first test
+    #         header_keys = list(self.tests[0].keys())
+    #         Logger.debug(f"Using header keys: {header_keys}")
+
+    #         Logger.info(f"Writing {len(self.tests)} tests to {path}")
+
+    #         with open(path, "w", newline='', encoding="utf-8") as f:
+    #             writer = csv.DictWriter(f, fieldnames=header_keys)
+    #             writer.writeheader()
+    #             writer.writerows(self.tests)
+
+    #         Logger.success(f"✅ Export completed successfully! File saved at {path}")
+
+    #     except ValueError as ve:
+    #         Logger.error(f"❌ Export aborted: {ve}")
+
+    #     except Exception as e:
+    #         Logger.error(f"❌ Unexpected error exporting template: {e}")
+    #         QMessageBox.critical(self.ui, "Unexpected Error", f"An unexpected error occurred: {e}")
+
+    #     else:
+    #         Logger.info("Export operation finished without exceptions.")
+
     def export_template(self):
         Logger.info("📤 Export template initiated.")
         path, _ = QFileDialog.getSaveFileName(self.ui, "Export Template", "", "CSV Files (*.csv)")
@@ -110,7 +191,6 @@ class QueueManager:
                 Logger.info(f"Writing {len(self.tests)} tests to {path}")
 
                 with open(path, "w", encoding="utf-8") as f:
-            
                     header = ",".join(header_keys)
                     f.write(header + "\n")
                     Logger.debug(f"Header written: {header}")
@@ -130,6 +210,8 @@ class QueueManager:
                 Logger.error(f"❌ Unexpected error exporting template: {e}")
         else:
             Logger.info("Export template cancelled by user.")
+
+
     # ---------------- Extra Features ----------------
     def create_non_correlated_list(self):
         result = {t["symbol"]: t for t in self.tests}.values()  # deduplicate by symbol
