@@ -14,66 +14,7 @@ class SetFinderUI(BaseTab):
         super().__init__("Set Finder", parent)
 
     def init_ui(self):
-        # self.setStyleSheet(""" 
-        #     SetFinderUI {
-        #         background-color: #1e1e1e;
-        #     }
 
-        #     QWidget {
-        #         background-color: #1e1e1e;
-        #         color: #e0dcdc;
-        #         font-family: Inter;
-        #         font-size: 12px;
-        #         line-height: 14px;
-        #     }
-
-        #     QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
-        #         border: 2px solid #555555;
-        #         border-radius: 5px;
-        #         padding: 2px 4px;
-        #         font-size: 10px;
-        #         min-height: 22px;
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #     }
-
-        #     QPushButton {
-        #         background-color: #808791;
-        #         border: 1px solid #ffffff;
-        #         border-radius: 4px;
-        #         color: #ffffff;
-        #         padding: 2px 6px;
-        #         font-size: 10px;
-        #         min-height: 22px;
-        #     }
-
-        #     QPushButton:hover {
-        #         background-color: #a0a8b0;
-        #         color: black;
-        #         border: 1px solid #ffcc00;
-        #     }
-
-        #     QLabel#headerTitle {
-        #         font-size: 32px;
-        #         padding: 5px;
-        #     }
-
-        #     QComboBox QAbstractItemView {
-        #         background-color: #2b2b2b;
-        #         border: 1px solid #555555;
-        #         selection-background-color: #ffcc00;
-        #         selection-color: black;
-        #     }
-
-        #     QTextEdit {
-        #         background-color: #2b2b2b;
-        #         border: 2px solid #555555;
-        #         border-radius: 5px;
-        #         color: #ffffff;
-        #         font-size: 11px;
-        #         padding: 6px;
-        #     }
-        # """)
 
         # ========== MAIN LAYOUT ==========
         main_layout = self.main_layout
@@ -105,6 +46,15 @@ class SetFinderUI(BaseTab):
         htm_dir_row.addWidget(self.htm_dir_btn)
         main_layout.addLayout(htm_dir_row)
         main_layout.addSpacing(20)
+        
+        strategy_label_layout = QVBoxLayout()
+        strategy_label_layout.setAlignment(Qt.AlignTop )
+        strategy_label_layout.setSpacing(2)
+        strategy_label=QLabel("Strategy Test Information:")
+        strategy_label.setAlignment(Qt.AlignCenter)
+        strategy_label.setStyleSheet("font-size:20px; color:#444;")
+        strategy_label_layout.addWidget(strategy_label)
+        main_layout.addLayout(strategy_label_layout)
 
             # ---- FILTER INPUT ROW ----
         self.filter_row = QHBoxLayout()
@@ -140,7 +90,6 @@ class SetFinderUI(BaseTab):
         start_date_layout.setSpacing(0)
         start_date_layout.setContentsMargins(0, 0, 0, 0)
         start_label = QLabel("Start Date (DD/MM/YYYY)")
-        # start_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         start_date_layout.addWidget(start_label)
         start_date_layout.addWidget(self.start_date_input)
 
@@ -148,7 +97,6 @@ class SetFinderUI(BaseTab):
         end_date_layout.setSpacing(0)
         end_date_layout.setContentsMargins(0, 0, 0, 0)
         end_label = QLabel("End Date (DD/MM/YYYY)")
-        end_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         end_date_layout.addWidget(end_label)
         end_date_layout.addWidget(self.end_date_input)
 
@@ -156,7 +104,6 @@ class SetFinderUI(BaseTab):
         forward_layout.setSpacing(0)
         forward_layout.setContentsMargins(0, 0, 0, 0)
         forward_label = QLabel("Forward Period")
-        # forward_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         forward_layout.addWidget(forward_label)
         forward_layout.addWidget(self.account_dropdown)
 
@@ -164,7 +111,6 @@ class SetFinderUI(BaseTab):
         balance_layout.setSpacing(0)
         balance_layout.setContentsMargins(0, 0, 0, 0)
         balance_label = QLabel("Account Balance")
-        # balance_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         balance_layout.addWidget(balance_label)
         balance_layout.addWidget(self.balance_input)
 
@@ -177,7 +123,6 @@ class SetFinderUI(BaseTab):
         target_dd_layout.setSpacing(0)
         target_dd_layout.setContentsMargins(0, 0, 0, 0)
         target_dd_label = QLabel("Target DD")
-        # target_dd_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         target_dd_layout.addWidget(target_dd_label)
         target_dd_layout.addWidget(self.trade_input)
 
@@ -187,7 +132,6 @@ class SetFinderUI(BaseTab):
         risk_trade_layout.setSpacing(0)
         risk_trade_layout.setContentsMargins(0, 0, 0, 0)
         risk_trade_label = QLabel("Risk Trade")
-        # risk_trade_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         risk_trade_layout.addWidget(risk_trade_label)
         risk_trade_layout.addWidget(self.risk_trade_input)
 
@@ -197,7 +141,6 @@ class SetFinderUI(BaseTab):
         max_consec_loss_layout.setSpacing(0)
         max_consec_loss_layout.setContentsMargins(0, 0, 0, 0)
         max_consec_loss_label = QLabel("Est. Max Consec Loss")
-        # max_consec_loss_label.setStyleSheet("font-weight: bold; color: #ffcc00; margin-bottom: 2px;")
         max_consec_loss_layout.addWidget(max_consec_loss_label)
         max_consec_loss_layout.addWidget(self.max_consec_loss_input)
 
@@ -238,13 +181,11 @@ class SetFinderUI(BaseTab):
         toggle_row.setSpacing(10)
 
         self.message_label = QLabel("Message Log")
-        self.message_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
 
         right_toggle_layout = QHBoxLayout()
         right_toggle_layout.setSpacing(5)
 
         self.toggle_label = QLabel("Filter For 1 Trade Approach:")
-        self.toggle_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
 
         self.toggle_btn = QCheckBox()
         self.toggle_btn.setChecked(False)
@@ -278,40 +219,40 @@ class SetFinderUI(BaseTab):
         start_button_row.setContentsMargins(0, 10, 0, 0)
 
         self.start_button = QPushButton("Start")
-        self.start_button.setMinimumWidth(200)
+        self.start_button.setMinimumWidth(250)
         self.start_button.setStyleSheet("""
-        #     QPushButton {
-        #         background-color: #4CAF50;
-        #         color: white;
-        #         border-radius: 6px;
-        #         padding: 6px 12px;
-        #         font-size: 12px;
-        #         font-weight: bold;
-        #     }
-        #     QPushButton:hover {
-        #         background-color: #66BB6A;
-        #         border: 1px solid #ffcc00;
-        #     }
-        # """)
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #66BB6A;
+                border: 1px solid #ffcc00;
+            }
+        """)
         start_button_row.addWidget(self.start_button)
 
 
         self.reset_button = QPushButton("Reset")
-        self.reset_button.setMinimumWidth(200)
+        self.reset_button.setMinimumWidth(250)
         self.reset_button.setStyleSheet("""
-        #     QPushButton {
-        #         background-color: #4CAF50;
-        #         color: white;
-        #         border-radius: 6px;
-        #         padding: 6px 12px;
-        #         font-size: 12px;
-        #         font-weight: bold;
-        #     }
-        #     QPushButton:hover {
-        #         background-color: #66BB6A;
-        #         border: 1px solid #ffcc00;
-        #     }
-        # """)
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #66BB6A;
+                border: 1px solid #ffcc00;
+            }
+        """)
 
         
         self.reset_button.hide()

@@ -93,6 +93,7 @@ class SetGeneratorController:
 
             # Clear and set up table
             self.ui.table.clear()
+            # self.ui.table.clearContents()
             self.ui.table.setRowCount(0)
             self.ui.table.setColumnCount(len(headers))
             self.ui.table.setHorizontalHeaderLabels(headers)
