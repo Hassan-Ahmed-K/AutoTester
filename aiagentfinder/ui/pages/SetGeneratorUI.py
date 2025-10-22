@@ -213,7 +213,7 @@ class SetGenerator(BaseTab):
         # allow shrink
         # self.table.setMinimumHeight(0)
         # self.table.setFixedHeight(120)
-        self.table.setMaximumHeight(120)
+        # self.table.setMaximumHeight(120)
         # self.table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.MinimumExpanding)
         table_layout.addWidget(self.table)
 
@@ -240,6 +240,8 @@ class SetGenerator(BaseTab):
             table_left.addLayout(layout)
 
         table_middle = QHBoxLayout()
+        # table_middle.setContentsMargins(5,0,0,0)
+        table_middle.setSpacing(5)
         for label_text, attr_name in [
             ("Generate Magic", "toggle_Generate_magic"),
             ("Multiplier", "toggle_Multiplier"),
@@ -252,6 +254,7 @@ class SetGenerator(BaseTab):
             table_middle.addLayout(layout)
 
         table_right = QHBoxLayout()
+        table_right.setContentsMargins(0,15,0,0)
         self.generate_set_btn = QPushButton("GENERATE SET")
         self.generate_set_btn.setFixedWidth(140)
         table_right.addWidget(self.generate_set_btn)
@@ -264,6 +267,8 @@ class SetGenerator(BaseTab):
         self.bottom_widget.setMinimumHeight(0)
         self.bottom_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         main_layout.addWidget(self.bottom_widget, stretch=0)
+ 
+
 
         # ----- MESSAGE LOG -----
         self.msg_widget = QWidget()
@@ -274,7 +279,7 @@ class SetGenerator(BaseTab):
         self.bottom_message = QTextEdit()
         self.bottom_message.setStyleSheet("font-weight: bold; color: #cccccc;")
         # self.bottom_message.setFixedHeight(100)
-        self.bottom_message.setMaximumHeight(100)
+        # self.bottom_message.setMaximumHeight(100)
         self.bottom_message.setReadOnly(True)
         self.bottom_message.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.MinimumExpanding)
         msg_layout.addWidget(msg_label)
@@ -282,6 +287,22 @@ class SetGenerator(BaseTab):
         self.msg_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         main_layout.addWidget(self.msg_widget, stretch=1)
 
-        # controller
         self.controller = SetGeneratorController(self)
+
+
+    def resizeEvent(self, event):
+        height = self.height()
+        if height > 864:    
+            self.bottom_message.setMinimumHeight(200)
+            self.bottom_message.setMaximumHeight(300)
+            self.table.setMinimumHeight(200)
+            self.table.setMaximumHeight(300)
+
+        elif height < 768:     
+            self.bottom_message.setMaximumHeight(100)
+            self.table.setMaximumHeight(150)
+        
+        super().resizeEvent(event)
+
+       
 
