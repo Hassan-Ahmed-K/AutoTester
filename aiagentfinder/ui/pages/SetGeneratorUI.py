@@ -340,13 +340,13 @@ class SetGenerator(BaseTab):
             self.bottom_message.setMinimumHeight(200)
             self.bottom_message.setMaximumHeight(300)
             self.table.setMinimumHeight(200)
-            self.table.setMaximumHeight(300)
+            self.table.setMaximumHeight(350)
             self.left_widget.setContentsMargins(0, 5, 0, 0)
 
 
         elif height < 768:     
             self.bottom_message.setMaximumHeight(100)
-            self.table.setMaximumHeight(150)
+            self.table.setMaximumHeight(140)
         
         super().resizeEvent(event)
 
