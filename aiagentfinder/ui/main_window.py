@@ -162,10 +162,18 @@ class MainWindow(QMainWindow):
         self.animation.start()
 
     def load_cache(self):
-        data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
-        if data_str:
-            return json.loads(data_str)
-        return None     
+        if not self.SERVICE_NAME or not self.CACHE_KEY:
+            print("⚠️ Missing SERVICE_NAME or CACHE_KEY in environment variables.")
+            return None
+
+        try:
+            data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
+            if data_str:
+                return json.loads(data_str)
+        except Exception as e:
+            print(f"⚠️ Keyring read error: {e}")
+        return None
+
     
     
     # def switch_page(self, index):

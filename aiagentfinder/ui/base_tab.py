@@ -4,8 +4,7 @@ from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QScrollArea, QSizePolicy,QLabel,QHBoxLayout
 )
 from PyQt5.QtCore import Qt
-import os
-
+import os, sys
 
 class BaseTab(QWidget):
     def __init__(self, title: str, parent=None):
@@ -123,11 +122,29 @@ class BaseTab(QWidget):
 
         # horizontal: keep it off (vertical only)
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+
+    # def load_stylesheet(self):
+    #     base_dir = os.path.dirname(os.path.dirname(__file__))  
+    #     qss_path = os.path.join(base_dir, "style", "style.qss")
+    #     if os.path.exists(qss_path):
+    #         with open(qss_path, "r") as f:
+    #             self.setStyleSheet(f.read())
+    #     else:
+    #         print(f"⚠️ QSS file not found at {qss_path}")
+
+
     def load_stylesheet(self):
-        base_dir = os.path.dirname(os.path.dirname(__file__))  
+        # Handle both normal and PyInstaller runtime
+        try:
+            base_dir = sys._MEIPASS  # Temporary folder when bundled by PyInstaller
+        except Exception:
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
         qss_path = os.path.join(base_dir, "style", "style.qss")
+
         if os.path.exists(qss_path):
-            with open(qss_path, "r") as f:
+            with open(qss_path, "r", encoding="utf-8") as f:
                 self.setStyleSheet(f.read())
         else:
             print(f"⚠️ QSS file not found at {qss_path}")

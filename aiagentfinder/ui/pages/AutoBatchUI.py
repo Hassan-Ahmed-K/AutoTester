@@ -446,6 +446,7 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(self.symbol_suffix, 4, 4, 1, 2)
         
 
+
         # Row 5: Date From & To
 
         right_layout.addWidget(QLabel("Date (DD/MM/YYYY):"), 5, 0)
