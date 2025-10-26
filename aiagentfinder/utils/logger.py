@@ -76,17 +76,32 @@ class Logger:
 
     @staticmethod
     def error(message: str, exc: Exception = None):
-        """Logs an error, with optional exception details (file + line)."""
-        if exc:
-            tb = traceback.extract_tb(exc.__traceback__)[-1]
-            filename = os.path.basename(tb.filename)
-            line_no = tb.lineno
-            error_type = type(exc).__name__
-            error_msg = f"{message} | {error_type}: {exc} (File: {filename}, Line: {line_no})"
-        else:
-            error_msg = message
+        """Logs an error safely, handling both string and Exception inputs."""
+        try:
+            if exc:
+                # Handle both real Exception and string cases gracefully
+                if isinstance(exc, Exception):
+                    tb = traceback.extract_tb(exc.__traceback__)[-1]
+                    filename = os.path.basename(tb.filename)
+                    line_no = tb.lineno
+                    error_type = type(exc).__name__
+                    error_msg = f"{message} | {error_type}: {exc} (File: {filename}, Line: {line_no})"
+                else:
+                    # If exc is a string or non-exception object
+                    error_msg = f"{message} | Details: {exc}"
+            else:
+                error_msg = message
 
-        Logger._write_log("ERROR", error_msg)
+            Logger._write_log("ERROR", error_msg)
+
+        except Exception as log_exc:
+            # Fallback in case logging itself fails
+            print(f"[LOGGER ERROR] Failed to log error: {log_exc}")
+            print(f"[LOGGER ERROR] Original message: {message}")
+            if exc:
+                print(f"[LOGGER ERROR] Original exception: {exc}")
+
+                
 
     @staticmethod
     def debug(message: str):

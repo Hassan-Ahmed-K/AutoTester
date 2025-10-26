@@ -22,14 +22,41 @@ class HomeController:
         self.ui.signin_btn.clicked.connect(self.handle_login)
         self.ui.logout_btn.clicked.connect(self.handle_logout)
 
-    def save_cache(self, data: dict):
-        keyring.set_password(self.SERVICE_NAME, self.CACHE_KEY, json.dumps(data))
+    # def save_cache(self, data: dict):
+    #     keyring.set_password(self.SERVICE_NAME, self.CACHE_KEY, json.dumps(data))
     
+    # def load_cache(self):
+    #     data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
+    #     if data_str:
+    #         return json.loads(data_str)
+    #     return None
+
+    def save_cache(self, data: dict):
+        """Safely save cache data to keyring."""
+        try:
+            keyring.set_password(self.SERVICE_NAME, self.CACHE_KEY, json.dumps(data))
+            Logger.info(f"Cache saved successfully for service '{self.SERVICE_NAME}' and key '{self.CACHE_KEY}'.")
+        except Exception as e:
+            Logger.error("Failed to save cache to keyring", e)
+
+
     def load_cache(self):
-        data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
-        if data_str:
-            return json.loads(data_str)
-        return None
+        """Safely load cache data from keyring."""
+        try:
+            data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
+            if data_str:
+                data = json.loads(data_str)
+                Logger.info(f"Cache loaded successfully for service '{self.SERVICE_NAME}' and key '{self.CACHE_KEY}'.")
+                return data
+            else:
+                Logger.warning(f"No cache data found for service '{self.SERVICE_NAME}' and key '{self.CACHE_KEY}'.")
+                return None
+        except json.JSONDecodeError as e:
+            Logger.error("Cache data is corrupted or not valid JSON", e)
+            return None
+        except Exception as e:
+            Logger.error("Failed to load cache from keyring", e)
+            return None
 
     def is_email_valid(self, email):
         return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email)
@@ -78,6 +105,8 @@ class HomeController:
         print("Login button clicked")
         email = self.ui.email.text()
         password = self.ui.password.text()
+
+        print(email, password)
 
         if not self.is_email_valid(email):
             QMessageBox.warning(self.ui, "Invalid Email", "Please enter a valid email address.")
@@ -178,11 +207,13 @@ class HomeController:
                 self.main_window.authenticated = True
                 self.ui.notice_label.show()
                 self.ui.login_widget.hide()
+                self.ui.logout.show()
             else:
                 Logger.info("No valid cache found, user not authenticated")
                 self.main_window.authenticated = False
                 self.ui.notice_label.hide()
                 self.ui.login_widget.show()
+                self.ui.logout.hide()
 
         def on_error(e):
             Logger.error("Error loading cache", e)
