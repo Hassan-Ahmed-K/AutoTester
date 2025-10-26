@@ -38,6 +38,7 @@ class SetGeneratorController:
 
 
 
+
     def update_pairs_box(self, report_name):
     
         self.ui.pairs_box.clear()
@@ -52,10 +53,26 @@ class SetGeneratorController:
         """
 
         if df is None or df.empty:
+            # Logger.info("⚠️ No data to display.")
+            # self.ui.table.clear()
+            # self.ui.table.setRowCount(0)
+            # self.ui.table.setColumnCount(0)
+            # return
             Logger.info("⚠️ No data to display.")
-            self.ui.table.clear()
+            default_headers = [ "Pass No", "Bk Recovery", "Fwd Recovery", "Est Bk Weekly Profit",
+            "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
+            "Multiplier", "Total Profit", "POW Score"]  # ← customize this list
+            self.ui.headers = getattr(self.ui, "headers", default_headers)
+
+            # Clear old content but keep table visible
+            self.ui.table.clearContents()
             self.ui.table.setRowCount(0)
-            self.ui.table.setColumnCount(0)
+
+            # Create columns with headers
+            self.ui.table.setColumnCount(len(self.ui.headers))
+            self.ui.table.setHorizontalHeaderLabels(self.ui.headers)
+
+            Logger.info(f"🧱 Showing skeleton headers: {self.ui.headers}")
             return
 
         Logger.info(f"📂 Starting to populate table with {len(df)} rows...")
@@ -109,6 +126,7 @@ class SetGeneratorController:
             # Resize columns
             header_widget = self.ui.table.horizontalHeader()
             header_widget.setSectionResizeMode(QHeaderView.Stretch)
+        
 
             Logger.info(f"✅ Table populated successfully with {len(table_data)} rows and {len(headers)} columns.")
 

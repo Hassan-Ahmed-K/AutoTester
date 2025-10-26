@@ -231,6 +231,7 @@ class AutoBatchUI(BaseTab):
         # Queue controls
         queue_controls = QGridLayout()
         # queue_controls.setSpacing(5)
+
         queue_controls.setHorizontalSpacing(8)
         queue_controls.setVerticalSpacing(8)
 
@@ -259,7 +260,16 @@ class AutoBatchUI(BaseTab):
 
         queue_controls.addWidget(self.export_btn, 3, 0, 1, 3)   
         queue_controls.addWidget(self.non_corr_btn, 3, 3, 1, 3)   
-        queue_controls.addWidget(self.corr_btn, 5, 0, 1, 6)      
+        queue_controls.addWidget(self.corr_btn, 5, 0, 1, 6)    
+
+        for btn in [
+            self.move_up_btn,self.move_down_btn,self.add_btn, self.dup_btn,
+            self.del_btn,self.save_btn,self.load_btn,self.export_btn,
+            self.non_corr_btn,self.corr_btn
+        ]:
+            btn.setMinimumHeight(35)
+            btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+  
         
         left_layout.addLayout(queue_controls)  # Add the queue controls layout to the left layout (with stretch=1))
 
@@ -272,7 +282,7 @@ class AutoBatchUI(BaseTab):
 
         self.testfile_input = QLineEdit()
         self.expert_input = QComboBox()
-        self.expert_input.setMinimumWidth(350)  # Set the minimum width()
+        # self.expert_input.setMinimumWidth(330)  # Set the minimum width()
         self.expert_input.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.expert_input.addItems(["Please Attach Data File"])
         self.expert_button = QPushButton("Browse")
@@ -413,6 +423,7 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(self.refresh_btn, 1, 3 )             # col 3
         right_layout.addWidget(self.expert_button, 1, 4)           # col 4
         right_layout.addWidget(self.exper_copy_to_all, 1, 5 )       # col 5
+        right_layout.setColumnStretch(1, 4)
 
         # Row 2: Param File
         right_layout.addWidget(QLabel("Param File:"), 2, 0)
@@ -433,6 +444,7 @@ class AutoBatchUI(BaseTab):
         right_layout.addWidget(self.symbol_prefix, 4, 1, 1, 2)
         right_layout.addWidget(QLabel("Symbol Suffix:"), 4, 3)
         right_layout.addWidget(self.symbol_suffix, 4, 4, 1, 2)
+        
 
 
         # Row 5: Date From & To

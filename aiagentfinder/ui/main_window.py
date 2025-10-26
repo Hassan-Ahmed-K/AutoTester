@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
 
 
 
-        self.setMinimumSize(1300, 650)
+        # self.setMinimumSize(1300, 650)
         self.setWindowTitle("AI Agent Finder")
         self.setStyleSheet("background-color:#1e1e1e;")
         self.SERVICE_NAME = os.getenv("SERVICE_NAME")

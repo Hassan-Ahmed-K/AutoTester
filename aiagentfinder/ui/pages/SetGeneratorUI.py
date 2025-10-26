@@ -145,38 +145,78 @@ class SetGenerator(BaseTab):
         self.filter_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         main_layout.addWidget(self.filter_widget, stretch=0)
 
-        # ----- CONTROLS -----
+        # # ----- CONTROLS -----
+        # self.controls_widget = QWidget()
+        # controls_layout = QHBoxLayout(self.controls_widget)
+        # controls_layout.setContentsMargins(0, 0, 0, 0)
+        # controls_layout.setSpacing(3)
+        # self.toggle_result = AnimatedToggle(width=40, height=25, pulse=False)
+        # self.toggle_selected = AnimatedToggle(width=40, height=25, pulse=False)
+        # self.toggle_top_10 = AnimatedToggle(width=40, height=25, pulse=False)
+        # self.toggle_top_100 = AnimatedToggle(width=40, height=25, pulse=False)
+        # self.deselect_btn = QPushButton("DESELECT")
+
+        # left_ctrl = QHBoxLayout()
+        # left_ctrl.addWidget(QLabel("Finder Result"))
+        # left_ctrl.addWidget(self.toggle_result,alignment=Qt.AlignCenter)
+        # left_ctrl.addWidget(QLabel("Rank By Profit"))
+        # left_ctrl.addStretch()
+
+        # right_ctrl = QHBoxLayout()
+        # right_ctrl.addStretch()
+        # right_ctrl.addWidget(self.deselect_btn)
+        # right_ctrl.addWidget(self.toggle_selected)
+        # right_ctrl.addWidget(QLabel("Hide unselected items"))
+        # right_ctrl.addWidget(self.toggle_top_10,alignment=Qt.AlignCenter)
+        # right_ctrl.addWidget(QLabel("Top 10"))
+        # right_ctrl.addWidget(self.toggle_top_100,alignment=Qt.AlignCenter)
+        # right_ctrl.addWidget(QLabel("Top 100"))
+
+        # controls_layout.addLayout(left_ctrl)
+        # controls_layout.addLayout(right_ctrl)
+        # self.controls_widget.setMinimumHeight(0)
+        # self.controls_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        # main_layout.addWidget(self.controls_widget, stretch=0)
+
+                # ----- CONTROLS -----
         self.controls_widget = QWidget()
         controls_layout = QHBoxLayout(self.controls_widget)
         controls_layout.setContentsMargins(0, 0, 0, 0)
-        controls_layout.setSpacing(3)
+        controls_layout.setSpacing(8)
+
+        # Toggles
         self.toggle_result = AnimatedToggle(width=40, height=25, pulse=False)
         self.toggle_selected = AnimatedToggle(width=40, height=25, pulse=False)
         self.toggle_top_10 = AnimatedToggle(width=40, height=25, pulse=False)
         self.toggle_top_100 = AnimatedToggle(width=40, height=25, pulse=False)
         self.deselect_btn = QPushButton("DESELECT")
 
+        # ----- LEFT CONTROL -----
         left_ctrl = QHBoxLayout()
-        left_ctrl.addWidget(QLabel("Finder Result"))
-        left_ctrl.addWidget(self.toggle_result,alignment=Qt.AlignCenter)
-        left_ctrl.addWidget(QLabel("Rank By Profit"))
+        left_ctrl.addWidget(QLabel("Finder Result"), alignment=Qt.AlignVCenter)
+        left_ctrl.addWidget(self.toggle_result, alignment=Qt.AlignVCenter)
+        left_ctrl.addWidget(QLabel("Rank By Profit"), alignment=Qt.AlignVCenter)
         left_ctrl.addStretch()
 
+        # ----- RIGHT CONTROL -----
         right_ctrl = QHBoxLayout()
         right_ctrl.addStretch()
-        right_ctrl.addWidget(self.deselect_btn)
-        right_ctrl.addWidget(self.toggle_selected)
-        right_ctrl.addWidget(QLabel("Hide unselected items"))
-        right_ctrl.addWidget(self.toggle_top_10,alignment=Qt.AlignCenter)
-        right_ctrl.addWidget(QLabel("Top 10"))
-        right_ctrl.addWidget(self.toggle_top_100,alignment=Qt.AlignCenter)
-        right_ctrl.addWidget(QLabel("Top 100"))
+        right_ctrl.addWidget(self.deselect_btn, alignment=Qt.AlignVCenter)
+        right_ctrl.addWidget(self.toggle_selected, alignment=Qt.AlignVCenter)
+        right_ctrl.addWidget(QLabel("Hide unselected items"), alignment=Qt.AlignVCenter)
+        right_ctrl.addWidget(self.toggle_top_10, alignment=Qt.AlignVCenter)
+        right_ctrl.addWidget(QLabel("Top 10"), alignment=Qt.AlignVCenter)
+        right_ctrl.addWidget(self.toggle_top_100, alignment=Qt.AlignVCenter)
+        right_ctrl.addWidget(QLabel("Top 100"), alignment=Qt.AlignVCenter)
 
+        # Combine left and right
         controls_layout.addLayout(left_ctrl)
         controls_layout.addLayout(right_ctrl)
-        self.controls_widget.setMinimumHeight(0)
+
+        # Finalize
         self.controls_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         main_layout.addWidget(self.controls_widget, stretch=0)
+
 
         # ----- TABLE -----
         self.table_widget = QWidget()
@@ -213,7 +253,7 @@ class SetGenerator(BaseTab):
         # allow shrink
         # self.table.setMinimumHeight(0)
         # self.table.setFixedHeight(120)
-        self.table.setMaximumHeight(120)
+        # self.table.setMaximumHeight(120)
         # self.table.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.MinimumExpanding)
         table_layout.addWidget(self.table)
 
@@ -240,6 +280,8 @@ class SetGenerator(BaseTab):
             table_left.addLayout(layout)
 
         table_middle = QHBoxLayout()
+        # table_middle.setContentsMargins(5,0,0,0)
+        table_middle.setSpacing(5)
         for label_text, attr_name in [
             ("Generate Magic", "toggle_Generate_magic"),
             ("Multiplier", "toggle_Multiplier"),
@@ -252,10 +294,12 @@ class SetGenerator(BaseTab):
             table_middle.addLayout(layout)
 
         table_right = QHBoxLayout()
+        table_right.setContentsMargins(0,15,0,0)
         self.generate_set_btn = QPushButton("GENERATE SET")
+        self.generate_set_btn.setStyleSheet("background-color:  #4CAF50; color: white;")
         self.generate_set_btn.setFixedWidth(140)
         table_right.addWidget(self.generate_set_btn)
-
+       
         bottom_layout.addLayout(table_left, 6)
         bottom_layout.addStretch(1)
         bottom_layout.addLayout(table_middle, 3)
@@ -264,6 +308,8 @@ class SetGenerator(BaseTab):
         self.bottom_widget.setMinimumHeight(0)
         self.bottom_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         main_layout.addWidget(self.bottom_widget, stretch=0)
+ 
+
 
         # ----- MESSAGE LOG -----
         self.msg_widget = QWidget()
@@ -274,14 +320,35 @@ class SetGenerator(BaseTab):
         self.bottom_message = QTextEdit()
         self.bottom_message.setStyleSheet("font-weight: bold; color: #cccccc;")
         # self.bottom_message.setFixedHeight(100)
-        self.bottom_message.setMaximumHeight(100)
+        # self.bottom_message.setMaximumHeight(100)
         self.bottom_message.setReadOnly(True)
         self.bottom_message.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.MinimumExpanding)
         msg_layout.addWidget(msg_label)
+        msg_layout.addSpacing(5)
         msg_layout.addWidget(self.bottom_message)
         self.msg_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         main_layout.addWidget(self.msg_widget, stretch=1)
 
-        # controller
         self.controller = SetGeneratorController(self)
+
+
+    def resizeEvent(self, event):
+        height = self.height()
+        if height > 864:    
+            self.pairs_box.setMaximumHeight(131)
+            self.opt_files.setMaximumHeight(67)
+            self.bottom_message.setMinimumHeight(200)
+            self.bottom_message.setMaximumHeight(300)
+            self.table.setMinimumHeight(200)
+            self.table.setMaximumHeight(350)
+            self.left_widget.setContentsMargins(0, 5, 0, 0)
+
+
+        elif height < 768:     
+            self.bottom_message.setMaximumHeight(100)
+            self.table.setMaximumHeight(140)
+        
+        super().resizeEvent(event)
+
+       
 
