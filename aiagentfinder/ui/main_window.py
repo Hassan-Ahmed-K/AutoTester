@@ -4,6 +4,10 @@ from PyQt5.QtWidgets import QMainWindow, QTabWidget , QScrollArea, QSizePolicy,Q
 from PyQt5.QtGui import QIcon
 from aiagentfinder.ui.pages.AutoBatchUI import AutoBatchUI
 from aiagentfinder.ui.pages.SetGeneratorUI import SetGenerator
+from aiagentfinder.ui.pages.SetProcessor import SetProcessorUI
+from aiagentfinder.ui.pages.HtmlHunter import HtmlHunterUI
+from aiagentfinder.ui.pages.SetCompare import SetCompareUI
+from aiagentfinder.ui.pages.PortfolioPicker import PortfolioPickerUI
 from aiagentfinder.ui.pages.HomeUI import HomeUI
 from aiagentfinder.ui.pages.SetFinder import SetFinderUI
 from PyQt5.QtCore import Qt, QPropertyAnimation
@@ -95,13 +99,51 @@ class MainWindow(QMainWindow):
                 background: #787a7d;
                 color: white;
             }
+             QToolTip {
+                background-color:#2b2b2b;
+                color: #dcdcdc;
+                border: 1px solid #555555;
+                border-radius: 4px;
+                font-size: 10px;
+            }
         """)
 
-        self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\home-7-24.png"), "Home"))
-        self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch"))
-        self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder"))
-        self.nav_list.addItem(QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator"))
-        
+        # Home
+        home_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\home-7-24.png"), "Home")
+        home_item.setToolTip("Home")
+        self.nav_list.addItem(home_item)
+
+        # Auto Batch
+        batch_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch")
+        batch_item.setToolTip("Auto Batch")
+        self.nav_list.addItem(batch_item)
+
+        # Set Finder
+        finder_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder")
+        finder_item.setToolTip("Set Finder")
+        self.nav_list.addItem(finder_item)
+
+        # Set Generator
+        generator_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator")
+        generator_item.setToolTip("Set Generator")
+        self.nav_list.addItem(generator_item)
+
+        processor_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Processor")
+        processor_item.setToolTip("Processor")
+        self.nav_list.addItem(processor_item)
+
+        hunter_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Html Hunter")
+        hunter_item.setToolTip("Html Hunter")
+        self.nav_list.addItem(hunter_item)
+
+        compare_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\compare.png"), "SetCompare")
+        compare_item.setToolTip("Set Compare")
+        self.nav_list.addItem(compare_item)
+
+        portfolio_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\compare.png"), "Portfolio Picker")
+        portfolio_item.setToolTip("Portfolio Picker")
+        self.nav_list.addItem(portfolio_item)
+
 
         self.nav_list.setIconSize(QSize(20,20))
         self.nav_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff) 
@@ -120,6 +162,12 @@ class MainWindow(QMainWindow):
         self.stack.addWidget(AutoBatchUI())
         self.stack.addWidget(self.setFinder_page)
         self.stack.addWidget(SetGenerator(self))
+        self.stack.addWidget(SetProcessorUI())
+        self.stack.addWidget(HtmlHunterUI())
+        self.stack.addWidget(SetCompareUI())
+        self.stack.addWidget(PortfolioPickerUI())
+        
+
         
         self.nav_list.currentRowChanged.connect(self.switch_page)
         self.nav_list.setCurrentRow(0)

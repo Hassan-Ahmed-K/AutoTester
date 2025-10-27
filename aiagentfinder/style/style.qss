@@ -14,11 +14,21 @@ QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
     border: 2px solid #555555;       /* nice gray border */
     border-radius: 5px;              /* rounded corners */
     padding: 1px 2px;     /* 🔽 reduced padding */
-    font-size: 10px;      /* 🔽 smaller text */
+    font-size: 12px;      /* 🔽 smaller text */
     background-color: #2b2b2b;
     color: #ffffff;
     min-height:20px
 }
+/* 🔹 Hover effect */
+QLineEdit:hover, 
+QComboBox:hover, 
+QSpinBox:hover, 
+QDoubleSpinBox:hover, 
+QDateEdit:hover {
+    border: 1px solid #d6d2d2ff;       /* lighter border */
+}
+
+
 
 QLineEdit#queueList, QListWidget {
     border: 1px solid #808791;
@@ -53,6 +63,10 @@ QComboBox QAbstractItemView {
 
 QListWidget{
         font-size : 12px       
+}
+
+QListWidget:hover {
+        border: 2px solid #e5e9ecff;
 }
 
 QCalendarWidget QWidget { 
@@ -117,3 +131,7 @@ QHeaderView::section {
             padding: 2px;
             font-size: 12px;
         }
+
+QTextEdit:hover {
+        border: 2px solid #e5e9ecff;
+    }

@@ -23,129 +23,6 @@ class AutoBatchUI(BaseTab):
         
         """Override BaseTab's init_ui with AutoBatch-specific layout."""
 
-
-        # self.setStyleSheet("""
-        #     AutoBatchUI {
-        #         background-color: #1e1e1e;
-        #     }
-
-        #     /* Base widget style */
-        #     QWidget {
-        #         background-color: #1e1e1e;
-        #         color: #e0dcdc;
-        #         font-family: Inter;
-        #         font-size: 12px;
-        #         line-height: 14px;
-
-        #     }
-
-        #     /* File inputs and normal inputs */
-        #     QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
-        #         border: 2px solid #555555;       /* nice gray border */
-        #         border-radius: 5px;              /* rounded corners */
-        #         padding: 1px 2px;     /* 🔽 reduced padding */
-        #         font-size: 10px;      /* 🔽 smaller text */
-        #         font-weight: bold;
-        #         min-height: 20px;     /* 🔽 keeps them compact */
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #     }
-
-        #     QLineEdit#queueList, QListWidget {
-        #         border: 1px solid #808791;
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #     }
-
-        #     /* Buttons */
-        #     QPushButton {
-        #        background-color: #808791;
-        #         border: 1px solid #ffffff;
-        #         border-radius: 4px;
-        #         color: #ffffff;
-                
-        #         padding: 2px 6px;     /* 🔽 smaller padding */
-        #         font-size: 10px;      /* 🔽 smaller text */
-        #         min-height: 20px;     /* ensures consistent smaller height */
-        #     }
-
-        #     QPushButton:hover {
-        #         background-color: #a0a8b0;
-        #         color: black;
-        #         border: 1px solid #ffcc00;
-        #     }
-
-        #     /* Header title */
-        #     QLabel#headerTitle {
-        #         font-size: 32px;
-        #         padding: px;
-        #     }
-                           
-        #     QComboBox QAbstractItemView {
-        #        background-color: #2b2b2b;
-        #        border: 1px solid #555555;
-        #        selection-background-color: #ffcc00;
-        #        selection-color: black;
-        #    }
-                           
-
-
-        #     QListWidget{
-        #             font-size : 12px       
-        #             }
-           
-
-        #     /* ================= Calendar Styling ================= */
-        #     QCalendarWidget QWidget { 
-        #         background-color: #2b2b2b; 
-        #         alternate-background-color: #1e1e1e;
-        #     }
-
-        #     QCalendarWidget QAbstractItemView:enabled {
-        #         font-size: 12px;
-        #         color: #e0dcdc;
-        #         background-color: #2b2b2b;
-        #         selection-background-color: #ffcc00;
-        #         selection-color: black;
-        #         gridline-color: #555555;
-        #     }
-
-        #     QCalendarWidget QToolButton {
-                
-        #         color: white;
-        #         font-size: 8px;
-        #         icon-size: 12px;
-        #         background-color: #444444;
-        #         /* border-radius: 5px; */
-        #     }
-
-            
-
-        #     QCalendarWidget QMenu {
-        #         background-color: #2b2b2b;
-        #         color: #ffffff;
-        #         border: 1px solid #555555;
-        #     }
-
-        #     QCalendarWidget QSpinBox { 
-        #         width: 70px; 
-        #         font-size: 12px; 
-        #         color: #ffffff;
-        #         background-color: #2b2b2b;
-        #         border: 1px solid #555555;
-        #     }
-
-        #     QCalendarWidget QSpinBox::up-button {
-        #         subcontrol-origin: border;
-        #         subcontrol-position: top right;
-        #     }
-
-        #     QCalendarWidget QSpinBox::down-button {
-        #         subcontrol-origin: border;
-        #         subcontrol-position: bottom right;
-        #     }
-        # """)
-
         # height: 24px;
         #         width: 100px;
         self.deposit_info = {
@@ -275,8 +152,8 @@ class AutoBatchUI(BaseTab):
 
         # ================= Right Panel =================
         right_layout = QGridLayout()
-        right_layout.setHorizontalSpacing(10)
-        right_layout.setVerticalSpacing(10)
+        right_layout.setHorizontalSpacing(5)
+        right_layout.setVerticalSpacing(5)
         right_layout.setContentsMargins(0, 0, 0, 0)
 
 
@@ -498,7 +375,9 @@ class AutoBatchUI(BaseTab):
         bottom_layout.setSpacing(15)
         bottom_layout.setAlignment(Qt.AlignCenter)  # type: ignore
         self.start_btn = QPushButton("START")
-        self.start_btn.setMinimumWidth(250) 
+        self.start_btn.setMinimumWidth(250)
+        self.start_btn.setMinimumHeight(50)
+        self.start_btn.setStyleSheet("background-color:  #4CAF50; color: white;")
         self.schedule_date = QDateEdit(QDate.currentDate())
 
         self.schedule_date.setCalendarPopup(True)
@@ -533,4 +412,17 @@ class AutoBatchUI(BaseTab):
         self.controller.toggle_date_fields(self.date_combo.currentText())
         self.controller.adjust_forward_date(self.forward_combo.currentText())
         self.controller.update_delay_input(self.delay_combo.currentText())
+
+
+    def resizeEvent(self, event):
+        height = self.height()
+        if height > 864: 
+            self.start_btn.setMinimumWidth(350)
+            self.start_btn.setMinimumHeight(130)
+
+            
+        
+        
+        super().resizeEvent(event)
+
 
