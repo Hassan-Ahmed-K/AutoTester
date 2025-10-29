@@ -238,3 +238,13 @@ Examples/New folder/xml_retrieved_table.csv
 Examples/New folder/usdcadas.xml
 data/logs/logs.txt
 data/logs/logs.txt
+Examples/New folder/usdcadas_table.csv
+*.csv
+Examples/New folder/usdcadas.forward.xml
+Examples/New folder/eurusd.forward.xml
+Examples/New folder/eurusd.forward.set
+Examples/New folder/eurusd.xml
+Examples/eurusd.xml
+Examples/eurusd.forward.xml
+data/logs/logs.txt
+data/logs/logs.txt
