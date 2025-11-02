@@ -86,6 +86,7 @@ class MainWindow(QMainWindow):
         self.nav_list.setStyleSheet("""
             QListWidget {
                 background-color: #252526;
+
                 color: #dcdcdc;
                 border: none;
                 font-size: 11px;
@@ -133,7 +134,7 @@ class MainWindow(QMainWindow):
         generator_item.setToolTip("Set Generator")
         self.nav_list.addItem(generator_item)
 
-        processor_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Processor")
+        processor_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\clipboard-2-24.png"), "Set Processor")
         processor_item.setToolTip("Processor")
         self.nav_list.addItem(processor_item)
 
@@ -141,11 +142,11 @@ class MainWindow(QMainWindow):
         hunter_item.setToolTip("Html Hunter")
         self.nav_list.addItem(hunter_item)
 
-        compare_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\hyperlink_8577775.png"), "SetCompare")
+        compare_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\opposite.png"), "SetCompare")
         compare_item.setToolTip("Set Compare")
         self.nav_list.addItem(compare_item)
 
-        portfolio_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\wallet_3496745.png"), "Portfolio Picker")
+        portfolio_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\wallet-5-24.png"), "Portfolio Picker")
         portfolio_item.setToolTip("Portfolio Picker")
         self.nav_list.addItem(portfolio_item)
 

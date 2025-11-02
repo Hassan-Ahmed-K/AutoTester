@@ -10387,3 +10387,180 @@ Pass No Bk Recovery Fwd Recovery Total Profit Est Bwd Weekly Profit Est Bwd Week
 [2025-10-23 01:54:01] [DEBUG] Switching to stack page 0
 [2025-10-23 01:54:03] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
 [2025-10-23 01:54:03] [DEBUG] Switching to stack page 1
+[2025-11-03 01:44:38] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-03 01:44:38] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 01:44:38] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 01:44:38] [INFO] Date range option selected: Entire history
+[2025-11-03 01:44:38] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:44:38] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 01:44:38] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 01:44:38] [INFO] Set Generator Controller Initialized
+[2025-11-03 01:44:39] [INFO] Date range option selected: Entire history
+[2025-11-03 01:44:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:44:39] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-03 01:44:39] [DEBUG] Switching to stack page 0
+[2025-11-03 01:44:39] [INFO] User authenticated via cache
+[2025-11-03 01:46:24] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-03 01:46:25] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 01:46:25] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 01:46:25] [INFO] Date range option selected: Entire history
+[2025-11-03 01:46:25] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:46:25] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 01:46:25] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 01:46:25] [INFO] Set Generator Controller Initialized
+[2025-11-03 01:46:25] [INFO] Date range option selected: Entire history
+[2025-11-03 01:46:25] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:46:25] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-03 01:46:25] [DEBUG] Switching to stack page 0
+[2025-11-03 01:46:26] [INFO] User authenticated via cache
+[2025-11-03 01:51:25] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 01:51:26] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 01:51:26] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 01:51:26] [INFO] Date range option selected: Entire history
+[2025-11-03 01:51:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:51:26] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 01:51:26] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 01:51:26] [INFO] Set Generator Controller Initialized
+[2025-11-03 01:51:26] [INFO] Date range option selected: Entire history
+[2025-11-03 01:51:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:51:26] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 01:51:26] [DEBUG] Switching to stack page 0
+[2025-11-03 01:51:27] [INFO] No valid cache found, user not authenticated
+[2025-11-03 01:52:44] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 01:52:45] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 01:52:45] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 01:52:45] [INFO] Date range option selected: Entire history
+[2025-11-03 01:52:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:52:45] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 01:52:45] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 01:52:45] [INFO] Set Generator Controller Initialized
+[2025-11-03 01:52:45] [INFO] Date range option selected: Entire history
+[2025-11-03 01:52:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:52:45] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 01:52:45] [DEBUG] Switching to stack page 0
+[2025-11-03 01:52:46] [INFO] No valid cache found, user not authenticated
+[2025-11-03 01:56:48] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 01:56:49] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 01:56:49] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 01:56:49] [INFO] Date range option selected: Entire history
+[2025-11-03 01:56:49] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:56:49] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 01:56:49] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 01:56:49] [INFO] Set Generator Controller Initialized
+[2025-11-03 01:56:49] [INFO] Date range option selected: Entire history
+[2025-11-03 01:56:49] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:56:49] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 01:56:49] [DEBUG] Switching to stack page 0
+[2025-11-03 01:56:50] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:01:12] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:01:13] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:01:13] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:01:13] [INFO] Date range option selected: Entire history
+[2025-11-03 02:01:13] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:01:13] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:01:13] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:01:13] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:01:13] [INFO] Date range option selected: Entire history
+[2025-11-03 02:01:13] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:01:13] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:01:13] [DEBUG] Switching to stack page 0
+[2025-11-03 02:01:14] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:02:41] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:02:42] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:02:42] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:02:42] [INFO] Date range option selected: Entire history
+[2025-11-03 02:02:42] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:02:42] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:02:42] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:02:42] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:02:42] [INFO] Date range option selected: Entire history
+[2025-11-03 02:02:42] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:02:43] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:02:43] [DEBUG] Switching to stack page 0
+[2025-11-03 02:02:43] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:02:50] [DEBUG] Attempting to switch to page index: 1, Authenticated: False
+[2025-11-03 02:02:50] [WARNING] Unauthorized access attempt to restricted page
+[2025-11-03 02:02:50] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:02:50] [DEBUG] Switching to stack page 0
+[2025-11-03 02:02:51] [DEBUG] Attempting to switch to page index: 2, Authenticated: False
+[2025-11-03 02:02:51] [WARNING] Unauthorized access attempt to restricted page
+[2025-11-03 02:02:51] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:02:51] [DEBUG] Switching to stack page 0
+[2025-11-03 02:03:32] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:03:40] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:03:40] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:03:40] [INFO] Date range option selected: Entire history
+[2025-11-03 02:03:40] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:03:40] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:03:40] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:03:41] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:03:41] [INFO] Date range option selected: Entire history
+[2025-11-03 02:03:41] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:03:43] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:03:43] [DEBUG] Switching to stack page 0
+[2025-11-03 02:03:45] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:05:25] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:05:30] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:05:30] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:05:31] [INFO] Date range option selected: Entire history
+[2025-11-03 02:05:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:05:31] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:05:31] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:05:32] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:05:32] [INFO] Date range option selected: Entire history
+[2025-11-03 02:05:32] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:05:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:05:35] [DEBUG] Switching to stack page 0
+[2025-11-03 02:05:41] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:06:23] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:06:27] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:06:27] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:06:27] [INFO] Date range option selected: Entire history
+[2025-11-03 02:06:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:06:27] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:06:27] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:06:29] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:06:29] [INFO] Date range option selected: Entire history
+[2025-11-03 02:06:29] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:06:32] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:06:32] [DEBUG] Switching to stack page 0
+[2025-11-03 02:06:34] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:31:10] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:31:13] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:31:13] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:31:13] [INFO] Date range option selected: Entire history
+[2025-11-03 02:31:13] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:31:13] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:31:13] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:31:15] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:31:15] [INFO] Date range option selected: Entire history
+[2025-11-03 02:31:15] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:31:16] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:31:16] [DEBUG] Switching to stack page 0
+[2025-11-03 02:31:17] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:34:40] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:34:44] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:34:44] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:34:44] [INFO] Date range option selected: Entire history
+[2025-11-03 02:34:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:34:44] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:34:44] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:34:45] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:34:46] [INFO] Date range option selected: Entire history
+[2025-11-03 02:34:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:34:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:34:47] [DEBUG] Switching to stack page 0
+[2025-11-03 02:34:48] [INFO] No valid cache found, user not authenticated
+[2025-11-03 02:48:53] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-03 02:48:58] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 02:48:58] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 02:48:58] [INFO] Date range option selected: Entire history
+[2025-11-03 02:48:58] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:48:58] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 02:48:58] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 02:48:59] [INFO] Set Generator Controller Initialized
+[2025-11-03 02:49:00] [INFO] Date range option selected: Entire history
+[2025-11-03 02:49:01] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 02:49:02] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-03 02:49:02] [DEBUG] Switching to stack page 0
+[2025-11-03 02:49:03] [INFO] No valid cache found, user not authenticated
