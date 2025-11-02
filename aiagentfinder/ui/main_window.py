@@ -32,6 +32,11 @@ class MainWindow(QMainWindow):
         self.report_df = pd.DataFrame()  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
         self.file_path = None
 
+        self.report_dfs = {}
+        self.report_files = []
+        self.report_properties = {}
+        self.selected_report_index = 0
+
 
 
         # self.setMinimumSize(1300, 650)
@@ -246,13 +251,52 @@ class MainWindow(QMainWindow):
 
         # === Handle Page Open Events ===
         current_widget = self.stack.widget(index)
-
         print(f"Switched to page index: {index}, Widget: {type(current_widget).__name__}")
 
-        # Example: when SetFinder page opens, check report_name
-        if isinstance(current_widget, SetGenerator):
-                current_widget.controller.update_pairs_box(self.report_name)
-                current_widget.controller.show_dataframe_in_table(self.report_df)
+        try:
+
+            if isinstance(current_widget, SetFinderUI):
+                Logger.info("Set Finder page opened, updating report data if available")
+
+
+                if not getattr(self, "report_properties", None) or not isinstance(self.report_properties, dict):
+                    Logger.warning("No report dataframes found (self.report_dfs is None or invalid)")
+                    return
+
+
+                current_widget.controller.load_report_properties()
+            # Handle SetGenerator page
+            if isinstance(current_widget, SetGenerator):
+                Logger.info("Set Generator page opened, updating report data if available")
+
+                if not getattr(self, "report_files", None):
+                    Logger.warning("No report files found (self.report_files is None or empty)")
+                    return
+
+                if not isinstance(self.report_files, list) or len(self.report_files) == 0:
+                    Logger.warning("Report files list is empty or invalid")
+                    return
+
+                if not getattr(self, "report_dfs", None) or not isinstance(self.report_dfs, dict):
+                    Logger.warning("No report dataframes found (self.report_dfs is None or invalid)")
+                    return
+
+                Logger.info(f"Available report files: {self.report_files}")
+                Logger.info(f"Available report dataframe keys: {list(self.report_dfs.keys())}")
+
+                report_file = os.path.basename(self.report_files[self.selected_report_index])
+                Logger.info(f"First report filename: {report_file}")
+
+                current_widget.controller.update_pairs_box(self.report_files)
+
+            
+                # current_widget.controller.show_dataframe_in_table(
+                #     self.report_dfs.get(report_file, pd.DataFrame())
+                # )
+
+        except Exception as e:
+            Logger.error(f"Error occurred while switching page to index {index}: {e}", exc_info=True)
+
 
 
     def check_cache(self):
