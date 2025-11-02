@@ -147,7 +147,7 @@ class MT5Manager:
     def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path):
         try:
             Logger.info("Starting run_strategy...")
-
+            Logger.info("settings: " + str(settings))
             # --- Mapping dictionaries ---
             MODEL_MAP = {
                 "Math calculation": 0,
