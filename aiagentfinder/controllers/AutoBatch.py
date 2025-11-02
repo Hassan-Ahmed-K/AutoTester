@@ -1583,7 +1583,7 @@ class AutoBatchController:
             QMessageBox.information(self.ui, "Finished", "All tests completed.")
             Logger.success("All tests completed.")
 
-        self.runner = ThreadRunner(self.ui)
+        self.runner = ThreadRunner(self.ui) 
         self.runner.on_result = on_done
         self.runner.run(task)
 

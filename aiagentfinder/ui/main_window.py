@@ -119,7 +119,7 @@ class MainWindow(QMainWindow):
         self.nav_list.addItem(batch_item)
 
         # Set Finder
-        finder_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Finder")
+        finder_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\checkmark-24.png"), "Set Finder")
         finder_item.setToolTip("Set Finder")
         self.nav_list.addItem(finder_item)
 
@@ -128,19 +128,19 @@ class MainWindow(QMainWindow):
         generator_item.setToolTip("Set Generator")
         self.nav_list.addItem(generator_item)
 
-        processor_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Processor")
+        processor_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\check.png"), "Set Processor")
         processor_item.setToolTip("Processor")
         self.nav_list.addItem(processor_item)
 
-        hunter_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Html Hunter")
+        hunter_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\x-mark-3-24.png"), "Html Hunter")
         hunter_item.setToolTip("Html Hunter")
         self.nav_list.addItem(hunter_item)
 
-        compare_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\compare.png"), "SetCompare")
+        compare_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\hyperlink_8577775.png"), "SetCompare")
         compare_item.setToolTip("Set Compare")
         self.nav_list.addItem(compare_item)
 
-        portfolio_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\compare.png"), "Portfolio Picker")
+        portfolio_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\wallet_3496745.png"), "Portfolio Picker")
         portfolio_item.setToolTip("Portfolio Picker")
         self.nav_list.addItem(portfolio_item)
 
@@ -153,16 +153,16 @@ class MainWindow(QMainWindow):
 
         self.home_page = HomeUI(self)
         self.setFinder_page =  SetFinderUI(self)
-
+        self.autoBatch_page = AutoBatchUI(self)
 
         # Stacked Pages
         self.stack = QStackedWidget()
 
         self.stack.addWidget(self.home_page)  
-        self.stack.addWidget(AutoBatchUI())
+        self.stack.addWidget(self.autoBatch_page)
         self.stack.addWidget(self.setFinder_page)
-        self.stack.addWidget(SetGenerator(self))
-        self.stack.addWidget(SetProcessorUI())
+        self.stack.addWidget(SetGenerator())
+        self.stack.addWidget(SetProcessorUI(self))
         self.stack.addWidget(HtmlHunterUI())
         self.stack.addWidget(SetCompareUI())
         self.stack.addWidget(PortfolioPickerUI())
