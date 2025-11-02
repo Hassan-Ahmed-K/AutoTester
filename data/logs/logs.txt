@@ -16523,3 +16523,16 @@ Pass No Bk Recovery Fwd Recovery Total Profit Est Bwd Weekly Profit Est Bwd Week
 [2025-11-03 01:19:53] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
 [2025-11-03 01:19:53] [DEBUG] Switching to stack page 0
 [2025-11-03 01:19:54] [INFO] User authenticated via cache
+[2025-11-03 01:26:49] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-03 01:26:50] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-03 01:26:50] [INFO] Cache loaded: {'authenticated': True, 'token': 'da9aedfa-5e1f-4595-94a3-249fecdf0d14', 'validation_time': 1762113027.6382356}
+[2025-11-03 01:26:50] [INFO] Date range option selected: Entire history
+[2025-11-03 01:26:50] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:26:50] [INFO] Adjusting forward date based on selection: No
+[2025-11-03 01:26:50] [DEBUG] Forward date disabled, set to test end date
+[2025-11-03 01:26:50] [INFO] Set Generator Controller Initialized
+[2025-11-03 01:26:50] [INFO] Date range option selected: Entire history
+[2025-11-03 01:26:50] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Nov 3 2025
+[2025-11-03 01:26:50] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-03 01:26:50] [DEBUG] Switching to stack page 0
+[2025-11-03 01:26:51] [INFO] User authenticated via cache
