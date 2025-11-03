@@ -175,19 +175,22 @@ class SetProcessorUI(BaseTab):
         full_form_layout.addLayout(first_file_layout)
         full_form_layout.addLayout(status_layout)
         full_form_layout.addLayout(second_form_layout)
+        full_form_layout.addSpacing(5)
         full_form_layout.addLayout(third_form_layout)
+        full_form_layout.addSpacing(5)
         full_form_layout.addLayout(fourth_form_layout)
 
         main_layout.addLayout(full_form_layout)
 
         # ---------- COPY BUTTONS ----------
         copy_layout = QHBoxLayout()
+        copy_layout.addSpacing(5)
         self.copy_data_button = QPushButton("COPY DATA FROM SELECTED AUTOTESTER ENTRY")
         self.copy_dates_button = QPushButton("COPY DATES FROM SETFINDER")
         copy_layout.addWidget(self.copy_data_button)
         copy_layout.addWidget(self.copy_dates_button)
         main_layout.addLayout(copy_layout)
-
+        
         # ---------- LOG AREA ----------
         log_layout = QVBoxLayout()
         log_label = QLabel("SINGLE SET TEST STATUS")
