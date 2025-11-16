@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 import xml.etree.ElementTree as ET
 from PyQt5.QtWidgets import QMessageBox, QFileDialog
 from aiagentfinder.utils.logger import Logger
@@ -368,6 +369,7 @@ class SetFinderController:
                     # --- Convert to DataFrame ---
                     df = pd.DataFrame(rows)
 
+                    
                     # --- Set header ---
                     if len(df) > 1:
                         df.columns = df.iloc[0]
@@ -446,13 +448,39 @@ class SetFinderController:
                 else:
                     combined_df = df_forward
 
+                cols_to_convert = [
+                    'forward_Forward Result',
+                    'forward_Back Result',
+                    'forward_Recovery Factor',
+                    'Recovery Factor'
+                ]
+
+                # Convert to numeric (non-numeric -> NaN)
+                for col in cols_to_convert:
+                    combined_df[col] = pd.to_numeric(combined_df[col], errors='coerce')
+
+                # Replace NaN with 0 in only these columns
+                combined_df[cols_to_convert] = combined_df[cols_to_convert].fillna(0)
+
+                # Compute score
+                combined_df['custom_score'] = (
+                    0.6 * combined_df['forward_Forward Result'] +
+                    0.4 * combined_df['forward_Back Result'] +
+                    5 * (combined_df['forward_Recovery Factor'] + combined_df['Recovery Factor'])
+                )
+
+
                 merged_dfs[os.path.basename(base_name)] = combined_df
                 processed.update({base_name, forward_name})
+
+                
+                
 
                 combined_df.to_csv(f"{os.path.splitext(base_name)[0]}_table.csv", index=False, encoding='utf-8-sig')
                 log_to_ui(f"💾 Saved CSV: {os.path.splitext(base_name)[0]}_table.csv")
 
             # ✅ Store merged DataFrames in main window
+
             Logger.info(f" merged.keys() =  {merged_dfs.keys()}")
             self.main_window.report_dfs = merged_dfs
 
@@ -467,8 +495,11 @@ class SetFinderController:
             Logger.info(f"📘 Successfully parsed and merged {len(merged_dfs)} reports.")
             Logger.info(f"📂 Final merged report keys: {list(merged_dfs.keys())}")
 
+            self.ui.reset_button.show()
+            self.ui.start_button.hide()
             self.ui.start_button.setText("Start")
             self.ui.start_button.setEnabled(True)
+
             QMessageBox.information(self.ui, "Success", f"✅ Parsed and merged {len(merged_dfs)} XML reports successfully!")
 
 
@@ -476,6 +507,7 @@ class SetFinderController:
             log_to_ui(f"❌ Error while processing XML reports: {err}")
             self.ui.start_button.setText("Start")
             self.ui.start_button.setEnabled(True)
+            
 
         # ============================
         # Run in Background Thread
@@ -491,6 +523,15 @@ class SetFinderController:
         """
         try:
             Logger.info("Initiating reset process for all input fields...")
+
+            self.main_window.report_name = None  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
+            self.report_df = pd.DataFrame()  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
+            self.file_path = None
+
+            self.main_window.report_dfs = {}
+            self.main_window.report_files = []
+            self.main_window.report_properties = {}
+            self.main_window.selected_report_index = 0
 
             # --- Reset date fields ---
             self.ui.start_date_input.setDate(QDate.currentDate())
@@ -519,6 +560,8 @@ class SetFinderController:
             self.ui.reset_button.hide()
             self.ui.start_button.show()
 
+        
+
             Logger.info("✅ All input fields successfully reset.")
             self.ui.log_text.append("✅ All fields have been reset to default values.")
 
@@ -531,7 +574,16 @@ class SetFinderController:
             )
 
 
-
+    def compute_custom_score(self, forward_result, back_result, forward_recovery, back_recovery):
+        """
+        Compute a custom score based on forward/backward results and recovery factors.
+        """
+        try:
+            score = (0.6 * forward_result) + (0.4 * back_result) + (5 * (forward_recovery + back_recovery))
+            return score
+        except Exception as e:
+            Logger.errors(f"❌ Error computing custom score: {e}")
+            return 0
 
 
 
