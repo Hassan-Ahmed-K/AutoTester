@@ -155,9 +155,13 @@ class PortfolioPickerUI(BaseTab):
         bottom_layout.addWidget(show_graph_btn)
 
         # main_layout.addLayout(top_grid)
+        main_layout.addSpacing(5)
         main_layout.addLayout(options_grid)
+        main_layout.addSpacing(5)
         main_layout.addLayout(api_grid)
+        main_layout.addSpacing(5)
         main_layout.addLayout(text_grid)
+        main_layout.addSpacing(5)
         main_layout.addLayout(top_draw_grid)
         main_layout.addWidget(drawdown_label)
         main_layout.addWidget(self.drawdown_analysis)
