@@ -167,11 +167,11 @@ class MainWindow(QMainWindow):
         self.stack.addWidget(self.home_page)  
         self.stack.addWidget(self.autoBatch_page)
         self.stack.addWidget(self.setFinder_page)
-        self.stack.addWidget(SetGenerator())
+        self.stack.addWidget(SetGenerator(self))
         self.stack.addWidget(SetProcessorUI(self))
-        self.stack.addWidget(HtmlHunterUI())
-        self.stack.addWidget(SetCompareUI())
-        self.stack.addWidget(PortfolioPickerUI())
+        self.stack.addWidget(HtmlHunterUI(self))
+        self.stack.addWidget(SetCompareUI(self))
+        self.stack.addWidget(PortfolioPickerUI(self))
         
 
         
@@ -270,25 +270,26 @@ class MainWindow(QMainWindow):
             if isinstance(current_widget, SetGenerator):
                 Logger.info("Set Generator page opened, updating report data if available")
 
+                # Case 1: self.report_files missing or empty
                 if not getattr(self, "report_files", None):
-                    Logger.warning("No report files found (self.report_files is None or empty)")
+                    Logger.warning("No report files found — clearing UI")
+                    current_widget.controller.clear_pairs_and_table()
                     return
 
                 if not isinstance(self.report_files, list) or len(self.report_files) == 0:
-                    Logger.warning("Report files list is empty or invalid")
+                    Logger.warning("Report files list is empty — clearing UI")
+                    current_widget.controller.clear_pairs_and_table()
                     return
 
+                # Case 2: report_dfs missing or invalid
                 if not getattr(self, "report_dfs", None) or not isinstance(self.report_dfs, dict):
-                    Logger.warning("No report dataframes found (self.report_dfs is None or invalid)")
+                    Logger.warning("No report dataframes found — clearing UI")
+                    current_widget.controller.clear_pairs_and_table()
                     return
 
-                Logger.info(f"Available report files: {self.report_files}")
-                Logger.info(f"Available report dataframe keys: {list(self.report_dfs.keys())}")
-
-                report_file = os.path.basename(self.report_files[self.selected_report_index])
-                Logger.info(f"First report filename: {report_file}")
-
+                # normal flow
                 current_widget.controller.update_pairs_box(self.report_files)
+
 
             
                 # current_widget.controller.show_dataframe_in_table(

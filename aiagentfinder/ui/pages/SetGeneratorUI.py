@@ -229,7 +229,7 @@ class SetGenerator(BaseTab):
         headers = [
             "Pass No", "Bk Recovery", "Fwd Recovery", "Est Bk Weekly Profit",
             "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
-            "Multiplier", "Total Profit", "POW Score"
+            "Multiplier", "Total Profit", "Custom Score"
         ]
         self.table.setHorizontalHeaderLabels(headers)
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
