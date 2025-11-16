@@ -71,8 +71,7 @@ class SetCompareUI(BaseTab):
 
 
         csv_detected_label = QLabel("CSV Files Detected:")
-        self.csv_list = QTextEdit()
-        self.csv_list.setReadOnly(True)
+        self.csv_list = QListWidget()
 
         self.deselect_button = QPushButton("DESELECT")
         self.deselect_button.setMinimumWidth(120)
@@ -99,14 +98,13 @@ class SetCompareUI(BaseTab):
 
         # --- Portfolio Stats ---
         portfolio_label = QLabel("Monthly Portfolio Stats:")
-        self.portfolio_stats = QTextEdit()
-        self.portfolio_stats.setMaximumHeight(80)
-        self.portfolio_stats.setReadOnly(True)
+        self.portfolio_stats = QTableWidget()
+        # self.portfolio_stats.setMaximumHeight(80)
+        # self.portfolio_stats.setReadOnly(True)
 
         # --- Drawdown Analysis ---
         drawdown_label = QLabel("Drawdown Overlap Analysis:")
-        self.drawdown_analysis = QTextEdit()
-        self.drawdown_analysis.setReadOnly(True)
+        self.drawdown_analysis = QTableWidget()
 
         # --- Bottom Controls ---
         self.compare_label = QLabel("Compare files for single trade approach")
