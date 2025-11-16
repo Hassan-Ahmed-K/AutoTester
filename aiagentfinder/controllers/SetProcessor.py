@@ -1,10 +1,13 @@
 import psutil
 import os,re,glob,datetime
 import pandas as pd
+import time
+# from datetime import datetime
 from aiagentfinder.utils import MT5Manager , Logger 
 from aiagentfinder.utils.workerThread import ThreadRunner
 from PyQt5.QtCore import Qt, QDate, QItemSelectionModel, QItemSelection
 from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView, QFileDialog, QTableWidgetSelectionRange, QTableWidget, QMessageBox,QComboBox,QApplication
+from aiagentfinder.utils.ThreadRunnerV2 import ThreadRunnerV2
 
 class SetProcessorController:
     def __init__(self,ui):
@@ -14,7 +17,9 @@ class SetProcessorController:
         self.setfinder_ui = main_window.setFinder_page
         self.mt5 = MT5Manager()
         self.runner = ThreadRunner()
+        self.runnerV2 = ThreadRunnerV2(self.ui)
         self.logger = Logger()
+        self.selected_reports = ['HTML','Graph']
    
 
 
@@ -37,6 +42,17 @@ class SetProcessorController:
         self.ui.copy_dates_button.clicked.connect(self.copy_dates_from_setfinder)
 
         self.ui.start_button.clicked.connect(self.on_start_button_clicked)
+
+        self.ui.toggle_graph.stateChanged.connect(lambda state: self.update_selection("Graph", state))
+        self.ui.toggle_overview.stateChanged.connect(lambda state: self.update_selection("Overview", state))
+        self.ui.toggle_csv.stateChanged.connect(lambda state: self.update_selection("CSV", state))
+        self.ui.toggle_semi_auto.stateChanged.connect(lambda state: self.update_selection("Semi-Auto", state))
+        
+
+        self.ui.stop_button.clicked.connect(self.on_stop_button_clicked)
+        self.ui.resume_button.clicked.connect(self.on_resume_button_clicked)
+        self.ui.kill_button.clicked.connect(self.on_kill_button_clicked)
+
         # self.ui.resume_button.clicked.connect(self.resume_tests)
         # self.ui.schedule_toggle.stateChanged.connect(self.toggle_schedule)
 
@@ -326,6 +342,7 @@ class SetProcessorController:
                 self.ui, "Error",
                 f"❌ Failed to select Expert File.\nError: {str(e)}"
             )
+    
     def update_clean_symbol(self):
         raw = self.ui.testfile_input.text().strip()
         print("raw = ", raw)
@@ -424,6 +441,7 @@ class SetProcessorController:
         index = self.ui.expert_input.findText(latest_name)
         if index != -1:
             self.ui.expert_input.setCurrentIndex(index)
+    
     def load_experts(self, expert_folder):
         if not expert_folder or not isinstance(expert_folder, str):
             Logger.warning("Invalid expert folder path")
@@ -456,7 +474,6 @@ class SetProcessorController:
         self.runner = ThreadRunner(self.ui)  # must exist in __init__
         self.runner.on_result = on_done
         self.runner.run(task, expert_folder)
-
 
     def toggle_date_fields(self, text):
         try:
@@ -532,6 +549,7 @@ class SetProcessorController:
           self.ui.timeframe_combo.setCurrentText(self.auto_batch_ui.timeframe_combo.currentText())
         except Exception as e:
           Logger.error(f"Error in copy_data_from_autotester: {e}")
+    
     def copy_dates_from_setfinder(self):
         try:
           self.ui.date_from.setDate(self.setfinder_ui.start_date_input.date())
@@ -539,54 +557,132 @@ class SetProcessorController:
         except Exception as e:
           Logger.error(f"Error in copy_dates_from_setfinder: {e}")
    
+    def update_selection(self, name, state):
+            """Add or remove checkbox value from list based on state"""
+            if state == Qt.Checked:
+                if name not in self.selected_reports:
+                    self.selected_reports.append(name)
+            else:
+                if name in self.selected_reports:
+                    self.selected_reports.remove(name)
+            print("Selected reports:", self.selected_reports)
 
+    def read_set_file(self, path):
+        try:
+            # Try UTF-16 first
+            with open(path, encoding="utf-16") as f:
+                data = f.read()
+                print("Read using UTF-16")
+                return data
+
+        except UnicodeError:
+            # If UTF-16 fails, try UTF-8
+            try:
+                with open(path, encoding="utf-8") as f:
+                    data = f.read()
+                    print("Read using UTF-8")
+                    return data
+            except Exception as e:
+                print(f"Failed to read file: {e}")
+                return None
+
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return None
+
+    def extract_symbol(self, path):
+            data = self.read_set_file(path)
+            
+            for line in data.splitlines():
+
+                line = line.strip().lstrip(';').strip()   # remove ; and trim spaces
+
+                if line.startswith("Symbol="):
+                    symbol = line.split("=")[1]
+                    return symbol
+                
+            return 'EURUSD'
+   
     def on_start_button_clicked(self):
         try:
+            # ---------------- UI Setup ----------------
+            self.ui.stop_button.show()
+            self.ui.resume_button.hide()
+            self.ui.kill_button.show()
+            self.ui.start_button.setEnabled(False)
+            self.ui.start_button.setText("RUNNING...")
+
+            # ---------------- Collect Inputs ----------------
             folder = self.ui.input_set_files.text().strip()
             mt5_path = self.ui.mt5_input.text().strip()
             data_path = self.ui.data_folder_input.text().strip()
             expert_name = self.ui.expert_input.currentText().strip()
             expert_file = self.ui.experts.get(expert_name)
-            report_path = os.path.join(data_path, "Agent Finder Results")
+            self.report_path = os.path.join(data_path, "Agent Finder Results",)
+            max_retries = int(self.ui.retry_input.text())
+            timestamp = time.time()
+            timestamp = time.strftime("%Y%m%d_%H%M%S", time.localtime(timestamp))
+            # timestamp = datetime.now()
 
-            # --------- Validate inputs ---------
+            Logger.info(f"Folder selected: {folder}")
+            Logger.info(f"MT5 Path: {mt5_path}")
+            Logger.info(f"Data Folder Path: {data_path}")
+            Logger.info(f"Expert Name: {expert_name}")
+            Logger.info(f"Expert File: {expert_file}")
+            Logger.info(f"Report Path: {self.report_path}")
+            Logger.info(f"Max retries: {max_retries}")
+
+            path = os.path.join(folder, self.ui.set_table.item(0, 0).text())
+            symbol = self.extract_symbol(path)
+
+            # ---------------- Validation ----------------
             if not all([folder, mt5_path, data_path, expert_file]):
                 QMessageBox.warning(self.ui, "Error", "Please fill all required fields before starting.")
                 Logger.warning("Missing required fields before starting.")
                 return
 
-            # --------- Ensure report folder exists ---------
+            # Ensure report folder exists
             try:
-                os.makedirs(report_path, exist_ok=True)
-                Logger.info(f"Report folder ready at: {report_path}")
+                os.makedirs(self.report_path, exist_ok=True)
+                Logger.info(f"Report folder ready at: {self.report_path}")
             except Exception as e:
                 Logger.error(f"Failed to create report folder: {e}")
                 QMessageBox.critical(self.ui, "Error", f"Failed to create report folder:\n{e}")
                 return
 
-            # --------- Collect .set files ---------
+            # Collect .set files
             set_files = [f for f in os.listdir(folder) if f.endswith(".set")]
             if not set_files:
                 QMessageBox.warning(self.ui, "Error", "No .set files found in the selected folder.")
                 Logger.warning("No .set files found in folder.")
                 return
 
-            # --------- Task definition ---------
-            def task():
+            # ---------------- Task Definition ----------------
+            def task(worker=None):
                 try:
+
+                    base_report_path = os.path.join(self.report_path, f"AutoTester_{timestamp}", "Sets")
+                    os.makedirs(base_report_path, exist_ok=True)
+                    Logger.info(f"Base report folder ready: {base_report_path}")
+
+
                     for row, set_file in enumerate(set_files):
-                        # Safely update table status
+                        # Stop immediately if requested
+                        if worker and worker._stop:
+                            Logger.info("Task stopped by user.")
+                            return False
+
+                        # Update table status
                         try:
-                            if self.ui.set_table.item(row, 1):
-                                self.ui.set_table.item(row, 1).setText("PROCESSING")
+                            status_item = self.ui.set_table.item(row, 1)
+                            if status_item:
+                                status_item.setText("PROCESSING")
                             else:
                                 self.ui.set_table.setItem(row, 1, QTableWidgetItem("PROCESSING"))
                         except Exception as e:
                             Logger.warning(f"Failed to update table at row {row}: {e}")
 
-                        # Build settings dictionary
-                        # symbol = os.path.basename(set_file).split("_")[0]
-                        symbol = "NZDUSD"
+                        # Build settings
                         forward_date = QDate.currentDate().toString("yyyy-MM-dd")
                         settings = {
                             "test_name": set_file,
@@ -594,14 +690,14 @@ class SetProcessorController:
                             "param_file": set_file,
                             "symbol": symbol,
                             "timeframe": self.ui.timeframe_combo.currentText(),
-                            "symbol_prefix": self.ui.pair_prefix_input.text().strip(),  
-                            "symbol_suffix": self.ui.pair_suffix_input.text().strip(),  
+                            "symbol_prefix": self.ui.pair_prefix_input.text().strip(),
+                            "symbol_suffix": self.ui.pair_suffix_input.text().strip(),
                             "date": self.ui.date_combo.currentText(),
                             "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
                             "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
                             "forward": "Disabled",
                             "forward_date": forward_date,
-                            "delay" : "100",
+                            "delay": "100",
                             "delay_mode": "Time based",
                             "model": "Every tick based on real ticks",
                             "deposit": self.ui.deposit_input.text(),
@@ -611,12 +707,52 @@ class SetProcessorController:
                             "criterion": "Balance Max"
                         }
 
-                        # Run MT5 strategy
-                        try:
-                            self.mt5.run_strategy(settings, data_path, mt5_path, report_path, self.ui.experts)
-                        except Exception as e:
-                            Logger.error(f"Error running strategy for {set_file}: {e}")
-                            continue
+# timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                        
+
+                        # Run strategy per report mode
+                        for report_mode in self.selected_reports:
+                            retry = 0
+                            success = False
+
+                             # Build report path for each report mode
+                            report_path = os.path.join(base_report_path, report_mode)
+                            os.makedirs(report_path, exist_ok=True)  # Create folder if not exists
+                            Logger.info(f"Report folder ready: {report_path}")
+
+                            report_path = os.path.join(report_path,symbol)
+                            
+                            print("---------------------------------------------------------------------")
+                            print(report_path)
+                            print("---------------------------------------------------------------------")
+
+                            while retry < max_retries:
+                                if worker and worker._stop:
+                                    Logger.info("Task stopped by user during retry loop.")
+                                    return False
+                                while worker and worker._pause:
+                                    time.sleep(0.1)  # Pause support
+
+                                try:
+                                    Logger.info(f"Running strategy for {set_file}/{report_mode} attempt {retry+1}/{max_retries}")
+                                    result = self.mt5.run_strategy(settings, data_path, mt5_path, report_path, self.ui.experts, report_type=report_mode,setProcessor=True)
+
+
+                                    print("----------------------------------------------")
+                                    print('result["status"] = ',result["status"])
+                                    print("--------------------------------------")
+
+                                    if result["status"] == "success":
+                                        success = True
+                                        break
+                                    retry += 1
+                                    Logger.error("Strategy failed… retrying…")
+                                except Exception as e:
+                                    Logger.error(f"Strategy crashed on attempt {retry+1}: {e}")
+                                    retry += 1
+
+                            if not success:
+                                Logger.error(f"❌ Strategy FAILED after {max_retries} attempts for {set_file} / {report_mode}")
 
                     return True
 
@@ -624,29 +760,284 @@ class SetProcessorController:
                     Logger.error(f"Unexpected error in task: {e}")
                     return False
 
+            # ---------------- Completion Callback ----------------
             def on_done(result):
                 try:
                     if result:
                         QMessageBox.information(self.ui, "Success", "All tests completed successfully!")
                         Logger.success("✅ All tests completed successfully!")
                         for row in range(len(set_files)):
-                            if self.ui.set_table.item(row, 1):
-                                self.ui.set_table.item(row, 1).setText("COMPLETED")
+                            status_item = self.ui.set_table.item(row, 1)
+                            if status_item:
+                                status_item.setText("COMPLETED")
                             else:
                                 self.ui.set_table.setItem(row, 1, QTableWidgetItem("COMPLETED"))
                     else:
-                        QMessageBox.warning(self.ui, "Error", "Some tests failed. Check logs for details.")
-                        Logger.warning("Some tests failed.")
+                        QMessageBox.warning(self.ui, "Error", "Some tests failed or were stopped.")
+                        Logger.warning("Some tests failed or were stopped.")
                 except Exception as e:
                     Logger.error(f"Error in on_done handler: {e}")
 
-            # --------- Run task in thread ---------
-            self.runner = ThreadRunner(self.ui)
-            self.runner.on_result = on_done
-            self.runner.run(task)
+            # ---------------- Run in ThreadRunnerV2 ----------------
+            self.runnerV2 = ThreadRunnerV2(parent=self.ui)
+            self.runnerV2.on_result = on_done
+            self.runnerV2.run(task, show_dialog=False)
 
         except Exception as e:
             Logger.error(f"Fatal error in on_start_button_clicked: {e}")
             QMessageBox.critical(self.ui, "Error", f"Unexpected error:\n{e}")
 
+
+
+    def on_stop_button_clicked(self):
+        if hasattr(self, 'runnerV2') and self.runnerV2.worker:
+            Logger.info("Stop button clicked - pausing the task")
+            self.runnerV2.pause()
+            # Update UI
+            self.ui.stop_button.hide()
+            self.ui.resume_button.show()
+            self.ui.kill_button.show()
+            # self.ui.start_button.setEnabled(True)
+            # self.ui.start_button.setText("PAUSED")
+            self.ui.start_button.hide()
+
+
+    def on_resume_button_clicked(self):
+        if hasattr(self, 'runnerV2') and self.runnerV2.worker:
+            Logger.info("Resume button clicked - resuming the task")
+            self.runnerV2.resume()
+            # Update UI
+            self.ui.resume_button.hide()
+            self.ui.kill_button.hide()
+            self.ui.stop_button.show()
+            self.ui.start_button.show()
+            self.ui.start_button.setEnabled(False)
+            self.ui.start_button.setText("RUNNING...")
+
+
+    def on_kill_button_clicked(self):
+        if hasattr(self, 'runnerV2') and self.runnerV2.worker:
+            Logger.info("Kill button clicked - terminating the task")
+            self.runnerV2.stop()
+            # Update UI
+            self.ui.kill_button.hide()
+            self.ui.resume_button.hide()
+            self.ui.stop_button.hide()
+            self.ui.start_button.show()
+            self.ui.start_button.setEnabled(True)
+            self.ui.start_button.setText("START")
+
+
+    
+    
+    
+    # def on_start_button_clicked(self):
+    #     try:
+    #         self.ui.stop_button.show()
+    #         self.ui.resume_button.hide()
+    #         self.ui.kill_button.show()
+    #         self.ui.start_button.setEnabled(False)
+    #         self.ui.start_button.setText("RUNNING...")
+
+
+    #         folder = self.ui.input_set_files.text().strip()
+    #         mt5_path = self.ui.mt5_input.text().strip()
+    #         data_path = self.ui.data_folder_input.text().strip()
+    #         expert_name = self.ui.expert_input.currentText().strip()
+    #         expert_file = self.ui.experts.get(expert_name)
+    #         report_path = os.path.join(data_path, "Agent Finder Results")
+    #         path = os.path.join(folder, self.ui.set_table.item(0,0).text())
+    #         max_retries = int(self.ui.retry_input.text())
+    #         print("path = ", path)
+
+    #         symbol = self.extract_symbol(path)
+
+    #         print("expert_name =", symbol)
+    #         print(symbol)
+
+    #         # --------- Validate inputs ---------
+    #         if not all([folder, mt5_path, data_path, expert_file]):
+    #             QMessageBox.warning(self.ui, "Error", "Please fill all required fields before starting.")
+    #             Logger.warning("Missing required fields before starting.")
+    #             return
+
+    #         # --------- Ensure report folder exists ---------
+    #         try:
+    #             os.makedirs(report_path, exist_ok=True)
+    #             Logger.info(f"Report folder ready at: {report_path}")
+    #         except Exception as e:
+    #             Logger.error(f"Failed to create report folder: {e}")
+    #             QMessageBox.critical(self.ui, "Error", f"Failed to create report folder:\n{e}")
+    #             return
+
+    #         # --------- Collect .set files ---------
+    #         set_files = [f for f in os.listdir(folder) if f.endswith(".set")]
+    #         if not set_files:
+    #             QMessageBox.warning(self.ui, "Error", "No .set files found in the selected folder.")
+    #             Logger.warning("No .set files found in folder.")
+    #             return
+
+    #         # --------- Task definition ---------
+    #         def task():
+    #             try:
+    #                 for row, set_file in enumerate(set_files):
+    #                     # Safely update table status
+    #                     try:
+    #                         if self.ui.set_table.item(row, 1):
+    #                             self.ui.set_table.item(row, 1).setText("PROCESSING")
+    #                         else:
+    #                             self.ui.set_table.setItem(row, 1, QTableWidgetItem("PROCESSING"))
+    #                     except Exception as e:
+    #                         Logger.warning(f"Failed to update table at row {row}: {e}")
+
+    #                     # Build settings dictionary
+    #                     # symbol = os.path.basename(set_file).split("_")[0]
+    #                     # symbol = "NZDUSD"
+    #                     forward_date = QDate.currentDate().toString("yyyy-MM-dd")
+    #                     settings = {
+    #                         "test_name": set_file,
+    #                         "expert": expert_name,
+    #                         "param_file": set_file,
+    #                         "symbol": symbol,
+    #                         "timeframe": self.ui.timeframe_combo.currentText(),
+    #                         "symbol_prefix": self.ui.pair_prefix_input.text().strip(),  
+    #                         "symbol_suffix": self.ui.pair_suffix_input.text().strip(),  
+    #                         "date": self.ui.date_combo.currentText(),
+    #                         "date_from": self.ui.date_from.date().toString("yyyy-MM-dd"),
+    #                         "date_to": self.ui.date_to.date().toString("yyyy-MM-dd"),
+    #                         "forward": "Disabled",
+    #                         "forward_date": forward_date,
+    #                         "delay" : "100",
+    #                         "delay_mode": "Time based",
+    #                         "model": "Every tick based on real ticks",
+    #                         "deposit": self.ui.deposit_input.text(),
+    #                         "currency": self.ui.currency_input.text(),
+    #                         "leverage": str(self.ui.leverage_input.value()),
+    #                         "optimazation": "Disabled",
+    #                         "criterion": "Balance Max"
+    #                     }
+
+    #                     # Run MT5 strategy
+    #                     try:
+    #                         print("self.selected_report = ", self.selected_reports)
+    #                         for report_mode  in self.selected_reports: 
+    #                             # self.mt5.run_strategy(settings, data_path, mt5_path, report_path, self.ui.experts, report_type=report_mode )
+
+    #                                 retry = 0
+    #                                 success = False
+
+    #                                 while retry < max_retries:
+    #                                     try:
+    #                                         Logger.info(f"Running strategy... attempt {retry+1}/{max_retries}")
+
+    #                                         result = self.mt5.run_strategy(
+    #                                             settings,
+    #                                             data_path,
+    #                                             mt5_path,
+    #                                             report_path,
+    #                                             self.ui.experts,
+    #                                             report_type=report_mode
+    #                                         )
+
+    #                                         # If run_strategy returns True → success
+    #                                         if result:
+    #                                             success = True
+    #                                             print("Strategy success!")
+    #                                             break
+
+    #                                         retry += 1
+    #                                         Logger.error("Failed… retrying…")
+
+    #                                     except Exception as e:
+    #                                         Logger.error(f"Strategy crashed on attempt {retry+1}: {e}")
+    #                                         retry += 1
+
+    #                                 if not success:
+    #                                     Logger.error(f"❌ Strategy FAILED after {max_retries} attempts for {set_file} / {report_mode}")
+
+
+    #                     except Exception as e:
+    #                         Logger.error(f"Error running strategy for {set_file}: {e}")
+    #                         continue
+
+    #                 return True
+
+    #             except Exception as e:
+    #                 Logger.error(f"Unexpected error in task: {e}")
+    #                 return False
+
+    #         def on_done(result):
+    #             try:
+    #                 if result:
+    #                     QMessageBox.information(self.ui, "Success", "All tests completed successfully!")
+    #                     Logger.success("✅ All tests completed successfully!")
+    #                     for row in range(len(set_files)):
+    #                         if self.ui.set_table.item(row, 1):
+    #                             self.ui.set_table.item(row, 1).setText("COMPLETED")
+    #                         else:
+    #                             self.ui.set_table.setItem(row, 1, QTableWidgetItem("COMPLETED"))
+    #                 else:
+    #                     QMessageBox.warning(self.ui, "Error", "Some tests failed. Check logs for details.")
+    #                     Logger.warning("Some tests failed.")
+    #             except Exception as e:
+    #                 Logger.error(f"Error in on_done handler: {e}")
+
+    #         # --------- Run task in thread ---------
+    #         self.runner = ThreadRunner(self.ui)
+    #         self.runner.on_result = on_done
+    #         self.runner.run(task, show_dialog=False)
+
+    #     except Exception as e:
+    #         Logger.error(f"Fatal error in on_start_button_clicked: {e}")
+    #         QMessageBox.critical(self.ui, "Error", f"Unexpected error:\n{e}")
+
+
+    # def on_stop_button_clicked(self):
+    #     try:
+    #         self.ui.stop_button.hide()
+    #         self.ui.start_button.hide()
+            
+    #         self.ui.resume_button.show()
+    #         self.ui.kill_button.show()
+    #         self.ui.start_button.setEnabled(True)
+    #         self.ui.start_button.setText("STOPPED")
+
+    #         # Here you would add logic to actually stop the running task/thread
+    #         Logger.info("Stop button clicked - stopping the task...")
+
+    #     except Exception as e:
+    #         Logger.error(f"Error in on_stop_button_clicked: {e}")
+
+
         
+        
+    # def on_resume_button_clicked(self):
+    #     try:
+    #         self.ui.resume_button.hide()
+    #         self.ui.kill_button.hide()
+            
+    #         self.ui.stop_button.show()
+    #         self.ui.start_button.setEnabled(False)
+    #         self.ui.start_button.setText("RUNNING...")
+    #         self.ui.start_button.show()
+
+    #         # Here you would add logic to actually resume the paused task/thread
+    #         Logger.info("Resume button clicked - resuming the task...")
+
+    #     except Exception as e:
+    #         Logger.error(f"Error in on_resume_button_clicked: {e}")
+
+
+
+    # def on_kill_button_clicked(self):    
+    #     try:
+    #         Logger.info("Kill button clicked - terminating the task...")
+
+    #         self.ui.kill_button.hide()
+    #         self.ui.resume_button.hide()
+    #         self.ui.stop_button.hide()
+    #         self.ui.start_button.setEnabled(True)
+    #         self.ui.start_button.setText("START")
+    #         self.ui.start_button.show()
+    #     except Exception as e:
+    #         Logger.error(f"Error in on_kill_button_clicked: {e}")

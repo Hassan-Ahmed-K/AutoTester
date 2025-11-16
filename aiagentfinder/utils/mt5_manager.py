@@ -131,11 +131,11 @@ class MT5Manager:
         indices_keywords = ["US500", "NAS100", "DJ30", "DE30", "UK100"]
         return [s for s in self.symbol_list if any(idx in s for idx in indices_keywords)]
     
-    def run_test(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path):
+    def run_test(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path, report_type="HTML"):
         try:
             Logger.info(f"▶️ Running test: {settings.get('test_name', 'Unnamed')} on {settings.get('symbol', 'Unknown')}")
             
-            result = self.run_strategy(settings, data_path, mt5_path, report_path, expert_path)
+            result = self.run_strategy(settings, data_path, mt5_path, report_path, expert_path, report_type)
 
             Logger.success(f"✅ Test '{settings.get('test_name', 'Unnamed')}' completed successfully.")
             return result
@@ -144,8 +144,9 @@ class MT5Manager:
             Logger.error(f"❌ Error running test '{settings.get('test_name', 'Unnamed')}': {e}")
             return None
 
-    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path):
+    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path, report_type="HTML",setProcessor=False):
         try:
+            success_flag = False
             Logger.info("Starting run_strategy...")
             Logger.info("settings: " + str(settings))
             # --- Mapping dictionaries ---
@@ -183,6 +184,15 @@ class MT5Manager:
                 "Complex Criterion max": 7
             }
 
+            REPORT_MODE_MAP = {
+                "HTML": 0,
+                "GRAPH": 0,
+                "OVERVIEW": 1,
+                "CSV": 3,
+                "XML": 4
+            }
+
+
             # --- Extract settings ---
             test_name = settings.get("test_name", "StrategyTest")
             expert = settings["expert"]
@@ -218,20 +228,23 @@ class MT5Manager:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
             # --- Create folders ---
-            folder = os.path.join(data_path, report_path, f"{test_name}_{timestamp}")
-            os.makedirs(folder, exist_ok=True)
+            if(not(setProcessor)):
+                folder = os.path.join(data_path, report_path, f"{test_name}_{timestamp}")
+                os.makedirs(folder, exist_ok=True)
+                report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_{test_name}_{forward_str}_report")
 
             config_dir = os.path.join(data_path, "config")
             logs_dir = Path(os.path.join(data_path, "logs"))
             os.makedirs(config_dir, exist_ok=True)
 
             config_path = os.path.join(config_dir, f"{test_name}.ini")
-            report_path = os.path.join(report_path, f"{test_name}_{timestamp}", f"{symbol}_{test_name}_{forward_str}_report")
+            report_mode = REPORT_MODE_MAP.get(report_type.upper(), 0)
 
             # --- Debug info ---
             Logger.debug(f"Settings: {settings}")
             Logger.debug(f"Config path  = {config_path}")
             Logger.debug(f"Report file  = {report_path}")
+            Logger.debug(f"Report Mode  = {report_mode}")
             Logger.debug(f"Expert       = {expert}")
             Logger.debug(f"Expert Path  = {Path(*Path(expert_path[expert]['path']).parts[-2:])}")
             Logger.debug(f"Symbol       = {symbol}")
@@ -296,7 +309,7 @@ class MT5Manager:
                             if match:
                                 progress = int(match.group(1))
                                 if progress != last_progress:
-                                    Logger.info(f"📊 Progress: {progress}%")
+                                    # Logger.info(f"📊 Progress: {progress}%")
                                     last_progress = progress
                     except Exception as e:
                         Logger.warning(f"Error reading progress from report: {e}")
@@ -312,14 +325,23 @@ class MT5Manager:
                                 new_lines = f.readlines()
                                 if new_lines:
                                     for line in new_lines:
-                                        Logger.debug(f"📝 Log: {line.strip()}")
+                                        # Logger.debug(f"📝 Log: {line.strip()}")
+
+                                        if 'last test passed with result "successfully finished"' in line:
+                                            success_flag = True
+                                            Logger.info("✅ Success flag set to True based on log line")
+
+
                                 last_log_size = f.tell()
+
                         except Exception as e:
                             Logger.warning(f"Error reading MT5 log file: {e}")
 
                 time.sleep(2)
 
-            if os.path.exists(os.path.join(data_path, report_path)):
+            folder_path = os.path.dirname(os.path.join(data_path, report_path))    
+            print("Success Flag = ", success_flag)
+            if (os.path.exists(folder_path) and os.listdir(folder_path)) or (success_flag):
                 Logger.success(f"✅ Test completed. Report saved at {report_path}")
                 return {"status": "success", "report": report_path}
             else:

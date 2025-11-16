@@ -81,6 +81,7 @@ class SetFinderController:
         self.main_window.report_name = report_files[0]
         self.main_window.file_path = self.main_window.report_files[0]
         self.ui.report_dir_input.setText(dir_path)
+        self.main_window.reportSymbol = []
 
         Logger.info(f"📂 Report directory selected: {dir_path}")
         Logger.info(f"📄 Total reports found: {len(self.main_window.report_files)}")
@@ -130,6 +131,8 @@ class SetFinderController:
                         Logger.warning(f"No DocumentProperties found in {file_path}")
 
                     # 🟢 ADDED (line 47) — Store the properties for use in populate_inputs_from_doc_props
+
+                    
                     report_name = os.path.basename(file_path)
                     report_props[report_name] = doc_props_dict
 
@@ -418,6 +421,7 @@ class SetFinderController:
                 if report_name in processed:
                     continue
 
+                # Detect base + forward
                 if ".forward.xml" in report_name:
                     base_name = report_name.replace(".forward.xml", ".xml")
                 else:
@@ -428,14 +432,14 @@ class SetFinderController:
                 df_main = result.get(base_name, pd.DataFrame())
                 df_forward = result.get(forward_name, pd.DataFrame())
 
+                # Prefix forward columns
                 if not df_forward.empty:
-                    # Prefix all forward columns except Pass
                     Logger.error(f"Forward file found: {forward_name}, prefixing columns.")
                     df_forward = df_forward.rename(
                         columns={col: f"forward_{col}" for col in df_forward.columns if col != "Pass"}
                     )
 
-                # Merge both if available
+                # Merge logic
                 if not df_main.empty and not df_forward.empty:
                     try:
                         combined_df = pd.merge(df_main, df_forward, on="Pass", how="inner")
@@ -443,48 +447,52 @@ class SetFinderController:
                     except Exception as e:
                         Logger.error(f"❌ Failed to merge {base_name} and {forward_name}: {e}")
                         combined_df = pd.concat([df_main, df_forward], ignore_index=True)
+
                 elif not df_main.empty:
                     combined_df = df_main
+
                 else:
                     combined_df = df_forward
 
+                # ---- FIX: Only convert existing columns ----
                 cols_to_convert = [
-                    'forward_Forward Result',
-                    'forward_Back Result',
-                    'forward_Recovery Factor',
-                    'Recovery Factor'
+                    "forward_Forward Result",
+                    "forward_Back Result",
+                    "forward_Recovery Factor",
+                    "Recovery Factor",
                 ]
 
-                # Convert to numeric (non-numeric -> NaN)
-                for col in cols_to_convert:
-                    combined_df[col] = pd.to_numeric(combined_df[col], errors='coerce')
+                existing_cols = [col for col in cols_to_convert if col in combined_df.columns]
 
-                # Replace NaN with 0 in only these columns
-                combined_df[cols_to_convert] = combined_df[cols_to_convert].fillna(0)
+                for col in existing_cols:
+                    combined_df[col] = pd.to_numeric(combined_df[col], errors="coerce")
 
-                # Compute score
-                combined_df['custom_score'] = (
-                    0.6 * combined_df['forward_Forward Result'] +
-                    0.4 * combined_df['forward_Back Result'] +
-                    5 * (combined_df['forward_Recovery Factor'] + combined_df['Recovery Factor'])
+                combined_df[existing_cols] = combined_df[existing_cols].fillna(0)
+
+                # ---- FIX: Safe scoring (missing columns = 0) ----
+                combined_df["custom_score"] = (
+                    0.6 * combined_df.get("forward_Forward Result", 0) +
+                    0.4 * combined_df.get("forward_Back Result", 0) +
+                    5 * (
+                        combined_df.get("forward_Recovery Factor", 0) +
+                        combined_df.get("Recovery Factor", 0)
+                    )
                 )
 
-
+                # Save merged
                 merged_dfs[os.path.basename(base_name)] = combined_df
                 processed.update({base_name, forward_name})
 
-                
-                
+                # Save CSV
+                csv_name = f"{os.path.splitext(base_name)[0]}_table.csv"
+                combined_df.to_csv(csv_name, index=False, encoding='utf-8-sig')
+                log_to_ui(f"💾 Saved CSV: {csv_name}")
 
-                combined_df.to_csv(f"{os.path.splitext(base_name)[0]}_table.csv", index=False, encoding='utf-8-sig')
-                log_to_ui(f"💾 Saved CSV: {os.path.splitext(base_name)[0]}_table.csv")
-
-            # ✅ Store merged DataFrames in main window
-
+            # Save to main window
             Logger.info(f" merged.keys() =  {merged_dfs.keys()}")
             self.main_window.report_dfs = merged_dfs
 
-            # ✅ Remove all ".forward.xml" entries from report_files list
+            # Remove forward XML files
             if hasattr(self.main_window, "report_files"):
                 before_count = len(self.main_window.report_files)
                 self.main_window.report_files = [
@@ -495,12 +503,14 @@ class SetFinderController:
             Logger.info(f"📘 Successfully parsed and merged {len(merged_dfs)} reports.")
             Logger.info(f"📂 Final merged report keys: {list(merged_dfs.keys())}")
 
+            # Reset UI
             self.ui.reset_button.show()
             self.ui.start_button.hide()
             self.ui.start_button.setText("Start")
             self.ui.start_button.setEnabled(True)
 
             QMessageBox.information(self.ui, "Success", f"✅ Parsed and merged {len(merged_dfs)} XML reports successfully!")
+
 
 
         def on_error(err):

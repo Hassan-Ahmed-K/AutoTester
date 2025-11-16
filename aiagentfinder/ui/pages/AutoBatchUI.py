@@ -418,7 +418,7 @@ class AutoBatchUI(BaseTab):
         height = self.height()
         if height > 864: 
             self.start_btn.setMinimumWidth(350)
-            self.start_btn.setMinimumHeight(130)
+            self.start_btn.setMinimumHeight(30)
 
             
         

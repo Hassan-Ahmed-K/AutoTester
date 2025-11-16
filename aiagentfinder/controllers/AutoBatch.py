@@ -1575,7 +1575,7 @@ class AutoBatchController:
             # Run tests one by one in the thread
             while not self.queue.is_empty():
                 test_settings = self.queue.get_next_test()
-                self.mt5.run_test(test_settings, data_path, mt5_path, report_path,self.ui.experts)
+                self.mt5.run_test(test_settings, data_path, mt5_path, report_path,self.ui.experts, report_type="XML")
                 self.queue.refresh_queue()
             return True  # signal finished
 
