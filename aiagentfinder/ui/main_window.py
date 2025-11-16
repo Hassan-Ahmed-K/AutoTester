@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
         self.report_files = []
         self.report_properties = {}
         self.selected_report_index = 0
+        
 
 
 

@@ -53,6 +53,7 @@ class SetProcessorUI(BaseTab):
         self.browse_set_files = QPushButton("Browse")
 
         self.toggle_graph = QCheckBox("Graph")
+        self.toggle_graph.setChecked(True)
         self.toggle_overview = QCheckBox("Overview")
         self.toggle_csv = QCheckBox("CSV")
         self.toggle_semi_auto = QCheckBox("Semi-Auto")
@@ -86,6 +87,7 @@ class SetProcessorUI(BaseTab):
         self.expert_button = QPushButton("")
         self.expert_button.setIcon(self.expert_button.style().standardIcon(QStyle.SP_FileDialogNewFolder))
         self.retry_input = QLineEdit()
+        self.retry_input.setText("10")
 
         second_form_layout.addWidget(self.expert_input, 1, 12)
         second_form_layout.addWidget(self.refresh_btn, 1, 13)
@@ -217,16 +219,30 @@ class SetProcessorUI(BaseTab):
         self.schedule_datetime = QDateEdit(QDate.currentDate())
         self.schedule_datetime.setCalendarPopup(True)
         self.schedule_datetime.setDisplayFormat("yyyy-MM-dd")
+
         self.start_button = QPushButton("START")
         self.start_button.setMinimumWidth(200)
+
+        self.stop_button = QPushButton("STOP")
+        self.stop_button.setMinimumWidth(200)
+
         self.resume_button = QPushButton("RESUME TESTS")
         self.resume_button.setMinimumWidth(200)
+
+        self.kill_button = QPushButton("KILL TASK")
+        self.kill_button.setMinimumWidth(200)
+       
+        self.kill_button.hide()
+        self.resume_button.hide()
+        self.stop_button.hide()
 
         schedule_layout.addWidget(schedule_label)
         schedule_layout.addWidget(self.schedule_toggle)
         schedule_layout.addWidget(self.schedule_datetime)
         schedule_layout.addWidget(self.start_button)
+        schedule_layout.addWidget(self.stop_button)
         schedule_layout.addWidget(self.resume_button)
+        schedule_layout.addWidget(self.kill_button)
 
         container_layout = QHBoxLayout()
         container_layout.addStretch()
