@@ -37,6 +37,10 @@ class MainWindow(QMainWindow):
         self.report_properties = {}
         self.selected_report_index = 0
 
+        self.data_folder = None
+
+        
+
 
 
         # self.setMinimumSize(1300, 650)
@@ -160,6 +164,7 @@ class MainWindow(QMainWindow):
         self.home_page = HomeUI(self)
         self.setFinder_page =  SetFinderUI(self)
         self.autoBatch_page = AutoBatchUI(self)
+        
 
         # Stacked Pages
         self.stack = QStackedWidget()

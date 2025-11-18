@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import Qt, QDate
 from PyQt5.QtGui import QFont 
 from aiagentfinder.utils.AnitmatedToggle import AnimatedToggle
+from aiagentfinder.controllers.HtmlHunter import HtmlHunterController
 
 from aiagentfinder.ui.base_tab import BaseTab
 
@@ -326,7 +327,9 @@ class HtmlHunterUI(BaseTab):
 
         log_label_layout.addWidget(self.log_box)
         main_layout.addLayout(log_label_layout)
+        
 
+        self.controller = HtmlHunterController(self)
 
     def resizeEvent(self, event):
         height = self.height()
