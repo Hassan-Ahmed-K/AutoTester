@@ -164,7 +164,7 @@ class MainWindow(QMainWindow):
         self.home_page = HomeUI(self)
         self.setFinder_page =  SetFinderUI(self)
         self.autoBatch_page = AutoBatchUI(self)
-        
+        self.setProcessor_page = SetProcessorUI(self)
 
         # Stacked Pages
         self.stack = QStackedWidget()
@@ -173,7 +173,7 @@ class MainWindow(QMainWindow):
         self.stack.addWidget(self.autoBatch_page)
         self.stack.addWidget(self.setFinder_page)
         self.stack.addWidget(SetGenerator(self))
-        self.stack.addWidget(SetProcessorUI(self))
+        self.stack.addWidget(self.setProcessor_page)
         self.stack.addWidget(HtmlHunterUI(self))
         self.stack.addWidget(SetCompareUI(self))
         self.stack.addWidget(PortfolioPickerUI(self))
