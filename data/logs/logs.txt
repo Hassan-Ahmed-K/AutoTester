@@ -12688,3 +12688,141 @@ NameError: name 'parse_mt_report_with_pandas' is not defined
 [2025-11-19 00:55:40] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (2 tables)
 [2025-11-19 00:55:40] [INFO] 📘 Successfully parsed 3 reports.
 [2025-11-19 01:03:27] [SUCCESS] ✅ Export folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets
+[2025-11-22 14:38:03] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-22 14:38:06] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-22 14:38:06] [INFO] Cache loaded: {'authenticated': True, 'token': '66ceafcc-6851-4662-b1b7-368f89b61314', 'validation_time': 1763331346.3608966}
+[2025-11-22 14:38:06] [INFO] Date range option selected: Entire history
+[2025-11-22 14:38:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Nov 22 2025
+[2025-11-22 14:38:06] [INFO] Adjusting forward date based on selection: No
+[2025-11-22 14:38:06] [DEBUG] Forward date disabled, set to test end date
+[2025-11-22 14:38:06] [INFO] Set Generator Controller Initialized
+[2025-11-22 14:38:07] [INFO] Date range option selected: Entire history
+[2025-11-22 14:38:07] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Nov 22 2025
+[2025-11-22 14:38:07] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-22 14:38:07] [DEBUG] Switching to stack page 0
+[2025-11-22 14:38:07] [INFO] No valid cache found, user not authenticated
+[2025-11-22 14:38:21] [INFO] Cache saved successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-22 14:38:22] [INFO] User admin@example.com logged in successfully.
+[2025-11-22 14:38:23] [INFO] User interface updated after login
+[2025-11-22 14:38:24] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-22 14:38:24] [DEBUG] Switching to stack page 1
+[2025-11-22 14:38:25] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-11-22 14:38:25] [DEBUG] Switching to stack page 2
+[2025-11-22 14:38:25] [INFO] Set Finder page opened, updating report data if available
+[2025-11-22 14:38:25] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-11-22 14:38:26] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-11-22 14:38:26] [DEBUG] Switching to stack page 3
+[2025-11-22 14:38:26] [INFO] Set Generator page opened, updating report data if available
+[2025-11-22 14:38:26] [WARNING] No report files found — clearing UI
+[2025-11-22 14:38:26] [INFO] ⚠️ No data to display.
+[2025-11-22 14:38:26] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-11-22 14:38:26] [INFO] Pairs box + table cleared due to no report files.
+[2025-11-22 14:38:26] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-22 14:38:26] [DEBUG] Switching to stack page 4
+[2025-11-22 14:38:27] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-22 14:38:27] [DEBUG] Switching to stack page 5
+[2025-11-22 14:38:28] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-11-22 14:38:28] [DEBUG] Switching to stack page 7
+[2025-11-22 14:38:29] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-11-22 14:38:29] [DEBUG] Switching to stack page 6
+[2025-11-22 14:38:32] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-11-22 14:38:32] [DEBUG] Switching to stack page 7
+[2025-11-22 14:38:34] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-11-22 14:38:34] [DEBUG] Switching to stack page 6
+[2025-11-22 14:38:35] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-22 14:38:35] [DEBUG] Switching to stack page 5
+[2025-11-22 14:38:39] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-22 14:38:39] [DEBUG] Switching to stack page 4
+[2025-11-22 14:38:41] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-11-22 14:38:41] [DEBUG] Switching to stack page 3
+[2025-11-22 14:38:41] [INFO] Set Generator page opened, updating report data if available
+[2025-11-22 14:38:41] [WARNING] No report files found — clearing UI
+[2025-11-22 14:38:41] [INFO] ⚠️ No data to display.
+[2025-11-22 14:38:41] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-11-22 14:38:41] [INFO] Pairs box + table cleared due to no report files.
+[2025-11-22 14:38:41] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-22 14:38:41] [DEBUG] Switching to stack page 4
+[2025-11-22 14:38:42] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-11-22 14:38:42] [DEBUG] Switching to stack page 3
+[2025-11-22 14:38:42] [INFO] Set Generator page opened, updating report data if available
+[2025-11-22 14:38:42] [WARNING] No report files found — clearing UI
+[2025-11-22 14:38:42] [INFO] ⚠️ No data to display.
+[2025-11-22 14:38:42] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-11-22 14:38:42] [INFO] Pairs box + table cleared due to no report files.
+[2025-11-22 14:38:43] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-22 14:38:43] [DEBUG] Switching to stack page 4
+[2025-11-22 14:42:55] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-22 14:42:57] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-22 14:42:57] [INFO] Cache loaded: {'authenticated': True, 'token': '6f2432ee-baa6-4a1a-8765-e88fd6ab1a64', 'validation_time': 1763804301.9295492}
+[2025-11-22 14:42:57] [INFO] Date range option selected: Entire history
+[2025-11-22 14:42:57] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Nov 22 2025
+[2025-11-22 14:42:57] [INFO] Adjusting forward date based on selection: No
+[2025-11-22 14:42:57] [DEBUG] Forward date disabled, set to test end date
+[2025-11-22 14:42:57] [INFO] Set Generator Controller Initialized
+[2025-11-22 14:42:57] [INFO] Date range option selected: Entire history
+[2025-11-22 14:42:57] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Nov 22 2025
+[2025-11-22 14:42:58] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-22 14:42:58] [DEBUG] Switching to stack page 0
+[2025-11-22 14:42:58] [INFO] User authenticated via cache
+[2025-11-22 14:43:00] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-11-22 14:43:00] [DEBUG] Switching to stack page 2
+[2025-11-22 14:43:00] [INFO] Set Finder page opened, updating report data if available
+[2025-11-22 14:43:00] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-11-22 14:44:00] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-22 14:44:03] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-22 14:44:03] [INFO] Cache loaded: {'authenticated': True, 'token': '6f2432ee-baa6-4a1a-8765-e88fd6ab1a64', 'validation_time': 1763804301.9295492}
+[2025-11-22 14:44:03] [INFO] Date range option selected: Entire history
+[2025-11-22 14:44:03] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Nov 22 2025
+[2025-11-22 14:44:03] [INFO] Adjusting forward date based on selection: No
+[2025-11-22 14:44:03] [DEBUG] Forward date disabled, set to test end date
+[2025-11-22 14:44:03] [INFO] Set Generator Controller Initialized
+[2025-11-22 14:44:03] [INFO] Date range option selected: Entire history
+[2025-11-22 14:44:03] [SUCCESS] ✅ Date range set: 1970-01-01 → Sat Nov 22 2025
+[2025-11-22 14:44:03] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-22 14:44:03] [DEBUG] Switching to stack page 0
+[2025-11-22 14:44:04] [INFO] User authenticated via cache
+[2025-11-22 14:44:06] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-11-22 14:44:06] [DEBUG] Switching to stack page 2
+[2025-11-22 14:44:06] [INFO] Set Finder page opened, updating report data if available
+[2025-11-22 14:44:06] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-11-22 14:44:16] [INFO] 📂 Report directory selected: D:/Hassan Work/AutoTester/Examples/New folder
+[2025-11-22 14:44:16] [INFO] 📄 Total reports found: 2
+[2025-11-22 14:44:16] [INFO] 📄 Report files: ['D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.forward.xml', 'D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.xml']
+[2025-11-22 14:44:16] [INFO] 📄 Default report file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-11-22 14:44:16] [INFO] 📂 Starting XML parsing for 2 files...
+[2025-11-22 14:44:16] [DEBUG] 🚀 Starting background thread for all XML reports reading...
+[2025-11-22 14:44:16] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-11-22 14:44:20] [INFO] 📑 Extracted DocumentProperties from eurusd.forward.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-11-22 14:44:20] [INFO] ✅ Parsed eurusd.forward.xml with 7611 rows.
+[2025-11-22 14:44:20] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.xml
+[2025-11-22 14:44:24] [INFO] 📑 Extracted DocumentProperties from eurusd.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-11-22 14:44:24] [INFO] ✅ Parsed eurusd.xml with 7611 rows.
+[2025-11-22 14:44:25] [INFO] 📘 Successfully parsed 2 reports.
+[2025-11-22 14:44:25] [INFO] 📂 Reports stored: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-11-22 14:44:25] [INFO] 🧾 DocumentProperties stored for: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-11-22 14:44:28] [INFO] 🚀 Starting XML table extraction for 2 files...
+[2025-11-22 14:44:28] [INFO] 📂 Reading XML file: eurusd.forward.xml
+[2025-11-22 14:44:35] [INFO] ✅ Processed eurusd.forward.xml (7610 rows)
+[2025-11-22 14:44:35] [INFO] 📂 Reading XML file: eurusd.xml
+[2025-11-22 14:44:43] [INFO] ✅ Processed eurusd.xml (7610 rows)
+[2025-11-22 14:44:43] [ERROR] Forward file found: eurusd.forward.xml, prefixing columns.
+[2025-11-22 14:44:43] [INFO] 🔗 Merged eurusd.xml and eurusd.forward.xml on 'Pass' column with forward prefix.
+[2025-11-22 14:44:43] [INFO] 💾 Saved CSV: eurusd_table.csv
+[2025-11-22 14:44:43] [INFO]  merged.keys() =  dict_keys(['eurusd.xml'])
+[2025-11-22 14:44:44] [INFO] 🧹 Removed forward XML files. Report files reduced from 2 → 1
+[2025-11-22 14:44:44] [INFO] 📘 Successfully parsed and merged 1 reports.
+[2025-11-22 14:44:44] [INFO] 📂 Final merged report keys: ['eurusd.xml']
+[2025-11-22 14:44:46] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-11-22 14:44:46] [DEBUG] Switching to stack page 3
+[2025-11-22 14:44:46] [INFO] Set Generator page opened, updating report data if available
+[2025-11-22 14:44:46] [INFO] 📂 Starting to populate table with 7610 rows...
+[2025-11-22 14:44:46] [INFO] Pairs box updated with: ['eurusd']
+[2025-11-22 14:44:49] [INFO] ✅ Table populated successfully with 7610 rows and 10 columns.
+[2025-11-22 14:44:57] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-22 14:44:57] [DEBUG] Switching to stack page 4
+[2025-11-22 14:44:58] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-22 14:44:58] [DEBUG] Switching to stack page 5
+[2025-11-22 14:44:59] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-11-22 14:44:59] [DEBUG] Switching to stack page 6
+[2025-11-22 14:44:59] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-11-22 14:44:59] [DEBUG] Switching to stack page 7

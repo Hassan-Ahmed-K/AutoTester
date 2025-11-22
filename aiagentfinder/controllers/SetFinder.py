@@ -19,7 +19,7 @@ class SetFinderController:
 
 
 
-        self.ui.htm_dir_btn.clicked.connect(self.browse_report_directory)
+        self.ui.xml_dir_btn.clicked.connect(self.browse_report_directory)
         self.ui.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)
         self.ui.start_button.clicked.connect(self.read_all_xml_tables)
         self.ui.reset_button.clicked.connect(self.reset_all_fields)
