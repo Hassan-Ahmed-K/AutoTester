@@ -213,6 +213,13 @@ class HtmlHunterUI(BaseTab):
         left_layout = QVBoxLayout()
         self.grouped_label = QLabel("Grouped Files:")
         self.grouped_text = QListWidget()
+        self.grouped_text.setStyleSheet(
+           """
+                QListWidget::item:selected {
+                    background-color: #0078d7;  /* Blue */
+                    color: white;               /* Optional */
+                }
+            """)
         self.grouped_text.setMinimumHeight(200)
         left_layout.addWidget(self.grouped_label)
         left_layout.addWidget(self.grouped_text)
