@@ -12,7 +12,6 @@ import re
 import matplotlib.pyplot as plt
 from functools import partial
 
-from extract_tables import clean_html_text, save_to_csv
 class HtmlHunterController:
     def __init__(self, ui):
         self.ui = ui
@@ -367,7 +366,6 @@ class HtmlHunterController:
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task)
-
 
     def browse_export_folder(self):
         try:
