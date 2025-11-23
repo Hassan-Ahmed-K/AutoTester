@@ -352,6 +352,7 @@ class HtmlHunterController:
             if self.report_dfs:
                 first_report_name = next(iter(self.report_dfs.keys()))
                 Logger.info(f"📂 Auto-loading first report: {first_report_name}")
+                self.log_to_ui(f"📂 Auto-loading first report: {first_report_name}")
                 self.show_dataframe_in_table({first_report_name: self.report_dfs[first_report_name]})
                 self.ui.grouped_text.setCurrentRow(0)
 
@@ -461,8 +462,8 @@ class HtmlHunterController:
                 Logger.info("⚠️ No data to display")
                 return
 
-            Logger.info(f"📂 Preparing table for report: {report_name} ({len(deals)} deals)")
-
+            Logger.info(f"📂 Preparing table for report: {report_name} deals)")
+            self.log_to_ui(f"📂 Preparing table for report: {report_name} ({len(deals)} deals)")
             if clean_data is None or deals is None or deals.empty:
                 Logger.info("⚠️ No data to display.")
                 self.ui.table.clear()
@@ -482,6 +483,7 @@ class HtmlHunterController:
                         # Dynamic values from deals
                         profit = self.safe_float(deal_row.get("Profit", 0))
                         row_data["Profit"] = profit
+                        row_data["Max DD"] = (self.safe_float(clean_data.get("Max DD", 0))/100)*profit
                         row_data["Avg Win"] = self.safe_float(clean_data.get("Avg Win", 0)) * profit
                         row_data["Avg Loss"] = self.safe_float(clean_data.get("Avg Loss", 0)) * profit
                         # You can add other deal-specific columns if needed
@@ -546,7 +548,6 @@ class HtmlHunterController:
                         key = headers[col_idx]
                         if key == "Graph":
                             btn = QPushButton("Open")
-                            btn.setMaximumSize(60, 60)
                        
                             btn.clicked.connect(partial(self.show_graph, row_idx))
                             table.setCellWidget(row_idx, col_idx, btn)
@@ -555,7 +556,6 @@ class HtmlHunterController:
 
                         if key == "Overview":
                             btn = QPushButton("Open")
-                            btn.setMaximumSize(60, 60)
                             btn.clicked.connect(partial(self.show_overview, row_idx))
                             table.setCellWidget(row_idx, col_idx, btn)
                             continue
@@ -565,11 +565,13 @@ class HtmlHunterController:
 
                 header_widget = table.horizontalHeader()
                 header_widget.setSectionResizeMode(QHeaderView.Stretch)
+                self.log_to_ui(f"✅ Table populated successfully with {len(table_data)} rows and {len(headers)} columns.")
                 Logger.info(f"✅ Table populated successfully with {len(table_data)} rows and {len(headers)} columns.")
 
             def on_error(err):
                 Logger.error(f"❌ Failed to populate table: {err}")
                 QMessageBox.critical(self.ui, "Error", f"Failed to populate table:\n{str(err)}")
+
 
             self.runner = ThreadRunner(self.ui)
             self.runner.on_result = on_done
@@ -579,49 +581,57 @@ class HtmlHunterController:
 
 
 
-    def show_graph(self, row_index):
-        try:
-            row_index = int(row_index)
-            report_key = list(self.report_dfs.keys())[0]  # first report for simplicity
-            df = self.report_dfs[report_key]
-
-            if df is None or df.empty:
-                Logger.warning(f"⚠️ Report {report_key} is empty. Cannot generate graph.")
-                QMessageBox.warning(self.ui, "Graph Warning", f"No data available for {report_key}.")
-                return
+    def show_graph(self, row_data):
+            """Generate graph using thread runner with safe extraction."""
 
             def task():
                 try:
-                    # Extract metrics from the specific row
-                    row = df.iloc[row_index]
-                    profit = float(row.get("Profit", 0) or 0)
-                    max_dd = float(row.get("Max DD", 0) or 0)
-                    pf = float(row.get("PF", 0) or 0)
-                    rf = float(row.get("RF", 0) or 0)
+                    ow_idx = int(row_data)
 
-                    return {"Profit": profit, "Max DD": max_dd, "PF": pf, "RF": rf}
+                    row = self.filtered_df.iloc[row_idx]
+                    # Safe float conversion
+                    profit = self.safe_float(row_data.get("Profit", 0))
+                    max_dd = self.safe_float(row_data.get("Max DD", 0))
+                    pf = self.safe_float(row_data.get("PF", 0))
+                    rf = self.safe_float(row_data.get("RF", 0))
+
+                    # ---- Your formulas ----
+                    avg_win = self.safe_float(row_data.get("Avg Win", 0)) * profit
+                    avg_loss = self.safe_float(row_data.get("Avg Loss", 0)) * profit
+
+                    return {
+                        "profit": profit,
+                        "max_dd": max_dd,
+                        "pf": pf,
+                        "rf": rf,
+                        "avg_win": avg_win,
+                        "avg_loss": avg_loss,
+                        "title": row_data.get("Name", "Report Graph")
+                    }
+
                 except Exception as e:
-                    Logger.error(f"❌ Error extracting row metrics: {e}")
-                    return {"Profit": 0, "Max DD": 0, "PF": 0, "RF": 0}
+                    raise Exception(f"Graph Thread Failed: {e}")
 
-            def on_done(metrics):
-                Logger.info(f"Opening graph for row {row_index} of report {report_key}")
-                x = ["Profit", "Max DD", "RF", "PF"]
-                y = [metrics[k] for k in x]
+            def on_done(m):
+                try:
+                    x = ["Profit", "Max DD", "PF", "RF", "AvgWin", "AvgLoss"]
+                    y = [m["profit"], m["max_dd"], m["pf"], m["rf"], m["avg_win"], m["avg_loss"]]
 
-                fig = plt.figure(figsize=(6, 4))
-                plt.plot(x, y, marker="o")
-                plt.title(f"{report_key} - Row {row_index}")
-                plt.grid(True)
-                plt.tight_layout()
-                fig.show()
+                    fig = plt.figure(figsize=(6, 4))
+                    plt.plot(x, y, marker="o")
+                    plt.grid(True)
+                    plt.title(m["title"])
+                    plt.tight_layout()
+                    fig.show()
+
+                except Exception as e:
+                    QMessageBox.critical(self.ui, "Graph Error", str(e))
 
                 self.active_runners.remove(runner)
 
             def on_error(err):
-                QMessageBox.critical(self.ui, "Graph Error", f"Failed to generate graph:\n{err}")
-                if runner in self.active_runners:
-                    self.active_runners.remove(runner)
+                QMessageBox.critical(self.ui, "Thread Error", str(err))
+                self.active_runners.remove(runner)
 
             runner = ThreadRunner(self.ui)
             if not hasattr(self, "active_runners"):
@@ -632,383 +642,234 @@ class HtmlHunterController:
             runner.on_error = on_error
             runner.run(task)
 
-        except Exception as e:
-            Logger.error(f"❌ show_graph failed: {e}")
-            QMessageBox.critical(self.ui, "Graph Error", f"Failed to open graph:\n{e}")
+    def show_overview(self, row_data):
+            """Open overview dialog using thread runner with safe parsing."""
 
 
-    def show_overview(self, row_index):
-
-            report_key = list(self.report_dfs.keys())[row_index]
 
             def task():
-                # Metrics extraction in background
-                return self.get_report_metrics(report_key)
+                try:
+                    # Safely extract all values from row_data
+                    profit = self.safe_float(row_data.get("Profit", 0))
+                    max_dd = self.safe_float(row_data.get("Max DD", 0))
+                    trades = int(self.safe_float(row_data.get("Trades", 0)))
+                    pf = self.safe_float(row_data.get("PF", 0))
+                    rf = self.safe_float(row_data.get("RF", 0))
+                    win_rate = self.safe_float(row_data.get("Win%", 0))
 
-            def on_done(metrics):
-                Logger.info(f"Opening overview for: {report_key}")
+                    # Your added formulas
+                    avg_win = self.safe_float(row_data.get("Avg Win", 0)) * profit
+                    avg_loss = self.safe_float(row_data.get("Avg Loss", 0)) * profit
 
-                # --- UI THREAD ---
-                overview_text = "\n".join([f"{k}: {v}" for k, v in metrics.items()])
+                    return {
+                        "title": row_data.get("Name", "Overview"),
+                        "profit": profit,
+                        "max_dd": max_dd,
+                        "pf": pf,
+                        "rf": rf,
+                        "trades": trades,
+                        "win_rate": win_rate,
+                        "avg_win": avg_win,
+                        "avg_loss": avg_loss
+                    }
 
-                QMessageBox.information(
-                    self.ui,
-                    f"Overview - {report_key}",
-                    overview_text
-                )
-         
+                except Exception as e:
+                    raise Exception(f"Overview Thread Failed: {e}")
+
+            def on_done(m):
+                try:
+                    text = (
+                        f"<b>Report Overview</b><br><br>"
+                        f"Profit: {m['profit']}<br>"
+                        f"Max Drawdown: {m['max_dd']}<br>"
+                        f"Profit Factor (PF): {m['pf']}<br>"
+                        f"Recovery Factor (RF): {m['rf']}<br>"
+                        f"Trades: {m['trades']}<br>"
+                        f"Win Rate: {m['win_rate']}%<br><br>"
+                        f"Avg Win (scaled): {m['avg_win']}<br>"
+                        f"Avg Loss (scaled): {m['avg_loss']}<br>"
+                    )
+
+                    dlg = QMessageBox(self.ui)
+                    dlg.setWindowTitle(m["title"])
+                    dlg.setText(text)
+                    dlg.exec_()
+
+                except Exception as e:
+                    QMessageBox.critical(self.ui, "Overview Error", str(e))
+
+                self.active_runners.remove(runner)
+
             def on_error(err):
-                QMessageBox.critical(self.ui, "Overview Error", f"Failed to fetch overview:\n{err}")
+                QMessageBox.critical(self.ui, "Thread Error", f"Failed to load overview:\n{err}")
+                self.active_runners.remove(runner)
 
+            # ----- ThreadRunner Setup -----
             runner = ThreadRunner(self.ui)
             if not hasattr(self, "active_runners"):
                 self.active_runners = []
 
             self.active_runners.append(runner)
-
             runner.on_result = on_done
             runner.on_error = on_error
             runner.run(task)
-    
-#     def apply_table_filter(self):
-#             try:
-#                 # --- Read filter values (with safe defaults) ---
-#                 try:
-#                     max_dd    = self.safe_float(self.ui.txt_drawdown.text()) if self.ui.txt_drawdown.text() else float("inf")
-#                     min_rf    = self.safe_float(self.ui.txt_recovery.text())  if self.ui.txt_recovery.text() else 0.0
-#                     min_pf    = self.safe_float(self.ui.txt_profit.text())    if self.ui.txt_profit.text() else 0.0
-#                     target_dd = self.safe_float(self.ui.txt_target.text())    if self.ui.txt_target.text() else float("inf")
-#                 except Exception:
-#                     # If safe_float throws, fallback to safe defaults
-#                     max_dd, min_rf, min_pf, target_dd = float("inf"), 0.0, 0.0, float("inf")
-
-#                 if not self.report_dfs:
-#                     Logger.warning("No report data to filter.")
-#                     return
-
-#                 # --- Get first report & verify structure ---
-#                 report_name = next(iter(self.report_dfs.keys()))
-#                 tables = self.report_dfs[report_name]
-
-#                 if not isinstance(tables, (list, tuple)) or len(tables) < 3:
-#                     Logger.error(f"Report structure invalid for '{report_name}': expected (clean_data, orders, deals). Got: {type(tables)} / len={len(tables) if hasattr(tables, '__len__') else 'n/a'}")
-#                     QMessageBox.warning(self.ui, "Filter error", "Report structure invalid. See logs.")
-#                     return
-
-#                 clean_data, orders, deals = tables[0], tables[1], tables[2]
-
-#                 # --- Quick sanity checks & logging for debugging ---
-#                 Logger.info(f"Filtering report '{report_name}': deals type={type(deals)}, rows={(len(deals) if hasattr(deals, '__len__') else 'n/a')}")
-#                 # Show a few sample columns for diagnosis
-#                 try:
-#                     sample_deal = deals.head(3).to_dict(orient="records") if hasattr(deals, "head") else (deals[:3] if hasattr(deals, "__getitem__") else None)
-#                     Logger.info(f"Sample deals (first 3): {sample_deal}")
-#                 except Exception:
-#                     Logger.info("Could not log sample deals (non-DataFrame)")
-
-#                 # --- Make defensive copies ---
-#                 # clean_data may be dict, pandas.Series, or DataFrame row — normalize to dict
-#                 if hasattr(clean_data, "to_dict"):
-#                     try:
-#                         clean_data_dict = clean_data.to_dict()
-#                     except Exception:
-#                         # fallback: iterate
-#                         clean_data_dict = dict(clean_data)
-#                 elif isinstance(clean_data, dict):
-#                     clean_data_dict = dict(clean_data)
-#                 else:
-#                     # last resort
-#                     try:
-#                         clean_data_dict = dict(clean_data)
-#                     except Exception:
-#                         clean_data_dict = {}
-
-#                 # Use shallow copy for deals
-#                 deals_copy = deals.copy() if hasattr(deals, "copy") else deals
-
-#                 # --- Normalize numeric values from clean_data (so we won't get zeros by accident) ---
-#                 def get_clean_numeric(key, default=0.0):
-#                     return self.safe_float(clean_data_dict.get(key, default))
-
-#                 clean_max_dd = get_clean_numeric("Max DD", 0.0)
-#                 clean_rf     = get_clean_numeric("RF", 0.0)
-#                 clean_pf     = get_clean_numeric("PF", 0.0)
-
-#                 Logger.info(f"Strategy metrics from clean_data: Max DD={clean_max_dd}, RF={clean_rf}, PF={clean_pf}")
-
-#                 # --- Build merged rows (per-deal) using clean_data metrics for filtering ---
-#                 merged_rows = []
-#                 # Make sure deals is iterable of rows (pandas DataFrame or list of dicts)
-#                 if hasattr(deals_copy, "iterrows"):
-#                     iterator = deals_copy.iterrows()
-#                     is_dataframe = True
-#                 elif isinstance(deals_copy, (list, tuple)):
-#                     iterator = enumerate(deals_copy)
-#                     is_dataframe = False
-#                 else:
-#                     # single-row fallback
-#                     iterator = enumerate([deals_copy])
-#                     is_dataframe = False
-
-#                 for idx, deal_row in iterator:
-#                     row_data = {}
-
-#                     # Copy static clean_data values for showing in table
-#                     # If clean_data is 1-row DataFrame, convert to dict properly
-#                     if isinstance(clean_data, pd.DataFrame):
-#                         static_dict = clean_data.to_dict(orient="records")[0]
-#                     else:
-#                         static_dict = clean_data
-
-#                     for k, v in static_dict.items():
-#                         row_data[k] = v
-
-
-#                     # Deal-specific Profit (case-insensitive check)
-#                     profit = None
-#                     try:
-#                         if is_dataframe:
-#                             # deal_row is (index, Series) when iterrows() used: deal_row[1] if we mistakenly used enumerate
-#                             # But since we used iterrows() above we have (index, Series) with deal_row being Series only if we unpack differently.
-#                             # To be safe handle both:
-#                             if isinstance(deal_row, tuple) and len(deal_row) == 2:
-#                                 deal_series = deal_row[1]
-#                             else:
-#                                 deal_series = deal_row
-#                             profit = deal_series.get("Profit", deal_series.get("profit", 0))
-#                         else:
-#                             # deal_row is dict-like
-#                             if isinstance(deal_row, tuple) and len(deal_row) == 2:
-#                                 deal_obj = deal_row[1]
-#                             else:
-#                                 deal_obj = deal_row
-#                             profit = deal_obj.get("Profit", deal_obj.get("profit", 0))
-#                     except Exception:
-#                         profit = 0
-
-#                     row_data["Profit"] = self.safe_float(profit)
-
-#                     # KEY FIX: Use clean_data metrics for each row so filters use real numbers
-#                     row_data["Max DD"] = clean_max_dd
-#                     row_data["RF"]     = clean_rf
-#                     row_data["PF"]     = clean_pf
-
-#                     merged_rows.append(row_data)
-
-#                 # --- Convert to DataFrame safely ---
-#                 try:
-#                     df = pd.DataFrame(merged_rows)
-#                 except Exception as e:
-#                     Logger.error(f"Failed to build merged DataFrame: {e}")
-#                     QMessageBox.critical(self.ui, "Error", f"Failed to build merged DataFrame:\n{e}")
-#                     return
-
-#                 Logger.info(f"Merged df shape: {df.shape}. Columns: {list(df.columns)}")
-#                 # show sample of df for debug
-#                 try:
-#                     Logger.info(f"Merged df head:\n{df.head(5).to_dict(orient='records')}")
-#                 except Exception:
-#                     pass
-
-#                 # --- Ensure the numeric columns are numeric (coerce) ---
-#                 numeric_cols = [
-#                     "Profit", "Max DD", "RF", "PF",
-#                     "Avg Win", "Avg Loss",
-#                     "Trade Vol", "LotSize", "MaxLots",
-#                     "MaxSequencesPerDay", "Lot Expo",
-#                     "Max Hold", "Avg Hold"
-#                 ]
-
-#                 for col in numeric_cols:
-#                     if col in df.columns:
-#                         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
-
-#                 # --- Apply row-level filtering ---
-#                 filtered_df = df[
-#                     (df["Max DD"] <= max_dd) &
-#                     (df["RF"] >= min_rf) &
-#                     (df["PF"] >= min_pf) &
-#                     (df["Max DD"] <= target_dd)
-#                 ]
-
-#                 Logger.info(f"Filtered df shape: {filtered_df.shape}")
-
-#                 columns_to_show = [
-#                     "Profit", "Max DD", "RF", "PF",
-#                     "Avg Win", "Avg Loss", "Trade Vol",
-#                     "LotSize", "MaxLots", "MaxSequencesPerDay", "MaxLots",
-#                     "Lot Expo", "Max Hold", "Avg Hold",
-#                     "Graph", "Overview"
-#                 ]
-
-# # Keep only existing columns
-#                 filtered_df = filtered_df[[col for col in columns_to_show if col in filtered_df.columns]]
-
-#                 # Render table
-#                 self.populate_qtable_from_df(filtered_df)
-
-#                 # --- Populate the QTable with filtered_df ---
-#                 self.populate_qtable_from_df(filtered_df)
-
-#             except Exception as e:
-#                 Logger.error(f"Failed to apply table filter: {e}")
-#                 QMessageBox.critical(self.ui, "Error", f"Failed to filter table:\n{str(e)}")
-
+   
     def apply_table_filter(self):
-            try:
-                # --- 1. Read filter values safely ---
-                max_dd    = self.safe_float(self.ui.txt_drawdown.text() or float("inf"))
-                min_rf    = self.safe_float(self.ui.txt_recovery.text() or 0)
-                min_pf    = self.safe_float(self.ui.txt_profit.text() or 0)
-                target_dd = self.safe_float(self.ui.txt_target.text() or float("inf"))
+        try:
+            # --- 1. Safe filter reads ---
+            max_dd    = self.safe_float(self.ui.txt_drawdown.text() or float("inf"))
+            min_rf    = self.safe_float(self.ui.txt_recovery.text() or 0)
+            min_pf    = self.safe_float(self.ui.txt_profit.text() or 0)
+            target_dd = self.safe_float(self.ui.txt_target.text() or float("inf"))
 
-                if not self.report_dfs:
-                    Logger.warning("No report data to filter.")
-                    return
+            if not self.report_dfs:
+                QMessageBox.warning(self.ui, "No Reports", "No reports loaded.")
+                return
 
-                # --- 2. Get first report ---
-                report_name = next(iter(self.report_dfs.keys()))
-                tables = self.report_dfs[report_name]
+            # --- 2. Get selected report ---
+            selected_item = self.ui.grouped_text.currentItem()
+            if not selected_item:
+                QMessageBox.warning(self.ui, "No Report Selected", "Select a report first.")
+                return
 
-                if not isinstance(tables, (list, tuple)) or len(tables) < 3:
-                    Logger.error(f"Report structure invalid for '{report_name}'.")
-                    return
+            report_name = selected_item.text()
+            clean_data, orders, deals = self.report_dfs.get(report_name, (None, None, None))
 
-                clean_data, orders, deals = tables[0], tables[1], tables[2]
+            if deals is None or deals.empty:
+                QMessageBox.warning(self.ui, "No Deals", "This report has no deals.")
+                return
 
-                if deals is None or deals.empty:
-                    Logger.warning("No deals data to filter.")
-                    return
+            # --- 3. Convert clean_data to dict ---
+            if isinstance(clean_data, pd.DataFrame):
+                clean = clean_data.to_dict(orient="records")[0]
+            elif isinstance(clean_data, pd.Series):
+                clean = clean_data.to_dict()
+            elif isinstance(clean_data, dict):
+                clean = clean_data
+            else:
+                clean = {}
 
-                # --- 3. Make copies ---
-                clean_data_copy = clean_data.copy() if hasattr(clean_data, "copy") else dict(clean_data)
-                deals_copy = deals.copy() if hasattr(deals, "copy") else deals
+            # --- 4. Merge static clean_data + dynamic deal values ---
+            merged_rows = []
+            for _, deal_row in deals.iterrows():
 
-                # --- 4. Normalize clean_data dict ---
-                if isinstance(clean_data_copy, pd.DataFrame):
-                    clean_data_dict = clean_data_copy.to_dict(orient="records")[0]
-                elif isinstance(clean_data_copy, pd.Series):
-                    clean_data_dict = clean_data_copy.to_dict()
-                else:
-                    clean_data_dict = dict(clean_data_copy)
+                row = dict(clean)
 
-                # --- 5. Merge clean_data into deals ---
-                merged_rows = []
-                for _, deal_row in (deals_copy.iterrows() if hasattr(deals_copy, "iterrows") else enumerate(deals_copy)):
-                    row_data = {}
+                # Profit
+                profit = self.safe_float(deal_row.get("Profit", 0))
+                row["Profit"] = profit
 
-                    # Copy static metrics
-                    for k, v in clean_data_dict.items():
-                        row_data[k] = v
+                # Static metrics
+                row["Max DD"] = (self.safe_float(clean.get("Max DD", 0))/100)*profit
+                row["RF"]     = self.safe_float(clean.get("RF", 0))
+                row["PF"]     = self.safe_float(clean.get("PF", 0))
 
-                    # Deal-specific Profit
-                    profit = 0
-                    try:
-                        if hasattr(deal_row, "get"):
-                            profit = self.safe_float(deal_row.get("Profit", 0))
-                        elif isinstance(deal_row, (list, tuple)) and len(deal_row) == 2:
-                            profit = self.safe_float(deal_row[1].get("Profit", 0))
-                    except Exception:
-                        profit = 0
-                    row_data["Profit"] = profit
+                # --- Custom calculations ---
+                row["Avg Win"]  = self.safe_float(clean.get("Avg Win", 0)) * profit
+                row["Avg Loss"] = self.safe_float(clean.get("Avg Loss", 0)) * profit
 
-                    # Use clean_data metrics for filtering
-                    row_data["Max DD"] = self.safe_float(clean_data_dict.get("Max DD", 0))
-                    row_data["RF"]     = self.safe_float(clean_data_dict.get("RF", 0))
-                    row_data["PF"]     = self.safe_float(clean_data_dict.get("PF", 0))
+                merged_rows.append(row)
 
-                    merged_rows.append(row_data)
+            df = pd.DataFrame(merged_rows)
 
-                df = pd.DataFrame(merged_rows)
+            # Force numeric
+            for col in ["Max DD", "RF", "PF", "Profit", "Avg Win", "Avg Loss"]:
+                if col in df:
+                    df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
 
-                # --- 6. Force numeric columns to floats ---
-                numeric_cols = ["Max DD", "RF", "PF", "Profit"]
-                for col in numeric_cols:
-                    if col in df.columns:
-                        df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
+            # --- 5. Apply filters ---
+            filtered_df = df[
+                (df["Max DD"] <= max_dd) &
+                (df["RF"] >= min_rf) &
+                (df["PF"] >= min_pf) &
+                (df["Max DD"] <= target_dd)
+            ]
 
-                # --- 7. Apply filtering ---
-                filtered_df = df[
-                    (df["Max DD"] <= max_dd) &
-                    (df["RF"] >= min_rf) &
-                    (df["PF"] >= min_pf) &
-                    (df["Max DD"] <= target_dd)
-                ]
-
-                Logger.info(f"Filtered df shape: {filtered_df.shape}")
-
-                # --- 8. Keep only desired columns ---
-                columns_to_show = [
+            columns_to_show = [
                     "Profit", "Max DD", "RF", "PF",
                     "Avg Win", "Avg Loss", "Trade Vol",
                     "LotSize", "MaxLots", "MaxSequencesPerDay",
                     "Lot Expo", "Max Hold", "Avg Hold",
                     "Graph", "Overview"
                 ]
-                filtered_df = filtered_df[[col for col in columns_to_show if col in filtered_df.columns]]
-
-                # --- 9. Populate QTable ---
-                self.populate_qtable_from_df(filtered_df)
-
-            except Exception as e:
-                Logger.error(f"Failed to apply table filter: {e}")
-                QMessageBox.critical(self.ui, "Error", f"Failed to filter table:\n{str(e)}")
+            filtered_df = filtered_df[[col for col in columns_to_show if col in filtered_df.columns]]
 
 
-            
+            # --- 6. ADD Graph + Overview columns so buttons appear ---
+            filtered_df["Graph"] = "Open"
+            filtered_df["Overview"] = "Open"
+
+            # --- 7. Show table ---
+            self.log_to_ui(f"Filtered {filtered_df.shape[0]} rows")
+            self.populate_qtable_from_df(filtered_df)
+
+        except Exception as e:
+            Logger.error(f"Filter error: {e}")
+            QMessageBox.critical(self.ui, "Error", f"Filtering failed:\n{e}")
+
+
     def populate_qtable_from_df(self, df):
-            table = self.ui.middle_message
-            table.clear()
-            columns_to_show = [
-                    "Profit", "Max DD", "RF", "PF",
-                    "Avg Win", "Avg Loss", "Trade Vol",
-                    "LotSize", "MaxLots", "MaxSequencesPerDay", "MaxLots",
-                    "Lot Expo", "Max Hold", "Avg Hold",
-                    "Graph", "Overview"
-                ]
-            # If df is empty or None -> clear and return
-            if df is None or df.empty:
-                table.header(columns_to_show)
-                table.setRowCount(0)
-                # table.setColumnCount(0)
-                Logger.info("populate_qtable_from_df: empty df — table cleared.")
-                return
+        table = self.ui.middle_message
+        table.clear()
 
-            # Ensure column names are strings
-            columns = [str(c) for c in df.columns.tolist()]
-            table.setRowCount(len(df))
-            table.setColumnCount(len(columns))
-            table.setHorizontalHeaderLabels(columns)
+        if df is None or df.empty:
+            table.setRowCount(0)
+            table.setColumnCount(0)
+            self.log_to_ui("Empty df — table cleared")
+            Logger.info("Empty df — table cleared")
+            return
 
-            # If Graph/Overview expected name variants: handle case-insensitive
-            graph_cols = [c for c in columns if c.lower() == "graph"]
-            overview_cols = [c for c in columns if c.lower() == "overview"]
+        columns = [str(c) for c in df.columns.tolist()]
 
-            for row_idx, (_, row) in enumerate(df.iterrows()):
-                for col_idx, col_name in enumerate(columns):
-                    value = row[col_name]
-                    if col_name in graph_cols:
-                        btn = QPushButton("Open")
-                        btn.setMaximumSize(60, 60)
-                        # capture the current row index for callback
-                        btn.clicked.connect(partial(self.show_graph, row_idx))
-                        table.setCellWidget(row_idx, col_idx, btn)
-                        continue
-                    if col_name in overview_cols:
-                        btn = QPushButton("Open")
-                        btn.setMaximumSize(60, 60)
-                        btn.clicked.connect(partial(self.show_overview, row_idx))
-                        table.setCellWidget(row_idx, col_idx, btn)
-                        continue
+        table.setColumnCount(len(columns))
+        table.setHorizontalHeaderLabels(columns)
+        table.setRowCount(len(df))
 
-                    item = QTableWidgetItem("" if pd.isna(value) else str(value))
-                    item.setTextAlignment(Qt.AlignCenter)
-                    table.setItem(row_idx, col_idx, item)
+        for row_idx, (_, row) in enumerate(df.iterrows()):
+            for col_idx, col_name in enumerate(columns):
 
-            # Stretch headers
-            header_widget = table.horizontalHeader()
-            header_widget.setSectionResizeMode(QHeaderView.Stretch)
-            Logger.info(f"✅ Table populated with {len(df)} rows and {len(columns)} columns.")
+                # --- Graph Button ---
+                if col_name.lower() == "graph":
+                    btn = QPushButton("Open")
+                    btn.clicked.connect(partial(self.show_graph, row_idx))
+                    table.setCellWidget(row_idx, col_idx, btn)
+                    continue
+
+                # --- Overview Button ---
+                if col_name.lower() == "overview":
+                    btn = QPushButton("Open")
+                    btn.clicked.connect(partial(self.show_overview, row_idx))
+                    table.setCellWidget(row_idx, col_idx, btn)
+                    continue
+
+                # --- Normal cell ---
+                value = "" if pd.isna(row[col_name]) else str(row[col_name])
+                item = QTableWidgetItem(value)
+                item.setTextAlignment(Qt.AlignCenter)
+                table.setItem(row_idx, col_idx, item)
+
+        # Stretch columns
+        header = table.horizontalHeader()
+        header.setSectionResizeMode(QHeaderView.Stretch)
+        self.log_to_ui(f"Table populated with {len(df)} rows and {len(columns)} cols")
+        Logger.info(f"Table populated with {len(df)} rows and {len(columns)} cols")
+
+    def log_to_ui(self, message: str):
+        """
+        Append a message to the bottom_message QTextEdit and scroll to the bottom.
+        """
+        if hasattr(self.ui, "log_box") and self.ui.log_box is not None:
+            # Append message with newline
+            self.ui.log_box.append(message)
+            
+            # Ensure the last message is visible
+            self.ui.log_box.verticalScrollBar().setValue(
+                self.ui.log_box.verticalScrollBar().maximum()
+            )
+        else:
+            print("⚠️ bottom_message widget not found. Message:", message)
+
+
 
 
 

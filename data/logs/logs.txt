@@ -26302,3 +26302,818 @@ TypeError: float() argument must be a string or a real number, not 'NoneType'
 [2025-11-23 05:56:17] [INFO] ✅ Table populated with 205 rows and 12 columns.
 [2025-11-23 05:56:17] [INFO] Filtered df shape: (205, 23)
 [2025-11-23 05:56:17] [INFO] ✅ Table populated with 205 rows and 12 columns.
+[2025-11-23 14:54:43] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-23 14:54:44] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 14:54:44] [INFO] Cache loaded: {'authenticated': True, 'token': 'f5fd04b8-99d9-40d8-bf21-60e5c588fe4e', 'validation_time': 1763858010.7338889}
+[2025-11-23 14:54:44] [INFO] Date range option selected: Entire history
+[2025-11-23 14:54:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 14:54:44] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 14:54:44] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 14:54:44] [INFO] Date range option selected: Entire history
+[2025-11-23 14:54:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 14:54:44] [INFO] Set Generator Controller Initialized
+[2025-11-23 14:54:44] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-23 14:54:44] [DEBUG] Switching to stack page 0
+[2025-11-23 14:54:44] [INFO] No valid cache found, user not authenticated
+[2025-11-23 14:54:59] [INFO] Cache saved successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 14:54:59] [INFO] User admin@example.com logged in successfully.
+[2025-11-23 14:55:00] [INFO] User interface updated after login
+[2025-11-23 14:55:01] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-23 14:55:01] [DEBUG] Switching to stack page 4
+[2025-11-23 14:55:02] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 14:55:02] [DEBUG] Switching to stack page 5
+[2025-11-23 14:55:04] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 14:55:04] [DEBUG] Switching to stack page 1
+[2025-11-23 14:55:16] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 14:55:23] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 14:55:29] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 14:55:29] [DEBUG] Switching to stack page 5
+[2025-11-23 14:55:38] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 14:55:38] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 14:55:38] [INFO] 📄 Total reports found: 7
+[2025-11-23 14:55:38] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 14:55:38] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 14:55:38] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 14:55:38] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 14:55:38] [INFO] Processing Table 1...
+[2025-11-23 14:55:38] [INFO] Processing Table 2...
+[2025-11-23 14:55:38] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:38] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 14:55:38] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 14:55:39] [INFO] Processing Table 1...
+[2025-11-23 14:55:39] [INFO] Processing Table 2...
+[2025-11-23 14:55:39] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:39] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 14:55:39] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 14:55:39] [INFO] Processing Table 1...
+[2025-11-23 14:55:39] [INFO] Processing Table 2...
+[2025-11-23 14:55:39] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:39] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 14:55:39] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 14:55:39] [INFO] Processing Table 1...
+[2025-11-23 14:55:39] [INFO] Processing Table 2...
+[2025-11-23 14:55:40] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:40] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 14:55:40] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 14:55:40] [INFO] Processing Table 1...
+[2025-11-23 14:55:40] [INFO] Processing Table 2...
+[2025-11-23 14:55:40] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:40] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 14:55:40] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 14:55:40] [INFO] Processing Table 1...
+[2025-11-23 14:55:40] [INFO] Processing Table 2...
+[2025-11-23 14:55:40] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:40] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 14:55:40] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 14:55:40] [INFO] Processing Table 1...
+[2025-11-23 14:55:40] [INFO] Processing Table 2...
+[2025-11-23 14:55:40] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:55:40] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 14:55:41] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 14:55:43] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 14:55:43] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 14:55:44] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 14:55:47] [ERROR] Filter error: 'HtmlHunterUI' object has no attribute 'report_list'
+[2025-11-23 14:57:05] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 14:57:06] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 14:57:06] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 14:57:06] [INFO] Date range option selected: Entire history
+[2025-11-23 14:57:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 14:57:06] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 14:57:06] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 14:57:06] [INFO] Date range option selected: Entire history
+[2025-11-23 14:57:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 14:57:06] [INFO] Set Generator Controller Initialized
+[2025-11-23 14:57:06] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 14:57:06] [DEBUG] Switching to stack page 0
+[2025-11-23 14:57:06] [INFO] User authenticated via cache
+[2025-11-23 14:57:27] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 14:57:27] [DEBUG] Switching to stack page 1
+[2025-11-23 14:57:39] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 14:57:43] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 14:57:50] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 14:57:50] [DEBUG] Switching to stack page 5
+[2025-11-23 14:58:05] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 14:58:05] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 14:58:05] [INFO] 📄 Total reports found: 7
+[2025-11-23 14:58:05] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 14:58:05] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 14:58:05] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 14:58:05] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 14:58:05] [INFO] Processing Table 1...
+[2025-11-23 14:58:05] [INFO] Processing Table 2...
+[2025-11-23 14:58:05] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:05] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 14:58:05] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 14:58:06] [INFO] Processing Table 1...
+[2025-11-23 14:58:06] [INFO] Processing Table 2...
+[2025-11-23 14:58:06] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:06] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 14:58:06] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 14:58:07] [INFO] Processing Table 1...
+[2025-11-23 14:58:07] [INFO] Processing Table 2...
+[2025-11-23 14:58:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:07] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 14:58:07] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 14:58:07] [INFO] Processing Table 1...
+[2025-11-23 14:58:07] [INFO] Processing Table 2...
+[2025-11-23 14:58:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:07] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 14:58:07] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 14:58:07] [INFO] Processing Table 1...
+[2025-11-23 14:58:07] [INFO] Processing Table 2...
+[2025-11-23 14:58:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:07] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 14:58:07] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 14:58:07] [INFO] Processing Table 1...
+[2025-11-23 14:58:07] [INFO] Processing Table 2...
+[2025-11-23 14:58:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:07] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 14:58:07] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 14:58:08] [INFO] Processing Table 1...
+[2025-11-23 14:58:08] [INFO] Processing Table 2...
+[2025-11-23 14:58:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 14:58:08] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 14:58:08] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 14:58:10] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 14:58:10] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 14:58:12] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 14:58:14] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:58:14] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 14:58:36] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:58:36] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 14:58:47] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:58:47] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 14:58:49] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:58:49] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 14:58:49] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:58:49] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 14:59:05] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:59:05] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 14:59:08] [INFO] Filtered df: (205, 23)
+[2025-11-23 14:59:08] [INFO] Table populated with 205 rows and 12 cols
+[2025-11-23 15:07:34] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:07:35] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:07:35] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:07:35] [INFO] Date range option selected: Entire history
+[2025-11-23 15:07:35] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:07:35] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:07:35] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:07:35] [INFO] Date range option selected: Entire history
+[2025-11-23 15:07:35] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:07:35] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:07:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:07:35] [DEBUG] Switching to stack page 0
+[2025-11-23 15:07:35] [INFO] User authenticated via cache
+[2025-11-23 15:07:37] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:07:37] [DEBUG] Switching to stack page 1
+[2025-11-23 15:07:47] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:07:51] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:07:57] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:07:57] [DEBUG] Switching to stack page 5
+[2025-11-23 15:08:06] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:08:06] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:08:06] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:08:06] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:08:06] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:08:06] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:08:06] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:08:06] [INFO] Processing Table 1...
+[2025-11-23 15:08:06] [INFO] Processing Table 2...
+[2025-11-23 15:08:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:07] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:08:07] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:08:07] [INFO] Processing Table 1...
+[2025-11-23 15:08:07] [INFO] Processing Table 2...
+[2025-11-23 15:08:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:07] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:08:07] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:08:08] [INFO] Processing Table 1...
+[2025-11-23 15:08:08] [INFO] Processing Table 2...
+[2025-11-23 15:08:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:08] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:08:08] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:08:08] [INFO] Processing Table 1...
+[2025-11-23 15:08:08] [INFO] Processing Table 2...
+[2025-11-23 15:08:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:08] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:08:08] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:08:08] [INFO] Processing Table 1...
+[2025-11-23 15:08:08] [INFO] Processing Table 2...
+[2025-11-23 15:08:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:08] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:08:08] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:08:08] [INFO] Processing Table 1...
+[2025-11-23 15:08:08] [INFO] Processing Table 2...
+[2025-11-23 15:08:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:08] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:08:08] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:08:09] [INFO] Processing Table 1...
+[2025-11-23 15:08:09] [INFO] Processing Table 2...
+[2025-11-23 15:08:09] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:08:09] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:08:09] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:08:15] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:08:15] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:08:17] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:08:20] [ERROR] Filter error: 'HtmlHunterUI' object has no attribute 'report_list'
+[2025-11-23 15:08:44] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:08:45] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:08:45] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:08:45] [INFO] Date range option selected: Entire history
+[2025-11-23 15:08:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:08:45] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:08:45] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:08:45] [INFO] Date range option selected: Entire history
+[2025-11-23 15:08:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:08:45] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:08:45] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:08:45] [DEBUG] Switching to stack page 0
+[2025-11-23 15:08:45] [INFO] User authenticated via cache
+[2025-11-23 15:08:47] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:08:47] [DEBUG] Switching to stack page 1
+[2025-11-23 15:08:56] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:09:01] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:09:10] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:09:10] [DEBUG] Switching to stack page 5
+[2025-11-23 15:09:16] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:09:16] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:09:16] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:09:16] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:09:16] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:09:16] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:09:17] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:09:17] [INFO] Processing Table 1...
+[2025-11-23 15:09:17] [INFO] Processing Table 2...
+[2025-11-23 15:09:17] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:17] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:09:17] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:09:17] [INFO] Processing Table 1...
+[2025-11-23 15:09:18] [INFO] Processing Table 2...
+[2025-11-23 15:09:18] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:18] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:09:18] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:09:18] [INFO] Processing Table 1...
+[2025-11-23 15:09:18] [INFO] Processing Table 2...
+[2025-11-23 15:09:18] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:18] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:09:18] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:09:18] [INFO] Processing Table 1...
+[2025-11-23 15:09:18] [INFO] Processing Table 2...
+[2025-11-23 15:09:18] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:18] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:09:18] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:09:18] [INFO] Processing Table 1...
+[2025-11-23 15:09:18] [INFO] Processing Table 2...
+[2025-11-23 15:09:18] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:18] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:09:18] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:09:19] [INFO] Processing Table 1...
+[2025-11-23 15:09:19] [INFO] Processing Table 2...
+[2025-11-23 15:09:19] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:19] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:09:19] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:09:19] [INFO] Processing Table 1...
+[2025-11-23 15:09:19] [INFO] Processing Table 2...
+[2025-11-23 15:09:19] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:09:19] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:09:19] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:09:21] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:09:21] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:09:23] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:09:24] [INFO] Table populated with 205 rows and 25 cols
+[2025-11-23 15:10:40] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:10:40] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:10:40] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:10:40] [INFO] Date range option selected: Entire history
+[2025-11-23 15:10:40] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:10:40] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:10:40] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:10:40] [INFO] Date range option selected: Entire history
+[2025-11-23 15:10:40] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:10:41] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:10:41] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:10:41] [DEBUG] Switching to stack page 0
+[2025-11-23 15:10:41] [INFO] User authenticated via cache
+[2025-11-23 15:10:43] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:10:43] [DEBUG] Switching to stack page 1
+[2025-11-23 15:10:52] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:10:57] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:11:04] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:11:04] [DEBUG] Switching to stack page 5
+[2025-11-23 15:11:11] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:11:11] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:11:11] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:11:11] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:11:11] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:11:11] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:11:12] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:11:12] [INFO] Processing Table 1...
+[2025-11-23 15:11:12] [INFO] Processing Table 2...
+[2025-11-23 15:11:12] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:12] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:11:12] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:11:12] [INFO] Processing Table 1...
+[2025-11-23 15:11:12] [INFO] Processing Table 2...
+[2025-11-23 15:11:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:13] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:11:13] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:11:13] [INFO] Processing Table 1...
+[2025-11-23 15:11:13] [INFO] Processing Table 2...
+[2025-11-23 15:11:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:13] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:11:13] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:11:13] [INFO] Processing Table 1...
+[2025-11-23 15:11:13] [INFO] Processing Table 2...
+[2025-11-23 15:11:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:13] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:11:13] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:11:13] [INFO] Processing Table 1...
+[2025-11-23 15:11:13] [INFO] Processing Table 2...
+[2025-11-23 15:11:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:13] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:11:13] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:11:14] [INFO] Processing Table 1...
+[2025-11-23 15:11:14] [INFO] Processing Table 2...
+[2025-11-23 15:11:14] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:14] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:11:14] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:11:14] [INFO] Processing Table 1...
+[2025-11-23 15:11:14] [INFO] Processing Table 2...
+[2025-11-23 15:11:14] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:11:14] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:11:14] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:11:16] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:11:16] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:11:18] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:11:20] [INFO] Table populated with 205 rows and 14 cols
+[2025-11-23 15:11:41] [INFO] Empty df — table cleared
+[2025-11-23 15:11:48] [INFO] Table populated with 205 rows and 14 cols
+[2025-11-23 15:16:56] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:16:57] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:16:57] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:16:57] [INFO] Date range option selected: Entire history
+[2025-11-23 15:16:57] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:16:57] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:16:57] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:16:57] [INFO] Date range option selected: Entire history
+[2025-11-23 15:16:57] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:16:57] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:16:57] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:16:57] [DEBUG] Switching to stack page 0
+[2025-11-23 15:16:57] [INFO] User authenticated via cache
+[2025-11-23 15:16:59] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:16:59] [DEBUG] Switching to stack page 1
+[2025-11-23 15:17:09] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:17:14] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:17:17] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:17:17] [DEBUG] Switching to stack page 5
+[2025-11-23 15:17:24] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:17:24] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:17:24] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:17:24] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:17:24] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:17:24] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:17:24] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:17:24] [INFO] Processing Table 1...
+[2025-11-23 15:17:24] [INFO] Processing Table 2...
+[2025-11-23 15:17:24] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:24] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:17:24] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:17:25] [INFO] Processing Table 1...
+[2025-11-23 15:17:25] [INFO] Processing Table 2...
+[2025-11-23 15:17:25] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:25] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:17:25] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:17:25] [INFO] Processing Table 1...
+[2025-11-23 15:17:25] [INFO] Processing Table 2...
+[2025-11-23 15:17:26] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:26] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:17:26] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:17:26] [INFO] Processing Table 1...
+[2025-11-23 15:17:26] [INFO] Processing Table 2...
+[2025-11-23 15:17:26] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:26] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:17:26] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:17:26] [INFO] Processing Table 1...
+[2025-11-23 15:17:26] [INFO] Processing Table 2...
+[2025-11-23 15:17:26] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:26] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:17:26] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:17:26] [INFO] Processing Table 1...
+[2025-11-23 15:17:26] [INFO] Processing Table 2...
+[2025-11-23 15:17:26] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:26] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:17:26] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:17:27] [INFO] Processing Table 1...
+[2025-11-23 15:17:27] [INFO] Processing Table 2...
+[2025-11-23 15:17:27] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:17:27] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:17:27] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:17:29] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:17:29] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:17:30] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:17:33] [INFO] Table populated with 205 rows and 14 cols
+[2025-11-23 15:28:38] [INFO] 📂 Preparing table for report: euraud_as_2_5048.htm (799 deals)
+[2025-11-23 15:28:49] [INFO] ✅ Table populated successfully with 799 rows and 16 columns.
+[2025-11-23 15:30:25] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:30:26] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:30:26] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:30:26] [INFO] Date range option selected: Entire history
+[2025-11-23 15:30:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:30:26] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:30:26] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:30:26] [INFO] Date range option selected: Entire history
+[2025-11-23 15:30:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:30:26] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:30:26] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:30:26] [DEBUG] Switching to stack page 0
+[2025-11-23 15:30:27] [INFO] User authenticated via cache
+[2025-11-23 15:30:28] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:30:28] [DEBUG] Switching to stack page 1
+[2025-11-23 15:30:37] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:30:49] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:30:55] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:30:55] [DEBUG] Switching to stack page 5
+[2025-11-23 15:31:01] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:31:01] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:31:01] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:31:01] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:31:01] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:31:01] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:31:02] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:31:02] [INFO] Processing Table 1...
+[2025-11-23 15:31:02] [INFO] Processing Table 2...
+[2025-11-23 15:31:02] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:02] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:31:02] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:31:03] [INFO] Processing Table 1...
+[2025-11-23 15:31:03] [INFO] Processing Table 2...
+[2025-11-23 15:31:03] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:03] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:31:03] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:31:03] [INFO] Processing Table 1...
+[2025-11-23 15:31:03] [INFO] Processing Table 2...
+[2025-11-23 15:31:03] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:03] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:31:03] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:31:04] [INFO] Processing Table 1...
+[2025-11-23 15:31:04] [INFO] Processing Table 2...
+[2025-11-23 15:31:04] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:04] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:31:04] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:31:04] [INFO] Processing Table 1...
+[2025-11-23 15:31:04] [INFO] Processing Table 2...
+[2025-11-23 15:31:04] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:04] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:31:04] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:31:04] [INFO] Processing Table 1...
+[2025-11-23 15:31:04] [INFO] Processing Table 2...
+[2025-11-23 15:31:04] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:04] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:31:04] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:31:04] [INFO] Processing Table 1...
+[2025-11-23 15:31:04] [INFO] Processing Table 2...
+[2025-11-23 15:31:04] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:31:04] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:31:05] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:31:06] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:31:06] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:31:08] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:31:33] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:31:33] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:31:33] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:31:33] [INFO] Date range option selected: Entire history
+[2025-11-23 15:31:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:31:33] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:31:33] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:31:33] [INFO] Date range option selected: Entire history
+[2025-11-23 15:31:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:31:33] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:31:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:31:33] [DEBUG] Switching to stack page 0
+[2025-11-23 15:31:34] [INFO] User authenticated via cache
+[2025-11-23 15:31:35] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:31:35] [DEBUG] Switching to stack page 5
+[2025-11-23 15:31:36] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:31:36] [DEBUG] Switching to stack page 1
+[2025-11-23 15:31:46] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:31:52] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:31:59] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:31:59] [DEBUG] Switching to stack page 5
+[2025-11-23 15:32:06] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:32:06] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:32:06] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:32:06] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:32:06] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:32:06] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:32:06] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:32:06] [INFO] Processing Table 1...
+[2025-11-23 15:32:06] [INFO] Processing Table 2...
+[2025-11-23 15:32:06] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:06] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:32:06] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:32:07] [INFO] Processing Table 1...
+[2025-11-23 15:32:07] [INFO] Processing Table 2...
+[2025-11-23 15:32:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:07] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:32:07] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:32:07] [INFO] Processing Table 1...
+[2025-11-23 15:32:07] [INFO] Processing Table 2...
+[2025-11-23 15:32:07] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:07] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:32:07] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:32:08] [INFO] Processing Table 1...
+[2025-11-23 15:32:08] [INFO] Processing Table 2...
+[2025-11-23 15:32:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:08] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:32:08] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:32:08] [INFO] Processing Table 1...
+[2025-11-23 15:32:08] [INFO] Processing Table 2...
+[2025-11-23 15:32:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:08] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:32:08] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:32:08] [INFO] Processing Table 1...
+[2025-11-23 15:32:08] [INFO] Processing Table 2...
+[2025-11-23 15:32:08] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:08] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:32:08] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:32:09] [INFO] Processing Table 1...
+[2025-11-23 15:32:09] [INFO] Processing Table 2...
+[2025-11-23 15:32:09] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:32:09] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:32:09] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:32:18] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:32:18] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:32:21] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:34:39] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:34:39] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:34:39] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:34:39] [INFO] Date range option selected: Entire history
+[2025-11-23 15:34:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:34:39] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:34:39] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:34:39] [INFO] Date range option selected: Entire history
+[2025-11-23 15:34:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:34:40] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:34:40] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:34:40] [DEBUG] Switching to stack page 0
+[2025-11-23 15:34:40] [INFO] User authenticated via cache
+[2025-11-23 15:34:41] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:34:41] [DEBUG] Switching to stack page 1
+[2025-11-23 15:34:54] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:34:59] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:35:05] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:35:05] [DEBUG] Switching to stack page 5
+[2025-11-23 15:35:12] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:35:12] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:35:12] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:35:12] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:35:12] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:35:12] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:35:12] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:35:12] [INFO] Processing Table 1...
+[2025-11-23 15:35:12] [INFO] Processing Table 2...
+[2025-11-23 15:35:12] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:12] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:35:12] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:35:13] [INFO] Processing Table 1...
+[2025-11-23 15:35:13] [INFO] Processing Table 2...
+[2025-11-23 15:35:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:13] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:35:13] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:35:13] [INFO] Processing Table 1...
+[2025-11-23 15:35:13] [INFO] Processing Table 2...
+[2025-11-23 15:35:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:13] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:35:13] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:35:13] [INFO] Processing Table 1...
+[2025-11-23 15:35:13] [INFO] Processing Table 2...
+[2025-11-23 15:35:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:13] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:35:13] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:35:13] [INFO] Processing Table 1...
+[2025-11-23 15:35:13] [INFO] Processing Table 2...
+[2025-11-23 15:35:13] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:13] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:35:13] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:35:14] [INFO] Processing Table 1...
+[2025-11-23 15:35:14] [INFO] Processing Table 2...
+[2025-11-23 15:35:14] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:14] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:35:14] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:35:14] [INFO] Processing Table 1...
+[2025-11-23 15:35:14] [INFO] Processing Table 2...
+[2025-11-23 15:35:14] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:35:14] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:35:14] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:35:16] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:35:16] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:35:18] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:35:38] [INFO] Empty df — table cleared
+[2025-11-23 15:36:53] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 15:36:53] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 15:36:53] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 15:36:53] [INFO] Date range option selected: Entire history
+[2025-11-23 15:36:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:36:53] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 15:36:53] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 15:36:53] [INFO] Date range option selected: Entire history
+[2025-11-23 15:36:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 15:36:53] [INFO] Set Generator Controller Initialized
+[2025-11-23 15:36:54] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 15:36:54] [DEBUG] Switching to stack page 0
+[2025-11-23 15:36:54] [INFO] User authenticated via cache
+[2025-11-23 15:36:55] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 15:36:55] [DEBUG] Switching to stack page 1
+[2025-11-23 15:37:04] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 15:37:10] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 15:37:14] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 15:37:14] [DEBUG] Switching to stack page 5
+[2025-11-23 15:37:21] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:37:21] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 15:37:21] [INFO] 📄 Total reports found: 7
+[2025-11-23 15:37:21] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 15:37:21] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 15:37:21] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 15:37:21] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 15:37:21] [INFO] Processing Table 1...
+[2025-11-23 15:37:21] [INFO] Processing Table 2...
+[2025-11-23 15:37:21] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:21] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 15:37:21] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 15:37:22] [INFO] Processing Table 1...
+[2025-11-23 15:37:22] [INFO] Processing Table 2...
+[2025-11-23 15:37:22] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:22] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 15:37:22] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 15:37:22] [INFO] Processing Table 1...
+[2025-11-23 15:37:22] [INFO] Processing Table 2...
+[2025-11-23 15:37:22] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:22] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 15:37:22] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 15:37:23] [INFO] Processing Table 1...
+[2025-11-23 15:37:23] [INFO] Processing Table 2...
+[2025-11-23 15:37:23] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:23] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 15:37:23] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 15:37:23] [INFO] Processing Table 1...
+[2025-11-23 15:37:23] [INFO] Processing Table 2...
+[2025-11-23 15:37:23] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:23] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 15:37:23] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 15:37:23] [INFO] Processing Table 1...
+[2025-11-23 15:37:23] [INFO] Processing Table 2...
+[2025-11-23 15:37:23] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:23] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 15:37:23] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 15:37:24] [INFO] Processing Table 1...
+[2025-11-23 15:37:24] [INFO] Processing Table 2...
+[2025-11-23 15:37:24] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 15:37:24] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 15:37:24] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 15:37:25] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 15:37:25] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 15:37:27] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 15:37:40] [INFO] Table populated with 138 rows and 14 cols
+[2025-11-23 15:38:43] [INFO] Table populated with 138 rows and 14 cols
+[2025-11-23 15:38:44] [INFO] Table populated with 138 rows and 14 cols
+[2025-11-23 15:38:46] [INFO] Table populated with 138 rows and 14 cols
+[2025-11-23 16:14:37] [INFO] ❌ No valid cache found, user not authenticated
+[2025-11-23 16:14:37] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 16:14:37] [INFO] Cache loaded: {'authenticated': True, 'token': 'dbed15d8-708a-4a0e-a054-0772c573f830', 'validation_time': 1763891699.0682545}
+[2025-11-23 16:14:37] [INFO] Date range option selected: Entire history
+[2025-11-23 16:14:37] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 16:14:37] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 16:14:37] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 16:14:37] [INFO] Date range option selected: Entire history
+[2025-11-23 16:14:37] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 16:14:38] [INFO] Set Generator Controller Initialized
+[2025-11-23 16:14:38] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-11-23 16:14:38] [DEBUG] Switching to stack page 0
+[2025-11-23 16:14:38] [INFO] No valid cache found, user not authenticated
+[2025-11-23 16:14:49] [INFO] Cache saved successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 16:14:49] [INFO] User admin@example.com logged in successfully.
+[2025-11-23 16:14:50] [INFO] User interface updated after login
+[2025-11-23 16:14:52] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-11-23 16:14:52] [DEBUG] Switching to stack page 4
+[2025-11-23 16:14:53] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 16:14:53] [DEBUG] Switching to stack page 5
+[2025-11-23 16:14:56] [WARNING] Data path is not set or invalid!
+[2025-11-23 16:14:58] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 16:14:58] [DEBUG] Switching to stack page 1
+[2025-11-23 16:15:07] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 16:15:12] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 16:15:19] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 16:15:19] [DEBUG] Switching to stack page 5
+[2025-11-23 16:15:25] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 16:15:25] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 16:15:25] [INFO] 📄 Total reports found: 7
+[2025-11-23 16:15:25] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 16:15:25] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 16:15:25] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 16:15:25] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 16:15:25] [INFO] Processing Table 1...
+[2025-11-23 16:15:25] [INFO] Processing Table 2...
+[2025-11-23 16:15:25] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:25] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 16:15:25] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 16:15:26] [INFO] Processing Table 1...
+[2025-11-23 16:15:26] [INFO] Processing Table 2...
+[2025-11-23 16:15:26] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:26] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 16:15:26] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 16:15:27] [INFO] Processing Table 1...
+[2025-11-23 16:15:27] [INFO] Processing Table 2...
+[2025-11-23 16:15:27] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:27] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 16:15:27] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 16:15:27] [INFO] Processing Table 1...
+[2025-11-23 16:15:27] [INFO] Processing Table 2...
+[2025-11-23 16:15:27] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:27] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 16:15:27] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 16:15:27] [INFO] Processing Table 1...
+[2025-11-23 16:15:27] [INFO] Processing Table 2...
+[2025-11-23 16:15:27] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:27] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 16:15:27] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 16:15:27] [INFO] Processing Table 1...
+[2025-11-23 16:15:27] [INFO] Processing Table 2...
+[2025-11-23 16:15:27] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:27] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 16:15:27] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 16:15:28] [INFO] Processing Table 1...
+[2025-11-23 16:15:28] [INFO] Processing Table 2...
+[2025-11-23 16:15:28] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:15:28] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 16:15:28] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 16:15:30] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 16:15:30] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 16:15:31] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 16:16:18] [INFO] ✅ Valid cache found, user authenticated
+[2025-11-23 16:16:18] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-11-23 16:16:18] [INFO] Cache loaded: {'authenticated': True, 'token': 'e8add16f-6102-41b1-b562-56a663df978b', 'validation_time': 1763896489.1813803}
+[2025-11-23 16:16:18] [INFO] Date range option selected: Entire history
+[2025-11-23 16:16:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 16:16:18] [INFO] Adjusting forward date based on selection: No
+[2025-11-23 16:16:18] [DEBUG] Forward date disabled, set to test end date
+[2025-11-23 16:16:18] [INFO] Date range option selected: Entire history
+[2025-11-23 16:16:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Nov 23 2025
+[2025-11-23 16:16:18] [INFO] Set Generator Controller Initialized
+[2025-11-23 16:16:19] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-11-23 16:16:19] [DEBUG] Switching to stack page 0
+[2025-11-23 16:16:19] [INFO] User authenticated via cache
+[2025-11-23 16:16:20] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-11-23 16:16:20] [DEBUG] Switching to stack page 1
+[2025-11-23 16:16:29] [INFO] MT5 terminal selected: D:/mt5/terminal64.exe
+[2025-11-23 16:16:34] [INFO] Auto-selected Data Folder: C:\Users\FATTANI COMPUTERS\AppData\Roaming\MetaQuotes\Terminal\D8E196A488CAFD45BB0BBB0BC09A258A
+[2025-11-23 16:16:44] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-11-23 16:16:44] [DEBUG] Switching to stack page 5
+[2025-11-23 16:16:50] [SUCCESS] ✅ HTML Reports folder selected: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 16:16:50] [INFO] 📂 Report directory: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports
+[2025-11-23 16:16:50] [INFO] 📄 Total reports found: 7
+[2025-11-23 16:16:50] [INFO] 📄 Report files: ['C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_1_4666.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_2_5048.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_3_4891.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\euraud_as_4_5431.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURSGD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\EURUSD_report.xml.htm', 'C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\\NZDCAD_NZDCAD_Strategy1_No_report.xml.htm']
+[2025-11-23 16:16:50] [INFO] 📄 Default report file: C:/Users/FATTANI COMPUTERS/AppData/Roaming/MetaQuotes/Terminal/D8E196A488CAFD45BB0BBB0BC09A258A/Agent Finder Results/AUDCAD__20251116_211550/sets/HTML Reports\euraud_as_1_4666.htm
+[2025-11-23 16:16:50] [INFO] 📂 Starting parsing for 7 files...
+[2025-11-23 16:16:50] [INFO] 🔍 Parsing HTML report: euraud_as_1_4666.htm
+[2025-11-23 16:16:50] [INFO] Processing Table 1...
+[2025-11-23 16:16:50] [INFO] Processing Table 2...
+[2025-11-23 16:16:50] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:50] [SUCCESS] ✅ Parsed HTML report: euraud_as_1_4666.htm (3 tables)
+[2025-11-23 16:16:50] [INFO] 🔍 Parsing HTML report: euraud_as_2_5048.htm
+[2025-11-23 16:16:51] [INFO] Processing Table 1...
+[2025-11-23 16:16:51] [INFO] Processing Table 2...
+[2025-11-23 16:16:51] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:51] [SUCCESS] ✅ Parsed HTML report: euraud_as_2_5048.htm (3 tables)
+[2025-11-23 16:16:51] [INFO] 🔍 Parsing HTML report: euraud_as_3_4891.htm
+[2025-11-23 16:16:51] [INFO] Processing Table 1...
+[2025-11-23 16:16:51] [INFO] Processing Table 2...
+[2025-11-23 16:16:52] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:52] [SUCCESS] ✅ Parsed HTML report: euraud_as_3_4891.htm (3 tables)
+[2025-11-23 16:16:52] [INFO] 🔍 Parsing HTML report: euraud_as_4_5431.htm
+[2025-11-23 16:16:52] [INFO] Processing Table 1...
+[2025-11-23 16:16:52] [INFO] Processing Table 2...
+[2025-11-23 16:16:52] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:52] [SUCCESS] ✅ Parsed HTML report: euraud_as_4_5431.htm (3 tables)
+[2025-11-23 16:16:52] [INFO] 🔍 Parsing HTML report: EURSGD_report.xml.htm
+[2025-11-23 16:16:52] [INFO] Processing Table 1...
+[2025-11-23 16:16:52] [INFO] Processing Table 2...
+[2025-11-23 16:16:52] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:52] [SUCCESS] ✅ Parsed HTML report: EURSGD_report.xml.htm (3 tables)
+[2025-11-23 16:16:52] [INFO] 🔍 Parsing HTML report: EURUSD_report.xml.htm
+[2025-11-23 16:16:52] [INFO] Processing Table 1...
+[2025-11-23 16:16:52] [INFO] Processing Table 2...
+[2025-11-23 16:16:52] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:52] [SUCCESS] ✅ Parsed HTML report: EURUSD_report.xml.htm (3 tables)
+[2025-11-23 16:16:52] [INFO] 🔍 Parsing HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm
+[2025-11-23 16:16:53] [INFO] Processing Table 1...
+[2025-11-23 16:16:53] [INFO] Processing Table 2...
+[2025-11-23 16:16:53] [INFO] 🔧 Fixing deals table: detected numeric columns, using row 0 as header.
+[2025-11-23 16:16:53] [SUCCESS] ✅ Parsed HTML report: NZDCAD_NZDCAD_Strategy1_No_report.xml.htm (3 tables)
+[2025-11-23 16:16:53] [INFO] 📘 Successfully parsed 7 reports.
+[2025-11-23 16:16:55] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
+[2025-11-23 16:16:55] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm (205 deals)
+[2025-11-23 16:16:56] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-11-23 16:18:19] [INFO] Table populated with 205 rows and 14 cols
+[2025-11-23 16:18:23] [INFO] Table populated with 205 rows and 14 cols
