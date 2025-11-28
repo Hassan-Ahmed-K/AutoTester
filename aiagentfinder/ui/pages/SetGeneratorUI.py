@@ -44,7 +44,7 @@ class SetGenerator(BaseTab):
 
         # left list
         self.pairs_box = QListWidget()
-        self.pairs_box.setSelectionMode(QListWidget.ExtendedSelection)
+        self.pairs_box.setSelectionMode(QListWidget.SingleSelection)
         self.pairs_box.setFocusPolicy(Qt.StrongFocus)
         self.pairs_box.setStyleSheet("""
             QListWidget::item:selected {

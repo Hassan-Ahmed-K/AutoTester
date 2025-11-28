@@ -40,7 +40,7 @@ class SetGeneratorController:
         self.ui.select_files_btn.clicked.connect(self.select_optimisation_files)
         self.ui.table.itemSelectionChanged.connect(self.update_pass_number)
         self.ui.opt_files.itemSelectionChanged.connect(self.on_opt_files_selection)
-        self.ui.pairs_box.itemSelectionChanged.connect(self.on_pairs_box_selection)
+        # self.ui.pairs_box.itemSelectionChanged.connect(self.on_pairs_box_selection)
         self.ui.table.cellClicked.connect(self.toggle_row_selection)
         self.ui.table.mousePressEvent = self.table_mouse_press_event
         self.ui.generate_set_btn.clicked.connect(self.generate_set_file)
@@ -88,6 +88,12 @@ class SetGeneratorController:
         self.title = self.main_window.report_properties[report_file]['Title'].split(",")[0]
         self.symbol = self.title.split()[1]
         print('------------------------------------------------------------------')
+
+        if self.ui.pairs_box.count() > 0:
+            item = self.ui.pairs_box.item(self.main_window.selected_report_index)
+            item.setSelected(True)
+            self.ui.pairs_box.setCurrentItem(item)
+
         self.calculate_estimated_profits(self.report_df)
         self.show_dataframe_in_table(self.report_df)
 
@@ -415,10 +421,19 @@ class SetGeneratorController:
 
         print("Selected files:", self.selected_optimization)
 
-    def on_pairs_box_selection(self):
-        self.pair_selected = [item.text() for item in self.ui.pairs_box.selectedItems()]
-        
-        print("Selected pairs:", self.pair_selected)
+    # def on_pairs_box_selection(self):
+    #     item = self.ui.pairs_box.currentItem() 
+    #     self.pair_selected = item.text() 
+    #     print("-----------------------------------")
+    #     # print(item.index())
+    #     print(self.main_window.report_dfs)
+    #     print(self.main_window.report_files)
+    #     print(self.main_window.report_properties)
+    #     print(self.main_window.selected_report_index)
+    #     print(self.main_window.file_path)  
+    #     # print(self.main_window.report_files)
+    #     print("Selected pairs:", self.pair_selected)
+    #     print("-----------------------------------")
 
     def toggle_row_selection(self, row, column):
         """
@@ -550,20 +565,24 @@ class SetGeneratorController:
 
     def on_pair_clicked(self, item):
         index = self.ui.pairs_box.row(item)
+
+        if (index == self.main_window.selected_report_index):
+            return
+
         self.main_window.selected_report_index = index
         print(f"🟢 Clicked item: {item.text()} | Index: {index}")
 
-        report_file = os.path.basename(self.main_window.report_files[index])
-        self.report_df = self.main_window.report_dfs.get(report_file, pd.DataFrame())
+        self.report_file = os.path.basename(self.main_window.report_files[index])
+        self.report_df = self.main_window.report_dfs.get(self.report_file, pd.DataFrame())
 
         print('------------------------------------------------------------------')
-        print(report_file)
-        self.title = self.main_window.report_properties[report_file]['Title'].split(",")[0]
+        print(self.report_file)
+        self.title = self.main_window.report_properties[self.report_file]['Title'].split(",")[0]
         self.symbol = self.title.split()[1]
         print('------------------------------------------------------------------')
 
         self.calculate_estimated_profits(self.report_df)
-        Logger.info(f"Selected report filename: {report_file}")
+        Logger.info(f"Selected report filename: {self.report_file}")
 
         self.show_dataframe_in_table(self.report_df)
 
@@ -752,7 +771,7 @@ class SetGeneratorController:
         save_path, _ = QFileDialog.getSaveFileName(
             self.ui,
             "Save SET file",
-            self.main_window.file_path.replace(".xml", "") or "",
+            self.report_file.replace(".forward", "").replace(".xml", "") or "",
             "SET Files (*.set)"
         )
         if not save_path:
