@@ -19,7 +19,7 @@ class SetFinderController:
 
 
 
-        self.ui.htm_dir_btn.clicked.connect(self.browse_report_directory)
+        self.ui.xml_dir_btn.clicked.connect(self.browse_report_directory)
         self.ui.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)
         self.ui.start_button.clicked.connect(self.read_all_xml_tables)
         self.ui.reset_button.clicked.connect(self.reset_all_fields)
@@ -372,6 +372,8 @@ class SetFinderController:
                     # --- Convert to DataFrame ---
                     df = pd.DataFrame(rows)
 
+
+
                     
                     # --- Set header ---
                     if len(df) > 1:
@@ -454,6 +456,11 @@ class SetFinderController:
                 else:
                     combined_df = df_forward
 
+                combined_df = combined_df.drop_duplicates(
+                                    subset=["Trades", "forward_Trades"],
+                                    keep="first"
+                                )
+
                 # ---- FIX: Only convert existing columns ----
                 cols_to_convert = [
                     "forward_Forward Result",
@@ -466,6 +473,8 @@ class SetFinderController:
 
                 for col in existing_cols:
                     combined_df[col] = pd.to_numeric(combined_df[col], errors="coerce")
+
+
 
                 combined_df[existing_cols] = combined_df[existing_cols].fillna(0)
 

@@ -27,24 +27,24 @@ class SetFinderUI(BaseTab):
         header_label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(header_label)
 
-        # ====== htm DIRECTORY ======
-        htm_dir_label = QLabel("Select htm File Directory:")
+        # ====== xml DIRECTORY ======
+        xml_dir_label = QLabel("Select xml File Directory:")
         # htm_dir_label.setStyleSheet("font-weight: bold; color: #ffcc00;")
-        main_layout.addWidget(htm_dir_label)
+        main_layout.addWidget(xml_dir_label)
 
-        htm_dir_row = QHBoxLayout()
+        xml_dir_row = QHBoxLayout()
         self.report_dir_input = QLineEdit()
-        self.report_dir_input.setPlaceholderText("Path to MT5 htm directory...")
+        self.report_dir_input.setPlaceholderText("Path to MT5 xml directory...")
 
-        self.htm_dir_btn = QPushButton("Browse")
-        icon = self.htm_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)
-        self.htm_dir_btn.setIcon(icon)
-        self.htm_dir_btn.setMinimumWidth(100)
+        self.xml_dir_btn = QPushButton("Browse")
+        icon = self.xml_dir_btn.style().standardIcon(QStyle.SP_FileDialogNewFolder)
+        self.xml_dir_btn.setIcon(icon)
+        self.xml_dir_btn.setMinimumWidth(100)
         # self.htm_dir_btn.clicked.connect(self.browse_htm_directory)
 
-        htm_dir_row.addWidget(self.report_dir_input)
-        htm_dir_row.addWidget(self.htm_dir_btn)
-        main_layout.addLayout(htm_dir_row)
+        xml_dir_row.addWidget(self.report_dir_input)
+        xml_dir_row.addWidget(self.xml_dir_btn)
+        main_layout.addLayout(xml_dir_row)
         main_layout.addSpacing(20)
         
         strategy_label_layout = QVBoxLayout()
@@ -56,7 +56,7 @@ class SetFinderUI(BaseTab):
         strategy_label_layout.addWidget(strategy_label)
         main_layout.addLayout(strategy_label_layout)
 
-            # ---- FILTER INPUT ROW ----
+        # ---- FILTER INPUT ROW ----
         self.filter_row = QHBoxLayout()
         self.filter_row.setSpacing(20)
 
