@@ -67,7 +67,7 @@ class SetProcessorController:
         data_folder = self.ui.data_folder_input.text()
 
         if not data_folder:
-            QMessageBox.warning(self.ui, "Error", "Please  set the Data Folder first.")
+            QMessageBox.warning(self.ui, "Error", "Please  Connect to MT5.")
             Logger.warning("Data folder is not set.")
             return None
 
@@ -93,12 +93,15 @@ class SetProcessorController:
             Logger.info(f"Param folder found: {default_path}")
 
             # ✅ Open folder dialog (instead of file)
-            folder_path = QFileDialog.getExistingDirectory(
-                self.ui,
-                "Select Set Folder",
-                default_path
-            )
+            dialog = QFileDialog(self.ui, "Select Set Folder")
+            dialog.setFileMode(QFileDialog.Directory)  # select folder
+            dialog.setOption(QFileDialog.ShowDirsOnly, False)  # show files too
+            dialog.setNameFilter("SET Files (*.set);;All Files (*)")
 
+            if dialog.exec_():
+                folder_path = dialog.selectedFiles()[0]
+
+                
             if folder_path:
                 self.ui.input_set_files.setText(folder_path)
                 Logger.info(f"Set folder selected: {folder_path}")
