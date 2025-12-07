@@ -16,8 +16,9 @@ class HtmlHunterController:
     def __init__(self, ui):
         self.ui = ui
         self.runner = ThreadRunner()
-        self.auto_batch_ui = self.ui.parent().autoBatch_page
-        self.setprocessor_ui = self.ui.parent().setProcessor_page
+        self.main_window = self.ui.parent()
+        self.auto_batch_ui = self.main_window.autoBatch_page
+        self.setprocessor_ui = self.main_window.setProcessor_page
 
 
         # Internal storage for reports
@@ -25,7 +26,8 @@ class HtmlHunterController:
         self.report_names = []          
         self.report_name = None         
         self.file_path = None           
-        self.report_dfs = {}            
+        self.report_dfs = {}    
+        self.export_folder_path = None        
 
         # Connect buttons
         self.ui.btn_html.clicked.connect(self.browse_html_folder)
@@ -34,6 +36,7 @@ class HtmlHunterController:
             lambda item: self.show_dataframe_in_table({item.text(): self.report_dfs[item.text()]})
         )
         self.ui.btn_filter.clicked.connect(self.apply_table_filter)
+        self.ui.btn_export_sel.clicked.connect(self.export_selected_reports)
 
 
     def browse_html_folder(self):
@@ -42,6 +45,7 @@ class HtmlHunterController:
             # Determine base data folder
             data_folder = (self.auto_batch_ui.data_input.text() or "").strip()
             if not data_folder:
+                print()
                 data_folder = (self.setprocessor_ui.data_folder_input.text() or "").strip()
 
             if not data_folder or not os.path.exists(data_folder):
@@ -49,8 +53,13 @@ class HtmlHunterController:
                 self.logger.warning("Data path is not set or invalid!")
                 return
 
-            # Default HTML Reports folder
-            html_folder = os.path.join(data_folder, "Agent Finder Results")
+
+            print("data_folder = ",data_folder)
+            if data_folder != "":
+                html_folder = os.path.join(data_folder, "Agent Finder Results")
+            else:
+                html_folder = ""
+
             folder_path = QFileDialog.getExistingDirectory(
                 self.ui, "Select HTML Reports Folder", html_folder
             )
@@ -345,9 +354,14 @@ class HtmlHunterController:
                     # ---------- Table 1 ----------
                     if len(tables) >= 1:
                         Logger.info("Processing Table 1...")
-                        t1_data, clean_data = self.extract_table_data(tables[0])
-                        # self.save_to_csv(filepath, t1_data)
-                        html_tables.append(clean_data)
+                        t1_data = self.extract_table_data(tables[0])
+
+                        print("-----------------------------------------------------------------")
+                        print("t1_data = ",t1_data)
+                        print("-----------------------------------------------------------------")
+
+                        
+                        html_tables.append(t1_data)
 
                     # ---------- Table 2 ----------
                     if len(tables) >= 2:
@@ -360,28 +374,37 @@ class HtmlHunterController:
                             if isinstance(deals.columns[0], int):
                                 Logger.info("🔧 Fixing deals table: detected numeric columns, using row 0 as header.")
 
-                                # row 0 contains the actual header names
                                 new_header = deals.iloc[0]
-
-                                # drop that row
                                 deals = deals[2:]
-
-                                # replace column names with real header
                                 deals.columns = new_header
-
-                                # reset index
                                 deals = deals.reset_index(drop=True)
+
+                            if isinstance(orders.columns[0], int):
+
+                                new_header = orders.iloc[0]
+                                print("new_header = ", new_header)
+                                orders = orders[2:]
+                                orders.columns = new_header
+                                orders = orders.reset_index(drop=True)
 
                             # Clean column names finally
                             deals.columns = [str(col).strip() for col in deals.columns]
+                            orders.columns = [str(col).strip() for col in orders.columns]
+
+                            orders["Open Time"] = pd.to_datetime(orders["Open Time"])
+                            deals["Time"] = pd.to_datetime(deals["Time"])
+
+                            merged_df = orders.merge(
+                                                        deals,
+                                                        left_on="Open Time",
+                                                        right_on="Time",
+                                                        how="inner"
+                                                    )
+
 
                         except Exception as e:
                            Logger.error(f"❌ Failed while fixing deals header: {e}")
-    
-                        # self.save_to_csv(filepath, orders)
-                        # self.save_to_csv(filepath, deals)
-                        html_tables.append(orders)
-                        html_tables.append(deals)
+                        html_tables.append(merged_df)
                     else:
                         Logger.warning("Table 2 not found!")
 
@@ -431,15 +454,17 @@ class HtmlHunterController:
 
     def browse_export_folder(self):
         try:
+            print("self.auto_batch_ui.data_input.text() = ",self.auto_batch_ui.data_input.text())
             data_folder = (self.auto_batch_ui.data_input.text() or "").strip()
             if not data_folder:
+                print()
                 data_folder = (self.setprocessor_ui.data_folder_input.text() or "").strip()
-            if not data_folder or not os.path.exists(data_folder):
-                QMessageBox.warning(self.ui, "Error", "Data path is not set or invalid!")
-                Logger.warning("Data path is not set or invalid!")
-                return
-            
-            export_folder = os.path.join(data_folder, "Agent Finder Results")
+
+            if data_folder != "":
+                export_folder = os.path.join(data_folder, "Agent Finder Results")
+            else:
+                export_folder = ""
+        
 
 
             export_folder_path = QFileDialog.getExistingDirectory(
@@ -451,7 +476,7 @@ class HtmlHunterController:
                 Logger.warning("No folder selected for HTML Reports.")
                 return
 
-
+            self.export_folder_path = export_folder_path
             self.ui.txt_export.setText(export_folder_path)
             Logger.success(f"Export folder selected: {export_folder_path}")
         except Exception as e:
@@ -459,8 +484,6 @@ class HtmlHunterController:
 
             QMessageBox.critical(self.ui, "Error", f"❌ Failed to select export folder.\nError: {str(e)}")
         
-
-
     def safe_float(self,x):
         try:
             if x is None or x == "" or str(x).strip() == "":
@@ -469,122 +492,66 @@ class HtmlHunterController:
         except:
             return 0.0
 
-
-
     def show_dataframe_in_table(self, report_dict: dict):
             """
             Populate the QTableWidget with merged clean_data and deals DataFrame in a background thread.
             """
+
+            print("show_dataframe_in_table")
             
             if not report_dict:
                 Logger.warning("❌ No report data passed.")
                 return
 
             report_name, tables = next(iter(report_dict.items()))
-             # Assuming tables are stored as DataFrames:
-            clean_data = tables[0]  # DataFrame with inputs & metrics
-            orders = tables[1]      # DataFrame of orders (if needed)
-            deals = tables[2]       # DataFrame of deals
+            properties = tables[0]  
+            orders_deals_table = tables[1]     
+            # deals = tables[2]     
             
-            
-            try:
-                # If first column name is int → wrong table → header is on row 0
-                if isinstance(deals.columns[0], int):
-                    Logger.info("🔧 Fixing deals table: detected numeric columns, using row 0 as header.")
-
-                    # row 0 contains the actual header names
-                    new_header = deals.iloc[0]
-
-                    # drop that row
-                    deals = deals[2:]
-
-                    # replace column names with real header
-                    deals.columns = new_header
-
-                    # reset index
-                    deals = deals.reset_index(drop=True)
-
-                # Clean column names finally
-                deals.columns = [str(col).strip() for col in deals.columns]
-
-            except Exception as e:
-                Logger.error(f"❌ Failed while fixing deals header: {e}")
-                return
-            if len(tables) < 3:
-                Logger.warning(f"❌ Report {report_name} missing required tables.")
-                return
-
-
-            if deals is None :
-                Logger.warning(f"⚠️ No deals found in report {report_name}.")
-                return
-            if clean_data is None :
-                Logger.info("⚠️ No data to display")
-                return
-
-            Logger.info(f"📂 Preparing table for report: {report_name} deals)")
-            self.log_to_ui(f"📂 Preparing table for report: {report_name} ({len(deals)} deals)")
-            if clean_data is None or deals is None or deals.empty:
-                Logger.info("⚠️ No data to display.")
-                self.ui.table.clear()
-                self.ui.table.setRowCount(0)
-                self.ui.table.setColumnCount(0)
-                return
 
             def task():
                 try:
-                    # Merge clean_data (static values) with each row in deals
-                    merged_rows = []
-                    for _, deal_row in deals.iterrows():
-                        row_data = {}
-                        # Copy static values from clean_data
-                        for k, v in clean_data.items():
-                            row_data[k] = v
-                        # Dynamic values from deals
-                        profit = self.safe_float(deal_row.get("Profit", 0))
-                        row_data["Profit"] = profit
-                        row_data["Max DD"] = (self.safe_float(clean_data.get("Max DD", 0))/100)*profit
-                        row_data["Avg Win"] = self.safe_float(clean_data.get("Avg Win", 0)) * profit
-                        row_data["Avg Loss"] = self.safe_float(clean_data.get("Avg Loss", 0)) * profit
-                        # You can add other deal-specific columns if needed
-                        merged_rows.append(row_data)
+                    print("---------------------------------------------------------------")
+                    print("properties.keys() = ",properties.keys())
+                    print("properties.values() = ",properties.values())
+                    print("---------------------------------------------------------------")
 
-                    # Convert to DataFrame
-                    df = pd.DataFrame(merged_rows)
 
-                    # Ensure all mapped columns exist
                     column_mapping = {
-                        "Profit": "Profit",
-                        "Max DD": "Max DD",
-                        "RF": "RF",
-                        "PF": "PF",
-                        "Avg Win": "Avg Win",
-                        "Avg Loss": "Avg Loss",
-                        "Trade Vol": "Trade Vol",
+                        "Profit": "Total Net Profit",
+                        "Max DD": "Equity Drawdown Maximal",
+                        "RF": "Recovery Factor",
+                        "PF": "Profit Factor",
+                        "Avg Win": "Average profit trade",
+                        "Avg Loss": "Average loss trade",
+                        "Trade Vol": "Total Trades",
                         "Lot Size": "LotSize",
                         "Peak Lot Size": "MaxLots",
                         "Max Sq No": "MaxSequencesPerDay",
                         "Max Lots": "MaxLots", 
-                        "Lot Expo": "Lot Expo",
-                        "Max Hold": "Max Hold",
-                        "Avg Hold": "Avg Hold",
+                        "Lot Expo": "LotSizeExponent",
+                        "Max Hold": "Maximal position holding time",
+                        "Avg Hold": "Average position holding time",
                         "Graph": "Graph",
                         "Overview": "Overview"
                     }
+
+                    df = pd.DataFrame([properties])
+                    df.to_csv("curren_Selectection.csv", index=False)
 
                     for col in column_mapping.values():
                         if col not in df.columns:
                             df[col] = ""
 
-                    filtered_df = df[list(column_mapping.values())].rename(
+                    self.filtered_df = df[list(column_mapping.values())].rename(
                         columns={v: k for k, v in column_mapping.items()}
                     ).fillna("").reset_index(drop=True)
 
                     table_data = []
-                    for _, row in filtered_df.iterrows():
+                    for _, row in self.filtered_df.iterrows():
                         table_data.append([("" if pd.isna(val) else str(val)) for val in row])
 
-                    headers = filtered_df.columns.tolist()
+                    headers = self.filtered_df.columns.tolist()
                     return headers, table_data
 
                 except Exception as e:
@@ -638,26 +605,22 @@ class HtmlHunterController:
             self.runner.on_error = on_error
             self.runner.run(task)
 
-
-
-
     def show_graph(self, row_data):
             """Generate graph using thread runner with safe extraction."""
 
             def task():
                 try:
-                    ow_idx = int(row_data)
+                    row_idx = int(row_data)
 
                     row = self.filtered_df.iloc[row_idx]
-                    # Safe float conversion
-                    profit = self.safe_float(row_data.get("Profit", 0))
-                    max_dd = self.safe_float(row_data.get("Max DD", 0))
-                    pf = self.safe_float(row_data.get("PF", 0))
-                    rf = self.safe_float(row_data.get("RF", 0))
 
-                    # ---- Your formulas ----
-                    avg_win = self.safe_float(row_data.get("Avg Win", 0)) * profit
-                    avg_loss = self.safe_float(row_data.get("Avg Loss", 0)) * profit
+                    profit = self.safe_float(row.get("Profit", 0))
+                    max_dd = self.safe_float(row.get("Max DD", 0))
+                    pf = self.safe_float(row.get("PF", 0))
+                    rf = self.safe_float(row.get("RF", 0))
+
+                    avg_win = self.safe_float(row.get("Avg Win", 0)) * profit
+                    avg_loss = self.safe_float(row.get("Avg Loss", 0)) * profit
 
                     return {
                         "profit": profit,
@@ -666,23 +629,27 @@ class HtmlHunterController:
                         "rf": rf,
                         "avg_win": avg_win,
                         "avg_loss": avg_loss,
-                        "title": row_data.get("Name", "Report Graph")
+                        "title": row.get("Name", "Report Graph")   # FIX HERE
                     }
 
                 except Exception as e:
                     raise Exception(f"Graph Thread Failed: {e}")
 
+
             def on_done(m):
                 try:
+                    print(m)
                     x = ["Profit", "Max DD", "PF", "RF", "AvgWin", "AvgLoss"]
                     y = [m["profit"], m["max_dd"], m["pf"], m["rf"], m["avg_win"], m["avg_loss"]]
+
 
                     fig = plt.figure(figsize=(6, 4))
                     plt.plot(x, y, marker="o")
                     plt.grid(True)
                     plt.title(m["title"])
                     plt.tight_layout()
-                    fig.show()
+                    plt.show(block=False)
+
 
                 except Exception as e:
                     QMessageBox.critical(self.ui, "Graph Error", str(e))
@@ -867,7 +834,6 @@ class HtmlHunterController:
             Logger.error(f"Filter error: {e}")
             QMessageBox.critical(self.ui, "Error", f"Filtering failed:\n{e}")
 
-
     def populate_qtable_from_df(self, df):
         table = self.ui.middle_message
         table.clear()
@@ -929,9 +895,30 @@ class HtmlHunterController:
         else:
             print("⚠️ bottom_message widget not found. Message:", message)
 
+    def export_selected_reports(self):
+        try:
+            Logger.info("Starting export_selected_reports...")
 
+            # Validate export folder
+            if not os.path.isdir(self.export_folder_path):
+                raise Exception(f"Export folder does not exist: {self.export_folder_path}")
 
+            # Validate dataframe
+            if self.filtered_df is None or self.filtered_df.empty:
+                raise Exception("Filtered DataFrame is empty — nothing to export.")
 
+            file_path = os.path.join(self.export_folder_path, self.report_name + ".csv")
+            Logger.info(f"Exporting report to: {file_path}")
+
+            # Save CSV
+            self.filtered_df.to_csv(file_path, index=False)
+            Logger.info("Report export successful.")
+
+            QMessageBox.information(self.ui, "Export Complete", f"Report exported to:\n{file_path}")
+
+        except Exception as e:
+            Logger.error(f"Export failed: {e}")
+            QMessageBox.critical(self.ui, "Export Error", str(e))
 
                 
 
