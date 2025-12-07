@@ -26,7 +26,8 @@ class SetGeneratorController:
         self.title = ""
         self.symbol = ""
 
-        self.lotSize = None;
+        self.lotSize = None
+        self.report_file = ""
 
         Logger.info("Set Generator Controller Initialized")
 
@@ -75,17 +76,17 @@ class SetGeneratorController:
         self.ui.pairs_box.clear()
         self.ui.pairs_box.addItems(report_names)
 
-        report_file = os.path.basename(
+        self.report_file = os.path.basename(
             self.main_window.report_files[self.main_window.selected_report_index]
         )
 
         # Get dataframe safely
-        self.report_df = self.main_window.report_dfs.get(report_file, pd.DataFrame())
+        self.report_df = self.main_window.report_dfs.get(self.report_file, pd.DataFrame())
 
         # Update UI
         print('------------------------------------------------------------------')
-        print(report_file)
-        self.title = self.main_window.report_properties[report_file]['Title'].split(",")[0]
+        print(self.report_file)
+        self.title = self.main_window.report_properties[self.report_file]['Title'].split(",")[0]
         self.symbol = self.title.split()[1]
         print('------------------------------------------------------------------')
 
@@ -477,76 +478,7 @@ class SetGeneratorController:
 
         event.accept()
 
-    # def generate_set_file(self):
-    #     """
-    #     Generate a .set file containing selected table rows, selected optimization files,
-    #     and selected pairs, running the file writing in a background thread.
-    #     """
-    #     # --- Step 1: Get selected table rows ---
-    #     selected_rows = []
-    #     for sel_range in self.ui.table.selectedRanges():
-    #         for row in range(sel_range.topRow(), sel_range.bottomRow() + 1):
-    #             row_data = [self.ui.table.item(row, col).text() if self.ui.table.item(row, col) else ""
-    #                         for col in range(self.ui.table.columnCount())]
-    #             selected_rows.append(row_data)
 
-    #     # --- Step 2: Get selected optimization files ---
-    #     # selected_opt_files = [name for name in self.selected_optimization if name in self.optimisation_files]
-
-    #     # --- Step 3: Get selected pairs ---
-    #     selected_pairs = self.pair_selected
-
-    #     if not (selected_rows or self.selected_optimization or self.selected):
-    #         self.log_to_ui("⚠️ Nothing selected to generate .set file!")
-    #         return
-
-    #     # --- Step 4: Ask for save location (main thread) ---
-    #     save_path, _ = QFileDialog.getSaveFileName(
-    #         self.ui,
-    #         "Save SET file",
-    #         self.main_window.file_path or "",
-    #         "SET Files (*.set)"
-    #     )
-    #     if not save_path:
-    #         return
-        
-    #     if save_path.lower().endswith(".xml"):
-    #         save_path = save_path[:-4] + ".set"
-
-    #     # Ensure .set extension
-    #     if not save_path.lower().endswith(".set"):
-    #         save_path += ".set"
-
-    #     # --- Step 5: Define background task to write file ---
-    #     def task():
-    #         with open(save_path, "w", encoding="utf-8") as f:
-    #             f.write("# --- Selected Table Rows ---\n")
-    #             for row in selected_rows:
-    #                 f.write(", ".join(row) + "\n")
-
-    #             f.write("\n# --- Selected Optimization Files ---\n")
-    #             for name in selected_opt_files:
-    #                 f.write(name + "\n")  # Only name shown
-    #                 # Full path still available in self.optimisation_files[name]
-
-    #             f.write("\n# --- Selected Pairs ---\n")
-    #             for pair in selected_pairs:
-    #                 f.write(pair + "\n")
-    #         return save_path  # Return path for logging
-
-    #     # --- Step 6: Define callback after thread finishes ---
-    #     def on_done(result):
-    #         self.log_to_ui(f"💾 .set file generated successfully:\n{result}")
-
-    #     def on_error(err):
-    #         self.log_to_ui(f"❌ Failed to generate .set file:\n{str(err)}")
-    #         QMessageBox.critical(self.ui, "Error", f"Failed to generate .set file:\n{str(err)}")
-
-    #     # --- Step 7: Run background thread ---
-    #     self.runner = ThreadRunner(self.ui)
-    #     self.runner.on_result = on_done
-    #     self.runner.on_error = on_error
-    #     self.runner.run(task)
 
     def log_to_ui(self, message: str):
         """
@@ -737,12 +669,6 @@ class SetGeneratorController:
                         toggle.update()
 
     def generate_set_file(self):
-        """
-        Generate a .set file that merges:
-        1. Selected table parameters
-        2. Full content (Pass + parameters) from selected optimization .set files
-        3. Selected trading pairs
-        """
         # --- Step 1: Gather selected rows from table ---
         selected_rows = []
         headers = [self.ui.table.horizontalHeaderItem(i).text() for i in range(self.ui.table.columnCount())]

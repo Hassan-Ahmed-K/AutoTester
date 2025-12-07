@@ -5,8 +5,10 @@ from PyQt5.QtWidgets import (
     QHeaderView, QCheckBox, QSpinBox, QComboBox,QListWidget,QSizePolicy,QSplitter,QStyle,QDateEdit,QDoubleSpinBox
 )
 from PyQt5.QtCore import Qt, QDate
-from PyQt5.QtGui import QFont 
+from PyQt5.QtGui import QFont, QDoubleValidator
 from aiagentfinder.utils.AnitmatedToggle import AnimatedToggle
+
+from aiagentfinder.controllers.PortfolioPicker import PortfolioPickerController
 
 
 class PortfolioPickerUI(BaseTab):
@@ -29,27 +31,27 @@ class PortfolioPickerUI(BaseTab):
 
         csv_label = QLabel("CSV File directory:")
         self.csv_dir = QLineEdit()
-        csv_browse = QPushButton("BROWSE")
+        self.csv_browser = QPushButton("BROWSE")
 
         html_label = QLabel("HTML File Directory:")
         self.html_dir = QLineEdit()
-        html_browse = QPushButton("BROWSE")
+        self.html_browser = QPushButton("BROWSE")
 
         set_label = QLabel("Set File directory:")
         self.set_dir = QLineEdit()
-        set_browse = QPushButton("BROWSE")
+        self.set_browser = QPushButton("BROWSE")
 
         # Top layout
         top_grid = QGridLayout()
         top_grid.addWidget(csv_label, 0, 1)
         top_grid.addWidget(self.csv_dir, 1, 1)
-        top_grid.addWidget(csv_browse, 1, 2)
+        top_grid.addWidget(self.csv_browser, 1, 2)
         top_grid.addWidget(html_label,  0, 3)
         top_grid.addWidget(self.html_dir, 1, 3)
-        top_grid.addWidget(html_browse, 1, 4)
+        top_grid.addWidget(self.html_browser, 1, 4)
         top_grid.addWidget(set_label, 0, 5)
         top_grid.addWidget(self.set_dir, 1, 5)
-        top_grid.addWidget(set_browse, 1, 6)
+        top_grid.addWidget(self.set_browser, 1, 6)
         top_grid.setColumnStretch(1,3)
         top_grid.setColumnStretch(2,2)
         top_grid.setColumnStretch(3,3)
@@ -73,7 +75,7 @@ class PortfolioPickerUI(BaseTab):
 
         self.api_key = QLineEdit()
         build_single_trade = QCheckBox()
-        build_btn = QPushButton("BUILD PORTFOLIOS")
+        self.build_btn = QPushButton("BUILD PORTFOLIOS")
 
         # Row layout
         options_grid = QGridLayout()
@@ -97,62 +99,93 @@ class PortfolioPickerUI(BaseTab):
         api_grid.addWidget(self.api_key, 1, 1)
         api_grid.addWidget(QLabel("Build for single trade approach"), 1, 2)
         api_grid.addWidget(build_single_trade, 1, 3)
-        api_grid.addWidget(build_btn, 1, 4)
+        api_grid.addWidget(self.build_btn, 1, 4)
         api_grid.setColumnStretch(1,5)
         api_grid.setColumnStretch(4,5)
 
 
         # ----------------------------- TEXT AREAS -----------------------------
         portfolios_label = QLabel("Portfolios Created:")
-        self.portfolios_created = QTextEdit()
-        self.portfolios_created.setReadOnly(True)
+        portfolios_label.setMargin(0)
+        portfolios_label.setContentsMargins(0, 10, 0, 10)
+        portfolios_label.setStyleSheet("padding: 0px;")
+        portfolios_label.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        portfolios_label.setFixedHeight(20)
+
+        self.portfolios_created = QListWidget()
+        self.portfolios_created.setMaximumHeight(200)
+        self.portfolios_created.setContentsMargins(10, 0, 0, 10)
+        self.portfolios_created.setStyleSheet("QListWidget { padding: 0px; }")
+        self.portfolios_created.setFrameShape(QListWidget.NoFrame)
 
         setfiles_label = QLabel("Set Files Used:")
-        self.set_files_used = QTextEdit()
-        self.set_files_used.setReadOnly(True)
+        setfiles_label.setMargin(0)
+        setfiles_label.setContentsMargins(0, 10, 0, 10)
+        setfiles_label.setStyleSheet("padding: 0px;")
+        setfiles_label.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        setfiles_label.setFixedHeight(20)
 
+        self.set_files_used = QListWidget()
+        self.set_files_used.setMaximumHeight(200)
+        self.set_files_used.setContentsMargins(0, 0,10, 10)
+        self.set_files_used.setStyleSheet("QListWidget { padding: 0px; }")
+        self.set_files_used.setFrameShape(QListWidget.NoFrame)
+
+        # Layout
         text_grid = QGridLayout()
         text_grid.addWidget(portfolios_label, 0, 0)
         text_grid.addWidget(setfiles_label, 0, 1)
         text_grid.addWidget(self.portfolios_created, 1, 0)
         text_grid.addWidget(self.set_files_used, 1, 1)
 
-        text_grid.setColumnStretch(0, 1)
-        text_grid.setColumnStretch(1, 1)
+        text_grid.setSpacing(0)
+        text_grid.setContentsMargins(0, 0, 0, 0)
+        text_grid.setVerticalSpacing(0)
+        text_grid.setHorizontalSpacing(0)
+
+        main_layout.addLayout(text_grid)
 
         # ----------------------------- MONTHLY + DRAW -----------------------------
-        monthly_label = QLabel("Monthly Portfolio Stats:")
-        self.monthly_stats = QTextEdit()
-        self.monthly_stats.setMaximumHeight(90)
-        self.monthly_stats.setReadOnly(True)
+        # monthly_label = QLabel("Monthly Portfolio Stats:")
+        portfolio_label = QLabel("Monthly Portfolio Stats:")
+        self.portfolio_stats = QTableWidget()
+        self.portfolio_stats.setMaximumHeight(70)
 
         draw_label = QLabel("Global Drawdown Value:")
-        self.draw_input = QLineEdit("1000")
-        analyze_btn = QPushButton("ANALYZE")
+
+        self.draw_input = QLineEdit()
+        self.draw_input.setText("1000")  # default value
+
+        # Validator to only allow numbers (float)
+        validator = QDoubleValidator()
+        validator.setBottom(0)  # optional: minimum value 0
+        self.draw_input.setValidator(validator)
+
+        self.analyze_btn = QPushButton("ANALYZE")
 
         top_draw_grid = QGridLayout()
-        top_draw_grid.addWidget(monthly_label, 0, 0)
+        top_draw_grid.addWidget(portfolio_label, 0, 0)
         top_draw_grid.addWidget(draw_label, 0, 1)
         top_draw_grid.addWidget(self.draw_input, 0, 2)
-        top_draw_grid.addWidget(analyze_btn, 0, 3)
-        top_draw_grid.addWidget(self.monthly_stats, 1, 0, 1, 4)
+        top_draw_grid.addWidget(self.analyze_btn, 0, 3)
+        top_draw_grid.addWidget(self.portfolio_stats, 1, 0, 1, 4)
         
         top_draw_grid.setColumnStretch(0, 4)
         top_draw_grid.setColumnStretch(2, 4)
         top_draw_grid.setColumnStretch(1, 1)
 
         # ----------------------------- DRAWDOWN OVERLAP -----------------------------
+
         drawdown_label = QLabel("Drawdown Overlap Analysis:")
-        self.drawdown_analysis = QTextEdit()
-        self.drawdown_analysis.setReadOnly(True)
+        self.drawdown_analysis = QTableWidget()
 
         # ----------------------------- BOTTOM BUTTONS -----------------------------
-        export_btn = QPushButton("EXPORT PROFILE")
-        show_graph_btn = QPushButton("SHOW GRAPH")
+        self.export_btn = QPushButton("EXPORT PROFILE")
+        self.show_graph_btn = QPushButton("SHOW GRAPH")
 
         bottom_layout = QHBoxLayout()
-        bottom_layout.addWidget(export_btn)
-        bottom_layout.addWidget(show_graph_btn)
+        bottom_layout.addWidget(self.export_btn)
+        bottom_layout.addWidget(self.show_graph_btn)
 
         # main_layout.addLayout(top_grid)
         main_layout.addSpacing(5)
@@ -167,10 +200,15 @@ class PortfolioPickerUI(BaseTab):
         main_layout.addWidget(self.drawdown_analysis)
         main_layout.addLayout(bottom_layout)
 
+        self.controller = PortfolioPickerController(self)
 
-    def resizeEvent(self, event):
-        height = self.height()
-        if height > 864:    
-           self.monthly_stats.setMaximumHeight(120)
+
+    # def resizeEvent(self, event):
+    #     height = self.height()
+    #     if height > 864:    
+    #        self.monthly_stats.setMaximumHeight(120)
         
-        super().resizeEvent(event)
+        # super().resizeEvent(event)
+
+
+    

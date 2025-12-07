@@ -27187,3 +27187,1681 @@ TypeError: float() argument must be a string or a real number, not 'NoneType'
 [2025-11-23 19:04:18] [INFO] 📂 Auto-loading first report: euraud_as_1_4666.htm
 [2025-11-23 19:04:18] [INFO] 📂 Preparing table for report: euraud_as_1_4666.htm deals)
 [2025-11-23 19:04:20] [INFO] ✅ Table populated successfully with 205 rows and 16 columns.
+[2025-12-07 21:42:19] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-07 21:42:22] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-07 21:42:22] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-07 21:42:22] [INFO] Date range option selected: Entire history
+[2025-12-07 21:42:22] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:42:22] [INFO] Adjusting forward date based on selection: No
+[2025-12-07 21:42:22] [DEBUG] Forward date disabled, set to test end date
+[2025-12-07 21:42:22] [INFO] Date range option selected: Entire history
+[2025-12-07 21:42:22] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:42:23] [INFO] Set Generator Controller Initialized
+[2025-12-07 21:42:23] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-07 21:42:23] [DEBUG] Switching to stack page 0
+[2025-12-07 21:42:24] [INFO] User authenticated via cache
+[2025-12-07 21:42:26] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-07 21:42:26] [DEBUG] Switching to stack page 7
+[2025-12-07 21:47:43] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-07 21:47:43] [DEBUG] Switching to stack page 5
+[2025-12-07 21:47:43] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:47:43] [DEBUG] Switching to stack page 4
+[2025-12-07 21:47:44] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-07 21:47:44] [DEBUG] Switching to stack page 5
+[2025-12-07 21:47:51] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-07 21:47:51] [DEBUG] Switching to stack page 0
+[2025-12-07 21:47:52] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-07 21:47:52] [DEBUG] Switching to stack page 1
+[2025-12-07 21:47:56] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-07 21:47:56] [DEBUG] Switching to stack page 2
+[2025-12-07 21:47:56] [INFO] Set Finder page opened, updating report data if available
+[2025-12-07 21:47:56] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-07 21:47:58] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-07 21:47:58] [DEBUG] Switching to stack page 3
+[2025-12-07 21:47:58] [INFO] Set Generator page opened, updating report data if available
+[2025-12-07 21:47:58] [WARNING] No report files found — clearing UI
+[2025-12-07 21:47:58] [INFO] ⚠️ No data to display.
+[2025-12-07 21:47:58] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-07 21:47:58] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-07 21:47:59] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:47:59] [DEBUG] Switching to stack page 4
+[2025-12-07 21:47:59] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-07 21:47:59] [DEBUG] Switching to stack page 5
+[2025-12-07 21:47:59] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-07 21:47:59] [DEBUG] Switching to stack page 6
+[2025-12-07 21:48:00] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-07 21:48:00] [DEBUG] Switching to stack page 7
+[2025-12-07 21:48:00] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-07 21:48:00] [DEBUG] Switching to stack page 6
+[2025-12-07 21:48:01] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-07 21:48:01] [DEBUG] Switching to stack page 5
+[2025-12-07 21:48:01] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:48:01] [DEBUG] Switching to stack page 4
+[2025-12-07 21:48:02] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-07 21:48:03] [DEBUG] Switching to stack page 3
+[2025-12-07 21:48:03] [INFO] Set Generator page opened, updating report data if available
+[2025-12-07 21:48:03] [WARNING] No report files found — clearing UI
+[2025-12-07 21:48:03] [INFO] ⚠️ No data to display.
+[2025-12-07 21:48:03] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-07 21:48:03] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-07 21:48:03] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-07 21:48:03] [DEBUG] Switching to stack page 2
+[2025-12-07 21:48:03] [INFO] Set Finder page opened, updating report data if available
+[2025-12-07 21:48:04] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-07 21:48:04] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-07 21:48:04] [DEBUG] Switching to stack page 1
+[2025-12-07 21:48:04] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-07 21:48:04] [DEBUG] Switching to stack page 0
+[2025-12-07 21:48:05] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-07 21:48:05] [DEBUG] Switching to stack page 1
+[2025-12-07 21:48:05] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-07 21:48:05] [DEBUG] Switching to stack page 2
+[2025-12-07 21:48:05] [INFO] Set Finder page opened, updating report data if available
+[2025-12-07 21:48:05] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-07 21:48:06] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-07 21:48:06] [DEBUG] Switching to stack page 3
+[2025-12-07 21:48:06] [INFO] Set Generator page opened, updating report data if available
+[2025-12-07 21:48:06] [WARNING] No report files found — clearing UI
+[2025-12-07 21:48:06] [INFO] ⚠️ No data to display.
+[2025-12-07 21:48:06] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-07 21:48:06] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-07 21:48:07] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-07 21:48:07] [DEBUG] Switching to stack page 1
+[2025-12-07 21:48:07] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-07 21:48:07] [DEBUG] Switching to stack page 2
+[2025-12-07 21:48:07] [INFO] Set Finder page opened, updating report data if available
+[2025-12-07 21:48:07] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-07 21:48:09] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:48:09] [DEBUG] Switching to stack page 4
+[2025-12-07 21:48:09] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-07 21:48:09] [DEBUG] Switching to stack page 3
+[2025-12-07 21:48:09] [INFO] Set Generator page opened, updating report data if available
+[2025-12-07 21:48:09] [WARNING] No report files found — clearing UI
+[2025-12-07 21:48:09] [INFO] ⚠️ No data to display.
+[2025-12-07 21:48:09] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-07 21:48:09] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-07 21:48:10] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:48:10] [DEBUG] Switching to stack page 4
+[2025-12-07 21:48:10] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-07 21:48:10] [DEBUG] Switching to stack page 5
+[2025-12-07 21:48:11] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-07 21:48:11] [DEBUG] Switching to stack page 6
+[2025-12-07 21:48:11] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-07 21:48:11] [DEBUG] Switching to stack page 7
+[2025-12-07 21:51:57] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-07 21:51:59] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-07 21:51:59] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-07 21:51:59] [INFO] Date range option selected: Entire history
+[2025-12-07 21:51:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:51:59] [INFO] Adjusting forward date based on selection: No
+[2025-12-07 21:51:59] [DEBUG] Forward date disabled, set to test end date
+[2025-12-07 21:52:00] [INFO] Date range option selected: Entire history
+[2025-12-07 21:52:00] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:52:00] [INFO] Set Generator Controller Initialized
+[2025-12-07 21:52:59] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-07 21:53:01] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-07 21:53:01] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-07 21:53:01] [INFO] Date range option selected: Entire history
+[2025-12-07 21:53:01] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:53:01] [INFO] Adjusting forward date based on selection: No
+[2025-12-07 21:53:01] [DEBUG] Forward date disabled, set to test end date
+[2025-12-07 21:53:01] [INFO] Date range option selected: Entire history
+[2025-12-07 21:53:01] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:53:02] [INFO] Set Generator Controller Initialized
+[2025-12-07 21:53:02] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-07 21:53:02] [DEBUG] Switching to stack page 0
+[2025-12-07 21:53:02] [INFO] User authenticated via cache
+[2025-12-07 21:53:04] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-07 21:53:04] [DEBUG] Switching to stack page 7
+[2025-12-07 21:53:49] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-07 21:53:52] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-07 21:53:52] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-07 21:53:52] [INFO] Date range option selected: Entire history
+[2025-12-07 21:53:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:53:52] [INFO] Adjusting forward date based on selection: No
+[2025-12-07 21:53:52] [DEBUG] Forward date disabled, set to test end date
+[2025-12-07 21:53:52] [INFO] Date range option selected: Entire history
+[2025-12-07 21:53:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Sun Dec 7 2025
+[2025-12-07 21:53:52] [INFO] Set Generator Controller Initialized
+[2025-12-07 21:53:52] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-07 21:53:52] [DEBUG] Switching to stack page 0
+[2025-12-07 21:53:53] [INFO] User authenticated via cache
+[2025-12-07 21:53:54] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-07 21:53:54] [DEBUG] Switching to stack page 7
+[2025-12-07 21:54:05] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-07 21:54:05] [DEBUG] Switching to stack page 6
+[2025-12-07 21:54:05] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-07 21:54:05] [DEBUG] Switching to stack page 5
+[2025-12-07 21:54:06] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:54:06] [DEBUG] Switching to stack page 4
+[2025-12-07 21:54:06] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-07 21:54:06] [DEBUG] Switching to stack page 3
+[2025-12-07 21:54:06] [INFO] Set Generator page opened, updating report data if available
+[2025-12-07 21:54:06] [WARNING] No report files found — clearing UI
+[2025-12-07 21:54:06] [INFO] ⚠️ No data to display.
+[2025-12-07 21:54:06] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-07 21:54:06] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-07 21:54:07] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-07 21:54:07] [DEBUG] Switching to stack page 2
+[2025-12-07 21:54:07] [INFO] Set Finder page opened, updating report data if available
+[2025-12-07 21:54:07] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-07 21:54:07] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-07 21:54:07] [DEBUG] Switching to stack page 1
+[2025-12-07 21:54:07] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-07 21:54:07] [DEBUG] Switching to stack page 0
+[2025-12-07 21:54:13] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-07 21:54:13] [DEBUG] Switching to stack page 1
+[2025-12-07 21:54:14] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-07 21:54:14] [DEBUG] Switching to stack page 2
+[2025-12-07 21:54:14] [INFO] Set Finder page opened, updating report data if available
+[2025-12-07 21:54:14] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-07 21:54:14] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-07 21:54:14] [DEBUG] Switching to stack page 3
+[2025-12-07 21:54:14] [INFO] Set Generator page opened, updating report data if available
+[2025-12-07 21:54:14] [WARNING] No report files found — clearing UI
+[2025-12-07 21:54:14] [INFO] ⚠️ No data to display.
+[2025-12-07 21:54:14] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-07 21:54:14] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-07 21:54:15] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-07 21:54:15] [DEBUG] Switching to stack page 4
+[2025-12-07 21:54:15] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-07 21:54:15] [DEBUG] Switching to stack page 6
+[2025-12-07 21:54:16] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-07 21:54:16] [DEBUG] Switching to stack page 7
+[2025-12-08 00:45:41] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 00:45:44] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:45:44] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-08 00:45:44] [INFO] Date range option selected: Entire history
+[2025-12-08 00:45:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:45:44] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:45:44] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:45:44] [INFO] Date range option selected: Entire history
+[2025-12-08 00:45:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:45:44] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:46:09] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 00:46:12] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:46:12] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-08 00:46:12] [INFO] Date range option selected: Entire history
+[2025-12-08 00:46:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:46:12] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:46:12] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:46:12] [INFO] Date range option selected: Entire history
+[2025-12-08 00:46:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:46:12] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:47:02] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 00:47:06] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:47:06] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-08 00:47:06] [INFO] Date range option selected: Entire history
+[2025-12-08 00:47:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:47:06] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:47:06] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:47:06] [INFO] Date range option selected: Entire history
+[2025-12-08 00:47:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:47:06] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:47:23] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 00:47:26] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:47:26] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-08 00:47:26] [INFO] Date range option selected: Entire history
+[2025-12-08 00:47:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:47:26] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:47:26] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:47:26] [INFO] Date range option selected: Entire history
+[2025-12-08 00:47:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:47:26] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:48:06] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 00:48:09] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:48:09] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-08 00:48:09] [INFO] Date range option selected: Entire history
+[2025-12-08 00:48:09] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:48:09] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:48:09] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:48:09] [INFO] Date range option selected: Entire history
+[2025-12-08 00:48:09] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:48:10] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:48:41] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 00:48:44] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:48:44] [INFO] Cache loaded: {'authenticated': True, 'token': '71c2ed9d-95ab-4a8e-ba27-baa4ece88e7c', 'validation_time': 1765124153.842509}
+[2025-12-08 00:48:44] [INFO] Date range option selected: Entire history
+[2025-12-08 00:48:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:48:44] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:48:44] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:48:44] [INFO] Date range option selected: Entire history
+[2025-12-08 00:48:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:48:45] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:48:45] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-12-08 00:48:45] [DEBUG] Switching to stack page 0
+[2025-12-08 00:48:46] [INFO] No valid cache found, user not authenticated
+[2025-12-08 00:49:00] [INFO] Cache saved successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:49:00] [INFO] User admin@example.com logged in successfully.
+[2025-12-08 00:49:02] [INFO] User interface updated after login
+[2025-12-08 00:49:03] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-08 00:49:03] [DEBUG] Switching to stack page 6
+[2025-12-08 00:49:05] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 00:49:05] [DEBUG] Switching to stack page 7
+[2025-12-08 00:49:22] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:49:35] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:49:35] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:50:08] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 00:50:11] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:50:11] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 00:50:11] [INFO] Date range option selected: Entire history
+[2025-12-08 00:50:11] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:50:11] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:50:11] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:50:11] [INFO] Date range option selected: Entire history
+[2025-12-08 00:50:11] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:50:11] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:50:12] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 00:50:12] [DEBUG] Switching to stack page 0
+[2025-12-08 00:50:12] [INFO] User authenticated via cache
+[2025-12-08 00:50:21] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-08 00:50:21] [DEBUG] Switching to stack page 6
+[2025-12-08 00:50:22] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 00:50:22] [DEBUG] Switching to stack page 7
+[2025-12-08 00:50:23] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:50:34] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:50:34] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:50:34] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:50:40] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:50:40] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 00:50:42] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:50:53] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:50:53] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 00:53:59] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 00:54:02] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:54:02] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 00:54:02] [INFO] Date range option selected: Entire history
+[2025-12-08 00:54:02] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:54:02] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:54:02] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:54:02] [INFO] Date range option selected: Entire history
+[2025-12-08 00:54:02] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:54:02] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:54:03] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 00:54:03] [DEBUG] Switching to stack page 0
+[2025-12-08 00:54:03] [INFO] User authenticated via cache
+[2025-12-08 00:54:13] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 00:54:13] [DEBUG] Switching to stack page 7
+[2025-12-08 00:54:14] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:26] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:54:26] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:27] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:28] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:54:28] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:30] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:31] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:32] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:33] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:33] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:34] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:35] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:36] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:41] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:54:42] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:54:42] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:54:55] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:55:00] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:55:00] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 00:55:01] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:55:10] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:55:10] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 00:58:04] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 00:58:07] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 00:58:07] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 00:58:07] [INFO] Date range option selected: Entire history
+[2025-12-08 00:58:07] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:58:07] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 00:58:07] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 00:58:07] [INFO] Date range option selected: Entire history
+[2025-12-08 00:58:07] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 00:58:07] [INFO] Set Generator Controller Initialized
+[2025-12-08 00:58:08] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 00:58:08] [DEBUG] Switching to stack page 0
+[2025-12-08 00:58:09] [INFO] User authenticated via cache
+[2025-12-08 00:58:12] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 00:58:12] [DEBUG] Switching to stack page 7
+[2025-12-08 00:58:13] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:58:14] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:58:14] [INFO] User selected folder: D:/Hassan Work/AutoTester
+[2025-12-08 00:58:18] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:58:27] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:58:27] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 00:58:28] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:58:34] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:58:34] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 00:58:36] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 00:58:43] [ERROR] Unexpected error in refresh_selected_set_files | AttributeError: 'PortfolioPickerUI' object has no attribute 'csv_input' (File: PortfolioPicker.py, Line: 70)
+[2025-12-08 00:58:43] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:00:45] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:00:47] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:00:47] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:00:47] [INFO] Date range option selected: Entire history
+[2025-12-08 01:00:47] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:00:47] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:00:47] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:00:48] [INFO] Date range option selected: Entire history
+[2025-12-08 01:00:48] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:00:48] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:00:48] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:00:48] [DEBUG] Switching to stack page 0
+[2025-12-08 01:00:49] [INFO] User authenticated via cache
+[2025-12-08 01:00:52] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:00:52] [DEBUG] Switching to stack page 7
+[2025-12-08 01:00:54] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:01:04] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:01:04] [INFO] HTM Dir: 
+[2025-12-08 01:01:04] [INFO] SET Dir: 
+[2025-12-08 01:01:04] [WARNING] SET folder not found: 
+[2025-12-08 01:01:04] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:01:05] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:01:10] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:01:10] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:01:10] [INFO] SET Dir: 
+[2025-12-08 01:01:10] [WARNING] SET folder not found: 
+[2025-12-08 01:01:10] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:01:11] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:01:21] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:01:21] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:01:21] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:01:21] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:01:21] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:01:21] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:01:21] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:01:21] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:01:21] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:01:21] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:01:21] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:01:21] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:01:21] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:01:21] [INFO] Total Selected files: {'EURUSD_ExpertMACD.htm', 'eurusd_1magainstlong.csv', 'EURUSD_1magainstlong.htm', 'eurusd_expertmacd.csv'}
+[2025-12-08 01:01:21] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:05:13] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:05:16] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:05:16] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:05:16] [INFO] Date range option selected: Entire history
+[2025-12-08 01:05:16] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:05:16] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:05:16] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:05:17] [INFO] Date range option selected: Entire history
+[2025-12-08 01:05:17] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:05:17] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:05:18] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:05:18] [DEBUG] Switching to stack page 0
+[2025-12-08 01:05:18] [INFO] User authenticated via cache
+[2025-12-08 01:05:22] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:05:22] [DEBUG] Switching to stack page 7
+[2025-12-08 01:05:23] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:05:34] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:05:34] [INFO] HTM Dir: 
+[2025-12-08 01:05:34] [INFO] SET Dir: 
+[2025-12-08 01:05:34] [WARNING] SET folder not found: 
+[2025-12-08 01:05:34] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:05:35] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:05:39] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:05:39] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:05:39] [INFO] SET Dir: 
+[2025-12-08 01:05:39] [WARNING] SET folder not found: 
+[2025-12-08 01:05:39] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:05:41] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:05:49] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:05:49] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:05:49] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:05:49] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:05:49] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:05:49] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:05:49] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:05:50] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:05:50] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:05:50] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:05:50] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:05:50] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:05:50] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:05:50] [INFO] Total Selected files: {'EURUSD_1magainstlong.htm', 'EURUSD_ExpertMACD.htm', 'eurusd_1magainstlong.csv', 'eurusd_expertmacd.csv'}
+[2025-12-08 01:05:50] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:07:12] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:07:15] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:07:15] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:07:15] [INFO] Date range option selected: Entire history
+[2025-12-08 01:07:15] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:07:15] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:07:15] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:07:15] [INFO] Date range option selected: Entire history
+[2025-12-08 01:07:15] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:07:15] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:07:16] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:07:16] [DEBUG] Switching to stack page 0
+[2025-12-08 01:07:16] [INFO] User authenticated via cache
+[2025-12-08 01:07:19] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:07:19] [DEBUG] Switching to stack page 7
+[2025-12-08 01:07:20] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:07:27] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets
+[2025-12-08 01:07:27] [INFO] HTM Dir: 
+[2025-12-08 01:07:27] [INFO] SET Dir: 
+[2025-12-08 01:07:27] [WARNING] SET folder not found: 
+[2025-12-08 01:07:27] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets
+[2025-12-08 01:07:29] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:07:32] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:07:32] [INFO] HTM Dir: 
+[2025-12-08 01:07:32] [INFO] SET Dir: 
+[2025-12-08 01:07:32] [WARNING] SET folder not found: 
+[2025-12-08 01:07:32] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:07:33] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:07:39] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:07:39] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:07:39] [INFO] SET Dir: 
+[2025-12-08 01:07:39] [WARNING] SET folder not found: 
+[2025-12-08 01:07:39] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:07:42] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:07:49] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:07:49] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:07:49] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:07:49] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:07:49] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:07:49] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:07:49] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:07:49] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:07:49] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:07:49] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:07:49] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:07:49] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:07:50] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:07:50] [INFO] Total Selected files: {'eurusd_1magainstlong.csv', 'EURUSD_1magainstlong.htm', 'EURUSD_ExpertMACD.htm', 'eurusd_expertmacd.csv'}
+[2025-12-08 01:07:50] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:08:56] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:08:59] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:08:59] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:08:59] [INFO] Date range option selected: Entire history
+[2025-12-08 01:08:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:08:59] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:08:59] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:08:59] [INFO] Date range option selected: Entire history
+[2025-12-08 01:08:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:08:59] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:09:00] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:09:00] [DEBUG] Switching to stack page 0
+[2025-12-08 01:09:00] [INFO] User authenticated via cache
+[2025-12-08 01:09:01] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:09:01] [DEBUG] Switching to stack page 7
+[2025-12-08 01:09:03] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:09:12] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:09:12] [INFO] HTM Dir: 
+[2025-12-08 01:09:12] [INFO] SET Dir: 
+[2025-12-08 01:09:12] [WARNING] SET folder not found: 
+[2025-12-08 01:09:12] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:09:13] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:09:18] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:09:18] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:09:18] [INFO] SET Dir: 
+[2025-12-08 01:09:18] [WARNING] SET folder not found: 
+[2025-12-08 01:09:18] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:09:19] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:09:27] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:09:27] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:09:27] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:09:27] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:09:27] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:09:27] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:09:27] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:09:27] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:09:27] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:09:27] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:09:27] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:09:27] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:09:27] [DEBUG] Added to SET list widget: eurusd_1magainstlong
+[2025-12-08 01:09:27] [DEBUG] Added to SET list widget: eurusd_expertmacd
+[2025-12-08 01:09:27] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:09:27] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:09:27] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:09:27] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:09:27] [INFO] Total Selected files: {'EURUSD_1magainstlong.htm', 'EURUSD_ExpertMACD.htm', 'eurusd_1magainstlong.csv', 'eurusd_expertmacd.csv'}
+[2025-12-08 01:09:27] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:14:15] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:14:18] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:14:18] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:14:18] [INFO] Date range option selected: Entire history
+[2025-12-08 01:14:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:14:18] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:14:18] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:14:18] [INFO] Date range option selected: Entire history
+[2025-12-08 01:14:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:14:18] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:14:19] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:14:19] [DEBUG] Switching to stack page 0
+[2025-12-08 01:14:19] [INFO] User authenticated via cache
+[2025-12-08 01:14:23] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:14:23] [DEBUG] Switching to stack page 7
+[2025-12-08 01:14:25] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:14:33] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:14:33] [INFO] HTM Dir: 
+[2025-12-08 01:14:33] [INFO] SET Dir: 
+[2025-12-08 01:14:33] [WARNING] SET folder not found: 
+[2025-12-08 01:14:33] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:14:34] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:14:39] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:14:39] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:14:39] [INFO] SET Dir: 
+[2025-12-08 01:14:39] [WARNING] SET folder not found: 
+[2025-12-08 01:14:39] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:14:40] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:14:47] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:14:47] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:14:47] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:14:47] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:14:47] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:14:47] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:14:47] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:14:47] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:14:47] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:14:47] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:14:47] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:14:47] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:14:47] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:14:47] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:14:47] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:14:47] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:14:47] [INFO] Total Selected files: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:14:47] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:17:05] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:17:08] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:17:08] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:17:08] [INFO] Date range option selected: Entire history
+[2025-12-08 01:17:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:17:08] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:17:08] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:17:08] [INFO] Date range option selected: Entire history
+[2025-12-08 01:17:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:17:09] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:17:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:17:09] [DEBUG] Switching to stack page 0
+[2025-12-08 01:17:09] [INFO] User authenticated via cache
+[2025-12-08 01:17:12] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:17:12] [DEBUG] Switching to stack page 7
+[2025-12-08 01:17:14] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:17:21] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:17:21] [INFO] HTM Dir: 
+[2025-12-08 01:17:21] [INFO] SET Dir: 
+[2025-12-08 01:17:21] [WARNING] SET folder not found: 
+[2025-12-08 01:17:21] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:17:23] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:17:27] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:17:27] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:17:27] [INFO] SET Dir: 
+[2025-12-08 01:17:27] [WARNING] SET folder not found: 
+[2025-12-08 01:17:27] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:17:28] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:17:36] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:17:36] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:17:36] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:17:36] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:17:36] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:17:36] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:17:36] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:17:36] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:17:36] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:17:36] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:17:36] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:17:36] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:17:36] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:17:36] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:17:36] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:17:36] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:17:36] [INFO] Total Selected files: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:17:36] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:18:51] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:18:55] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:18:55] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:18:56] [INFO] Date range option selected: Entire history
+[2025-12-08 01:18:56] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:18:56] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:18:56] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:18:56] [INFO] Date range option selected: Entire history
+[2025-12-08 01:18:56] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:18:56] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:18:57] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:18:57] [DEBUG] Switching to stack page 0
+[2025-12-08 01:18:57] [INFO] User authenticated via cache
+[2025-12-08 01:19:01] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-08 01:19:01] [DEBUG] Switching to stack page 6
+[2025-12-08 01:19:03] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:19:03] [DEBUG] Switching to stack page 7
+[2025-12-08 01:19:05] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:19:12] [INFO] CSV Dir: D:/Hassan Work/AutoTester
+[2025-12-08 01:19:12] [INFO] HTM Dir: 
+[2025-12-08 01:19:12] [INFO] SET Dir: 
+[2025-12-08 01:19:12] [WARNING] SET folder not found: 
+[2025-12-08 01:19:12] [INFO] User selected folder: D:/Hassan Work/AutoTester
+[2025-12-08 01:19:13] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:19:19] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:19:19] [INFO] HTM Dir: 
+[2025-12-08 01:19:19] [INFO] SET Dir: 
+[2025-12-08 01:19:19] [WARNING] SET folder not found: 
+[2025-12-08 01:19:19] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:19:20] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:19:25] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:19:25] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:19:25] [INFO] SET Dir: 
+[2025-12-08 01:19:25] [WARNING] SET folder not found: 
+[2025-12-08 01:19:25] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:19:26] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:19:35] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:19:35] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:19:35] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:19:35] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:19:35] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:19:35] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:19:35] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:19:35] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:19:35] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:19:35] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:19:35] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:19:35] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:19:35] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:19:35] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:19:35] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:19:35] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:19:35] [INFO] Total Selected files: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:19:35] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:20:52] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:20:54] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:20:54] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:20:55] [INFO] Date range option selected: Entire history
+[2025-12-08 01:20:55] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:20:55] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:20:55] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:20:55] [INFO] Date range option selected: Entire history
+[2025-12-08 01:20:55] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:20:55] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:20:55] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:20:55] [DEBUG] Switching to stack page 0
+[2025-12-08 01:20:56] [INFO] User authenticated via cache
+[2025-12-08 01:21:01] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:21:01] [DEBUG] Switching to stack page 7
+[2025-12-08 01:21:03] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:21:13] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:21:13] [INFO] HTM Dir: 
+[2025-12-08 01:21:13] [INFO] SET Dir: 
+[2025-12-08 01:21:13] [WARNING] SET folder not found: 
+[2025-12-08 01:21:13] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:21:13] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:21:21] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:21:21] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:21:21] [INFO] SET Dir: 
+[2025-12-08 01:21:21] [WARNING] SET folder not found: 
+[2025-12-08 01:21:21] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:21:23] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:21:32] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:21:32] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:21:32] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:21:32] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:21:32] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:21:32] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:21:32] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:21:32] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:21:32] [INFO] Total Selected files: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:21:32] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:21:32] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:21:32] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:21:32] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:21:32] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:21:32] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:21:32] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:21:32] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:21:32] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:21:32] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:21:32] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:24:39] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:24:42] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:24:42] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:24:42] [INFO] Date range option selected: Entire history
+[2025-12-08 01:24:42] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:24:42] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:24:42] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:24:42] [INFO] Date range option selected: Entire history
+[2025-12-08 01:24:42] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:24:42] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:25:43] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:25:46] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:25:46] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:25:46] [INFO] Date range option selected: Entire history
+[2025-12-08 01:25:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:25:46] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:25:46] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:25:46] [INFO] Date range option selected: Entire history
+[2025-12-08 01:25:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:25:47] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:25:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:25:47] [DEBUG] Switching to stack page 0
+[2025-12-08 01:25:48] [INFO] User authenticated via cache
+[2025-12-08 01:25:50] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:25:50] [DEBUG] Switching to stack page 7
+[2025-12-08 01:25:51] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:26:01] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:26:01] [INFO] HTM Dir: 
+[2025-12-08 01:26:01] [INFO] SET Dir: 
+[2025-12-08 01:26:01] [WARNING] SET folder not found: 
+[2025-12-08 01:26:01] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:26:02] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:26:09] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:26:09] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:26:09] [INFO] SET Dir: 
+[2025-12-08 01:26:09] [WARNING] SET folder not found: 
+[2025-12-08 01:26:09] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:26:10] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:26:18] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:26:18] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:26:18] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:26:18] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:26:18] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:26:18] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:26:18] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:26:18] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:26:18] [INFO] Total Selected files: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:26:18] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:26:18] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:26:18] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:26:18] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:26:18] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:26:18] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:26:18] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:26:18] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:26:18] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:26:18] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:26:18] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:27:49] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:27:52] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:27:52] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:27:52] [INFO] Date range option selected: Entire history
+[2025-12-08 01:27:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:27:52] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:27:52] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:27:52] [INFO] Date range option selected: Entire history
+[2025-12-08 01:27:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:27:53] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:27:53] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:27:53] [DEBUG] Switching to stack page 0
+[2025-12-08 01:27:54] [INFO] User authenticated via cache
+[2025-12-08 01:27:59] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:27:59] [DEBUG] Switching to stack page 7
+[2025-12-08 01:28:00] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:28:10] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:28:10] [INFO] HTM Dir: 
+[2025-12-08 01:28:10] [INFO] SET Dir: 
+[2025-12-08 01:28:10] [WARNING] SET folder not found: 
+[2025-12-08 01:28:10] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:28:11] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:28:16] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:28:16] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:28:16] [INFO] SET Dir: 
+[2025-12-08 01:28:16] [WARNING] SET folder not found: 
+[2025-12-08 01:28:16] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:28:17] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:28:24] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:28:24] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:28:24] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:28:24] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:28:24] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:28:24] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:28:24] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:28:24] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:28:24] [INFO] Total Selected files: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:28:24] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:28:24] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:28:24] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:28:24] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:28:24] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:28:24] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:28:24] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:28:24] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:28:24] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:28:24] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:28:24] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:29:24] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:29:26] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:29:26] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:29:27] [INFO] Date range option selected: Entire history
+[2025-12-08 01:29:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:29:27] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:29:27] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:29:27] [INFO] Date range option selected: Entire history
+[2025-12-08 01:29:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:29:27] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:29:27] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:29:27] [DEBUG] Switching to stack page 0
+[2025-12-08 01:29:28] [INFO] User authenticated via cache
+[2025-12-08 01:29:31] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:29:31] [DEBUG] Switching to stack page 7
+[2025-12-08 01:29:32] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:29:44] [INFO] Folder selection canceled by user.
+[2025-12-08 01:31:50] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:31:53] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:31:53] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:31:53] [INFO] Date range option selected: Entire history
+[2025-12-08 01:31:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:31:53] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:31:53] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:31:53] [INFO] Date range option selected: Entire history
+[2025-12-08 01:31:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:31:54] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:31:54] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:31:54] [DEBUG] Switching to stack page 0
+[2025-12-08 01:31:54] [INFO] User authenticated via cache
+[2025-12-08 01:32:05] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:32:05] [DEBUG] Switching to stack page 7
+[2025-12-08 01:32:06] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:32:19] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:32:19] [INFO] HTM Dir: 
+[2025-12-08 01:32:19] [INFO] SET Dir: 
+[2025-12-08 01:32:19] [WARNING] SET folder not found: 
+[2025-12-08 01:32:19] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:32:21] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:32:26] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:32:26] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:32:26] [INFO] SET Dir: 
+[2025-12-08 01:32:26] [WARNING] SET folder not found: 
+[2025-12-08 01:32:26] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:32:26] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:32:33] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:32:33] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:32:33] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:32:33] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:32:33] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:32:33] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:32:33] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:32:33] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:32:33] [INFO] Total Selected files: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:32:33] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:32:33] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:32:33] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:32:33] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:32:33] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:32:33] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:32:33] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:32:33] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:32:33] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:32:33] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:32:33] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:32:36] [INFO] Compare started...
+[2025-12-08 01:32:37] [INFO] Drawdown table updated (rows with SUM_EQUITY ≥ 1000).
+[2025-12-08 01:32:37] [INFO] Monthly portfolio stats updated (clean & sorted).
+[2025-12-08 01:32:37] [INFO] Compare process completed.
+[2025-12-08 01:39:28] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:39:31] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:39:31] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:39:31] [INFO] Date range option selected: Entire history
+[2025-12-08 01:39:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:39:31] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:39:31] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:39:31] [INFO] Date range option selected: Entire history
+[2025-12-08 01:39:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:39:32] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:39:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:39:33] [DEBUG] Switching to stack page 0
+[2025-12-08 01:39:33] [INFO] User authenticated via cache
+[2025-12-08 01:39:35] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:39:35] [DEBUG] Switching to stack page 7
+[2025-12-08 01:39:37] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:39:46] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:39:46] [INFO] HTM Dir: 
+[2025-12-08 01:39:46] [INFO] SET Dir: 
+[2025-12-08 01:39:46] [WARNING] SET folder not found: 
+[2025-12-08 01:39:46] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:39:47] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:39:52] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:39:52] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:39:52] [INFO] SET Dir: 
+[2025-12-08 01:39:52] [WARNING] SET folder not found: 
+[2025-12-08 01:39:52] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:39:53] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:40:00] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:40:00] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:40:00] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:40:00] [DEBUG] SET files found: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:40:01] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:40:01] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:40:01] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:40:01] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:40:01] [INFO] Total Selected files: {'ExpertMACD.set', '1magainstlong.set'}
+[2025-12-08 01:40:01] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:40:01] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:40:01] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:40:01] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:40:01] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:40:01] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:40:01] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:40:01] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:40:01] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:40:01] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:40:01] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:40:04] [INFO] Compare started...
+[2025-12-08 01:40:04] [INFO] Drawdown table updated (rows with SUM_EQUITY ≥ 1000).
+[2025-12-08 01:40:04] [INFO] Monthly portfolio stats updated (clean & sorted).
+[2025-12-08 01:40:04] [INFO] Compare process completed.
+[2025-12-08 01:40:44] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:40:46] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:40:46] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:40:46] [INFO] Date range option selected: Entire history
+[2025-12-08 01:40:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:40:46] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:40:46] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:40:46] [INFO] Date range option selected: Entire history
+[2025-12-08 01:40:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:40:47] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:40:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:40:47] [DEBUG] Switching to stack page 0
+[2025-12-08 01:40:48] [INFO] User authenticated via cache
+[2025-12-08 01:40:50] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:40:50] [DEBUG] Switching to stack page 7
+[2025-12-08 01:40:52] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:41:00] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets
+[2025-12-08 01:41:00] [INFO] HTM Dir: 
+[2025-12-08 01:41:00] [INFO] SET Dir: 
+[2025-12-08 01:41:00] [WARNING] SET folder not found: 
+[2025-12-08 01:41:00] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets
+[2025-12-08 01:41:01] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:41:04] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:41:04] [INFO] HTM Dir: 
+[2025-12-08 01:41:04] [INFO] SET Dir: 
+[2025-12-08 01:41:04] [WARNING] SET folder not found: 
+[2025-12-08 01:41:04] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:41:05] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:41:10] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:41:10] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:41:10] [INFO] SET Dir: 
+[2025-12-08 01:41:10] [WARNING] SET folder not found: 
+[2025-12-08 01:41:10] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:41:11] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:41:18] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:41:18] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:41:18] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:41:18] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:41:18] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:41:18] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:41:18] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:41:18] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:41:18] [INFO] Total Selected files: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:41:18] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:41:18] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:41:18] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:41:18] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:41:18] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:41:18] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:41:18] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:41:18] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:41:18] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:41:18] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:41:18] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:41:22] [INFO] Compare started...
+[2025-12-08 01:41:23] [INFO] Drawdown table updated (rows with SUM_EQUITY ≥ 1000).
+[2025-12-08 01:41:23] [INFO] Monthly portfolio stats updated (clean & sorted).
+[2025-12-08 01:41:23] [INFO] Compare process completed.
+[2025-12-08 01:41:38] [INFO] Graph displayed successfully.
+[2025-12-08 01:44:53] [INFO] Compare started...
+[2025-12-08 01:44:54] [INFO] Drawdown table updated (rows with SUM_EQUITY ≥ 200000).
+[2025-12-08 01:44:54] [INFO] Monthly portfolio stats updated (clean & sorted).
+[2025-12-08 01:44:54] [INFO] Compare process completed.
+[2025-12-08 01:46:43] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:46:45] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:46:45] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:46:46] [INFO] Date range option selected: Entire history
+[2025-12-08 01:46:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:46:46] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:46:46] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:46:46] [INFO] Date range option selected: Entire history
+[2025-12-08 01:46:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:46:46] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:47:28] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:47:31] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:47:31] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:47:31] [INFO] Date range option selected: Entire history
+[2025-12-08 01:47:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:47:31] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:47:31] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:47:31] [INFO] Date range option selected: Entire history
+[2025-12-08 01:47:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:47:31] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:47:31] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 01:47:31] [DEBUG] Switching to stack page 0
+[2025-12-08 01:47:32] [INFO] User authenticated via cache
+[2025-12-08 01:47:35] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:47:35] [DEBUG] Switching to stack page 7
+[2025-12-08 01:48:01] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:48:09] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:48:09] [INFO] HTM Dir: 
+[2025-12-08 01:48:09] [INFO] SET Dir: 
+[2025-12-08 01:48:09] [WARNING] SET folder not found: 
+[2025-12-08 01:48:09] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:48:10] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:48:15] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:48:15] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:48:15] [INFO] SET Dir: 
+[2025-12-08 01:48:15] [WARNING] SET folder not found: 
+[2025-12-08 01:48:15] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:48:16] [DEBUG] Starting folder browse. Default: None
+[2025-12-08 01:48:24] [INFO] CSV Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/CSV
+[2025-12-08 01:48:24] [INFO] HTM Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/Agent Finder Results/AutoTester_20251129_013626/Sets/HTML Reports
+[2025-12-08 01:48:24] [INFO] SET Dir: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:48:24] [DEBUG] SET files found: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:48:24] [DEBUG] Selected CSV file: eurusd_1magainstlong.csv
+[2025-12-08 01:48:24] [DEBUG] Selected CSV file: eurusd_expertmacd.csv
+[2025-12-08 01:48:24] [DEBUG] Selected HTM file: EURUSD_1magainstlong.htm
+[2025-12-08 01:48:24] [DEBUG] Selected HTM file: EURUSD_ExpertMACD.htm
+[2025-12-08 01:48:24] [INFO] Total Selected files: {'1magainstlong.set', 'ExpertMACD.set'}
+[2025-12-08 01:48:24] [DEBUG] Cleared CSV list widget.
+[2025-12-08 01:48:24] [DEBUG] Added to CSV list widget: eurusd_expertmacd
+[2025-12-08 01:48:24] [DEBUG] Added to CSV list widget: eurusd_1magainstlong
+[2025-12-08 01:48:24] [DEBUG] Set CSV list widget selection mode to MultiSelection.
+[2025-12-08 01:48:24] [INFO] All CSV files selected in the list widget.
+[2025-12-08 01:48:24] [DEBUG] Cleared SET list widget.
+[2025-12-08 01:48:24] [DEBUG] Added to SET list widget: 1magainstlong
+[2025-12-08 01:48:24] [DEBUG] Added to SET list widget: ExpertMACD
+[2025-12-08 01:48:24] [DEBUG] Set SET list widget selection mode to MultiSelection.
+[2025-12-08 01:48:24] [INFO] All SET files selected in the list widget.
+[2025-12-08 01:48:24] [INFO] User selected folder: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 01:48:26] [INFO] Compare started...
+[2025-12-08 01:48:27] [INFO] Drawdown table updated (rows with SUM_EQUITY ≥ 1000).
+[2025-12-08 01:48:27] [INFO] Monthly portfolio stats updated (clean & sorted).
+[2025-12-08 01:48:27] [INFO] Compare process completed.
+[2025-12-08 01:54:01] [INFO] ❌ No valid cache found, user not authenticated
+[2025-12-08 01:54:05] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:54:05] [INFO] Cache loaded: {'authenticated': True, 'token': '2c6bb5f8-2345-4ec8-bd58-996c4db54ca9', 'validation_time': 1765136940.6517556}
+[2025-12-08 01:54:05] [INFO] Date range option selected: Entire history
+[2025-12-08 01:54:05] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:54:05] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:54:05] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:54:05] [INFO] Date range option selected: Entire history
+[2025-12-08 01:54:05] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:54:06] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:54:06] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2025-12-08 01:54:06] [DEBUG] Switching to stack page 0
+[2025-12-08 01:54:06] [INFO] No valid cache found, user not authenticated
+[2025-12-08 01:54:25] [INFO] Cache saved successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:54:25] [INFO] User admin@example.com logged in successfully.
+[2025-12-08 01:54:26] [INFO] User interface updated after login
+[2025-12-08 01:54:28] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 01:54:28] [DEBUG] Switching to stack page 7
+[2025-12-08 01:57:59] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:58:01] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:58:01] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 01:58:01] [INFO] Date range option selected: Entire history
+[2025-12-08 01:58:01] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:58:01] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:58:01] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:58:02] [INFO] Date range option selected: Entire history
+[2025-12-08 01:58:02] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:58:02] [INFO] Set Generator Controller Initialized
+[2025-12-08 01:58:59] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 01:59:03] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 01:59:03] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 01:59:03] [INFO] Date range option selected: Entire history
+[2025-12-08 01:59:03] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:59:03] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 01:59:03] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 01:59:03] [INFO] Date range option selected: Entire history
+[2025-12-08 01:59:03] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 01:59:03] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:00:16] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:00:18] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:00:18] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:00:18] [INFO] Date range option selected: Entire history
+[2025-12-08 02:00:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:00:18] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:00:18] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:00:18] [INFO] Date range option selected: Entire history
+[2025-12-08 02:00:18] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:00:18] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:00:19] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:00:19] [DEBUG] Switching to stack page 0
+[2025-12-08 02:00:20] [INFO] User authenticated via cache
+[2025-12-08 02:00:21] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:00:21] [DEBUG] Switching to stack page 7
+[2025-12-08 02:02:46] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:02:48] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:02:48] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:02:48] [INFO] Date range option selected: Entire history
+[2025-12-08 02:02:48] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:02:48] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:02:48] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:02:48] [INFO] Date range option selected: Entire history
+[2025-12-08 02:02:48] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:02:49] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:02:49] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:02:49] [DEBUG] Switching to stack page 0
+[2025-12-08 02:02:50] [INFO] User authenticated via cache
+[2025-12-08 02:02:53] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:02:53] [DEBUG] Switching to stack page 7
+[2025-12-08 02:03:43] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:03:46] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:03:46] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:03:46] [INFO] Date range option selected: Entire history
+[2025-12-08 02:03:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:03:46] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:03:46] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:03:46] [INFO] Date range option selected: Entire history
+[2025-12-08 02:03:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:03:47] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:03:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:03:47] [DEBUG] Switching to stack page 0
+[2025-12-08 02:03:48] [INFO] User authenticated via cache
+[2025-12-08 02:03:49] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:03:49] [DEBUG] Switching to stack page 7
+[2025-12-08 02:04:35] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:04:38] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:04:38] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:04:38] [INFO] Date range option selected: Entire history
+[2025-12-08 02:04:38] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:04:38] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:04:38] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:04:38] [INFO] Date range option selected: Entire history
+[2025-12-08 02:04:38] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:04:38] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:04:39] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:04:39] [DEBUG] Switching to stack page 0
+[2025-12-08 02:04:39] [INFO] User authenticated via cache
+[2025-12-08 02:04:40] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:04:40] [DEBUG] Switching to stack page 7
+[2025-12-08 02:04:52] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:04:52] [DEBUG] Switching to stack page 0
+[2025-12-08 02:04:53] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-08 02:04:53] [DEBUG] Switching to stack page 1
+[2025-12-08 02:04:53] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-08 02:04:53] [DEBUG] Switching to stack page 2
+[2025-12-08 02:04:53] [INFO] Set Finder page opened, updating report data if available
+[2025-12-08 02:04:53] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-08 02:04:54] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:04:54] [DEBUG] Switching to stack page 3
+[2025-12-08 02:04:54] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:04:54] [WARNING] No report files found — clearing UI
+[2025-12-08 02:04:54] [INFO] ⚠️ No data to display.
+[2025-12-08 02:04:54] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-08 02:04:54] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-08 02:04:55] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:04:55] [DEBUG] Switching to stack page 4
+[2025-12-08 02:04:55] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-08 02:04:55] [DEBUG] Switching to stack page 6
+[2025-12-08 02:04:56] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2025-12-08 02:04:56] [DEBUG] Switching to stack page 1
+[2025-12-08 02:05:08] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-12-08 02:05:19] [INFO] MT5 Data Path: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-12-08 02:05:19] [INFO] Log Directory: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2025-12-08 02:05:20] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-12-08 02:05:28] [INFO] Closest match found: XAUEUR
+[2025-12-08 02:05:28] [INFO] Best symbol found: XAUEUR
+[2025-12-08 02:05:29] [INFO] Closest match found: XAUEUR
+[2025-12-08 02:05:29] [INFO] Best symbol found: XAUEUR
+[2025-12-08 02:05:30] [INFO] Closest match found: XAUEUR
+[2025-12-08 02:05:30] [INFO] Best symbol found: XAUEUR
+[2025-12-08 02:05:33] [INFO] Closest match found: XAUEUR
+[2025-12-08 02:05:33] [INFO] Best symbol found: XAUEUR
+[2025-12-08 02:05:33] [INFO] Closest match found: XAUEUR
+[2025-12-08 02:05:33] [INFO] Best symbol found: XAUEUR
+[2025-12-08 02:05:33] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:33] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:33] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:33] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:34] [INFO] Exact match found: EURUSD
+[2025-12-08 02:05:34] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:35] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:35] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:35] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:35] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:36] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:36] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:36] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:36] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:37] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:37] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:37] [INFO] Closest match found: EURUSD
+[2025-12-08 02:05:37] [INFO] Best symbol found: EURUSD
+[2025-12-08 02:05:43] [INFO] Date range option selected: Last 3 months
+[2025-12-08 02:05:43] [SUCCESS] ✅ Date range set: Mon Sep 8 2025 → Mon Dec 8 2025
+[2025-12-08 02:05:43] [INFO] Adjusting forward date based on selection: Last 3 months
+[2025-12-08 02:05:43] [WARNING] Unknown forward date option: Last 3 months
+[2025-12-08 02:05:57] [SUCCESS] ✅ Test 'EURUSD_TREND' added to queue.
+[2025-12-08 02:05:58] [INFO] Starting queued tests...
+[2025-12-08 02:05:58] [INFO] ▶️ Running test: EURUSD_TREND on EURUSD
+[2025-12-08 02:05:58] [INFO] Starting run_strategy...
+[2025-12-08 02:05:58] [INFO] settings: {'test_name': 'EURUSD_TREND', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last 3 months', 'date_from': '2025-09-08', 'date_to': '2025-12-08', 'forward': 'No', 'forward_date': '2025-12-08', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2025-12-08 02:05:58] [DEBUG] Settings: {'test_name': 'EURUSD_TREND', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last 3 months', 'date_from': '2025-09-08', 'date_to': '2025-12-08', 'forward': 'No', 'forward_date': '2025-12-08', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2025-12-08 02:05:58] [DEBUG] Config path  = C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_TREND_XML.ini
+[2025-12-08 02:05:58] [DEBUG] Report path  = Agent Finder Results\EURUSD_TREND_20251208_020558\EURUSD_EURUSD_TREND_No_report
+[2025-12-08 02:05:58] [DEBUG] Report Mode  = 4
+[2025-12-08 02:05:58] [DEBUG] Param Files  = 
+[2025-12-08 02:05:58] [DEBUG] Expert       = ExpertMACD.ex5
+[2025-12-08 02:05:58] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2025-12-08 02:05:59] [DEBUG] Symbol       = EURUSD
+[2025-12-08 02:05:59] [DEBUG] Timeframe    = M1
+[2025-12-08 02:05:59] [DEBUG] Model        = None (Every tick)
+[2025-12-08 02:05:59] [DEBUG] Optimization = 2 (Fast genetic based algorithm)
+[2025-12-08 02:05:59] [DEBUG] Criterion    = 0 (Balance Max)
+[2025-12-08 02:05:59] [DEBUG] Forward      = 0 (No)
+[2025-12-08 02:05:59] [INFO] INI config file written: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_TREND_XML.ini
+[2025-12-08 02:05:59] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\EURUSD_TREND_20251208_020558\EURUSD_EURUSD_TREND_No_report
+[2025-12-08 02:05:59] [DEBUG] Using log file: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20251129.log
+[2025-12-08 02:05:59] [DEBUG] Initial log pointer: 72030
+[2025-12-08 02:06:35] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\EURUSD_TREND_20251208_020558\EURUSD_EURUSD_TREND_No_report
+[2025-12-08 02:06:35] [SUCCESS] ✅ ✅ Test 'EURUSD_TREND' completed successfully.
+[2025-12-08 02:06:39] [SUCCESS] ✅ All tests completed.
+[2025-12-08 02:07:35] [INFO] Date range option selected: Entire history
+[2025-12-08 02:07:35] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:07:35] [INFO] Adjusting forward date based on selection: Entire history
+[2025-12-08 02:07:35] [WARNING] Unknown forward date option: Entire history
+[2025-12-08 02:07:40] [SUCCESS] ✅ Test 'EURUSD_TREND' added to queue.
+[2025-12-08 02:07:41] [INFO] Starting queued tests...
+[2025-12-08 02:07:41] [INFO] ▶️ Running test: EURUSD_TREND on EURUSD
+[2025-12-08 02:07:41] [INFO] Starting run_strategy...
+[2025-12-08 02:07:41] [INFO] settings: {'test_name': 'EURUSD_TREND', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-12-08', 'forward': 'No', 'forward_date': '2025-12-08', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2025-12-08 02:07:41] [DEBUG] Settings: {'test_name': 'EURUSD_TREND', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2025-12-08', 'forward': 'No', 'forward_date': '2025-12-08', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2025-12-08 02:07:41] [DEBUG] Config path  = C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_TREND_XML.ini
+[2025-12-08 02:07:41] [DEBUG] Report path  = Agent Finder Results\EURUSD_TREND_20251208_020741\EURUSD_EURUSD_TREND_No_report
+[2025-12-08 02:07:41] [DEBUG] Report Mode  = 4
+[2025-12-08 02:07:41] [DEBUG] Param Files  = 
+[2025-12-08 02:07:41] [DEBUG] Expert       = ExpertMACD.ex5
+[2025-12-08 02:07:41] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2025-12-08 02:07:41] [DEBUG] Symbol       = EURUSD
+[2025-12-08 02:07:41] [DEBUG] Timeframe    = M1
+[2025-12-08 02:07:41] [DEBUG] Model        = None (Every tick)
+[2025-12-08 02:07:41] [DEBUG] Optimization = 2 (Fast genetic based algorithm)
+[2025-12-08 02:07:41] [DEBUG] Criterion    = 0 (Balance Max)
+[2025-12-08 02:07:41] [DEBUG] Forward      = 0 (No)
+[2025-12-08 02:07:41] [INFO] INI config file written: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_TREND_XML.ini
+[2025-12-08 02:07:41] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\EURUSD_TREND_20251208_020741\EURUSD_EURUSD_TREND_No_report
+[2025-12-08 02:07:41] [DEBUG] Using log file: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20251208.log
+[2025-12-08 02:07:41] [DEBUG] Initial log pointer: 3096
+[2025-12-08 02:08:16] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\EURUSD_TREND_20251208_020741\EURUSD_EURUSD_TREND_No_report
+[2025-12-08 02:08:16] [SUCCESS] ✅ ✅ Test 'EURUSD_TREND' completed successfully.
+[2025-12-08 02:08:17] [SUCCESS] ✅ All tests completed.
+[2025-12-08 02:08:32] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-08 02:08:32] [DEBUG] Switching to stack page 2
+[2025-12-08 02:08:32] [INFO] Set Finder page opened, updating report data if available
+[2025-12-08 02:08:32] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-08 02:08:51] [INFO] 📂 Report directory selected: D:/Hassan Work/AutoTester/Examples/New folder
+[2025-12-08 02:08:51] [INFO] 📄 Total reports found: 2
+[2025-12-08 02:08:51] [INFO] 📄 Report files: ['D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.forward.xml', 'D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.xml']
+[2025-12-08 02:08:51] [INFO] 📄 Default report file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:08:51] [INFO] 📂 Starting XML parsing for 2 files...
+[2025-12-08 02:08:51] [DEBUG] 🚀 Starting background thread for all XML reports reading...
+[2025-12-08 02:08:51] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:08:55] [INFO] 📑 Extracted DocumentProperties from eurusd.forward.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:08:55] [INFO] ✅ Parsed eurusd.forward.xml with 7611 rows.
+[2025-12-08 02:08:55] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.xml
+[2025-12-08 02:09:01] [INFO] 📑 Extracted DocumentProperties from eurusd.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:09:02] [INFO] ✅ Parsed eurusd.xml with 7611 rows.
+[2025-12-08 02:09:02] [INFO] 📘 Successfully parsed 2 reports.
+[2025-12-08 02:09:02] [INFO] 📂 Reports stored: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:09:02] [INFO] 🧾 DocumentProperties stored for: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:09:06] [INFO] 🚀 Starting XML table extraction for 2 files...
+[2025-12-08 02:09:06] [INFO] 📂 Reading XML file: eurusd.forward.xml
+[2025-12-08 02:09:15] [INFO] ✅ Processed eurusd.forward.xml (7610 rows)
+[2025-12-08 02:09:15] [INFO] 📂 Reading XML file: eurusd.xml
+[2025-12-08 02:09:24] [INFO] ✅ Processed eurusd.xml (7610 rows)
+[2025-12-08 02:09:24] [ERROR] Forward file found: eurusd.forward.xml, prefixing columns.
+[2025-12-08 02:09:24] [INFO] 🔗 Merged eurusd.xml and eurusd.forward.xml on 'Pass' column with forward prefix.
+[2025-12-08 02:09:25] [INFO] 💾 Saved CSV: eurusd_table.csv
+[2025-12-08 02:09:25] [INFO]  merged.keys() =  dict_keys(['eurusd.xml'])
+[2025-12-08 02:09:25] [INFO] 🧹 Removed forward XML files. Report files reduced from 2 → 1
+[2025-12-08 02:09:25] [INFO] 📘 Successfully parsed and merged 1 reports.
+[2025-12-08 02:09:25] [INFO] 📂 Final merged report keys: ['eurusd.xml']
+[2025-12-08 02:09:29] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:09:29] [DEBUG] Switching to stack page 3
+[2025-12-08 02:09:29] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:09:29] [INFO] 📂 Starting to populate table with 1253 rows...
+[2025-12-08 02:09:29] [INFO] Pairs box updated with: ['eurusd']
+[2025-12-08 02:09:30] [INFO] ✅ Table populated successfully with 1253 rows and 10 columns.
+[2025-12-08 02:09:54] [INFO] 📂 2 optimisation file(s) selected.
+[2025-12-08 02:09:54] [INFO] ✅ 2 file(s) added to optimisation list.
+[2025-12-08 02:13:10] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:13:12] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:13:12] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:13:12] [INFO] Date range option selected: Entire history
+[2025-12-08 02:13:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:13:12] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:13:12] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:13:12] [INFO] Date range option selected: Entire history
+[2025-12-08 02:13:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:13:13] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:13:13] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:13:13] [DEBUG] Switching to stack page 0
+[2025-12-08 02:13:14] [INFO] User authenticated via cache
+[2025-12-08 02:13:16] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:13:16] [DEBUG] Switching to stack page 7
+[2025-12-08 02:13:18] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:13:18] [DEBUG] Switching to stack page 3
+[2025-12-08 02:13:18] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:13:18] [WARNING] No report files found — clearing UI
+[2025-12-08 02:13:18] [INFO] ⚠️ No data to display.
+[2025-12-08 02:13:18] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-08 02:13:18] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-08 02:13:19] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:13:19] [DEBUG] Switching to stack page 4
+[2025-12-08 02:13:21] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-08 02:13:21] [DEBUG] Switching to stack page 2
+[2025-12-08 02:13:21] [INFO] Set Finder page opened, updating report data if available
+[2025-12-08 02:13:21] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-08 02:13:30] [INFO] 📂 Report directory selected: D:/Hassan Work/AutoTester/Examples/New folder
+[2025-12-08 02:13:30] [INFO] 📄 Total reports found: 2
+[2025-12-08 02:13:30] [INFO] 📄 Report files: ['D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.forward.xml', 'D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.xml']
+[2025-12-08 02:13:30] [INFO] 📄 Default report file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:13:30] [INFO] 📂 Starting XML parsing for 2 files...
+[2025-12-08 02:13:30] [DEBUG] 🚀 Starting background thread for all XML reports reading...
+[2025-12-08 02:13:30] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:13:33] [INFO] 📑 Extracted DocumentProperties from eurusd.forward.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:13:34] [INFO] ✅ Parsed eurusd.forward.xml with 7611 rows.
+[2025-12-08 02:13:34] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.xml
+[2025-12-08 02:13:38] [INFO] 📑 Extracted DocumentProperties from eurusd.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:13:39] [INFO] ✅ Parsed eurusd.xml with 7611 rows.
+[2025-12-08 02:13:39] [INFO] 📘 Successfully parsed 2 reports.
+[2025-12-08 02:13:39] [INFO] 📂 Reports stored: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:13:39] [INFO] 🧾 DocumentProperties stored for: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:13:42] [INFO] 🚀 Starting XML table extraction for 2 files...
+[2025-12-08 02:13:42] [INFO] 📂 Reading XML file: eurusd.forward.xml
+[2025-12-08 02:13:51] [INFO] ✅ Processed eurusd.forward.xml (7610 rows)
+[2025-12-08 02:13:51] [INFO] 📂 Reading XML file: eurusd.xml
+[2025-12-08 02:14:01] [INFO] ✅ Processed eurusd.xml (7610 rows)
+[2025-12-08 02:14:01] [ERROR] Forward file found: eurusd.forward.xml, prefixing columns.
+[2025-12-08 02:14:01] [INFO] 🔗 Merged eurusd.xml and eurusd.forward.xml on 'Pass' column with forward prefix.
+[2025-12-08 02:14:02] [INFO] 💾 Saved CSV: eurusd_table.csv
+[2025-12-08 02:14:02] [INFO]  merged.keys() =  dict_keys(['eurusd.xml'])
+[2025-12-08 02:14:02] [INFO] 🧹 Removed forward XML files. Report files reduced from 2 → 1
+[2025-12-08 02:14:02] [INFO] 📘 Successfully parsed and merged 1 reports.
+[2025-12-08 02:14:02] [INFO] 📂 Final merged report keys: ['eurusd.xml']
+[2025-12-08 02:14:05] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:14:05] [DEBUG] Switching to stack page 3
+[2025-12-08 02:14:05] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:14:05] [INFO] 📂 Starting to populate table with 1253 rows...
+[2025-12-08 02:14:05] [INFO] Pairs box updated with: ['eurusd']
+[2025-12-08 02:14:06] [INFO] ✅ Table populated successfully with 1253 rows and 10 columns.
+[2025-12-08 02:14:23] [INFO] 📂 2 optimisation file(s) selected.
+[2025-12-08 02:14:23] [INFO] ✅ 2 file(s) added to optimisation list.
+[2025-12-08 02:16:27] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:16:31] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:16:31] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:16:31] [INFO] Date range option selected: Entire history
+[2025-12-08 02:16:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:16:31] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:16:31] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:16:31] [INFO] Date range option selected: Entire history
+[2025-12-08 02:16:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:16:31] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:16:32] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:16:32] [DEBUG] Switching to stack page 0
+[2025-12-08 02:16:33] [INFO] User authenticated via cache
+[2025-12-08 02:16:37] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:16:37] [DEBUG] Switching to stack page 5
+[2025-12-08 02:16:37] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:16:37] [DEBUG] Switching to stack page 4
+[2025-12-08 02:16:39] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:16:39] [DEBUG] Switching to stack page 3
+[2025-12-08 02:16:39] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:16:39] [WARNING] No report files found — clearing UI
+[2025-12-08 02:16:39] [INFO] ⚠️ No data to display.
+[2025-12-08 02:16:39] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-08 02:16:39] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-08 02:16:40] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-08 02:16:40] [DEBUG] Switching to stack page 2
+[2025-12-08 02:16:40] [INFO] Set Finder page opened, updating report data if available
+[2025-12-08 02:16:40] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-08 02:16:58] [INFO] 📂 Report directory selected: D:/Hassan Work/AutoTester/Examples/New folder
+[2025-12-08 02:16:58] [INFO] 📄 Total reports found: 2
+[2025-12-08 02:16:58] [INFO] 📄 Report files: ['D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.forward.xml', 'D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.xml']
+[2025-12-08 02:16:58] [INFO] 📄 Default report file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:16:58] [INFO] 📂 Starting XML parsing for 2 files...
+[2025-12-08 02:16:58] [DEBUG] 🚀 Starting background thread for all XML reports reading...
+[2025-12-08 02:16:58] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:17:02] [INFO] 📑 Extracted DocumentProperties from eurusd.forward.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:17:03] [INFO] ✅ Parsed eurusd.forward.xml with 7611 rows.
+[2025-12-08 02:17:03] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.xml
+[2025-12-08 02:17:06] [INFO] 📑 Extracted DocumentProperties from eurusd.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:17:07] [INFO] ✅ Parsed eurusd.xml with 7611 rows.
+[2025-12-08 02:17:07] [INFO] 📘 Successfully parsed 2 reports.
+[2025-12-08 02:17:07] [INFO] 📂 Reports stored: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:17:07] [INFO] 🧾 DocumentProperties stored for: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:17:10] [INFO] 🚀 Starting XML table extraction for 2 files...
+[2025-12-08 02:17:10] [INFO] 📂 Reading XML file: eurusd.forward.xml
+[2025-12-08 02:17:20] [INFO] ✅ Processed eurusd.forward.xml (7610 rows)
+[2025-12-08 02:17:20] [INFO] 📂 Reading XML file: eurusd.xml
+[2025-12-08 02:17:29] [INFO] ✅ Processed eurusd.xml (7610 rows)
+[2025-12-08 02:17:29] [ERROR] Forward file found: eurusd.forward.xml, prefixing columns.
+[2025-12-08 02:17:30] [INFO] 🔗 Merged eurusd.xml and eurusd.forward.xml on 'Pass' column with forward prefix.
+[2025-12-08 02:17:30] [INFO] 💾 Saved CSV: eurusd_table.csv
+[2025-12-08 02:17:30] [INFO]  merged.keys() =  dict_keys(['eurusd.xml'])
+[2025-12-08 02:17:30] [INFO] 🧹 Removed forward XML files. Report files reduced from 2 → 1
+[2025-12-08 02:17:30] [INFO] 📘 Successfully parsed and merged 1 reports.
+[2025-12-08 02:17:30] [INFO] 📂 Final merged report keys: ['eurusd.xml']
+[2025-12-08 02:17:33] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:17:33] [DEBUG] Switching to stack page 3
+[2025-12-08 02:17:33] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:17:34] [INFO] 📂 Starting to populate table with 1253 rows...
+[2025-12-08 02:17:34] [INFO] Pairs box updated with: ['eurusd']
+[2025-12-08 02:17:34] [INFO] ✅ Table populated successfully with 1253 rows and 10 columns.
+[2025-12-08 02:19:48] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:19:51] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:19:51] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:19:51] [INFO] Date range option selected: Entire history
+[2025-12-08 02:19:51] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:19:51] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:19:51] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:19:51] [INFO] Date range option selected: Entire history
+[2025-12-08 02:19:51] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:19:52] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:19:52] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:19:52] [DEBUG] Switching to stack page 0
+[2025-12-08 02:19:53] [INFO] User authenticated via cache
+[2025-12-08 02:19:57] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:19:57] [DEBUG] Switching to stack page 7
+[2025-12-08 02:20:00] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2025-12-08 02:20:00] [DEBUG] Switching to stack page 2
+[2025-12-08 02:20:00] [INFO] Set Finder page opened, updating report data if available
+[2025-12-08 02:20:00] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2025-12-08 02:20:08] [INFO] 📂 Report directory selected: D:/Hassan Work/AutoTester/Examples/New folder
+[2025-12-08 02:20:08] [INFO] 📄 Total reports found: 2
+[2025-12-08 02:20:08] [INFO] 📄 Report files: ['D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.forward.xml', 'D:/Hassan Work/AutoTester/Examples/New folder\\eurusd.xml']
+[2025-12-08 02:20:08] [INFO] 📄 Default report file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:20:08] [INFO] 📂 Starting XML parsing for 2 files...
+[2025-12-08 02:20:08] [DEBUG] 🚀 Starting background thread for all XML reports reading...
+[2025-12-08 02:20:08] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.forward.xml
+[2025-12-08 02:20:11] [INFO] 📑 Extracted DocumentProperties from eurusd.forward.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:20:12] [INFO] ✅ Parsed eurusd.forward.xml with 7611 rows.
+[2025-12-08 02:20:12] [INFO] 📄 Parsing XML file: D:/Hassan Work/AutoTester/Examples/New folder\eurusd.xml
+[2025-12-08 02:20:16] [INFO] 📑 Extracted DocumentProperties from eurusd.xml: {'Title': 'POW_BANKER_EA_9.15 USDCAD,M1 2023.12.23-2024.03.23', 'Author': 'MetaQuotes Ltd.', 'Revision': '1', 'Created': '2025-05-06T14:08:09Z', 'Company': 'Copyright 2000-2025, MetaQuotes Ltd.', 'Version': '500', 'Build': '48', 'Server': 'BlackBullMarkets-Demo', 'Deposit': '10000 USD', 'Leverage': '500', 'Condition': '100'}
+[2025-12-08 02:20:17] [INFO] ✅ Parsed eurusd.xml with 7611 rows.
+[2025-12-08 02:20:17] [INFO] 📘 Successfully parsed 2 reports.
+[2025-12-08 02:20:17] [INFO] 📂 Reports stored: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:20:17] [INFO] 🧾 DocumentProperties stored for: ['eurusd.forward.xml', 'eurusd.xml']
+[2025-12-08 02:20:21] [INFO] 🚀 Starting XML table extraction for 2 files...
+[2025-12-08 02:20:21] [INFO] 📂 Reading XML file: eurusd.forward.xml
+[2025-12-08 02:20:31] [INFO] ✅ Processed eurusd.forward.xml (7610 rows)
+[2025-12-08 02:20:31] [INFO] 📂 Reading XML file: eurusd.xml
+[2025-12-08 02:20:40] [INFO] ✅ Processed eurusd.xml (7610 rows)
+[2025-12-08 02:20:40] [ERROR] Forward file found: eurusd.forward.xml, prefixing columns.
+[2025-12-08 02:20:40] [INFO] 🔗 Merged eurusd.xml and eurusd.forward.xml on 'Pass' column with forward prefix.
+[2025-12-08 02:20:40] [INFO] 💾 Saved CSV: eurusd_table.csv
+[2025-12-08 02:20:40] [INFO]  merged.keys() =  dict_keys(['eurusd.xml'])
+[2025-12-08 02:20:40] [INFO] 🧹 Removed forward XML files. Report files reduced from 2 → 1
+[2025-12-08 02:20:41] [INFO] 📘 Successfully parsed and merged 1 reports.
+[2025-12-08 02:20:41] [INFO] 📂 Final merged report keys: ['eurusd.xml']
+[2025-12-08 02:20:45] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:20:45] [DEBUG] Switching to stack page 3
+[2025-12-08 02:20:45] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:20:45] [INFO] 📂 Starting to populate table with 1253 rows...
+[2025-12-08 02:20:45] [INFO] Pairs box updated with: ['eurusd']
+[2025-12-08 02:20:46] [INFO] ✅ Table populated successfully with 1253 rows and 10 columns.
+[2025-12-08 02:21:17] [INFO] 📂 2 optimisation file(s) selected.
+[2025-12-08 02:21:17] [INFO] ✅ 2 file(s) added to optimisation list.
+[2025-12-08 02:22:18] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:22:18] [DEBUG] Switching to stack page 4
+[2025-12-08 02:22:32] [WARNING] Data folder is not set.
+[2025-12-08 02:22:46] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-12-08 02:22:58] [INFO] MT5 Data Path: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-12-08 02:22:58] [INFO] Log Directory: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2025-12-08 02:22:58] [INFO] Auto-selected Data Folder: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-12-08 02:23:14] [INFO] Param folder found: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2025-12-08 02:23:35] [INFO] Set folder selected: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 02:23:35] [SUCCESS] ✅ Detected 2 set files in C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 02:23:39] [INFO] Date range option selected: Last 3 months
+[2025-12-08 02:23:39] [SUCCESS] ✅ Date range set: Mon Sep 8 2025 → Mon Dec 8 2025
+[2025-12-08 02:23:43] [INFO] Folder selected: C:/Users/Naveed Computers/AppData/Roaming/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Profiles/Tester
+[2025-12-08 02:23:43] [INFO] MT5 Path: C:/Program Files/MetaTrader 5/terminal64.exe
+[2025-12-08 02:23:43] [INFO] Data Folder Path: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2025-12-08 02:23:43] [INFO] Expert Name: ExpertMACD.ex5
+[2025-12-08 02:23:43] [INFO] Expert File: {'path': 'C:\\Users\\Naveed Computers\\AppData\\Roaming\\MetaQuotes\\Terminal\\D0E8209F77C8CF37AD8BF550E51FF075\\MQL5\\Experts\\Advisors\\ExpertMACD.ex5', 'modified': datetime.datetime(2025, 9, 9, 14, 58, 33, 286229)}
+[2025-12-08 02:23:43] [INFO] Report Path: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results
+[2025-12-08 02:23:43] [INFO] Max retries: 10
+[2025-12-08 02:23:43] [INFO] Report folder ready at: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results
+[2025-12-08 02:23:43] [INFO] Base report folder ready: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\AutoTester_20251208_022343\Sets
+[2025-12-08 02:23:43] [INFO] Running strategy for 1magainstlong.set
+[2025-12-08 02:23:43] [INFO] Report folder ready: Agent Finder Results\AutoTester_20251208_022343\Sets
+[2025-12-08 02:23:43] [INFO] Running strategy for 1magainstlong.set attempt 1/10
+[2025-12-08 02:23:43] [INFO] Starting run_strategy...
+[2025-12-08 02:23:43] [INFO] settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '1magainstlong.set', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last 3 months', 'date_from': '2025-09-08', 'date_to': '2025-12-08', 'forward': 'Disabled', 'forward_date': '2025-12-08', 'delay': '100', 'delay_mode': 'Time based', 'model': 'Every tick based on real ticks', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.0', 'optimazation': 'Disabled', 'criterion': 'Balance Max'}
+[2025-12-08 02:23:43] [DEBUG] Settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '1magainstlong.set', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last 3 months', 'date_from': '2025-09-08', 'date_to': '2025-12-08', 'forward': 'Disabled', 'forward_date': '2025-12-08', 'delay': '100', 'delay_mode': 'Time based', 'model': 'Every tick based on real ticks', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.0', 'optimazation': 'Disabled', 'criterion': 'Balance Max'}
+[2025-12-08 02:23:43] [DEBUG] Config path  = C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_HTML.ini
+[2025-12-08 02:23:43] [DEBUG] Report path  = Agent Finder Results\AutoTester_20251208_022343\Sets\EURUSD_1magainstlong
+[2025-12-08 02:23:43] [DEBUG] Report Mode  = 0
+[2025-12-08 02:23:43] [DEBUG] Param Files  = 1magainstlong.set
+[2025-12-08 02:23:43] [DEBUG] Expert       = ExpertMACD.ex5
+[2025-12-08 02:23:43] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2025-12-08 02:23:43] [DEBUG] Symbol       = EURUSD
+[2025-12-08 02:23:43] [DEBUG] Timeframe    = M1
+[2025-12-08 02:23:43] [DEBUG] Model        = 4 (Every tick based on real ticks)
+[2025-12-08 02:23:43] [DEBUG] Optimization = 0 (Disabled)
+[2025-12-08 02:23:43] [DEBUG] Criterion    = 0 (Balance Max)
+[2025-12-08 02:23:43] [DEBUG] Forward      = 0 (Disabled)
+[2025-12-08 02:23:43] [INFO] INI config file written: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_HTML.ini
+[2025-12-08 02:23:43] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\AutoTester_20251208_022343\Sets\EURUSD_1magainstlong
+[2025-12-08 02:23:43] [DEBUG] Using log file: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20251208.log
+[2025-12-08 02:23:43] [DEBUG] Initial log pointer: 6190
+[2025-12-08 02:25:57] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\AutoTester_20251208_022343\Sets\EURUSD_1magainstlong
+[2025-12-08 02:25:57] [INFO] Running strategy for ExpertMACD.set
+[2025-12-08 02:25:57] [INFO] Report folder ready: Agent Finder Results\AutoTester_20251208_022343\Sets
+[2025-12-08 02:25:57] [INFO] Running strategy for ExpertMACD.set attempt 1/10
+[2025-12-08 02:25:57] [INFO] Starting run_strategy...
+[2025-12-08 02:25:57] [INFO] settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': 'ExpertMACD.set', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last 3 months', 'date_from': '2025-09-08', 'date_to': '2025-12-08', 'forward': 'Disabled', 'forward_date': '2025-12-08', 'delay': '100', 'delay_mode': 'Time based', 'model': 'Every tick based on real ticks', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.0', 'optimazation': 'Disabled', 'criterion': 'Balance Max'}
+[2025-12-08 02:25:57] [DEBUG] Settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': 'ExpertMACD.set', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last 3 months', 'date_from': '2025-09-08', 'date_to': '2025-12-08', 'forward': 'Disabled', 'forward_date': '2025-12-08', 'delay': '100', 'delay_mode': 'Time based', 'model': 'Every tick based on real ticks', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.0', 'optimazation': 'Disabled', 'criterion': 'Balance Max'}
+[2025-12-08 02:25:57] [DEBUG] Config path  = C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_HTML.ini
+[2025-12-08 02:25:57] [DEBUG] Report path  = Agent Finder Results\AutoTester_20251208_022343\Sets\EURUSD_ExpertMACD
+[2025-12-08 02:25:57] [DEBUG] Report Mode  = 0
+[2025-12-08 02:25:57] [DEBUG] Param Files  = ExpertMACD.set
+[2025-12-08 02:25:57] [DEBUG] Expert       = ExpertMACD.ex5
+[2025-12-08 02:25:57] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2025-12-08 02:25:57] [DEBUG] Symbol       = EURUSD
+[2025-12-08 02:25:57] [DEBUG] Timeframe    = M1
+[2025-12-08 02:25:57] [DEBUG] Model        = 4 (Every tick based on real ticks)
+[2025-12-08 02:25:57] [DEBUG] Optimization = 0 (Disabled)
+[2025-12-08 02:25:57] [DEBUG] Criterion    = 0 (Balance Max)
+[2025-12-08 02:25:57] [DEBUG] Forward      = 0 (Disabled)
+[2025-12-08 02:25:57] [INFO] INI config file written: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_HTML.ini
+[2025-12-08 02:25:57] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\AutoTester_20251208_022343\Sets\EURUSD_ExpertMACD
+[2025-12-08 02:25:57] [DEBUG] Using log file: C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20251208.log
+[2025-12-08 02:25:57] [DEBUG] Initial log pointer: 8628
+[2025-12-08 02:28:04] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\AutoTester_20251208_022343\Sets\EURUSD_ExpertMACD
+[2025-12-08 02:28:04] [INFO] Moved PNG to Graph: EURUSD_1magainstlong-holding.png
+[2025-12-08 02:28:04] [INFO] Moved PNG to Graph: EURUSD_1magainstlong-hst.png
+[2025-12-08 02:28:04] [INFO] Moved PNG to Graph: EURUSD_1magainstlong-mfemae.png
+[2025-12-08 02:28:04] [INFO] Moved CSV file: eurusd_1magainstlong.csv
+[2025-12-08 02:28:04] [INFO] Moved HTML file: EURUSD_1magainstlong.htm → HTML Reports
+[2025-12-08 02:28:04] [INFO] Moved PNG to Overview: EURUSD_1magainstlong.png
+[2025-12-08 02:28:04] [INFO] Moved PNG to Graph: EURUSD_ExpertMACD-holding.png
+[2025-12-08 02:28:04] [INFO] Moved PNG to Graph: EURUSD_ExpertMACD-hst.png
+[2025-12-08 02:28:04] [INFO] Moved PNG to Graph: EURUSD_ExpertMACD-mfemae.png
+[2025-12-08 02:28:04] [INFO] Moved CSV file: eurusd_expertmacd.csv
+[2025-12-08 02:28:04] [INFO] Moved HTML file: EURUSD_ExpertMACD.htm → HTML Reports
+[2025-12-08 02:28:04] [INFO] Moved PNG to Overview: EURUSD_ExpertMACD.png
+[2025-12-08 02:28:04] [ERROR] Failed to delete item: CSV | NameError: name 'folders_to_create' is not defined (File: SetProcessor.py, Line: 1072)
+[2025-12-08 02:28:04] [ERROR] Failed to delete item: Graph | NameError: name 'folders_to_create' is not defined (File: SetProcessor.py, Line: 1072)
+[2025-12-08 02:28:04] [ERROR] Failed to delete item: HTML Reports | NameError: name 'folders_to_create' is not defined (File: SetProcessor.py, Line: 1072)
+[2025-12-08 02:28:04] [ERROR] Failed to delete item: Overview | NameError: name 'folders_to_create' is not defined (File: SetProcessor.py, Line: 1072)
+[2025-12-08 02:28:04] [INFO] ✅ Report organization completed.
+[2025-12-08 02:28:09] [SUCCESS] ✅ ✅ All tests completed successfully!
+[2025-12-08 02:28:42] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:28:42] [DEBUG] Switching to stack page 5
+[2025-12-08 02:29:07] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-08 02:29:07] [DEBUG] Switching to stack page 6
+[2025-12-08 02:29:09] [DEBUG] Attempting to switch to page index: 7, Authenticated: True
+[2025-12-08 02:29:09] [DEBUG] Switching to stack page 7
+[2025-12-08 02:29:12] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2025-12-08 02:29:12] [DEBUG] Switching to stack page 6
+[2025-12-08 02:29:12] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:29:12] [DEBUG] Switching to stack page 5
+[2025-12-08 02:35:05] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:35:08] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:35:08] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:35:08] [INFO] Date range option selected: Entire history
+[2025-12-08 02:35:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:35:08] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:35:08] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:35:08] [INFO] Date range option selected: Entire history
+[2025-12-08 02:35:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:35:09] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:35:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:35:09] [DEBUG] Switching to stack page 0
+[2025-12-08 02:35:10] [INFO] User authenticated via cache
+[2025-12-08 02:35:12] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:35:12] [DEBUG] Switching to stack page 4
+[2025-12-08 02:35:13] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:35:13] [DEBUG] Switching to stack page 5
+[2025-12-08 02:38:25] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:38:27] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:38:27] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:38:27] [INFO] Date range option selected: Entire history
+[2025-12-08 02:38:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:38:27] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:38:27] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:38:28] [INFO] Date range option selected: Entire history
+[2025-12-08 02:38:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:38:28] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:39:17] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:39:19] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:39:19] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:39:19] [INFO] Date range option selected: Entire history
+[2025-12-08 02:39:19] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:39:19] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:39:19] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:39:19] [INFO] Date range option selected: Entire history
+[2025-12-08 02:39:19] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:39:20] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:39:20] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:39:20] [DEBUG] Switching to stack page 0
+[2025-12-08 02:39:21] [INFO] User authenticated via cache
+[2025-12-08 02:39:22] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:39:22] [DEBUG] Switching to stack page 5
+[2025-12-08 02:48:00] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:48:03] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:48:03] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:48:03] [INFO] Date range option selected: Entire history
+[2025-12-08 02:48:03] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:48:03] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:48:03] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:48:04] [INFO] Date range option selected: Entire history
+[2025-12-08 02:48:04] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:48:04] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:48:04] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:48:04] [DEBUG] Switching to stack page 0
+[2025-12-08 02:48:05] [INFO] User authenticated via cache
+[2025-12-08 02:48:10] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:48:10] [DEBUG] Switching to stack page 4
+[2025-12-08 02:48:11] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2025-12-08 02:48:11] [DEBUG] Switching to stack page 3
+[2025-12-08 02:48:11] [INFO] Set Generator page opened, updating report data if available
+[2025-12-08 02:48:11] [WARNING] No report files found — clearing UI
+[2025-12-08 02:48:11] [INFO] ⚠️ No data to display.
+[2025-12-08 02:48:11] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2025-12-08 02:48:11] [INFO] Pairs box + table cleared due to no report files.
+[2025-12-08 02:48:12] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:48:12] [DEBUG] Switching to stack page 5
+[2025-12-08 02:50:03] [INFO] ✅ Valid cache found, user authenticated
+[2025-12-08 02:50:06] [INFO] Cache loaded successfully for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2025-12-08 02:50:06] [INFO] Cache loaded: {'authenticated': True, 'token': 'b166cd60-a624-4b49-b2d7-8b9ce0a3760e', 'validation_time': 1765140865.7437716}
+[2025-12-08 02:50:06] [INFO] Date range option selected: Entire history
+[2025-12-08 02:50:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:50:06] [INFO] Adjusting forward date based on selection: No
+[2025-12-08 02:50:06] [DEBUG] Forward date disabled, set to test end date
+[2025-12-08 02:50:06] [INFO] Date range option selected: Entire history
+[2025-12-08 02:50:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Mon Dec 8 2025
+[2025-12-08 02:50:06] [INFO] Set Generator Controller Initialized
+[2025-12-08 02:50:07] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2025-12-08 02:50:07] [DEBUG] Switching to stack page 0
+[2025-12-08 02:50:07] [INFO] User authenticated via cache
+[2025-12-08 02:50:09] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2025-12-08 02:50:09] [DEBUG] Switching to stack page 4
+[2025-12-08 02:50:10] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2025-12-08 02:50:10] [DEBUG] Switching to stack page 5
