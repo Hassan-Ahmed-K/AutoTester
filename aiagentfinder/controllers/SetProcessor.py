@@ -756,10 +756,6 @@ class SetProcessorController:
                                 except Exception as e:
                                     Logger.warning(f"Failed to update table at row {row}: {e}")
                             
-                            
-                    
-
-
                     for row, set_file in enumerate(set_files):
                         # Stop immediately if requested
                         if worker and worker._stop:
@@ -937,95 +933,153 @@ class SetProcessorController:
             Logger.error(f"Fatal error in on_start_button_clicked: {e}")
             QMessageBox.critical(self.ui, "Error", f"Unexpected error:\n{e}")
 
-
-
     def on_stop_button_clicked(self):
-        if hasattr(self, 'runnerV2') and self.runnerV2.worker:
-            Logger.info("Stop button clicked - pausing the task")
-            self.runnerV2.pause()
-            # Update UI
-            self.ui.stop_button.hide()
-            self.ui.resume_button.show()
-            self.ui.kill_button.show()
-            # self.ui.start_button.setEnabled(True)
-            # self.ui.start_button.setText("PAUSED")
-            self.ui.start_button.hide()
-
+        try:
+            if hasattr(self, 'runnerV2') and self.runnerV2.worker:
+                self.logger.info("Stop button clicked - pausing the task")
+                
+                try:
+                    self.runnerV2.pause()
+                    self.logger.info("Runner paused successfully")
+                except Exception as pause_err:
+                    self.logger.error("Failed to pause runner", pause_err)
+                
+                # Update UI safely
+                try:
+                    self.ui.stop_button.hide()
+                    self.ui.resume_button.show()
+                    self.ui.kill_button.show()
+                    self.ui.start_button.hide()
+                    self.logger.info("UI updated after stopping")
+                except Exception as ui_err:
+                    self.logger.error("Failed to update UI after stop", ui_err)
+            else:
+                self.logger.warning("Stop button clicked but no active runner found")
+        except Exception as e:
+            self.logger.error("Error handling Stop button click", e)
 
     def on_resume_button_clicked(self):
-        if hasattr(self, 'runnerV2') and self.runnerV2.worker:
-            Logger.info("Resume button clicked - resuming the task")
-            self.runnerV2.resume()
-            # Update UI
-            self.ui.resume_button.hide()
-            self.ui.kill_button.hide()
-            self.ui.stop_button.show()
-            self.ui.start_button.show()
-            self.ui.start_button.setEnabled(False)
-            self.ui.start_button.setText("RUNNING...")
-
+        try:
+            if hasattr(self, 'runnerV2') and self.runnerV2.worker:
+                self.logger.info("Resume button clicked - resuming the task")
+                
+                try:
+                    self.runnerV2.resume()
+                    self.logger.info("Runner resumed successfully")
+                except Exception as resume_err:
+                    self.logger.error("Failed to resume runner", resume_err)
+                
+                # Update UI safely
+                try:
+                    self.ui.resume_button.hide()
+                    self.ui.kill_button.hide()
+                    self.ui.stop_button.show()
+                    self.ui.start_button.show()
+                    self.ui.start_button.setEnabled(False)
+                    self.ui.start_button.setText("RUNNING...")
+                    self.logger.info("UI updated after resume")
+                except Exception as ui_err:
+                    self.logger.error("Failed to update UI after resume", ui_err)
+            else:
+                self.logger.warning("Resume button clicked but no active runner found")
+        except Exception as e:
+            self.logger.error("Error handling Resume button click", e)
 
     def on_kill_button_clicked(self):
-        if hasattr(self, 'runnerV2') and self.runnerV2.worker:
-            Logger.info("Kill button clicked - terminating the task")
-            print("self.mt5.pid = ",self.mt5.pid)
-            self.runnerV2.stop(immediate_stop= True, pid = self.mt5.pid)
-            # Update UI
-            self.ui.kill_button.hide()
-            self.ui.resume_button.hide()
-            self.ui.stop_button.hide()
-            self.ui.start_button.show()
-            self.ui.start_button.setEnabled(True)
-            self.ui.start_button.setText("START")
+        try:
+            if hasattr(self, 'runnerV2') and self.runnerV2.worker:
+                self.logger.info("Kill button clicked - terminating the task")
+                try:
+                    pid = getattr(self.mt5, 'pid', None)
+                    self.logger.debug(f"MT5 PID: {pid}")
+                except Exception as e:
+                    self.logger.warning(f"Could not get MT5 PID: {e}")
+                    pid = None
 
+                self.runnerV2.stop(immediate_stop=True, pid=pid)
+                
+                # Update UI safely
+                try:
+                    self.ui.kill_button.hide()
+                    self.ui.resume_button.hide()
+                    self.ui.stop_button.hide()
+                    self.ui.start_button.show()
+                    self.ui.start_button.setEnabled(True)
+                    self.ui.start_button.setText("START")
+                    self.logger.info("UI updated after kill")
+                except Exception as ui_err:
+                    self.logger.error("Failed to update UI after kill", ui_err)
+            else:
+                self.logger.warning("Kill button clicked but no active runner found")
+        except Exception as e:
+            self.logger.error("Error handling Kill button click", e)
 
-    def organize_reports(self,base_report_path):
+    def organize_reports(self, base_report_path):
 
-        for report_mode in self.selected_reports:
+        try:
+            # Create report folders if not exist
+            for report_mode in self.selected_reports:
+                report_mode_path = os.makedirs(os.path.join(base_report_path, report_mode), exist_ok=True)
 
-            report_mode_path = os.makedirs(os.path.join(base_report_path, report_mode), exist_ok=True)
+            html_folder = os.path.join(base_report_path, "HTML Reports")
+            overview_folder = os.path.join(base_report_path, "Overview")
+            csv_folder = os.path.join(base_report_path, "CSV")
+            graph_folder = os.path.join(base_report_path, "Graph")
 
-        html_folder = os.path.join(base_report_path, "HTML Reports")
-        overview_folder = os.path.join(base_report_path, "Overview")
-        csv_folder = os.path.join(base_report_path, "CSV")
-        graph_folder = os.path.join(base_report_path, "Graph")
+            # Process files in base_report_path
+            for file_name in os.listdir(base_report_path):
+                try:
+                    file_path = os.path.join(base_report_path, file_name)
+                    if os.path.isdir(file_path):
+                        continue  # skip folders
 
-        # loop through everything inside base folder
-        for file_name in os.listdir(base_report_path):
-            file_path = os.path.join(base_report_path, file_name)
-            print("file_path = ",file_path)
+                    file_lower = file_name.lower()
 
-            if os.path.isdir(file_path):
-                continue
+                    # HTML/HTM files
+                    if file_lower.endswith((".htm", ".html")):
+                        dest = os.path.join(base_report_path, html_folder, file_name)
+                        shutil.move(file_path, dest)
+                        self.logger.info(f"Moved HTML file: {file_name} → HTML Reports")
 
-            if file_name.lower().endswith(".htm") or file_name.lower().endswith(".html"):
-                print("html_folder = ",html_folder)
-                shutil.move(file_path, os.path.join(html_folder, file_name))
-                print("moved to html folder")
+                    # PNG files
+                    elif file_lower.endswith(".png"):
+                        if "-" in file_name and "Graph" in self.selected_reports:
+                            dest = os.path.join(base_report_path, graph_folder, file_name)
+                            shutil.move(file_path, dest)
+                            self.logger.info(f"Moved PNG to Graph: {file_name}")
+                        elif "Overview" in self.selected_reports:
+                            dest = os.path.join(base_report_path, overview_folder, file_name)
+                            shutil.move(file_path, dest)
+                            self.logger.info(f"Moved PNG to Overview: {file_name}")
 
-            elif file_name.lower().endswith(".png"):
-                print("file_name = ",file_name)
-                if "-" in file_name and ("Graph" in self.selected_reports):
-                    print("graph_folder = ",graph_folder)   
-                    shutil.move(file_path, os.path.join(graph_folder, file_name))
-                    print("moved to graph folder")
-                elif ("Overview" in self.selected_reports):
-                    print("overview_folder = ",overview_folder)
-                    shutil.move(file_path, os.path.join(overview_folder, file_name))
-                    print("moved to overview folder")
+                    # CSV files
+                    elif file_lower.endswith(".csv") and "CSV" in self.selected_reports:
+                        dest = os.path.join(base_report_path, csv_folder, file_name)
+                        shutil.move(file_path, dest)
+                        self.logger.info(f"Moved CSV file: {file_name}")
 
-            elif file_name.lower().endswith(".csv") and ("CSV" in self.selected_reports):
-                print("CSV_folder = ",csv_folder)
-                shutil.move(file_path, os.path.join(csv_folder, file_name))
-                print("move to csv folder")
-        for item in os.listdir(base_report_path):
-            item_path = os.path.join(base_report_path, item)
+                except Exception as file_err:
+                    self.logger.error(f"Failed to process file: {file_name}", file_err)
 
-            # don’t delete the folders we just created
-            if item in ["HTML Reports", "Overview", "Graph", "CSV"]:
-                continue
+            # Delete remaining files/folders in base_report_path
+            for item in os.listdir(base_report_path):
+                try:
+                    item_path = os.path.join(base_report_path, item)
 
-            if os.path.isfile(item_path):
-                os.remove(item_path)  # delete file
-            elif os.path.isdir(item_path):
-                shutil.rmtree(item_path)  # delete unknown folders
+                    if item in folders_to_create:
+                        continue  # keep report folders
+
+                    if os.path.isfile(item_path):
+                        os.remove(item_path)
+                        self.logger.info(f"Deleted file: {item}")
+                    elif os.path.isdir(item_path):
+                        shutil.rmtree(item_path)
+                        self.logger.info(f"Deleted folder: {item}")
+
+                except Exception as del_err:
+                    self.logger.error(f"Failed to delete item: {item}", del_err)
+
+            self.logger.info("✅ Report organization completed.")
+
+        except Exception as e:
+            self.logger.error("Failed to organize reports", e)

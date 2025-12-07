@@ -5,9 +5,9 @@ from PyQt5.QtWidgets import (
     QHeaderView, QCheckBox, QSpinBox, QComboBox,QListWidget,QSizePolicy,QSplitter,QStyle,QDateEdit,QDoubleSpinBox
 )
 from PyQt5.QtCore import Qt, QDate
-from PyQt5.QtGui import QFont 
+from PyQt5.QtGui import QFont, QDoubleValidator 
 from aiagentfinder.utils.AnitmatedToggle import AnimatedToggle
-
+from aiagentfinder.controllers.setCompare import SetCompareController
 
 class SetCompareUI(BaseTab):
     
@@ -42,7 +42,15 @@ class SetCompareUI(BaseTab):
         self.set_browse = QPushButton("BROWSE")
 
         draw_label = QLabel("Global Drawdown Value:")
-        self.draw_input = QLineEdit("1000")
+
+        # QLineEdit that only accepts numbers
+        self.draw_input = QLineEdit()
+        self.draw_input.setText("1000")  # default value
+
+        # Validator to only allow numbers (float)
+        validator = QDoubleValidator()
+        validator.setBottom(0)  # optional: minimum value 0
+        self.draw_input.setValidator(validator)
         
 
         # Arrange first row in grid
@@ -72,6 +80,7 @@ class SetCompareUI(BaseTab):
 
         csv_detected_label = QLabel("CSV Files Detected:")
         self.csv_list = QListWidget()
+        self.csv_list.setMaximumHeight(200)
 
         self.deselect_button = QPushButton("DESELECT")
         self.deselect_button.setMinimumWidth(120)
@@ -79,6 +88,7 @@ class SetCompareUI(BaseTab):
         msg_label = QLabel("Message Log:")
         self.message_log = QTextEdit()
         self.message_log.setReadOnly(True)
+        self.message_log.setMaximumHeight(200)
 
         file_grid = QGridLayout()
 
@@ -99,7 +109,7 @@ class SetCompareUI(BaseTab):
         # --- Portfolio Stats ---
         portfolio_label = QLabel("Monthly Portfolio Stats:")
         self.portfolio_stats = QTableWidget()
-        # self.portfolio_stats.setMaximumHeight(80)
+        self.portfolio_stats.setMaximumHeight(50)
         # self.portfolio_stats.setReadOnly(True)
 
         # --- Drawdown Analysis ---
@@ -109,13 +119,27 @@ class SetCompareUI(BaseTab):
         # --- Bottom Controls ---
         self.compare_label = QLabel("Compare files for single trade approach")
         self.compare_checkbox = QCheckBox()
+
         self.compare_button = QPushButton("COMPARE SET FILES")
         self.compare_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+
+        # New buttons
+        self.show_graph_button = QPushButton("SHOW GRAPH")
+        self.show_graph_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.show_graph_button.hide()
+
+        self.export_profile_button = QPushButton("EXPORT PROFILE")
+        self.export_profile_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.export_profile_button.hide()
+
 
         bottom_layout = QHBoxLayout()
         bottom_layout.addWidget(self.compare_label)
         bottom_layout.addWidget(self.compare_checkbox)
         bottom_layout.addWidget(self.compare_button)
+        bottom_layout.addWidget(self.show_graph_button)
+        bottom_layout.addWidget(self.export_profile_button)
+
 
         # --- Main Layout ---
         main_layout.addLayout(top_grid)
@@ -125,3 +149,6 @@ class SetCompareUI(BaseTab):
         main_layout.addWidget(drawdown_label)
         main_layout.addWidget(self.drawdown_analysis)
         main_layout.addLayout(bottom_layout)
+
+
+        self.controller = SetCompareController(self)

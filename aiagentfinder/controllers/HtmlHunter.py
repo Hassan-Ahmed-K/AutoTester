@@ -35,15 +35,18 @@ class HtmlHunterController:
         )
         self.ui.btn_filter.clicked.connect(self.apply_table_filter)
 
+
     def browse_html_folder(self):
         """Select HTML Reports folder and list XML/HTM report files."""
         try:
+            # Determine base data folder
             data_folder = (self.auto_batch_ui.data_input.text() or "").strip()
             if not data_folder:
                 data_folder = (self.setprocessor_ui.data_folder_input.text() or "").strip()
+
             if not data_folder or not os.path.exists(data_folder):
                 QMessageBox.warning(self.ui, "Error", "Data path is not set or invalid!")
-                Logger.warning("Data path is not set or invalid!")
+                self.logger.warning("Data path is not set or invalid!")
                 return
 
             # Default HTML Reports folder
@@ -53,17 +56,22 @@ class HtmlHunterController:
             )
 
             if not folder_path:
-                QMessageBox.warning(self.ui, "Error", "❌ Please select a valid HTML Reports folder.")
-                Logger.warning("No folder selected for HTML Reports.")
+                QMessageBox.warning(self.ui, "Error", "Please select a valid HTML Reports folder.")
+                self.logger.warning("No folder selected for HTML Reports.")
                 return
 
             # Set folder path in QLineEdit
             self.ui.txt_html.setText(folder_path)
-            Logger.success(f"HTML Reports folder selected: {folder_path}")
+            self.logger.info(f"HTML Reports folder selected: {folder_path}")
 
-            # List all valid files
+            # List all valid report files
             valid_extensions = (".xml", ".htm", ".html", ".xml.htm")
-            files = [f for f in os.listdir(folder_path) if f.lower().endswith(valid_extensions)]
+            try:
+                files = [f for f in os.listdir(folder_path) if f.lower().endswith(valid_extensions)]
+            except Exception as e:
+                self.logger.error(f"Failed to list files in folder: {folder_path}", e)
+                QMessageBox.warning(self.ui, "Error", f"Failed to list files in folder: {folder_path}")
+                return
 
             if not files:
                 QMessageBox.warning(
@@ -71,6 +79,7 @@ class HtmlHunterController:
                     "No Report Files Found",
                     "The selected folder does not contain any valid XML/HTM files."
                 )
+                self.logger.warning(f"No valid report files found in folder: {folder_path}")
                 return
 
             # Store internally
@@ -80,174 +89,228 @@ class HtmlHunterController:
             self.file_path = self.report_files[0]
 
             # Update UI list widget
-            self.ui.grouped_text.clear()
-            self.ui.grouped_text.addItems(files)
+            try:
+                self.ui.grouped_text.clear()
+                self.ui.grouped_text.addItems(files)
+            except Exception as e:
+                self.logger.error("Failed to update report list UI", e)
 
-            Logger.info(f"📂 Report directory: {folder_path}")
-            Logger.info(f"📄 Total reports found: {len(files)}")
-            Logger.info(f"📄 Report files: {self.report_files}")
-            Logger.info(f"📄 Default report file: {self.file_path}")
+            # Log details
+            self.logger.info(f"Report directory: {folder_path}")
+            self.logger.info(f"Total reports found: {len(files)}")
+            self.logger.info(f"Report files: {self.report_files}")
+            self.logger.info(f"Default report file: {self.file_path}")
 
             # Read all HTML reports in background
-            self.read_all_html_reports()
-                
-    
-            
+            try:
+                self.read_all_html_reports()
+            except Exception as e:
+                self.logger.error("Failed to read HTML reports", e)
 
         except Exception as e:
-            Logger.error(f"Error while selecting HTML Reports folder: {e}")
-            QMessageBox.critical(self.ui, "Error", f"❌ Failed to select HTML Reports folder.\nError: {str(e)}")
+            self.logger.error("Unexpected error in browse_html_folder", e)
+            QMessageBox.critical(self.ui, "Error", f"Unexpected error:\n{e}")
 
     def read_html_file(self, file_path):
+        """Read HTML file content with UTF-16 fallback to UTF-8."""
         try:
             with open(file_path, "r", encoding="utf-16") as f:
-                return f.read()
+                content = f.read()
+                self.logger.info(f"Read HTML file successfully (UTF-16): {file_path}")
+                return content
         except UnicodeError:
-            with open(file_path, "r", encoding="utf-8") as f:
-                return f.read()
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                    self.logger.info(f"Read HTML file successfully (UTF-8 fallback): {file_path}")
+                    return content
+            except Exception as e:
+                self.logger.error(f"Failed to read HTML file (UTF-8 fallback): {file_path}", e)
+                return None
         except Exception as e:
-            print(f"Error reading file: {e}")
+            self.logger.error(f"Failed to read HTML file: {file_path}", e)
             return None
-    def clean_html_text(self,html):
-        # remove tags
-        text = re.sub(r"<.*?>", "", html)
-        # normalize spacing
-        text = re.sub(r"\s+", " ", text)
-        return text.strip()
 
+    def clean_html_text(self, html):
+        """Strip HTML tags and normalize whitespace."""
+        try:
+            if not html:
+                return ""
+            # Remove HTML tags
+            text = re.sub(r"<.*?>", "", html)
+            # Normalize spacing
+            text = re.sub(r"\s+", " ", text)
+            cleaned = text.strip()
+            self.logger.debug(f"Cleaned HTML text, length: {len(cleaned)}")
+            return cleaned
+        except Exception as e:
+            self.logger.error("Error cleaning HTML text", e)
+            return ""
 
-    def extract_table_data(self,table):
-        rows = table.find_all("tr")
-        raw_html = "\n".join(str(r) for r in rows)
+    def extract_table_data(self, table):
+        try:
+            rows = table.find_all("tr")
+            if not rows:
+                self.logger.warning("No rows found in the table.")
+                return [], ""
 
-        clean_text = self.clean_html_text(raw_html)
+            # Raw HTML of all rows
+            raw_html = "\n".join(str(r) for r in rows)
 
-        clean_data= self.extract_inputs_and_metrics(clean_text)
+            # Clean text version
+            clean_text = self.clean_html_text(raw_html)
 
-        data = []
-        for row in rows:
-            cols = row.find_all(["td", "th"])
-            cols = [ele.get_text(strip=True) for ele in cols]
-            if cols:
-                data.append(cols)
+            # Extract metrics or inputs from cleaned text
+            try:
+                clean_data = self.extract_inputs_and_metrics(clean_text)
+                self.logger.debug(f"Extracted metrics from table: {clean_data}")
+            except Exception as e:
+                clean_data = ""
+                self.logger.error("Failed to extract inputs and metrics from table", e)
 
-        return data , clean_data
-    def extract_inputs_and_metrics(self,text):
+            # Extract structured row/column data
+            data = []
+            for row in rows:
+                try:
+                    cols = row.find_all(["td", "th"])
+                    cols = [ele.get_text(strip=True) for ele in cols]
+                    if cols:
+                        data.append(cols)
+                except Exception as e:
+                    self.logger.warning(f"Failed to parse row: {row}", e)
+
+            return data, clean_data
+
+        except Exception as e:
+            self.logger.error("Failed to extract table data", e)
+            return [], ""
+
+    def extract_inputs_and_metrics(self, text):
+ 
         data = {}
 
-        # Inputs
-        input_patterns = {
-            "AllowNewSequence": r"AllowNewSequence\s*=\s*(\w+)",
-            "StrategyDescription": r"StrategyDescription\s*=\s*([^\s]+)",
-            "ColorScheme": r"ColorScheme\s*=\s*(\d+)",
-            "MAGIC_NUMBER": r"MAGIC_NUMBER\s*=\s*(\d+)",
-            "TradeComment": r"TradeComment\s*=\s*([^\s]+)",
-            "UseRandomEntryDelay": r"UseRandomEntryDelay\s*=\s*(\w+)",
-            "MaxSpreadPips": r"MaxSpreadPips\s*=\s*([\d\.]+)",
-            "apiKey": r"apiKey\s*=\s*([A-Za-z0-9]+)",
-            "CustomTradingTimes": r"CustomTradingTimes\s*=\s*(\w+)",
-            "MondayStartEnd": r"MondayStartEnd\s*=\s*([\d:]+-[\d:]+)",
-            "LotSize": r"LotSize\s*=\s*([\d\.]+)",
-            "MaxLots": r"MaxLots\s*=\s*([\d\.]+)",
-            "MaxSequencesPerDay": r"MaxSequencesPerDay\s*=\s*(\d+)",
-            
+        try:
+            # ---------------- Extract Inputs ----------------
+            input_patterns = {
+                "AllowNewSequence": r"AllowNewSequence\s*=\s*(\w+)",
+                "StrategyDescription": r"StrategyDescription\s*=\s*([^\s]+)",
+                "ColorScheme": r"ColorScheme\s*=\s*(\d+)",
+                "MAGIC_NUMBER": r"MAGIC_NUMBER\s*=\s*(\d+)",
+                "TradeComment": r"TradeComment\s*=\s*([^\s]+)",
+                "UseRandomEntryDelay": r"UseRandomEntryDelay\s*=\s*(\w+)",
+                "MaxSpreadPips": r"MaxSpreadPips\s*=\s*([\d\.]+)",
+                "apiKey": r"apiKey\s*=\s*([A-Za-z0-9]+)",
+                "CustomTradingTimes": r"CustomTradingTimes\s*=\s*(\w+)",
+                "MondayStartEnd": r"MondayStartEnd\s*=\s*([\d:]+-[\d:]+)",
+                "LotSize": r"LotSize\s*=\s*([\d\.]+)",
+                "MaxLots": r"MaxLots\s*=\s*([\d\.]+)",
+                "MaxSequencesPerDay": r"MaxSequencesPerDay\s*=\s*(\d+)",
+            }
 
-        }
+            for key, pattern in input_patterns.items():
+                try:
+                    m = re.search(pattern, text)
+                    if m:
+                        data[key] = m.group(1).strip()
+                except Exception as e:
+                    self.logger.warning(f"Failed to extract input {key}: {e}")
 
-        for key, pattern in input_patterns.items():
-            m = re.search(pattern, text)
-            if m:
-                data[key] = m.group(1).strip()
+            # ---------------- Extract Metrics ----------------
+            metrics_patterns = {
+                "Profit": r"Total Net Profit:\s*([-\d\s]+\.\d+)",
+                "PF": r"Profit Factor:\s*([\d\.]+)",
+                "RF": r"Recovery Factor:\s*([\d\.]+)",
+                "Avg Win": r"Average profit trade:\s*([-\d\.]+)",
+                "Avg Loss": r"Average loss trade:\s*([-\d\.]+)",
+                "Trade Vol": r"Total Trades:\s*(\d+)",
+                "Max DD": r"Balance Drawdown Maximal:\s*([\d\.]+)",
+                "Max Drawdown": r"Equity Drawdown Maximal:\s*([\d\.]+)",
+                "Max Hold": r"Maximal position holding time:\s*(\d{1,3}:\d{2}:\d{2})",
+                "Avg Hold": r"Average position holding time:\s*(\d{1,3}:\d{2}:\d{2})",
+            }
 
-        # Metrics
-        metrics_patterns = {
-            "Profit": r"Total Net Profit:\s*([-\d\s]+\.\d+)",
-            "PF": r"Profit Factor:\s*([\d\.]+)",
-            "RF": r"Recovery Factor:\s*([\d\.]+)",
-            "Avg Win": r"Average profit trade:\s*([-\d\.]+)",
-            "Avg Loss": r"Average loss trade:\s*([-\d\.]+)",
-            "Trade Vol": r"Total Trades:\s*(\d+)",
-            "Max DD": r"Balance Drawdown Maximal:\s*([\d\.]+)",
-            "Max Drawdown": r"Equity Drawdown Maximal:\s*([\d\.]+)",
-            "Max Hold": r"Maximal position holding time:\s*(\d{1,3}:\d{2}:\d{2})",
-            "Avg Hold": r"Average position holding time:\s*(\d{1,3}:\d{2}:\d{2})",
-        }
+            for key, pattern in metrics_patterns.items():
+                try:
+                    m = re.search(pattern, text)
+                    if m:
+                        data[key] = m.group(1).replace(" ", "")
+                except Exception as e:
+                    self.logger.warning(f"Failed to extract metric {key}: {e}")
 
-        for key, pattern in metrics_patterns.items():
-            m = re.search(pattern, text)
-            if m:
-                data[key] = m.group(1).replace(" ", "")  # remove spaces in numbers
-        print("Extracted Inputs and Metrics:"  , data)
+            self.logger.info(f"Extracted Inputs and Metrics: {data}")
+
+        except Exception as e:
+            self.logger.error("Failed to extract inputs and metrics from text", e)
+
         return data
 
-    def save_to_csv(self,filepath, rows):
-        # filepath = os.path.join(output_dir, filename)
-        with open(filepath, "w", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            writer.writerows(rows)
-        print(f"Saved {filepath}")
+    def save_to_csv(self, filepath, rows):
+        try:
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)  # ensure folder exists
 
-    def process_table_2(self,table):
-        rows = table.find_all("tr")
-        
+            with open(filepath, "w", newline="", encoding="utf-8") as f:
+                writer = csv.writer(f)
+                writer.writerows(rows)
+
+            self.logger.success(f"Saved CSV file: {filepath}")
+
+        except Exception as e:
+            self.logger.error(f"Failed to save CSV file: {filepath}", e)
+
+    def process_table_2(self, table):
+
         orders_data = []
         deals_data = []
-        
-        current_section = None
-        # State machine: None -> FOUND_ORDERS -> ORDERS_HEADER -> ORDERS_DATA -> FOUND_DEALS -> DEALS_HEADER -> DEALS_DATA
 
         capture_orders = False
         capture_deals = False
-        
-        # To handle the "next row is header" logic
+
         expecting_orders_header = False
         expecting_deals_header = False
-        
-        for row in rows:
-            cells = [c.get_text(strip=True) for c in row.find_all(["th", "td"])]
-            
-            # Check for empty rows that might be spacers
-            if not any(cells):
-                continue
-                
-            # Check for Section Headers
-            # The snippet shows the "Orders" text is in a <th> with colspan, or just a cell with "Orders"
-            # We'll check if "Orders" is the only substantial text or if it's explicitly "Orders"
-            
-            # Join cells to check content easily
-            row_text = "".join(cells).lower()
-            
-            if "orders" == row_text or (len(cells) == 1 and "orders" in cells[0].lower()):
-                print("Found Orders Section")
-                capture_orders = True
-                capture_deals = False
-                expecting_orders_header = True
-                continue
-                
-            if "deals" == row_text or (len(cells) == 1 and "deals" in cells[0].lower()):
-                print("Found Deals Section")
-                capture_orders = False
-                capture_deals = True
-                expecting_deals_header = True
-                continue
-                
-            # Capture Data
-            if capture_orders:
-                if expecting_orders_header:
-                    orders_data.append(cells) # Add header
-                    expecting_orders_header = False
-                else:
-                    orders_data.append(cells)
-                    
-            elif capture_deals:
-                if expecting_deals_header:
-                    deals_data.append(cells)
-                    expecting_deals_header = False
-                else:
-                    deals_data.append(cells)
 
-        return orders_data, deals_data
-    
+        try:
+            rows = table.find_all("tr")
+
+            for row in rows:
+                try:
+                    cells = [c.get_text(strip=True) for c in row.find_all(["th", "td"])]
+                    if not any(cells):
+                        continue
+
+                    row_text = "".join(cells).lower()
+
+                    # Detect sections
+                    if "orders" == row_text or (len(cells) == 1 and "orders" in cells[0].lower()):
+                        self.logger.debug("Found Orders Section")
+                        capture_orders = True
+                        capture_deals = False
+                        expecting_orders_header = True
+                        continue
+
+                    if "deals" == row_text or (len(cells) == 1 and "deals" in cells[0].lower()):
+                        self.logger.debug("Found Deals Section")
+                        capture_orders = False
+                        capture_deals = True
+                        expecting_deals_header = True
+                        continue
+
+                    # Capture rows
+                    if capture_orders:
+                        orders_data.append(cells)
+                        expecting_orders_header = False
+                    elif capture_deals:
+                        deals_data.append(cells)
+                        expecting_deals_header = False
+
+                except Exception as inner_e:
+                    self.logger.error(f"Error processing row: {cells}", inner_e)
+
+            self.logger.info(f"Processed table: {len(orders_data)} orders, {len(deals_data)} deals")
+            return orders_data, deals_data
+
+        except Exception as e:
+            self.logger.error("Failed to process table", e)
+            return [], []
 
     def read_all_html_reports(self):
         """Parse all XML/HTML report files in a background thread."""
@@ -338,7 +401,6 @@ class HtmlHunterController:
                 return
 
             self.report_dfs = result.get("dataframes", {})
-            print("Report DataFrames:", self.report_dfs)
             if not self.report_dfs:
                 Logger.error("❌ No valid DataFrames extracted.")
                 QMessageBox.warning(self.ui, "Warning", "No tables found in HTML reports.")

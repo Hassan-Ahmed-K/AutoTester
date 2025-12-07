@@ -40,14 +40,6 @@ class MainWindow(QMainWindow):
 
         self.data_folder = None
 
-        
-
-        self.data_folder = None
-
-        
-
-
-
         # self.setMinimumSize(1300, 650)
         self.setWindowTitle("AI Agent Finder")
         self.setStyleSheet("background-color:#1e1e1e;")
