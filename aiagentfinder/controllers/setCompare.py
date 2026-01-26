@@ -1,15 +1,19 @@
-
 import os
+import shutil
 import pandas as pd
 from aiagentfinder.utils.ThreadRunnerV2 import ThreadRunnerV2
 from aiagentfinder.utils import Logger 
-from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget,QTableWidget, QTableWidgetItem, QHeaderView,QLabel,QToolTip,QMessageBox,QInputDialog
 import matplotlib.pyplot as plt
-
+from PyQt5.QtCore import Qt
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import numpy as np
 
 
 class SetCompareController:
     def __init__(self, ui):
+        
         self.ui = ui
         self.main_window = self.ui.parent()
         self.runner = ThreadRunnerV2(self.main_window)
@@ -35,6 +39,7 @@ class SetCompareController:
         self.ui.compare_button.clicked.connect(self.on_compare_button_clicked)
         self.ui.deselect_button.clicked.connect(self.on_deselect_button_clicked)
         self.ui.show_graph_button.clicked.connect(self.on_show_graph_clicked)
+        self.ui.export_profile_button.clicked.connect(self.export_files)
 
 
 
@@ -266,67 +271,92 @@ class SetCompareController:
 
     def show_monthly_portfolio_stats(self, merged_df):
         if merged_df is None or merged_df.empty:
-            self.log_to_ui("merged_df is empty.")
             self.ui.portfolio_stats.clear()
             return
 
         df = merged_df.copy()
 
-        # Ensure DATE is datetime
-        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
+        # ✅ Correct date parsing (IMPORTANT)
+        df["DATE"] = pd.to_datetime(df["DATE"], dayfirst=True, errors="coerce")
+        df = df.dropna(subset=["DATE"])
 
-        # Extract Month number + name (so order stays correct)
         df["MONTH_NUM"] = df["DATE"].dt.month
-        df["MONTH_NAME"] = df["DATE"].dt.strftime("%b")
 
-        # Get the last balance entry for each month
+        # Detect BALANCE columns (per file)
+        balance_cols = [c for c in df.columns if c.startswith("BALANCE_")]
+
+        month_name_map = {
+            1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
+            5: "May", 6: "Jun", 7: "Jul", 8: "Aug",
+            9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
+        }
+
+        # Monthly portfolio value (table values)
         month_summary = (
             df.sort_values("DATE")
             .groupby("MONTH_NUM")["AVG_BALANCE"]
             .last()
+            .dropna()
         )
 
-        # Map month numbers → names
-        month_summary.index = month_summary.index.map({
-            1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
-            5: "May", 6: "Jun", 7: "Jul", 8: "Aug",
-            9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
-        })
+        if month_summary.empty:
+            self.ui.portfolio_stats.clear()
+            return
 
-        # Remove missing months
-        month_summary = month_summary.dropna()
+        headers = [month_name_map[m] for m in month_summary.index] + ["Total"]
 
-        # Compute total
-        total_balance = month_summary.sum()
+        table = self.ui.portfolio_stats
+        table.clear()
+        table.setRowCount(1)
+        table.setColumnCount(len(headers))
+        table.setHorizontalHeaderLabels(headers)
 
-        # Table headers
-        headers = list(month_summary.index) + ["Total"]
+        # Fill month cells with FILE-BASED tooltips
+        for col_idx, (month_num, value) in enumerate(month_summary.items()):
+            item = QTableWidgetItem(str(round(value, 2)))
+            item.setTextAlignment(Qt.AlignCenter)
 
-        # Setup table
-        self.ui.portfolio_stats.clear()
-        self.ui.portfolio_stats.setRowCount(1)
-        self.ui.portfolio_stats.setColumnCount(len(headers))
-        self.ui.portfolio_stats.setHorizontalHeaderLabels(headers)
+            month_df = df[df["MONTH_NUM"] == month_num].sort_values("DATE")
 
-        # Fill the row with month balances
-        for col_idx, value in enumerate(month_summary.values):
-            self.ui.portfolio_stats.setItem(
-                0, col_idx, QTableWidgetItem(str(round(value, 2)))
-            )
+            # Build tooltip per file
+            tooltip_lines = []
 
-        # Add final Total column
-        self.ui.portfolio_stats.setItem(
-            0, len(headers) - 1, QTableWidgetItem(str(round(total_balance, 2)))
-        )
+            
+            for col in balance_cols:
+                start = month_df[col].iloc[0]
+                end = month_df[col].iloc[-1]
+                pnl = round(end - start, 2)
+                color = "#22c55e" if pnl >= 0 else "#ef4444"
 
-        # Stretch to full width
-        header = self.ui.portfolio_stats.horizontalHeader()
+                file_name = col.replace("BALANCE_", "")
+                # tooltip_lines.append(
+                #     f"{file_name}\n"
+                #     f"  Start: {round(start, 2)}\n"
+                #     f"  End:   {round(end, 2)}\n"
+                #     f"  PnL:   {pnl}\n"
+                # )
+
+                tooltip_lines.append(
+                    f"<b>{file_name}</b><br>"
+                    f"Start: {round(start, 2)}<br>"
+                    f"End: {round(end, 2)}<br>"
+                    f"PnL: <span style='color:{color}'>{pnl}</span><br><br>"
+                )
+
+            item.setToolTip("\n".join(tooltip_lines))
+            table.setItem(0, col_idx, item)
+
+        # Total column
+        total_item = QTableWidgetItem(str(round(month_summary.sum(), 2)))
+        total_item.setTextAlignment(Qt.AlignCenter)
+        table.setItem(0, len(headers) - 1, total_item)
+
+        header = table.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Stretch)
 
-        self.ui.portfolio_stats.resizeRowsToContents()
-
-        # UI log instead of print
-        self.log_to_ui("Monthly portfolio stats updated (clean & sorted).")
+        table.setEditTriggers(QTableWidget.NoEditTriggers)
+        table.setSelectionMode(QTableWidget.NoSelection)
+        table.resizeRowsToContents()
 
     def show_drawdown_table(self, merged_df):
 
@@ -404,34 +434,69 @@ class SetCompareController:
             self.log_to_ui("merged_df is empty.")
             return
 
-        df = self.merged_df.copy()
-
-        # Ensure DATE is datetime
-        if "DATE" in df.columns:
-            df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
-
-        # Detect EQUITY columns
-        equity_cols = [c for c in df.columns if c.startswith("EQUITY_")]
-
-        if not equity_cols:
-            self.log_to_ui("❌ No EQUITY_ columns found.")
+        # --- Popup selection ---
+        options = ["Equity", "Balance", "Both"]
+        choice, ok = QInputDialog.getItem(
+            self.ui, "Select Data to Plot", "Show:", options, 0, False
+        )
+        if not ok:
+            self.log_to_ui("Graph cancelled by user.")
             return
 
+        df = self.merged_df.copy()
+        if "DATE" not in df.columns:
+            self.log_to_ui("❌ No DATE column found.")
+            return
+        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
 
-        plt.figure(figsize=(12, 6))
+        # --- Select columns ---
+        equity_cols = [c for c in df.columns if c.startswith("EQUITY_")] if choice in ["Equity", "Both"] else []
+        balance_cols = [c for c in df.columns if c.startswith("BALANCE_")] if choice in ["Balance", "Both"] else []
 
-        for col in equity_cols:
-            plt.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""))
+        if not equity_cols and not balance_cols:
+            self.log_to_ui("❌ No columns found to plot for selection.")
+            return
 
-        plt.title("Equity Curve Comparison")
-        plt.xlabel("Date / Time")
-        plt.ylabel("Equity")
-        plt.grid(True, alpha=0.3)
-        plt.legend()
+        # --- Prepare colors ---
+        total_lines = len(equity_cols) + len(balance_cols)
+        color_map = plt.get_cmap("tab20")
+        colors = [color_map(i % 20) for i in range(total_lines)]
+
+        fig, ax = plt.subplots(figsize=(12, 6))
+
+        # Plot Equity
+        equity_handles = []
+        for col, color in zip(equity_cols, colors[:len(equity_cols)]):
+            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color)
+            equity_handles.append(line)
+
+        # Plot Balance
+        balance_handles = []
+        for col, color in zip(balance_cols, colors[len(equity_cols):]):
+            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color)
+            balance_handles.append(line)
+
+        # Title and labels
+        ax.set_title({
+            "Equity": "Equity Curve Comparison",
+            "Balance": "Balance Curve Comparison",
+            "Both": "Equity & Balance Comparison"
+        }[choice])
+        ax.set_xlabel("Date / Time")
+        ax.set_ylabel("Value")
+        ax.grid(True, alpha=0.3)
+
+        # --- Legends separately ---
+        if equity_handles:
+            legend_equity = ax.legend(handles=equity_handles, title="Equity", loc="upper left", fontsize=8)
+            ax.add_artist(legend_equity)  # keep this legend
+
+        if balance_handles:
+            ax.legend(handles=balance_handles, title="Balance", loc="upper right", fontsize=8)
+
         plt.tight_layout()
         plt.show()
-
-        self.log_to_ui("Graph displayed successfully.")
+        self.log_to_ui(f"Graph displayed successfully: {choice}")
 
     def refresh_selected_set_files(self):
         """Refresh list of valid files based on all 3 input folders."""
@@ -508,6 +573,52 @@ class SetCompareController:
 
         except Exception as e:
             self.logger.error("Unexpected error in refresh_selected_set_files", e)
+
+    def export_files(self):
+        # Source directories
+        csv_dir = self.ui.csv_input.text().strip()
+        htm_dir = self.ui.htm_input.text().strip()
+        set_dir = self.ui.set_input.text().strip()
+
+        # Ask for export folder
+        export_dir = QFileDialog.getExistingDirectory(self.ui, "Select Export Folder")
+        if not export_dir:
+            print("Export cancelled.")
+            return
+
+        # Selected CSVs from QListWidget (lowercase)
+        selected_csv_files = [item.text().lower() for item in self.ui.csv_list.selectedItems()]
+
+        # Generic copy helper (case-insensitive)
+        def copy_matching_files(selected_files, src_dir, extensions=None):
+            if not os.path.isdir(src_dir):
+                print(f"Source folder not found: {src_dir}")
+                return
+
+            for f in os.listdir(src_dir):
+                fname_lower = os.path.splitext(f)[0].lower()  # strip extension
+
+                # Skip by extension if needed
+                if extensions and not f.lower().endswith(tuple(extensions)):
+                    continue
+
+                if fname_lower in selected_files or selected_files == ["*"]:
+                    src_path = os.path.join(src_dir, f)
+                    dst_path = os.path.join(export_dir, f)
+                    try:
+                        shutil.copy2(src_path, dst_path)
+                        print(f"Copied: {f}")
+                    except Exception as e:
+                        print(f"Error copying {f}: {e}")
+
+
+        copy_matching_files(selected_csv_files, csv_dir, extensions=[".csv"])
+
+        copy_matching_files(selected_csv_files, htm_dir, extensions=[".htm"])
+
+        copy_matching_files(selected_csv_files, set_dir, extensions=[".set"])
+
+        print(f"All selected files copied to {export_dir}")
 
 
 

@@ -27,10 +27,12 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.base_process_folder = None
         
         self.report_name = None  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
         self.report_df = pd.DataFrame()  # Used for saving reports (Value Set in SetFinder and Used in Set Generator )
         self.file_path = None
+
 
         self.report_dfs = {}
         self.report_files = []

@@ -123,6 +123,12 @@ class SetCompareUI(BaseTab):
         self.compare_button = QPushButton("COMPARE SET FILES")
         self.compare_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
 
+        # self.toggle_equity = QCheckBox("Equity")
+        # self.toggle_equity.setChecked(True)  # default ON
+
+        # self.toggle_balance = QCheckBox("Balance")
+        # self.toggle_balance.setChecked(False)
+
         # New buttons
         self.show_graph_button = QPushButton("SHOW GRAPH")
         self.show_graph_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
@@ -137,6 +143,8 @@ class SetCompareUI(BaseTab):
         bottom_layout.addWidget(self.compare_label)
         bottom_layout.addWidget(self.compare_checkbox)
         bottom_layout.addWidget(self.compare_button)
+        # bottom_layout.addWidget(self.toggle_equity)
+        # bottom_layout.addWidget(self.toggle_balance)
         bottom_layout.addWidget(self.show_graph_button)
         bottom_layout.addWidget(self.export_profile_button)
 

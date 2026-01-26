@@ -135,3 +135,15 @@ QHeaderView::section {
 QTextEdit:hover {
         border: 2px solid #e5e9ecff;
     }
+
+
+QToolTip {
+    background-color: #2b2b2b;    
+    color: #e0dcdc;              
+    border: 1px solid #808791;   
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 11px;
+    font-family: Inter;
+    line-height: 1.4;
+}

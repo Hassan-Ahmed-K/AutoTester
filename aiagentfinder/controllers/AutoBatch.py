@@ -588,6 +588,15 @@ class AutoBatchController:
             Logger.warning("Test file name is not set")
 
             return None
+
+        symbol = self.ui.symbol_input.text().strip()
+
+        prefix = self.ui.symbol_prefix.text().strip() 
+        suffix = self.ui.symbol_suffix.text().strip()
+
+        # combine
+        symbol = self.normalize_symbol(symbol, prefix, suffix)
+        # symbol = f"{prefix}{symbol}{suffix}"
         
         
 
@@ -596,7 +605,7 @@ class AutoBatchController:
 
             "expert": self.ui.expert_input.currentText().strip(),
             "param_file": self.ui.param_input.text().strip(),
-            "symbol": self.ui.symbol_input.text().strip(),
+            "symbol": symbol,
             "timeframe": self.ui.timeframe_combo.currentText(),
             "symbol_prefix": self.ui.symbol_prefix.text().strip(),
             "symbol_suffix": self.ui.symbol_suffix.text().strip(),
@@ -1844,3 +1853,14 @@ class AutoBatchController:
     def copy_parameter(self, property:dict):
         print("property : ", property)
         self.queue.update_all_tests(property)
+
+
+    def normalize_symbol(self,symbol, prefix="", suffix=""):
+        if prefix and symbol.startswith(prefix):
+            symbol = symbol[len(prefix):]
+
+        if suffix and symbol.endswith(suffix):
+            symbol = symbol[:-len(suffix)]
+
+        symbol = symbol.upper()
+        return f"{prefix}{symbol}{suffix}"

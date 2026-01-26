@@ -14,17 +14,11 @@ class SetFinderController:
         self.runner = ThreadRunner()
         self.main_window = self.ui.parent()
 
-        # self.file_path = None
-        self.doc_properties = {}
-
-
-
+        self.doc_properties = {} 
         self.ui.xml_dir_btn.clicked.connect(self.browse_report_directory)
         self.ui.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)
         self.ui.start_button.clicked.connect(self.read_all_xml_tables)
         self.ui.reset_button.clicked.connect(self.reset_all_fields)
-        # self.ui.report_dir_input.textChanged.connect(self.read_xml)
-
 
     def on_toggle_trade_filter(self, state):
         """Show/hide inputs based on toggle state."""
@@ -45,22 +39,24 @@ class SetFinderController:
         )
          
     def browse_report_directory(self):
-        dir_path = QFileDialog.getExistingDirectory(
+        self.main_window.base_process_folder = QFileDialog.getExistingDirectory(
             self.ui,
             "Select Report Directory",
             os.getcwd()
         )
 
-        if not dir_path:
+        if not self.main_window.base_process_folder:
             return
 
+        # self.main_window.base_process_folder = dir_path
+
         # Find all XML files in the selected directory
-        report_files = [
-            f for f in os.listdir(dir_path)
+        self.report_files = [
+            f for f in os.listdir(self.main_window.base_process_folder)
             if f.lower().endswith(".xml")
         ]
 
-        if not report_files:
+        if not self.report_files:
             QMessageBox.warning(
                 self.ui,
                 "No Report Files Found",
@@ -71,19 +67,19 @@ class SetFinderController:
 
         # ✅ Store all report files (with full paths) in a list
         self.main_window.report_files = [
-            os.path.join(dir_path, f) for f in report_files
+            os.path.join(self.main_window.base_process_folder, f) for f in self.report_files
         ]
 
         # Optionally, also store just the file names
-        self.main_window.report_names = report_files
+        self.main_window.report_names = self.report_files
 
         # Set first report file as default selection
-        self.main_window.report_name = report_files[0]
+        self.main_window.report_name = self.report_files[0]
         self.main_window.file_path = self.main_window.report_files[0]
-        self.ui.report_dir_input.setText(dir_path)
+        self.ui.report_dir_input.setText(self.main_window.base_process_folder)
         self.main_window.reportSymbol = []
 
-        Logger.info(f"📂 Report directory selected: {dir_path}")
+        Logger.info(f"📂 Report directory selected: {self.main_window.base_process_folder}")
         Logger.info(f"📄 Total reports found: {len(self.main_window.report_files)}")
         Logger.info(f"📄 Report files: {self.main_window.report_files}")
         Logger.info(f"📄 Default report file: {self.main_window.file_path}")
@@ -333,6 +329,15 @@ class SetFinderController:
                 self.ui.log_text.verticalScrollBar().maximum()
             )
 
+
+        print("self.ui.report_dir_input.text() = ", self.ui.report_dir_input.text())
+
+        self.main_window.base_process_folder = self.ui.report_dir_input.text()
+
+        if not self.main_window.base_process_folder:
+            log_to_ui("❌ No directory selected. Please select a valid directory first.")
+            return
+
         # --- Guard clause ---
         if not hasattr(self.main_window, "report_files") or not self.main_window.report_files:
             log_to_ui("❌ No report files found. Please select a valid directory first.")
@@ -349,6 +354,15 @@ class SetFinderController:
         def task():
             ns = {'ss': 'urn:schemas-microsoft-com:office:spreadsheet'}
             report_dfs = {}
+
+            if self.report_files:
+                self.main_window.report_files = [
+                                                os.path.join(self.main_window.base_process_folder, f) for f in self.report_files
+                                            ]
+            else:
+                log_to_ui("❌ No report files found. Please select a valid directory first.")
+                return
+
 
             for file_path in self.main_window.report_files:
                 try:

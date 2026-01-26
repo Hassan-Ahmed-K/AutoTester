@@ -115,7 +115,9 @@ class HtmlHunterUI(BaseTab):
         self.hunt_toggle.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
         self.chk_setfile = QCheckBox("Set File")
+        self.chk_setfile.setChecked(True)
         self.chk_html = QCheckBox("HTML")
+        self.chk_html.setChecked(True)
         self.chk_csv = QCheckBox("CSV")
         self.chk_graph = QCheckBox("Graph")
         self.chk_overview = QCheckBox("Overview")
@@ -150,28 +152,45 @@ class HtmlHunterUI(BaseTab):
         main_layout.addWidget(self.middle_message)
 
         # ---------- Log Label Layout ----------
-        log_label_layout = QVBoxLayout()
+        log_widget = QWidget()
+        log_widget.setContentsMargins(0, 0, 0, 0)
+        log_widget_layout = QVBoxLayout(log_widget)
+        log_widget_layout.setSpacing(0)
+        log_widget_layout.setContentsMargins(0, 0, 0, 0)
+
+        # horizontal row for labels and toggles
         horizontal_layout = QHBoxLayout()
+        horizontal_layout.setSpacing(6)  # small spacing between labels
+        horizontal_layout.setContentsMargins(0, 0, 0, 0)
 
         self.log_label = QLabel("Message Log:")
         self.profit_label = QLabel("Profit")
         self.profit_toggle = AnimatedToggle(height=28, width=45)
         self.rf_label = QLabel("RF")
 
+        # remove internal margins for all labels
+        for lbl in (self.log_label, self.profit_label, self.rf_label):
+            lbl.setContentsMargins(0, 0, 0, 0)
+            lbl.setMargin(0)
+            lbl.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+
         horizontal_layout.addWidget(self.log_label)
         horizontal_layout.addStretch()
-        horizontal_layout.addWidget(self.profit_label, alignment=Qt.AlignVCenter)
-        horizontal_layout.addWidget(self.profit_toggle, alignment=Qt.AlignVCenter)
-        horizontal_layout.addWidget(self.rf_label, alignment=Qt.AlignVCenter)
+        horizontal_layout.addWidget(self.profit_label)
+        horizontal_layout.addWidget(self.profit_toggle)
+        horizontal_layout.addWidget(self.rf_label)
 
-        log_label_layout.addLayout(horizontal_layout)
+        log_widget_layout.addLayout(horizontal_layout)
 
+        # log box
         self.log_box = QTextEdit()
         self.log_box.setReadOnly(True)
-        self.log_box.setMaximumHeight(90)
+        self.log_box.setFixedHeight(90)          # enforce fixed height
+        self.log_box.setContentsMargins(0, 0, 0, 0)
+        self.log_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
 
-        log_label_layout.addWidget(self.log_box)
-        main_layout.addLayout(log_label_layout)
+        log_widget_layout.addWidget(self.log_box)
+        main_layout.addWidget(log_widget)
         
 
         self.controller = HtmlHunterController(self)

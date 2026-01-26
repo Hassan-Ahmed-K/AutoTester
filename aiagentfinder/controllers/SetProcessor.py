@@ -1,5 +1,6 @@
 import psutil
 import os,re,glob,datetime, shutil
+from pathlib import Path
 import pandas as pd
 import time
 # from datetime import datetime
@@ -93,16 +94,25 @@ class SetProcessorController:
             Logger.info(f"Param folder found: {default_path}")
 
             # ✅ Open folder dialog (instead of file)
+            folder_path = None
+
             dialog = QFileDialog(self.ui, "Select Set Folder")
             dialog.setFileMode(QFileDialog.Directory)  # select folder
             dialog.setOption(QFileDialog.ShowDirsOnly, False)  # show files too
             dialog.setNameFilter("SET Files (*.set);;All Files (*)")
+            dialog.setDirectory(self.main_window.base_process_folder)
+
+
 
             if dialog.exec_():
                 folder_path = dialog.selectedFiles()[0]
 
                 
             if folder_path:
+
+                self.ui.set_table.clearContents()
+                self.ui.set_table.setRowCount(0)
+
                 self.ui.input_set_files.setText(folder_path)
                 Logger.info(f"Set folder selected: {folder_path}")
                 set_files = [f for f in os.listdir(folder_path) if f.endswith(".set")]
@@ -153,10 +163,10 @@ class SetProcessorController:
             try:
                 success = self.mt5.connect(file_path)
                 if success:
-                    dataPath = self.mt5.get_dataPath()
-                    if dataPath:
-                        result["data_folder"] = dataPath
-                        os.makedirs(os.path.join(dataPath, "Agent Finder Results"), exist_ok=True)
+                    self.dataPath = self.mt5.get_dataPath()
+                    if self.dataPath:
+                        result["data_folder"] = self.dataPath
+                        os.makedirs(os.path.join(self.dataPath, "Agent Finder Results"), exist_ok=True)
 
                     result["deposit_info"] = self.mt5.get_deposit()
 
@@ -622,9 +632,27 @@ class SetProcessorController:
                 if line.startswith("Symbol="):
                     symbol = line.split("=")[1]
                     return symbol
+
+                if(line.startswith("StrategyDescription=")):
+                    strategy_description = line.split("=")[1].split("_")[0]
+                    return strategy_description
+
+                if(line.startswith("TradeComment=")):
+                    trade_comment = line.split("=")[1].split("_")[0]
+                    return trade_comment
                 
-            return 'EURUSD'
+            return None
    
+    def normalize_symbol(self,symbol, prefix="", suffix=""):
+        if prefix and symbol.startswith(prefix):
+            symbol = symbol[len(prefix):]
+
+        if suffix and symbol.endswith(suffix):
+            symbol = symbol[:-len(suffix)]
+
+        symbol = symbol.upper()
+        return f"{prefix}{symbol}{suffix}"
+    
     def on_start_button_clicked(self):
         try:
             print("self.connected: ", self.connected)
@@ -632,11 +660,11 @@ class SetProcessorController:
                 QMessageBox.warning(self.ui, "Error", "Problem in Connecting to MT5 terminal. Please Connect again")
                 Logger.warning("Problem in Connecting to MT5 terminal.")
                 return
+
             if (self.ui.set_table.rowCount()<=0):
                 QMessageBox.warning(self.ui, "Warning", "No Set File To Process")
                 Logger.warning("No Set File To Process")
                 return
-
 
             report_columns = {"CSV": 2, "Graph": 3, "Overview": 4}
 
@@ -667,8 +695,8 @@ class SetProcessorController:
             Logger.info(f"Report Path: {self.report_path}")
             Logger.info(f"Max retries: {max_retries}")
 
-            path = os.path.join(folder, self.ui.set_table.item(0, 0).text())
-            symbol = self.extract_symbol(path)
+            # path = os.path.join(folder, self.ui.set_table.item(0, 0).text())
+            # symbol = self.extract_symbol(path)
 
             # ---------------- Validation ----------------
             if not all([folder, mt5_path, data_path, expert_file]):
@@ -696,10 +724,24 @@ class SetProcessorController:
             def task(worker=None):
                 try:
 
-                    report_path = os.path.join("Agent Finder Results", f"AutoTester_{timestamp}", "Sets")
-                    base_report_path = os.path.join(self.report_path, f"AutoTester_{timestamp}", "Sets")
+                    full_path = Path(self.ui.input_set_files.text().strip())
+                   
+
+                    parts = full_path.parts
+
+                    if "Agent Finder Results" in parts:
+                        base_path = Path(self.dataPath)
+                        relative_path = full_path.relative_to(base_path)
+                        report_path = os.path.join(relative_path, "Sets")
+                        base_report_path = os.path.join(full_path, "Sets")
+                
+                    else:
+                        report_path = os.path.join("Agent Finder Results", f"AutoTester_{timestamp}", "Sets")
+                        base_report_path = os.path.join(self.report_path, f"AutoTester_{timestamp}", "Sets")
+
                     os.makedirs(base_report_path, exist_ok=True)
                     Logger.info(f"Base report folder ready: {base_report_path}")
+                    Logger.info(f"Report folder ready: {report_path}")
                     
                     for row in range(self.ui.set_table.rowCount()):
                             if ("CSV" not in self.selected_reports):
@@ -774,6 +816,33 @@ class SetProcessorController:
                                 self.ui.set_table.setItem(row, 1, QTableWidgetItem("PROCESSING"))
                         except Exception as e:
                             Logger.warning(f"Failed to update table at row {row}: {e}")
+
+                        path = os.path.join(folder, set_file)
+                        symbol = self.extract_symbol(path)
+
+                        prefix = self.ui.pair_prefix_input.text().strip()  # remove extra spaces
+                        suffix = self.ui.pair_suffix_input.text().strip()
+
+                        # combine
+                        symbol = self.normalize_symbol(symbol, prefix, suffix)
+
+                        tester_dir = Path(self.dataPath) / "MQL5" / "Profiles" / "Tester"
+                        tester_dir.mkdir(parents=True, exist_ok=True)
+
+                        param_src = Path(path)
+                        param_dst = tester_dir / set_file
+
+                        shutil.copy(param_src, param_dst)
+
+                        print("---------------------------------------------")
+                        print("self.dataPath = ", self.dataPath)
+                        print("path = ", path)
+                        print("symbol = ", symbol)
+                        print("---------------------------------------------")
+                        if (symbol is None):
+                            # QMessageBox.warning(self.ui, "Warning", "No Symbol Found in Set File")
+                            Logger.warning("No Symbol Found in Set File")
+                            continue
 
                         # Build settings
                         forward_date = QDate.currentDate().toString("yyyy-MM-dd")
@@ -892,7 +961,10 @@ class SetProcessorController:
                             except Exception as e:
                                 Logger.warning(f"Failed to update table at row {row}: {e}")
 
+                        os.remove(param_dst)
+
                     self.organize_reports(base_report_path)
+                    
                     
                     return True
 
@@ -1017,6 +1089,125 @@ class SetProcessorController:
         except Exception as e:
             self.logger.error("Error handling Kill button click", e)
 
+    # def move_with_suffix(src, dst):
+    #     if not os.path.exists(dst):
+    #         shutil.move(src, dst)
+    #         return
+
+    #     base, ext = os.path.splitext(dst)
+    #     i = 1
+    #     while True:
+    #         new_dst = f"{base}_{i}{ext}"
+    #         if not os.path.exists(new_dst):
+    #             shutil.move(src, new_dst)
+    #             return
+    #         i += 1
+
+
+    # def organize_reports(self, base_report_path):
+    #     try:
+    #         # -----------------------------
+    #         # Create folders safely
+    #         # -----------------------------
+    #         for report_mode in self.selected_reports:
+    #             os.makedirs(os.path.join(base_report_path, report_mode), exist_ok=True)
+
+    #         html_folder = os.path.join(base_report_path, "HTML Reports")
+    #         overview_folder = os.path.join(base_report_path, "Overview")
+    #         csv_folder = os.path.join(base_report_path, "CSV")
+    #         graph_folder = os.path.join(base_report_path, "Graph")
+    #         original_folder = os.path.join(base_report_path, "Original Files")
+
+    #         for folder in [
+    #             html_folder,
+    #             overview_folder,
+    #             csv_folder,
+    #             graph_folder,
+    #             original_folder
+    #         ]:
+    #             os.makedirs(folder, exist_ok=True)
+
+    #         for file_name in os.listdir(base_report_path):
+    #             try:
+    #                 file_path = os.path.join(base_report_path, file_name)
+
+    #                 if not os.path.isfile(file_path):
+    #                     continue
+
+    #                 file_lower = file_name.lower()
+
+    #                 # HTML files
+    #                 if file_lower.endswith((".htm", ".html")):
+    #                     dest = os.path.join(html_folder, file_name)
+    #                     move_with_suffix(file_path, dest)
+    #                     self.logger.info(f"Moved HTML: {file_name}")
+
+    #                 # PNG files
+    #                 elif file_lower.endswith(".png"):
+    #                     if "-" in file_name and "Graph" in self.selected_reports:
+    #                         dest = os.path.join(graph_folder, file_name)
+    #                     elif "Overview" in self.selected_reports:
+    #                         dest = os.path.join(overview_folder, file_name)
+    #                     else:
+    #                         continue
+
+    #                     move_with_suffix(file_path, dest)
+    #                     self.logger.info(f"Moved PNG: {file_name}")
+
+    #                 # CSV files
+    #                 elif file_lower.endswith(".csv") and "CSV" in self.selected_reports:
+    #                     dest = os.path.join(csv_folder, file_name)
+    #                     move_with_suffix(file_path, dest)
+    #                     self.logger.info(f"Moved CSV: {file_name}")
+
+    #             except Exception as file_err:
+    #                 self.logger.error(f"Failed to process file: {file_name}", file_err)
+
+
+    #         for item in os.listdir(base_report_path):
+    #             try:
+    #                 item_path = os.path.join(base_report_path, item)
+
+    #                 if os.path.isdir(item_path):
+    #                     continue
+
+    #                 os.remove(item_path)
+    #                 self.logger.info(f"Deleted leftover file: {item}")
+
+    #             except Exception as del_err:
+    #                 self.logger.error(f"Failed to delete item: {item}", del_err)
+
+
+    #         parent_path = os.path.dirname(base_report_path)
+
+    #         for file_name in os.listdir(parent_path):
+    #             try:
+    #                 file_path = os.path.join(parent_path, file_name)
+
+    #                 if not os.path.isfile(file_path):
+    #                     continue
+
+    #                 file_lower = file_name.lower()
+
+    #                 if file_lower.endswith(".xml"):
+    #                     dest = os.path.join(original_folder, file_name)
+    #                     move_with_suffix(file_path, dest)
+    #                     self.logger.info(f"Moved XML → Original Files: {file_name}")
+
+    #                 elif file_lower.endswith(".set"):
+    #                     dest = os.path.join(base_report_path, file_name)
+    #                     move_with_suffix(file_path, dest)
+    #                     self.logger.info(f"Moved SET → Sets: {file_name}")
+
+    #             except Exception as file_err:
+    #                 self.logger.error(f"Failed to process parent file: {file_name}", file_err)
+
+    #         self.logger.info("✅ Report organization completed successfully.")
+
+    #     except Exception as e:
+    #         self.logger.error("❌ Failed to organize reports", e)
+
+
     def organize_reports(self, base_report_path):
 
         try:
@@ -1027,7 +1218,11 @@ class SetProcessorController:
             html_folder = os.path.join(base_report_path, "HTML Reports")
             overview_folder = os.path.join(base_report_path, "Overview")
             csv_folder = os.path.join(base_report_path, "CSV")
-            graph_folder = os.path.join(base_report_path, "Graph")
+            graph_folder = os.path.join(base_report_path, "Graph") 
+            original_folder = os.path.join(base_report_path, "Original Files") 
+            os.makedirs(original_folder, exist_ok=True)
+
+
 
             # Process files in base_report_path
             for file_name in os.listdir(base_report_path):
@@ -1038,6 +1233,7 @@ class SetProcessorController:
 
                     file_lower = file_name.lower()
 
+
                     # HTML/HTM files
                     if file_lower.endswith((".htm", ".html")):
                         dest = os.path.join(base_report_path, html_folder, file_name)
@@ -1047,11 +1243,11 @@ class SetProcessorController:
                     # PNG files
                     elif file_lower.endswith(".png"):
                         if "-" in file_name and "Graph" in self.selected_reports:
-                            dest = os.path.join(base_report_path, graph_folder, file_name)
+                            dest = os.path.join(base_report_path,overview_folder , file_name)
                             shutil.move(file_path, dest)
                             self.logger.info(f"Moved PNG to Graph: {file_name}")
                         elif "Overview" in self.selected_reports:
-                            dest = os.path.join(base_report_path, overview_folder, file_name)
+                            dest = os.path.join(base_report_path,graph_folder , file_name)
                             shutil.move(file_path, dest)
                             self.logger.info(f"Moved PNG to Overview: {file_name}")
 
@@ -1064,12 +1260,20 @@ class SetProcessorController:
                 except Exception as file_err:
                     self.logger.error(f"Failed to process file: {file_name}", file_err)
 
+
+            parent_path = os.path.dirname(base_report_path)
+
+            print("parent_path = ", parent_path)
+            
+
             # Delete remaining files/folders in base_report_path
             for item in os.listdir(base_report_path):
                 try:
                     item_path = os.path.join(base_report_path, item)
 
-                    if item in folders_to_create:
+                    print("item_path = ", item_path)
+
+                    if os.path.isdir(item_path):
                         continue  # keep report folders
 
                     if os.path.isfile(item_path):
@@ -1081,6 +1285,38 @@ class SetProcessorController:
 
                 except Exception as del_err:
                     self.logger.error(f"Failed to delete item: {item}", del_err)
+
+
+
+
+            for file_name in os.listdir(parent_path):
+                try:
+                    file_path = os.path.join(parent_path, file_name)
+
+                    if os.path.isdir(file_path):
+                        continue
+
+                    file_lower = file_name.lower()
+
+                    print("file_path = ", file_path)
+
+                    # XML → Original Files
+                    if file_lower.endswith(".xml"):
+                        dest = os.path.join(base_report_path, "Original Files", file_name)
+                        print("dest = ", dest)
+                        shutil.move(file_path, dest)
+                        self.logger.info(f"Moved XML file: {file_name} → Original Files")
+
+                    # SET → Sets
+                    elif file_lower.endswith(".set"):
+                        dest = os.path.join(base_report_path, file_name)
+                        print("dest = ", dest)
+                        shutil.move(file_path, dest)
+                        self.logger.info(f"Moved SET file: {file_name} → Sets")
+
+                except Exception as file_err:
+                    self.logger.error(f"Failed to process file: {file_name}", file_err)
+
 
             self.logger.info("✅ Report organization completed.")
 

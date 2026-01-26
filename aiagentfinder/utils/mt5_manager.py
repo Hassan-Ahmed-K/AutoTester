@@ -85,8 +85,7 @@ class MT5Manager:
         except Exception as e:
             Logger.error(f"⚠️ Error saving symbols to {file_name}: {e}")
             return False
-
-    
+   
     def load_symbols_from_json(file_name="symbols.json"):
         """Load saved MT5 symbols from JSON file"""
         if not os.path.exists(file_name):
@@ -103,8 +102,7 @@ class MT5Manager:
         except Exception as e:
             Logger.error(f"⚠️ Failed to load symbols from {file_name}: {e}")
             return None
-
-    
+   
     def get_symbol_list(self):
         try:
         # Get all symbols from broker once
@@ -118,7 +116,6 @@ class MT5Manager:
         
         return self.symbol_list
         
-
     def get_fx_symbols(self):
         MAJOR_PAIRS = [
             "EURUSD", "GBPUSD", "NZDUSD", "AUDUSD",
@@ -154,7 +151,6 @@ class MT5Manager:
         except Exception as e:
             Logger.error(f"❌ Error running test '{settings.get('test_name', 'Unnamed')}': {e}")
             return None
-
 
     def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path, report_type="XML", setProcessor=False,save_csv=False):
         try:
@@ -258,6 +254,22 @@ class MT5Manager:
                 report_file = f"{symbol}_{param_file.replace('.set', '')}"
                 report_path = os.path.join(report_path, report_file)
 
+            print("report_path = ",os.path.join(data_path, report_path))
+
+            check_dir = os.path.join(data_path, report_path)
+
+            parent_dir = os.path.dirname(check_dir)
+
+            folder_name = os.path.basename(check_dir)
+
+            for file in os.listdir(parent_dir):
+                file_path = os.path.join(parent_dir, file)
+
+                if os.path.isfile(file_path) and file.startswith(folder_name):
+                    os.remove(file_path)
+                    logger.info(f"Deleted: {file}")
+
+
             # --- Prepare folders ---
             config_dir = os.path.join(data_path, "config")
             logs_dir = Path(os.path.join(data_path, "logs"))
@@ -336,7 +348,6 @@ class MT5Manager:
             log_pointer = 0
 
             # Pick newest log file
-            print("Logs dir: ", self.logs_dir)
             if self.logs_dir.exists():
                 log_files = sorted(self.logs_dir.glob("*.log"), key=os.path.getmtime, reverse=True)
                 if log_files:
@@ -354,13 +365,14 @@ class MT5Manager:
             while proc.poll() is None:
 
                 if save_csv:
-                    print("file_to_check = ",file_to_check)
-                    print("file_to_check.exists() = ",file_to_check.exists())
-                    print("last_size = ",last_size)
-                    print("stable_time = ",stable_time)
+                    Logger.info(f"file_to_check = {file_to_check}")
+                    Logger.info(f"file_to_check.exists() = {file_to_check.exists()}")
+                    Logger.info(f"last_size = {last_size}")
+                    Logger.info(f"stable_time = {stable_time}")
 
                     if file_to_check.exists():
                         size = file_to_check.stat().st_size
+                        Logger.info(f"size = {size}")
 
                         if size == last_size:
                             stable_time += 1
@@ -381,7 +393,7 @@ class MT5Manager:
 
                                 if new_lines:
                                     for line in new_lines:
-                                        print(line)
+                                        Logger.info(line)
                                         line_lower = line.lower()
                                         if "successfully finished" in line_lower or 'result "successfully finished"' in line_lower:
                                             success_flag = True
@@ -396,16 +408,17 @@ class MT5Manager:
 
 
             if(save_csv):
-                print("--------------------------------------------------------------------------")
-                print("Exporting graph to CSV...")
-                print("self.mt5_path = ",self.mt5_path)
-                print("self.report_path = ",os.path.join(self.data_path, report_path))
+                Logger.info("---------------------------  SAVE CSV -----------------------------------------------")
+                Logger.info("Exporting graph to CSV...")
+                Logger.info(f"self.mt5_path = {self.mt5_path}")
+                Logger.info(f"self.report_path = {os.path.join(self.data_path, report_path)}")
                 self.export_graph_to_csv(self.mt5_path,os.path.join(self.data_path, report_path)+".csv")
                 proc.terminate()
-                print("--------------------------------------------------------------------------")
+                Logger.info("--------------------------------------------------------------------------")
 
             # --- After process exits ---
             folder_path = os.path.dirname(os.path.join(data_path, report_path))
+            Logger.info(f"folder_path = {folder_path}")
 
             if (os.path.exists(folder_path) and os.listdir(folder_path)) or success_flag:
                 Logger.success(f"✅ Test completed. Report saved at {report_path}")
@@ -415,64 +428,231 @@ class MT5Manager:
                 return {"status": "error", "message": "Report not generated"}
 
         except Exception as e:
+            proc.terminate()
             Logger.error(f"❌ Error running test: {str(e)}")
             return {"status": "error", "message": str(e)}
 
 
-    def export_graph_to_csv(self,mt5_exe_path, output_dir):
-        print("Attempting to connect via UIA...")
+
+    # def focus_mt5(self, mt5_exe_path):
+    #     from pywinauto.application import Application
+    #     from pywinauto import Desktop
+
+    #     app = Application(backend="uia").connect(path=mt5_exe_path)
+    #     desktop = Desktop(backend="uia")
+
+    #     try:
+    #         mt5_window = desktop.window(title_re=".*MetaTrader.*")
+    #         if not mt5_window.exists(timeout=5):
+    #             Logger.error("❌ MT5 window not found 1st Attempt Failed")
+    #     except:
+    #         mt5_window = None
+    #         for w in desktop.windows():
+    #             title = w.window_text().lower()
+    #             Logger.info("title = " + title)
+    #             if "metatrader" in title or "metaquotes" in title:
+    #                 mt5_window = w
+    #                 break
+
+    #     if not mt5_window:
+    #         Logger.error("❌ MT5 window not found")
+    #         return None, app
+
+    #     mt5_window.restore()
+    #     mt5_window.set_focus()
+    #     Logger.info(f"✅ Focused MT5: {mt5_window.window_text()}")
+    #     return mt5_window, app
+
+    def focus_mt5(self,mt5_exe_path):
         from pywinauto.application import Application
-        from pywinauto.findwindows import ElementNotFoundError
-        from pywinauto import mouse
+        from pywinauto import Desktop
+        app = Application(backend="uia").connect(path=mt5_exe_path)
+        pid = app.process
+
+        desktop = Desktop(backend="uia")
+
+        for w in desktop.windows():
+            if w.process_id() == pid:
+                title = w.window_text().lower()
+                Logger.info("title = " + title)
+                w.restore()
+                w.set_focus()
+                Logger.info(f"✅ Focused MT5: {w.window_text()}")
+                return w, app
+
+        return None, app
+
+
+    def export_graph_to_csv(self,mt5_exe_path, output_dir):
+
+        import pyautogui
+        from pywinauto import Desktop
+
+        mt5_window,app = self.focus_mt5(mt5_exe_path)
+
+        pyautogui.FAILSAFE = True
+        pyautogui.PAUSE = 0.3
+
+        images =  [
+            os.path.join(os.getcwd(), "data", "graph_btn.png"),
+            os.path.join(os.getcwd(), "data", "graph_wt_btn.png"), 
+            os.path.join(os.getcwd(), "data", "graph.png")
+        ]
+
+        graph_tab = None
+
+        for img in images:
+            Logger.info(f"🔍 Trying image: {os.path.basename(img)}")
+            try:
+                graph_tab = pyautogui.locateOnScreen(img, confidence=0.85)
+            except Exception as e:
+                Logger.warning(f"⚠️ Error checking {os.path.basename(img)}: {e}")
+                continue  # make sure it moves to next image
+            if graph_tab:
+                Logger.info(f"✅ Found using {os.path.basename(img)}")
+                break  # stop once we find one
+            else:
+                Logger.info(f"❌ Not found: {os.path.basename(img)}")
+
+        if not graph_tab:
+            raise Logger.info("❌ 'Graph' tab image not found. Check screenshot and scaling.")
+
+        center_x = graph_tab.left + graph_tab.width // 2
+        center_y = graph_tab.top + graph_tab.height // 2
+
+        pyautogui.click(center_x, center_y)
+        time.sleep(0.5)
+        Logger.info("✅ Clicked Graph tab")
+
+        # 2️⃣ Right-click chart area (50px above tab center)
+        pyautogui.rightClick(center_x, center_y - 100)
+        time.sleep(0.5)
+        Logger.info("✅ Right-clicked chart area")
+
+        # 3️⃣ Handle context menu
+        desktop = Desktop(backend="uia")
+        menu = None
+        for _ in range(10):
+            try:
+                # Sometimes the menu is top-level window
+                menu_candidates = [w for w in desktop.windows() if w.element_info.control_type == "Menu"]
+                if menu_candidates:
+                    menu = menu_candidates[0]
+                    break
+            except:
+                pass
+            time.sleep(0.2)
+
+        if not menu:
+            menu = mt5_window  # fallback
+
+        # Find "Export to CSV" menu item
+
+
+        Logger.info("Waiting for context menu...")
+        try:
+            menu = app.window(control_type="Menu")
+            if not menu.exists():
+                menu = app.top_window()
+            
+            Logger.info("Dumping menu items:")
+            items = menu.descendants(control_type="MenuItem")
+            for item in items:
+                text = item.window_text()
+                Logger.info(f" - {text}")
+                if "Export to CSV" in text:
+                    Logger.info("   -> Found target! Invoking...")
+                    try:
+                        item.invoke()
+                        Logger.info("   -> Invoked 'Export to CSV'")
+                    except Exception as invoke_err:
+                        Logger.info(f"   -> Invoke failed ({invoke_err}), trying click_input...")
+                        item.click_input()
+                        Logger.info("   -> Clicked 'Export to CSV'")
+                    break
+
+
+        except Exception as e:
+            Logger.error(f"❌ Error finding 'Export to CSV' menu item: {str(e)}")
+
+
+        Logger.info("✅ Invoked 'Export to CSV'")
+
+        pyautogui.write(
+            output_dir,
+            interval=0.01
+        )
+        pyautogui.press("enter")
+        Logger.info(f"✅ Typed file path: {output_dir}")
+
+        Logger.info("✅ Graph exported successfully!")
+
+        time.sleep(1)
+ 
+    def export_graph_to_csv_v2(self,mt5_exe_path, output_dir):
+        Logger.info("Attempting to connect via UIA...")
+        import time
+        import os
+        from pywinauto.application import Application
+        from pywinauto import mouse, keyboard
+        from pywinauto import Desktop
 
         try:
-            app = Application(backend="uia").connect(path=mt5_exe_path)
-            win = app.window(title_re=".*MetaQuotes.*")
-            win.set_focus()
-            print(f"Connected to: {win.window_text()}")
 
-            graph_tab = win.child_window(title="Graph", control_type="TabItem")
+            app = Application(backend="uia").connect(path=mt5_exe_path)
+            win = app.window(title_re=f".*MetaQuotes.*")
+            win.set_focus()
+            Logger.info(f"Connected to: {win.window_text()}")
+
+            time.sleep(1)
+
+            # Optional safety
+            pyautogui.FAILSAFE = True
+            pyautogui.PAUSE = 0.3
+
+            # 3️⃣ Find Graph button via image
+            graph_tab = pyautogui.locateOnScreen(os.path.join(os.getcwd(), "data", "graph_btn.png"), confidence=0.8)
             
             if graph_tab.exists():
-                print("✅ Found 'Graph' tab!")
+                Logger.info("✅ Found 'Graph' tab!")
                 graph_tab.click_input()
-                print("✅ Clicked 'Graph' tab.")
+                Logger.info("✅ Clicked 'Graph' tab.")
                 
                 rect = graph_tab.rectangle()
-                print(f"Tab coordinates: {rect}")
+                Logger.info(f"Tab coordinates: {rect}")
                 
                 click_x = rect.mid_point().x
                 click_y = rect.mid_point().y - 50
                 
-                print(f"Right-clicking at ({click_x}, {click_y}) (50px above tab)...")
+                Logger.info(f"Right-clicking at ({click_x}, {click_y}) (50px above tab)...")
                 
                 mouse.right_click(coords=(click_x, click_y))
                 time.sleep(1)
                 
-                print("Waiting for context menu...")
+                Logger.info("Waiting for context menu...")
                 try:
                     menu = app.window(control_type="Menu")
                     if not menu.exists():
                         menu = app.top_window()
                     
-                    print("Dumping menu items:")
+                    Logger.info("Dumping menu items:")
                     items = menu.descendants(control_type="MenuItem")
                     for item in items:
                         text = item.window_text()
-                        print(f" - {text}")
+                        Logger.info(f" - {text}")
                         if "Export to CSV" in text:
-                            print("   -> Found target! Invoking...")
+                            Logger.info("   -> Found target! Invoking...")
                             try:
                                 item.invoke()
-                                print("   -> Invoked 'Export to CSV'")
+                                Logger.info("   -> Invoked 'Export to CSV'")
                             except Exception as invoke_err:
-                                print(f"   -> Invoke failed ({invoke_err}), trying click_input...")
+                                Logger.info(f"   -> Invoke failed ({invoke_err}), trying click_input...")
                                 item.click_input()
-                                print("   -> Clicked 'Export to CSV'")
+                                Logger.info("   -> Clicked 'Export to CSV'")
                             break
                     
                     # Handle Save As Dialog
-                    print("Waiting for Save As dialog...")
+                    Logger.info("Waiting for Save As dialog...")
                     # Search for the dialog more robustly
                     save_dlg = None
                     for _ in range(10):
@@ -494,28 +674,28 @@ class MT5Manager:
                             pass
                     
                     if save_dlg and save_dlg.exists():
-                        print("✅ Save As dialog found!")
+                        Logger.info("✅ Save As dialog found!")
                         save_dlg.set_focus()
                     else:
-                        print("❌ Save As dialog NOT found.")
+                        Logger.info("❌ Save As dialog NOT found.")
                         raise TimeoutError("Save As dialog did not appear.")
                     
                     full_path = output_dir 
-                    print(f"Saving to: {full_path}")
+                    Logger.info(f"Saving to: {full_path}")
 
                     # if not os.path.exists(output_dir):
-                    #     print(f"Creating directory: {output_dir}")
+                    #     Logger.info(f"Creating directory: {output_dir}")
                     #     os.makedirs(output_dir)
                         
-                    print(f"Navigating to folder: {output_dir}")
+                    Logger.info(f"Navigating to folder: {output_dir}")
                     
                     try:
                         file_box = save_dlg.child_window(title="File name:", control_type="Edit")
                     except:
-                        print("Could not find 'File name:' edit box by title, trying by index...")
+                        Logger.info("Could not find 'File name:' edit box by title, trying by index...")
                         file_box = save_dlg.child_window(control_type="Edit", found_index=0)
                     
-                    print("Typing full path...")
+                    Logger.info("Typing full path...")
                     file_box.type_keys(full_path.replace(" ", "{SPACE}"), with_spaces=True)
                     # time.sleep(0.5)
 
@@ -525,39 +705,40 @@ class MT5Manager:
                     
                     # print(f"Setting file name: {output_filename}")
                     
-                    print("Clicking Save button...")
+                    Logger.info("Clicking Save button...")
                     save_btn.click()
                     
                     try:
                         # Wait briefly to see if confirmation dialog appears
                         confirm_dlg = save_dlg.child_window(title="Confirm Save As")
                         if confirm_dlg.exists(timeout=2):
-                            print("⚠️ File exists. Overwriting...")
+                            Logger.info("⚠️ File exists. Overwriting...")
                             yes_btn = confirm_dlg.child_window(title="Yes", control_type="Button")
                             yes_btn.click()
-                            print("✅ Overwritten.")
+                            Logger.info("✅ Overwritten.")
                     except:
                         pass
                         
-                    print("✅ File saved successfully.")
+                    Logger.info("✅ File saved successfully.")
                         
                 except Exception as e:
-                    print(f"Error handling menu or save dialog: {e}")
+                    Logger.info(f"Error handling menu or save dialog: {e}")
                     
             else:
-                print("⚠️ 'Graph' TabItem not found. Searching for any element named 'Graph'...")
+                Logger.info("⚠️ 'Graph' TabItem not found. Searching for any element named 'Graph'...")
                 # Search deeper for any element with title "Graph"
                 elements = win.descendants(title="Graph")
                 if elements:
                     for e in elements:
-                        print(f" - Found element: '{e.window_text()}' ({e.element_info.control_type})")
-                        print("   -> Clicking candidate...")
+                        Logger.info(f" - Found element: '{e.window_text()}' ({e.element_info.control_type})")
+                        Logger.info("   -> Clicking candidate...")
                         e.click_input()
-                        print("   -> Clicked.")
+                        Logger.info("   -> Clicked.")
                         break
                 else:
-                    print("❌ No element named 'Graph' found.")
+                    Logger.info("❌ No element named 'Graph' found.")
 
         except Exception as e:
-            print(f"Error: {e}")
+            Logger.error(f"Error: {e}")
 
+    

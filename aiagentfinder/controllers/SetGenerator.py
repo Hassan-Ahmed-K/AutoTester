@@ -26,7 +26,8 @@ class SetGeneratorController:
         self.title = ""
         self.symbol = ""
 
-        self.lotSize = None;
+        self.lotSize = None
+        self.report_file = ""
 
         Logger.info("Set Generator Controller Initialized")
 
@@ -75,17 +76,17 @@ class SetGeneratorController:
         self.ui.pairs_box.clear()
         self.ui.pairs_box.addItems(report_names)
 
-        report_file = os.path.basename(
+        self.report_file = os.path.basename(
             self.main_window.report_files[self.main_window.selected_report_index]
         )
 
         # Get dataframe safely
-        self.report_df = self.main_window.report_dfs.get(report_file, pd.DataFrame())
+        self.report_df = self.main_window.report_dfs.get(self.report_file, pd.DataFrame())
 
         # Update UI
         print('------------------------------------------------------------------')
-        print(report_file)
-        self.title = self.main_window.report_properties[report_file]['Title'].split(",")[0]
+        print(self.report_file)
+        self.title = self.main_window.report_properties[self.report_file]['Title'].split(",")[0]
         self.symbol = self.title.split()[1]
         print('------------------------------------------------------------------')
 
@@ -105,7 +106,6 @@ class SetGeneratorController:
         self.report_df = pd.DataFrame()
         self.show_dataframe_in_table(self.report_df)  # shows empty table
         Logger.info("Pairs box + table cleared due to no report files.")
-
 
     def show_dataframe_in_table(self, df: pd.DataFrame):
         """
@@ -421,20 +421,6 @@ class SetGeneratorController:
 
         print("Selected files:", self.selected_optimization)
 
-    # def on_pairs_box_selection(self):
-    #     item = self.ui.pairs_box.currentItem() 
-    #     self.pair_selected = item.text() 
-    #     print("-----------------------------------")
-    #     # print(item.index())
-    #     print(self.main_window.report_dfs)
-    #     print(self.main_window.report_files)
-    #     print(self.main_window.report_properties)
-    #     print(self.main_window.selected_report_index)
-    #     print(self.main_window.file_path)  
-    #     # print(self.main_window.report_files)
-    #     print("Selected pairs:", self.pair_selected)
-    #     print("-----------------------------------")
-
     def toggle_row_selection(self, row, column):
         """
         Toggle selection of a single row in QTableWidget without affecting other rows.
@@ -476,77 +462,6 @@ class SetGeneratorController:
             selection_model.select(selection, QItemSelectionModel.Select)
 
         event.accept()
-
-    # def generate_set_file(self):
-    #     """
-    #     Generate a .set file containing selected table rows, selected optimization files,
-    #     and selected pairs, running the file writing in a background thread.
-    #     """
-    #     # --- Step 1: Get selected table rows ---
-    #     selected_rows = []
-    #     for sel_range in self.ui.table.selectedRanges():
-    #         for row in range(sel_range.topRow(), sel_range.bottomRow() + 1):
-    #             row_data = [self.ui.table.item(row, col).text() if self.ui.table.item(row, col) else ""
-    #                         for col in range(self.ui.table.columnCount())]
-    #             selected_rows.append(row_data)
-
-    #     # --- Step 2: Get selected optimization files ---
-    #     # selected_opt_files = [name for name in self.selected_optimization if name in self.optimisation_files]
-
-    #     # --- Step 3: Get selected pairs ---
-    #     selected_pairs = self.pair_selected
-
-    #     if not (selected_rows or self.selected_optimization or self.selected):
-    #         self.log_to_ui("⚠️ Nothing selected to generate .set file!")
-    #         return
-
-    #     # --- Step 4: Ask for save location (main thread) ---
-    #     save_path, _ = QFileDialog.getSaveFileName(
-    #         self.ui,
-    #         "Save SET file",
-    #         self.main_window.file_path or "",
-    #         "SET Files (*.set)"
-    #     )
-    #     if not save_path:
-    #         return
-        
-    #     if save_path.lower().endswith(".xml"):
-    #         save_path = save_path[:-4] + ".set"
-
-    #     # Ensure .set extension
-    #     if not save_path.lower().endswith(".set"):
-    #         save_path += ".set"
-
-    #     # --- Step 5: Define background task to write file ---
-    #     def task():
-    #         with open(save_path, "w", encoding="utf-8") as f:
-    #             f.write("# --- Selected Table Rows ---\n")
-    #             for row in selected_rows:
-    #                 f.write(", ".join(row) + "\n")
-
-    #             f.write("\n# --- Selected Optimization Files ---\n")
-    #             for name in selected_opt_files:
-    #                 f.write(name + "\n")  # Only name shown
-    #                 # Full path still available in self.optimisation_files[name]
-
-    #             f.write("\n# --- Selected Pairs ---\n")
-    #             for pair in selected_pairs:
-    #                 f.write(pair + "\n")
-    #         return save_path  # Return path for logging
-
-    #     # --- Step 6: Define callback after thread finishes ---
-    #     def on_done(result):
-    #         self.log_to_ui(f"💾 .set file generated successfully:\n{result}")
-
-    #     def on_error(err):
-    #         self.log_to_ui(f"❌ Failed to generate .set file:\n{str(err)}")
-    #         QMessageBox.critical(self.ui, "Error", f"Failed to generate .set file:\n{str(err)}")
-
-    #     # --- Step 7: Run background thread ---
-    #     self.runner = ThreadRunner(self.ui)
-    #     self.runner.on_result = on_done
-    #     self.runner.on_error = on_error
-    #     self.runner.run(task)
 
     def log_to_ui(self, message: str):
         """
@@ -737,12 +652,18 @@ class SetGeneratorController:
                         toggle.update()
 
     def generate_set_file(self):
-        """
-        Generate a .set file that merges:
-        1. Selected table parameters
-        2. Full content (Pass + parameters) from selected optimization .set files
-        3. Selected trading pairs
-        """
+
+
+        def normalize_value(val):
+            if isinstance(val, str):
+                v = val.strip().upper()
+                if v == "TRUE":
+                    return "true"
+                if v == "FALSE":
+                    return "false"
+            return str(val)
+
+
         # --- Step 1: Gather selected rows from table ---
         selected_rows = []
         headers = [self.ui.table.horizontalHeaderItem(i).text() for i in range(self.ui.table.columnCount())]
@@ -756,6 +677,16 @@ class SetGeneratorController:
                     row_data[header] = cell.text() if cell else ""
                 selected_rows.append(row_data)
 
+
+        print('-------------------------------------------------------')
+        print(f"selected_rows = ", selected_rows)
+        print('-------------------------------------------------------')
+
+        if not selected_rows:
+            Logger.error("No rows selected to generate .set file.")
+            QMessageBox.warning(self.ui, "Warning", "No rows selected to generate .set file.")
+            return
+
         # --- Step 2: Selected optimization files ---
         selected_opt_files = getattr(self, "selected_optimization", [])
         selected_opt_files = [f for f in selected_opt_files if f in getattr(self, "optimisation_files", {})]
@@ -767,16 +698,20 @@ class SetGeneratorController:
             self.log_to_ui("⚠️ Nothing selected to generate .set file!")
             return
 
+        print('-------------------------------------------------------')
+        print(f"{self.main_window.base_process_folder}/{self.report_file.replace('.forward', '').replace('.xml', '')}")
+        print('-------------------------------------------------------')
+
         # --- Step 4: File save dialog ---
         save_path, _ = QFileDialog.getSaveFileName(
             self.ui,
             "Save SET file",
-            self.report_file.replace(".forward", "").replace(".xml", "") or "",
+            f"{self.main_window.base_process_folder}/{self.report_file.replace('.forward', '').replace('.xml', '')}",
             "SET Files (*.set)"
         )
         if not save_path:
             return
-        print()
+
         if save_path.lower().endswith(".xml"):
             save_path = save_path.replace(".forward.xml", "")+ ".set"
 
@@ -786,166 +721,159 @@ class SetGeneratorController:
         # --- Step 5: Threaded background task ---
         def task():
             try:
-                with open(save_path, "w", encoding="utf-16") as f:
-                    # File header
-                    f.write("; saved on {}\n".format(datetime.now().strftime("%Y.%m.%d %H:%M:%S")))
-                    f.write("; generated by AI Agent Finder\n")
-                    # opt_files_str = ", ".join(selected_opt_files)
-                    
-                    f.write(f"; this file contains input parameters for testing/optimizing {self.title} expert advisor\n")
-                    f.write("; to use in MetaTrader Strategy Tester, click Load on the Inputs tab\n")
-                    f.write(f"; Symbol={self.symbol}\n;\n")
 
-                    f.write(";~~~~~~~~~General Parameters~~~~~~~~~\n")
-                    f.write(f"ColorScheme=0||0||0||2||N\n")
+        
+                selected_df = pd.DataFrame(selected_rows)
+
+                # Perform left join: keep only report_df columns
+                result_df = self.report_df.merge(
+                    selected_df,
+                    how="left",
+                    left_on="Pass",        # column in report_df
+                    right_on="Pass No",    # column in selected_rows
+                    indicator=True         # adds a column showing join status
+                )
+
+                # Keep only rows that matched Pass No
+                result_df = result_df[result_df["_merge"] == "both"]
+
+                # Drop extra columns (Pass No and _merge)
+                result_df = result_df[self.report_df.columns]
+
+                print("------------------------- Result DataFrame -----------------------------")
+                print(result_df.head())
+                result_df.to_csv("result_df.csv", index=False)
+                print("------------------------------------------------------")
+
+                config_mapping = {
+                                    "EmaTimeframe": "forward_EmaTimeframe",
+                                    "EmaPeriods": "forward_EmaPeriods",
+
+                                    "UseRSICriteria": "forward_UseRSICriteria",
+                                    "RsiTimeframe": "forward_RsiTimeframe",
+                                    "RsiPeriod": "forward_RsiPeriod",
+                                    "RsiSellLevel": "forward_RsiSellLevel",
+
+                                    "UseAdxCriteria": "forward_UseAdxCriteria",
+                                    "AdxTimeframe": "forward_AdxTimeframe",
+                                    "AdxPeriod": "forward_AdxPeriod",
+                                    "AdxThreshold": "forward_AdxThreshold",
+
+                                    "UseBbCriteria": "forward_UseBbCriteria",
+                                    "BbTimeframe": "forward_BbTimeframe",
+                                    "BbPeriod": "forward_BbPeriod",
+                                    "BbDeviations": "forward_BbDeviations",
+
+                                    "DelayTradeSequence": "forward_DelayTradeSequence",
+                                    "LiveDelay": "forward_LiveDelay",
+                                    "LiveDelay2ndTradeLotsMultiplier": "forward_LiveDelay2ndTradeLotsMultiplier",
+
+                                    "AtrPeriod": "forward_AtrPeriod",
+                                    "PipStep": "forward_PipStep",
+                                    "PipStepExponent": "forward_PipStepExponent",
+                                    "MaxOrders": "forward_MaxOrders",
+                                    "ReverseSequenceDirection": "forward_ReverseSequenceDirection",
+
+                                    "LockProfit": "forward_LockProfit",
+                                    "TrailingStoploss": "forward_TrailingStoploss",
+
+                                    "Multiplier": "multiplier",
+                                }
+
+                
+                joined_values = {}
+
+                for set_file_key, df_col in config_mapping.items():
+                    if df_col in result_df.columns:
+                        # Convert all values to string and join with "||"
+                        joined_values[set_file_key] = "||".join(result_df[df_col].astype(str).tolist())
+                    elif(df_col == "LotSize"):
+                        if self.ui.toggle_Multiplier.isChecked():
+                            lotSize_value = float(self.lotSize or 0.01)
+                            joined_values["LotSize"] = "||".join(
+                                f"{lotSize_value * float(row.get('multiplier', 1)):.2f}"
+                                for _, row in result_df.iterrows()
+                            )
+                        else:
+                            joined_values["LotSize"] = "||".join(
+                                f"{float(self.lotSize or 0.01):.2f}"
+                                for _, row in result_df.iterrows()
+                            )
+                        joined_values["LotSize"] += "||N"
 
 
-                    if self.ui.toggle_Generate_magic.isChecked():
-                        count = len(selected_rows)  # number of selected rows
-                        magic_string = self.generate_magic_string(count)
-                        f.write(magic_string + "\n")
+                    else:
+                        # If column not in df, leave empty or default
+                        joined_values[set_file_key] = ""
 
-                    if selected_rows:
+                print("===================================")
+                print("save_path = ", save_path)
+                print("===================================")
 
-                        selected_df = pd.DataFrame(selected_rows)
+                base_path = save_path.replace(".set", "")
 
-                        # Perform left join: keep only report_df columns
-                        result_df = self.report_df.merge(
-                            selected_df,
-                            how="left",
-                            left_on="Pass",        # column in report_df
-                            right_on="Pass No",    # column in selected_rows
-                            indicator=True         # adds a column showing join status
-                        )
+                for _, row in result_df.iterrows():
 
-                        # Keep only rows that matched Pass No
-                        result_df = result_df[result_df["_merge"] == "both"]
+                    pass_no = row.get("Pass")
+                    file_path = f"{base_path}_{pass_no}.set"
 
-                        # Drop extra columns (Pass No and _merge)
-                        result_df = result_df[self.report_df.columns]
+                    with open(file_path, "w", encoding="utf-16") as f:
 
-                        print("------------------------- Result DataFrame -----------------------------")
-                        print(result_df.head())
-                        print("------------------------------------------------------")
+                        # Header
+                        f.write(f"; saved on {datetime.now().strftime('%Y.%m.%d %H:%M:%S')}\n")
+                        f.write("; generated by AI Agent Finder\n")
+                        f.write(f"; this file contains input parameters for testing/optimizing {self.title} expert advisor\n")
+                        f.write("; to use in MetaTrader Strategy Tester, click Load on the Inputs tab\n")
+                        f.write(f"; Symbol={self.symbol}\n;\n")
 
-                        config_mapping = { "UseEmaCriteria": "UseEmaCriteria", "EmaTimeframe": "EmaTimeframe", "EmaPeriods": "EmaPeriods", "UseRSICriteria": "UseRSICriteria", "RsiTimeframe": "RsiTimeframe", "RsiPeriod": "RsiPeriod", "RsiSellLevel": "RsiSellLevel", "UseAdxCriteria": "UseAdxCriteria", "AdxTimeframe": "AdxTimeframe", "AdxPeriod": "AdxPeriod", "AdxThreshold": "AdxThreshold", "UseBbCriteria": "UseBbCriteria", "BbTimeframe": "BbTimeframe", "BbPeriod": "BbPeriod", "BbDeviations": "BbDeviations", "DelayTradeSequence": "DelayTradeSequence", "LiveDelay": "LiveDelay", "LiveDelay2ndTradeLotsMultiplier": "LiveDelay2ndTradeLotsMultiplier", "AtrPeriod": "AtrPeriod", "PipStep": "PipStep", "PipStepExponent": "PipStepExponent", "MaxOrders": "MaxOrders", "ReverseSequenceDirection": "ReverseSequenceDirection", "LockProfit": "LockProfit", "TrailingStoploss": "TrailingStoploss", "LotSize": "LotSize", "Multiplier": "multiplier"}
-                        joined_values = {}
+                        # General
+                        f.write(";~~~~~~~~~General~~~~~~~~~\n")
+                        f.write("AllowNewSequence=true||false||0||true||N\n")
+                        f.write(f"StrategyDescription={self.symbol}_pass_{pass_no}\n")
+                        f.write("ColorScheme=0||0||0||2||N\n")
 
-                        for set_file_key, df_col in config_mapping.items():
-                            if df_col in result_df.columns:
-                                # Convert all values to string and join with "||"
-                                joined_values[set_file_key] = "||".join(result_df[df_col].astype(str).tolist())
-                            elif(df_col == "LotSize"):
-                                if self.ui.toggle_Multiplier.isChecked():
-                                    lotSize_value = float(self.lotSize or 0.01)
-                                    joined_values["LotSize"] = "||".join(
-                                        f"{lotSize_value * float(row.get('multiplier', 1)):.2f}"
-                                        for _, row in result_df.iterrows()
-                                    )
-                                else:
-                                    joined_values["LotSize"] = "||".join(
-                                        f"{float(self.lotSize or 0.01):.2f}"
-                                        for _, row in result_df.iterrows()
-                                    )
-                                joined_values["LotSize"] += "||N"
+                        if self.ui.toggle_Generate_magic.isChecked():
+                            f.write(self.generate_magic_string(1) + "\n")
 
+                        f.write(f"TradeComment={self.symbol}_pass_{pass_no}\n")
 
-                            else:
-                                # If column not in df, leave empty or default
-                                joined_values[set_file_key] = ""
+                        # Licensing
+                        f.write(";~~~~~~~~~EA Licensing~~~~~~~~~\n")
+                        f.write(f"apiKey={self.ui.api_key.text().strip()}\n")
 
-
-                        f.write(";~~~~~~~~~EA Licensing~~~~~~~~~\n") ; 
-                        api_key = self.ui.api_key.text().strip() or ""
-                        f.write(f"apiKey={api_key}\n")
-
-
+                        # Sections
                         sections = {
-                                        "ADX Settings": ["UseAdxCriteria", "AdxTimeframe", "AdxPeriod", "AdxThreshold"],
-                                        "Bollinger Band Settings": ["UseBbCriteria", "BbTimeframe", "BbPeriod", "BbDeviations"],
-                                        "Delays": ["DelayTradeSequence", "LiveDelay", "LiveDelay2ndTradeLotsMultiplier"],
-                                        "Sequence Settings": ["AtrPeriod", "PipStep", "PipStepExponent", "MaxOrders", "ReverseSequenceDirection"],
-                                        "Exit Settings": ["LockProfit", "TrailingStoploss"],
-                                        "Lot Size Settings": ["LotSize", "Multiplier"],
-                                    }
+                            "EMA Settings": ["UseEmaCriteria", "EmaTimeframe", "EmaPeriods"],
+                            "RSI Settings": ["UseRSICriteria", "RsiTimeframe", "RsiPeriod", "RsiSellLevel"],
+                            "ADX Settings": ["UseAdxCriteria", "AdxTimeframe", "AdxPeriod", "AdxThreshold"],
+                            "Bollinger Band Settings": ["UseBbCriteria", "BbTimeframe", "BbPeriod", "BbDeviations"],
+                            "Delays": ["DelayTradeSequence", "LiveDelay", "LiveDelay2ndTradeLotsMultiplier"],
+                            "Sequence Settings": ["AtrPeriod", "PipStep", "PipStepExponent", "MaxOrders", "ReverseSequenceDirection"],
+                            "Exit Settings": ["LockProfit", "TrailingStoploss"],
+                            "Lot Size Settings": ["Multiplier"],
+                        }
 
                         for section, keys in sections.items():
                             f.write(f"; ~~~~~~~~~{section}~~~~~~~~~\n")
                             for key in keys:
-                                if key in joined_values:
-                                    f.write(f"{key}={joined_values[key]}\n")
-                            f.write("") 
-                       
+                                if key in config_mapping:
+                                    col = config_mapping[key]
+                                    if col in row:
+                                        f.write(f"{key}={row[col]}\n")
+                            f.write("\n")
 
-                        # Example: print the joined strings
-                        for key, value in joined_values.items():
-                            print(f"{key}={value}")
-                                        
-                        
+                    print(f"✅ SET file created: {file_path}")
 
 
-                        # passNo = "||".join(row.get("Pass No", "") for row in selected_rows)
-                        
-                        
-                        # lotSizq_text = "||".join(
-                        #     str(lotSize_value * float(row.get("Multiplier", 1))) 
-                        #     for row in selected_rows
-                        # )
-                        # f.write(f"Pass={passNo}\n")  
-                        # f.write("\n")
-                        # f.write(f"LotSize={lotSizq_text}\n")
-
-
-
-
-
-                    # === Section 1: General Table Parameters ===
+                
+                self.log_to_ui(f"selected_opt_files = {selected_opt_files}")
                     
 
-                        
-
-                        
-
-                    # === Section 2: Optimization File Data ===
-
-                        
-                    
-                    self.log_to_ui(f"selected_opt_files = {selected_opt_files}")
-                        
-                    # if selected_opt_files:
-                    #     f.write(";~~~~~~~~~Optimization Results~~~~~~~~~\n")
-
-                    #     for opt_file in selected_opt_files:
-                    #         try:
-                    #             file_path = self.optimisation_files[opt_file]
-
-                    #             self.log_to_ui(f"file_path = {file_path}")
-                    #             # Try UTF-16 first, fallback to UTF-8
-                    #             try:
-                    #                 with open(file_path, "r", encoding="utf-16") as opt_f:
-                    #                     lines = opt_f.readlines()
-                    #             except UnicodeError:
-                    #                 with open(file_path, "r", encoding="utf-8", errors="ignore") as opt_f:
-                    #                     lines = opt_f.readlines()
-
-                    #             f.write(f"; --- {os.path.basename(opt_file)} ---\n")
-
-                    #             for line in lines:
-                    #                 line = line.strip()
-                    #                 f.write(line + "\n")
-
-                    #             f.write("\n")
-
-                    #         except Exception as opt_err:
-                    #             self.log_to_ui(f"⚠️ Could not read optimization file: {opt_file} ({opt_err})")
-                    #             continue
-
-
-                    # === Section 3: Selected Pairs ===
-                    if selected_pairs:
-                        f.write("; ~~~~~~~~~Selected Pairs~~~~~~~~~\n")
-                        for pair in selected_pairs:
-                            f.write(f"{pair}=true||false||0||true||N\n")
+                # # === Section 3: Selected Pairs ===
+                # if selected_pairs:
+                #     f.write("; ~~~~~~~~~Selected Pairs~~~~~~~~~\n")
+                #     for pair in selected_pairs:
+                #         f.write(f"{pair}=true||false||0||true||N\n")
 
                 return save_path
 
@@ -978,16 +906,10 @@ class SetGeneratorController:
 
         return "MAGIC_NUMBER=" + "||".join(values) + "||N"
 
-
-
-
     def read_set_file(self, path):
         with open(path, encoding="utf-16") as f:
             data = f.read()
             return data
-
-
-            
 
     def extract_lot_size(self, path):
             data = self.read_set_file(path)
@@ -998,8 +920,6 @@ class SetGeneratorController:
                     return first_value
                 
             return None
-    
-
 
     def on_multiplier(self, state):
         print("Multiplier toggled:", state)
