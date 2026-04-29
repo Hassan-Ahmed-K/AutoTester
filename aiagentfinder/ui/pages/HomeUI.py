@@ -5,6 +5,9 @@ from PyQt5.QtWidgets import (
      QVBoxLayout, QHBoxLayout,QWidget
 )
 from PyQt5.QtCore import QDate, Qt
+from PyQt5.QtGui import QPixmap
+import os
+import sys
 from aiagentfinder.controllers.home import HomeController
 class HomeUI(BaseTab):
     
@@ -19,14 +22,25 @@ class HomeUI(BaseTab):
         # main_layout.setContentsMargins(0,0,0,0)
         main_layout.setAlignment(Qt.AlignCenter)
 
-        # ---------- Header ----------
+        # ---------- Header Logo ----------
         header_layout = QHBoxLayout()
-        header_label = QLabel("AI Agent Finder")
-        header_label.setObjectName("headerLabel") 
-        header_label.setStyleSheet("font-size: 40px;") 
-        header_label.setAlignment(Qt.AlignCenter)
-        header_layout.addWidget(header_label)
+        logo_label = QLabel()
+        
+        try:
+            base_dir = sys._MEIPASS
+        except Exception:
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+        
+        logo_path = os.path.join(base_dir, "data", "logo.png")
+        logo_pixmap = QPixmap(logo_path)
+        
+        if not logo_pixmap.isNull():
+            logo_label.setPixmap(logo_pixmap.scaled(300, 300, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        
+        logo_label.setAlignment(Qt.AlignCenter)
+        header_layout.addWidget(logo_label)
         main_layout.addLayout(header_layout)
+
 
         self.notice_label = QLabel(
             "In order to gain access to the app features you need to have an active "

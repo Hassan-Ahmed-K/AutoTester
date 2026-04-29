@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.data_folder = None
 
         # self.setMinimumSize(1300, 650)
-        self.setWindowTitle("AI Agent Finder")
+        self.setWindowTitle("ECHELON")
         self.setStyleSheet("background-color:#1e1e1e;")
         self.SERVICE_NAME = os.getenv("SERVICE_NAME")
         self.CACHE_KEY = os.getenv("CACHE_KEY")
@@ -124,7 +124,7 @@ class MainWindow(QMainWindow):
 
         # Auto Batch
         batch_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch")
-        batch_item.setToolTip("Auto Batch")
+        batch_item.setToolTip("AutoTestQ ")
         self.nav_list.addItem(batch_item)
 
         # Set Finder
@@ -188,13 +188,6 @@ class MainWindow(QMainWindow):
         main_layout.addWidget(content, 1)
         self.setCentralWidget(container)
 
-
-    # def toggle_sidebar(self):
-    #     if self.sidebar.width() == 40:      
-    #      self.sidebar.setFixedWidth(200)    
-        
-    #     else:                                  
-    #         self.sidebar.setFixedWidth(40)
     def toggle_sidebar(self):
         # Sidebar expand/collapse with animation
         width = 200 if not self.sidebar_expanded else 40
@@ -231,17 +224,6 @@ class MainWindow(QMainWindow):
         except Exception as e:
             print(f"⚠️ Keyring read error: {e}")
         return None
-
-    
-    
-    # def switch_page(self, index):
-    #     Logger.debug(f"Attempting to switch to page index: {index}, Authenticated: {self.authenticated}")
-    #     if not self.authenticated and index != 0:
-    #         Logger.warning("Unauthorized access attempt to restricted page")
-    #         self.nav_list.setCurrentRow(0)
-    #     else:
-    #         Logger.debug(f"Switching to stack page {index}")
-    #         self.stack.setCurrentIndex(index)
 
     def switch_page(self, index):
         Logger.debug(f"Attempting to switch to page index: {index}, Authenticated: {self.authenticated}")
@@ -302,8 +284,6 @@ class MainWindow(QMainWindow):
 
         except Exception as e:
             Logger.error(f"Error occurred while switching page to index {index}: {e}", exc_info=True)
-
-
 
     def check_cache(self):
         data = self.load_cache()

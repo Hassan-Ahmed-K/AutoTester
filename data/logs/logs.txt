@@ -66,4 +66,1145 @@
 [2026-01-08 05:52:26] [INFO] folder_path = C:\Users\Naveed Computers\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\AutoTester_20260108_055107\Sets
 [2026-01-08 05:52:26] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\AutoTester_20260108_055107\Sets\USDCAD_eurusd_pass_7127
 [2026-01-08 05:52:26] [INFO] Task stopped by user.
-[2026-01-08 05:52:28] [WARNING] Some tests failed or were stopped.
+[2026-01-08 05:52:28] [WARNING] Some tests failed or were stopped.[2026-04-28 23:54:10] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-28 23:54:12] [WARNING] No cache data found for service 'AI_Agent_Finder' and key 'auth_credentials'.
+[2026-04-28 23:54:12] [INFO] Cache loaded: None
+[2026-04-28 23:54:12] [INFO] Date range option selected: Entire history
+[2026-04-28 23:54:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Tue Apr 28 2026
+[2026-04-28 23:54:12] [INFO] Adjusting forward date based on selection: No
+[2026-04-28 23:54:12] [DEBUG] Forward date disabled, set to test end date
+[2026-04-28 23:54:12] [INFO] Date range option selected: Entire history
+[2026-04-28 23:54:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Tue Apr 28 2026
+[2026-04-28 23:54:13] [INFO] Set Generator Controller Initialized
+[2026-04-28 23:54:13] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-28 23:54:13] [DEBUG] Switching to stack page 0
+[2026-04-28 23:54:13] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:06:48] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:06:50] [WARNING] No valid session found.
+[2026-04-30 01:06:50] [INFO] Cache loaded: None
+[2026-04-30 01:06:50] [INFO] Date range option selected: Entire history
+[2026-04-30 01:06:50] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:06:50] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:06:50] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:06:50] [INFO] Date range option selected: Entire history
+[2026-04-30 01:06:50] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:06:50] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:06:51] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:06:51] [DEBUG] Switching to stack page 0
+[2026-04-30 01:06:51] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:07:23] [INFO] Session saved successfully to session.json
+[2026-04-30 01:07:23] [INFO] Cache saved successfully to session file.
+[2026-04-30 01:07:23] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 01:07:25] [INFO] User interface updated after login
+[2026-04-30 01:08:11] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:08:12] [INFO] Valid session found and loaded.
+[2026-04-30 01:08:12] [INFO] Cache loaded: {'authenticated': True, 'token': '5613c594-4402-4a64-afbf-5a9f70aa8851', 'validation_time': 1777493243.3413963, 'email': 'admin@example.com', 'expires_at': '2026-05-01T01:07:23.341402'}
+[2026-04-30 01:08:12] [INFO] Date range option selected: Entire history
+[2026-04-30 01:08:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:08:12] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:08:12] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:08:12] [INFO] Date range option selected: Entire history
+[2026-04-30 01:08:12] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:08:13] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:08:13] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:08:13] [DEBUG] Switching to stack page 0
+[2026-04-30 01:08:14] [INFO] User authenticated via cache
+[2026-04-30 01:08:23] [INFO] Logging out...
+[2026-04-30 01:08:24] [INFO] Session file cleared.
+[2026-04-30 01:08:24] [INFO] Session file cleared.
+[2026-04-30 01:08:24] [INFO] User logged out
+[2026-04-30 01:11:44] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:11:45] [INFO] Date range option selected: Entire history
+[2026-04-30 01:11:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:11:45] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:11:45] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:11:45] [INFO] Date range option selected: Entire history
+[2026-04-30 01:11:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:11:45] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:11:46] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:11:46] [DEBUG] Switching to stack page 0
+[2026-04-30 01:15:38] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:15:39] [WARNING] No valid session found.
+[2026-04-30 01:15:39] [INFO] Cache loaded: None
+[2026-04-30 01:15:39] [INFO] Date range option selected: Entire history
+[2026-04-30 01:15:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:15:39] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:15:39] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:15:39] [INFO] Date range option selected: Entire history
+[2026-04-30 01:15:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:15:39] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:15:39] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:15:39] [DEBUG] Switching to stack page 0
+[2026-04-30 01:15:40] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:16:02] [INFO] Session saved successfully to session.json
+[2026-04-30 01:16:02] [INFO] Cache saved successfully to session file.
+[2026-04-30 01:16:02] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 01:16:04] [INFO] User interface updated after login
+[2026-04-30 01:16:27] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:16:28] [INFO] Valid session found and loaded.
+[2026-04-30 01:16:28] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777493762.7917788, 'email': 'admin@example.com', 'expires_at': '2026-05-01T01:16:02.791788'}
+[2026-04-30 01:16:28] [INFO] Date range option selected: Entire history
+[2026-04-30 01:16:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:16:28] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:16:28] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:16:28] [INFO] Date range option selected: Entire history
+[2026-04-30 01:16:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:16:28] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:16:29] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:16:29] [DEBUG] Switching to stack page 0
+[2026-04-30 01:16:29] [INFO] User authenticated via cache
+[2026-04-30 01:16:31] [INFO] Logging out...
+[2026-04-30 01:16:31] [INFO] Session file cleared.
+[2026-04-30 01:16:31] [INFO] Session file cleared.
+[2026-04-30 01:16:31] [INFO] User logged out
+[2026-04-30 01:16:51] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:16:52] [WARNING] No valid session found.
+[2026-04-30 01:16:52] [INFO] Cache loaded: None
+[2026-04-30 01:16:52] [INFO] Date range option selected: Entire history
+[2026-04-30 01:16:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:16:52] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:16:52] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:16:52] [INFO] Date range option selected: Entire history
+[2026-04-30 01:16:52] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:16:52] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:16:52] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:16:52] [DEBUG] Switching to stack page 0
+[2026-04-30 01:16:53] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:21:23] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:21:24] [WARNING] No valid session found.
+[2026-04-30 01:21:24] [INFO] Cache loaded: None
+[2026-04-30 01:21:24] [INFO] Date range option selected: Entire history
+[2026-04-30 01:21:24] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:21:24] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:21:24] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:21:24] [INFO] Date range option selected: Entire history
+[2026-04-30 01:21:24] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:21:24] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:21:24] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:21:24] [DEBUG] Switching to stack page 0
+[2026-04-30 01:21:25] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:21:40] [INFO] Session saved successfully to session.json
+[2026-04-30 01:21:40] [INFO] Cache saved successfully to session file.
+[2026-04-30 01:21:40] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 01:21:41] [INFO] User interface updated after login
+[2026-04-30 01:21:48] [INFO] Logging out...
+[2026-04-30 01:21:48] [INFO] Session file cleared.
+[2026-04-30 01:21:48] [INFO] Session file cleared.
+[2026-04-30 01:21:48] [INFO] User logged out
+[2026-04-30 01:22:13] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:22:14] [WARNING] No valid session found.
+[2026-04-30 01:22:14] [INFO] Cache loaded: None
+[2026-04-30 01:22:14] [INFO] Date range option selected: Entire history
+[2026-04-30 01:22:14] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:22:14] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:22:14] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:22:14] [INFO] Date range option selected: Entire history
+[2026-04-30 01:22:14] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:22:14] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:22:15] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:22:15] [DEBUG] Switching to stack page 0
+[2026-04-30 01:22:15] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:22:31] [INFO] Session saved successfully to session.json
+[2026-04-30 01:22:31] [INFO] Cache saved successfully to session file.
+[2026-04-30 01:22:31] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 01:22:32] [INFO] User interface updated after login
+[2026-04-30 01:23:58] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:23:59] [INFO] Valid session found and loaded.
+[2026-04-30 01:23:59] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777494151.2250328, 'email': 'admin@example.com', 'expires_at': '2026-05-01T01:22:31.225778'}
+[2026-04-30 01:23:59] [INFO] Date range option selected: Entire history
+[2026-04-30 01:23:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:23:59] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:23:59] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:23:59] [INFO] Date range option selected: Entire history
+[2026-04-30 01:23:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:24:00] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:24:00] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:24:00] [DEBUG] Switching to stack page 0
+[2026-04-30 01:24:00] [INFO] User authenticated via cache
+[2026-04-30 01:24:09] [INFO] Logging out...
+[2026-04-30 01:24:09] [INFO] Session file cleared.
+[2026-04-30 01:24:09] [INFO] Session file cleared.
+[2026-04-30 01:24:09] [INFO] User logged out
+[2026-04-30 01:24:34] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:24:36] [WARNING] No valid session found.
+[2026-04-30 01:24:36] [INFO] Cache loaded: None
+[2026-04-30 01:24:36] [INFO] Date range option selected: Entire history
+[2026-04-30 01:24:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:24:36] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:24:36] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:24:36] [INFO] Date range option selected: Entire history
+[2026-04-30 01:24:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:24:36] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:24:37] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:24:37] [DEBUG] Switching to stack page 0
+[2026-04-30 01:24:37] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:25:04] [INFO] Session saved successfully to session.json
+[2026-04-30 01:25:04] [INFO] Cache saved successfully to session file.
+[2026-04-30 01:25:04] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 01:25:06] [INFO] User interface updated after login
+[2026-04-30 01:26:26] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:26:27] [INFO] Session expired, cleaning up.
+[2026-04-30 01:26:27] [INFO] Session file cleared.
+[2026-04-30 01:26:27] [WARNING] No valid session found.
+[2026-04-30 01:26:27] [INFO] Cache loaded: None
+[2026-04-30 01:26:27] [INFO] Date range option selected: Entire history
+[2026-04-30 01:26:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:26:27] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:26:27] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:26:27] [INFO] Date range option selected: Entire history
+[2026-04-30 01:26:27] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:26:27] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:26:28] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:26:28] [DEBUG] Switching to stack page 0
+[2026-04-30 01:26:28] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:31:14] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:31:14] [WARNING] No valid session found.
+[2026-04-30 01:31:14] [INFO] Cache loaded: None
+[2026-04-30 01:31:15] [INFO] Date range option selected: Entire history
+[2026-04-30 01:31:15] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:31:15] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:31:15] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:31:15] [INFO] Date range option selected: Entire history
+[2026-04-30 01:31:15] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:31:15] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:31:15] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:31:15] [DEBUG] Switching to stack page 0
+[2026-04-30 01:31:16] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:31:42] [INFO] Session saved successfully to session.json
+[2026-04-30 01:31:42] [INFO] Cache saved successfully to session file.
+[2026-04-30 01:31:42] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 01:31:43] [INFO] User interface updated after login
+[2026-04-30 01:31:50] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 01:31:50] [DEBUG] Switching to stack page 1
+[2026-04-30 01:32:16] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2026-04-30 01:32:16] [DEBUG] Switching to stack page 0
+[2026-04-30 01:32:18] [INFO] Logging out...
+[2026-04-30 01:32:18] [INFO] Session file cleared.
+[2026-04-30 01:32:18] [INFO] Session file cleared.
+[2026-04-30 01:32:18] [INFO] User logged out
+[2026-04-30 01:42:43] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:42:44] [WARNING] No valid session found.
+[2026-04-30 01:42:44] [INFO] Cache loaded: None
+[2026-04-30 01:42:44] [INFO] Date range option selected: Entire history
+[2026-04-30 01:42:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:42:44] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:42:44] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:42:44] [INFO] Date range option selected: Entire history
+[2026-04-30 01:42:44] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:42:45] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:42:45] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:42:45] [DEBUG] Switching to stack page 0
+[2026-04-30 01:42:45] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:45:57] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:45:59] [WARNING] No valid session found.
+[2026-04-30 01:45:59] [INFO] Cache loaded: None
+[2026-04-30 01:45:59] [INFO] Date range option selected: Entire history
+[2026-04-30 01:45:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:45:59] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:45:59] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:45:59] [INFO] Date range option selected: Entire history
+[2026-04-30 01:45:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:45:59] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:46:00] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:46:00] [DEBUG] Switching to stack page 0
+[2026-04-30 01:46:00] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:49:58] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:49:59] [WARNING] No valid session found.
+[2026-04-30 01:49:59] [INFO] Cache loaded: None
+[2026-04-30 01:49:59] [INFO] Date range option selected: Entire history
+[2026-04-30 01:49:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:49:59] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:49:59] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:49:59] [INFO] Date range option selected: Entire history
+[2026-04-30 01:49:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:49:59] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:49:59] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:49:59] [DEBUG] Switching to stack page 0
+[2026-04-30 01:50:00] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:50:44] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:50:45] [WARNING] No valid session found.
+[2026-04-30 01:50:45] [INFO] Cache loaded: None
+[2026-04-30 01:50:45] [INFO] Date range option selected: Entire history
+[2026-04-30 01:50:45] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:50:46] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:50:46] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:50:46] [INFO] Date range option selected: Entire history
+[2026-04-30 01:50:46] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:50:46] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:50:46] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:50:46] [DEBUG] Switching to stack page 0
+[2026-04-30 01:50:47] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:53:35] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:53:36] [WARNING] No valid session found.
+[2026-04-30 01:53:36] [INFO] Cache loaded: None
+[2026-04-30 01:53:36] [INFO] Date range option selected: Entire history
+[2026-04-30 01:53:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:53:36] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:53:36] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:53:36] [INFO] Date range option selected: Entire history
+[2026-04-30 01:53:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:53:37] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:53:37] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:53:37] [DEBUG] Switching to stack page 0
+[2026-04-30 01:53:37] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:55:30] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:55:31] [WARNING] No valid session found.
+[2026-04-30 01:55:31] [INFO] Cache loaded: None
+[2026-04-30 01:55:31] [INFO] Date range option selected: Entire history
+[2026-04-30 01:55:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:55:31] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:55:31] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:55:31] [INFO] Date range option selected: Entire history
+[2026-04-30 01:55:31] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:55:31] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:55:31] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:55:31] [DEBUG] Switching to stack page 0
+[2026-04-30 01:55:32] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:56:27] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:56:28] [WARNING] No valid session found.
+[2026-04-30 01:56:28] [INFO] Cache loaded: None
+[2026-04-30 01:56:28] [INFO] Date range option selected: Entire history
+[2026-04-30 01:56:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:56:28] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:56:28] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:56:28] [INFO] Date range option selected: Entire history
+[2026-04-30 01:56:28] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:56:28] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:56:29] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:56:29] [DEBUG] Switching to stack page 0
+[2026-04-30 01:56:29] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:57:05] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:57:06] [WARNING] No valid session found.
+[2026-04-30 01:57:06] [INFO] Cache loaded: None
+[2026-04-30 01:57:06] [INFO] Date range option selected: Entire history
+[2026-04-30 01:57:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:57:06] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:57:06] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:57:06] [INFO] Date range option selected: Entire history
+[2026-04-30 01:57:06] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:57:07] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:57:07] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:57:07] [DEBUG] Switching to stack page 0
+[2026-04-30 01:57:07] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:57:32] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:57:33] [WARNING] No valid session found.
+[2026-04-30 01:57:33] [INFO] Cache loaded: None
+[2026-04-30 01:57:33] [INFO] Date range option selected: Entire history
+[2026-04-30 01:57:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:57:33] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:57:33] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:57:33] [INFO] Date range option selected: Entire history
+[2026-04-30 01:57:33] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:57:33] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:57:34] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:57:34] [DEBUG] Switching to stack page 0
+[2026-04-30 01:57:34] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:58:16] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:58:17] [WARNING] No valid session found.
+[2026-04-30 01:58:17] [INFO] Cache loaded: None
+[2026-04-30 01:58:17] [INFO] Date range option selected: Entire history
+[2026-04-30 01:58:17] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:58:17] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:58:17] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:58:17] [INFO] Date range option selected: Entire history
+[2026-04-30 01:58:17] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:58:18] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:58:18] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:58:18] [DEBUG] Switching to stack page 0
+[2026-04-30 01:58:18] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:58:46] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:58:47] [WARNING] No valid session found.
+[2026-04-30 01:58:47] [INFO] Cache loaded: None
+[2026-04-30 01:58:47] [INFO] Date range option selected: Entire history
+[2026-04-30 01:58:47] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:58:47] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:58:47] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:58:47] [INFO] Date range option selected: Entire history
+[2026-04-30 01:58:47] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:58:47] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:58:47] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:58:47] [DEBUG] Switching to stack page 0
+[2026-04-30 01:58:48] [INFO] No valid cache found, user not authenticated
+[2026-04-30 01:59:13] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 01:59:14] [WARNING] No valid session found.
+[2026-04-30 01:59:14] [INFO] Cache loaded: None
+[2026-04-30 01:59:14] [INFO] Date range option selected: Entire history
+[2026-04-30 01:59:14] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:59:14] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 01:59:14] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 01:59:14] [INFO] Date range option selected: Entire history
+[2026-04-30 01:59:14] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 01:59:14] [INFO] Set Generator Controller Initialized
+[2026-04-30 01:59:14] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 01:59:14] [DEBUG] Switching to stack page 0
+[2026-04-30 01:59:14] [INFO] No valid cache found, user not authenticated
+[2026-04-30 02:01:52] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 02:01:53] [WARNING] No valid session found.
+[2026-04-30 02:01:53] [INFO] Cache loaded: None
+[2026-04-30 02:01:53] [INFO] Date range option selected: Entire history
+[2026-04-30 02:01:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:01:53] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 02:01:53] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 02:01:53] [INFO] Date range option selected: Entire history
+[2026-04-30 02:01:53] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:01:53] [INFO] Set Generator Controller Initialized
+[2026-04-30 02:01:54] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:01:54] [DEBUG] Switching to stack page 0
+[2026-04-30 02:01:54] [INFO] No valid cache found, user not authenticated
+[2026-04-30 02:02:36] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 02:02:37] [WARNING] No valid session found.
+[2026-04-30 02:02:37] [INFO] Cache loaded: None
+[2026-04-30 02:02:37] [INFO] Date range option selected: Entire history
+[2026-04-30 02:02:37] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:02:37] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 02:02:37] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 02:02:37] [INFO] Date range option selected: Entire history
+[2026-04-30 02:02:37] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:02:38] [INFO] Set Generator Controller Initialized
+[2026-04-30 02:02:38] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:02:38] [DEBUG] Switching to stack page 0
+[2026-04-30 02:02:38] [INFO] No valid cache found, user not authenticated
+[2026-04-30 02:03:50] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 02:03:51] [WARNING] No valid session found.
+[2026-04-30 02:03:51] [INFO] Cache loaded: None
+[2026-04-30 02:03:51] [INFO] Date range option selected: Entire history
+[2026-04-30 02:03:51] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:03:51] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 02:03:51] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 02:03:51] [INFO] Date range option selected: Entire history
+[2026-04-30 02:03:51] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:03:51] [INFO] Set Generator Controller Initialized
+[2026-04-30 02:03:52] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:03:52] [DEBUG] Switching to stack page 0
+[2026-04-30 02:03:52] [INFO] No valid cache found, user not authenticated
+[2026-04-30 02:05:33] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 02:05:34] [WARNING] No valid session found.
+[2026-04-30 02:05:34] [INFO] Cache loaded: None
+[2026-04-30 02:05:34] [INFO] Date range option selected: Entire history
+[2026-04-30 02:05:34] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:05:34] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 02:05:34] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 02:05:34] [INFO] Date range option selected: Entire history
+[2026-04-30 02:05:34] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:05:34] [INFO] Set Generator Controller Initialized
+[2026-04-30 02:05:35] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:05:35] [DEBUG] Switching to stack page 0
+[2026-04-30 02:05:35] [INFO] No valid cache found, user not authenticated
+[2026-04-30 02:05:40] [DEBUG] Attempting to switch to page index: 1, Authenticated: False
+[2026-04-30 02:05:40] [WARNING] Unauthorized access attempt to restricted page
+[2026-04-30 02:05:40] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:05:40] [DEBUG] Switching to stack page 0
+[2026-04-30 02:08:37] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 02:08:37] [WARNING] No valid session found.
+[2026-04-30 02:08:37] [INFO] Cache loaded: None
+[2026-04-30 02:08:38] [INFO] Date range option selected: Entire history
+[2026-04-30 02:08:38] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:08:38] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 02:08:38] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 02:08:38] [INFO] Date range option selected: Entire history
+[2026-04-30 02:08:38] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:08:38] [INFO] Set Generator Controller Initialized
+[2026-04-30 02:08:38] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:08:38] [DEBUG] Switching to stack page 0
+[2026-04-30 02:08:39] [INFO] No valid cache found, user not authenticated
+[2026-04-30 02:09:12] [INFO] Session saved successfully to session.json
+[2026-04-30 02:09:12] [INFO] Cache saved successfully to session file.
+[2026-04-30 02:09:12] [INFO] User admin@example.com logged in successfully via Firebase Admin SDK.
+[2026-04-30 02:09:13] [INFO] User interface updated after login
+[2026-04-30 02:09:17] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:09:17] [DEBUG] Switching to stack page 1
+[2026-04-30 02:10:17] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-04-30 02:13:02] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-04-30 02:13:02] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-04-30 02:13:02] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-04-30 02:13:02] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-04-30 02:13:35] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:13:35] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:13:36] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:13:36] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:13:37] [INFO] Closest match found: EURUSD
+[2026-04-30 02:13:37] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:13:38] [INFO] Closest match found: EURUSD
+[2026-04-30 02:13:38] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:13:38] [INFO] Exact match found: EURUSD
+[2026-04-30 02:13:38] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:13:44] [INFO] Date range option selected: Last month
+[2026-04-30 02:13:44] [SUCCESS] ✅ Date range set: Mon Mar 30 2026 → Thu Apr 30 2026
+[2026-04-30 02:13:44] [INFO] Adjusting forward date based on selection: Last month
+[2026-04-30 02:13:44] [WARNING] Unknown forward date option: Last month
+[2026-04-30 02:13:49] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2026-04-30 02:13:50] [INFO] Starting queued tests...
+[2026-04-30 02:13:50] [INFO] ▶️ Running test: EURUSD on EURUSD
+[2026-04-30 02:13:50] [INFO] Starting run_strategy...
+[2026-04-30 02:13:50] [INFO] settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last month', 'date_from': '2026-03-30', 'date_to': '2026-04-30', 'forward': 'No', 'forward_date': '2026-04-30', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2026-04-30 02:13:50] [DEBUG] Settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last month', 'date_from': '2026-03-30', 'date_to': '2026-04-30', 'forward': 'No', 'forward_date': '2026-04-30', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2026-04-30 02:13:50] [DEBUG] Config path  = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-04-30 02:13:50] [DEBUG] Report path  = Agent Finder Results\EURUSD_20260430_021350\EURUSD_EURUSD_No_report
+[2026-04-30 02:13:50] [DEBUG] Report Mode  = 4
+[2026-04-30 02:13:50] [DEBUG] Param Files  = 
+[2026-04-30 02:13:50] [DEBUG] Expert       = ExpertMACD.ex5
+[2026-04-30 02:13:50] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2026-04-30 02:13:50] [DEBUG] Symbol       = EURUSD
+[2026-04-30 02:13:50] [DEBUG] Timeframe    = M1
+[2026-04-30 02:13:50] [DEBUG] Model        = None (Every tick)
+[2026-04-30 02:13:50] [DEBUG] Optimization = 0 (Disabled)
+[2026-04-30 02:13:50] [DEBUG] Criterion    = 0 (Balance Max)
+[2026-04-30 02:13:50] [DEBUG] Forward      = 0 (No)
+[2026-04-30 02:13:50] [INFO] INI config file written: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-04-30 02:13:50] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\EURUSD_20260430_021350\EURUSD_EURUSD_No_report
+[2026-04-30 02:13:50] [DEBUG] Using log file: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20260430.log
+[2026-04-30 02:13:50] [DEBUG] Initial log pointer: 3372
+[2026-04-30 02:13:52] [INFO] HQ	0	02:13:52.209	Startup	successfully initialized from start config "C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini"
+
+[2026-04-30 02:13:52] [INFO] OG	0	02:13:52.269	Terminal	MetaTrader 5 x64 build 5574 started for MetaQuotes Ltd.
+
+[2026-04-30 02:13:52] [INFO] KL	0	02:13:52.271	Terminal	Windows 10 build 19045, 4 x Intel Core i5-5200U  @ 2.20GHz, AVX2, 2 / 11 Gb memory, 28 / 118 Gb disk, UAC, GMT+5
+
+[2026-04-30 02:13:52] [INFO] QN	0	02:13:52.271	Terminal	C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+
+[2026-04-30 02:13:52] [INFO] IM	0	02:13:52.271	Terminal	launched with C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+
+[2026-04-30 02:14:00] [INFO] ER	0	02:13:56.644	LiveUpdate	new version build 5836 (IDE: 5836, Tester: 5836) is available
+
+[2026-04-30 02:14:00] [INFO] MM	0	02:13:57.225	Network	'5049909606': authorized on MetaQuotes-Demo through Access Point HA
+
+[2026-04-30 02:14:00] [INFO] FF	0	02:13:57.225	Network	'5049909606': previous successful authorization performed from 175.107.246.85 on 2026.04.30 00:11:52
+
+[2026-04-30 02:14:00] [INFO] KD	0	02:13:58.811	Network	'5049909606': terminal synchronized with MetaQuotes Ltd.: 0 positions, 0 orders, 6053 symbols, 0 spreads
+
+[2026-04-30 02:14:00] [INFO] KJ	0	02:13:58.811	Network	'5049909606': trading has been enabled - hedging mode
+
+[2026-04-30 02:14:01] [INFO] QS	0	02:13:59.568	Tester	automatical testing started
+
+[2026-04-30 02:14:09] [INFO] IE	0	02:14:06.694	Tester	last test passed with result "successfully finished" in 0:00:02.238
+
+[2026-04-30 02:14:09] [INFO] ✅ Success flag set to True based on log line
+[2026-04-30 02:14:11] [INFO] folder_path = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\EURUSD_20260430_021350
+[2026-04-30 02:14:11] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\EURUSD_20260430_021350\EURUSD_EURUSD_No_report
+[2026-04-30 02:14:11] [SUCCESS] ✅ ✅ Test 'EURUSD' completed successfully.
+[2026-04-30 02:14:14] [SUCCESS] ✅ All tests completed.
+[2026-04-30 02:14:47] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2026-04-30 02:14:49] [INFO] Starting queued tests...
+[2026-04-30 02:14:49] [INFO] ▶️ Running test: EURUSD on EURUSD
+[2026-04-30 02:14:49] [INFO] Starting run_strategy...
+[2026-04-30 02:14:49] [INFO] settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last month', 'date_from': '2026-03-30', 'date_to': '2026-04-30', 'forward': 'No', 'forward_date': '2026-04-30', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2026-04-30 02:14:49] [DEBUG] Settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': '', 'symbol_suffix': '', 'date': 'Last month', 'date_from': '2026-03-30', 'date_to': '2026-04-30', 'forward': 'No', 'forward_date': '2026-04-30', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2026-04-30 02:14:49] [DEBUG] Config path  = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-04-30 02:14:49] [DEBUG] Report path  = Agent Finder Results\EURUSD_20260430_021449\EURUSD_EURUSD_No_report
+[2026-04-30 02:14:49] [DEBUG] Report Mode  = 4
+[2026-04-30 02:14:49] [DEBUG] Param Files  = 
+[2026-04-30 02:14:49] [DEBUG] Expert       = ExpertMACD.ex5
+[2026-04-30 02:14:49] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2026-04-30 02:14:49] [DEBUG] Symbol       = EURUSD
+[2026-04-30 02:14:49] [DEBUG] Timeframe    = M1
+[2026-04-30 02:14:49] [DEBUG] Model        = None (Every tick)
+[2026-04-30 02:14:49] [DEBUG] Optimization = 2 (Fast genetic based algorithm)
+[2026-04-30 02:14:49] [DEBUG] Criterion    = 0 (Balance Max)
+[2026-04-30 02:14:49] [DEBUG] Forward      = 0 (No)
+[2026-04-30 02:14:49] [INFO] INI config file written: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-04-30 02:14:49] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\EURUSD_20260430_021449\EURUSD_EURUSD_No_report
+[2026-04-30 02:14:49] [DEBUG] Using log file: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20260430.log
+[2026-04-30 02:14:49] [DEBUG] Initial log pointer: 6446
+[2026-04-30 02:14:51] [INFO] PQ	0	02:14:50.510	Startup	successfully initialized from start config "C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini"
+
+[2026-04-30 02:14:51] [INFO] IG	0	02:14:50.576	Terminal	MetaTrader 5 x64 build 5574 started for MetaQuotes Ltd.
+
+[2026-04-30 02:14:51] [INFO] NL	0	02:14:50.576	Terminal	Windows 10 build 19045, 4 x Intel Core i5-5200U  @ 2.20GHz, AVX2, 2 / 11 Gb memory, 28 / 118 Gb disk, UAC, GMT+5
+
+[2026-04-30 02:14:51] [INFO] LN	0	02:14:50.576	Terminal	C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+
+[2026-04-30 02:14:51] [INFO] PM	0	02:14:50.576	Terminal	launched with C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+
+[2026-04-30 02:14:57] [INFO] JQ	0	02:14:55.117	Network	'5049909606': authorized on MetaQuotes-Demo through Access Point HA
+
+[2026-04-30 02:14:57] [INFO] MM	0	02:14:55.117	Network	'5049909606': previous successful authorization performed from 175.107.246.85 on 2026.04.30 00:13:58
+
+[2026-04-30 02:14:57] [INFO] KO	0	02:14:56.623	Network	'5049909606': terminal synchronized with MetaQuotes Ltd.: 0 positions, 0 orders, 6053 symbols, 0 spreads
+
+[2026-04-30 02:14:57] [INFO] KO	0	02:14:56.623	Network	'5049909606': trading has been enabled - hedging mode
+
+[2026-04-30 02:14:57] [INFO] KI	0	02:14:57.202	Tester	register MQL5.community account and use MQL5 Cloud Network to speed up optimizations
+
+[2026-04-30 02:14:57] [INFO] RD	0	02:14:57.218	Tester	automatical testing started
+
+[2026-04-30 02:15:01] [INFO] folder_path = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\EURUSD_20260430_021449
+[2026-04-30 02:15:01] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\EURUSD_20260430_021449\EURUSD_EURUSD_No_report
+[2026-04-30 02:15:01] [SUCCESS] ✅ ✅ Test 'EURUSD' completed successfully.
+[2026-04-30 02:15:03] [SUCCESS] ✅ All tests completed.
+[2026-04-30 02:15:44] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2026-04-30 02:15:45] [INFO] Loading test parameters for: EURUSD
+[2026-04-30 02:15:45] [DEBUG] Set test_name: EURUSD
+[2026-04-30 02:15:45] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:15:45] [DEBUG] Set param_file: 
+[2026-04-30 02:15:45] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:15:45] [DEBUG] Set timeframe: M1
+[2026-04-30 02:15:45] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:15:45] [DEBUG] Set date: Last month
+[2026-04-30 02:15:45] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:15:45] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:15:45] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:15:45] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:15:45] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:15:45] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:15:45] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-04-30 02:15:47] [SUCCESS] ✅ Deleted item at index 0
+[2026-04-30 02:15:50] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2026-04-30 02:15:51] [INFO] Loading test parameters for: EURUSD
+[2026-04-30 02:15:51] [DEBUG] Set test_name: EURUSD
+[2026-04-30 02:15:51] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:15:51] [DEBUG] Set param_file: 
+[2026-04-30 02:15:51] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:15:51] [DEBUG] Set timeframe: M1
+[2026-04-30 02:15:51] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:15:51] [DEBUG] Set date: Last month
+[2026-04-30 02:15:51] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:15:51] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:15:51] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:15:51] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:15:51] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:15:51] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:15:51] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-04-30 02:15:54] [SUCCESS] ✅ Duplicated item at index 0
+[2026-04-30 02:15:55] [INFO] Loading test parameters for: dup_EURUSD
+[2026-04-30 02:15:55] [INFO] Closest match found: EURUSD
+[2026-04-30 02:15:55] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:15:55] [DEBUG] Set test_name: dup_EURUSD
+[2026-04-30 02:15:55] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:15:55] [DEBUG] Set param_file: 
+[2026-04-30 02:15:55] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:15:55] [DEBUG] Set timeframe: M1
+[2026-04-30 02:15:55] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:15:55] [DEBUG] Set date: Last month
+[2026-04-30 02:15:55] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:15:55] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:15:55] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:15:55] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:15:55] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:15:55] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:15:55] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_EURUSD'
+[2026-04-30 02:15:56] [SUCCESS] ✅ Duplicated item at index 1
+[2026-04-30 02:15:57] [INFO] Loading test parameters for: dup_dup_EURUSD
+[2026-04-30 02:15:57] [INFO] Closest match found: EURUSD
+[2026-04-30 02:15:57] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:15:57] [DEBUG] Set test_name: dup_dup_EURUSD
+[2026-04-30 02:15:57] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:15:57] [DEBUG] Set param_file: 
+[2026-04-30 02:15:57] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:15:57] [DEBUG] Set timeframe: M1
+[2026-04-30 02:15:57] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:15:57] [DEBUG] Set date: Last month
+[2026-04-30 02:15:57] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:15:57] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:15:57] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:15:57] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:15:57] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:15:57] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:15:57] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_dup_EURUSD'
+[2026-04-30 02:15:58] [SUCCESS] ✅ Duplicated item at index 2
+[2026-04-30 02:15:59] [INFO] Loading test parameters for: dup_dup_dup_EURUSD
+[2026-04-30 02:15:59] [INFO] Closest match found: EURUSD
+[2026-04-30 02:15:59] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:15:59] [DEBUG] Set test_name: dup_dup_dup_EURUSD
+[2026-04-30 02:15:59] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:15:59] [DEBUG] Set param_file: 
+[2026-04-30 02:15:59] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:15:59] [DEBUG] Set timeframe: M1
+[2026-04-30 02:15:59] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:15:59] [DEBUG] Set date: Last month
+[2026-04-30 02:15:59] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:15:59] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:15:59] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:15:59] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:15:59] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:15:59] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:15:59] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_dup_dup_EURUSD'
+[2026-04-30 02:16:01] [SUCCESS] ✅ Deleted item at index 3
+[2026-04-30 02:16:03] [INFO] Loading test parameters for: dup_dup_EURUSD
+[2026-04-30 02:16:03] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:03] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:03] [DEBUG] Set test_name: dup_dup_EURUSD
+[2026-04-30 02:16:03] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:03] [DEBUG] Set param_file: 
+[2026-04-30 02:16:03] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:03] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:03] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:03] [DEBUG] Set date: Last month
+[2026-04-30 02:16:03] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:03] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:03] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:03] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:03] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:03] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:03] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_dup_EURUSD'
+[2026-04-30 02:16:05] [SUCCESS] ✅ Moved item at index 1 up
+[2026-04-30 02:16:06] [SUCCESS] ✅ Moved item at index 0 up
+[2026-04-30 02:16:07] [SUCCESS] ✅ Moved item at index 1 down
+[2026-04-30 02:16:08] [SUCCESS] ✅ Moved item at index 2 down
+[2026-04-30 02:16:25] [INFO] Loading test parameters for: dup_EURUSD
+[2026-04-30 02:16:25] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:25] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:25] [DEBUG] Set test_name: dup_EURUSD
+[2026-04-30 02:16:25] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:25] [DEBUG] Set param_file: 
+[2026-04-30 02:16:25] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:25] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:25] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:25] [DEBUG] Set date: Last month
+[2026-04-30 02:16:25] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:25] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:25] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:25] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:25] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:25] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:25] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_EURUSD'
+[2026-04-30 02:16:26] [INFO] Loading test parameters for: EURUSD
+[2026-04-30 02:16:26] [INFO] Exact match found: EURUSD
+[2026-04-30 02:16:26] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set test_name: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:26] [DEBUG] Set param_file: 
+[2026-04-30 02:16:26] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:26] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:26] [DEBUG] Set date: Last month
+[2026-04-30 02:16:26] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:26] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:26] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:26] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:26] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:16:26] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:26] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-04-30 02:16:26] [INFO] Loading test parameters for: dup_EURUSD
+[2026-04-30 02:16:26] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:26] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set test_name: dup_EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:26] [DEBUG] Set param_file: 
+[2026-04-30 02:16:26] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:26] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:26] [DEBUG] Set date: Last month
+[2026-04-30 02:16:26] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:26] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:26] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:26] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:26] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:26] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:26] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_EURUSD'
+[2026-04-30 02:16:26] [INFO] Loading test parameters for: dup_dup_EURUSD
+[2026-04-30 02:16:26] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:26] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set test_name: dup_dup_EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:26] [DEBUG] Set param_file: 
+[2026-04-30 02:16:26] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:26] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:26] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:26] [DEBUG] Set date: Last month
+[2026-04-30 02:16:26] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:26] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:26] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:26] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:26] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:26] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:26] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_dup_EURUSD'
+[2026-04-30 02:16:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:32] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:32] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:34] [INFO] Exact match found: EURUSD
+[2026-04-30 02:16:34] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:35] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:35] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:36] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:36] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:41] [SUCCESS] ✅ Test 'EURUSD_1' added to queue.
+[2026-04-30 02:16:46] [INFO] Loading test parameters for: EURUSD_1
+[2026-04-30 02:16:46] [DEBUG] Set test_name: EURUSD_1
+[2026-04-30 02:16:46] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:46] [DEBUG] Set param_file: 
+[2026-04-30 02:16:46] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:46] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:46] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:46] [DEBUG] Set date: Last month
+[2026-04-30 02:16:46] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:46] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:46] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:46] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:46] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:46] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:46] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD_1'
+[2026-04-30 02:16:47] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:47] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:48] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:48] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:49] [INFO] Loading test parameters for: dup_EURUSD
+[2026-04-30 02:16:49] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:49] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:49] [DEBUG] Set test_name: dup_EURUSD
+[2026-04-30 02:16:49] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:49] [DEBUG] Set param_file: 
+[2026-04-30 02:16:49] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:49] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:49] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:49] [DEBUG] Set date: Last month
+[2026-04-30 02:16:49] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:49] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:49] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:49] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:49] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:49] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:49] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_EURUSD'
+[2026-04-30 02:16:50] [INFO] Loading test parameters for: EURUSD_2
+[2026-04-30 02:16:50] [INFO] Closest match found: EURUSD
+[2026-04-30 02:16:50] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:16:50] [DEBUG] Set test_name: EURUSD_2
+[2026-04-30 02:16:50] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:16:50] [DEBUG] Set param_file: 
+[2026-04-30 02:16:50] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:16:50] [DEBUG] Set timeframe: M1
+[2026-04-30 02:16:50] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:16:50] [DEBUG] Set date: Last month
+[2026-04-30 02:16:50] [DEBUG] Set date_from: 2026-03-30
+[2026-04-30 02:16:50] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:16:50] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:16:50] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:16:50] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:16:50] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-04-30 02:16:50] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD_2'
+[2026-04-30 02:16:52] [SUCCESS] ✅ Moved item at index 2 up
+[2026-04-30 02:27:57] [INFO] ❌ No valid cache found, user not authenticated
+[2026-04-30 02:27:58] [INFO] Valid session found and loaded.
+[2026-04-30 02:27:58] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-04-30 02:27:58] [INFO] Date range option selected: Entire history
+[2026-04-30 02:27:58] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:27:58] [INFO] Adjusting forward date based on selection: No
+[2026-04-30 02:27:58] [DEBUG] Forward date disabled, set to test end date
+[2026-04-30 02:27:59] [INFO] Date range option selected: Entire history
+[2026-04-30 02:27:59] [SUCCESS] ✅ Date range set: 1970-01-01 → Thu Apr 30 2026
+[2026-04-30 02:27:59] [INFO] Set Generator Controller Initialized
+[2026-04-30 02:27:59] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-04-30 02:27:59] [DEBUG] Switching to stack page 0
+[2026-04-30 02:28:00] [INFO] User authenticated via cache
+[2026-04-30 02:28:03] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:28:03] [DEBUG] Switching to stack page 1
+[2026-04-30 02:28:14] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-04-30 02:28:23] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-04-30 02:28:23] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-04-30 02:28:24] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-04-30 02:28:29] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:28:29] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:28:30] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:28:30] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:28:31] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:31] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:32] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:32] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:32] [INFO] Exact match found: EURUSD
+[2026-04-30 02:28:32] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:37] [SUCCESS] ✅ Test 'eurusd' added to queue.
+[2026-04-30 02:28:42] [INFO] Loading test parameters for: eurusd
+[2026-04-30 02:28:42] [DEBUG] Set test_name: eurusd
+[2026-04-30 02:28:42] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:28:42] [DEBUG] Set param_file: 
+[2026-04-30 02:28:42] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:28:42] [DEBUG] Set timeframe: M1
+[2026-04-30 02:28:42] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:28:42] [DEBUG] Set date: Entire history
+[2026-04-30 02:28:42] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:28:42] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:28:42] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:28:42] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:28:42] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:28:42] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:28:42] [SUCCESS] ✅ Successfully loaded parameters for test 'eurusd'
+[2026-04-30 02:28:43] [SUCCESS] ✅ Duplicated item at index 0
+[2026-04-30 02:28:45] [INFO] Loading test parameters for: dup_eurusd
+[2026-04-30 02:28:45] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:45] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:45] [DEBUG] Set test_name: dup_eurusd
+[2026-04-30 02:28:45] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:28:45] [DEBUG] Set param_file: 
+[2026-04-30 02:28:45] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:28:45] [DEBUG] Set timeframe: M1
+[2026-04-30 02:28:45] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:28:45] [DEBUG] Set date: Entire history
+[2026-04-30 02:28:45] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:28:45] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:28:45] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:28:45] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:28:45] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:28:45] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:28:45] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_eurusd'
+[2026-04-30 02:28:46] [INFO] Loading test parameters for: dup_eurusd
+[2026-04-30 02:28:46] [DEBUG] Set test_name: dup_eurusd
+[2026-04-30 02:28:46] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:28:46] [DEBUG] Set param_file: 
+[2026-04-30 02:28:46] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:28:46] [DEBUG] Set timeframe: M1
+[2026-04-30 02:28:46] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:28:46] [DEBUG] Set date: Entire history
+[2026-04-30 02:28:46] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:28:46] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:28:46] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:28:46] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:28:46] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:28:46] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:28:46] [SUCCESS] ✅ Successfully loaded parameters for test 'dup_eurusd'
+[2026-04-30 02:28:49] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:49] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:51] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:51] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:52] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:52] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:52] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:52] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:52] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:52] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:53] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:53] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:53] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:53] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:53] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:53] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:53] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:53] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:54] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:54] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:54] [INFO] Closest match found: EURUSD
+[2026-04-30 02:28:54] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:54] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:28:54] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:28:55] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:28:55] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:28:55] [INFO] Closest match found: XAUEUR
+[2026-04-30 02:28:55] [INFO] Best symbol found: XAUEUR
+[2026-04-30 02:28:55] [INFO] Closest match found: XAUGBP
+[2026-04-30 02:28:55] [INFO] Best symbol found: XAUGBP
+[2026-04-30 02:28:55] [INFO] Closest match found: XAUGBP
+[2026-04-30 02:28:55] [INFO] Best symbol found: XAUGBP
+[2026-04-30 02:28:55] [INFO] Closest match found: NZDUSD
+[2026-04-30 02:28:55] [INFO] Best symbol found: NZDUSD
+[2026-04-30 02:28:59] [INFO] Loading test parameters for: eurusd
+[2026-04-30 02:28:59] [INFO] Exact match found: EURUSD
+[2026-04-30 02:28:59] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:28:59] [DEBUG] Set test_name: eurusd
+[2026-04-30 02:28:59] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:28:59] [DEBUG] Set param_file: 
+[2026-04-30 02:28:59] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:28:59] [DEBUG] Set timeframe: M1
+[2026-04-30 02:28:59] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:28:59] [DEBUG] Set date: Entire history
+[2026-04-30 02:28:59] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:28:59] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:28:59] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:28:59] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:28:59] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-04-30 02:28:59] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:28:59] [SUCCESS] ✅ Successfully loaded parameters for test 'eurusd'
+[2026-04-30 02:28:59] [INFO] Loading test parameters for: 
+[2026-04-30 02:28:59] [DEBUG] Set test_name: 
+[2026-04-30 02:28:59] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:28:59] [DEBUG] Set param_file: 
+[2026-04-30 02:28:59] [DEBUG] Set symbol: NZDUSD
+[2026-04-30 02:28:59] [DEBUG] Set timeframe: M1
+[2026-04-30 02:28:59] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:28:59] [DEBUG] Set date: Entire history
+[2026-04-30 02:28:59] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:28:59] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:28:59] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:28:59] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:28:59] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:28:59] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:28:59] [SUCCESS] ✅ Successfully loaded parameters for test ''
+[2026-04-30 02:29:00] [INFO] Loading test parameters for: 
+[2026-04-30 02:29:00] [DEBUG] Set test_name: 
+[2026-04-30 02:29:00] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:29:00] [DEBUG] Set param_file: 
+[2026-04-30 02:29:00] [DEBUG] Set symbol: NZDUSD
+[2026-04-30 02:29:00] [DEBUG] Set timeframe: M1
+[2026-04-30 02:29:00] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:29:00] [DEBUG] Set date: Entire history
+[2026-04-30 02:29:00] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:29:00] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:29:00] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:29:00] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:29:00] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:29:00] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:29:00] [SUCCESS] ✅ Successfully loaded parameters for test ''
+[2026-04-30 02:32:08] [INFO] Loading test parameters for: 
+[2026-04-30 02:32:08] [DEBUG] Set test_name: 
+[2026-04-30 02:32:08] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:32:08] [DEBUG] Set param_file: 
+[2026-04-30 02:32:08] [DEBUG] Set symbol: NZDUSD
+[2026-04-30 02:32:08] [DEBUG] Set timeframe: M1
+[2026-04-30 02:32:08] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:32:08] [DEBUG] Set date: Entire history
+[2026-04-30 02:32:08] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:32:08] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:32:08] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:32:08] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:32:08] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:32:08] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:32:08] [SUCCESS] ✅ Successfully loaded parameters for test ''
+[2026-04-30 02:32:08] [INFO] Loading test parameters for: eurusd
+[2026-04-30 02:32:08] [INFO] Exact match found: EURUSD
+[2026-04-30 02:32:08] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:32:08] [DEBUG] Set test_name: eurusd
+[2026-04-30 02:32:08] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:32:08] [DEBUG] Set param_file: 
+[2026-04-30 02:32:08] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:32:08] [DEBUG] Set timeframe: M1
+[2026-04-30 02:32:08] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:32:08] [DEBUG] Set date: Entire history
+[2026-04-30 02:32:08] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:32:08] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:32:08] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:32:08] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:32:08] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:32:08] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:32:08] [SUCCESS] ✅ Successfully loaded parameters for test 'eurusd'
+[2026-04-30 02:32:09] [INFO] Loading test parameters for: 
+[2026-04-30 02:32:09] [DEBUG] Set test_name: 
+[2026-04-30 02:32:09] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:32:09] [DEBUG] Set param_file: 
+[2026-04-30 02:32:09] [DEBUG] Set symbol: NZDUSD
+[2026-04-30 02:32:09] [DEBUG] Set timeframe: M1
+[2026-04-30 02:32:09] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:32:09] [DEBUG] Set date: Entire history
+[2026-04-30 02:32:09] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:32:09] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:32:09] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:32:09] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:32:09] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:32:09] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:32:09] [SUCCESS] ✅ Successfully loaded parameters for test ''
+[2026-04-30 02:32:13] [INFO] Closest match found: GBPCHF
+[2026-04-30 02:32:13] [INFO] Best symbol found: GBPCHF
+[2026-04-30 02:32:13] [INFO] Closest match found: GBPCHF
+[2026-04-30 02:32:13] [INFO] Best symbol found: GBPCHF
+[2026-04-30 02:32:14] [INFO] Closest match found: GBPCHF
+[2026-04-30 02:32:14] [INFO] Best symbol found: GBPCHF
+[2026-04-30 02:32:15] [INFO] Closest match found: GBPCHF
+[2026-04-30 02:32:15] [INFO] Best symbol found: GBPCHF
+[2026-04-30 02:32:15] [INFO] Closest match found: GBPCHF
+[2026-04-30 02:32:15] [INFO] Best symbol found: GBPCHF
+[2026-04-30 02:32:18] [INFO] Loading test parameters for: eurusd
+[2026-04-30 02:32:18] [INFO] Exact match found: EURUSD
+[2026-04-30 02:32:18] [INFO] Best symbol found: EURUSD
+[2026-04-30 02:32:18] [DEBUG] Set test_name: eurusd
+[2026-04-30 02:32:18] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:32:18] [DEBUG] Set param_file: 
+[2026-04-30 02:32:18] [DEBUG] Set symbol: EURUSD
+[2026-04-30 02:32:18] [DEBUG] Set timeframe: M1
+[2026-04-30 02:32:18] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:32:18] [DEBUG] Set date: Entire history
+[2026-04-30 02:32:18] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:32:18] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:32:18] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:32:18] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:32:18] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:32:18] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:32:18] [SUCCESS] ✅ Successfully loaded parameters for test 'eurusd'
+[2026-04-30 02:32:18] [INFO] Loading test parameters for: fgfgffgf
+[2026-04-30 02:32:18] [DEBUG] Set test_name: fgfgffgf
+[2026-04-30 02:32:18] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:32:18] [DEBUG] Set param_file: 
+[2026-04-30 02:32:18] [DEBUG] Set symbol: GBPCHF
+[2026-04-30 02:32:18] [DEBUG] Set timeframe: M1
+[2026-04-30 02:32:18] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:32:18] [DEBUG] Set date: Entire history
+[2026-04-30 02:32:18] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:32:18] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:32:18] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:32:18] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:32:18] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:32:18] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:32:18] [SUCCESS] ✅ Successfully loaded parameters for test 'fgfgffgf'
+[2026-04-30 02:32:20] [INFO] Loading test parameters for: fgfgffgf
+[2026-04-30 02:32:20] [DEBUG] Set test_name: fgfgffgf
+[2026-04-30 02:32:20] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-04-30 02:32:20] [DEBUG] Set param_file: 
+[2026-04-30 02:32:20] [DEBUG] Set symbol: GBPCHF
+[2026-04-30 02:32:20] [DEBUG] Set timeframe: M1
+[2026-04-30 02:32:20] [DEBUG] Set symbol prefix/suffix: /
+[2026-04-30 02:32:20] [DEBUG] Set date: Entire history
+[2026-04-30 02:32:20] [DEBUG] Set date_from: 1970-01-01
+[2026-04-30 02:32:20] [DEBUG] Set date_to: 2026-04-30
+[2026-04-30 02:32:20] [DEBUG] Set forward_date: 2026-04-30
+[2026-04-30 02:32:20] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-04-30 02:32:20] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-04-30 02:32:20] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-04-30 02:32:20] [SUCCESS] ✅ Successfully loaded parameters for test 'fgfgffgf'
+[2026-04-30 02:32:22] [SUCCESS] ✅ Deleted item at index 1
+[2026-04-30 02:34:49] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-04-30 02:34:49] [DEBUG] Switching to stack page 2
+[2026-04-30 02:34:49] [INFO] Set Finder page opened, updating report data if available
+[2026-04-30 02:34:49] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-04-30 02:34:50] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-04-30 02:34:50] [DEBUG] Switching to stack page 3
+[2026-04-30 02:34:50] [INFO] Set Generator page opened, updating report data if available
+[2026-04-30 02:34:50] [WARNING] No report files found — clearing UI
+[2026-04-30 02:34:50] [INFO] ⚠️ No data to display.
+[2026-04-30 02:34:50] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-04-30 02:34:50] [INFO] Pairs box + table cleared due to no report files.
+[2026-04-30 02:34:53] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:34:53] [DEBUG] Switching to stack page 1
+[2026-04-30 02:34:54] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2026-04-30 02:34:54] [DEBUG] Switching to stack page 0
+[2026-04-30 02:34:54] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:34:54] [DEBUG] Switching to stack page 1
+[2026-04-30 02:34:55] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2026-04-30 02:34:55] [DEBUG] Switching to stack page 0
+[2026-04-30 02:34:56] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:34:56] [DEBUG] Switching to stack page 1
+[2026-04-30 02:34:56] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2026-04-30 02:34:56] [DEBUG] Switching to stack page 0
+[2026-04-30 02:34:57] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:34:57] [DEBUG] Switching to stack page 1
+[2026-04-30 02:34:57] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-04-30 02:34:57] [DEBUG] Switching to stack page 2
+[2026-04-30 02:34:57] [INFO] Set Finder page opened, updating report data if available
+[2026-04-30 02:34:57] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-04-30 02:34:58] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-04-30 02:34:58] [DEBUG] Switching to stack page 3
+[2026-04-30 02:34:58] [INFO] Set Generator page opened, updating report data if available
+[2026-04-30 02:34:58] [WARNING] No report files found — clearing UI
+[2026-04-30 02:34:58] [INFO] ⚠️ No data to display.
+[2026-04-30 02:34:58] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-04-30 02:34:58] [INFO] Pairs box + table cleared due to no report files.
+[2026-04-30 02:34:58] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-04-30 02:34:58] [DEBUG] Switching to stack page 4
+[2026-04-30 02:34:58] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-04-30 02:34:58] [DEBUG] Switching to stack page 3
+[2026-04-30 02:34:58] [INFO] Set Generator page opened, updating report data if available
+[2026-04-30 02:34:58] [WARNING] No report files found — clearing UI
+[2026-04-30 02:34:58] [INFO] ⚠️ No data to display.
+[2026-04-30 02:34:58] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-04-30 02:34:58] [INFO] Pairs box + table cleared due to no report files.
+[2026-04-30 02:34:59] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-04-30 02:34:59] [DEBUG] Switching to stack page 2
+[2026-04-30 02:34:59] [INFO] Set Finder page opened, updating report data if available
+[2026-04-30 02:34:59] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-04-30 02:34:59] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:34:59] [DEBUG] Switching to stack page 1
+[2026-04-30 02:35:00] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2026-04-30 02:35:00] [DEBUG] Switching to stack page 0
+[2026-04-30 02:35:02] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-04-30 02:35:02] [DEBUG] Switching to stack page 4
+[2026-04-30 02:35:16] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:35:16] [DEBUG] Switching to stack page 1
+[2026-04-30 02:35:16] [DEBUG] Attempting to switch to page index: 0, Authenticated: True
+[2026-04-30 02:35:16] [DEBUG] Switching to stack page 0
+[2026-04-30 02:35:17] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-04-30 02:35:17] [DEBUG] Switching to stack page 1

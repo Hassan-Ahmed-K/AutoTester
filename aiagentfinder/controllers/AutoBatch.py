@@ -724,6 +724,7 @@ class AutoBatchController:
     
     def update_clean_symbol(self):
         raw = self.ui.testfile_input.text().strip()
+        self.queue.refresh_queue()
         print("raw = ", raw)
         best = self.get_best_symbol(raw)
         if best:
