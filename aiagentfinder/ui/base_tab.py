@@ -141,17 +141,6 @@ class BaseTab(QWidget):
         # horizontal: keep it off (vertical only)
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
-
-    # def load_stylesheet(self):
-    #     base_dir = os.path.dirname(os.path.dirname(__file__))  
-    #     qss_path = os.path.join(base_dir, "style", "style.qss")
-    #     if os.path.exists(qss_path):
-    #         with open(qss_path, "r") as f:
-    #             self.setStyleSheet(f.read())
-    #     else:
-    #         print(f"⚠️ QSS file not found at {qss_path}")
-
-
     def load_stylesheet(self):
         # Handle both normal and PyInstaller runtime
         try:

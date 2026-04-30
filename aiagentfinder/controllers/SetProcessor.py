@@ -75,7 +75,7 @@ class SetProcessorController:
    
         def task(data_folder):
             paths_to_check = [
-                os.path.join(data_folder, "MQL5", "Profiles", "Tester"), # fallback
+                os.path.join(self.main_window.data_folder, "MQL5", "Profiles", "Tester"), # fallback
             ]
 
             for path in paths_to_check:
@@ -100,7 +100,7 @@ class SetProcessorController:
             dialog.setFileMode(QFileDialog.Directory)  # select folder
             dialog.setOption(QFileDialog.ShowDirsOnly, False)  # show files too
             dialog.setNameFilter("SET Files (*.set);;All Files (*)")
-            dialog.setDirectory(self.main_window.base_process_folder)
+            dialog.setDirectory(self.main_window.data_folder)
 
 
 
@@ -145,7 +145,7 @@ class SetProcessorController:
 
     def browse_mt5_dir(self):
         file_path, _ = QFileDialog.getOpenFileName(
-            self.ui, "Select MT5 Terminal", "", "Executable Files (*.exe)"
+            self.ui, "Select MT5 Terminal", self.main_window.mt5_dir, "Executable Files (*.exe)"
         )
         if not file_path:
             return

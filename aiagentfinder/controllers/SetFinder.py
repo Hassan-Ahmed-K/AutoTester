@@ -19,6 +19,7 @@ class SetFinderController:
         self.ui.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)
         self.ui.start_button.clicked.connect(self.read_all_xml_tables)
         self.ui.reset_button.clicked.connect(self.reset_all_fields)
+        
 
     def on_toggle_trade_filter(self, state):
         """Show/hide inputs based on toggle state."""
@@ -42,11 +43,14 @@ class SetFinderController:
         self.main_window.base_process_folder = QFileDialog.getExistingDirectory(
             self.ui,
             "Select Report Directory",
-            os.getcwd()
+            self.main_window.data_folder
         )
 
         if not self.main_window.base_process_folder:
             return
+
+        # self.ui.report_dir_input.setText(self.main_window.base_process_folder)
+        self.main_window.data_folder = self.main_window.base_process_folder
 
         # self.main_window.base_process_folder = dir_path
 

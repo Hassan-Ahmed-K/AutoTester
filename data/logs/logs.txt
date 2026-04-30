@@ -1208,3 +1208,880 @@
 [2026-04-30 02:35:16] [DEBUG] Switching to stack page 0
 [2026-04-30 02:35:17] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
 [2026-04-30 02:35:17] [DEBUG] Switching to stack page 1
+[2026-05-01 00:13:23] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 00:13:25] [INFO] Valid session found and loaded.
+[2026-05-01 00:13:25] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 00:13:26] [INFO] Date range option selected: Entire history
+[2026-05-01 00:13:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:13:26] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 00:13:26] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 00:13:26] [INFO] Date range option selected: Entire history
+[2026-05-01 00:13:26] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:13:26] [INFO] Set Generator Controller Initialized
+[2026-05-01 00:13:27] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 00:13:27] [DEBUG] Switching to stack page 0
+[2026-05-01 00:13:27] [INFO] User authenticated via cache
+[2026-05-01 00:13:33] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 00:13:33] [DEBUG] Switching to stack page 1
+[2026-05-01 00:13:34] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 00:13:34] [DEBUG] Switching to stack page 2
+[2026-05-01 00:13:34] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 00:13:34] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 00:13:35] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 00:13:35] [DEBUG] Switching to stack page 1
+[2026-05-01 00:13:45] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 00:14:00] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 00:14:00] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 00:14:01] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 00:14:15] [INFO] Closest match found: TECHDE30
+[2026-05-01 00:14:15] [INFO] Best symbol found: TECHDE30
+[2026-05-01 00:14:15] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:15] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:16] [INFO] Closest match found: TECHDE30
+[2026-05-01 00:14:16] [INFO] Best symbol found: TECHDE30
+[2026-05-01 00:14:19] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:19] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:22] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:14:22] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:14:23] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:14:23] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:14:24] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:24] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:24] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:24] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:25] [INFO] Exact match found: EURUSD
+[2026-05-01 00:14:25] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:28] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:28] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:29] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:29] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:29] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:29] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:30] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:30] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:30] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:30] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:36] [INFO] Date range option selected: Last 3 months
+[2026-05-01 00:14:36] [SUCCESS] ✅ Date range set: Sun Feb 1 2026 → Fri May 1 2026
+[2026-05-01 00:14:36] [INFO] Adjusting forward date based on selection: Last 3 months
+[2026-05-01 00:14:36] [WARNING] Unknown forward date option: Last 3 months
+[2026-05-01 00:14:43] [SUCCESS] ✅ Test 'EURUSD_TEST' added to queue.
+[2026-05-01 00:14:45] [INFO] Loading test parameters for: EURUSD_TEST
+[2026-05-01 00:14:45] [DEBUG] Set test_name: EURUSD_TEST
+[2026-05-01 00:14:45] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-05-01 00:14:45] [DEBUG] Set param_file: 
+[2026-05-01 00:14:45] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:14:45] [DEBUG] Set timeframe: M1
+[2026-05-01 00:14:45] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:14:45] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:14:45] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:14:45] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:14:45] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:14:45] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:14:45] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-05-01 00:14:45] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:14:45] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD_TEST'
+[2026-05-01 00:14:53] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Exact match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Closest match found: EURUSD
+[2026-05-01 00:14:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:14:53] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:14:53] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:14:53] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:14:53] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:14:54] [INFO] Closest match found: XAUG
+[2026-05-01 00:14:54] [INFO] Best symbol found: XAUG
+[2026-05-01 00:14:54] [INFO] Closest match found: XAUG
+[2026-05-01 00:14:54] [INFO] Best symbol found: XAUG
+[2026-05-01 00:14:55] [INFO] Closest match found: XAUUSD
+[2026-05-01 00:14:55] [INFO] Best symbol found: XAUUSD
+[2026-05-01 00:14:57] [INFO] Closest match found: AUDUSD
+[2026-05-01 00:14:57] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:14:58] [INFO] Closest match found: AUDUSD
+[2026-05-01 00:14:58] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:14:58] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:14:58] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:15:12] [SUCCESS] ✅ Test 'AUDUSD' added to queue.
+[2026-05-01 00:15:14] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:15:14] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:15:14] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:15:14] [DEBUG] Set param_file: 
+[2026-05-01 00:15:14] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:15:14] [DEBUG] Set timeframe: M1
+[2026-05-01 00:15:14] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:15:14] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:15:14] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:15:14] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:15:14] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:15:14] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:15:14] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-05-01 00:15:14] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:15:14] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:15:15] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:15:15] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:15:15] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:15:15] [DEBUG] Set param_file: 
+[2026-05-01 00:15:15] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:15:15] [DEBUG] Set timeframe: M1
+[2026-05-01 00:15:15] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:15:15] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:15:15] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:15:15] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:15:15] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:15:15] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:15:15] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:15:15] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:15:15] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:15:31] [INFO] Closest match found: AUDUSD
+[2026-05-01 00:15:31] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:15:31] [INFO] Closest match found: AUDUSD
+[2026-05-01 00:15:31] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:15:31] [INFO] Closest match found: XAUUSD
+[2026-05-01 00:15:31] [INFO] Best symbol found: XAUUSD
+[2026-05-01 00:15:31] [INFO] Closest match found: XAUG
+[2026-05-01 00:15:31] [INFO] Best symbol found: XAUG
+[2026-05-01 00:15:31] [INFO] Closest match found: XAUG
+[2026-05-01 00:15:31] [INFO] Best symbol found: XAUG
+[2026-05-01 00:15:32] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:15:32] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:15:33] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:15:33] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:15:34] [INFO] Closest match found: EURUSD
+[2026-05-01 00:15:34] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:15:34] [INFO] Closest match found: EURUSD
+[2026-05-01 00:15:34] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:15:34] [INFO] Exact match found: EURUSD
+[2026-05-01 00:15:34] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:15:52] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:15:52] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:15:52] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:15:52] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:15:52] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:15:52] [DEBUG] Set param_file: 
+[2026-05-01 00:15:52] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:15:52] [DEBUG] Set timeframe: M1
+[2026-05-01 00:15:52] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:15:52] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:15:52] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:15:52] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:15:52] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:15:53] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:15:53] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-05-01 00:15:53] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:15:53] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:15:53] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:15:53] [INFO] Exact match found: EURUSD
+[2026-05-01 00:15:53] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:15:53] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:15:53] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:15:53] [DEBUG] Set param_file: 
+[2026-05-01 00:15:53] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:15:53] [DEBUG] Set timeframe: M1
+[2026-05-01 00:15:53] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:15:53] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:15:53] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:15:53] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:15:53] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:15:53] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:15:53] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:15:53] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:15:53] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:15:54] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:15:54] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:15:54] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:15:54] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:15:54] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:15:54] [DEBUG] Set param_file: 
+[2026-05-01 00:15:54] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:15:54] [DEBUG] Set timeframe: M1
+[2026-05-01 00:15:54] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:15:54] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:15:54] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:15:54] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:15:54] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:15:54] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:15:54] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:15:54] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:15:54] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:16:59] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:16:59] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:16:59] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:16:59] [DEBUG] Set param_file: 
+[2026-05-01 00:16:59] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:16:59] [DEBUG] Set timeframe: M1
+[2026-05-01 00:16:59] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:16:59] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:16:59] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:16:59] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:16:59] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:16:59] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:16:59] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:16:59] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:16:59] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:17:00] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:17:00] [INFO] Exact match found: EURUSD
+[2026-05-01 00:17:00] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:17:00] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:17:00] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:17:00] [DEBUG] Set param_file: 
+[2026-05-01 00:17:00] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:17:00] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:00] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:17:00] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:00] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:00] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:00] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:00] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:00] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:00] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:00] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:17:02] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:17:02] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:17:02] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:17:02] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:17:02] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:17:02] [DEBUG] Set param_file: 
+[2026-05-01 00:17:02] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:17:02] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:02] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:17:02] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:02] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:02] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:02] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:02] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:02] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:02] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:02] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:17:03] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:17:03] [INFO] Exact match found: EURUSD
+[2026-05-01 00:17:03] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:17:03] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:17:03] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:17:03] [DEBUG] Set param_file: 
+[2026-05-01 00:17:03] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:17:03] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:03] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:17:03] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:03] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:03] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:03] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:03] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:03] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:03] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:03] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:17:04] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:17:04] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:17:04] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:17:04] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:17:04] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:17:04] [DEBUG] Set param_file: 
+[2026-05-01 00:17:04] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:17:04] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:04] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:17:04] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:04] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:04] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:04] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:04] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:04] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:04] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:04] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:17:27] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:17:27] [INFO] Exact match found: EURUSD
+[2026-05-01 00:17:27] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:17:27] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:17:27] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:17:27] [DEBUG] Set param_file: 
+[2026-05-01 00:17:27] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:17:27] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:27] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:17:27] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:27] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:27] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:27] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:27] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:27] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:27] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:27] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:17:29] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:17:29] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:17:29] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:17:29] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:17:29] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:17:29] [DEBUG] Set param_file: 
+[2026-05-01 00:17:29] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:17:29] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:29] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:17:29] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:29] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:29] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:29] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:29] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:29] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:29] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:29] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:17:36] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:17:36] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:17:36] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:17:36] [DEBUG] Set param_file: 
+[2026-05-01 00:17:36] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:17:36] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:36] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:17:36] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:36] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:36] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:36] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:36] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:36] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:36] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:36] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:17:39] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:17:39] [INFO] Exact match found: EURUSD
+[2026-05-01 00:17:39] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:17:39] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:17:39] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:17:39] [DEBUG] Set param_file: 
+[2026-05-01 00:17:39] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:17:39] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:39] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:17:39] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:39] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:39] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:39] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:39] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:39] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:39] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:39] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:17:40] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:17:40] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:17:40] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:17:40] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:17:40] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:17:40] [DEBUG] Set param_file: 
+[2026-05-01 00:17:40] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:17:40] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:40] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:17:40] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:40] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:40] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:40] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:40] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:40] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:40] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:40] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:17:42] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:17:42] [INFO] Exact match found: EURUSD
+[2026-05-01 00:17:42] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:17:42] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:17:42] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:17:42] [DEBUG] Set param_file: 
+[2026-05-01 00:17:42] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:17:42] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:42] [DEBUG] Set symbol prefix/suffix: /
+[2026-05-01 00:17:42] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:42] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:42] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:42] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:42] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:42] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:42] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:42] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:17:59] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:17:59] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:17:59] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:17:59] [DEBUG] Set param_file: 
+[2026-05-01 00:17:59] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:17:59] [DEBUG] Set timeframe: M1
+[2026-05-01 00:17:59] [DEBUG] Set symbol prefix/suffix: e/n
+[2026-05-01 00:17:59] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:17:59] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:17:59] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:17:59] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:17:59] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:17:59] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:17:59] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:17:59] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:18:00] [INFO] Loading test parameters for: AUDUSD
+[2026-05-01 00:18:00] [INFO] Exact match found: AUDUSD
+[2026-05-01 00:18:00] [INFO] Best symbol found: AUDUSD
+[2026-05-01 00:18:00] [DEBUG] Set test_name: AUDUSD
+[2026-05-01 00:18:00] [DEBUG] Set expert: ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:18:00] [DEBUG] Set param_file: 
+[2026-05-01 00:18:00] [DEBUG] Set symbol: AUDUSD
+[2026-05-01 00:18:00] [DEBUG] Set timeframe: M1
+[2026-05-01 00:18:00] [DEBUG] Set symbol prefix/suffix: P/A
+[2026-05-01 00:18:00] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:18:00] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:18:00] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:18:00] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:18:00] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:18:00] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:18:00] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:18:00] [SUCCESS] ✅ Successfully loaded parameters for test 'AUDUSD'
+[2026-05-01 00:18:01] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:18:01] [INFO] Exact match found: EURUSD
+[2026-05-01 00:18:01] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:18:01] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:18:01] [DEBUG] Set expert: Correlation Matrix 3D.ex5
+[2026-05-01 00:18:01] [DEBUG] Set param_file: 
+[2026-05-01 00:18:01] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:18:01] [DEBUG] Set timeframe: M1
+[2026-05-01 00:18:01] [DEBUG] Set symbol prefix/suffix: e/n
+[2026-05-01 00:18:01] [DEBUG] Set date: Last 3 months
+[2026-05-01 00:18:01] [DEBUG] Set date_from: 2026-02-01
+[2026-05-01 00:18:01] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:18:01] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:18:01] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:18:01] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.0
+[2026-05-01 00:18:01] [DEBUG] Set optimization: Fast genetic based algorithm, criterion: Balance Max
+[2026-05-01 00:18:01] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:18:07] [INFO] Starting queued tests...
+[2026-05-01 00:18:07] [INFO] ▶️ Running test: EURUSD on EURUSD
+[2026-05-01 00:18:07] [INFO] Starting run_strategy...
+[2026-05-01 00:18:07] [INFO] settings: {'test_name': 'EURUSD', 'expert': 'Correlation Matrix 3D.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': 'e', 'symbol_suffix': 'n', 'date': 'Last 3 months', 'date_from': '2026-02-01', 'date_to': '2026-05-01', 'forward': 'No', 'forward_date': '2026-05-01', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': 100.0, 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2026-05-01 00:18:07] [DEBUG] Settings: {'test_name': 'EURUSD', 'expert': 'Correlation Matrix 3D.ex5', 'param_file': '', 'symbol': 'EURUSD', 'timeframe': 'M1', 'symbol_prefix': 'e', 'symbol_suffix': 'n', 'date': 'Last 3 months', 'date_from': '2026-02-01', 'date_to': '2026-05-01', 'forward': 'No', 'forward_date': '2026-05-01', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': 100.0, 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2026-05-01 00:18:07] [DEBUG] Config path  = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-05-01 00:18:08] [DEBUG] Report path  = Agent Finder Results\EURUSD_20260501_001807\EURUSD_EURUSD_No_report
+[2026-05-01 00:18:08] [DEBUG] Report Mode  = 4
+[2026-05-01 00:18:08] [DEBUG] Param Files  = 
+[2026-05-01 00:18:08] [DEBUG] Expert       = Correlation Matrix 3D.ex5
+[2026-05-01 00:18:08] [DEBUG] Expert Path  = Correlation Matrix 3D\Correlation Matrix 3D.ex5
+[2026-05-01 00:18:08] [DEBUG] Symbol       = EURUSD
+[2026-05-01 00:18:08] [DEBUG] Timeframe    = M1
+[2026-05-01 00:18:08] [DEBUG] Model        = None (Every tick)
+[2026-05-01 00:18:08] [DEBUG] Optimization = 2 (Fast genetic based algorithm)
+[2026-05-01 00:18:08] [DEBUG] Criterion    = 0 (Balance Max)
+[2026-05-01 00:18:08] [DEBUG] Forward      = 0 (No)
+[2026-05-01 00:18:08] [INFO] INI config file written: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-05-01 00:18:08] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\EURUSD_20260501_001807\EURUSD_EURUSD_No_report
+[2026-05-01 00:18:08] [DEBUG] Using log file: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20260501.log
+[2026-05-01 00:18:08] [DEBUG] Initial log pointer: 1116
+[2026-05-01 00:18:11] [INFO] ON	0	00:18:10.872	Startup	successfully initialized from start config "C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini"
+
+[2026-05-01 00:18:11] [INFO] PD	0	00:18:11.057	Terminal	MetaTrader 5 x64 build 5574 started for MetaQuotes Ltd.
+
+[2026-05-01 00:18:11] [INFO] RQ	0	00:18:11.057	Terminal	Windows 10 build 19045, 4 x Intel Core i5-5200U  @ 2.20GHz, AVX2, 3 / 11 Gb memory, 26 / 118 Gb disk, UAC, GMT+5
+
+[2026-05-01 00:18:11] [INFO] IM	0	00:18:11.057	Terminal	C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+
+[2026-05-01 00:18:11] [INFO] QR	0	00:18:11.057	Terminal	launched with C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+
+[2026-05-01 00:18:19] [INFO] OQ	2	00:18:15.731	Tester	Experts\Correlation Matrix 3D\Correlation Matrix 3D.ex5 not found
+
+[2026-05-01 00:18:19] [INFO] OS	2	00:18:15.731	Terminal	tester didn't start
+
+[2026-05-01 00:18:19] [INFO] ED	0	00:18:16.670	Network	'5049909606': authorized on MetaQuotes-Demo through Access Point HA
+
+[2026-05-01 00:18:19] [INFO] OQ	0	00:18:16.670	Network	'5049909606': previous successful authorization performed from 175.107.246.85 on 2026.04.30 22:13:57
+
+[2026-05-01 00:18:19] [INFO] RS	0	00:18:18.727	Network	'5049909606': terminal synchronized with MetaQuotes Ltd.: 0 positions, 0 orders, 6053 symbols, 0 spreads
+
+[2026-05-01 00:18:19] [INFO] RS	0	00:18:18.727	Network	'5049909606': trading has been enabled - hedging mode
+
+[2026-05-01 00:18:21] [INFO] folder_path = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\EURUSD_20260501_001807
+[2026-05-01 00:18:21] [ERROR] ❌ Report not found.
+[2026-05-01 00:18:21] [SUCCESS] ✅ ✅ Test 'EURUSD' completed successfully.
+[2026-05-01 00:18:21] [INFO] ▶️ Running test: AUDUSD on AUDUSD
+[2026-05-01 00:18:21] [INFO] Starting run_strategy...
+[2026-05-01 00:18:21] [INFO] settings: {'test_name': 'AUDUSD', 'expert': 'ExpertMAPSARSizeOptimized.ex5', 'param_file': '', 'symbol': 'AUDUSD', 'timeframe': 'M1', 'symbol_prefix': 'P', 'symbol_suffix': 'A', 'date': 'Last 3 months', 'date_from': '2026-02-01', 'date_to': '2026-05-01', 'forward': 'No', 'forward_date': '2026-05-01', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': 100.0, 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2026-05-01 00:18:21] [DEBUG] Settings: {'test_name': 'AUDUSD', 'expert': 'ExpertMAPSARSizeOptimized.ex5', 'param_file': '', 'symbol': 'AUDUSD', 'timeframe': 'M1', 'symbol_prefix': 'P', 'symbol_suffix': 'A', 'date': 'Last 3 months', 'date_from': '2026-02-01', 'date_to': '2026-05-01', 'forward': 'No', 'forward_date': '2026-05-01', 'delay_mode': 'Zero latency, ideal execution', 'delay': 0, 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': 100.0, 'optimization': 'Fast genetic based algorithm', 'criterion': 'Balance Max'}
+[2026-05-01 00:18:21] [DEBUG] Config path  = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\AUDUSD_XML.ini
+[2026-05-01 00:18:21] [DEBUG] Report path  = Agent Finder Results\AUDUSD_20260501_001821\AUDUSD_AUDUSD_No_report
+[2026-05-01 00:18:21] [DEBUG] Report Mode  = 4
+[2026-05-01 00:18:21] [DEBUG] Param Files  = 
+[2026-05-01 00:18:21] [DEBUG] Expert       = ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:18:21] [DEBUG] Expert Path  = Advisors\ExpertMAPSARSizeOptimized.ex5
+[2026-05-01 00:18:21] [DEBUG] Symbol       = AUDUSD
+[2026-05-01 00:18:21] [DEBUG] Timeframe    = M1
+[2026-05-01 00:18:21] [DEBUG] Model        = None (Every tick)
+[2026-05-01 00:18:21] [DEBUG] Optimization = 2 (Fast genetic based algorithm)
+[2026-05-01 00:18:21] [DEBUG] Criterion    = 0 (Balance Max)
+[2026-05-01 00:18:21] [DEBUG] Forward      = 0 (No)
+[2026-05-01 00:18:21] [INFO] INI config file written: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\AUDUSD_XML.ini
+[2026-05-01 00:18:21] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\AUDUSD_20260501_001821\AUDUSD_AUDUSD_No_report
+[2026-05-01 00:18:21] [DEBUG] Using log file: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20260501.log
+[2026-05-01 00:18:21] [DEBUG] Initial log pointer: 4076
+[2026-05-01 00:18:24] [INFO] ID	0	00:18:23.665	Startup	successfully initialized from start config "C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\AUDUSD_XML.ini"
+
+[2026-05-01 00:18:24] [INFO] OS	0	00:18:23.750	Terminal	MetaTrader 5 x64 build 5574 started for MetaQuotes Ltd.
+
+[2026-05-01 00:18:24] [INFO] RH	0	00:18:23.751	Terminal	Windows 10 build 19045, 4 x Intel Core i5-5200U  @ 2.20GHz, AVX2, 3 / 11 Gb memory, 26 / 118 Gb disk, UAC, GMT+5
+
+[2026-05-01 00:18:24] [INFO] IR	0	00:18:23.751	Terminal	C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+
+[2026-05-01 00:18:24] [INFO] OH	0	00:18:23.751	Terminal	launched with C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\AUDUSD_XML.ini
+
+[2026-05-01 00:18:32] [INFO] RM	0	00:18:29.109	Network	'5049909606': authorized on MetaQuotes-Demo through Access Point HA
+
+[2026-05-01 00:18:32] [INFO] RI	0	00:18:29.109	Network	'5049909606': previous successful authorization performed from 175.107.246.85 on 2026.04.30 22:18:16
+
+[2026-05-01 00:18:32] [INFO] FK	0	00:18:30.941	Network	'5049909606': terminal synchronized with MetaQuotes Ltd.: 0 positions, 0 orders, 6053 symbols, 0 spreads
+
+[2026-05-01 00:18:32] [INFO] FJ	0	00:18:30.941	Network	'5049909606': trading has been enabled - hedging mode
+
+[2026-05-01 00:18:32] [INFO] DM	0	00:18:31.702	Tester	register MQL5.community account and use MQL5 Cloud Network to speed up optimizations
+
+[2026-05-01 00:18:32] [INFO] FQ	0	00:18:31.722	Tester	automatical testing started
+
+[2026-05-01 00:18:36] [INFO] folder_path = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\AUDUSD_20260501_001821
+[2026-05-01 00:18:36] [SUCCESS] ✅ ✅ Test completed. Report saved at Agent Finder Results\AUDUSD_20260501_001821\AUDUSD_AUDUSD_No_report
+[2026-05-01 00:18:36] [SUCCESS] ✅ ✅ Test 'AUDUSD' completed successfully.
+[2026-05-01 00:18:38] [SUCCESS] ✅ All tests completed.
+[2026-05-01 00:28:31] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 00:28:32] [INFO] Valid session found and loaded.
+[2026-05-01 00:28:32] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 00:28:32] [INFO] Date range option selected: Entire history
+[2026-05-01 00:28:32] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:28:32] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 00:28:32] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 00:28:32] [INFO] Date range option selected: Entire history
+[2026-05-01 00:28:32] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:28:33] [INFO] Set Generator Controller Initialized
+[2026-05-01 00:28:33] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 00:28:33] [DEBUG] Switching to stack page 0
+[2026-05-01 00:28:33] [INFO] User authenticated via cache
+[2026-05-01 00:29:15] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 00:29:15] [DEBUG] Switching to stack page 1
+[2026-05-01 00:29:28] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 00:29:39] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 00:29:39] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 00:29:39] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 00:29:46] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:29:46] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:29:47] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:29:47] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:29:48] [INFO] Closest match found: EURUSD
+[2026-05-01 00:29:48] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:29:48] [INFO] Closest match found: EURUSD
+[2026-05-01 00:29:48] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:29:48] [INFO] Exact match found: EURUSD
+[2026-05-01 00:29:48] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:30:26] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2026-05-01 00:30:28] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:30:28] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:30:28] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-05-01 00:30:28] [DEBUG] Set param_file: 
+[2026-05-01 00:30:28] [DEBUG] Set symbol: aEURUSDn
+[2026-05-01 00:30:28] [DEBUG] Set timeframe: M1
+[2026-05-01 00:30:28] [DEBUG] Set symbol prefix/suffix: a/n
+[2026-05-01 00:30:28] [DEBUG] Set date: Entire history
+[2026-05-01 00:30:28] [DEBUG] Set date_from: 1970-01-01
+[2026-05-01 00:30:28] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:30:28] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:30:28] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:30:28] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-05-01 00:30:28] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-05-01 00:30:28] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:32:37] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 00:32:38] [INFO] Valid session found and loaded.
+[2026-05-01 00:32:38] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 00:32:39] [INFO] Date range option selected: Entire history
+[2026-05-01 00:32:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:32:39] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 00:32:39] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 00:32:39] [INFO] Date range option selected: Entire history
+[2026-05-01 00:32:39] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:32:40] [INFO] Set Generator Controller Initialized
+[2026-05-01 00:32:40] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 00:32:40] [DEBUG] Switching to stack page 0
+[2026-05-01 00:32:40] [INFO] User authenticated via cache
+[2026-05-01 00:32:42] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 00:32:42] [DEBUG] Switching to stack page 2
+[2026-05-01 00:32:42] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 00:32:42] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 00:32:43] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 00:32:43] [DEBUG] Switching to stack page 1
+[2026-05-01 00:32:52] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 00:33:02] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 00:33:02] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 00:33:02] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 00:33:12] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:33:12] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:33:15] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:33:15] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:33:15] [INFO] Closest match found: XAUEUR
+[2026-05-01 00:33:15] [INFO] Best symbol found: XAUEUR
+[2026-05-01 00:33:15] [INFO] Closest match found: EURUSD
+[2026-05-01 00:33:15] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:33:16] [INFO] Closest match found: EURUSD
+[2026-05-01 00:33:16] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:33:16] [INFO] Exact match found: EURUSD
+[2026-05-01 00:33:16] [INFO] Best symbol found: EURUSD
+[2026-05-01 00:33:25] [SUCCESS] ✅ Test 'EURUSD' added to queue.
+[2026-05-01 00:33:29] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:33:29] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:33:29] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-05-01 00:33:29] [DEBUG] Set param_file: 
+[2026-05-01 00:33:29] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:33:29] [DEBUG] Set timeframe: M1
+[2026-05-01 00:33:29] [DEBUG] Set symbol prefix/suffix: n/p
+[2026-05-01 00:33:29] [DEBUG] Set date: Entire history
+[2026-05-01 00:33:29] [DEBUG] Set date_from: 1970-01-01
+[2026-05-01 00:33:29] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:33:29] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:33:29] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:33:29] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-05-01 00:33:29] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-05-01 00:33:29] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:33:32] [INFO] Loading test parameters for: EURUSD
+[2026-05-01 00:33:32] [DEBUG] Set test_name: EURUSD
+[2026-05-01 00:33:32] [DEBUG] Set expert: ExpertMACD.ex5
+[2026-05-01 00:33:32] [DEBUG] Set param_file: 
+[2026-05-01 00:33:32] [DEBUG] Set symbol: EURUSD
+[2026-05-01 00:33:32] [DEBUG] Set timeframe: M1
+[2026-05-01 00:33:32] [DEBUG] Set symbol prefix/suffix: n/p
+[2026-05-01 00:33:32] [DEBUG] Set date: Entire history
+[2026-05-01 00:33:32] [DEBUG] Set date_from: 1970-01-01
+[2026-05-01 00:33:32] [DEBUG] Set date_to: 2026-05-01
+[2026-05-01 00:33:32] [DEBUG] Set forward_date: 2026-05-01
+[2026-05-01 00:33:32] [DEBUG] Set delay: 0 mode: Zero latency, ideal execution
+[2026-05-01 00:33:32] [DEBUG] Set model: Every tick, deposit: 100000.0, currency: USD, leverage: 100.00
+[2026-05-01 00:33:32] [DEBUG] Set optimization: Disabled, criterion: Balance Max
+[2026-05-01 00:33:32] [SUCCESS] ✅ Successfully loaded parameters for test 'EURUSD'
+[2026-05-01 00:33:58] [INFO] Starting queued tests...
+[2026-05-01 00:33:58] [INFO] ▶️ Running test: EURUSD on nEURUSDp
+[2026-05-01 00:33:58] [INFO] Starting run_strategy...
+[2026-05-01 00:33:58] [INFO] settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'nEURUSDp', 'timeframe': 'M1', 'symbol_prefix': 'n', 'symbol_suffix': 'p', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2026-05-01', 'forward': 'No', 'forward_date': '2026-05-01', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2026-05-01 00:33:58] [DEBUG] Settings: {'test_name': 'EURUSD', 'expert': 'ExpertMACD.ex5', 'param_file': '', 'symbol': 'nEURUSDp', 'timeframe': 'M1', 'symbol_prefix': 'n', 'symbol_suffix': 'p', 'date': 'Entire history', 'date_from': '1970-01-01', 'date_to': '2026-05-01', 'forward': 'No', 'forward_date': '2026-05-01', 'delay': 0, 'delay_mode': 'Zero latency, ideal execution', 'model': 'Every tick', 'deposit': '100000.0', 'currency': 'USD', 'leverage': '100.00', 'optimization': 'Disabled', 'criterion': 'Balance Max'}
+[2026-05-01 00:33:58] [DEBUG] Config path  = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-05-01 00:33:58] [DEBUG] Report path  = Agent Finder Results\EURUSD_20260501_003358\nEURUSDp_EURUSD_No_report
+[2026-05-01 00:33:58] [DEBUG] Report Mode  = 4
+[2026-05-01 00:33:58] [DEBUG] Param Files  = 
+[2026-05-01 00:33:58] [DEBUG] Expert       = ExpertMACD.ex5
+[2026-05-01 00:33:58] [DEBUG] Expert Path  = Advisors\ExpertMACD.ex5
+[2026-05-01 00:33:58] [DEBUG] Symbol       = nEURUSDp
+[2026-05-01 00:33:58] [DEBUG] Timeframe    = M1
+[2026-05-01 00:33:58] [DEBUG] Model        = None (Every tick)
+[2026-05-01 00:33:58] [DEBUG] Optimization = 0 (Disabled)
+[2026-05-01 00:33:58] [DEBUG] Criterion    = 0 (Balance Max)
+[2026-05-01 00:33:58] [DEBUG] Forward      = 0 (No)
+[2026-05-01 00:33:58] [INFO] INI config file written: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+[2026-05-01 00:33:58] [SUCCESS] ✅ 🚀 Backtest started. Tracking report: Agent Finder Results\EURUSD_20260501_003358\nEURUSDp_EURUSD_No_report
+[2026-05-01 00:33:58] [DEBUG] Using log file: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs\20260501.log
+[2026-05-01 00:33:58] [DEBUG] Initial log pointer: 8336
+[2026-05-01 00:34:02] [INFO] LJ	0	00:34:01.569	Startup	successfully initialized from start config "C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini"
+
+[2026-05-01 00:34:02] [INFO] PI	0	00:34:01.678	Terminal	MetaTrader 5 x64 build 5574 started for MetaQuotes Ltd.
+
+[2026-05-01 00:34:02] [INFO] RF	0	00:34:01.678	Terminal	Windows 10 build 19045, 4 x Intel Core i5-5200U  @ 2.20GHz, AVX2, 3 / 11 Gb memory, 26 / 118 Gb disk, UAC, GMT+5
+
+[2026-05-01 00:34:02] [INFO] QI	0	00:34:01.678	Terminal	C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+
+[2026-05-01 00:34:02] [INFO] IG	0	00:34:01.678	Terminal	launched with C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\config\EURUSD_XML.ini
+
+[2026-05-01 00:34:14] [INFO] FG	0	00:34:07.839	Network	'5049909606': authorized on MetaQuotes-Demo through Access Point HA
+
+[2026-05-01 00:34:14] [INFO] KS	0	00:34:07.839	Network	'5049909606': previous successful authorization performed from 175.107.246.85 on 2026.04.30 22:32:59
+
+[2026-05-01 00:34:14] [INFO] GQ	0	00:34:10.487	Network	'5049909606': terminal synchronized with MetaQuotes Ltd.: 0 positions, 0 orders, 6053 symbols, 0 spreads
+
+[2026-05-01 00:34:14] [INFO] GQ	0	00:34:10.487	Network	'5049909606': trading has been enabled - hedging mode
+
+[2026-05-01 00:34:14] [INFO] PQ	2	00:34:10.656	Tester	symbol nEURUSDp not exist
+
+[2026-05-01 00:34:14] [INFO] NO	2	00:34:10.656	Terminal	tester didn't start
+
+[2026-05-01 00:34:16] [INFO] folder_path = C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\Agent Finder Results\EURUSD_20260501_003358
+[2026-05-01 00:34:16] [ERROR] ❌ Report not found.
+[2026-05-01 00:34:16] [SUCCESS] ✅ ✅ Test 'EURUSD' completed successfully.
+[2026-05-01 00:34:17] [SUCCESS] ✅ All tests completed.
+[2026-05-01 00:50:47] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 00:50:48] [INFO] Valid session found and loaded.
+[2026-05-01 00:50:48] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 00:50:48] [INFO] Date range option selected: Entire history
+[2026-05-01 00:50:48] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:50:48] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 00:50:48] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 00:50:49] [INFO] Date range option selected: Entire history
+[2026-05-01 00:50:49] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 00:50:49] [INFO] Set Generator Controller Initialized
+[2026-05-01 00:50:49] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 00:50:49] [DEBUG] Switching to stack page 0
+[2026-05-01 00:50:50] [INFO] User authenticated via cache
+[2026-05-01 00:51:02] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 00:51:02] [DEBUG] Switching to stack page 1
+[2026-05-01 00:51:05] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 00:51:05] [DEBUG] Switching to stack page 2
+[2026-05-01 00:51:05] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 00:51:05] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 00:55:52] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-05-01 00:55:52] [DEBUG] Switching to stack page 3
+[2026-05-01 00:55:52] [INFO] Set Generator page opened, updating report data if available
+[2026-05-01 00:55:52] [WARNING] No report files found — clearing UI
+[2026-05-01 00:55:52] [INFO] ⚠️ No data to display.
+[2026-05-01 00:55:52] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-05-01 00:55:52] [INFO] Pairs box + table cleared due to no report files.
+[2026-05-01 00:55:54] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 00:55:54] [DEBUG] Switching to stack page 4
+[2026-05-01 01:07:46] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2026-05-01 01:07:46] [DEBUG] Switching to stack page 6
+[2026-05-01 01:07:46] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2026-05-01 01:07:46] [DEBUG] Switching to stack page 5
+[2026-05-01 01:08:21] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 01:08:21] [DEBUG] Switching to stack page 2
+[2026-05-01 01:08:21] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 01:08:21] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 01:09:35] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-05-01 01:09:35] [DEBUG] Switching to stack page 3
+[2026-05-01 01:09:35] [INFO] Set Generator page opened, updating report data if available
+[2026-05-01 01:09:35] [WARNING] No report files found — clearing UI
+[2026-05-01 01:09:36] [INFO] ⚠️ No data to display.
+[2026-05-01 01:09:36] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-05-01 01:09:36] [INFO] Pairs box + table cleared due to no report files.
+[2026-05-01 01:09:38] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:09:38] [DEBUG] Switching to stack page 4
+[2026-05-01 01:09:39] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-05-01 01:09:39] [DEBUG] Switching to stack page 3
+[2026-05-01 01:09:39] [INFO] Set Generator page opened, updating report data if available
+[2026-05-01 01:09:39] [WARNING] No report files found — clearing UI
+[2026-05-01 01:09:39] [INFO] ⚠️ No data to display.
+[2026-05-01 01:09:39] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-05-01 01:09:39] [INFO] Pairs box + table cleared due to no report files.
+[2026-05-01 01:11:02] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:11:02] [DEBUG] Switching to stack page 4
+[2026-05-01 01:11:09] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2026-05-01 01:11:09] [DEBUG] Switching to stack page 5
+[2026-05-01 01:12:59] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2026-05-01 01:12:59] [DEBUG] Switching to stack page 6
+[2026-05-01 01:14:35] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 01:14:36] [INFO] Valid session found and loaded.
+[2026-05-01 01:14:36] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 01:14:36] [INFO] Date range option selected: Entire history
+[2026-05-01 01:14:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 01:14:36] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 01:14:36] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 01:14:36] [INFO] Date range option selected: Entire history
+[2026-05-01 01:14:36] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 01:14:37] [INFO] Set Generator Controller Initialized
+[2026-05-01 01:14:37] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 01:14:37] [DEBUG] Switching to stack page 0
+[2026-05-01 01:14:38] [INFO] User authenticated via cache
+[2026-05-01 01:14:39] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 01:14:39] [DEBUG] Switching to stack page 1
+[2026-05-01 01:14:50] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 01:15:01] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:15:01] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 01:15:01] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:15:08] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 01:15:08] [DEBUG] Switching to stack page 2
+[2026-05-01 01:15:08] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 01:15:08] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 01:15:17] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-05-01 01:15:17] [DEBUG] Switching to stack page 3
+[2026-05-01 01:15:17] [INFO] Set Generator page opened, updating report data if available
+[2026-05-01 01:15:17] [WARNING] No report files found — clearing UI
+[2026-05-01 01:15:17] [INFO] ⚠️ No data to display.
+[2026-05-01 01:15:17] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-05-01 01:15:17] [INFO] Pairs box + table cleared due to no report files.
+[2026-05-01 01:15:23] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:15:23] [DEBUG] Switching to stack page 4
+[2026-05-01 01:15:31] [WARNING] Data folder is not set.
+[2026-05-01 01:15:35] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 01:15:46] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:15:46] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 01:15:47] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:15:51] [INFO] Param folder found: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2026-05-01 01:16:06] [WARNING] Please select a valid Set Folder.
+[2026-05-01 01:16:07] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2026-05-01 01:16:07] [DEBUG] Switching to stack page 5
+[2026-05-01 01:16:14] [WARNING] No folder selected for HTML Reports.
+[2026-05-01 01:16:20] [WARNING] No folder selected for HTML Reports.
+[2026-05-01 01:16:21] [DEBUG] Attempting to switch to page index: 6, Authenticated: True
+[2026-05-01 01:16:21] [DEBUG] Switching to stack page 6
+[2026-05-01 01:16:22] [DEBUG] Starting folder browse. Default: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:16:22] [DEBUG] Dialog default directory set to: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:16:25] [INFO] Folder selection canceled by user.
+[2026-05-01 01:16:26] [DEBUG] Starting folder browse. Default: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:16:26] [DEBUG] Dialog default directory set to: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:16:28] [INFO] Folder selection canceled by user.
+[2026-05-01 01:16:29] [DEBUG] Starting folder browse. Default: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:16:29] [DEBUG] Dialog default directory set to: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:16:31] [INFO] Folder selection canceled by user.
+[2026-05-01 01:16:32] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2026-05-01 01:16:32] [DEBUG] Switching to stack page 5
+[2026-05-01 01:16:33] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:16:33] [DEBUG] Switching to stack page 4
+[2026-05-01 01:17:38] [INFO] Param folder found: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2026-05-01 01:17:47] [WARNING] Please select a valid Set Folder.
+[2026-05-01 01:18:07] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 01:18:08] [INFO] Valid session found and loaded.
+[2026-05-01 01:18:08] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 01:18:08] [INFO] Date range option selected: Entire history
+[2026-05-01 01:18:08] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 01:18:08] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 01:18:08] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 01:18:09] [INFO] Date range option selected: Entire history
+[2026-05-01 01:18:09] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 01:18:09] [INFO] Set Generator Controller Initialized
+[2026-05-01 01:18:09] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 01:18:09] [DEBUG] Switching to stack page 0
+[2026-05-01 01:18:10] [INFO] User authenticated via cache
+[2026-05-01 01:18:16] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2026-05-01 01:18:16] [DEBUG] Switching to stack page 5
+[2026-05-01 01:18:17] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-05-01 01:18:17] [DEBUG] Switching to stack page 3
+[2026-05-01 01:18:17] [INFO] Set Generator page opened, updating report data if available
+[2026-05-01 01:18:17] [WARNING] No report files found — clearing UI
+[2026-05-01 01:18:17] [INFO] ⚠️ No data to display.
+[2026-05-01 01:18:17] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-05-01 01:18:17] [INFO] Pairs box + table cleared due to no report files.
+[2026-05-01 01:18:18] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 01:18:18] [DEBUG] Switching to stack page 1
+[2026-05-01 01:18:18] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 01:18:18] [DEBUG] Switching to stack page 2
+[2026-05-01 01:18:18] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 01:18:18] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 01:18:19] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:18:19] [DEBUG] Switching to stack page 4
+[2026-05-01 01:19:53] [INFO] ❌ No valid cache found, user not authenticated
+[2026-05-01 01:19:55] [INFO] Valid session found and loaded.
+[2026-05-01 01:19:55] [INFO] Cache loaded: {'authenticated': True, 'validation_time': 1777496952.1079018, 'email': 'admin@example.com', 'expires_at': '2026-05-01T02:09:12.108499'}
+[2026-05-01 01:19:55] [INFO] Date range option selected: Entire history
+[2026-05-01 01:19:55] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 01:19:55] [INFO] Adjusting forward date based on selection: No
+[2026-05-01 01:19:55] [DEBUG] Forward date disabled, set to test end date
+[2026-05-01 01:19:55] [INFO] Date range option selected: Entire history
+[2026-05-01 01:19:55] [SUCCESS] ✅ Date range set: 1970-01-01 → Fri May 1 2026
+[2026-05-01 01:19:55] [INFO] Set Generator Controller Initialized
+[2026-05-01 01:19:55] [DEBUG] Attempting to switch to page index: 0, Authenticated: False
+[2026-05-01 01:19:55] [DEBUG] Switching to stack page 0
+[2026-05-01 01:19:56] [INFO] User authenticated via cache
+[2026-05-01 01:19:58] [DEBUG] Attempting to switch to page index: 5, Authenticated: True
+[2026-05-01 01:19:58] [DEBUG] Switching to stack page 5
+[2026-05-01 01:19:59] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:19:59] [DEBUG] Switching to stack page 4
+[2026-05-01 01:20:06] [DEBUG] Attempting to switch to page index: 1, Authenticated: True
+[2026-05-01 01:20:06] [DEBUG] Switching to stack page 1
+[2026-05-01 01:20:14] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 01:20:25] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:20:25] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 01:20:25] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:20:30] [DEBUG] Attempting to switch to page index: 2, Authenticated: True
+[2026-05-01 01:20:30] [DEBUG] Switching to stack page 2
+[2026-05-01 01:20:30] [INFO] Set Finder page opened, updating report data if available
+[2026-05-01 01:20:30] [WARNING] No report dataframes found (self.report_dfs is None or invalid)
+[2026-05-01 01:20:31] [DEBUG] Attempting to switch to page index: 3, Authenticated: True
+[2026-05-01 01:20:31] [DEBUG] Switching to stack page 3
+[2026-05-01 01:20:31] [INFO] Set Generator page opened, updating report data if available
+[2026-05-01 01:20:31] [WARNING] No report files found — clearing UI
+[2026-05-01 01:20:31] [INFO] ⚠️ No data to display.
+[2026-05-01 01:20:31] [INFO] 🧱 Showing skeleton headers: ['Pass No', 'Bk Recovery', 'Fwd Recovery', 'Est Bk Weekly Profit', 'Est Fwd Weekly Profit', 'Bk Trades', 'Fwd Trades', 'Multiplier', 'Total Profit', 'Custom Score']
+[2026-05-01 01:20:31] [INFO] Pairs box + table cleared due to no report files.
+[2026-05-01 01:20:31] [DEBUG] Attempting to switch to page index: 4, Authenticated: True
+[2026-05-01 01:20:31] [DEBUG] Switching to stack page 4
+[2026-05-01 01:20:35] [INFO] MT5 terminal selected: C:/Program Files/MetaTrader 5/terminal64.exe
+[2026-05-01 01:20:45] [INFO] MT5 Data Path: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:20:45] [INFO] Log Directory: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\logs
+[2026-05-01 01:20:45] [INFO] Auto-selected Data Folder: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+[2026-05-01 01:20:55] [INFO] Param folder found: C:\Users\RC\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Profiles\Tester
+[2026-05-01 01:21:19] [WARNING] Please select a valid Set Folder.

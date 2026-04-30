@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
         
 
         self.data_folder = None
-
+        self.mt5_dir = None
         # self.setMinimumSize(1300, 650)
         self.setWindowTitle("ECHELON")
         self.setStyleSheet("background-color:#1e1e1e;")

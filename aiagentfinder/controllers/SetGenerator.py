@@ -340,7 +340,7 @@ class SetGeneratorController:
         files, _ = QFileDialog.getOpenFileNames(
             parent_widget,
             "Select Optimisation Files",
-            "",
+            self.main_window.data_folder,
             "SET Files (*.set)"
         )
 
