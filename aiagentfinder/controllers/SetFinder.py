@@ -454,7 +454,7 @@ class SetFinderController:
 
                 # Prefix forward columns
                 if not df_forward.empty:
-                    Logger.error(f"Forward file found: {forward_name}, prefixing columns.")
+                    Logger.info(f"Forward file found: {forward_name}, prefixing columns.")
                     df_forward = df_forward.rename(
                         columns={col: f"forward_{col}" for col in df_forward.columns if col != "Pass"}
                     )
@@ -474,10 +474,13 @@ class SetFinderController:
                 else:
                     combined_df = df_forward
 
-                combined_df = combined_df.drop_duplicates(
-                                    subset=["Trades", "forward_Trades"],
-                                    keep="first"
-                                )
+                # Safe drop duplicates based on available columns
+                duplicate_subset = [col for col in ["Trades", "forward_Trades"] if col in combined_df.columns]
+                if duplicate_subset:
+                    combined_df = combined_df.drop_duplicates(
+                        subset=duplicate_subset,
+                        keep="first"
+                    )
 
                 # ---- FIX: Only convert existing columns ----
                 cols_to_convert = [

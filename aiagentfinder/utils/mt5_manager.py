@@ -153,6 +153,7 @@ class MT5Manager:
             return None
 
     def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path, report_type="XML", setProcessor=False,save_csv=False):
+        proc = None
         try:
             success_flag = False
             Logger.info("Starting run_strategy...")
@@ -160,10 +161,10 @@ class MT5Manager:
 
             # --- Mapping dictionaries ---
             MODEL_MAP = {
-                "Math calculation": 0,
+                "Every tick": 0,
                 "1 minute OHLC": 1,
                 "Open prices only": 2,
-                "Every tick": None,
+                "Math calculation": 3,
                 "Every tick based on real ticks": 4,
             }
 
@@ -231,7 +232,7 @@ class MT5Manager:
             model_str = settings.get("model", "Every tick")
             currency = settings.get("currency", "USD")
             leverage = settings.get("leverage", "100.00")
-            optim_str = settings.get("optimization", "Disabled")
+            optim_str = settings.get("optimization", settings.get("optimazation", "Disabled"))
             criterion_str = settings.get("criterion", "Balance Max")
 
             model = MODEL_MAP.get(model_str, 0)
@@ -244,30 +245,47 @@ class MT5Manager:
 
             # --- Handle normal vs setProcessor mode ---
             if not setProcessor:
-                folder = os.path.join(data_path, report_path, f"{test_name}_{timestamp}")
-                os.makedirs(folder, exist_ok=True)
+                # 1. Create a unique relative folder path
+                relative_folder = os.path.join(report_path, f"{test_name}_{timestamp}")
+                
+                # 2. Create the absolute folder for Python to use
+                absolute_folder = os.path.join(data_path, relative_folder)
+                os.makedirs(absolute_folder, exist_ok=True)
 
-                report_path = os.path.join(report_path, f"{test_name}_{timestamp}",
-                                        f"{symbol}_{test_name}_{forward_str}_report")
+                # 3. Prepare the filename
+                safe_forward_str = forward_str.replace("/", "_").replace("\\", "_")
+                report_file_name = f"{symbol}_{test_name}_{safe_forward_str}_report_{timestamp}"
+                
+                # 4. report_path MUST be relative for the MT5 .ini to work reliably
+                report_path = os.path.join(relative_folder, report_file_name)
+                
+                # 5. Final absolute path for Python tracking
+                final_abs_report_path = os.path.join(data_path, report_path)
             else:
                 ext = ext_map.get(report_type.upper(), ".html")
                 report_file = f"{symbol}_{param_file.replace('.set', '')}"
+                # In setProcessor mode, keep it simple
                 report_path = os.path.join(report_path, report_file)
+                final_abs_report_path = os.path.join(data_path, report_path)
 
-            print("report_path = ",os.path.join(data_path, report_path))
+            print("report_path = ", final_abs_report_path)
 
-            check_dir = os.path.join(data_path, report_path)
-
+            check_dir = final_abs_report_path
+            
             parent_dir = os.path.dirname(check_dir)
 
             folder_name = os.path.basename(check_dir)
 
-            for file in os.listdir(parent_dir):
-                file_path = os.path.join(parent_dir, file)
+            if os.path.exists(parent_dir):
+                for file in os.listdir(parent_dir):
+                    file_path = os.path.join(parent_dir, file)
 
-                if os.path.isfile(file_path) and file.startswith(folder_name):
-                    os.remove(file_path)
-                    logger.info(f"Deleted: {file}")
+                    if os.path.isfile(file_path) and file.startswith(folder_name):
+                        try:
+                            os.remove(file_path)
+                            Logger.info(f"Deleted: {file}")
+                        except Exception as e:
+                            Logger.warning(f"Could not delete {file}: {e}")
 
 
             # --- Prepare folders ---
@@ -296,45 +314,47 @@ class MT5Manager:
                 Logger.debug(f"Forward Date = {forward_date}")
 
             # --- Build INI file ---
-            ini_content = f"""
-            [Common]
-            AutoConfiguration=1
-
-            [Tester]
-            Expert={Path(*Path(expert_path[expert]['path']).parts[-2:])}
-            Inputs={param_file}
-            Symbol={symbol}
-            Period={timeframe}
-            FromDate={from_date}
-            ToDate={to_date}
-            Deposit={deposit}
-            Currency={currency}
-            Leverage={leverage}
-            ExecutionMode={delay}
-            Optimization={optimization}
-            ForwardMode={forward}
-            OptCriterion={criterion}
-            StartTesting=1
-            TesterChartDump=1
-            Report={report_path}
-            ReportMode= {report_mode}
-            ReplaceReport=0
-            
-            """
+            ini_lines = [
+                "[Common]",
+                "AutoConfiguration=1",
+                "",
+                "[Tester]",
+                f"Expert={Path(*Path(expert_path[expert]['path']).parts[-2:])}",
+                f"Symbol={symbol}",
+                f"Period={timeframe}",
+                f"Optimization={optimization}",
+                f"OptCriterion={criterion}",
+                f"Inputs={param_file}",
+                f"FromDate={from_date}",
+                f"ToDate={to_date}",
+                "VisualMode=0",
+                f"Deposit={deposit}",
+                f"Currency={currency}",
+                f"Leverage={leverage}",
+                f"ExecutionMode={delay}",
+                f"ForwardMode={forward}",
+                "StartTesting=1",
+                "TesterChartDump=1",
+                f"Report={report_path}",
+                f"ReportMode={report_mode}",
+                "ReplaceReport=1"
+            ]
 
             if save_csv:
-                ini_content += "\nShutdownTerminal=0\n"
+                ini_lines.append("ShutdownTerminal=0")
             else:
-                ini_content += "\nShutdownTerminal=1\n"
+                ini_lines.append("ShutdownTerminal=1")
 
             if forward == 4 and forward_date:
-                ini_content += f"\nForwardDate={forward_date}\n"
+                ini_lines.append(f"ForwardDate={forward_date}")
 
-            if model:
-                ini_content += f"\nModel={model}\n"
+            if model is not None:
+                ini_lines.append(f"Model={model}")
+
+            ini_content = "\n".join(ini_lines)
 
             with open(config_path, "w") as f:
-                f.write(ini_content.strip())
+                f.write(ini_content)
 
             Logger.info(f"INI config file written: {config_path}")
 
@@ -345,20 +365,19 @@ class MT5Manager:
 
 
             latest_log = None
-            log_pointer = 0
+            current_log_pointer = 0
 
             # Pick newest log file
-            if self.logs_dir.exists():
-                log_files = sorted(self.logs_dir.glob("*.log"), key=os.path.getmtime, reverse=True)
+            if logs_dir.exists():
+                log_files = sorted(logs_dir.glob("*.log"), key=os.path.getmtime, reverse=True)
                 if log_files:
                     latest_log = log_files[0]
-                    self.log_pointer = latest_log.stat().st_size  # Skip old content
+                    current_log_pointer = latest_log.stat().st_size  # Skip old content
                     Logger.debug(f"Using log file: {latest_log}")
-                    Logger.debug(f"Initial log pointer: {self.log_pointer}")
+                    Logger.debug(f"Initial log pointer: {current_log_pointer}")
 
-
-
-            file_to_check = Path(os.path.join(self.data_path,report_path)+ ".htm")
+            ext = ext_map.get(report_type.upper(), ".html")
+            file_to_check = Path(os.path.join(data_path, report_path) + ext)
             last_size = -1
             stable_time = 0
             stable_seconds=2
@@ -388,7 +407,7 @@ class MT5Manager:
                     if latest_log and latest_log.exists():
                         try:
                             with open(latest_log, "r", encoding="utf-16") as f:
-                                f.seek(self.log_pointer)
+                                f.seek(current_log_pointer)
                                 new_lines = f.readlines()
 
                                 if new_lines:
@@ -399,7 +418,7 @@ class MT5Manager:
                                             success_flag = True
                                             Logger.info("✅ Success flag set to True based on log line")
 
-                                self.log_pointer = f.tell()
+                                current_log_pointer = f.tell()
 
                         except Exception as e:
                             Logger.warning(f"Error reading MT5 log: {e}")
@@ -410,12 +429,17 @@ class MT5Manager:
             if(save_csv):
                 Logger.info("---------------------------  SAVE CSV -----------------------------------------------")
                 Logger.info("Exporting graph to CSV...")
-                Logger.info(f"self.mt5_path = {self.mt5_path}")
-                Logger.info(f"self.report_path = {os.path.join(self.data_path, report_path)}")
-                self.export_graph_to_csv(self.mt5_path,os.path.join(self.data_path, report_path)+".csv")
-                proc.terminate()
+                Logger.info(f"mt5_path = {mt5_path}")
+                Logger.info(f"report_path = {os.path.join(data_path, report_path)}")
+                self.export_graph_to_csv(mt5_path, os.path.join(data_path, report_path) + ".csv")
+                if proc and proc.poll() is None:
+                    proc.terminate()
                 Logger.info("--------------------------------------------------------------------------")
 
+
+
+            os.remove(config_path)
+            
             # --- After process exits ---
             folder_path = os.path.dirname(os.path.join(data_path, report_path))
             Logger.info(f"folder_path = {folder_path}")
@@ -428,7 +452,8 @@ class MT5Manager:
                 return {"status": "error", "message": "Report not generated"}
 
         except Exception as e:
-            proc.terminate()
+            if proc is not None and proc.poll() is None:
+                proc.terminate()
             Logger.error(f"❌ Error running test: {str(e)}")
             return {"status": "error", "message": str(e)}
 

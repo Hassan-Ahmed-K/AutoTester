@@ -67,6 +67,9 @@ class SetProcessorController:
     def browse_set_file(self):
         data_folder = self.ui.data_folder_input.text()
 
+        print("self.ui.data_folder_input = ", self.ui.data_folder_input)
+        print("data_folder = ", data_folder)
+
         if not data_folder:
             QMessageBox.warning(self.ui, "Error", "Please  Connect to MT5.")
             Logger.warning("Data folder is not set.")
@@ -75,7 +78,7 @@ class SetProcessorController:
    
         def task(data_folder):
             paths_to_check = [
-                os.path.join(self.main_window.data_folder, "MQL5", "Profiles", "Tester"), # fallback
+                os.path.join(data_folder, "MQL5", "Profiles", "Tester"), # fallback
             ]
 
             for path in paths_to_check:

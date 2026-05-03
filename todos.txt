@@ -1,5 +1,31 @@
-todos 
- threading 
-logging
-Qbox
-home page ui
+Testing is complete. 
+Change to text in tab 4:
+
+Results below are ranked by scoring criteria selected.
+^ text edits in Tab 1 and Tab 4
+
+
+
+There's a bunch of minor fixes. Only 2 major functionality issues.
+
+Tab 1: Login Password: Configure the login password in a simple implementation. A database where I can generate login and passwords and our software checks against it to allow users to sign in. Minor: 1: Text explaining the tab needs to be changed / adjusted ( This is for all tabs so I will send the replacement text ) 2: Logo box in the middle of Tab 1 so I, as application administrator can upload logo. 
+
+
+Tab2: Major issue: Optimisations dont conduct when start is pressed. This functioned smoothly in previous versions but latest version, the tests dont conduct. Figure out why and fix. Minor: 1: Testfile name when changed in inputs does not change or update within list, other parameters do update. 2: Clarity on how suffix was implemented within Tab2, currently it's confusing me. So symbol is auto populated in symbol box and suffix is added to suffix box, when test is added or duplicated, suffix box becomes empty and the suffix shows up next to symbol ( Now 1 thing is, small cap suffix should remain small cap and large cap suffix should remain large cap ) in case, it leads to issues down the road ( or confuses users ) because in my case, suffix is 1 letter, p, it updates as P in symbol box whereas it should remain small cap
+
+Tab3: This tab is ok. There's a checkbox for single trades ( once its checked to true ) it means XML inputs are different and what its going to show in Tab 4 is going to be different (as in what input from XML goes in what section of Tab4) . I will send you info on this. I need to run some actual tests. I will use another software as our Tab2 is not working rn. and update you within 2days.
+
+Tab4: Major: Setfile generation remapping was to be done anyway ( as instructed ) but all setfiles currently generating are not filled properly. We verified this but I am using same version of EA with old mapping and all setfiles come out to same ( so they are just not being filled ) for some reason. Let's fix the old mapping or directly go to new mapping and fix that? Also the map will change so we need a system for future as more features are added to adjust mapping accordingly. Currently there are 100inputs, so say an extra input gets added at input number 47 so set file generation should adjust accordingly. This is required, otherwise mapping adjustments would be required every now and then. 
+Tab 4 (continued): I will send you new EA ( new mapping ) and what from XMLs gets filled where. New XMLs are required and for that new tests are required which I have to conduct for Tab3 as well so will run this with them. 
+
+
+Tab5: Last time, Tab5 was not spitting out correct results but this time ( technically, it only conducted 1 test as setfiles were the same ) but the result came out fine. So I think Tab5 might just be working fine and issue is incorrect setfile generation from Tab4. so no work here hopefully.  Only thing is when tests are completed, Graphs dont generate. Graphs folder remains empty so this is the only fix.
+
+
+Tab6: Seems ok, a few empty boxes so I just need to tell you the input boxes or parameters that need to go in those 3-4 empty boxes. I think filtering is working fine.
+
+
+Tab7: This also seems fine. Graphs are generating ok. As I dont have proper tests of now, so I dont have enough data to say for sure, so once I run a batch of 24sets start to finish all tabs this will be confirmed but hopefully no work here.
+
+
+One logo box in top left corner that I can use to upload logo there. I will send you a video where I do everything in real time so it's easy to do. A lot of the work is just minor fixes, only 2 major things out of which both were already working so shouldn't be hard to implement stuff that was already working. Wait 2 more days and I will fill in the gaps, then you can go and do in single go.

@@ -1196,7 +1196,6 @@ class AutoBatchController:
             QMessageBox.warning(self.ui, "No Tests", "No tests in the queue. Please add tests first.")
             return
 
-        # QMessageBox.information(self.ui, "Starting", "Running tests in queue...")
         Logger.info("Starting queued tests...")
 
         def task():
@@ -1208,7 +1207,7 @@ class AutoBatchController:
                     test_settings.get("symbol_prefix", ""), 
                     test_settings.get("symbol_suffix", "")
                 )
-                self.mt5.run_test(test_settings, data_path, mt5_path, report_path,self.ui.experts, report_type="XML")
+                self.mt5.run_test(test_settings, data_path, mt5_path, report_path, self.ui.experts, report_type="XML")
                 self.queue.refresh_queue()
             return True  # signal finished
 
