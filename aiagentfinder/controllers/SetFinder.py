@@ -19,6 +19,7 @@ class SetFinderController:
         self.ui.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)
         self.ui.start_button.clicked.connect(self.read_all_xml_tables)
         self.ui.reset_button.clicked.connect(self.reset_all_fields)
+        
 
     def on_toggle_trade_filter(self, state):
         """Show/hide inputs based on toggle state."""
@@ -42,11 +43,14 @@ class SetFinderController:
         self.main_window.base_process_folder = QFileDialog.getExistingDirectory(
             self.ui,
             "Select Report Directory",
-            os.getcwd()
+            self.main_window.data_folder
         )
 
         if not self.main_window.base_process_folder:
             return
+
+        # self.ui.report_dir_input.setText(self.main_window.base_process_folder)
+        self.main_window.data_folder = self.main_window.base_process_folder
 
         # self.main_window.base_process_folder = dir_path
 
@@ -450,7 +454,7 @@ class SetFinderController:
 
                 # Prefix forward columns
                 if not df_forward.empty:
-                    Logger.error(f"Forward file found: {forward_name}, prefixing columns.")
+                    Logger.info(f"Forward file found: {forward_name}, prefixing columns.")
                     df_forward = df_forward.rename(
                         columns={col: f"forward_{col}" for col in df_forward.columns if col != "Pass"}
                     )
@@ -470,10 +474,13 @@ class SetFinderController:
                 else:
                     combined_df = df_forward
 
-                combined_df = combined_df.drop_duplicates(
-                                    subset=["Trades", "forward_Trades"],
-                                    keep="first"
-                                )
+                # Safe drop duplicates based on available columns
+                duplicate_subset = [col for col in ["Trades", "forward_Trades"] if col in combined_df.columns]
+                if duplicate_subset:
+                    combined_df = combined_df.drop_duplicates(
+                        subset=duplicate_subset,
+                        keep="first"
+                    )
 
                 # ---- FIX: Only convert existing columns ----
                 cols_to_convert = [

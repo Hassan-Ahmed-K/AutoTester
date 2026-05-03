@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import json
 from aiagentfinder.utils.logger import Logger
 from aiagentfinder.utils.workerThread import ThreadRunner
 from PyQt5.QtCore import Qt, QDate, QItemSelectionModel, QItemSelection
@@ -29,6 +30,13 @@ class SetGeneratorController:
         self.lotSize = None
         self.report_file = ""
 
+        # Load dynamic mapping
+        self.config_mapping = self.load_mapping()
+
+        # Sorting state
+        self.sort_column = "custom_score"
+        self.sort_ascending = False
+
         Logger.info("Set Generator Controller Initialized")
 
 
@@ -49,6 +57,7 @@ class SetGeneratorController:
         self.ui.toggle_Multiplier.toggled.connect(self.on_multiplier)
 
         self.ui.pairs_box.itemClicked.connect(self.on_pair_clicked)
+        self.ui.table.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
 
         self.toggle_group = [
             self.ui.toggle_result,
@@ -96,6 +105,14 @@ class SetGeneratorController:
             self.ui.pairs_box.setCurrentItem(item)
 
         self.calculate_estimated_profits(self.report_df)
+
+        # Default sort when loading a new pair
+        if "custom_score" in self.report_df.columns:
+            self.report_df["custom_score"] = pd.to_numeric(self.report_df["custom_score"], errors="coerce").fillna(0)
+            self.report_df = self.report_df.sort_values(by="custom_score", ascending=False)
+            self.sort_column = "custom_score"
+            self.sort_ascending = False
+
         self.show_dataframe_in_table(self.report_df)
 
         Logger.info(f"Pairs box updated with: {report_names}")
@@ -164,6 +181,12 @@ class SetGeneratorController:
                 }
 
                 df_copy = df.copy()
+                
+                # --- Respect current sort state ---
+                if self.sort_column in df_copy.columns:
+                    df_copy[self.sort_column] = pd.to_numeric(df_copy[self.sort_column], errors="coerce").fillna(0)
+                    df_copy = df_copy.sort_values(by=self.sort_column, ascending=self.sort_ascending)
+
                 df_copy.reset_index(drop=True, inplace=True)
 
                 
@@ -183,7 +206,18 @@ class SetGeneratorController:
                 # Prepare table data as a list of lists
                 table_data = []
                 for _, row in filtered_df.iterrows():
-                    table_data.append([("" if pd.isna(val) else str(val)) for val in row])
+                    formatted_row = []
+                    for val in row:
+                        if pd.isna(val) or val == "":
+                            formatted_row.append("")
+                        else:
+                            try:
+                                # Try to format as float with max 2 decimal places
+                                fval = float(val)
+                                formatted_row.append(f"{round(fval, 2):g}")
+                            except (ValueError, TypeError):
+                                formatted_row.append(str(val))
+                    table_data.append(formatted_row)
 
                 headers = filtered_df.columns.tolist()
                 return headers, table_data
@@ -258,7 +292,14 @@ class SetGeneratorController:
 
             print(f"df_sorted before sorting =  {df_sorted.columns}")
 
-            if "Custom" in df_sorted.columns:
+            if "custom_score" in df_sorted.columns:
+                df_sorted["custom_score"] = pd.to_numeric(df_sorted["custom_score"], errors="coerce").fillna(0)
+                df_sorted = df_sorted.sort_values(by="custom_score", ascending=False).head(top_n)
+                self.show_dataframe_in_table(df_sorted)
+                if hasattr(self.ui, "bottom_message"):
+                    self.ui.bottom_message.append(f"✅ Showing top {top_n} rows by Custom Score.")
+            elif "Custom" in df_sorted.columns:
+                df_sorted["Custom"] = pd.to_numeric(df_sorted["Custom"], errors="coerce").fillna(0)
                 df_sorted = df_sorted.sort_values(by="Custom", ascending=False).head(top_n)
                 self.show_dataframe_in_table(df_sorted)
                 if hasattr(self.ui, "bottom_message"):
@@ -340,7 +381,7 @@ class SetGeneratorController:
         files, _ = QFileDialog.getOpenFileNames(
             parent_widget,
             "Select Optimisation Files",
-            "",
+            self.main_window.data_folder,
             "SET Files (*.set)"
         )
 
@@ -420,6 +461,45 @@ class SetGeneratorController:
         self.lotSize =  self.extract_lot_size(file_path)
 
         print("Selected files:", self.selected_optimization)
+
+    def on_header_clicked(self, logical_index):
+        """
+        Handles sorting the table when a header is clicked (Excel-like behavior).
+        """
+        if self.report_df.empty:
+            return
+
+        header_text = self.ui.table.horizontalHeaderItem(logical_index).text()
+        
+        # Map UI header back to internal dataframe column name
+        column_mapping = {
+            "Pass No": "Pass",
+            "Bk Recovery": "Recovery Factor",
+            "Fwd Recovery": "forward_Recovery Factor",
+            "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
+            "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
+            "BK Trades": "Trades",
+            "Fwd Trades": "forward_Trades",
+            "Multiplier": "multiplier",
+            "Total Profit": "Total_Profit",
+            "Custom Score": "custom_score"
+        }
+
+        internal_col = column_mapping.get(header_text)
+        if not internal_col or internal_col not in self.report_df.columns:
+            return
+
+        # Toggle sort order if clicking the same column
+        if self.sort_column == internal_col:
+            self.sort_ascending = not self.sort_ascending
+        else:
+            self.sort_column = internal_col
+            self.sort_ascending = False  # Default to descending for new columns
+
+        # Update the table
+        self.show_dataframe_in_table(self.report_df)
+        
+        self.log_to_ui(f"📊 Sorted by {header_text} ({'Ascending' if self.sort_ascending else 'Descending'})")
 
     def toggle_row_selection(self, row, column):
         """
@@ -651,19 +731,55 @@ class SetGeneratorController:
                     elif hasattr(toggle, "update"):
                         toggle.update()
 
+    def load_mapping(self):
+        """Loads mapping from mapping.json or returns default mapping."""
+        mapping_path = os.path.join(os.getcwd(), "mapping.json")
+        default_mapping = {
+            "EmaTimeframe": "forward_EmaTimeframe",
+            "EmaPeriods": "forward_EmaPeriods",
+            "UseRSICriteria": "forward_UseRSICriteria",
+            "RsiTimeframe": "forward_RsiTimeframe",
+            "RsiPeriod": "forward_RsiPeriod",
+            "RsiSellLevel": "forward_RsiSellLevel",
+            "Multiplier": "multiplier"
+        }
+        if os.path.exists(mapping_path):
+            try:
+                with open(mapping_path, 'r') as f:
+                    data = json.load(f)
+                    Logger.info(f"✅ Loaded dynamic mapping from {mapping_path}")
+                    return data
+            except Exception as e:
+                Logger.error(f"❌ Error loading mapping.json: {e}")
+        
+        Logger.info("⚠️ mapping.json not found, using default internal mapping.")
+        return default_mapping
+
+    def parse_set_file(self, path):
+        """Parses a .set file into a dictionary of key-value pairs."""
+        params = {}
+        try:
+            with open(path, "r", encoding="utf-16") as f:
+                for line in f:
+                    line = line.strip()
+                    # Skip comments and empty lines, parse Key=Value
+                    if "=" in line and not line.startswith(";"):
+                        parts = line.split("=", 1)
+                        if len(parts) == 2:
+                            key, val = parts
+                            key_stripped = key.strip()
+                            # Skip UI separators (stage0, stage1, etc.)
+                            if not key_stripped.lower().startswith("stage"):
+                                params[key_stripped] = val.strip()
+        except Exception as e:
+            Logger.error(f"❌ Error parsing template SET file {path}: {e}")
+        return params
+
     def generate_set_file(self):
-
-
-        def normalize_value(val):
-            if isinstance(val, str):
-                v = val.strip().upper()
-                if v == "TRUE":
-                    return "true"
-                if v == "FALSE":
-                    return "false"
-            return str(val)
-
-
+        """
+        Generates individual .set files using a selected SET file as a template
+        and overlaying values from the report DataFrame based on mapping.json.
+        """
         # --- Step 1: Gather selected rows from table ---
         selected_rows = []
         headers = [self.ui.table.horizontalHeaderItem(i).text() for i in range(self.ui.table.columnCount())]
@@ -677,55 +793,42 @@ class SetGeneratorController:
                     row_data[header] = cell.text() if cell else ""
                 selected_rows.append(row_data)
 
-
-        print('-------------------------------------------------------')
-        print(f"selected_rows = ", selected_rows)
-        print('-------------------------------------------------------')
-
         if not selected_rows:
-            Logger.error("No rows selected to generate .set file.")
             QMessageBox.warning(self.ui, "Warning", "No rows selected to generate .set file.")
             return
 
-        # --- Step 2: Selected optimization files ---
+        # --- Step 2: Get Template File ---
         selected_opt_files = getattr(self, "selected_optimization", [])
-        selected_opt_files = [f for f in selected_opt_files if f in getattr(self, "optimisation_files", {})]
+        template_path = None
+        ea_name = self.title  # Fallback
+        if selected_opt_files:
+            template_path = self.optimisation_files.get(selected_opt_files[0])
+            ea_name = selected_opt_files[0].replace(".set", "")
+            Logger.info(f"Using template: {selected_opt_files[0]}")
 
-        # --- Step 3: Selected pairs ---
-        selected_pairs = getattr(self, "pair_selected", [])
-
-        if not (selected_rows or selected_opt_files or selected_pairs):
-            self.log_to_ui("⚠️ Nothing selected to generate .set file!")
-            return
-
-        print('-------------------------------------------------------')
-        print(f"{self.main_window.base_process_folder}/{self.report_file.replace('.forward', '').replace('.xml', '')}")
-        print('-------------------------------------------------------')
-
-        # --- Step 4: File save dialog ---
+        # --- Step 3: Save Dialog ---
+        suggested_name = self.report_file.replace('.forward', '').replace('.xml', '')
         save_path, _ = QFileDialog.getSaveFileName(
             self.ui,
-            "Save SET file",
-            f"{self.main_window.base_process_folder}/{self.report_file.replace('.forward', '').replace('.xml', '')}",
+            "Save SET files (Prefix)",
+            os.path.join(self.main_window.base_process_folder, suggested_name),
             "SET Files (*.set)"
         )
         if not save_path:
             return
+        
+        base_path = save_path.replace(".set", "")
 
-        if save_path.lower().endswith(".xml"):
-            save_path = save_path.replace(".forward.xml", "")+ ".set"
-
-        elif not save_path.lower().endswith(".set"):
-            save_path += ".set"
-
-        # --- Step 5: Threaded background task ---
+        # --- Step 4: Background Thread ---
         def task():
             try:
+                # 1. Parse Template if available
+                template_params = {}
+                if template_path:
+                    template_params = self.parse_set_file(template_path)
 
-        
+                # 2. Prepare Data
                 selected_df = pd.DataFrame(selected_rows)
-
-                # Perform left join: keep only report_df columns
                 result_df = self.report_df.merge(
                     selected_df,
                     how="left",
@@ -734,161 +837,167 @@ class SetGeneratorController:
                     indicator=True         # adds a column showing join status
                 )
 
-                # Keep only rows that matched Pass No
+                # Only keep rows that were selected (matched in selected_df)
                 result_df = result_df[result_df["_merge"] == "both"]
 
-                # Drop extra columns (Pass No and _merge)
-                result_df = result_df[self.report_df.columns]
-
-                print("------------------------- Result DataFrame -----------------------------")
-                print(result_df.head())
-                result_df.to_csv("result_df.csv", index=False)
-                print("------------------------------------------------------")
-
-                config_mapping = {
-                                    "EmaTimeframe": "forward_EmaTimeframe",
-                                    "EmaPeriods": "forward_EmaPeriods",
-
-                                    "UseRSICriteria": "forward_UseRSICriteria",
-                                    "RsiTimeframe": "forward_RsiTimeframe",
-                                    "RsiPeriod": "forward_RsiPeriod",
-                                    "RsiSellLevel": "forward_RsiSellLevel",
-
-                                    "UseAdxCriteria": "forward_UseAdxCriteria",
-                                    "AdxTimeframe": "forward_AdxTimeframe",
-                                    "AdxPeriod": "forward_AdxPeriod",
-                                    "AdxThreshold": "forward_AdxThreshold",
-
-                                    "UseBbCriteria": "forward_UseBbCriteria",
-                                    "BbTimeframe": "forward_BbTimeframe",
-                                    "BbPeriod": "forward_BbPeriod",
-                                    "BbDeviations": "forward_BbDeviations",
-
-                                    "DelayTradeSequence": "forward_DelayTradeSequence",
-                                    "LiveDelay": "forward_LiveDelay",
-                                    "LiveDelay2ndTradeLotsMultiplier": "forward_LiveDelay2ndTradeLotsMultiplier",
-
-                                    "AtrPeriod": "forward_AtrPeriod",
-                                    "PipStep": "forward_PipStep",
-                                    "PipStepExponent": "forward_PipStepExponent",
-                                    "MaxOrders": "forward_MaxOrders",
-                                    "ReverseSequenceDirection": "forward_ReverseSequenceDirection",
-
-                                    "LockProfit": "forward_LockProfit",
-                                    "TrailingStoploss": "forward_TrailingStoploss",
-
-                                    "Multiplier": "multiplier",
-                                }
-
-                
-                joined_values = {}
-
-                for set_file_key, df_col in config_mapping.items():
-                    if df_col in result_df.columns:
-                        # Convert all values to string and join with "||"
-                        joined_values[set_file_key] = "||".join(result_df[df_col].astype(str).tolist())
-                    elif(df_col == "LotSize"):
-                        if self.ui.toggle_Multiplier.isChecked():
-                            lotSize_value = float(self.lotSize or 0.01)
-                            joined_values["LotSize"] = "||".join(
-                                f"{lotSize_value * float(row.get('multiplier', 1)):.2f}"
-                                for _, row in result_df.iterrows()
-                            )
-                        else:
-                            joined_values["LotSize"] = "||".join(
-                                f"{float(self.lotSize or 0.01):.2f}"
-                                for _, row in result_df.iterrows()
-                            )
-                        joined_values["LotSize"] += "||N"
-
-
+                # 3. Pre-calculate Min/Max ranges for all mapped parameters
+                param_ranges = {}
+                config_mapping_flat = {}
+                for section, fields in self.config_mapping.items():
+                    if isinstance(fields, dict):
+                        for k, v in fields.items(): config_mapping_flat[k] = v
                     else:
-                        # If column not in df, leave empty or default
-                        joined_values[set_file_key] = ""
+                        config_mapping_flat[section] = fields
 
-                print("===================================")
-                print("save_path = ", save_path)
-                print("===================================")
+                for ea_key, csv_col in config_mapping_flat.items():
+                    if csv_col in result_df.columns:
+                        numeric_vals = pd.to_numeric(result_df[csv_col], errors='coerce').dropna()
+                        if not numeric_vals.empty:
+                            param_ranges[ea_key] = (numeric_vals.min(), numeric_vals.max())
 
-                base_path = save_path.replace(".set", "")
-
+                # Special range for LotSize
+                lot_vals = []
+                base_lot = float(self.lotSize or 0.01)
                 for _, row in result_df.iterrows():
+                    if self.ui.toggle_Multiplier.isChecked():
+                        mult = float(row.get("multiplier", 1.0))
+                        lot_vals.append(base_lot * mult)
+                    else:
+                        lot_vals.append(base_lot)
+                if lot_vals:
+                    param_ranges["LotSize"] = (min(lot_vals), max(lot_vals))
 
+                # 4. Generate files for each pass
+                for _, row in result_df.iterrows():
                     pass_no = row.get("Pass")
                     file_path = f"{base_path}_{pass_no}.set"
 
+                    # Start with template values
+                    final_params = template_params.copy()
+
+                    # Overlay values from CSV using config_mapping (Nested)
+                    for section, fields in self.config_mapping.items():
+                        if isinstance(fields, dict):
+                            for ea_key, csv_col in fields.items():
+                                if csv_col in row:
+                                    final_params[ea_key] = str(row[csv_col])
+                                elif "||" in str(csv_col) or str(csv_col) != str(ea_key):
+                                    # Treat as literal if it has "||" or is different from the key name
+                                    final_params[ea_key] = str(csv_col)
+                        else:
+                            if fields in row:
+                                final_params[section] = str(row[fields])
+                            elif "||" in str(fields) or str(fields) != str(section):
+                                final_params[section] = str(fields)
+
+                    # Special handling for LotSize current value
+                    if self.ui.toggle_Multiplier.isChecked():
+                        multiplier = float(row.get("multiplier", 1.0))
+                        final_params["LotSize"] = f"{base_lot * multiplier:.2f}"
+                    else:
+                        final_params["LotSize"] = f"{base_lot:.2f}"
+
+                    # --- Special Fallbacks for General & Licensing ---
+                    # Use API Key from UI if not in template/CSV
+                    if not final_params.get("apiKey") or final_params.get("apiKey") == "":
+                        final_params["apiKey"] = self.ui.api_key.text().strip()
+                    
+                    # Auto-generate descriptions if missing
+                    if not final_params.get("StrategyDescription"):
+                        final_params["StrategyDescription"] = f"{self.symbol}_Pass_{pass_no}"
+                    if not final_params.get("TradeComment"):
+                        final_params["TradeComment"] = f"{self.symbol}_Pass_{pass_no}"
+
+                    # Write the file
                     with open(file_path, "w", encoding="utf-16") as f:
-
-                        # Header
                         f.write(f"; saved on {datetime.now().strftime('%Y.%m.%d %H:%M:%S')}\n")
-                        f.write("; generated by AI Agent Finder\n")
-                        f.write(f"; this file contains input parameters for testing/optimizing {self.title} expert advisor\n")
-                        f.write("; to use in MetaTrader Strategy Tester, click Load on the Inputs tab\n")
-                        f.write(f"; Symbol={self.symbol}\n;\n")
+                        f.write(f"; this file contains input parameters for testing/optimizing {ea_name} expert advisor\n")
+                        f.write("; to use it in the strategy tester, click Load in the context menu of the Inputs tab\n")
+                        f.write(f"; Symbol={self.symbol} | Pass={pass_no}\n;\n")
 
-                        # General
-                        f.write(";~~~~~~~~~General~~~~~~~~~\n")
-                        f.write("AllowNewSequence=true||false||0||true||N\n")
-                        f.write(f"StrategyDescription={self.symbol}_pass_{pass_no}\n")
-                        f.write("ColorScheme=0||0||0||2||N\n")
+                        written_keys = set()
 
-                        if self.ui.toggle_Generate_magic.isChecked():
-                            f.write(self.generate_magic_string(1) + "\n")
+                        for section_name, fields in self.config_mapping.items():
+                            if isinstance(fields, dict):
+                                f.write(f";~~~~~~~~~{section_name}~~~~~~~~~\n")
+                                for ea_key in fields.keys():
+                                    if ea_key in final_params:
+                                        new_val = str(final_params[ea_key])
+                                        original_str = template_params.get(ea_key, "")
+                                        
+                                        if "||" in new_val:
+                                            # Already a literal optimization string
+                                            f.write(f"{ea_key}={new_val}\n")
+                                        elif ea_key in param_ranges:
+                                            # Standard 5-part format: current||start||step||stop||Y/N
+                                            p_min, p_max = param_ranges[ea_key]
+                                            
+                                            # If min == max, reset min to 0 as requested
+                                            if p_min == p_max:
+                                                p_min = 0
+                                            
+                                            # Try to get step from template, otherwise default
+                                            step = "1"
+                                            if "||" in original_str:
+                                                parts_orig = original_str.split("||")
+                                                if len(parts_orig) >= 3:
+                                                    step = parts_orig[2]
+                                            
+                                            flag = "Y" if p_min != p_max else "N"
+                                            f.write(f"{ea_key}={new_val}||{p_min}||{step}||{p_max}||{flag}\n")
+                                        elif "||" in original_str:
+                                            # Fallback: maintain template structure but update current value
+                                            parts = original_str.split("||")
+                                            parts[0] = new_val
+                                            f.write(f"{ea_key}={'||'.join(parts)}\n")
+                                        else:
+                                            f.write(f"{ea_key}={new_val}\n")
+                                        
+                                        written_keys.add(ea_key)
+                                f.write("\n")
 
-                        f.write(f"TradeComment={self.symbol}_pass_{pass_no}\n")
-
-                        # Licensing
-                        f.write(";~~~~~~~~~EA Licensing~~~~~~~~~\n")
-                        f.write(f"apiKey={self.ui.api_key.text().strip()}\n")
-
-                        # Sections
-                        sections = {
-                            "EMA Settings": ["UseEmaCriteria", "EmaTimeframe", "EmaPeriods"],
-                            "RSI Settings": ["UseRSICriteria", "RsiTimeframe", "RsiPeriod", "RsiSellLevel"],
-                            "ADX Settings": ["UseAdxCriteria", "AdxTimeframe", "AdxPeriod", "AdxThreshold"],
-                            "Bollinger Band Settings": ["UseBbCriteria", "BbTimeframe", "BbPeriod", "BbDeviations"],
-                            "Delays": ["DelayTradeSequence", "LiveDelay", "LiveDelay2ndTradeLotsMultiplier"],
-                            "Sequence Settings": ["AtrPeriod", "PipStep", "PipStepExponent", "MaxOrders", "ReverseSequenceDirection"],
-                            "Exit Settings": ["LockProfit", "TrailingStoploss"],
-                            "Lot Size Settings": ["Multiplier"],
-                        }
-
-                        for section, keys in sections.items():
-                            f.write(f"; ~~~~~~~~~{section}~~~~~~~~~\n")
-                            for key in keys:
-                                if key in config_mapping:
-                                    col = config_mapping[key]
-                                    if col in row:
-                                        f.write(f"{key}={row[col]}\n")
+                        remaining_keys = set(final_params.keys()) - written_keys
+                        if remaining_keys:
+                            f.write(";~~~~~~~~~Other Parameters~~~~~~~~~\n")
+                            for k in sorted(remaining_keys):
+                                val = str(final_params[k])
+                                original_str = template_params.get(k, "")
+                                
+                                if "||" in val:
+                                    f.write(f"{k}={val}\n")
+                                elif k in param_ranges:
+                                    p_min, p_max = param_ranges[k]
+                                    if p_min == p_max:
+                                        p_min = 0
+                                        
+                                    step = "1"
+                                    if "||" in original_str:
+                                        parts_orig = original_str.split("||")
+                                        if len(parts_orig) >= 3:
+                                            step = parts_orig[2]
+                                    
+                                    flag = "Y" if p_min != p_max else "N"
+                                    f.write(f"{k}={val}||{p_min}||{step}||{p_max}||{flag}\n")
+                                elif "||" in original_str:
+                                    parts = original_str.split("||")
+                                    parts[0] = val
+                                    f.write(f"{k}={'||'.join(parts)}\n")
+                                else:
+                                    f.write(f"{k}={val}\n")
                             f.write("\n")
 
-                    print(f"✅ SET file created: {file_path}")
-
-
-                
-                self.log_to_ui(f"selected_opt_files = {selected_opt_files}")
-                    
-
-                # # === Section 3: Selected Pairs ===
-                # if selected_pairs:
-                #     f.write("; ~~~~~~~~~Selected Pairs~~~~~~~~~\n")
-                #     for pair in selected_pairs:
-                #         f.write(f"{pair}=true||false||0||true||N\n")
-
-                return save_path
+                return base_path
 
             except Exception as e:
-                raise RuntimeError(f"Error writing .set file: {str(e)}")
+                raise RuntimeError(f"Error generating .set files: {str(e)}")
 
-        # --- Step 6: Thread callbacks ---
         def on_done(result):
-            self.log_to_ui(f"💾 .set file generated successfully:\n{result}")
+            self.log_to_ui(f"✅ Dynamic .set files generated successfully at:\n{result}_*.set")
 
         def on_error(err):
-            self.log_to_ui(f"❌ Failed to generate .set file:\n{str(err)}")
-            QMessageBox.critical(self.ui, "Error", f"Failed to generate .set file:\n{str(err)}")
+            self.log_to_ui(f"❌ Failed to generate .set files: {err}")
+            QMessageBox.critical(self.ui, "Error", str(err))
 
-        # --- Step 7: Run task in background thread ---
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
         self.runner.on_error = on_error

@@ -1,0 +1,107 @@
+{
+    "General Parameters": {
+        "StrategyDescription": "StrategyDescription",
+        "allowNew": "true||false||0||true||N",
+        "colScheme": "0||0||0||2||N",
+        "randomDelay": "false||false||0||true||N",
+        "maxSpread": "0.0||0.0||0.000000||0.000000||N"
+    },
+    "EA Licensing": {
+        "apiKey": "apiKey"
+    },
+    "EMA Settings": {
+        "EmaTimeframe": "forward_EmaTimeframe",
+        "EmaPeriods": "forward_EmaPeriods"
+    },
+    "RSI Settings": {
+        "UseRSICriteria": "forward_UseRSICriteria",
+        "RsiTimeframe": "forward_RsiTimeframe",
+        "RsiPeriod": "forward_RsiPeriod",
+        "RsiSellLevel": "forward_RsiSellLevel"
+    },
+    "ADX Settings": {
+        "UseAdxCriteria": "forward_UseAdxCriteria",
+        "AdxTimeframe": "forward_AdxTimeframe",
+        "AdxPeriod": "forward_AdxPeriod",
+        "AdxThreshold": "forward_AdxThreshold"
+    },
+    "Bollinger Band Settings": {
+        "UseBbCriteria": "forward_UseBbCriteria",
+        "BbTimeframe": "forward_BbTimeframe",
+        "BbPeriod": "forward_BbPeriod",
+        "BbDeviations": "forward_BbDeviations"
+    },
+    "Delays": {
+        "DelayTradeSequence": "forward_DelayTradeSequence",
+        "LiveDelay": "forward_LiveDelay",
+        "LiveDelay2ndTradeLotsMultiplier": "forward_LiveDelay2ndTradeLotsMultiplier"
+    },
+    "Sequence Settings": {
+        "AtrPeriod": "forward_AtrPeriod",
+        "PipStep": "forward_PipStep",
+        "pipStepExponent": "1||1||0.1||2||Y",
+        "maxMinPipStep": "60||0.0||0.000000||0.000000||N",
+        "direction": "0||0||0||2||N",
+        "sameDirFilter": "false||false||0||true||N",
+        "MaxOrders": "20||20||1||200||N",
+        "minSeconds": "0||0||1||10||N",
+        "reverseSequence": "false||false||0||true||N",
+        "maxDuration": "0||0||1||10||N"
+    },
+    "Sequence Management": {
+        "applySequence": "0||0||0||1||N",
+        "maxSequence": "0||0||1||10||N",
+        "maxDailyWin": "0||0||1||10||N",
+        "maxDailyLoss": "0||0||1||10||N",
+        "maxAction": "1||0||0||1||N"
+    },
+    "Exit Settings": {
+        "LockProfit": "forward_LockProfit",
+        "TrailingStoploss": "forward_TrailingStoploss"
+    },
+    "Lot Size Settings": {
+        "Multiplier": "multiplier",
+        "LotSize": "LotSize",
+        "compLot": "false||false||0||true||N",
+        "riskPercent": "0.0||0.0||0.000000||0.000000||N",
+        "lotExponent": "1.0||1.0||0.100000||10.000000||N",
+        "maxLot": "5||0.0||0.000000||0.000000||N"
+    },
+    "News Filter Settings": {
+        "useNewsFilter": "true||false||0||true||N",
+        "usdAffects": "false||false||0||true||N",
+        "hoursBefore": "1||1||1||10||N",
+        "hoursAfter": "4||4||1||40||N",
+        "minutesBefore": "0||0||1||10||N",
+        "minutesAfter": "0||0||1||10||N",
+        "actionNews": "1||0||0||2||N",
+        "newsInvert": "false||false||0||true||N"
+    },
+    "Target & Profit Settings": {
+        "ultimateTarget": "0.0||0.0||0.000000||0.000000||N",
+        "dailyTarget": "0.0||0.0||0.000000||0.000000||N",
+        "takeProfitPips": "0.0||0.0||0.000000||0.000000||N",
+        "tpRr": "0||3.0||0.300000||30.000000||N",
+        "lpMinTrades": "0||0||1||10||N",
+        "lpPips": "7||3||0.7||10||Y",
+        "lpWhenCheck": "0||0||0||2||N",
+        "tslValue": "3||0.3||0.4||5.1||Y",
+        "tslWhenCheck": "0||0||0||2||N"
+    },
+    "Stop Loss & Global Settings": {
+        "slPips": "0.0||0.0||0.000000||0.000000||N",
+        "slRunning": "0.0||0.0||0.000000||0.000000||N",
+        "restartAfterLoss": "0||0||0||1||N",
+        "restartHour": "0||0||1||10||N",
+        "globalEquity": "0||0||0||2||N",
+        "globalEquityVal": "0.0||0.0||0.000000||0.000000||N"
+    },
+    "Inverse & Trailing Settings": {
+        "inverseOn": "false||false||0||true||N",
+        "inverseStart": "1||1||1||10||N",
+        "inverseNo": "0||0||1||10||N",
+        "maxProfitTrail": "0.0||0.0||0.000000||0.000000||N",
+        "maxProfitLockIn": "2||0||0||2||N",
+        "beAfter": "0||0||1||10||N"
+    }
+}

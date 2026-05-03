@@ -50,7 +50,7 @@ class HtmlHunterController:
         """Select HTML Reports folder and list XML/HTM report files."""
         try:
             print("self.auto_batch_ui.data_input.text() = ",self.auto_batch_ui.data_input.text())
-            data_folder = (self.auto_batch_ui.data_input.text() or "").strip()
+            data_folder = (self.main_window.data_folder or "").strip()
             if not data_folder:
                 print()
                 data_folder = (self.setprocessor_ui.data_folder_input.text() or "").strip()
@@ -466,10 +466,8 @@ class HtmlHunterController:
    
     def browse_export_folder(self):
         try:
-            print("self.auto_batch_ui.data_input.text() = ",self.auto_batch_ui.data_input.text())
-            data_folder = (self.auto_batch_ui.data_input.text() or "").strip()
+            data_folder = (self.main_window.data_folder or "").strip()
             if not data_folder:
-                print()
                 data_folder = (self.setprocessor_ui.data_folder_input.text() or "").strip()
 
             if data_folder != "":

@@ -267,3 +267,5 @@ extract_tables.py
 inspect_html.py
 output.csv
 test2.py
+/data/logs
+firebaseCredential.json

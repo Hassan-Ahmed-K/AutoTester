@@ -25,14 +25,13 @@ class AutoBatchController:
         self.current_index = None
         self.mt5 = MT5Manager()
         self.runner = ThreadRunner()
-
+        self.main_window = self.ui.parent()
         self.setup_connections()
         
         self.symbols= []
         self.queue = QueueManager(ui) 
         self.selected_queue_item_index = -1
         self.non_correlated_popus_option = {}
-        self.ui.mt5_dir_input
 
         # --- Connect UI buttons ---
         self.ui.mt5_dir_btn.clicked.connect(self.browse_mt5_dir)
@@ -75,83 +74,9 @@ class AutoBatchController:
             return
 
         self.ui.mt5_dir_input.setText(file_path)
+        self.main_window.mt5_dir = file_path
         Logger.info(f"MT5 terminal selected: {file_path}")
 
-        # ---------------------------
-        # TASK for background thread
-        # ---------------------------
-        # def task(file_path):
-        #     result = {
-        #         "file_path": file_path,
-        #         "data_folder": None,
-        #         "deposit_info": None,
-        #     }
-
-        #     try:
-        #         success = self.mt5.connect(file_path)
-        #         if success:
-        #             dataPath = self.mt5.get_dataPath()
-                    
-        #             if dataPath:
-        #                 result["data_folder"] = dataPath
-        #                 os.makedirs(os.path.join(dataPath, "Agent Finder Results"), exist_ok=True)
-        #                 Logger.success(f"MT5 Data Folder: {dataPath}")
-        #             else:
-        #                 Logger.warning("Could not retrieve terminal_info from MT5")
-        #             # --- Deposit info ---
-        #             result["deposit_info"] = self.mt5.get_deposit()
-                    
-        #             if result["deposit_info"]:
-        #                 Logger.success("Deposit info retrieved successfully")
-        #             else:
-        #                 Logger.warning("No deposit info retrieved")
-
-        #             self.mt5.get_symbol_list()
-
-        #             print("Disconnecting")
-        #             self.mt5.disconnect()
-
-        #             exe_name = os.path.basename(file_path)
-
-        #             for proc in psutil.process_iter(['pid', 'name']):
-        #                 if proc.info['name'] == exe_name:
-        #                     try:
-        #                         proc.terminate()
-        #                         print(f"Closed MT5 window: {exe_name}")
-        #                     except Exception as e:
-        #                         print(f"Could not close MT5 window: {e}")
-
-        #         else:
-        #             Logger.error(f"Failed to connect to MT5: {self.mt5.last_error()}")
-
-        #     except Exception as e:
-        #         Logger.error(f"Error while connecting to MT5: {e}")
-
-        #     return result
-
-
-        # # ---------------------------
-        # # CALLBACKS (main thread)
-        # # ---------------------------
-        # def on_done(result):
-        #     if result["data_folder"]:
-        #         self.ui.data_input.setText(result["data_folder"])
-        #         Logger.info(f"Auto-selected Data Folder: {result['data_folder']}")
-        #     else:
-        #         QMessageBox.warning(
-        #             self.ui, "MT5 Data Folder",
-        #             "⚠️ Could not detect Data Folder automatically. Please set it manually."
-        #         )
-
-        #     if result["deposit_info"]:
-        #         self.ui.deposit_info = result["deposit_info"]
-        #         self.ui.deposit_input.setText(str(result["deposit_info"]["balance"]))
-        #         self.ui.currency_input.setText(result["deposit_info"]["currency"])
-        #         self.ui.leverage_input.setValue(result["deposit_info"]["leverage"])
-        #         QMessageBox.information(self.ui, "MT5 Connection", "✅ MT5 connected successfully!")
-        #     else:
-        #         QMessageBox.critical(self.ui, "MT5 Connection", "❌ Failed to connect MT5. Please check the path.")
-        #     QApplication.processEvents()
         def task(file_path):
             result = {
                 "file_path": file_path,
@@ -189,6 +114,7 @@ class AutoBatchController:
 
             if result["data_folder"]:
                 self.ui.data_input.setText(result["data_folder"])
+                self.main_window.data_folder = result["data_folder"]
                 Logger.info(f"Auto-selected Data Folder: {result['data_folder']}")
 
             if result["deposit_info"]:
@@ -227,46 +153,6 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, file_path)
 
-    # def browse_data_folder(self):
-    #     folder = QFileDialog.getExistingDirectory(self.ui, "Select Data Folder")
-    #     if not folder:
-    #         QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Data Folder.")
-    #         Logger.warning("Please select a valid Data Folder.")
-    #         return
-
-    #     def task(folder):
-    #         try:
-    #             # Ensure folder exists and prepare Agent Finder Results directory
-    #             if not os.path.isdir(folder):
-    #                 raise FileNotFoundError(f"Folder does not exist: {folder}")
-
-    #             results_dir = os.path.join(folder, "Agent Finder Results")
-    #             os.makedirs(results_dir, exist_ok=True)
-
-    #             Logger.success(f"Data folder ready: {folder}")
-    #             return folder
-    #         except Exception as e:
-    #             Logger.error(f"Error while validating Data Folder: {e}")
-    #             raise
-
-    #     def on_done(folder):
-    #         # Update UI safely on main thread
-    #         self.ui.data_input.setText(folder)
-    #         QMessageBox.information(self.ui, "Data Folder", f"✅ Data folder set:\n{folder}")
-    #         Logger.info(f"Data folder selected: {folder}")
-
-    #     def on_error(err):
-    #         QMessageBox.critical(self.ui, "Error", f"❌ Failed to select Data Folder.\nError: {str(err)}")
-    #         Logger.error(f"Failed to select Data Folder: {err}")
-
-    #     # Run threaded
-    #     self.runner = ThreadRunner(self.ui)
-    #     self.runner.on_result = on_done
-    #     self.runner.on_error = on_error
-    #     self.runner.run(task, folder)
-
-
-
     def browse_data_folder(self):
         Logger.info("Opening folder dialog to select Data Folder...")
 
@@ -275,6 +161,9 @@ class AutoBatchController:
             QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Data Folder.")
             Logger.warning("User cancelled Data Folder selection or chose invalid folder.")
             return
+
+        self.ui.data_input.setText(folder)
+        self.main_window.data_folder = folder
 
         Logger.success(f"Data Folder selected by user: {folder}")
 
@@ -327,56 +216,6 @@ class AutoBatchController:
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task, folder)
-
-
-    # def browse_report_folder(self):
-    #     try:
-    #         folder = QFileDialog.getExistingDirectory(self.ui, "Select Report Folder")
-    #         if not folder:
-    #             QMessageBox.warning(self.ui, "Error", "❌ Please select a valid Report Folder.")
-    #             Logger.warning("Please select a valid Report Folder.")
-    #             return
-
-    #         # Define Background task
-    #         def task(folder):
-    #             if not os.path.isdir(folder):
-    #                 raise FileNotFoundError(f"Folder does not exist: {folder}")
-
-    #             # Ensure subfolder exists (optional, for consistency)
-    #             os.makedirs(os.path.join(folder, "AI Agent Reports"), exist_ok=True)
-
-    #             return folder
-
-        
-    #         def on_done(result_folder):
-    #             self.ui.report_input.setText(result_folder)
-    #             Logger.success(f"Report folder selected: {result_folder}")
-    #             QMessageBox.information(
-    #                 self.ui,
-    #                 "Report Folder",
-    #                 f"✅ Report folder set:\n{result_folder}"
-    #             )
-
-    #         def on_error(err):
-    #             Logger.error(f"Error while selecting Report Folder: {err}")
-    #             QMessageBox.critical(
-    #                 self.ui,
-    #                 "Error",
-    #                 f"❌ Failed to select Report Folder.\nError: {str(err)}"
-    #             )
-    #         self.runner = ThreadRunner(self.ui)
-    #         self.runner.on_result = on_done
-    #         self.runner.on_error = on_error
-    #         self.runner.run(task, folder)
-
-    #     except Exception as e:
-    #         Logger.error(f"Error while opening Report Folder dialog: {e}")
-    #         QMessageBox.critical(
-    #             self.ui,
-    #             "Error",
-    #             f"❌ Failed to open Report Folder dialog.\nError: {str(e)}"
-    #         )
-
 
     def browse_report_folder(self):
         Logger.info("Opening Report Folder selection dialog...")  # Log start
@@ -435,7 +274,6 @@ class AutoBatchController:
                 "Error",
                 f"❌ Failed to open Report Folder dialog.\nError: {str(e)}"
             )
-
 
     def create_batch_subfolder(self, report_root):
         try:
@@ -595,14 +433,15 @@ class AutoBatchController:
         suffix = self.ui.symbol_suffix.text().strip()
 
         # combine
-        symbol = self.normalize_symbol(symbol, prefix, suffix)
+
+        print("Symbol = ", symbol)
+        
         # symbol = f"{prefix}{symbol}{suffix}"
         
         
 
         settings = {
             "test_name": test_name,
-
             "expert": self.ui.expert_input.currentText().strip(),
             "param_file": self.ui.param_input.text().strip(),
             "symbol": symbol,
@@ -626,68 +465,6 @@ class AutoBatchController:
 
         return settings
     
-    # def add_test_to_queue(self):
-    #     settings = self.test_settings()
-    #     if not settings:
-    #         return
-
-    #     def task():
-
-    #         # This runs in background thread
-    #         if self.current_index is not None and 0 <= self.current_index < len(self.queue.tests):
-    #             old = self.queue.tests[self.current_index]
-    #             old_name = old.get("test_name", "")
-    #             new_name = settings.get("test_name", "")
-
-    #             if new_name == old_name:
-    #                 self.queue.tests[self.current_index] = settings
-    #                 return ("updated", new_name, self.current_index)
-            
-    #             else:
-    #                 self.queue.tests.append(settings)
-    #                 new_index = len(self.queue.tests) - 1
-    #                 return ("added_changed", new_name, new_index)
-    #         else:
-    #             self.queue.tests.append(settings)
-    #             new_index = len(self.queue.tests) - 1
-    #             return ("added", settings["test_name"], new_index)
-
-    #     def on_done(result):
-    #         # This runs back in the GUI thread
-    #         status, name, index = result
-
-    #         if status == "updated":
-    #             item = self.ui.queue_list.item(index)
-    #             if item:
-    #                 item.setText(name)
-    #             self.queue.refresh_queue()
-    #             self.ui.queue_list.setCurrentRow(index)
-    #             Logger.success(f"✅ Test '{name}' updated at index {index}.")
-
-    #         elif status == "added_changed":
-    #             self.queue.refresh_queue()
-    #             self.ui.queue_list.setCurrentRow(index)
-    #             self.current_index = index
-    #             QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue")
-    #             Logger.success(f"✅ Test '{name}' added to queue")
-
-    #         elif status == "added":
-    #             self.queue.refresh_queue()
-    #             self.ui.queue_list.setCurrentRow(index)
-    #             self.current_index = index
-    #             QMessageBox.information(self.ui, "Success", f"✅ Test {name} added to queue.")
-    #             Logger.success(f"✅ Test '{name}' added to queue.")
-
-    #     def on_error(err):
-    #         QMessageBox.critical(self.ui, "Error", str(err))
-    #         Logger.error(str(err))
-
-    #     # Run in background
-    #     self.runner = ThreadRunner(self.ui)
-    #     self.runner.on_result = on_done
-    #     self.runner.on_error = on_error
-    #     self.runner.run(task)
-
     def add_test_to_queue(self):
         settings = self.test_settings()
         if not settings:
@@ -724,6 +501,7 @@ class AutoBatchController:
     
     def update_clean_symbol(self):
         raw = self.ui.testfile_input.text().strip()
+        self.queue.refresh_queue()
         print("raw = ", raw)
         best = self.get_best_symbol(raw)
         if best:
@@ -912,58 +690,6 @@ class AutoBatchController:
         except Exception as e:
             Logger.error(f"Error in toggle_date_fields with option '{text}': {e}")
 
-
-
-    # def adjust_forward_date(self, text):
-    #     """Adjust forward_date based on selected testing period and forward fraction."""
-    #     try:
-    #         Logger.info(f"Adjusting forward date based on selection: {text}")
-
-    #         # Get testing period
-    #         date_from = self.ui.date_from.date()
-    #         date_to = self.ui.date_to.date()
-
-    #         # Calculate total testing duration in days
-    #         total_days = date_from.daysTo(date_to)
-    #         if total_days <= 0:
-    #             Logger.warning("Invalid test period: date_from >= date_to")
-    #             return
-
-    #         # Handle forward options
-    #         if text == "No":
-    #             self.ui.forward_date.setEnabled(False)
-    #             self.ui.forward_date.setDate(date_to)  # No forward, same as test end
-    #             Logger.debug("Forward date disabled, set to test end date")
-
-    #         elif text in ("1/4", "1/3", "1/2"):
-    #             self.ui.forward_date.setEnabled(False)
-
-    #             # Convert "1/3" -> 1/3 fraction
-    #             fraction = eval(text)  # safe here since only predefined values are allowed
-
-    #             # Forward starts after (1 - fraction) of period completed
-    #             forward_start_offset = int(total_days * (1 - fraction))
-
-    #             # New forward date = test period start + offset
-    #             new_forward_date = date_from.addDays(forward_start_offset)
-    #             self.ui.forward_date.setDate(new_forward_date)
-
-    #             Logger.debug(
-    #                 f"Forward date set to {new_forward_date.toString('yyyy-MM-dd')} "
-    #                 f"({text} of test period from {date_from.toString()} → {date_to.toString()})"
-    #             )
-
-    #         elif text == "Custom":
-    #             self.ui.forward_date.setEnabled(True)
-    #             Logger.info("Forward date enabled for custom selection")
-
-    #         else:
-    #             Logger.warning(f"Unknown forward date option: {text}")
-
-    #     except Exception as e:
-    #         Logger.error(f"Error adjusting forward date for '{text}': {e}")
-
-
     def adjust_forward_date(self, text):
         """Adjust forward_date based on selected testing period and forward fraction."""
         try:
@@ -1111,99 +837,6 @@ class AutoBatchController:
         self.runner = ThreadRunner(self.ui)
         self.runner.on_result = on_done
         self.runner.run(task, self.selected_queue_item_index)
-
-    # def fetch_correlation(self, market="forex", period=50, symbols=None,
-    #                   output_format="csv", endpoint="snapshot"):
-    #     """Blocking: returns a dataframe"""
-
-    #     if not symbols:
-    #         symbols = ["EURUSD", "EURGBP", "AUDNZD"]  # fallback
-
-
-    #     symbol_str = "|".join(symbols)
-
-    #     url = (
-    #         f"https://www.mataf.io/api/tools/{output_format}/correl/"
-    #         f"{endpoint}/{market}/{period}/correlation.{output_format}?symbol={symbol_str}"
-    #     )
-
-    #     response = requests.get(url, timeout=30)
-        
-    #     response.raise_for_status()
-    #     lines = response.text.splitlines()
-    #     print(lines)
-    #     csv_data = "\n".join(lines[3:])
-
-    #     df = pd.read_csv(StringIO(csv_data))
-
-    #     # Remove any rows where either pair is EURUSD
-    #     df = df[df['pair1'].isin(symbols) & df['pair2'].isin(symbols)]
-
-    #     return df
- 
-    # def get_correlation(self, market="forex", period=50, symbols=None,
-    #                     output_format="csv", endpoint="snapshot",
-    #                     on_done=None, on_error=None):
-        
-    #     symbols = []
-    #     for test in self.queue.tests: 
-    #         if test["symbol"] not in symbols:
-    #             symbols.append(test["symbol"])
-    #     print("symbols = ", symbols)
-
-
-    #     # if not symbols:
-    #     #     symbols = ["EURUSD", "EURGBP", "AUDNZD"]
-           
-        
-
-    #     def task():
-    #         return self.fetch_correlation(market, period, symbols, output_format, endpoint)
-
-
-    #     def _on_done(df):
-    #         if on_done:
-    #             on_done(df)  # delegate
-    #         else:
-    #             # default: show heatmap
-    #             try:
-    #                 corr_df = df.pivot(index="pair1", columns="pair2", values="day")
-
-    #                 def show_plot():
-
-    #                     plt.figure(figsize=(6, 4))
-    #                     sns.heatmap(
-    #                         corr_df,
-    #                         annot=True,
-    #                         fmt=".0f",
-    #                         cmap="RdBu",
-    #                         center=0,
-    #                         vmin=-100,
-    #                         vmax=100,
-    #                         linewidths=0.5
-    #                     )
-    #                     plt.title("Correlation Heatmap (Day)")
-    #                     plt.tight_layout()
-    #                     plt.show()
-
-    #                     Logger.success("Correlation heatmap generated")
-
-    #                 QTimer.singleShot(0, show_plot)
-
-    #             except Exception as e:
-    #                 QMessageBox.critical(self.ui, "Error", str(e))
-    #                 Logger.error(str(e))
-
-    #     def _on_error(err):
-    #         if on_error:
-    #             on_error(err)
-    #         else:
-    #             QMessageBox.critical(self.ui, "Error", str(err))
-
-    #     self.runner = ThreadRunner(self.ui)
-    #     self.runner.on_result = _on_done
-    #     self.runner.on_error = _on_error
-    #     self.runner.run(task)
       
     def fetch_correlation(self, market="forex", period=50, symbols=None,
                       output_format="csv", endpoint="snapshot"):
@@ -1252,7 +885,6 @@ class AutoBatchController:
             Logger.error(f"Unexpected error in fetch_correlation: {e}")
             raise
 
- 
     def get_correlation(self, market="forex", period=50, symbols=None,
                     output_format="csv", endpoint="snapshot",
                     on_done=None, on_error=None):
@@ -1325,9 +957,6 @@ class AutoBatchController:
             Logger.error(f"Unexpected error in get_correlation: {e}")
             QMessageBox.critical(self.ui, "Error", str(e))
 
-
-
-    
     def show_quantity_popup(self, title, text):
         results = {
             "test_symbol_quantity": None,
@@ -1509,7 +1138,6 @@ class AutoBatchController:
         self.runner.on_error = on_error
         self.runner.run(task, symbols, results, ui_values)
 
-
     def get_symbols_for_option(self, option):
         if option == "FX Only":
             return self.mt5.get_fx_symbols()
@@ -1521,14 +1149,6 @@ class AutoBatchController:
             return self.mt5.get_fx_symbols() + self.mt5.get_metals_symbols() + self.mt5.get_indices_symbols()
         else:
             return self.mt5.get_fx_symbols()
-
-    # def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
-    #     df_filtered = df[df["pair1"] != df["pair2"]].copy()
-    #     df_filtered["abs_day"] = df_filtered["day"].abs()
-        
-    #     df_filtered = df_filtered[df_filtered["abs_day"] <= correlation].sort_values("abs_day", ascending=False)
-
-    #     return df_filtered[["pair1", "pair2", "day"]].head(top_n)
 
     def get_top_uncorrelated_pairs_day(self, df, correlation=60, top_n=5):
         Logger.info(f"Finding top {top_n} uncorrelated pairs with correlation ≤ {correlation}")
@@ -1567,7 +1187,6 @@ class AutoBatchController:
 
         return top_pairs
 
-
     def on_start_button_clicked(self, data_path, mt5_path, report_path):
         print("data_path = ", data_path)
         print("mt5_path = ", mt5_path)
@@ -1577,14 +1196,18 @@ class AutoBatchController:
             QMessageBox.warning(self.ui, "No Tests", "No tests in the queue. Please add tests first.")
             return
 
-        # QMessageBox.information(self.ui, "Starting", "Running tests in queue...")
         Logger.info("Starting queued tests...")
 
         def task():
             # Run tests one by one in the thread
             while not self.queue.is_empty():
                 test_settings = self.queue.get_next_test()
-                self.mt5.run_test(test_settings, data_path, mt5_path, report_path,self.ui.experts, report_type="XML")
+                test_settings["symbol"] = self.normalize_symbol(
+                    test_settings["symbol"], 
+                    test_settings.get("symbol_prefix", ""), 
+                    test_settings.get("symbol_suffix", "")
+                )
+                self.mt5.run_test(test_settings, data_path, mt5_path, report_path, self.ui.experts, report_type="XML")
                 self.queue.refresh_queue()
             return True  # signal finished
 
@@ -1597,7 +1220,7 @@ class AutoBatchController:
         self.runner.run(task)
 
     def setup_connections(self):
-    # Text fields
+        # Text fields
         self.ui.testfile_input.textChanged.connect(self.save_current_test)
         self.ui.param_input.textChanged.connect(self.save_current_test)
         self.ui.symbol_input.textChanged.connect(self.save_current_test)
@@ -1623,7 +1246,6 @@ class AutoBatchController:
         self.ui.date_to.dateChanged.connect(self.save_current_test)
         self.ui.forward_date.dateChanged.connect(self.save_current_test)
 
-
     def save_current_test(self, *args):
         if hasattr(self, "current_index") and self.current_index is not None:
             if 0 <= self.current_index < len(self.queue.tests):
@@ -1636,83 +1258,6 @@ class AutoBatchController:
             test_data = self.queue.tests[index]  # Get the selected test
             self.load_test_parameters(test_data)  # Show it on the form
             # print(test_data)
-
-    # def load_test_parameters(self, test_data):
-    #     # Expert & param files
-    #     try:
-                
-    #         for widget in [
-    #             self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
-    #             self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
-    #             self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
-    #             self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
-    #             self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
-    #             self.ui.delay_input, self.ui.leverage_input,
-    #             self.ui.date_from, self.ui.date_to, self.ui.forward_date
-    #         ]:
-    #             widget.blockSignals(True)
-
-    #             self.ui.testfile_input.setText(test_data.get("test_name", ""))
-    #             self.ui.expert_input.setCurrentText(test_data.get("expert", ""))
-    #             self.ui.param_input.setText(test_data.get("param_file", ""))
-    #             self.ui.symbol_input.setText(str(test_data.get("symbol", "")))
-                
-    #             self.ui.timeframe_combo.setCurrentText(test_data.get("timeframe", ""))
-    #             self.ui.symbol_prefix.setText(test_data.get("symbol_prefix", ""))
-    #             self.ui.symbol_suffix.setText(test_data.get("symbol_suffix", ""))
-              
-    #             self.ui.date_combo.setCurrentText(test_data.get("date", "")) 
-    #             date_from_str = test_data.get("date_from", "")
-    #             date_from = QDate.fromString(date_from_str, "yyyy-MM-dd")
-    #             if date_from.isValid():
-    #                 self.ui.date_from.setDate(date_from)
-    #             else:
-    #                 self.ui.date_from.setDate(QDate(2000, 1, 1)) 
-
-    #             # Handle date_to
-    #             date_to_str = test_data.get("date_to", "")
-    #             date_to = QDate.fromString(date_to_str, "yyyy-MM-dd")
-    #             if date_to.isValid():
-    #                 self.ui.date_to.setDate(date_to)
-    #             else:
-    #                 self.ui.date_to.setDate(QDate(2000, 1, 1))
-
-    #             # Handle forward_date
-    #             self.ui.forward_combo.setCurrentText(test_data.get("forward", ""))
-    #             forward_str = test_data.get("forward_date", "")
-    #             forward_date = QDate.fromString(forward_str, "yyyy-MM-dd")
-    #             if forward_date.isValid():
-    #                 self.ui.forward_date.setDate(forward_date)
-    #             else:
-    #                 self.ui.forward_date.setDate(QDate(2000, 1, 1))
-    #             # self.ui.date_from.setDate(QDate.fromString(test_data.get("date_from", "2000-01-01"), "yyyy-MM-dd"))
-    #             # self.ui.date_to.setDate(QDate.fromString(test_data.get("date_to", "2000-01-01"), "yyyy-MM-dd"))
-    #             # self.ui.forward_date.setDate(QDate.fromString(test_data.get("forward_date", "2000-01-01"), "yyyy-MM-dd"))
-
-    #             self.ui.delay_combo.setCurrentText(test_data.get("delay_mode", ""))
-    #             self.ui.delay_input.setValue(int(test_data.get("delay", 0)))
-    #             self.ui.model_combo.setCurrentText(test_data.get("model", ""))
-    #             self.ui.deposit_input.setText(str(test_data.get("deposit", "")))
-    #             self.ui.currency_input.setText(test_data.get("currency", ""))
-    #             self.ui.leverage_input.setValue(float(test_data.get("leverage", 0)))
-    #             self.ui.optim_combo.setCurrentText(str(test_data.get("optimization", "")))
-    #             self.ui.criterion_input.setCurrentText(str(test_data.get("criterion", "")))
-
-
-    #     except Exception as e:
-    #            Logger.error(f"Error loading test parameters: {str(e)}")
-    #     finally:
-    #         for widget in [
-    #             self.ui.testfile_input, self.ui.param_input, self.ui.symbol_input,
-    #             self.ui.symbol_prefix, self.ui.symbol_suffix, self.ui.deposit_input,
-    #             self.ui.currency_input, self.ui.expert_input, self.ui.timeframe_combo,
-    #             self.ui.date_combo, self.ui.forward_combo, self.ui.delay_combo,
-    #             self.ui.model_combo, self.ui.optim_combo, self.ui.criterion_input,
-    #             self.ui.delay_input, self.ui.leverage_input,
-    #             self.ui.date_from, self.ui.date_to, self.ui.forward_date
-    #         ]:
-    #             widget.blockSignals(False)
-        
 
     def load_test_parameters(self, test_data):
         Logger.info(f"Loading test parameters for: {test_data.get('test_name', 'Unnamed Test')}")
@@ -1795,11 +1340,11 @@ class AutoBatchController:
     def update_current_test_parameters(self, index):
         """Save the current form values into the test at given index."""
         try:
-            self.queue.tests[index] = {
+           self.queue.tests[index] = {
                 "test_name": self.ui.testfile_input.text(),
                 "expert": self.ui.expert_input.currentText(),
                 "param_file": self.ui.param_input.text(),
-                "symbol": self.ui.symbol_input.text(),
+                "symbol": self.ui.symbol_input.text().strip(),
                 "timeframe": self.ui.timeframe_combo.currentText(),
                 "symbol_prefix": self.ui.symbol_prefix.text(),
                 "symbol_suffix": self.ui.symbol_suffix.text(),
@@ -1819,41 +1364,10 @@ class AutoBatchController:
             }
         except Exception as e:
             print(f"Error saving test parameters: {e}")
-    
-
-
-        
-       
-
-
-
-        # Do this for all the other parameter fields
-
-    # def schedule_test(self):
-    #     selected_date = self.ui.schedule_date.date().toPyDate()
-        
-    #     # Default time at 9:00 AM (you can change it)
-    #     run_time = datetime.combine(selected_date, time(hour=0, minute=0))
-    #     now = datetime.now()
-        
-    #     if run_time <= now:
-    #         print("Selected date/time is in the past!")
-    #         return
-        
-    #     # Schedule the job
-    #     self.scheduler.add_job(self.my_function, 'date', run_date=run_time)
-    #     print(f"Function scheduled for {run_time}")
-
-    # def my_function(self):
-    #     print("huzaifa")
-
-
-
 
     def copy_parameter(self, property:dict):
         print("property : ", property)
         self.queue.update_all_tests(property)
-
 
     def normalize_symbol(self,symbol, prefix="", suffix=""):
         if prefix and symbol.startswith(prefix):
