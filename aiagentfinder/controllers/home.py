@@ -1,13 +1,12 @@
 import re
-import uuid
-import json
 import os
 import time
-import keyring
 from dotenv import load_dotenv
 from PyQt5.QtWidgets import QMessageBox
 from aiagentfinder.utils.logger import Logger
 from aiagentfinder.utils.workerThread import ThreadRunner
+from aiagentfinder.utils.firebase_auth import login_user
+from aiagentfinder.utils.session_manager import save_session, is_session_valid, clear_session
 
 load_dotenv()
 class HomeController:
@@ -15,48 +14,34 @@ class HomeController:
         self.ui = ui
         self.runner = ThreadRunner()
         self.main_window = self.ui.parent()
-        self.SERVICE_NAME = os.getenv("SERVICE_NAME")
-        self.CACHE_KEY = os.getenv("CACHE_KEY")
-        self.check_login()
+        self.check_cache()
 
         self.ui.signin_btn.clicked.connect(self.handle_login)
         self.ui.logout_btn.clicked.connect(self.handle_logout)
 
-    # def save_cache(self, data: dict):
-    #     keyring.set_password(self.SERVICE_NAME, self.CACHE_KEY, json.dumps(data))
-    
-    # def load_cache(self):
-    #     data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
-    #     if data_str:
-    #         return json.loads(data_str)
-    #     return None
 
     def save_cache(self, data: dict):
-        """Safely save cache data to keyring."""
-        try:
-            keyring.set_password(self.SERVICE_NAME, self.CACHE_KEY, json.dumps(data))
-            Logger.info(f"Cache saved successfully for service '{self.SERVICE_NAME}' and key '{self.CACHE_KEY}'.")
-        except Exception as e:
-            Logger.error("Failed to save cache to keyring", e)
+        """Safely save cache data to session file."""
+        if save_session(data):
+            Logger.info("Cache saved successfully to session file.")
+        else:
+            Logger.error("Failed to save cache to session file.")
 
 
     def load_cache(self):
-        """Safely load cache data from keyring."""
+        """Safely load cache data from session file."""
         try:
-            data_str = keyring.get_password(self.SERVICE_NAME, self.CACHE_KEY)
-            if data_str:
-                data = json.loads(data_str)
-                Logger.info(f"Cache loaded successfully for service '{self.SERVICE_NAME}' and key '{self.CACHE_KEY}'.")
+            data = is_session_valid()
+            if data:
+                Logger.info("Valid session found and loaded.")
                 return data
             else:
-                Logger.warning(f"No cache data found for service '{self.SERVICE_NAME}' and key '{self.CACHE_KEY}'.")
+                Logger.warning("No valid session found.")
                 return None
-        except json.JSONDecodeError as e:
-            Logger.error("Cache data is corrupted or not valid JSON", e)
-            return None
         except Exception as e:
-            Logger.error("Failed to load cache from keyring", e)
+            Logger.error("Failed to load cache from session file", e)
             return None
+
 
     def is_email_valid(self, email):
         return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email)
@@ -64,43 +49,6 @@ class HomeController:
     def is_password_valid(self, password):
         return len(password) >= 6
 
-    def generate_token(self):
-        return str(uuid.uuid4())
-
-
-    # def handle_login(self):
-    #     print("Login button clicked")
-    #     email = self.ui.email.text()
-    #     password = self.ui.password.text()
-
-    #     if not self.is_email_valid(email):
-    #         QMessageBox.warning(self.ui, "Invalid Email", "Please enter a valid email address.")
-    #         Logger.warning(f"Invalid email: {email}")
-    #         return
-
-    #     if not self.is_password_valid(password):
-    #         QMessageBox.warning(self.ui, "Invalid Password", "Password must be at least 6 characters.")
-    #         Logger.warning(f"Invalid password for email: {email}")
-    #         return
-
-       
-    #     if email == "admin@example.com" and password == "123456":
-    #         token = self.generate_token()
-    #         cache_data = {
-    #             "authenticated": True,
-    #             "token": token,
-    #             "validation_time": time.time(),
-    #         }
-    #         self.save_cache(cache_data)
-    #         QMessageBox.information(self.ui, "Success", "Login successful!")
-    #         Logger.info(f"User {email} logged in successfully.")
-    #         self.main_window.authenticated = True
-    #         self.check_login()
-
-    #     else:
-    #         QMessageBox.critical(self.ui, "Login Failed", "Invalid email or password.")
-    #         Logger.warning(f"Failed login attempt for email: {email}")
-    #         return False
     def handle_login(self):
         print("Login button clicked")
         email = self.ui.email.text()
@@ -119,20 +67,21 @@ class HomeController:
             return
 
         def task():
-            # simulate authentication (replace this with real API call later)
-            if email == "admin@example.com" and password == "123456":
-                token = self.generate_token()
+            result = login_user(email, password)
+            
+            if result.get("status"):
                 cache_data = {
                     "authenticated": True,
-                    "token": token,
                     "validation_time": time.time(),
+                    "email": email
                 }
                 self.save_cache(cache_data)
-                Logger.info(f"User {email} logged in successfully.")
+                Logger.info(f"User {email} logged in successfully via Firebase Admin SDK.")
                 return cache_data
             else:
-                Logger.warning(f"Failed login attempt for email: {email}")
-                raise ValueError("Invalid email or password")
+                error_message = result.get("message", "Unknown error")
+                Logger.warning(f"Failed login attempt for email {email}: {error_message}")
+                raise ValueError(error_message)
 
         def on_done(cache_data):
             QMessageBox.information(self.ui, "Success", "Login successful!")
@@ -144,7 +93,7 @@ class HomeController:
 
         def on_error(err):
             Logger.error("Login failed", err)
-            QMessageBox.critical(self.ui, "Login Failed", "Invalid email or password.")
+            QMessageBox.critical(self.ui, "Login Failed", str(err))
 
         # --- Run async thread ---
         self.runner = ThreadRunner()
@@ -152,29 +101,16 @@ class HomeController:
         self.runner.on_error = on_error
         self.runner.run(task)
 
-    # def handle_logout(self):
-    #     Logger.info("Logging out...")
-
-    #     try:
-    #         keyring.delete_password(self.SERVICE_NAME, self.CACHE_KEY)
-    #         Logger.info("Keyring cache deleted")
-    #     except keyring.errors.PasswordDeleteError:
-    #         Logger.info("No cache found in keyring")
-
-    #     self.main_window.authenticated = False
-    #     self.check_login()
-    #     Logger.info("User logged out")
-    #     QMessageBox.information(self.ui, "Logged Out", "You have been logged out.")
     def handle_logout(self):
         Logger.info("Logging out...")
 
         def task():
             try:
-                keyring.delete_password(self.SERVICE_NAME, self.CACHE_KEY)
-                Logger.info("Keyring cache deleted")
+                clear_session()
+                Logger.info("Session file cleared.")
                 return True
-            except keyring.errors.PasswordDeleteError:
-                Logger.info("No cache found in keyring")
+            except Exception as e:
+                Logger.error(f"Error clearing session: {e}")
                 return False
 
         def on_done():
@@ -202,7 +138,7 @@ class HomeController:
             return data
 
         def on_done(data):
-            if data and data.get("authenticated") and time.time() - data["validation_time"] < 3600:
+            if data:
                 Logger.info("User authenticated via cache")
                 self.main_window.authenticated = True
                 self.ui.notice_label.show()
@@ -224,14 +160,3 @@ class HomeController:
         self.runner.on_result = on_done
         self.runner.on_error = on_error
         self.runner.run(task, show_dialog=False)
-
-    def check_login(self):
-        if self.check_cache():
-            self.ui.notice_label.show()
-            self.ui.login_widget.hide()
-            self.ui.logout.show()
-        else:
-           self.ui.notice_label.hide()
-           self.ui.login_widget.show()
-           self.ui.logout.hide()
-            

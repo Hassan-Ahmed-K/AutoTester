@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QScrollArea, QSizePolicy,QLabel,QHBoxLayout
 )
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
 import os, sys
 
 class BaseTab(QWidget):
@@ -21,15 +22,32 @@ class BaseTab(QWidget):
 
         # Header label
         self.topbar = QWidget()
-        self.topbar.setFixedHeight(30)
+        #self.topbar.setFixedHeight(100)
         self.topbar.setStyleSheet("""
             background-color: #2b2b2b;
             border-radius: 3px;
         """)
 
         header_layout = QHBoxLayout(self.topbar)
-        header_layout.setContentsMargins(10, 0, 10, 0)
+        header_layout.setContentsMargins(10, 10, 10, 10)
+
+        
+        logo_label = QLabel()
+        # Use relative path based on file location
+        try:
+            base_dir = sys._MEIPASS
+        except Exception:
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        
+        logo_path = os.path.join(base_dir, "data", "logo.png")
+        logo_pixmap = QPixmap(logo_path)
+        if not logo_pixmap.isNull():
+            logo_label.setPixmap(logo_pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+
+        header_layout.addWidget(logo_label)
+
         header_layout.addStretch()
+
 
         main_layout.addWidget(self.topbar)
 
@@ -122,17 +140,6 @@ class BaseTab(QWidget):
 
         # horizontal: keep it off (vertical only)
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-
-
-    # def load_stylesheet(self):
-    #     base_dir = os.path.dirname(os.path.dirname(__file__))  
-    #     qss_path = os.path.join(base_dir, "style", "style.qss")
-    #     if os.path.exists(qss_path):
-    #         with open(qss_path, "r") as f:
-    #             self.setStyleSheet(f.read())
-    #     else:
-    #         print(f"⚠️ QSS file not found at {qss_path}")
-
 
     def load_stylesheet(self):
         # Handle both normal and PyInstaller runtime
