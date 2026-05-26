@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 import os, sys
+from aiagentfinder.utils.paths import get_resource_path
 
 class BaseTab(QWidget):
     def __init__(self, title: str, parent=None):
@@ -33,13 +34,7 @@ class BaseTab(QWidget):
 
         
         logo_label = QLabel()
-        # Use relative path based on file location
-        try:
-            base_dir = sys._MEIPASS
-        except Exception:
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        
-        logo_path = os.path.join(base_dir, "data", "logo.png")
+        logo_path = get_resource_path(os.path.join("data", "logo.png"))
         logo_pixmap = QPixmap(logo_path)
         if not logo_pixmap.isNull():
             logo_label.setPixmap(logo_pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation))
@@ -142,13 +137,7 @@ class BaseTab(QWidget):
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
     def load_stylesheet(self):
-        # Handle both normal and PyInstaller runtime
-        try:
-            base_dir = sys._MEIPASS  # Temporary folder when bundled by PyInstaller
-        except Exception:
-            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-        qss_path = os.path.join(base_dir, "style", "style.qss")
+        qss_path = get_resource_path(os.path.join("aiagentfinder", "style", "style.qss"))
 
         if os.path.exists(qss_path):
             with open(qss_path, "r", encoding="utf-8") as f:

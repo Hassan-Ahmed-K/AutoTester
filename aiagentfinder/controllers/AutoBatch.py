@@ -8,6 +8,8 @@ import random
 import requests
 import pandas as pd
 from io import StringIO
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 from aiagentfinder.utils.QuantityDialog import QuantityDialog

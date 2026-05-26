@@ -8,6 +8,7 @@ from PyQt5.QtCore import QDate, Qt
 from PyQt5.QtGui import QPixmap
 import os
 import sys
+from aiagentfinder.utils.paths import get_resource_path
 from aiagentfinder.controllers.home import HomeController
 class HomeUI(BaseTab):
     
@@ -26,12 +27,7 @@ class HomeUI(BaseTab):
         header_layout = QHBoxLayout()
         logo_label = QLabel()
         
-        try:
-            base_dir = sys._MEIPASS
-        except Exception:
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-        
-        logo_path = os.path.join(base_dir, "data", "logo.png")
+        logo_path = get_resource_path(os.path.join("data", "logo.png"))
         logo_pixmap = QPixmap(logo_path)
         
         if not logo_pixmap.isNull():

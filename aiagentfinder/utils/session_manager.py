@@ -2,9 +2,10 @@ import json
 import os
 from datetime import datetime, timedelta
 from aiagentfinder.utils.logger import Logger
+from aiagentfinder.utils.paths import get_external_path
 
-SESSION_FILE = "session.json"
-CONFIG_FILE = "config.properties"
+SESSION_FILE = get_external_path("session.json")
+CONFIG_FILE = get_external_path("config.properties")
 
 def get_session_timeout():
     """
