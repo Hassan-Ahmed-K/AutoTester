@@ -203,11 +203,11 @@ class MT5Manager:
             }
 
             ext_map = {
-                "HTML": ".html",
-                "GRAPH": ".html",
+                "HTML": ".htm",
+                "GRAPH": ".htm",
                 "CSV": ".csv",
                 "XML": ".xml",
-                "OVERVIEW": ".html"
+                "OVERVIEW": ".htm"
             }
 
             # --- Extract settings ---
@@ -215,6 +215,10 @@ class MT5Manager:
             expert = settings["expert"]
             param_file = settings["param_file"]
             symbol = settings["symbol"]
+
+            # Sanitize for file paths (replace invalid characters with underscores)
+            safe_test_name = re.sub(r'[<>:"/\\|?*]', '_', test_name)
+            safe_symbol = re.sub(r'[<>:"/\\|?*]', '_', symbol)
             timeframe = settings.get("timeframe", "H1")
 
             from_date = datetime.strptime(settings.get("date_from", "2023-01-01"), "%Y-%m-%d").strftime("%Y.%m.%d")
@@ -246,7 +250,7 @@ class MT5Manager:
             # --- Handle normal vs setProcessor mode ---
             if not setProcessor:
                 # 1. Create a unique relative folder path
-                relative_folder = os.path.join(report_path, f"{test_name}_{timestamp}")
+                relative_folder = os.path.join(report_path, f"{safe_test_name}_{timestamp}")
                 
                 # 2. Create the absolute folder for Python to use
                 absolute_folder = os.path.join(data_path, relative_folder)
@@ -254,7 +258,7 @@ class MT5Manager:
 
                 # 3. Prepare the filename
                 safe_forward_str = forward_str.replace("/", "_").replace("\\", "_")
-                report_file_name = f"{symbol}_{test_name}_{safe_forward_str}_report_{timestamp}"
+                report_file_name = f"{safe_symbol}_{safe_test_name}_{safe_forward_str}_report_{timestamp}"
                 
                 # 4. report_path MUST be relative for the MT5 .ini to work reliably
                 report_path = os.path.join(relative_folder, report_file_name)
@@ -263,7 +267,7 @@ class MT5Manager:
                 final_abs_report_path = os.path.join(data_path, report_path)
             else:
                 ext = ext_map.get(report_type.upper(), ".html")
-                report_file = f"{symbol}_{param_file.replace('.set', '')}"
+                report_file = f"{safe_symbol}_{param_file.replace('.set', '')}"
                 # In setProcessor mode, keep it simple
                 report_path = os.path.join(report_path, report_file)
                 final_abs_report_path = os.path.join(data_path, report_path)
@@ -293,7 +297,7 @@ class MT5Manager:
             logs_dir = Path(os.path.join(data_path, "logs"))
             os.makedirs(config_dir, exist_ok=True)
 
-            config_path = os.path.join(config_dir, f"{test_name}_{report_type}.ini")
+            config_path = os.path.join(config_dir, f"{safe_test_name}_{report_type}.ini")
 
             # --- Debug info ---
             Logger.debug(f"Settings: {settings}")
@@ -304,7 +308,7 @@ class MT5Manager:
             Logger.debug(f"Param Files  = {param_file}")
             Logger.debug(f"Expert       = {expert}")
             Logger.debug(f"Expert Path  = {Path(*Path(expert_path[expert]['path']).parts[-2:])}")
-            Logger.debug(f"Symbol       = {symbol}")
+            Logger.debug(f"Symbol       = {safe_symbol}")
             Logger.debug(f"Timeframe    = {timeframe}")
             Logger.debug(f"Model        = {model} ({model_str})")
             Logger.debug(f"Optimization = {optimization} ({optim_str})")
@@ -320,7 +324,7 @@ class MT5Manager:
                 "",
                 "[Tester]",
                 f"Expert={Path(*Path(expert_path[expert]['path']).parts[-2:])}",
-                f"Symbol={symbol}",
+                f"Symbol={safe_symbol}",
                 f"Period={timeframe}",
                 f"Optimization={optimization}",
                 f"OptCriterion={criterion}",
@@ -376,7 +380,7 @@ class MT5Manager:
                     Logger.debug(f"Using log file: {latest_log}")
                     Logger.debug(f"Initial log pointer: {current_log_pointer}")
 
-            ext = ext_map.get(report_type.upper(), ".html")
+            ext = ext_map.get(report_type.upper(), ".htm")
             file_to_check = Path(os.path.join(data_path, report_path) + ext)
             last_size = -1
             stable_time = 0
@@ -458,36 +462,6 @@ class MT5Manager:
             return {"status": "error", "message": str(e)}
 
 
-
-    # def focus_mt5(self, mt5_exe_path):
-    #     from pywinauto.application import Application
-    #     from pywinauto import Desktop
-
-    #     app = Application(backend="uia").connect(path=mt5_exe_path)
-    #     desktop = Desktop(backend="uia")
-
-    #     try:
-    #         mt5_window = desktop.window(title_re=".*MetaTrader.*")
-    #         if not mt5_window.exists(timeout=5):
-    #             Logger.error("❌ MT5 window not found 1st Attempt Failed")
-    #     except:
-    #         mt5_window = None
-    #         for w in desktop.windows():
-    #             title = w.window_text().lower()
-    #             Logger.info("title = " + title)
-    #             if "metatrader" in title or "metaquotes" in title:
-    #                 mt5_window = w
-    #                 break
-
-    #     if not mt5_window:
-    #         Logger.error("❌ MT5 window not found")
-    #         return None, app
-
-    #     mt5_window.restore()
-    #     mt5_window.set_focus()
-    #     Logger.info(f"✅ Focused MT5: {mt5_window.window_text()}")
-    #     return mt5_window, app
-
     def focus_mt5(self,mt5_exe_path):
         from pywinauto.application import Application
         from pywinauto import Desktop
@@ -506,7 +480,6 @@ class MT5Manager:
                 return w, app
 
         return None, app
-
 
     def export_graph_to_csv(self,mt5_exe_path, output_dir):
 

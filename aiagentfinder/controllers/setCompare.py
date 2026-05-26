@@ -1,13 +1,16 @@
 import os
 import shutil
 import pandas as pd
+import traceback
 from aiagentfinder.utils.ThreadRunnerV2 import ThreadRunnerV2
 from aiagentfinder.utils import Logger 
 from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget,QTableWidget, QTableWidgetItem, QHeaderView,QLabel,QToolTip,QMessageBox,QInputDialog
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
-from PyQt5.QtCore import Qt
-import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import matplotlib.cm as cm
+from PyQt5.QtCore import Qt
 import numpy as np
 
 
@@ -390,6 +393,7 @@ class SetCompareController:
         headers = ["Date & Time", "DD Total", "#"] + file_headers
 
         # Setup table
+        self.ui.drawdown_analysis.setSortingEnabled(False)  # Disable while filling
         self.ui.drawdown_analysis.clear()
         self.ui.drawdown_analysis.setColumnCount(len(headers))
         self.ui.drawdown_analysis.setRowCount(len(df))
@@ -397,37 +401,43 @@ class SetCompareController:
 
         # Fill rows
         for row in range(len(df)):
-            # Date
-            self.ui.drawdown_analysis.setItem(
-                row, 0, QTableWidgetItem(str(df["DATE"].iloc[row]))
-            )
+            # Date (using EditRole for correct sorting)
+            date_str = str(df["DATE"].iloc[row])
+            date_item = QTableWidgetItem(date_str)
+            self.ui.drawdown_analysis.setItem(row, 0, date_item)
 
-            # DD Total → SUM_EQUITY
-            dd_value = df["SUM_EQUITY"].iloc[row] if "SUM_EQUITY" in df else ""
-            self.ui.drawdown_analysis.setItem(
-                row, 1, QTableWidgetItem(str(round(dd_value, 2)) if dd_value != "" else "")
-            )
+            # DD Total → SUM_EQUITY (numeric sort)
+            dd_value = df["SUM_EQUITY"].iloc[row] if "SUM_EQUITY" in df else 0.0
+            dd_item = QTableWidgetItem()
+            dd_item.setData(Qt.EditRole, float(round(dd_value, 2)))
+            self.ui.drawdown_analysis.setItem(row, 1, dd_item)
 
             # Static value "15" in column #
-            self.ui.drawdown_analysis.setItem(
-                row, 2, QTableWidgetItem("15")
-            )
+            num_item = QTableWidgetItem()
+            num_item.setData(Qt.EditRole, 15)
+            self.ui.drawdown_analysis.setItem(row, 2, num_item)
 
-            # Equity values for each file
+            # Equity values for each file (numeric sort)
             col_index = 3
             for col in equity_cols:
                 val = df[col].iloc[row]
-                self.ui.drawdown_analysis.setItem(
-                    row, col_index, QTableWidgetItem(str(round(val, 2)))
-                )
+                val_item = QTableWidgetItem()
+                val_item.setData(Qt.EditRole, float(round(val, 2)))
+                self.ui.drawdown_analysis.setItem(row, col_index, val_item)
                 col_index += 1
+
+        # Enable interactive sorting (Excel-like)
+        self.ui.drawdown_analysis.setSortingEnabled(True)
+        
+        # Sort by Date & Time (column 0) ascending by default
+        self.ui.drawdown_analysis.sortByColumn(0, Qt.AscendingOrder)
 
         # Stretch all columns to fill width
         header = self.ui.drawdown_analysis.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Stretch)
         self.ui.drawdown_analysis.resizeRowsToContents()
 
-        self.log_to_ui(f"Drawdown table updated (rows with SUM_EQUITY ≥ {draw_threshold}).")
+        self.log_to_ui(f"Drawdown table updated (rows with SUM_EQUITY ≥ {draw_threshold}). Default sort: DD Total.")
 
     def on_show_graph_clicked(self):
         if self.merged_df is None or self.merged_df.empty:
@@ -447,7 +457,10 @@ class SetCompareController:
         if "DATE" not in df.columns:
             self.log_to_ui("❌ No DATE column found.")
             return
+        
+        # Ensure DATE is datetime and sorted
         df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
+        df = df.dropna(subset=["DATE"]).sort_values("DATE").reset_index(drop=True)
 
         # --- Select columns ---
         equity_cols = [c for c in df.columns if c.startswith("EQUITY_")] if choice in ["Equity", "Both"] else []
@@ -462,18 +475,21 @@ class SetCompareController:
         color_map = plt.get_cmap("tab20")
         colors = [color_map(i % 20) for i in range(total_lines)]
 
-        fig, ax = plt.subplots(figsize=(12, 6))
+        # Set style for a more premium dark look
+        plt.style.use('dark_background')
+        fig, ax = plt.subplots(figsize=(13, 7), facecolor='#121212')
+        ax.set_facecolor('#121212')
 
         # Plot Equity
         equity_handles = []
         for col, color in zip(equity_cols, colors[:len(equity_cols)]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color)
+            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color, linewidth=1.5, alpha=0.9)
             equity_handles.append(line)
 
         # Plot Balance
         balance_handles = []
         for col, color in zip(balance_cols, colors[len(equity_cols):]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color)
+            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color, linewidth=1.5, alpha=0.9, linestyle='--')
             balance_handles.append(line)
 
         # Title and labels
@@ -481,22 +497,115 @@ class SetCompareController:
             "Equity": "Equity Curve Comparison",
             "Balance": "Balance Curve Comparison",
             "Both": "Equity & Balance Comparison"
-        }[choice])
-        ax.set_xlabel("Date / Time")
-        ax.set_ylabel("Value")
-        ax.grid(True, alpha=0.3)
+        }[choice], color='white', fontsize=14, pad=20)
+        ax.set_xlabel("Date / Time", color='#bbbbbb')
+        ax.set_ylabel("Value", color='#bbbbbb')
+        ax.grid(True, alpha=0.15, color='gray', linestyle=':')
 
-        # --- Legends separately ---
+        # Customize ticks
+        ax.tick_params(colors='#888888', labelsize=9)
+
+        # --- Legends ---
         if equity_handles:
-            legend_equity = ax.legend(handles=equity_handles, title="Equity", loc="upper left", fontsize=8)
-            ax.add_artist(legend_equity)  # keep this legend
+            legend_equity = ax.legend(handles=equity_handles, title="Equity", loc="upper left", fontsize=7, framealpha=0.1)
+            ax.add_artist(legend_equity)
 
         if balance_handles:
-            ax.legend(handles=balance_handles, title="Balance", loc="upper right", fontsize=8)
+            ax.legend(handles=balance_handles, title="Balance", loc="upper right", fontsize=7, framealpha=0.1)
+
+        # --- Interactive Hover Detection ---
+        # Map handles to column names and set picker radius for easier selection
+        handle_to_col = {}
+        for col, line in zip(equity_cols, equity_handles):
+            handle_to_col[line] = col
+            line.set_picker(10)
+        for col, line in zip(balance_cols, balance_handles):
+            handle_to_col[line] = col
+            line.set_picker(10)
+
+        # Pre-calculate numeric dates for fast searching
+        x_data_numeric = mdates.date2num(df["DATE"].tolist())
+        
+        v_line = ax.axvline(x=df["DATE"].iloc[0], color='white', linestyle='-', alpha=0.3, visible=False)
+        
+        # Tooltip annotation
+        annot = ax.annotate("", xy=(0,0), xytext=(15, 15),
+                            textcoords="offset points",
+                            bbox=dict(boxstyle="round4,pad=0.5", fc="#1e1e1e", ec="#444444", alpha=0.9),
+                            color="white", fontsize=8, fontfamily='monospace')
+        annot.set_visible(False)
+
+        def hover(event):
+            hovered_lines = []
+            if event.inaxes == ax:
+                # Check if mouse is near any specific line(s)
+                for line in equity_handles + balance_handles:
+                    cont, _ = line.contains(event)
+                    if cont:
+                        hovered_lines.append(line)
+                
+                if hovered_lines:
+                    # Highlight all active lines and dim others
+                    for line in equity_handles + balance_handles:
+                        if line in hovered_lines:
+                            line.set_alpha(1.0)
+                            line.set_linewidth(2.5)
+                        else:
+                            line.set_alpha(0.15)
+                            line.set_linewidth(1.0)
+                    
+                    # Fast search for nearest date index
+                    idx = np.searchsorted(x_data_numeric, event.xdata)
+                    if idx >= len(x_data_numeric): idx = len(x_data_numeric) - 1
+                    if idx > 0 and abs(event.xdata - x_data_numeric[idx-1]) < abs(event.xdata - x_data_numeric[idx]):
+                        idx -= 1
+                    
+                    target_date = df["DATE"].iloc[idx]
+                    
+                    # Build multi-line tooltip text for all hovered lines
+                    tooltip_lines = [f"DATE: {target_date.strftime('%Y-%m-%d %H:%M')}"]
+                    tooltip_lines.append("-" * 35)
+                    
+                    for line in hovered_lines:
+                        col_name = handle_to_col[line]
+                        val = df[col_name].iloc[idx]
+                        clean_name = col_name.replace("EQUITY_", "").replace("BALANCE_", "")[:25]
+                        tooltip_lines.append(f"{clean_name:<25}: {val:>10.2f}")
+
+                    annot.set_text("\n".join(tooltip_lines))
+                    
+                    # Anchor tooltip to the first hovered line's value
+                    first_col = handle_to_col[hovered_lines[0]]
+                    annot.xy = (target_date, df[first_col].iloc[idx])
+                    
+                    v_line.set_xdata([target_date, target_date])
+                    v_line.set_visible(True)
+                    annot.set_visible(True)
+                    fig.canvas.draw_idle()
+                    return
+
+            # Reset visibility and styles if no line is hovered
+            if not hovered_lines:
+                needs_redraw = False
+                if v_line.get_visible():
+                    v_line.set_visible(False)
+                    annot.set_visible(False)
+                    needs_redraw = True
+                
+                for line in equity_handles + balance_handles:
+                    if line.get_alpha() != 0.9 or line.get_linewidth() != 1.5:
+                        line.set_alpha(0.9)
+                        line.set_linewidth(1.5)
+                        needs_redraw = True
+                
+                if needs_redraw:
+                    fig.canvas.draw_idle()
+
+        fig.canvas.mpl_connect("motion_notify_event", hover)
 
         plt.tight_layout()
         plt.show()
-        self.log_to_ui(f"Graph displayed successfully: {choice}")
+        self.log_to_ui(f"Interactive graph displayed: {choice}")
 
     def refresh_selected_set_files(self):
         """Refresh list of valid files based on all 3 input folders."""

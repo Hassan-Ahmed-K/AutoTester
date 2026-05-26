@@ -3,10 +3,14 @@ from firebase_admin import credentials, firestore
 import bcrypt
 import os
 
+from .paths import get_external_path
+
 # ==============================
 # INIT FIREBASE
 # ==============================
-cred_path = r"D:\Hassan Work\AutoTester\firebaseCredential.json"
+# firebaseCredential.json is an EXTERNAL file placed next to the EXE,
+# NOT bundled inside the PyInstaller archive.
+cred_path = get_external_path("firebaseCredential.json")
 
 if not firebase_admin._apps:
     cred = credentials.Certificate(cred_path)

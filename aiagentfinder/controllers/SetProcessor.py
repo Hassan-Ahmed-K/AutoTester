@@ -633,7 +633,8 @@ class SetProcessorController:
                 line = line.strip().lstrip(';').strip()   # remove ; and trim spaces
 
                 if line.startswith("Symbol="):
-                    symbol = line.split("=")[1]
+                    # Extract only the symbol name, removing any trailing | Pass=X info
+                    symbol = line.split("=")[1].split("|")[0].strip()
                     return symbol
 
                 if(line.startswith("StrategyDescription=")):
@@ -850,7 +851,7 @@ class SetProcessorController:
                         # Build settings
                         forward_date = QDate.currentDate().toString("yyyy-MM-dd")
                         settings = {
-                            "test_name": symbol,
+                            "test_name": f"{symbol}_{set_file.replace('.set', '')}",
                             "expert": expert_name,
                             "param_file": set_file,
                             "symbol": symbol,
@@ -890,7 +891,6 @@ class SetProcessorController:
 
                             try:
                                 Logger.info(f"Running strategy for {set_file} attempt {retry+1}/{max_retries}")
-                                print("---------------- Hassan ----------------------")
                                 print("CSV" in self.selected_reports)
                                 result = self.mt5.run_strategy(settings, data_path, mt5_path, report_path, self.ui.experts, report_type="HTML",setProcessor=True,save_csv= "CSV" in self.selected_reports)
 

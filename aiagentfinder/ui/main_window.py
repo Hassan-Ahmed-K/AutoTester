@@ -14,6 +14,7 @@ from PyQt5.QtCore import Qt, QPropertyAnimation
 import keyring,json,time,os
 from PyQt5.QtCore import QSize,QTimer
 from aiagentfinder.utils.logger import Logger
+from aiagentfinder.utils.paths import get_resource_path
 from dotenv import load_dotenv
 import pandas as pd
 
@@ -57,7 +58,7 @@ class MainWindow(QMainWindow):
         
         self.sidebar_expanded = False  
         self.toggle_btn = QPushButton()
-        self.toggle_btn.setIcon(QIcon(r"aiagentfinder\icons\menu-4-24.png"))  # path to your icon
+        self.toggle_btn.setIcon(QIcon(get_resource_path(r"aiagentfinder\icons\menu-4-24.png")))  # path to your icon
         self.toggle_btn.setIconSize(QSize(20, 20))  # adjust size
         self.toggle_btn.setStyleSheet("""
             QPushButton {
@@ -118,38 +119,38 @@ class MainWindow(QMainWindow):
         """)
 
         # Home
-        home_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\home-7-24.png"), "Home")
+        home_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\home-7-24.png")), "Home")
         home_item.setToolTip("Home")
         self.nav_list.addItem(home_item)
 
         # Auto Batch
-        batch_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\search-13-24.png"), "Auto Batch")
+        batch_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\search-13-24.png")), "Auto Batch")
         batch_item.setToolTip("AutoTestQ ")
         self.nav_list.addItem(batch_item)
 
         # Set Finder
-        finder_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\checkmark-24.png"), "Set Finder")
+        finder_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\checkmark-24.png")), "Set Finder")
         finder_item.setToolTip("Set Finder")
         self.nav_list.addItem(finder_item)
 
         # Set Generator
-        generator_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\pages-1-24.png"), "Set Generator")
+        generator_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\pages-1-24.png")), "Set Generator")
         generator_item.setToolTip("Set Generator")
         self.nav_list.addItem(generator_item)
 
-        processor_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\checked-checkbox-24.png"), "Set Processor")
+        processor_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\checked-checkbox-24.png")), "Set Processor")
         processor_item.setToolTip("Processor")
         self.nav_list.addItem(processor_item)
 
-        hunter_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\x-mark-3-24.png"), "Html Hunter")
+        hunter_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\x-mark-3-24.png")), "Html Hunter")
         hunter_item.setToolTip("Html Hunter")
         self.nav_list.addItem(hunter_item)
 
-        compare_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\resize-7-24.png"), "SetCompare")
+        compare_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\resize-7-24.png")), "SetCompare")
         compare_item.setToolTip("Set Compare")
         self.nav_list.addItem(compare_item)
 
-        portfolio_item = QListWidgetItem(QIcon(r"aiagentfinder\icons\wallet-5-24.png"), "Portfolio Picker")
+        portfolio_item = QListWidgetItem(QIcon(get_resource_path(r"aiagentfinder\icons\wallet-5-24.png")), "Portfolio Picker")
         portfolio_item.setToolTip("Portfolio Picker")
         self.nav_list.addItem(portfolio_item)
 
@@ -196,11 +197,11 @@ class MainWindow(QMainWindow):
         # Change icon + text
         if self.sidebar_expanded:
             # Collapsing
-            self.toggle_btn.setIcon(QIcon(r"aiagentfinder\icons\menu-4-24.png"))
+            self.toggle_btn.setIcon(QIcon(get_resource_path(r"aiagentfinder\icons\menu-4-24.png")))
             self.toggle_btn.setText("")  # only icon
         else:
             # Expanding
-            self.toggle_btn.setIcon(QIcon(r"aiagentfinder\icons\arrow-88-16.png"))
+            self.toggle_btn.setIcon(QIcon(get_resource_path(r"aiagentfinder\icons\arrow-88-16.png")))
             self.toggle_btn.setText(" Hide Menu")  # icon + text
 
         self.sidebar_expanded = not self.sidebar_expanded

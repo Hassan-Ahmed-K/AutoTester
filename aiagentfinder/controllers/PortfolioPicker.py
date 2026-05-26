@@ -1,9 +1,10 @@
-
 import os
 import pandas as pd
 from aiagentfinder.utils.ThreadRunnerV2 import ThreadRunnerV2
 from aiagentfinder.utils import Logger 
-from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget, QTableWidgetItem, QHeaderView, QMessageBox
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
 
