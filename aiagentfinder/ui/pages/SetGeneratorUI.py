@@ -81,7 +81,7 @@ class SetGenerator(BaseTab):
                 color: white;
             }
         """)
-        self.opt_files.setSelectionMode(QListWidget.ExtendedSelection)
+        self.opt_files.setSelectionMode(QListWidget.SingleSelection)
         self.opt_files.setFocusPolicy(Qt.StrongFocus)
         self.opt_files.setMaximumHeight(60)
         # self.opt_files.setFixedHeight(50)
