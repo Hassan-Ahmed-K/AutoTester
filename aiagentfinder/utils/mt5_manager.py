@@ -152,7 +152,7 @@ class MT5Manager:
             Logger.error(f"❌ Error running test '{settings.get('test_name', 'Unnamed')}': {e}")
             return None
 
-    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path, report_type="XML", setProcessor=False,save_csv=False):
+    def run_strategy(self, settings: dict, data_path: str, mt5_path: str, report_path: str, expert_path, report_type="XML", setProcessor=False, save_csv=False, save_graph=False):
         proc = None
         try:
             success_flag = False
@@ -327,7 +327,7 @@ class MT5Manager:
                 f"Symbol={safe_symbol}",
                 f"Period={timeframe}",
                 f"Optimization={optimization}",
-                f"OptCriterion={criterion}",
+                f"OptimizationCriterion={criterion}",
                 f"Inputs={param_file}",
                 f"FromDate={from_date}",
                 f"ToDate={to_date}",
@@ -338,15 +338,19 @@ class MT5Manager:
                 f"ExecutionMode={delay}",
                 f"ForwardMode={forward}",
                 "StartTesting=1",
-                "TesterChartDump=1",
+                "TesterChartDump=0",
                 f"Report={report_path}",
                 f"ReportMode={report_mode}",
                 "ReplaceReport=1"
             ]
 
-            if save_csv:
+            need_gui = save_csv or save_graph
+
+            if need_gui:
+                # Keep the terminal open so GUI automation can run to export CSV/PNG
                 ini_lines.append("ShutdownTerminal=0")
             else:
+                # Shut down the terminal automatically when test completes
                 ini_lines.append("ShutdownTerminal=1")
 
             if forward == 4 and forward_date:
@@ -384,61 +388,67 @@ class MT5Manager:
             file_to_check = Path(os.path.join(data_path, report_path) + ext)
             last_size = -1
             stable_time = 0
-            stable_seconds=2
+            stable_seconds = 2
+            success_flag = False
+
             while proc.poll() is None:
+                # 1. Check if the report file exists and is stable
+                if file_to_check.exists():
+                    size = file_to_check.stat().st_size
+                    Logger.info(f"Report file size: {size}")
+                    if size == last_size:
+                        stable_time += 1
+                        if stable_time >= stable_seconds:
+                            success_flag = True
+                            Logger.info("✅ Success: Report file has stabilized.")
+                            break
+                    else:
+                        stable_time = 0
+                        last_size = size
 
-                if save_csv:
-                    Logger.info(f"file_to_check = {file_to_check}")
-                    Logger.info(f"file_to_check.exists() = {file_to_check.exists()}")
-                    Logger.info(f"last_size = {last_size}")
-                    Logger.info(f"stable_time = {stable_time}")
+                # 2. Check the logs for completion message
+                if latest_log and latest_log.exists():
+                    try:
+                        with open(latest_log, "r", encoding="utf-16") as f:
+                            f.seek(current_log_pointer)
+                            new_lines = f.readlines()
 
-                    if file_to_check.exists():
-                        size = file_to_check.stat().st_size
-                        Logger.info(f"size = {size}")
+                            if new_lines:
+                                for line in new_lines:
+                                    Logger.info(line)
+                                    line_lower = line.lower()
+                                    if "successfully finished" in line_lower or 'result "successfully finished"' in line_lower:
+                                        success_flag = True
+                                        Logger.info("✅ Success flag set to True based on log line")
+                                        break
 
-                        if size == last_size:
-                            stable_time += 1
-                            if stable_time >= stable_seconds:
-                                success_flag = True
-                                break
-                        else:
-                            stable_time = 0
-                            last_size = size
-                   
-                
-                else:
-                    if latest_log and latest_log.exists():
-                        try:
-                            with open(latest_log, "r", encoding="utf-16") as f:
-                                f.seek(current_log_pointer)
-                                new_lines = f.readlines()
+                            current_log_pointer = f.tell()
+                    except Exception as e:
+                        Logger.warning(f"Error reading MT5 log: {e}")
 
-                                if new_lines:
-                                    for line in new_lines:
-                                        Logger.info(line)
-                                        line_lower = line.lower()
-                                        if "successfully finished" in line_lower or 'result "successfully finished"' in line_lower:
-                                            success_flag = True
-                                            Logger.info("✅ Success flag set to True based on log line")
-
-                                current_log_pointer = f.tell()
-
-                        except Exception as e:
-                            Logger.warning(f"Error reading MT5 log: {e}")
+                if success_flag:
+                    break
 
                 time.sleep(1)
 
 
-            if(save_csv):
-                Logger.info("---------------------------  SAVE CSV -----------------------------------------------")
-                Logger.info("Exporting graph to CSV...")
+            if need_gui:
+                Logger.info("---------------------------  SAVE EXPORT -----------------------------------------------")
+                csv_path = os.path.join(data_path, report_path) + ".csv" if save_csv else None
+                png_path = os.path.join(data_path, report_path) + "_graph.png" if save_graph else None
+                Logger.info(f"Exporting graph... CSV Path: {csv_path}, PNG Path: {png_path}")
                 Logger.info(f"mt5_path = {mt5_path}")
                 Logger.info(f"report_path = {os.path.join(data_path, report_path)}")
-                self.export_graph_to_csv(mt5_path, os.path.join(data_path, report_path) + ".csv")
+                
+                self.export_graph_to_csv(
+                    mt5_path,
+                    csv_path,
+                    png_output_dir=png_path
+                )
+
                 if proc and proc.poll() is None:
                     proc.terminate()
-                Logger.info("--------------------------------------------------------------------------")
+                Logger.info("----------------------------------------------------------------------------------------")
 
 
 
@@ -481,112 +491,253 @@ class MT5Manager:
 
         return None, app
 
-    def export_graph_to_csv(self,mt5_exe_path, output_dir):
+    # ──────────────────────────────────────────────────────────────────────
+    # Graph export helpers
+    # ──────────────────────────────────────────────────────────────────────
 
+    _GRAPH_IMAGES = [
+        "graph_btn.png",
+        "graph_wt_btn.png",
+        "graph.png",
+    ]
+    _GRAPH_TAB_RETRIES   = 3
+    _GRAPH_CONFIDENCE    = 0.85
+    _RIGHT_CLICK_OFFSET  = 100   # px above tab centre to right-click into the chart
+    _PAUSE_SETTLE        = 2.5   # seconds to wait after a Save-As dialog closes
+
+    def _locate_graph_tab(self):
+        """
+        Try each reference image up to _GRAPH_TAB_RETRIES times.
+        Returns a pyautogui Box, or raises RuntimeError if not found.
+        """
+        import pyautogui
+
+        data_dir = os.path.join(os.getcwd(), "data")
+        for attempt in range(1, self._GRAPH_TAB_RETRIES + 1):
+            if attempt > 1:
+                Logger.warning(f"Retry {attempt}/{self._GRAPH_TAB_RETRIES} — waiting for screen to repaint…")
+                time.sleep(self._PAUSE_SETTLE)
+
+            for name in self._GRAPH_IMAGES:
+                img = os.path.join(data_dir, name)
+                if not os.path.isfile(img):
+                    Logger.warning(f"⚠️ Image missing on disk — skipping: {name}")
+                    continue
+
+                Logger.info(f"🔍 Trying: {name}")
+                try:
+                    location = pyautogui.locateOnScreen(img, confidence=self._GRAPH_CONFIDENCE)
+                except Exception as exc:
+                    Logger.warning(f"⚠️ Screen scan error ({name}): {exc}")
+                    continue
+
+                if location:
+                    Logger.info(f"✅ Found Graph tab using: {name}")
+                    return location
+                else:
+                    Logger.info(f"❌ Not matched: {name}")
+
+        raise RuntimeError(
+            "❌ Graph tab image not found after "
+            f"{self._GRAPH_TAB_RETRIES} attempt(s). "
+            "Check screenshot scaling and that the Strategy Tester panel is visible."
+        )
+
+    def _click_graph_tab(self):
+        """
+        Locate the Graph tab on screen, click it, and return its centre
+        co-ordinates so the same position can be reused for right-clicks.
+
+        Returns
+        -------
+        (center_x, center_y) : tuple[int, int]
+        """
+        import pyautogui
+
+        pyautogui.FAILSAFE = True
+        pyautogui.PAUSE    = 0.3
+
+        box = self._locate_graph_tab()
+        cx  = box.left + box.width  // 2
+        cy  = box.top  + box.height // 2
+
+        pyautogui.click(cx, cy)
+        time.sleep(0.5)
+        Logger.info(f"✅ Clicked Graph tab at ({cx}, {cy})")
+        return cx, cy
+
+    def _open_context_menu(self, cx, cy, app):
+        """
+        Right-click at (cx, cy - _RIGHT_CLICK_OFFSET) to open the chart
+        context menu and return the menu wrapper.
+        """
         import pyautogui
         from pywinauto import Desktop
 
-        mt5_window,app = self.focus_mt5(mt5_exe_path)
-
-        pyautogui.FAILSAFE = True
-        pyautogui.PAUSE = 0.3
-
-        images =  [
-            os.path.join(os.getcwd(), "data", "graph_btn.png"),
-            os.path.join(os.getcwd(), "data", "graph_wt_btn.png"), 
-            os.path.join(os.getcwd(), "data", "graph.png")
-        ]
-
-        graph_tab = None
-
-        for img in images:
-            Logger.info(f"🔍 Trying image: {os.path.basename(img)}")
-            try:
-                graph_tab = pyautogui.locateOnScreen(img, confidence=0.85)
-            except Exception as e:
-                Logger.warning(f"⚠️ Error checking {os.path.basename(img)}: {e}")
-                continue  # make sure it moves to next image
-            if graph_tab:
-                Logger.info(f"✅ Found using {os.path.basename(img)}")
-                break  # stop once we find one
-            else:
-                Logger.info(f"❌ Not found: {os.path.basename(img)}")
-
-        if not graph_tab:
-            raise Logger.info("❌ 'Graph' tab image not found. Check screenshot and scaling.")
-
-        center_x = graph_tab.left + graph_tab.width // 2
-        center_y = graph_tab.top + graph_tab.height // 2
-
-        pyautogui.click(center_x, center_y)
+        right_click_y = cy - self._RIGHT_CLICK_OFFSET
+        pyautogui.rightClick(cx, right_click_y)
         time.sleep(0.5)
-        Logger.info("✅ Clicked Graph tab")
+        Logger.info(f"✅ Right-clicked chart at ({cx}, {right_click_y})")
 
-        # 2️⃣ Right-click chart area (50px above tab center)
-        pyautogui.rightClick(center_x, center_y - 100)
-        time.sleep(0.5)
-        Logger.info("✅ Right-clicked chart area")
-
-        # 3️⃣ Handle context menu
+        # Wait up to 2 s for the menu window to appear
         desktop = Desktop(backend="uia")
-        menu = None
         for _ in range(10):
             try:
-                # Sometimes the menu is top-level window
-                menu_candidates = [w for w in desktop.windows() if w.element_info.control_type == "Menu"]
-                if menu_candidates:
-                    menu = menu_candidates[0]
+                if any(
+                    w.element_info.control_type == "Menu"
+                    for w in desktop.windows()
+                ):
+                    Logger.info("✅ Context menu detected.")
                     break
-            except:
+            except Exception:
                 pass
             time.sleep(0.2)
 
-        if not menu:
-            menu = mt5_window  # fallback
-
-        # Find "Export to CSV" menu item
-
-
-        Logger.info("Waiting for context menu...")
         try:
             menu = app.window(control_type="Menu")
             if not menu.exists():
                 menu = app.top_window()
-            
-            Logger.info("Dumping menu items:")
+        except Exception:
+            menu = app.top_window()
+
+        return menu
+
+    def _click_menu_item(self, menu, label):
+        """
+        Find the first MenuItem whose text contains *label* and invoke it.
+
+        Returns
+        -------
+        bool – True if the item was found and invoked.
+        """
+        try:
             items = menu.descendants(control_type="MenuItem")
+            Logger.info(f"Menu items ({len(items)}):")
             for item in items:
                 text = item.window_text()
-                Logger.info(f" - {text}")
-                if "Export to CSV" in text:
-                    Logger.info("   -> Found target! Invoking...")
+                Logger.info(f"  • {text}")
+                if label in text:
+                    Logger.info(f"  → Found '{label}' — invoking…")
                     try:
                         item.invoke()
-                        Logger.info("   -> Invoked 'Export to CSV'")
-                    except Exception as invoke_err:
-                        Logger.info(f"   -> Invoke failed ({invoke_err}), trying click_input...")
+                        Logger.info(f"  → Invoked via UIA.")
+                    except Exception as inv_err:
+                        Logger.warning(f"  → invoke() failed ({inv_err}) — trying click_input()…")
                         item.click_input()
-                        Logger.info("   -> Clicked 'Export to CSV'")
-                    break
+                        Logger.info(f"  → Clicked via click_input().")
+                    return True
+            Logger.error(f"❌ '{label}' not found in context menu.")
+            return False
+        except Exception as exc:
+            Logger.error(f"❌ Error enumerating menu: {exc}")
+            return False
 
+    def _save_file_dialog(self, output_path):
+        """
+        Type *output_path* into the active Save-As dialog and confirm.
+        Then presses Escape and waits _PAUSE_SETTLE so the screen fully
+        repaints before the next UI action.
+        """
+        import pyautogui
+        from pywinauto import Desktop
 
-        except Exception as e:
-            Logger.error(f"❌ Error finding 'Export to CSV' menu item: {str(e)}")
-
-
-        Logger.info("✅ Invoked 'Export to CSV'")
-
-        pyautogui.write(
-            output_dir,
-            interval=0.01
-        )
+        time.sleep(0.8)   # let the dialog paint
+        pyautogui.hotkey("ctrl", "a")
+        time.sleep(0.2)
+        pyautogui.write(output_path, interval=0.02)
+        time.sleep(0.3)
         pyautogui.press("enter")
-        Logger.info(f"✅ Typed file path: {output_dir}")
+        time.sleep(1.0)
 
-        Logger.info("✅ Graph exported successfully!")
+        # Handle "Overwrite?" confirmation
+        try:
+            desktop = Desktop(backend="uia")
+            confirm = desktop.window(title_re=".*(Confirm|Replace|Overwrite).*")
+            if confirm.exists(timeout=2):
+                Logger.warning("⚠️ Overwrite dialog detected — clicking Yes.")
+                confirm.child_window(title="Yes", control_type="Button").click_input()
+        except Exception:
+            pass
 
-        time.sleep(1)
- 
+        Logger.info(f"✅ Saved → {output_path}")
+        pyautogui.press("escape")   # dismiss any residual dialog state
+        time.sleep(self._PAUSE_SETTLE)
+
+    def export_graph_to_csv(self, mt5_exe_path, output_dir, png_output_dir=None):
+        """
+        Switch to the Graph tab and export the chart data.
+
+        The context menu contains both 'Export to CSV' and 'Export to PNG'
+        in the same popup, so when *png_output_dir* is provided the PNG is
+        exported in the same workflow — no second image search needed.
+
+        Parameters
+        ----------
+        mt5_exe_path  : str  – Path to terminal64.exe.
+        output_dir    : str  – Full path for the output CSV file.
+        png_output_dir: str  – (optional) Full path for the output PNG file.
+        """
+        import pyautogui
+
+        # ── Focus MT5 ───────────────────────────────────────────────
+        mt5_window, app = self.focus_mt5(mt5_exe_path)
+        time.sleep(0.5)
+
+        # ── Click Graph tab ONCE ──────────────────────────────────────
+        cx, cy = self._click_graph_tab()
+
+        # ── CSV: first right-click ─────────────────────────────────────
+        if output_dir:
+            Logger.info("📤 Exporting CSV…")
+            menu = self._open_context_menu(cx, cy, app)
+            found = self._click_menu_item(menu, "Export to CSV")
+            if not found:
+                Logger.error("❌ 'Export to CSV' not found in menu — skipping CSV.")
+            else:
+                self._save_file_dialog(output_dir)
+                Logger.info("✅ CSV exported successfully!")
+
+        # ── PNG: second right-click at the SAME (cx, cy) ──────────────
+        if png_output_dir:
+            Logger.info("📤 Exporting PNG…")
+            menu = self._open_context_menu(cx, cy, app)   # same coords, no re-search
+            found = self._click_menu_item(menu, "Export to PNG")
+            if not found:
+                Logger.warning("⚠️ 'Export to PNG' not found — trying 'Save as Picture'…")
+                found = self._click_menu_item(menu, "Save as Picture")
+            if not found:
+                Logger.error("❌ PNG export menu item not found — skipping PNG.")
+            else:
+                self._save_file_dialog(png_output_dir)
+                Logger.info("✅ PNG exported successfully!")
+
+    def export_graph_to_png(self, mt5_exe_path, output_dir):
+        """
+        Convenience wrapper — exports only the PNG screenshot of the Graph tab.
+        Internally calls export_graph_to_csv with csv disabled and png enabled.
+
+        .. note::
+            Prefer calling export_graph_to_csv(csv_path, png_output_dir=png_path)
+            directly so both formats are exported in a single workflow.
+        """
+        import pyautogui
+
+        mt5_window, app = self.focus_mt5(mt5_exe_path)
+        time.sleep(0.5)
+
+        cx, cy = self._click_graph_tab()
+
+        menu = self._open_context_menu(cx, cy, app)
+        found = self._click_menu_item(menu, "Export to PNG")
+        if not found:
+            Logger.warning("⚠️ 'Export to PNG' not found — trying 'Save as Picture'…")
+            found = self._click_menu_item(menu, "Save as Picture")
+        if not found:
+            Logger.error("❌ PNG export menu item not found.")
+        else:
+            self._save_file_dialog(output_dir)
+            Logger.info("✅ PNG exported successfully!")
+
     def export_graph_to_csv_v2(self,mt5_exe_path, output_dir):
         Logger.info("Attempting to connect via UIA...")
         import time

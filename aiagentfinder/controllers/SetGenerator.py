@@ -138,9 +138,11 @@ class SetGeneratorController:
             print(df.columns)
             
             Logger.info("⚠️ No data to display.")
-            default_headers = [ "Pass No", "Bk Recovery", "Fwd Recovery", "Est Bk Weekly Profit",
-            "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
-            "Multiplier", "Total Profit", "Custom Score"]  # ← customize this list
+            default_headers = [
+                "Pass No", "Bk Recovery","Bk CC", "Fwd Recovery", "Fwd CC", "Est Bk Weekly Profit",
+                "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
+                "Multiplier", "Total Profit", "Custom Score"
+            ] 
             self.ui.headers = getattr(self.ui, "headers", default_headers)
 
             # Clear old content but keep table visible
@@ -169,7 +171,9 @@ class SetGeneratorController:
                 column_mapping = {
                     "Pass No": "Pass",
                     "Bk Recovery": "Recovery Factor",
+                    "Bk CC": "forward_Back Result",
                     "Fwd Recovery": "forward_Recovery Factor",
+                    "Fwd CC": "forward_Forward Result",
                     "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
                     "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
                     "BK Trades": "Trades",
@@ -489,17 +493,19 @@ class SetGeneratorController:
         
         # Map UI header back to internal dataframe column name
         column_mapping = {
-            "Pass No": "Pass",
-            "Bk Recovery": "Recovery Factor",
-            "Fwd Recovery": "forward_Recovery Factor",
-            "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
-            "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
-            "BK Trades": "Trades",
-            "Fwd Trades": "forward_Trades",
-            "Multiplier": "multiplier",
-            "Total Profit": "Total_Profit",
-            "Custom Score": "custom_score"
-        }
+                    "Pass No": "Pass",
+                    "Bk Recovery": "Recovery Factor",
+                    "Bk CC": "forward_Back Result",
+                    "Fwd Recovery": "forward_Recovery Factor",
+                    "Fwd CC": "forward_Forward Result",
+                    "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
+                    "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
+                    "BK Trades": "Trades",
+                    "Fwd Trades": "forward_Trades",
+                    "Multiplier": "multiplier",
+                    "Total Profit": "Total_Profit",
+                    "Custom Score": "custom_score"
+                }
 
         internal_col = column_mapping.get(header_text)
         if not internal_col or internal_col not in self.report_df.columns:

@@ -1222,16 +1222,12 @@ class HtmlHunterController:
             Logger.error(f"Export failed: {e}")
             QMessageBox.critical(self.ui, "Export Error", str(e))
 
-
-
-
     def get_selected_row_indexes(self):
         return [
             index.row()
             for index in self.ui.middle_message.selectionModel().selectedRows()
         ]
-
-    
+  
     def extract_symbol_strategy(self, html_path):
         name = os.path.basename(html_path).replace(".htm", "")
         parts = name.split("_")

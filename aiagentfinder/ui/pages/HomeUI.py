@@ -40,8 +40,8 @@ class HomeUI(BaseTab):
 
         self.notice_label = QLabel(
             "In order to gain access to the app features you need to have an active "
-            "and valid POW Membership.<br><br>"
-            "Please enter your POW Portal credentials below, upon a successful login "
+            "and valid FXProvenMembership.<br><br>"
+            "Please enter your FXProvenPortal credentials below, upon a successful login "
             "the app features will be unlocked.<br><br>"
             "You will need to have Chrome or Firefox installed for the authentication "
             "to complete successfully.<br><br>"
