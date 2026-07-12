@@ -27,7 +27,7 @@ class SetGenerator(BaseTab):
         self.title = QLabel("SetGenerator")
         self.title.setStyleSheet("font-size: 28px; font-weight: bold;")
         self.title.setAlignment(Qt.AlignCenter)
-        self.subtitle = QLabel("Results below are ranked by a proprietary POW Scoring system...")
+        self.subtitle = QLabel("Results below are ranked by a proprietary FXProvenScoring system...")
         self.subtitle.setAlignment(Qt.AlignCenter)
         self.subtitle.setWordWrap(True)
         header_layout.addWidget(self.title)
@@ -81,7 +81,7 @@ class SetGenerator(BaseTab):
                 color: white;
             }
         """)
-        self.opt_files.setSelectionMode(QListWidget.ExtendedSelection)
+        self.opt_files.setSelectionMode(QListWidget.SingleSelection)
         self.opt_files.setFocusPolicy(Qt.StrongFocus)
         self.opt_files.setMaximumHeight(60)
         # self.opt_files.setFixedHeight(50)
@@ -227,7 +227,7 @@ class SetGenerator(BaseTab):
         self.table = QTableWidget(0, 10)
         
         headers = [
-            "Pass No", "Bk Recovery", "Fwd Recovery", "Est Bk Weekly Profit",
+            "Pass No", "Bk Recovery","Bk CC", "Fwd Recovery", "Fwd CC", "Est Bk Weekly Profit",
             "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
             "Multiplier", "Total Profit", "Custom Score"
         ]

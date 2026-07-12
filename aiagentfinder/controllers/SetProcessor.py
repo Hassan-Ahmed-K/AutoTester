@@ -892,7 +892,7 @@ class SetProcessorController:
                             try:
                                 Logger.info(f"Running strategy for {set_file} attempt {retry+1}/{max_retries}")
                                 print("CSV" in self.selected_reports)
-                                result = self.mt5.run_strategy(settings, data_path, mt5_path, report_path, self.ui.experts, report_type="HTML",setProcessor=True,save_csv= "CSV" in self.selected_reports)
+                                result = self.mt5.run_strategy(settings, data_path, mt5_path, report_path, self.ui.experts, report_type="HTML",setProcessor=True,save_csv= "CSV" in self.selected_reports, save_graph="Graph" in self.selected_reports)
 
                                 print("self.mt5.pid = ",self.mt5.pid)
 
@@ -1245,12 +1245,12 @@ class SetProcessorController:
 
                     # PNG files
                     elif file_lower.endswith(".png"):
-                        if "-" in file_name and "Graph" in self.selected_reports:
-                            dest = os.path.join(base_report_path,overview_folder , file_name)
+                        if "graph" in file_lower and "Graph" in self.selected_reports:
+                            dest = os.path.join(graph_folder, file_name)
                             shutil.move(file_path, dest)
-                            self.logger.info(f"Moved PNG to Graph: {file_name}")
+                            self.logger.info(f"Moved graph PNG to Graph: {file_name}")
                         elif "Overview" in self.selected_reports:
-                            dest = os.path.join(base_report_path,graph_folder , file_name)
+                            dest = os.path.join(overview_folder, file_name)
                             shutil.move(file_path, dest)
                             self.logger.info(f"Moved PNG to Overview: {file_name}")
 

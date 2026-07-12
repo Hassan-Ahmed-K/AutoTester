@@ -117,7 +117,6 @@ class SetGeneratorController:
 
         Logger.info(f"Pairs box updated with: {report_names}")
 
-
     def clear_pairs_and_table(self):
         self.ui.pairs_box.clear()
         self.report_df = pd.DataFrame()
@@ -139,9 +138,11 @@ class SetGeneratorController:
             print(df.columns)
             
             Logger.info("⚠️ No data to display.")
-            default_headers = [ "Pass No", "Bk Recovery", "Fwd Recovery", "Est Bk Weekly Profit",
-            "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
-            "Multiplier", "Total Profit", "Custom Score"]  # ← customize this list
+            default_headers = [
+                "Pass No", "Bk Recovery","Bk CC", "Fwd Recovery", "Fwd CC", "Est Bk Weekly Profit",
+                "Est Fwd Weekly Profit", "Bk Trades", "Fwd Trades",
+                "Multiplier", "Total Profit", "Custom Score"
+            ] 
             self.ui.headers = getattr(self.ui, "headers", default_headers)
 
             # Clear old content but keep table visible
@@ -170,7 +171,9 @@ class SetGeneratorController:
                 column_mapping = {
                     "Pass No": "Pass",
                     "Bk Recovery": "Recovery Factor",
+                    "Bk CC": "forward_Back Result",
                     "Fwd Recovery": "forward_Recovery Factor",
+                    "Fwd CC": "forward_Forward Result",
                     "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
                     "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
                     "BK Trades": "Trades",
@@ -418,6 +421,14 @@ class SetGeneratorController:
             """
             for name in result:
                 self.ui.opt_files.addItem(name)
+            
+            # Auto-select the first loaded item if nothing is currently selected
+            if self.ui.opt_files.count() > 0 and not self.ui.opt_files.selectedItems():
+                item = self.ui.opt_files.item(0)
+                if item:
+                    item.setSelected(True)
+                    self.ui.opt_files.setCurrentItem(item)
+                    
             Logger.info(f"✅ {len(result)} file(s) added to optimisation list.")
 
         def on_error(err):
@@ -456,9 +467,18 @@ class SetGeneratorController:
             self.ui.pass_number.setText("Multiple Selection")
 
     def on_opt_files_selection(self):
-        self.selected_optimization = [item.text() for item in self.ui.opt_files.selectedItems()]
-        file_path = self.optimisation_files[self.selected_optimization[0]]
-        self.lotSize =  self.extract_lot_size(file_path)
+        selected_items = self.ui.opt_files.selectedItems()
+        self.selected_optimization = [item.text() for item in selected_items]
+        if not self.selected_optimization:
+            self.lotSize = None
+            return
+
+        file_key = self.selected_optimization[0]
+        file_path = self.optimisation_files.get(file_key)
+        if file_path:
+            self.lotSize = self.extract_lot_size(file_path)
+        else:
+            self.lotSize = None
 
         print("Selected files:", self.selected_optimization)
 
@@ -473,17 +493,19 @@ class SetGeneratorController:
         
         # Map UI header back to internal dataframe column name
         column_mapping = {
-            "Pass No": "Pass",
-            "Bk Recovery": "Recovery Factor",
-            "Fwd Recovery": "forward_Recovery Factor",
-            "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
-            "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
-            "BK Trades": "Trades",
-            "Fwd Trades": "forward_Trades",
-            "Multiplier": "multiplier",
-            "Total Profit": "Total_Profit",
-            "Custom Score": "custom_score"
-        }
+                    "Pass No": "Pass",
+                    "Bk Recovery": "Recovery Factor",
+                    "Bk CC": "forward_Back Result",
+                    "Fwd Recovery": "forward_Recovery Factor",
+                    "Fwd CC": "forward_Forward Result",
+                    "Est Bwd Weekly Profit": "Estimated_Backward_Weekly_Profit",
+                    "Est Fwd Weekly Profit": "Estimated_Forward_Weekly_Profit",
+                    "BK Trades": "Trades",
+                    "Fwd Trades": "forward_Trades",
+                    "Multiplier": "multiplier",
+                    "Total Profit": "Total_Profit",
+                    "Custom Score": "custom_score"
+                }
 
         internal_col = column_mapping.get(header_text)
         if not internal_col or internal_col not in self.report_df.columns:
@@ -775,6 +797,31 @@ class SetGeneratorController:
             Logger.error(f"❌ Error parsing template SET file {path}: {e}")
         return params
 
+    # ------------------------------------------------------------------
+    # Magic number helper
+    # ------------------------------------------------------------------
+    def generate_magic_string(self, count):
+        """Return a MetaTrader-style magic number value string.
+
+        Generates *count* unique random integers (1-9 digits, never starting
+        with 0) and packs them as a pipe-separated optimisation value line,
+        e.g. ``MAGIC_NUMBER=123||456||789||N``.
+
+        Args:
+            count (int): Number of magic numbers to generate (one per pass).
+
+        Returns:
+            str: Full value string ready to be written to the .set file.
+        """
+        values = []
+        for _ in range(count):
+            n = random.randint(1, 8)
+            first = random.randint(1, 9)
+            rest = ''.join(str(random.randint(0, 9)) for _ in range(n - 1))
+            num = str(first) + rest
+            values.append(num)
+        return "|".join(values) + "||N"
+
     def generate_set_file(self):
         """
         Generates individual .set files using a selected SET file as a template
@@ -822,10 +869,13 @@ class SetGeneratorController:
         # --- Step 4: Background Thread ---
         def task():
             try:
-                # 1. Parse Template if available
-                template_params = {}
-                if template_path:
-                    template_params = self.parse_set_file(template_path)
+                if not template_path:
+                    raise RuntimeError("No template optimization file selected. Please select a template SET file first.")
+
+                # 1. Read Template lines
+                template_lines = []
+                with open(template_path, "r", encoding="utf-16") as f:
+                    template_lines = f.read().splitlines()
 
                 # 2. Prepare Data
                 selected_df = pd.DataFrame(selected_rows)
@@ -840,151 +890,113 @@ class SetGeneratorController:
                 # Only keep rows that were selected (matched in selected_df)
                 result_df = result_df[result_df["_merge"] == "both"]
 
-                # 3. Pre-calculate Min/Max ranges for all mapped parameters
-                param_ranges = {}
-                config_mapping_flat = {}
-                for section, fields in self.config_mapping.items():
-                    if isinstance(fields, dict):
-                        for k, v in fields.items(): config_mapping_flat[k] = v
-                    else:
-                        config_mapping_flat[section] = fields
-
-                for ea_key, csv_col in config_mapping_flat.items():
-                    if csv_col in result_df.columns:
-                        numeric_vals = pd.to_numeric(result_df[csv_col], errors='coerce').dropna()
-                        if not numeric_vals.empty:
-                            param_ranges[ea_key] = (numeric_vals.min(), numeric_vals.max())
-
-                # Special range for LotSize
-                lot_vals = []
-                base_lot = float(self.lotSize or 0.01)
-                for _, row in result_df.iterrows():
-                    if self.ui.toggle_Multiplier.isChecked():
-                        mult = float(row.get("multiplier", 1.0))
-                        lot_vals.append(base_lot * mult)
-                    else:
-                        lot_vals.append(base_lot)
-                if lot_vals:
-                    param_ranges["LotSize"] = (min(lot_vals), max(lot_vals))
-
-                # 4. Generate files for each pass
+                # 3. Generate files for each pass
                 for _, row in result_df.iterrows():
                     pass_no = row.get("Pass")
                     file_path = f"{base_path}_{pass_no}.set"
 
-                    # Start with template values
-                    final_params = template_params.copy()
-
-                    # Overlay values from CSV using config_mapping (Nested)
-                    for section, fields in self.config_mapping.items():
-                        if isinstance(fields, dict):
-                            for ea_key, csv_col in fields.items():
-                                if csv_col in row:
-                                    final_params[ea_key] = str(row[csv_col])
-                                elif "||" in str(csv_col) or str(csv_col) != str(ea_key):
-                                    # Treat as literal if it has "||" or is different from the key name
-                                    final_params[ea_key] = str(csv_col)
-                        else:
-                            if fields in row:
-                                final_params[section] = str(row[fields])
-                            elif "||" in str(fields) or str(fields) != str(section):
-                                final_params[section] = str(fields)
-
-                    # Special handling for LotSize current value
-                    if self.ui.toggle_Multiplier.isChecked():
-                        multiplier = float(row.get("multiplier", 1.0))
-                        final_params["LotSize"] = f"{base_lot * multiplier:.2f}"
-                    else:
-                        final_params["LotSize"] = f"{base_lot:.2f}"
-
-                    # --- Special Fallbacks for General & Licensing ---
-                    # Use API Key from UI if not in template/CSV
-                    if not final_params.get("apiKey") or final_params.get("apiKey") == "":
-                        final_params["apiKey"] = self.ui.api_key.text().strip()
-                    
-                    # Auto-generate descriptions if missing
-                    if not final_params.get("StrategyDescription"):
-                        final_params["StrategyDescription"] = f"{self.symbol}_Pass_{pass_no}"
-                    if not final_params.get("TradeComment"):
-                        final_params["TradeComment"] = f"{self.symbol}_Pass_{pass_no}"
-
                     # Write the file
                     with open(file_path, "w", encoding="utf-16") as f:
+                        # Write fresh header comments
                         f.write(f"; saved on {datetime.now().strftime('%Y.%m.%d %H:%M:%S')}\n")
                         f.write(f"; this file contains input parameters for testing/optimizing {ea_name} expert advisor\n")
                         f.write("; to use it in the strategy tester, click Load in the context menu of the Inputs tab\n")
                         f.write(f"; Symbol={self.symbol} | Pass={pass_no}\n;\n")
 
-                        written_keys = set()
-
-                        for section_name, fields in self.config_mapping.items():
-                            if isinstance(fields, dict):
-                                f.write(f";~~~~~~~~~{section_name}~~~~~~~~~\n")
-                                for ea_key in fields.keys():
-                                    if ea_key in final_params:
-                                        new_val = str(final_params[ea_key])
-                                        original_str = template_params.get(ea_key, "")
-                                        
-                                        if "||" in new_val:
-                                            # Already a literal optimization string
-                                            f.write(f"{ea_key}={new_val}\n")
-                                        elif ea_key in param_ranges:
-                                            # Standard 5-part format: current||start||step||stop||Y/N
-                                            p_min, p_max = param_ranges[ea_key]
-                                            
-                                            # If min == max, reset min to 0 as requested
-                                            if p_min == p_max:
-                                                p_min = 0
-                                            
-                                            # Try to get step from template, otherwise default
-                                            step = "1"
-                                            if "||" in original_str:
-                                                parts_orig = original_str.split("||")
-                                                if len(parts_orig) >= 3:
-                                                    step = parts_orig[2]
-                                            
-                                            flag = "Y" if p_min != p_max else "N"
-                                            f.write(f"{ea_key}={new_val}||{p_min}||{step}||{p_max}||{flag}\n")
-                                        elif "||" in original_str:
-                                            # Fallback: maintain template structure but update current value
-                                            parts = original_str.split("||")
-                                            parts[0] = new_val
-                                            f.write(f"{ea_key}={'||'.join(parts)}\n")
-                                        else:
-                                            f.write(f"{ea_key}={new_val}\n")
-                                        
-                                        written_keys.add(ea_key)
-                                f.write("\n")
-
-                        remaining_keys = set(final_params.keys()) - written_keys
-                        if remaining_keys:
-                            f.write(";~~~~~~~~~Other Parameters~~~~~~~~~\n")
-                            for k in sorted(remaining_keys):
-                                val = str(final_params[k])
-                                original_str = template_params.get(k, "")
-                                
-                                if "||" in val:
-                                    f.write(f"{k}={val}\n")
-                                elif k in param_ranges:
-                                    p_min, p_max = param_ranges[k]
-                                    if p_min == p_max:
-                                        p_min = 0
-                                        
-                                    step = "1"
-                                    if "||" in original_str:
-                                        parts_orig = original_str.split("||")
-                                        if len(parts_orig) >= 3:
-                                            step = parts_orig[2]
-                                    
-                                    flag = "Y" if p_min != p_max else "N"
-                                    f.write(f"{k}={val}||{p_min}||{step}||{p_max}||{flag}\n")
-                                elif "||" in original_str:
-                                    parts = original_str.split("||")
-                                    parts[0] = val
-                                    f.write(f"{k}={'||'.join(parts)}\n")
+                        in_leading_comments = True
+                        for line in template_lines:
+                            stripped = line.strip()
+                            if in_leading_comments:
+                                if stripped.startswith(";") or stripped == "":
+                                    continue
                                 else:
-                                    f.write(f"{k}={val}\n")
-                            f.write("\n")
+                                    in_leading_comments = False
+
+                            # Process the line
+                            if "=" in line and not stripped.startswith(";"):
+                                parts = line.split("=", 1)
+                                k = parts[0].strip()
+                                v = parts[1].strip()
+
+                                new_val_str = None
+
+                                # Case-insensitive checks
+                                k_lower = k.lower()
+                                if k_lower == "magic":
+                                    # Replace with a freshly generated magic number
+                                    # string (one value per selected pass).
+                                    new_val_str = self.generate_magic_string(len(selected_rows))
+                                elif k_lower == "lotsize":
+                                    base_lot = float(self.lotSize) if self.lotSize else 0.01
+                                    if self.ui.toggle_Multiplier.isChecked():
+                                        mult_col = next((c for c in row.index if c.lower() == "multiplier"), None)
+                                        mult_val = float(row[mult_col]) if mult_col is not None else 1.0
+                                        new_val = base_lot * mult_val
+                                    else:
+                                        new_val = base_lot
+                                    new_val_str = f"{new_val:.2f}"
+                                elif "password" in k_lower or "api" in k_lower:
+                                    # Any key whose name contains "password" or "api"
+                                    # (e.g. Password, ApiKey, myApiToken, …) gets
+                                    # the value from the API / Password input field.
+                                    new_val_str = self.ui.api_key.text().strip()
+                                elif k_lower in ["strdescr", "strategydescription"]:
+                                    new_val_str = f"{self.symbol}_Pass_{pass_no}"
+                                elif k_lower == "tradecomment":
+                                    new_val_str = f"{self.symbol}_Pass_{pass_no}"
+                                else:
+                                    # Check direct match in row
+                                    matched_col = next((c for c in row.index if c.lower() == k_lower), None)
+                                    if matched_col is not None:
+                                        new_val_str = str(row[matched_col])
+                                    else:
+                                        # Check mapping.json mapping
+                                        csv_col = None
+                                        for sec_name, fields in self.config_mapping.items():
+                                            if isinstance(fields, dict):
+                                                for ea_key, col_val in fields.items():
+                                                    if ea_key.lower() == k_lower:
+                                                        csv_col = col_val
+                                                        break
+                                            else:
+                                                if sec_name.lower() == k_lower:
+                                                    csv_col = fields
+                                                    break
+                                            if csv_col:
+                                                break
+
+                                        if csv_col:
+                                            matched_map_col = next((c for c in row.index if c.lower() == csv_col.lower()), None)
+                                            if matched_map_col is not None:
+                                                new_val_str = str(row[matched_map_col])
+                                            elif "||" in str(csv_col) or str(csv_col) != str(k):
+                                                new_val_str = str(csv_col)
+
+                                if new_val_str is not None:
+                                    # Normalize boolean strings for MetaTrader
+                                    if new_val_str.lower() == "true":
+                                        new_val_str = "true"
+                                    elif new_val_str.lower() == "false":
+                                        new_val_str = "false"
+
+                                    if "||" in new_val_str:
+                                        # new_val_str is already a complete "val||start||step||stop||opt"
+                                        # string (e.g. from mapping.json) – write it verbatim.
+                                        f.write(f"{parts[0]}={new_val_str}\n")
+                                    elif "||" in v:
+                                        # Plain scalar: inject only into the first || segment,
+                                        # preserving the original range/step/stop/opt parts.
+                                        v_parts = v.split("||")
+                                        v_parts[0] = new_val_str
+                                        new_v = "||".join(v_parts)
+                                        f.write(f"{parts[0]}={new_v}\n")
+                                    else:
+                                        f.write(f"{parts[0]}={new_val_str}\n")
+                                else:
+                                    f.write(f"{line}\n")
+                            else:
+                                # Non key-value lines are copied exactly as they are
+                                f.write(f"{line}\n")
 
                 return base_path
 
@@ -1013,7 +1025,7 @@ class SetGeneratorController:
             num = str(first) + rest
             values.append(num)
 
-        return "MAGIC_NUMBER=" + "||".join(values) + "||N"
+        return "||".join(values) + "||N"
 
     def read_set_file(self, path):
         with open(path, encoding="utf-16") as f:
@@ -1024,7 +1036,7 @@ class SetGeneratorController:
             data = self.read_set_file(path)
             for line in data.splitlines():
                 line = line.strip()                
-                if line.startswith("LotSize="):
+                if line.lower().startswith("lotsize="):
                     first_value = line.split("=")[1].split("||")[0]
                     return first_value
                 
