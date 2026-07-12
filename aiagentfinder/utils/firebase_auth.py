@@ -71,9 +71,17 @@ def login_user(username, password):
             "message": "User not found"
         }
 
-    stored_hash = user["password"].encode()
+    stored_password = user["password"]
 
-    if bcrypt.checkpw(password.encode(), stored_hash):
+    # Support both bcrypt-hashed and plaintext passwords
+    if stored_password.startswith(("$2b$", "$2a$")):
+        # Bcrypt hash — use secure comparison
+        match = bcrypt.checkpw(password.encode(), stored_password.encode())
+    else:
+        # Plaintext password stored in DB — direct comparison
+        match = (password == stored_password)
+
+    if match:
         return {
             "status": True,
             "message": "Login successful"

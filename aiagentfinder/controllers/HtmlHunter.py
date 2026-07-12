@@ -1,6 +1,7 @@
 import csv
 import os
 import shutil
+import traceback
 import pandas as pd
 import xml.etree.ElementTree as ET
 from PyQt5.QtWidgets import QFileDialog, QMessageBox,QTableWidgetItem, QHeaderView,QPushButton,QDialog,QLabel,QVBoxLayout,QScrollArea,QWidget
@@ -158,10 +159,12 @@ class HtmlHunterController:
                 value = row[i+1].strip()
 
                 # --- Handle Inputs specially ---
-                if key == "Inputs" or (key == "" and value.startswith("Inp_")):
+                if key == "Inputs" or (key == "" and "=" in value):
                     if "=" in value:
                         inp_key, inp_value = value.split("=", 1)
-                        data_dict[inp_key] = inp_value
+                        inp_key = inp_key.strip()
+                        if inp_key:          # skip bare "=" separator rows (empty key)
+                            data_dict[inp_key] = inp_value.strip()
                 # --- Normal key-value ---
                 elif key:
                     if key in data_dict:
@@ -266,20 +269,25 @@ class HtmlHunterController:
                 report_name = os.path.basename(file_path)
 
                 symbol, strategy = self.extract_symbol_strategy(file_path)
-                if not symbol or not strategy:
+                if not symbol:
                     Logger.warning(f"Skipping invalid filename: {report_name}")
                     continue
 
-                html_key = f"{symbol}_{strategy}"
+                # If strategy is None the symbol IS the full group key (new naming logic)
+                html_key = symbol if strategy is None else f"{symbol}_{strategy}"
+                print(f"[KEY] {report_name}  →  html_key='{html_key}'")
 
                 try:
                     content = self.read_html_file(file_path)
                     if not content:
+                        print(f"[SKIP] {report_name}: empty content")
                         continue
 
                     soup = BeautifulSoup(content, "html.parser")
                     tables = soup.find_all("table")
+                    print(f"[TABLES] {report_name}: found {len(tables)} tables")
                     if len(tables) < 2:
+                        print(f"[SKIP] {report_name}: not enough tables ({len(tables)})")
                         continue
 
                     # ---------- TABLE 1 (SUMMARY)
@@ -336,6 +344,7 @@ class HtmlHunterController:
 
                 except Exception as e:
                     Logger.error(f"Failed parsing {report_name}: {e}")
+                    print(f"[ERROR] {report_name}:\n{traceback.format_exc()}")
 
             return html_lookup
 
@@ -524,6 +533,8 @@ class HtmlHunterController:
         summaries = report_dict["summary"]
         Logger.info(f"show_dataframe_in_table → {report_key} ({len(summaries)} summaries)")
 
+        Logger.info(f"show_dataframe_in_table → {report_key} ({report_dict} summaries)")
+
         # ---------- 2️⃣ Read filters (safe defaults) ----------
         max_dd = self.safe_float(self.ui.txt_drawdown.text()) if self.ui.txt_drawdown.text() else None
         min_rf = self.safe_float(self.ui.txt_recovery.text()) if self.ui.txt_recovery.text() else None
@@ -540,7 +551,6 @@ class HtmlHunterController:
                 "Avg Loss": "Average loss trade",
                 "Trade Vol": "Total Trades",
                 "Lot Size": "LotSize",
-                "Peak Lot Size": "MaxLots",
                 "Max Sq No": "MaxSequencesPerDay",
                 "Max Lots": "MaxLots",
                 "Lot Expo": "LotSizeExponent",
@@ -550,79 +560,135 @@ class HtmlHunterController:
                 "Overview": "Overview",
             }
 
-            df = pd.DataFrame(summaries)
+            # Build rows directly mapped to the frontend headers (left values)
+            mapped_rows = []
+            for item in summaries:
+                row = {}
+                for left_key, right_val in column_mapping.items():
+                    if left_key in ("Graph", "Overview"):
+                        row[left_key] = "Open"
+                    else:
+                        row[left_key] = item.get(right_val, "")
+                mapped_rows.append(row)
 
-            # Ensure all required columns exist
-            for col in column_mapping.values():
-                if col not in df.columns:
-                    df[col] = ""
+            display_df = pd.DataFrame(mapped_rows)
 
             # ---------- 3️⃣ Convert numeric columns PROPERLY ----------
             def to_float(val):
                 try:
-                    return float(str(val).replace("%", "").split()[0])
+                    val_str = str(val).strip()
+                    # Extract percentage from parentheses if present, e.g. "1 016.09 (0.99%)"
+                    pct_match = re.search(r'\(([\d\.]+)\s*%\)', val_str)
+                    if pct_match:
+                        return float(pct_match.group(1))
+                    
+                    # Otherwise, split by space/parenthesis, take first part, and clean spaces/commas
+                    first_part = val_str.split('(')[0].strip()
+                    first_part = first_part.replace(",", "").replace(" ", "").replace("\xa0", "")
+                    return float(first_part)
                 except:
                     return 0.0
 
-            numeric_cols = [
-                "Equity Drawdown Maximal",
-                "Recovery Factor",
-                "Profit Factor",
-            ]
+            # Convert numeric columns directly using display column headers
+            display_df["Max DD"] = display_df["Max DD"].apply(to_float)
+            display_df["RF"] = display_df["RF"].apply(to_float)
+            display_df["PF"] = display_df["PF"].apply(to_float)
 
-            for col in numeric_cols:
-                df[col] = df[col].apply(to_float)
-
-            # ---------- 4️⃣ APPLY FILTERS USING .loc (THIS FIXES 300000 ISSUE) ----------
+            # ---------- 4️⃣ APPLY FILTERS USING .loc ----------
             if max_dd is not None:
-                df = df.loc[df["Equity Drawdown Maximal"] >= max_dd]
+                display_df = display_df.loc[display_df["Max DD"] >= max_dd]
 
             if target_dd is not None:
-                df = df.loc[df["Equity Drawdown Maximal"] >= target_dd]
+                display_df = display_df.loc[display_df["Max DD"] >= target_dd]
 
             if min_rf is not None:
-                df = df.loc[df["Recovery Factor"] >= min_rf]
+                display_df = display_df.loc[display_df["RF"] >= min_rf]
 
             if min_pf is not None:
-                df = df.loc[df["Profit Factor"] >= min_pf]
+                display_df = display_df.loc[display_df["PF"] >= min_pf]
 
-            # ---------- 5️⃣ Prepare final table ----------
-            df = (
-                df[list(column_mapping.values())]
-                .rename(columns={v: k for k, v in column_mapping.items()})
-                .fillna("")
-                .reset_index(drop=True)
-            )
+            # Reset index of final filtered display df
+            display_df = display_df.reset_index(drop=True)
 
-            df["Graph"] = "Open"
-            df["Overview"] = "Open"
+            display_df["Graph"] = "Open"
+            display_df["Overview"] = "Open"
 
-            return df.columns.tolist(), df.astype(str).values.tolist()
+            # ---------- 5b️⃣ Save full extracted data to CSV ----------
+            try:
+                full_df = pd.DataFrame(summaries).copy()
+                full_df.insert(0, "Report Name", report_dict.get("report_names", [])[:len(full_df)])
+                full_df = full_df.reset_index(drop=True)
+
+                csv_dir = os.path.join(os.getcwd(), "CSV_Reports")
+                os.makedirs(csv_dir, exist_ok=True)
+
+                # Sanitise report_key so it is a valid filename
+                safe_key = re.sub(r'[\\/:*?"<>|]', "_", report_key)
+                csv_path = os.path.join(csv_dir, f"{safe_key}.csv")
+
+                full_df.to_csv(csv_path, index=False, encoding="utf-8-sig")
+                Logger.info(f"💾 Saved extracted data → {csv_path}")
+            except Exception as csv_err:
+                Logger.warning(f"⚠️ Could not save CSV: {csv_err}")
+
+            return display_df.columns.tolist(), display_df.astype(str).values.tolist()
 
         # ---------- 6️⃣ UI update ----------
         def on_done(result):
             headers, table_data = result
             table = self.ui.middle_message
 
+            print(f"header = {headers}")
+
             table.clear()
             table.setRowCount(0)
             table.setColumnCount(len(headers))
             table.setHorizontalHeaderLabels(headers)
 
+            # Resolve paths once for availability checks
+            report_key = self.ui.grouped_text.currentItem().text() if self.ui.grouped_text.currentItem() else None
+            report_names = self.html_lookup.get(report_key, {}).get("report_names", []) if report_key else []
+            graph_dir    = self.get_graph_folder()
+            overview_dir = self.get_overview_folder()
+
             for r, row in enumerate(table_data):
                 table.insertRow(r)
+
+                # Resolve the report name for this row (guard out-of-range)
+                base_name = os.path.splitext(report_names[r])[0] if r < len(report_names) else None
+
                 for c, val in enumerate(row):
                     key = headers[c]
 
                     if key == "Graph":
-                        btn = QPushButton("Open")
-                        btn.clicked.connect(lambda _, x=r: self.show_graph(x))
+                        graph_exists = (
+                            base_name is not None and
+                            os.path.exists(os.path.join(graph_dir, base_name + "_graph.png"))
+                        )
+                        btn = QPushButton("Open" if graph_exists else "N/A")
+                        btn.setEnabled(graph_exists)
+                        if graph_exists:
+                            btn.clicked.connect(lambda _, x=r: self.show_graph(x))
+                        else:
+                            btn.setToolTip("Graph image not found")
+                            btn.setStyleSheet("color: grey;")
                         table.setCellWidget(r, c, btn)
                         continue
 
                     if key == "Overview":
-                        btn = QPushButton("Open")
-                        btn.clicked.connect(lambda _, x=r: self.show_overview(x))
+                        overview_exists = False
+                        if base_name is not None and os.path.isdir(overview_dir):
+                            overview_exists = any(
+                                f.startswith(base_name) and f.lower().endswith(".png")
+                                for f in os.listdir(overview_dir)
+                            )
+                        btn = QPushButton("Open" if overview_exists else "N/A")
+                        btn.setEnabled(overview_exists)
+                        if overview_exists:
+                            btn.clicked.connect(lambda _, x=r: self.show_overview(x))
+                        else:
+                            btn.setToolTip("Overview images not found")
+                            btn.setStyleSheet("color: grey;")
                         table.setCellWidget(r, c, btn)
                         continue
 
@@ -669,7 +735,7 @@ class HtmlHunterController:
             row_idx = int(row_data)
             report_key = selected_item.text()
             report_name = self.html_lookup[report_key]["report_names"][row_idx]
-            image_name = report_name.split(".")[0]+ ".png"
+            image_name = report_name.split(".")[0] + "_graph.png"
             graph_dir = self.get_graph_folder()
             image_path = os.path.join(graph_dir, image_name)
 
@@ -1229,16 +1295,35 @@ class HtmlHunterController:
         ]
   
     def extract_symbol_strategy(self, html_path):
-        name = os.path.basename(html_path).replace(".htm", "")
-        parts = name.split("_")
+        """
+        Extract the group key from an HTML report filename.
+        Files are merged if they share the same base name up to '_report',
+        i.e. everything before the trailing _YYYYMMDD_HHMMSS_SEED suffix.
 
-        # Safety
+        Example:
+            AUDUSD_AUDUSD_audusd_1_2_report_20260503_181252_3570.htm
+            AUDUSD_AUDUSD_audusd_1_2_report_20260503_181252_4014.htm
+            → both get group key: AUDUSD_AUDUSD_audusd_1_2_report  (merged)
+
+            AUDNZDp_AUDNZDp_AUDNZD_long_rev_1_3_report_20260528_221149_200.htm
+            → group key: AUDNZDp_AUDNZDp_AUDNZD_long_rev_1_3_report  (separate)
+        """
+        name = os.path.basename(html_path)
+        name_no_ext = re.sub(r'\.(htm|html)$', '', name, flags=re.IGNORECASE)
+
+        # Match pattern: <base>_report_YYYYMMDD_HHMMSS_SEED
+        match = re.match(r'^(.+_report)_\d{8}_\d{6}_\d+$', name_no_ext)
+        if match:
+            group_key = match.group(1)   # e.g. "AUDUSD_AUDUSD_audusd_1_2_report"
+            return group_key, None       # strategy=None → html_key = group_key
+
+        # Fallback for non-standard names: use first and third parts
+        parts = name_no_ext.split("_")
         if len(parts) < 2:
             return None, None
 
-        symbol = parts[0].upper()   
-        strategy = parts[2].lower()        
-
+        symbol = parts[0].upper()
+        strategy = parts[2].lower() if len(parts) > 2 else parts[1].lower()
         return symbol, strategy
             
 

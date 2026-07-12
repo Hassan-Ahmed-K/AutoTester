@@ -389,6 +389,14 @@ class SetCompareController:
             self.ui.drawdown_analysis.clear()
             return
 
+        # 🔹 Resample to 30-minute intervals — keep last record in each bucket
+        df = df.copy()
+        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
+        df = df.dropna(subset=["DATE"])
+        df = df.set_index("DATE")
+        df = df.resample("30min").last().dropna(how="all")
+        df = df.reset_index()  # DATE becomes a column again
+
         # FINAL HEADERS
         headers = ["Date & Time", "DD Total", "#"] + file_headers
 
@@ -437,7 +445,7 @@ class SetCompareController:
         header.setSectionResizeMode(QHeaderView.Stretch)
         self.ui.drawdown_analysis.resizeRowsToContents()
 
-        self.log_to_ui(f"Drawdown table updated (rows with SUM_EQUITY ≥ {draw_threshold}). Default sort: DD Total.")
+        self.log_to_ui(f"Drawdown table updated (SUM_EQUITY ≥ {draw_threshold}, sampled every 30 min). Rows: {len(df)}.")
 
     def on_show_graph_clicked(self):
         if self.merged_df is None or self.merged_df.empty:

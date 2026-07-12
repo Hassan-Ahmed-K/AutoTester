@@ -495,19 +495,77 @@ class MT5Manager:
     # Graph export helpers
     # ──────────────────────────────────────────────────────────────────────
 
-    _GRAPH_IMAGES = [
-        "graph_btn.png",
-        "graph_wt_btn.png",
-        "graph.png",
-    ]
+    _GRAPH_IMAGES        = ["graph_btn.png", "graph_wt_btn.png", "graph.png"]
     _GRAPH_TAB_RETRIES   = 3
     _GRAPH_CONFIDENCE    = 0.85
     _RIGHT_CLICK_OFFSET  = 100   # px above tab centre to right-click into the chart
     _PAUSE_SETTLE        = 2.5   # seconds to wait after a Save-As dialog closes
 
-    def _locate_graph_tab(self):
+    # Tab labels MT5 uses (checked case-insensitively)
+    _GRAPH_TAB_LABELS    = ["graph", "chart"]
+    # UIA control types that can host the tab button
+    _GRAPH_CTRL_TYPES    = ["TabItem", "Button", "RadioButton", "Custom"]
+
+    def _click_graph_tab_uia(self, mt5_window):
         """
-        Try each reference image up to _GRAPH_TAB_RETRIES times.
+        PRIMARY strategy — walk the UIA accessibility tree of the MT5 main
+        window and click the first control whose text matches a known Graph
+        tab label.  No image files, no screen-capture, fully DPI-safe.
+
+        Parameters
+        ----------
+        mt5_window : pywinauto wrapper returned by focus_mt5()
+
+        Returns
+        -------
+        (cx, cy) : tuple[int, int]  – screen centre of the clicked control.
+
+        Raises
+        ------
+        RuntimeError  – when no matching control is found.
+        """
+        if mt5_window is None:
+            raise RuntimeError("MT5 window wrapper is None — cannot walk UIA tree.")
+
+        Logger.info("🔍 Searching UIA tree for Graph tab…")
+
+        # Collect candidates from every interesting control type
+        candidates = []
+        for ctrl_type in self._GRAPH_CTRL_TYPES:
+            try:
+                found = mt5_window.descendants(control_type=ctrl_type)
+                candidates.extend(found)
+            except Exception:
+                pass
+
+        Logger.info(f"   UIA candidates scanned: {len(candidates)}")
+
+        for ctrl in candidates:
+            try:
+                text = ctrl.window_text().strip()
+            except Exception:
+                continue
+            if text.lower() in self._GRAPH_TAB_LABELS:
+                try:
+                    rect = ctrl.rectangle()
+                    cx   = (rect.left + rect.right)  // 2
+                    cy   = (rect.top  + rect.bottom) // 2
+                    Logger.info(f"✅ UIA found '{text}' control at ({cx}, {cy}) — clicking…")
+                    ctrl.click_input()
+                    time.sleep(0.5)
+                    Logger.info(f"✅ Clicked Graph tab via UIA at ({cx}, {cy})")
+                    return cx, cy
+                except Exception as click_err:
+                    Logger.warning(f"⚠️ UIA click failed for '{text}': {click_err} — trying next candidate…")
+
+        raise RuntimeError(
+            "❌ UIA: no control with text in "
+            f"{self._GRAPH_TAB_LABELS} found among {len(candidates)} candidates."
+        )
+
+    def _locate_graph_tab_image(self):
+        """
+        FALLBACK strategy — classic pyautogui image scan.
         Returns a pyautogui Box, or raises RuntimeError if not found.
         """
         import pyautogui
@@ -523,47 +581,55 @@ class MT5Manager:
                 if not os.path.isfile(img):
                     Logger.warning(f"⚠️ Image missing on disk — skipping: {name}")
                     continue
-
-                Logger.info(f"🔍 Trying: {name}")
+                Logger.info(f"🔍 Image fallback trying: {name}")
                 try:
                     location = pyautogui.locateOnScreen(img, confidence=self._GRAPH_CONFIDENCE)
                 except Exception as exc:
                     Logger.warning(f"⚠️ Screen scan error ({name}): {exc}")
                     continue
-
                 if location:
-                    Logger.info(f"✅ Found Graph tab using: {name}")
+                    Logger.info(f"✅ Found Graph tab using image: {name}")
                     return location
-                else:
-                    Logger.info(f"❌ Not matched: {name}")
+                Logger.info(f"❌ Not matched: {name}")
 
         raise RuntimeError(
-            "❌ Graph tab image not found after "
-            f"{self._GRAPH_TAB_RETRIES} attempt(s). "
+            f"❌ Graph tab image not found after {self._GRAPH_TAB_RETRIES} attempt(s). "
             "Check screenshot scaling and that the Strategy Tester panel is visible."
         )
 
-    def _click_graph_tab(self):
+    def _click_graph_tab(self, mt5_window=None):
         """
-        Locate the Graph tab on screen, click it, and return its centre
-        co-ordinates so the same position can be reused for right-clicks.
+        Click the Graph tab and return its screen centre (cx, cy).
 
-        Returns
-        -------
-        (center_x, center_y) : tuple[int, int]
+        Strategy
+        --------
+        1. UIA tree walk (no images, DPI-safe) — preferred.
+        2. pyautogui image scan                — fallback if UIA fails.
+
+        Parameters
+        ----------
+        mt5_window : pywinauto wrapper (optional but strongly recommended).
         """
         import pyautogui
 
         pyautogui.FAILSAFE = True
         pyautogui.PAUSE    = 0.3
 
-        box = self._locate_graph_tab()
+        # ── Strategy 1: UIA ──────────────────────────────────────────────────
+        try:
+            cx, cy = self._click_graph_tab_uia(mt5_window)
+            return cx, cy
+        except RuntimeError as uia_err:
+            Logger.warning(f"⚠️ UIA strategy failed: {uia_err}")
+            Logger.warning("   Falling back to image-based detection…")
+
+        # ── Strategy 2: image scan ───────────────────────────────────────────
+        box = self._locate_graph_tab_image()
         cx  = box.left + box.width  // 2
         cy  = box.top  + box.height // 2
-
         pyautogui.click(cx, cy)
         time.sleep(0.5)
-        Logger.info(f"✅ Clicked Graph tab at ({cx}, {cy})")
+        Logger.info(f"✅ Clicked Graph tab via image at ({cx}, {cy})")
         return cx, cy
 
     def _open_context_menu(self, cx, cy, app):
@@ -684,7 +750,7 @@ class MT5Manager:
         time.sleep(0.5)
 
         # ── Click Graph tab ONCE ──────────────────────────────────────
-        cx, cy = self._click_graph_tab()
+        cx, cy = self._click_graph_tab(mt5_window)
 
         # ── CSV: first right-click ─────────────────────────────────────
         if output_dir:
@@ -725,7 +791,7 @@ class MT5Manager:
         mt5_window, app = self.focus_mt5(mt5_exe_path)
         time.sleep(0.5)
 
-        cx, cy = self._click_graph_tab()
+        cx, cy = self._click_graph_tab(mt5_window)
 
         menu = self._open_context_menu(cx, cy, app)
         found = self._click_menu_item(menu, "Export to PNG")
