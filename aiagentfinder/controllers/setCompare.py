@@ -184,6 +184,7 @@ class SetCompareController:
                         df[col] = pd.to_numeric(df[col].astype(str).str.replace(",", ""), errors="coerce")
 
                     suffix = os.path.splitext(file_name)[0]
+                    # Rename columns to include suffix, EXCEPT DATE
                     df = df.rename(columns={c: f"{c}_{suffix}" for c in df.columns if c != "DATE"})
 
                     csv_data_map[file_name] = df
@@ -192,37 +193,34 @@ class SetCompareController:
                 if not csv_data_map:
                     return {"error": "NO_VALID_CSV"}
 
-                # merge inner on DATE
-                dfs = list(csv_data_map.values())
-                merged_df = dfs[0].copy()
-                for df in dfs[1:]:
-                    merged_df = pd.merge(merged_df, df, on="DATE", how="inner")
+                # Set DATE as index for all dataframes to allow outer join
+                for fn, df in csv_data_map.items():
+                    df.set_index("DATE", inplace=True)
 
-                merged_df = merged_df.sort_values("DATE").reset_index(drop=True)
+                # Outer join all dataframes on DATE index
+                merged_df = pd.concat(csv_data_map.values(), axis=1)
+                merged_df = merged_df.sort_index()
 
-                # ensure numeric
+                # Forward-fill to propagate last known balance/equity, then backward-fill
+                merged_df = merged_df.ffill().bfill()
+                merged_df = merged_df.reset_index() # DATE is back as a column
+
+                # Ensure all columns are numeric
                 for col in merged_df.columns:
                     if col != "DATE":
                         merged_df[col] = pd.to_numeric(merged_df[col], errors="coerce")
 
-                # compute equity aggregates
+                # Compute aggregates
                 equity_cols = [c for c in merged_df.columns if c.startswith("EQUITY_")]
+                balance_cols = [c for c in merged_df.columns if c.startswith("BALANCE_")]
+
+                # Average and Sum
                 if equity_cols:
                     merged_df["AVG_EQUITY"] = merged_df[equity_cols].mean(axis=1)
                     merged_df["SUM_EQUITY"] = merged_df[equity_cols].sum(axis=1)
-
-                # compute balance aggregates
-                balance_cols = [c for c in merged_df.columns if c.startswith("BALANCE_")]
                 if balance_cols:
                     merged_df["AVG_BALANCE"] = merged_df[balance_cols].mean(axis=1)
                     merged_df["SUM_BALANCE"] = merged_df[balance_cols].sum(axis=1)
-
-                # save merged CSV
-                # out_path = os.path.join(self.csv_dir, "merged_output.csv")
-                # try:
-                #     merged_df.to_csv(out_path, index=False)
-                # except Exception as e:
-                #     return {"df": merged_df, "out_path": out_path, "files": file_suffixes, "save_error": str(e)}
 
                 return {"df": merged_df, "files": file_suffixes}
 
@@ -280,33 +278,45 @@ class SetCompareController:
         df = merged_df.copy()
 
         # ✅ Correct date parsing (IMPORTANT)
-        df["DATE"] = pd.to_datetime(df["DATE"], dayfirst=True, errors="coerce")
+        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
         df = df.dropna(subset=["DATE"])
 
-        df["MONTH_NUM"] = df["DATE"].dt.month
+        df["PERIOD"] = df["DATE"].dt.to_period("M")
+        periods = sorted(df["PERIOD"].unique())
 
         # Detect BALANCE columns (per file)
         balance_cols = [c for c in df.columns if c.startswith("BALANCE_")]
 
-        month_name_map = {
-            1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
-            5: "May", 6: "Jun", 7: "Jul", 8: "Aug",
-            9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
-        }
-
-        # Monthly portfolio value (table values)
-        month_summary = (
-            df.sort_values("DATE")
-            .groupby("MONTH_NUM")["AVG_BALANCE"]
-            .last()
-            .dropna()
-        )
-
-        if month_summary.empty:
+        if not balance_cols or not periods:
             self.ui.portfolio_stats.clear()
             return
 
-        headers = [month_name_map[m] for m in month_summary.index] + ["Total"]
+        # Calculate monthly profit for each strategy
+        strategy_profits = {}  # col -> {period: profit}
+        strategy_start_end = {}  # col -> {period: (start, end)}
+
+        for col in balance_cols:
+            initial_balance = df[col].iloc[0]
+            monthly_last_balances = df.groupby("PERIOD")[col].last()
+            
+            profits = {}
+            start_end = {}
+            prev_bal = initial_balance
+            for period in periods:
+                last_bal = monthly_last_balances.get(period, prev_bal)
+                profits[period] = last_bal - prev_bal
+                start_end[period] = (prev_bal, last_bal)
+                prev_bal = last_bal
+            
+            strategy_profits[col] = profits
+            strategy_start_end[col] = start_end
+
+        # Portfolio profit per period
+        portfolio_profits = {}
+        for period in periods:
+            portfolio_profits[period] = sum(strategy_profits[col][period] for col in balance_cols)
+
+        headers = [p.strftime("%b %y") for p in periods] + ["Total"]
 
         table = self.ui.portfolio_stats
         table.clear()
@@ -315,42 +325,32 @@ class SetCompareController:
         table.setHorizontalHeaderLabels(headers)
 
         # Fill month cells with FILE-BASED tooltips
-        for col_idx, (month_num, value) in enumerate(month_summary.items()):
+        for col_idx, period in enumerate(periods):
+            value = portfolio_profits[period]
             item = QTableWidgetItem(str(round(value, 2)))
             item.setTextAlignment(Qt.AlignCenter)
 
-            month_df = df[df["MONTH_NUM"] == month_num].sort_values("DATE")
-
             # Build tooltip per file
             tooltip_lines = []
-
-            
             for col in balance_cols:
-                start = month_df[col].iloc[0]
-                end = month_df[col].iloc[-1]
-                pnl = round(end - start, 2)
+                pnl = strategy_profits[col][period]
+                start, end = strategy_start_end[col][period]
                 color = "#22c55e" if pnl >= 0 else "#ef4444"
-
                 file_name = col.replace("BALANCE_", "")
-                # tooltip_lines.append(
-                #     f"{file_name}\n"
-                #     f"  Start: {round(start, 2)}\n"
-                #     f"  End:   {round(end, 2)}\n"
-                #     f"  PnL:   {pnl}\n"
-                # )
 
                 tooltip_lines.append(
                     f"<b>{file_name}</b><br>"
                     f"Start: {round(start, 2)}<br>"
                     f"End: {round(end, 2)}<br>"
-                    f"PnL: <span style='color:{color}'>{pnl}</span><br><br>"
+                    f"PnL: <span style='color:{color}'>{'+' if pnl >= 0 else ''}{round(pnl, 2)}</span><br><br>"
                 )
 
             item.setToolTip("\n".join(tooltip_lines))
             table.setItem(0, col_idx, item)
 
-        # Total column
-        total_item = QTableWidgetItem(str(round(month_summary.sum(), 2)))
+        # Total column (sum of all monthly profits)
+        total_profit = sum(portfolio_profits.values())
+        total_item = QTableWidgetItem(str(round(total_profit, 2)))
         total_item.setTextAlignment(Qt.AlignCenter)
         table.setItem(0, len(headers) - 1, total_item)
 
@@ -376,28 +376,45 @@ class SetCompareController:
         # Build nicer headers based on file names
         file_headers = [col.replace("EQUITY_", "") for col in equity_cols]
 
-        # Add SUM_EQUITY if missing
-        if "SUM_EQUITY" not in df.columns and equity_cols:
-            df["SUM_EQUITY"] = df[equity_cols].sum(axis=1)
-
-        # 🔹 Apply filter based on draw_input value
-        draw_threshold = int(self.ui.draw_input.text())  # QDoubleSpinBox value
-        df = df[df["SUM_EQUITY"] >= draw_threshold]
-
-        if df.empty:
-            self.log_to_ui(f"No rows match the filter (SUM_EQUITY ≥ {draw_threshold}).")
+        if not equity_cols:
             self.ui.drawdown_analysis.clear()
             return
 
-        # 🔹 Resample to 30-minute intervals — keep last record in each bucket
-        df = df.copy()
+        # 🔹 Resample to 30-minute intervals first - keep last record in each bucket, forward/backward fill
         df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
         df = df.dropna(subset=["DATE"])
         df = df.set_index("DATE")
-        df = df.resample("30min").last().dropna(how="all")
-        df = df.reset_index()  # DATE becomes a column again
+        df = df.resample("30min").last().ffill().bfill()
+        df = df.reset_index()
 
-        # FINAL HEADERS
+        # Calculate running loss (drawdown) for each strategy: cummax - current_equity
+        loss_cols = []
+        for col in equity_cols:
+            loss_col_name = f"LOSS_{col.replace('EQUITY_', '')}"
+            df[loss_col_name] = df[col].cummax() - df[col]
+            loss_cols.append(loss_col_name)
+
+        # Calculate combined drawdown (DD Total)
+        df["DD_TOTAL"] = df[loss_cols].sum(axis=1)
+
+        # Count active drawdowns (loss > 0)
+        df["ACTIVE_COUNT"] = (df[loss_cols] > 0.0).sum(axis=1)
+
+        # 🔹 Apply filter based on draw_input value
+        draw_input_text = self.ui.draw_input.text().strip()
+        try:
+            draw_threshold = float(draw_input_text) if draw_input_text else 0.0
+        except ValueError:
+            draw_threshold = 1000.0  # fallback
+
+        df = df[df["DD_TOTAL"] >= draw_threshold]
+
+        if df.empty:
+            self.log_to_ui(f"No rows match the filter (DD Total ≥ {draw_threshold}).")
+            self.ui.drawdown_analysis.clear()
+            return
+
+        # FINAL HEADERS: Date & Time, DD Total, #, plus each strategy
         headers = ["Date & Time", "DD Total", "#"] + file_headers
 
         # Setup table
@@ -409,26 +426,27 @@ class SetCompareController:
 
         # Fill rows
         for row in range(len(df)):
-            # Date (using EditRole for correct sorting)
+            # Date & Time (using EditRole for correct sorting)
             date_str = str(df["DATE"].iloc[row])
             date_item = QTableWidgetItem(date_str)
             self.ui.drawdown_analysis.setItem(row, 0, date_item)
 
-            # DD Total → SUM_EQUITY (numeric sort)
-            dd_value = df["SUM_EQUITY"].iloc[row] if "SUM_EQUITY" in df else 0.0
+            # DD Total (numeric sort)
+            dd_value = df["DD_TOTAL"].iloc[row]
             dd_item = QTableWidgetItem()
             dd_item.setData(Qt.EditRole, float(round(dd_value, 2)))
             self.ui.drawdown_analysis.setItem(row, 1, dd_item)
 
-            # Static value "15" in column #
-            num_item = QTableWidgetItem()
-            num_item.setData(Qt.EditRole, 15)
-            self.ui.drawdown_analysis.setItem(row, 2, num_item)
+            # Number of active drawdowns (numeric sort)
+            active_val = int(df["ACTIVE_COUNT"].iloc[row])
+            active_item = QTableWidgetItem()
+            active_item.setData(Qt.EditRole, active_val)
+            self.ui.drawdown_analysis.setItem(row, 2, active_item)
 
-            # Equity values for each file (numeric sort)
+            # Loss values for each file (numeric sort)
             col_index = 3
-            for col in equity_cols:
-                val = df[col].iloc[row]
+            for loss_col in loss_cols:
+                val = df[loss_col].iloc[row]
                 val_item = QTableWidgetItem()
                 val_item.setData(Qt.EditRole, float(round(val, 2)))
                 self.ui.drawdown_analysis.setItem(row, col_index, val_item)
@@ -445,7 +463,7 @@ class SetCompareController:
         header.setSectionResizeMode(QHeaderView.Stretch)
         self.ui.drawdown_analysis.resizeRowsToContents()
 
-        self.log_to_ui(f"Drawdown table updated (SUM_EQUITY ≥ {draw_threshold}, sampled every 30 min). Rows: {len(df)}.")
+        self.log_to_ui(f"Drawdown table updated (DD Total ≥ {draw_threshold}, sampled every 30 min). Rows: {len(df)}.")
 
     def on_show_graph_clicked(self):
         if self.merged_df is None or self.merged_df.empty:
@@ -627,6 +645,8 @@ class SetCompareController:
             self.logger.info(f"SET Dir: {self.set_dir}")
 
             self.selected_set_files = set()
+            self.csv_files = set()
+            self.htm_files = set()
 
             # If SET folder empty, bounce
             if not os.path.isdir(self.set_dir):
@@ -700,42 +720,50 @@ class SetCompareController:
         # Ask for export folder
         export_dir = QFileDialog.getExistingDirectory(self.ui, "Select Export Folder")
         if not export_dir:
-            print("Export cancelled.")
+            self.log_to_ui("Export cancelled.")
             return
 
         # Selected CSVs from QListWidget (lowercase)
-        selected_csv_files = [item.text().lower() for item in self.ui.csv_list.selectedItems()]
+        selected_csv_names = [item.text().lower() for item in self.ui.csv_list.selectedItems()]
 
-        # Generic copy helper (case-insensitive)
-        def copy_matching_files(selected_files, src_dir, extensions=None):
-            if not os.path.isdir(src_dir):
-                print(f"Source folder not found: {src_dir}")
-                return
+        if not selected_csv_names:
+            self.log_to_ui("No CSV files selected for export.")
+            return
 
-            for f in os.listdir(src_dir):
-                fname_lower = os.path.splitext(f)[0].lower()  # strip extension
+        # 1. Copy CSV files
+        if os.path.isdir(csv_dir):
+            for f in os.listdir(csv_dir):
+                if f.lower().endswith(".csv"):
+                    fname_lower = os.path.splitext(f)[0].lower()
+                    if fname_lower in selected_csv_names:
+                        shutil.copy2(os.path.join(csv_dir, f), os.path.join(export_dir, f))
+                        self.log_to_ui(f"Copied CSV: {f}")
 
-                # Skip by extension if needed
-                if extensions and not f.lower().endswith(tuple(extensions)):
-                    continue
+        # 2. Copy HTM files
+        if os.path.isdir(htm_dir):
+            for f in os.listdir(htm_dir):
+                if f.lower().endswith((".htm", ".html")):
+                    fname_lower = os.path.splitext(f)[0].lower()
+                    if fname_lower in selected_csv_names:
+                        shutil.copy2(os.path.join(htm_dir, f), os.path.join(export_dir, f))
+                        self.log_to_ui(f"Copied HTM: {f}")
 
-                if fname_lower in selected_files or selected_files == ["*"]:
-                    src_path = os.path.join(src_dir, f)
-                    dst_path = os.path.join(export_dir, f)
-                    try:
-                        shutil.copy2(src_path, dst_path)
-                        print(f"Copied: {f}")
-                    except Exception as e:
-                        print(f"Error copying {f}: {e}")
+        # 3. Copy SET files
+        if os.path.isdir(set_dir):
+            for f in os.listdir(set_dir):
+                if f.lower().endswith(".set"):
+                    set_name_lower = os.path.splitext(f)[0].lower()
+                    # Check if this set_name_lower is a substring of any selected CSV name
+                    matched = False
+                    for csv_name in selected_csv_names:
+                        if set_name_lower in csv_name:
+                            matched = True
+                            break
+                    if matched:
+                        shutil.copy2(os.path.join(set_dir, f), os.path.join(export_dir, f))
+                        self.log_to_ui(f"Copied SET: {f}")
 
-
-        copy_matching_files(selected_csv_files, csv_dir, extensions=[".csv"])
-
-        copy_matching_files(selected_csv_files, htm_dir, extensions=[".htm"])
-
-        copy_matching_files(selected_csv_files, set_dir, extensions=[".set"])
-
-        print(f"All selected files copied to {export_dir}")
+        self.log_to_ui(f"All selected files copied to {export_dir}")
 
 
 
