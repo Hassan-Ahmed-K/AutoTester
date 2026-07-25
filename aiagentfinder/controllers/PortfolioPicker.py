@@ -250,6 +250,9 @@ class PortfolioPickerController:
                     if df.empty:
                         continue
 
+                    # Keep the last entry for duplicate timestamps to prevent cartesian products during merge
+                    df = df.groupby("DATE", as_index=False).last()
+
                     # convert numeric columns
                     for col in df.columns:
                         if col == "DATE":
@@ -455,28 +458,34 @@ class PortfolioPickerController:
 
             # DD Total → SUM_EQUITY
             dd_value = df["SUM_EQUITY"].iloc[row] if "SUM_EQUITY" in df else ""
-            self.ui.drawdown_analysis.setItem(
-                row, 1, QTableWidgetItem(str(round(dd_value, 2)) if dd_value != "" else "")
-            )
+            dd_item = QTableWidgetItem(str(round(dd_value, 2)) if dd_value != "" else "")
+            dd_item.setTextAlignment(Qt.AlignCenter)
+            self.ui.drawdown_analysis.setItem(row, 1, dd_item)
 
             # Static value "15" in column #
-            self.ui.drawdown_analysis.setItem(
-                row, 2, QTableWidgetItem("15")
-            )
+            active_item = QTableWidgetItem("15")
+            active_item.setTextAlignment(Qt.AlignCenter)
+            self.ui.drawdown_analysis.setItem(row, 2, active_item)
 
             # Equity values for each file
             col_index = 3
             for col in equity_cols:
                 val = df[col].iloc[row]
-                self.ui.drawdown_analysis.setItem(
-                    row, col_index, QTableWidgetItem(str(round(val, 2)))
-                )
+                val_item = QTableWidgetItem(str(round(val, 2)))
+                val_item.setTextAlignment(Qt.AlignCenter)
+                self.ui.drawdown_analysis.setItem(row, col_index, val_item)
                 col_index += 1
 
-        # Stretch all columns to fill width
+        # Ensure columns are interactive and resize to contents for readability
         header = self.ui.drawdown_analysis.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch)
+        header.setSectionResizeMode(QHeaderView.Interactive)
+        self.ui.drawdown_analysis.resizeColumnsToContents()
         self.ui.drawdown_analysis.resizeRowsToContents()
+
+        # Set specific initial widths for the first three columns
+        self.ui.drawdown_analysis.setColumnWidth(0, 160)  # Date & Time
+        self.ui.drawdown_analysis.setColumnWidth(1, 100)  # DD Total
+        self.ui.drawdown_analysis.setColumnWidth(2, 50)   # #
 
         self.logger.info(f"Drawdown table updated (rows with SUM_EQUITY ≥ {draw_threshold}).")
 

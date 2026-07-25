@@ -4,19 +4,132 @@ import pandas as pd
 import traceback
 from aiagentfinder.utils.ThreadRunnerV2 import ThreadRunnerV2
 from aiagentfinder.utils import Logger 
-from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget,QTableWidget, QTableWidgetItem, QHeaderView,QLabel,QToolTip,QMessageBox,QInputDialog
+from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget,QTableWidget, QTableWidgetItem, QHeaderView,QLabel,QToolTip,QMessageBox,QInputDialog, QDialog, QVBoxLayout, QTextBrowser, QPushButton, QFrame
 import matplotlib
 matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.cm as cm
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPoint, QRect, QTimer, QObject
+from PyQt5.QtGui import QCursor
 import numpy as np
 
 
-class SetCompareController:
-    def __init__(self, ui):
+class ScrollableToolTip(QFrame):
+    def __init__(self, parent=None):
+        super().__init__(parent, Qt.ToolTip | Qt.FramelessWindowHint)
+        self.resize(580, 320)
+        self.setStyleSheet("""
+            QFrame {
+                background-color: #1e1e1e;
+                border: 1px solid #444444;
+            }
+            QTextBrowser {
+                background-color: #1e1e1e;
+                color: #cccccc;
+                border: none;
+                font-family: Consolas, "Courier New", monospace;
+                font-size: 12px;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #1e1e1e;
+                width: 10px;
+                margin: 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: #444444;
+                min-height: 20px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #555555;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                background: none;
+                height: 0px;
+            }
+        """)
         
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(5, 5, 5, 5)
+        
+        self.browser = QTextBrowser(self)
+        layout.addWidget(self.browser)
+        
+        # Prevent the tooltip window from taking window focus or stealing keyboard focus
+        self.setAttribute(Qt.WA_ShowWithoutActivating, True)
+
+
+class DetailDialog(QDialog):
+    def __init__(self, title, html_content, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle(title)
+        self.resize(650, 550)
+        
+        # Style sheet to match the app dark mode and make it look clean
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #1e1e1e;
+                color: #cccccc;
+            }
+            QTextBrowser {
+                background-color: #1e1e1e;
+                color: #cccccc;
+                border: 1px solid #3a3a3a;
+                font-family: Consolas, "Courier New", monospace;
+                font-size: 13px;
+                padding: 10px;
+            }
+            QPushButton {
+                background-color: #2b2b2b;
+                color: #ffffff;
+                border: 1px solid #444444;
+                padding: 6px 14px;
+                border-radius: 4px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #3b3b3b;
+                border-color: #555555;
+            }
+            QPushButton:pressed {
+                background-color: #1b1b1b;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #1e1e1e;
+                width: 10px;
+                margin: 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: #444444;
+                min-height: 20px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #555555;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                background: none;
+                height: 0px;
+            }
+        """)
+        
+        layout = QVBoxLayout(self)
+        self.browser = QTextBrowser(self)
+        self.browser.setHtml(html_content)
+        layout.addWidget(self.browser)
+        
+        close_btn = QPushButton("Close", self)
+        close_btn.clicked.connect(self.accept)
+        layout.addWidget(close_btn)
+
+
+class SetCompareController(QObject):
+    def __init__(self, ui):
+        super().__init__()
         self.ui = ui
         self.main_window = self.ui.parent()
         self.runner = ThreadRunnerV2(self.main_window)
@@ -43,6 +156,19 @@ class SetCompareController:
         self.ui.deselect_button.clicked.connect(self.on_deselect_button_clicked)
         self.ui.show_graph_button.clicked.connect(self.on_show_graph_clicked)
         self.ui.export_profile_button.clicked.connect(self.export_files)
+        
+        # Connect portfolio_stats cell clicked to show detailed breakdown dialog
+        self.ui.portfolio_stats.cellClicked.connect(self.on_portfolio_cell_clicked)
+        
+        # Setup scrollable hover tooltip
+        from PyQt5.QtCore import QEvent
+        self.scroll_tip = ScrollableToolTip(self.main_window)
+        self.tip_timer = QTimer(self.main_window)
+        self.tip_timer.setInterval(200)
+        self.tip_timer.timeout.connect(self.check_tip_hover)
+        self.ui.portfolio_stats.viewport().installEventFilter(self)
+        self.ui.portfolio_stats.setMouseTracking(True)
+        self.ui.portfolio_stats.viewport().setMouseTracking(True)
 
 
 
@@ -86,6 +212,64 @@ class SetCompareController:
     def on_deselect_button_clicked(self):
         if hasattr(self.ui, "csv_list") and self.ui.csv_list is not None:
             self.ui.csv_list.clearSelection()
+
+    def on_portfolio_cell_clicked(self, row, col):
+        item = self.ui.portfolio_stats.item(row, col)
+        if not item:
+            return
+        html_content = item.data(Qt.UserRole)
+        if not html_content:
+            return
+        
+        # Get column header text for the dialog title
+        header_item = self.ui.portfolio_stats.horizontalHeaderItem(col)
+        title = f"Monthly Breakdown - {header_item.text()}" if header_item else "Monthly Breakdown"
+        
+        dialog = DetailDialog(title, html_content, self.main_window)
+        dialog.exec_()
+
+    def eventFilter(self, obj, event):
+        from PyQt5.QtCore import QEvent
+        if obj == self.ui.portfolio_stats.viewport():
+            if event.type() == QEvent.MouseMove:
+                pos = event.pos()
+                item = self.ui.portfolio_stats.itemAt(pos)
+                if item:
+                    html_content = item.data(Qt.UserRole)
+                    if html_content:
+                        self.scroll_tip.browser.setHtml(html_content)
+                        # Position popup near cursor but not if cursor is already inside the tooltip
+                        cursor_pos = QCursor.pos()
+                        if not self.scroll_tip.geometry().contains(cursor_pos):
+                            global_pos = self.ui.portfolio_stats.viewport().mapToGlobal(pos)
+                            self.scroll_tip.move(global_pos + QPoint(15, 15))
+                        if not self.scroll_tip.isVisible():
+                            self.scroll_tip.show()
+                            self.tip_timer.start()
+                        return False
+        return super().eventFilter(obj, event)
+
+    def check_tip_hover(self):
+        if not self.scroll_tip.isVisible():
+            self.tip_timer.stop()
+            return
+            
+        cursor_pos = QCursor.pos()
+        
+        # Check if cursor is over the table viewport
+        viewport = self.ui.portfolio_stats.viewport()
+        vp_rect = viewport.rect()
+        vp_global_topleft = viewport.mapToGlobal(vp_rect.topLeft())
+        vp_global_rect = QRect(vp_global_topleft, vp_rect.size())
+        
+        # Check if cursor is over the tooltip window
+        tip_rect = self.scroll_tip.rect()
+        tip_global_topleft = self.scroll_tip.mapToGlobal(tip_rect.topLeft())
+        tip_global_rect = QRect(tip_global_topleft, tip_rect.size())
+        
+        if not (vp_global_rect.contains(cursor_pos) or tip_global_rect.contains(cursor_pos)):
+            self.scroll_tip.hide()
+            self.tip_timer.stop()
 
     def log_to_ui(self, message: str):
         """
@@ -176,6 +360,9 @@ class SetCompareController:
                     df = df.dropna(subset=["DATE"])
                     if df.empty:
                         continue
+
+                    # Keep the last entry for duplicate timestamps to resolve InvalidIndexError during concat
+                    df = df.groupby("DATE", as_index=False).last()
 
                     # convert numeric columns
                     for col in df.columns:
@@ -330,28 +517,84 @@ class SetCompareController:
             item = QTableWidgetItem(str(round(value, 2)))
             item.setTextAlignment(Qt.AlignCenter)
 
-            # Build tooltip per file
-            tooltip_lines = []
-            for col in balance_cols:
+            # Build tooltip per file as a beautiful HTML table
+            html_lines = [
+                "<table style='width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 12px; color: #cccccc;'>",
+                "  <thead>",
+                "    <tr style='border-bottom: 2px solid #444444; text-align: left;'>",
+                "      <th style='padding: 6px; color: #ffffff;'>Strategy / File</th>",
+                "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Start</th>",
+                "      <th style='padding: 6px; text-align: right; color: #ffffff;'>End</th>",
+                "      <th style='padding: 6px; text-align: right; color: #ffffff;'>PnL</th>",
+                "    </tr>",
+                "  </thead>",
+                "  <tbody>"
+            ]
+
+            for idx, col in enumerate(balance_cols):
                 pnl = strategy_profits[col][period]
                 start, end = strategy_start_end[col][period]
                 color = "#22c55e" if pnl >= 0 else "#ef4444"
+                pnl_str = f"+{round(pnl, 2)}" if pnl >= 0 else f"{round(pnl, 2)}"
+                bg_color = "#252525" if idx % 2 == 0 else "#1e1e1e"
                 file_name = col.replace("BALANCE_", "")
 
-                tooltip_lines.append(
-                    f"<b>{file_name}</b><br>"
-                    f"Start: {round(start, 2)}<br>"
-                    f"End: {round(end, 2)}<br>"
-                    f"PnL: <span style='color:{color}'>{'+' if pnl >= 0 else ''}{round(pnl, 2)}</span><br><br>"
+                html_lines.append(
+                    f"    <tr style='background-color: {bg_color}; border-bottom: 1px solid #2d2d2d;'>"
+                    f"      <td style='padding: 6px; font-weight: bold;'>{file_name}</td>"
+                    f"      <td style='padding: 6px; text-align: right;'>{round(start, 2)}</td>"
+                    f"      <td style='padding: 6px; text-align: right;'>{round(end, 2)}</td>"
+                    f"      <td style='padding: 6px; text-align: right; color: {color}; font-weight: bold;'>{pnl_str}</td>"
+                    f"    </tr>"
                 )
 
-            item.setToolTip("\n".join(tooltip_lines))
+            html_lines.append("  </tbody>")
+            html_lines.append("</table>")
+
+            item.setData(Qt.UserRole, "\n".join(html_lines))
             table.setItem(0, col_idx, item)
 
         # Total column (sum of all monthly profits)
         total_profit = sum(portfolio_profits.values())
         total_item = QTableWidgetItem(str(round(total_profit, 2)))
         total_item.setTextAlignment(Qt.AlignCenter)
+
+        # Build tooltip for the Total column showing total breakdown per strategy
+        total_html_lines = [
+            "<table style='width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 12px; color: #cccccc;'>",
+            "  <thead>",
+            "    <tr style='border-bottom: 2px solid #444444; text-align: left;'>",
+            "      <th style='padding: 6px; color: #ffffff;'>Strategy / File</th>",
+            "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Initial</th>",
+            "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Final</th>",
+            "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Total PnL</th>",
+            "    </tr>",
+            "  </thead>",
+            "  <tbody>"
+        ]
+
+        for idx, col in enumerate(balance_cols):
+            start = strategy_start_end[col][periods[0]][0]
+            end = strategy_start_end[col][periods[-1]][1]
+            pnl = end - start
+            color = "#22c55e" if pnl >= 0 else "#ef4444"
+            pnl_str = f"+{round(pnl, 2)}" if pnl >= 0 else f"{round(pnl, 2)}"
+            bg_color = "#252525" if idx % 2 == 0 else "#1e1e1e"
+            file_name = col.replace("BALANCE_", "")
+
+            total_html_lines.append(
+                f"    <tr style='background-color: {bg_color}; border-bottom: 1px solid #2d2d2d;'>"
+                f"      <td style='padding: 6px; font-weight: bold;'>{file_name}</td>"
+                f"      <td style='padding: 6px; text-align: right;'>{round(start, 2)}</td>"
+                f"      <td style='padding: 6px; text-align: right;'>{round(end, 2)}</td>"
+                f"      <td style='padding: 6px; text-align: right; color: {color}; font-weight: bold;'>{pnl_str}</td>"
+                f"    </tr>"
+            )
+
+        total_html_lines.append("  </tbody>")
+        total_html_lines.append("</table>")
+
+        total_item.setData(Qt.UserRole, "\n".join(total_html_lines))
         table.setItem(0, len(headers) - 1, total_item)
 
         header = table.horizontalHeader()
@@ -435,12 +678,14 @@ class SetCompareController:
             dd_value = df["DD_TOTAL"].iloc[row]
             dd_item = QTableWidgetItem()
             dd_item.setData(Qt.EditRole, float(round(dd_value, 2)))
+            dd_item.setTextAlignment(Qt.AlignCenter)
             self.ui.drawdown_analysis.setItem(row, 1, dd_item)
 
             # Number of active drawdowns (numeric sort)
             active_val = int(df["ACTIVE_COUNT"].iloc[row])
             active_item = QTableWidgetItem()
             active_item.setData(Qt.EditRole, active_val)
+            active_item.setTextAlignment(Qt.AlignCenter)
             self.ui.drawdown_analysis.setItem(row, 2, active_item)
 
             # Loss values for each file (numeric sort)
@@ -449,6 +694,7 @@ class SetCompareController:
                 val = df[loss_col].iloc[row]
                 val_item = QTableWidgetItem()
                 val_item.setData(Qt.EditRole, float(round(val, 2)))
+                val_item.setTextAlignment(Qt.AlignCenter)
                 self.ui.drawdown_analysis.setItem(row, col_index, val_item)
                 col_index += 1
 
@@ -458,10 +704,16 @@ class SetCompareController:
         # Sort by Date & Time (column 0) ascending by default
         self.ui.drawdown_analysis.sortByColumn(0, Qt.AscendingOrder)
 
-        # Stretch all columns to fill width
+        # Ensure columns are interactive and resize to contents for readability
         header = self.ui.drawdown_analysis.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch)
+        header.setSectionResizeMode(QHeaderView.Interactive)
+        self.ui.drawdown_analysis.resizeColumnsToContents()
         self.ui.drawdown_analysis.resizeRowsToContents()
+
+        # Set specific initial widths for the first three columns
+        self.ui.drawdown_analysis.setColumnWidth(0, 160)  # Date & Time
+        self.ui.drawdown_analysis.setColumnWidth(1, 100)  # DD Total
+        self.ui.drawdown_analysis.setColumnWidth(2, 50)   # #
 
         self.log_to_ui(f"Drawdown table updated (DD Total ≥ {draw_threshold}, sampled every 30 min). Rows: {len(df)}.")
 
@@ -496,48 +748,146 @@ class SetCompareController:
             self.log_to_ui("❌ No columns found to plot for selection.")
             return
 
-        # --- Prepare colors ---
+        # --- Prepare colors and line styling ---
         total_lines = len(equity_cols) + len(balance_cols)
         color_map = plt.get_cmap("tab20")
         colors = [color_map(i % 20) for i in range(total_lines)]
 
+        # Use thin semi-transparent lines if there are many files to avoid clutter
+        use_clutter_mode = len(equity_cols) > 8 or len(balance_cols) > 8
+        default_alpha = 0.22 if use_clutter_mode else 0.85
+        default_lw = 1.0 if use_clutter_mode else 1.5
+
+        from matplotlib.gridspec import GridSpec
+        from matplotlib.lines import Line2D
+
         # Set style for a more premium dark look
         plt.style.use('dark_background')
-        fig, ax = plt.subplots(figsize=(13, 7), facecolor='#121212')
+
+        # --- Layout: [Equity Panel | Chart | Balance Panel] ---
+        # Panels are shown only if they have data
+        has_equity = len(equity_cols) > 0
+        has_balance = len(balance_cols) > 0
+
+        if has_equity and has_balance:
+            width_ratios = [1.0, 2.4, 1.0]
+            fig = plt.figure(figsize=(22, 9), facecolor='#121212')
+            gs = GridSpec(1, 3, figure=fig, width_ratios=width_ratios, wspace=0.03)
+            ax_leq = fig.add_subplot(gs[0, 0])   # left: equity legend
+            ax     = fig.add_subplot(gs[0, 1])   # center: chart
+            ax_lbal = fig.add_subplot(gs[0, 2])  # right: balance legend
+            ax_leq.set_facecolor('#0d0d0d')
+            ax_leq.set_axis_off()
+            ax_lbal.set_facecolor('#0d0d0d')
+            ax_lbal.set_axis_off()
+        elif has_equity:
+            width_ratios = [2.6, 1.0]
+            fig = plt.figure(figsize=(19, 9), facecolor='#121212')
+            gs = GridSpec(1, 2, figure=fig, width_ratios=width_ratios, wspace=0.03)
+            ax     = fig.add_subplot(gs[0, 0])
+            ax_leq = fig.add_subplot(gs[0, 1])
+            ax_leq.set_facecolor('#0d0d0d')
+            ax_leq.set_axis_off()
+            ax_lbal = None
+        else:  # balance only
+            width_ratios = [2.6, 1.0]
+            fig = plt.figure(figsize=(19, 9), facecolor='#121212')
+            gs = GridSpec(1, 2, figure=fig, width_ratios=width_ratios, wspace=0.0)
+            ax     = fig.add_subplot(gs[0, 0])
+            ax_lbal = fig.add_subplot(gs[0, 1])
+            ax_lbal.set_facecolor('#0d0d0d')
+            ax_lbal.set_axis_off()
+            ax_leq = None
+
         ax.set_facecolor('#121212')
 
-        # Plot Equity
+        # Plot Individual Equity Curves
         equity_handles = []
         for col, color in zip(equity_cols, colors[:len(equity_cols)]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color, linewidth=1.5, alpha=0.9)
+            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color, linewidth=default_lw, alpha=default_alpha)
             equity_handles.append(line)
 
-        # Plot Balance
+        # Plot Individual Balance Curves
         balance_handles = []
         for col, color in zip(balance_cols, colors[len(equity_cols):]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color, linewidth=1.5, alpha=0.9, linestyle='--')
+            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color, linewidth=default_lw, alpha=default_alpha, linestyle='--')
             balance_handles.append(line)
+
+        # avg lines intentionally not plotted
+        avg_handles = {}
 
         # Title and labels
         ax.set_title({
             "Equity": "Equity Curve Comparison",
             "Balance": "Balance Curve Comparison",
             "Both": "Equity & Balance Comparison"
-        }[choice], color='white', fontsize=14, pad=20)
+        }[choice], color='white', fontsize=14, pad=16)
         ax.set_xlabel("Date / Time", color='#bbbbbb')
         ax.set_ylabel("Value", color='#bbbbbb')
         ax.grid(True, alpha=0.15, color='gray', linestyle=':')
-
-        # Customize ticks
         ax.tick_params(colors='#888888', labelsize=9)
+        # Give the curves breathing room so they don't stick to the edges
+        ax.margins(x=0.02, y=0.06)
+        for spine in ax.spines.values():
+            spine.set_edgecolor('#333333')
 
-        # --- Legends ---
-        if equity_handles:
-            legend_equity = ax.legend(handles=equity_handles, title="Equity", loc="upper left", fontsize=7, framealpha=0.1)
-            ax.add_artist(legend_equity)
+        def _build_legend(panel_ax, handles_list, labels_list, title, avg_handle=None, avg_label=None, is_dashed=False):
+            """Render a legend into a blank axes panel with 2 columns."""
+            if panel_ax is None:
+                return
+            # Avg entry first
+            all_h = []
+            all_l = []
+            if avg_handle is not None:
+                avg_color = "#00f2fe" if not is_dashed else "#ff8c00"
+                all_h.append(Line2D([0], [0], color=avg_color, lw=3.0,
+                                    linestyle='--' if is_dashed else '-', solid_capstyle='round'))
+                all_l.append(avg_label)
+            for h, l in zip(handles_list, labels_list):
+                max_chars = 25
+                display_l = l[:max_chars] + "…" if len(l) > max_chars else l
+                all_h.append(Line2D([0], [0], color=h.get_color(), lw=2.0,
+                                    linestyle='--' if is_dashed else '-', solid_capstyle='round'))
+                all_l.append(display_l)
 
-        if balance_handles:
-            ax.legend(handles=balance_handles, title="Balance", loc="upper right", fontsize=7, framealpha=0.1)
+            # Use 2 columns so long lists fit; switch at 15 entries
+            ncols = 2 if len(all_l) > 20 else 1
+            leg = panel_ax.legend(
+                all_h, all_l,
+                title=title,
+                loc="upper left",
+                bbox_to_anchor=(0.01, 0.99),
+                fontsize=7,
+                title_fontsize=9,
+                frameon=False,
+                labelcolor='#cccccc',
+                borderpad=0.3,
+                labelspacing=0.5,
+                handlelength=2.5,
+                handletextpad=0.5,
+                ncol=ncols,
+                columnspacing=0.8,
+            )
+            leg.get_title().set_color('#00f2fe' if not is_dashed else '#ff8c00')
+            leg.get_title().set_fontweight('bold')
+
+        # --- Render Equity Legend (left panel) ---
+        eq_labels = [c.replace("EQUITY_", "") for c in equity_cols]
+        _build_legend(
+            ax_leq if has_equity and has_balance else (ax_leq if has_equity else None),
+            equity_handles, eq_labels,
+            title="— Equity",
+            is_dashed=False,
+        )
+
+        # --- Render Balance Legend (right panel) ---
+        bal_labels = [c.replace("BALANCE_", "") for c in balance_cols]
+        _build_legend(
+            ax_lbal if has_balance else None,
+            balance_handles, bal_labels,
+            title="-- Balance",
+            is_dashed=True,
+        )
 
         # --- Interactive Hover Detection ---
         # Map handles to column names and set picker radius for easier selection
@@ -549,87 +899,194 @@ class SetCompareController:
             handle_to_col[line] = col
             line.set_picker(10)
 
-        # Pre-calculate numeric dates for fast searching
-        x_data_numeric = mdates.date2num(df["DATE"].tolist())
-        
-        v_line = ax.axvline(x=df["DATE"].iloc[0], color='white', linestyle='-', alpha=0.3, visible=False)
-        
-        # Tooltip annotation
-        annot = ax.annotate("", xy=(0,0), xytext=(15, 15),
+        # ── Performance: downsample display df to max 800 pts ─────────────────
+        MAX_DISPLAY_PTS = 800
+        if len(df) > MAX_DISPLAY_PTS:
+            step = max(1, len(df) // MAX_DISPLAY_PTS)
+            df_plot = df.iloc[::step].reset_index(drop=True)
+        else:
+            df_plot = df
+
+        # Re-plot using downsampled data (replace lines already drawn)
+        for line, col in zip(equity_handles, equity_cols):
+            line.set_xdata(df_plot["DATE"])
+            line.set_ydata(df_plot[col])
+        for line, col in zip(balance_handles, balance_cols):
+            line.set_xdata(df_plot["DATE"])
+            line.set_ydata(df_plot[col])
+
+        # Pre-compute x numeric array and per-line y arrays for fast lookup
+        x_num   = mdates.date2num(df_plot["DATE"].tolist())
+        x_num   = np.array(x_num)
+        line_y  = {}   # line -> np.array of y values
+        for line, col in zip(equity_handles, equity_cols):
+            line_y[line] = df_plot[col].to_numpy(dtype=float)
+        for line, col in zip(balance_handles, balance_cols):
+            line_y[line] = df_plot[col].to_numpy(dtype=float)
+
+        all_lines = equity_handles + balance_handles
+
+        # ── Animated artists (blit-compatible) ────────────────────────────────
+        v_line = ax.axvline(x=df_plot["DATE"].iloc[0], color='cyan',
+                            linestyle='--', alpha=0.35, linewidth=1.0,
+                            visible=False, animated=True)
+
+        annot = ax.annotate("", xy=(0, 0), xytext=(12, 12),
                             textcoords="offset points",
-                            bbox=dict(boxstyle="round4,pad=0.5", fc="#1e1e1e", ec="#444444", alpha=0.9),
-                            color="white", fontsize=8, fontfamily='monospace')
+                            bbox=dict(boxstyle="round,pad=0.4", fc="#1a1a1a",
+                                      ec="#555555", alpha=0.92),
+                            color="white", fontsize=7.5, fontfamily='monospace',
+                            animated=True)
         annot.set_visible(False)
 
+        info_text = fig.text(0.5, 0.03,
+                             "Hover over any curve to display details here",
+                             color="#aaaaaa", fontsize=8.5,
+                             fontfamily="sans-serif",
+                             ha="center", va="center",
+                             bbox=dict(boxstyle="round,pad=0.5", fc="#161616",
+                                       ec="#333333", alpha=0.95),
+                             animated=True)
+
+        # ── Blit background ───────────────────────────────────────────────────
+        # We capture the background AFTER the first draw so blitting is clean.
+        _bg = [None]   # mutable container so inner functions can write it
+
+        def _save_bg(event=None):
+            _bg[0] = fig.canvas.copy_from_bbox(fig.bbox)
+
+        fig.canvas.mpl_connect("draw_event", _save_bg)
+
+        # ── Hover state ───────────────────────────────────────────────────────
+        _last = {"idx": -1, "hovered": set()}   # throttle guard
+
+        # Pixel-height tolerance for y-proximity detection
+        Y_TOL_PX = 8
+
+        def _px_per_data(ax_ref):
+            """Return (scale_x, scale_y): data units per pixel."""
+            bbox = ax_ref.get_window_extent()
+            xlim = ax_ref.get_xlim()
+            ylim = ax_ref.get_ylim()
+            sx = (xlim[1] - xlim[0]) / max(bbox.width,  1)
+            sy = (ylim[1] - ylim[0]) / max(bbox.height, 1)
+            return sx, sy
+
         def hover(event):
-            hovered_lines = []
-            if event.inaxes == ax:
-                # Check if mouse is near any specific line(s)
-                for line in equity_handles + balance_handles:
-                    cont, _ = line.contains(event)
-                    if cont:
-                        hovered_lines.append(line)
-                
-                if hovered_lines:
-                    # Highlight all active lines and dim others
-                    for line in equity_handles + balance_handles:
-                        if line in hovered_lines:
-                            line.set_alpha(1.0)
-                            line.set_linewidth(2.5)
-                        else:
-                            line.set_alpha(0.15)
-                            line.set_linewidth(1.0)
-                    
-                    # Fast search for nearest date index
-                    idx = np.searchsorted(x_data_numeric, event.xdata)
-                    if idx >= len(x_data_numeric): idx = len(x_data_numeric) - 1
-                    if idx > 0 and abs(event.xdata - x_data_numeric[idx-1]) < abs(event.xdata - x_data_numeric[idx]):
-                        idx -= 1
-                    
-                    target_date = df["DATE"].iloc[idx]
-                    
-                    # Build multi-line tooltip text for all hovered lines
-                    tooltip_lines = [f"DATE: {target_date.strftime('%Y-%m-%d %H:%M')}"]
-                    tooltip_lines.append("-" * 35)
-                    
-                    for line in hovered_lines:
-                        col_name = handle_to_col[line]
-                        val = df[col_name].iloc[idx]
-                        clean_name = col_name.replace("EQUITY_", "").replace("BALANCE_", "")[:25]
-                        tooltip_lines.append(f"{clean_name:<25}: {val:>10.2f}")
-
-                    annot.set_text("\n".join(tooltip_lines))
-                    
-                    # Anchor tooltip to the first hovered line's value
-                    first_col = handle_to_col[hovered_lines[0]]
-                    annot.xy = (target_date, df[first_col].iloc[idx])
-                    
-                    v_line.set_xdata([target_date, target_date])
-                    v_line.set_visible(True)
-                    annot.set_visible(True)
-                    fig.canvas.draw_idle()
-                    return
-
-            # Reset visibility and styles if no line is hovered
-            if not hovered_lines:
-                needs_redraw = False
-                if v_line.get_visible():
+            if event.inaxes is not ax or event.xdata is None:
+                # Mouse left axes — reset if needed
+                if _last["hovered"]:
+                    _last["hovered"] = set()
+                    _last["idx"] = -1
+                    for ln in all_lines:
+                        ln.set_alpha(default_alpha)
+                        ln.set_linewidth(default_lw)
                     v_line.set_visible(False)
                     annot.set_visible(False)
-                    needs_redraw = True
-                
-                for line in equity_handles + balance_handles:
-                    if line.get_alpha() != 0.9 or line.get_linewidth() != 1.5:
-                        line.set_alpha(0.9)
-                        line.set_linewidth(1.5)
-                        needs_redraw = True
-                
-                if needs_redraw:
-                    fig.canvas.draw_idle()
+                    info_text.set_text("Hover over any curve to display details here")
+                    info_text.set_color("#aaaaaa")
+                    if _bg[0]:
+                        fig.canvas.restore_region(_bg[0])
+                        ax.draw_artist(v_line)
+                        ax.draw_artist(annot)
+                        fig.draw_artist(info_text)
+                        fig.canvas.blit(fig.bbox)
+                return
+
+            # ── Accurate detection: line.contains() — pixel-perfect ────────────
+            # This checks the actual rendered path (including between-point segments).
+            # It is fast enough because blitting handles all redraw costs.
+            hovered_set = set()
+            for ln in all_lines:
+                try:
+                    cont, _ = ln.contains(event)
+                    if cont:
+                        hovered_set.add(ln)
+                except Exception:
+                    pass
+
+            # ── Find nearest x index for value lookup ──────────────────────────
+            idx = int(np.searchsorted(x_num, event.xdata))
+            idx = min(idx, len(x_num) - 1)
+            if idx > 0 and abs(event.xdata - x_num[idx-1]) < abs(event.xdata - x_num[idx]):
+                idx -= 1
+
+            # Throttle: skip redraw if nothing changed
+            if hovered_set == _last["hovered"] and idx == _last["idx"]:
+                return
+            _last["idx"] = idx
+            _last["hovered"] = hovered_set
+
+            target_date = df_plot["DATE"].iloc[idx]
+
+            # ── Update line styles ─────────────────────────────────────────
+            if hovered_set:
+                for ln in all_lines:
+                    if ln in hovered_set:
+                        ln.set_alpha(1.0)
+                        ln.set_linewidth(2.2)
+                    else:
+                        ln.set_alpha(0.06 if use_clutter_mode else 0.12)
+                        ln.set_linewidth(0.7)
+
+                # Floating tooltip
+                tip_lines = []
+                for ln in hovered_set:
+                    col_name = handle_to_col[ln]
+                    val = line_y[ln][idx]
+                    nm  = col_name.replace("EQUITY_","").replace("BALANCE_","")[:20]
+                    tip_lines.append(f"{nm}: {val:,.2f}")
+                annot.set_text("\n".join(tip_lines))
+                first_ln = next(iter(hovered_set))
+                annot.xy = (target_date, line_y[first_ln][idx])
+                annot.set_visible(True)
+
+                # Bottom bar
+                date_str = target_date.strftime('%Y-%m-%d %H:%M')
+                parts = [f"📅 {date_str}"]
+                for ln in hovered_set:
+                    col_name = handle_to_col[ln]
+                    val = line_y[ln][idx]
+                    nm  = col_name.replace("EQUITY_","").replace("BALANCE_","")
+                    kind = "EQ" if "EQUITY" in col_name else "BAL"
+                    parts.append(f"[{kind}] {nm}: {val:,.2f}")
+                info_text.set_text("   |   ".join(parts))
+                info_text.set_color("white")
+
+                v_line.set_xdata([target_date, target_date])
+                v_line.set_visible(True)
+            else:
+                for ln in all_lines:
+                    ln.set_alpha(default_alpha)
+                    ln.set_linewidth(default_lw)
+                v_line.set_visible(False)
+                annot.set_visible(False)
+                info_text.set_text("Hover over any curve to display details here")
+                info_text.set_color("#aaaaaa")
+
+            # ── Blit: only repaint changed pixels ─────────────────────────
+            if _bg[0]:
+                fig.canvas.restore_region(_bg[0])
+                for ln in all_lines:
+                    ax.draw_artist(ln)
+                ax.draw_artist(v_line)
+                ax.draw_artist(annot)
+                fig.draw_artist(info_text)
+                fig.canvas.blit(fig.bbox)
+            else:
+                fig.canvas.draw_idle()
 
         fig.canvas.mpl_connect("motion_notify_event", hover)
 
-        plt.tight_layout()
+        fig.subplots_adjust(left=0.02, right=0.99, top=0.95, bottom=0.10)
+
+        # Maximize window on open
+        try:
+            manager = plt.get_current_fig_manager()
+            manager.window.showMaximized()
+        except Exception:
+            pass
+
         plt.show()
         self.log_to_ui(f"Interactive graph displayed: {choice}")
 
