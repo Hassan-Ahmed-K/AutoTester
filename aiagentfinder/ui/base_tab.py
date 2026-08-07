@@ -141,7 +141,10 @@ class BaseTab(QWidget):
 
         if os.path.exists(qss_path):
             with open(qss_path, "r", encoding="utf-8") as f:
-                self.setStyleSheet(f.read())
+                content = f.read()
+                checkmark_path = get_resource_path(os.path.join("aiagentfinder", "icons", "checkmark-24.png")).replace("\\", "/")
+                content = content.replace("{ICON_CHECKMARK}", checkmark_path)
+                self.setStyleSheet(content)
         else:
             print(f"⚠️ QSS file not found at {qss_path}")
 

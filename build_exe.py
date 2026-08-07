@@ -29,7 +29,7 @@ EXTERNAL_CONFIG_FILES = [
 
 def clean_build_folders():
     """Removes temporary build and dist folders in the root."""
-    print("🧹 Cleaning temporary build folders...")
+    print("[CLEAN] Cleaning temporary build folders...")
     for d in ["build", "dist"]:
         dir_path = os.path.join(ROOT_DIR, d)
         if os.path.exists(dir_path):
@@ -37,11 +37,11 @@ def clean_build_folders():
                 shutil.rmtree(dir_path)
                 print(f"   Removed: {d}")
             except Exception as e:
-                print(f"   ⚠️  Could not remove {d}: {e}")
+                print(f"   [WARNING] Could not remove {d}: {e}")
 
 def run_pyinstaller():
     """Runs the PyInstaller command with all fixes."""
-    print(f"🚀 Building {PROJECT_NAME} (Fast‑Start Directory Mode)...")
+    print(f"[BUILD] Building {PROJECT_NAME} (Fast-Start Directory Mode)...")
 
     # <<< Added for Qt plugins
     # Locate the Qt plugins folder inside the PyQt5 installation
@@ -55,6 +55,7 @@ def run_pyinstaller():
         "--noconsole",
         "--onedir",
         f"--name={PROJECT_NAME}",
+        "--icon", r"data\favicon_black_bg.ico",
 
         # --- Bundled assets (icons, styles, data files) ---
         "--add-data", "aiagentfinder/icons;aiagentfinder/icons",
@@ -105,19 +106,19 @@ def run_pyinstaller():
 
     try:
         subprocess.run(command, check=True)
-        print("✅ PyInstaller build successful!")
+        print("[SUCCESS] PyInstaller build successful!")
     except subprocess.CalledProcessError as e:
-        print(f"❌ PyInstaller failed: {e}")
+        print(f"[ERROR] PyInstaller failed: {e}")
         sys.exit(1)
 
 def package_final_release():
-    """
+    r"""
     Builds the final release with this folder structure:
 
         ECHELON\
-        ├── ECHELON.spec        ← spec file (for reference / rebuilds)
-        ├── build\              ← PyInstaller build cache (moved here)
-        └── Executable\         ← the folder users actually run
+        ├── ECHELON.spec        <- spec file (for reference / rebuilds)
+        ├── build\              <- PyInstaller build cache (moved here)
+        └── Executable\         <- the folder users actually run
             ├── ECHELON.exe
             ├── _internal\
             ├── .env
@@ -125,7 +126,7 @@ def package_final_release():
             ├── firebaseCredential.json
             └── mapping.json
     """
-    print(f"📦 Packaging final release to: {FINAL_RELEASE_DIR}")
+    print(f"[PACKAGE] Packaging final release to: {FINAL_RELEASE_DIR}")
 
     # 1. Prepare ECHELON\ and ECHELON\Executable\ directories
     # Only wipe the Executable sub‑folder so the build\ cache is preserved
@@ -157,9 +158,9 @@ def package_final_release():
         src = os.path.join(ROOT_DIR, filename)
         if os.path.exists(src):
             shutil.copy2(src, EXECUTABLE_DIR)
-            print(f"   [OK] Config: {filename} → Executable\\")
+            print(f"   [OK] Config: {filename} -> Executable\\")
         else:
-            print(f"   ⚠️  Warning: {filename} not found in root, skipped.")
+            print(f"   [WARNING] {filename} not found in root, skipped.")
 
     # 4. Move build\ folder → ECHELON\build\
     src_build = os.path.join(ROOT_DIR, "build")
@@ -168,18 +169,18 @@ def package_final_release():
         if os.path.exists(dst_build):
             shutil.rmtree(dst_build)
         shutil.move(src_build, dst_build)
-        print("   [OK] build\\ → ECHELON\\build\\")
+        print("   [OK] build\\ -> ECHELON\\build\\")
     else:
-        print("   ⚠️  build\\ folder not found, skipped.")
+        print("   [WARNING] build\\ folder not found, skipped.")
 
     # 5. Move ECHELON.spec → ECHELON\ECHELON.spec
     src_spec = os.path.join(ROOT_DIR, f"{PROJECT_NAME}.spec")
     dst_spec = os.path.join(FINAL_RELEASE_DIR, f"{PROJECT_NAME}.spec")
     if os.path.exists(src_spec):
         shutil.move(src_spec, dst_spec)
-        print(f"   [OK] {PROJECT_NAME}.spec → ECHELON\\")
+        print(f"   [OK] {PROJECT_NAME}.spec -> ECHELON\\")
     else:
-        print(f"   ⚠️  {PROJECT_NAME}.spec not found, skipped.")
+        print(f"   [WARNING] {PROJECT_NAME}.spec not found, skipped.")
 
     # 6. Delete dist\ folder (no longer needed)
     dist_dir = os.path.join(ROOT_DIR, "dist")

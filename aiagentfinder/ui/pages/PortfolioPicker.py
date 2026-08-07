@@ -115,7 +115,11 @@ class PortfolioPickerUI(BaseTab):
         self.portfolios_created = QListWidget()
         self.portfolios_created.setMaximumHeight(200)
         self.portfolios_created.setContentsMargins(10, 0, 0, 10)
-        self.portfolios_created.setStyleSheet("QListWidget { padding: 0px; }")
+        self.portfolios_created.setStyleSheet("""
+            QListWidget { padding: 0px; }
+            QListWidget::item:selected { background-color: #ffcc00; color: #1e1e1e; }
+            QListWidget::item:selected:!active { background-color: #c8a800; color: #1e1e1e; }
+        """)
         self.portfolios_created.setFrameShape(QListWidget.NoFrame)
 
         setfiles_label = QLabel("Set Files Used:")
@@ -128,7 +132,11 @@ class PortfolioPickerUI(BaseTab):
         self.set_files_used = QListWidget()
         self.set_files_used.setMaximumHeight(200)
         self.set_files_used.setContentsMargins(0, 0,10, 10)
-        self.set_files_used.setStyleSheet("QListWidget { padding: 0px; }")
+        self.set_files_used.setStyleSheet("""
+            QListWidget { padding: 0px; }
+            QListWidget::item:selected { background-color: #ffcc00; color: #1e1e1e; }
+            QListWidget::item:selected:!active { background-color: #c8a800; color: #1e1e1e; }
+        """)
         self.set_files_used.setFrameShape(QListWidget.NoFrame)
 
         # Layout

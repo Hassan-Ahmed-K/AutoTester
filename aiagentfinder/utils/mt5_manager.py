@@ -156,8 +156,17 @@ class MT5Manager:
         proc = None
         try:
             success_flag = False
+
             Logger.info("Starting run_strategy...")
             Logger.info("settings: " + str(settings))
+            Logger.info("data_path: " + str(data_path))
+            Logger.info("mt5_path: " + str(mt5_path))
+            Logger.info("report_path: " + str(report_path))
+            Logger.info("expert_path: " + str(expert_path))
+            Logger.info("report_type: " + str(report_type))
+            Logger.info("setProcessor: " + str(setProcessor))
+            Logger.info("save_csv: " + str(save_csv))
+            Logger.info("save_graph: " + str(save_graph))
 
             # --- Mapping dictionaries ---
             MODEL_MAP = {
@@ -298,16 +307,37 @@ class MT5Manager:
             os.makedirs(config_dir, exist_ok=True)
 
             config_path = os.path.join(config_dir, f"{safe_test_name}_{report_type}.ini")
+            # expert_path dict may have been populated by different code paths.
+            # Format A (correct): {"path": "C:/...", "modified": ...}
+            # Format B (legacy):  plain string "C:/..."
+            # Format C (missing): key not present at all
+            if expert not in (expert_path or {}):
+                raise RuntimeError(
+                    f"Expert '{expert}' not found in the loaded experts dictionary. "
+                    f"Available: {list((expert_path or {}).keys())}"
+                )
+            _expert_entry = expert_path[expert]
+            if isinstance(_expert_entry, dict):
+                _expert_full_path = _expert_entry["path"]
+            elif isinstance(_expert_entry, str):
+                # legacy flat format — wrap it
+                _expert_full_path = _expert_entry
+            else:
+                raise RuntimeError(
+                    f"Unexpected expert entry format for '{expert}': {type(_expert_entry)}"
+                )
+
+            # Build the relative path MT5 expects: last 2 parts (e.g. "Experts\MyEA.ex5")
+            _expert_rel_path = Path(*Path(_expert_full_path).parts[-2:])
 
             # --- Debug info ---
             Logger.debug(f"Settings: {settings}")
             Logger.debug(f"Config path  = {config_path}")
             Logger.debug(f"Report path  = {report_path}")
-            # Logger.debug(f"Report File  = {report_file}")
             Logger.debug(f"Report Mode  = {report_mode}")
             Logger.debug(f"Param Files  = {param_file}")
             Logger.debug(f"Expert       = {expert}")
-            Logger.debug(f"Expert Path  = {Path(*Path(expert_path[expert]['path']).parts[-2:])}")
+            Logger.debug(f"Expert Path  = {_expert_rel_path}")
             Logger.debug(f"Symbol       = {safe_symbol}")
             Logger.debug(f"Timeframe    = {timeframe}")
             Logger.debug(f"Model        = {model} ({model_str})")
@@ -323,7 +353,7 @@ class MT5Manager:
                 "AutoConfiguration=1",
                 "",
                 "[Tester]",
-                f"Expert={Path(*Path(expert_path[expert]['path']).parts[-2:])}",
+                f"Expert={_expert_rel_path}",
                 f"Symbol={safe_symbol}",
                 f"Period={timeframe}",
                 f"Optimization={optimization}",

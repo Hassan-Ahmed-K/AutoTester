@@ -48,8 +48,12 @@ class SetGenerator(BaseTab):
         self.pairs_box.setFocusPolicy(Qt.StrongFocus)
         self.pairs_box.setStyleSheet("""
             QListWidget::item:selected {
-                background-color: #adacac;  /* highlight color */
-                color: white;
+                background-color: #ffcc00;
+                color: #1e1e1e;
+            }
+            QListWidget::item:selected:!active {
+                background-color: #c8a800;
+                color: #1e1e1e;
             }
         """)
         self.pairs_box.setMaximumHeight(122)
@@ -77,8 +81,12 @@ class SetGenerator(BaseTab):
         self.opt_files = QListWidget()
         self.opt_files.setStyleSheet("""
             QListWidget::item:selected {
-                background-color: #adacac;  
-                color: white;
+                background-color: #ffcc00;
+                color: #1e1e1e;
+            }
+            QListWidget::item:selected:!active {
+                background-color: #c8a800;
+                color: #1e1e1e;
             }
         """)
         self.opt_files.setSelectionMode(QListWidget.SingleSelection)
@@ -242,11 +250,14 @@ class SetGenerator(BaseTab):
                 color: #dcdcdc;
                 gridline-color: #444;
                 font-size: 12px;
-
             }
             QTableWidget::item:selected {
-                background-color: #adacac;
-                color: white;
+                background-color: #ffcc00;
+                color: #1e1e1e;
+            }
+            QTableWidget::item:selected:!active {
+                background-color: #c8a800;
+                color: #1e1e1e;
             }
         """)
 

@@ -771,65 +771,83 @@ class SetCompareController(QObject):
 
         if has_equity and has_balance:
             width_ratios = [1.0, 2.4, 1.0]
-            fig = plt.figure(figsize=(22, 9), facecolor='#121212')
+            fig = plt.figure(figsize=(22, 9), facecolor='#1e1e1e')
             gs = GridSpec(1, 3, figure=fig, width_ratios=width_ratios, wspace=0.03)
             ax_leq = fig.add_subplot(gs[0, 0])   # left: equity legend
             ax     = fig.add_subplot(gs[0, 1])   # center: chart
             ax_lbal = fig.add_subplot(gs[0, 2])  # right: balance legend
-            ax_leq.set_facecolor('#0d0d0d')
+            ax_leq.set_facecolor('#1e1e1e')
             ax_leq.set_axis_off()
-            ax_lbal.set_facecolor('#0d0d0d')
+            ax_lbal.set_facecolor('#1e1e1e')
             ax_lbal.set_axis_off()
         elif has_equity:
             width_ratios = [2.6, 1.0]
-            fig = plt.figure(figsize=(19, 9), facecolor='#121212')
+            fig = plt.figure(figsize=(19, 9), facecolor='#1e1e1e')
             gs = GridSpec(1, 2, figure=fig, width_ratios=width_ratios, wspace=0.03)
             ax     = fig.add_subplot(gs[0, 0])
             ax_leq = fig.add_subplot(gs[0, 1])
-            ax_leq.set_facecolor('#0d0d0d')
+            ax_leq.set_facecolor('#1e1e1e')
             ax_leq.set_axis_off()
             ax_lbal = None
         else:  # balance only
             width_ratios = [2.6, 1.0]
-            fig = plt.figure(figsize=(19, 9), facecolor='#121212')
+            fig = plt.figure(figsize=(19, 9), facecolor='#1e1e1e')
             gs = GridSpec(1, 2, figure=fig, width_ratios=width_ratios, wspace=0.0)
             ax     = fig.add_subplot(gs[0, 0])
             ax_lbal = fig.add_subplot(gs[0, 1])
-            ax_lbal.set_facecolor('#0d0d0d')
+            ax_lbal.set_facecolor('#1e1e1e')
             ax_lbal.set_axis_off()
             ax_leq = None
 
-        ax.set_facecolor('#121212')
+        ax.set_facecolor('#2b2b2b')
 
-        # Plot Individual Equity Curves
-        equity_handles = []
-        for col, color in zip(equity_cols, colors[:len(equity_cols)]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color, linewidth=default_lw, alpha=default_alpha)
-            equity_handles.append(line)
+        # --- Prepare per-strategy colors (matched across equity & balance) ---
+        # Derive the unique strategy names from whichever column set is larger
+        all_strategy_names = []
+        seen = set()
+        for c in equity_cols + balance_cols:
+            name = c.replace("EQUITY_", "").replace("BALANCE_", "")
+            if name not in seen:
+                all_strategy_names.append(name)
+                seen.add(name)
+        color_map = plt.get_cmap("tab20")
+        strategy_color = {name: color_map(i % 20) for i, name in enumerate(all_strategy_names)}
 
-        # Plot Individual Balance Curves
+        # Plot Individual Balance Curves (Solid '-') — balance always rises cleanly
         balance_handles = []
-        for col, color in zip(balance_cols, colors[len(equity_cols):]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color, linewidth=default_lw, alpha=default_alpha, linestyle='--')
+        for col in balance_cols:
+            name = col.replace("BALANCE_", "")
+            color = strategy_color.get(name, color_map(0))
+            line, = ax.plot(df["DATE"], df[col], label=name, color=color,
+                            linewidth=default_lw, alpha=default_alpha, linestyle='-')
             balance_handles.append(line)
+
+        # Plot Individual Equity Curves (Dashed '--') — equity trails/dips below balance
+        equity_handles = []
+        for col in equity_cols:
+            name = col.replace("EQUITY_", "")
+            color = strategy_color.get(name, color_map(0))
+            line, = ax.plot(df["DATE"], df[col], label=name, color=color,
+                            linewidth=default_lw, alpha=default_alpha, linestyle='--')
+            equity_handles.append(line)
 
         # avg lines intentionally not plotted
         avg_handles = {}
 
-        # Title and labels
+        # Title and labels formatted according to UI Theme
         ax.set_title({
             "Equity": "Equity Curve Comparison",
             "Balance": "Balance Curve Comparison",
             "Both": "Equity & Balance Comparison"
-        }[choice], color='white', fontsize=14, pad=16)
-        ax.set_xlabel("Date / Time", color='#bbbbbb')
-        ax.set_ylabel("Value", color='#bbbbbb')
-        ax.grid(True, alpha=0.15, color='gray', linestyle=':')
-        ax.tick_params(colors='#888888', labelsize=9)
+        }[choice], color='#ffffff', fontsize=14, fontweight='bold', pad=16)
+        ax.set_xlabel("Date / Time", color='#e0dcdc', fontsize=10, labelpad=8)
+        ax.set_ylabel("Value", color='#e0dcdc', fontsize=10, labelpad=8)
+        ax.grid(True, alpha=0.25, color='#555555', linestyle=':')
+        ax.tick_params(colors='#e0dcdc', labelsize=9)
         # Give the curves breathing room so they don't stick to the edges
         ax.margins(x=0.02, y=0.06)
         for spine in ax.spines.values():
-            spine.set_edgecolor('#333333')
+            spine.set_edgecolor('#555555')
 
         def _build_legend(panel_ax, handles_list, labels_list, title, avg_handle=None, avg_label=None, is_dashed=False):
             """Render a legend into a blank axes panel with 2 columns."""
@@ -839,7 +857,7 @@ class SetCompareController(QObject):
             all_h = []
             all_l = []
             if avg_handle is not None:
-                avg_color = "#00f2fe" if not is_dashed else "#ff8c00"
+                avg_color = "#00f2fe" if is_dashed else "#ffcc00"
                 all_h.append(Line2D([0], [0], color=avg_color, lw=3.0,
                                     linestyle='--' if is_dashed else '-', solid_capstyle='round'))
                 all_l.append(avg_label)
@@ -860,7 +878,7 @@ class SetCompareController(QObject):
                 fontsize=7,
                 title_fontsize=9,
                 frameon=False,
-                labelcolor='#cccccc',
+                labelcolor='#e0dcdc',
                 borderpad=0.3,
                 labelspacing=0.5,
                 handlelength=2.5,
@@ -868,7 +886,7 @@ class SetCompareController(QObject):
                 ncol=ncols,
                 columnspacing=0.8,
             )
-            leg.get_title().set_color('#00f2fe' if not is_dashed else '#ff8c00')
+            leg.get_title().set_color('#00f2fe' if is_dashed else '#ffcc00')
             leg.get_title().set_fontweight('bold')
 
         # --- Render Equity Legend (left panel) ---
@@ -876,8 +894,8 @@ class SetCompareController(QObject):
         _build_legend(
             ax_leq if has_equity and has_balance else (ax_leq if has_equity else None),
             equity_handles, eq_labels,
-            title="— Equity",
-            is_dashed=False,
+            title="-- Equity",
+            is_dashed=True,
         )
 
         # --- Render Balance Legend (right panel) ---
@@ -885,8 +903,8 @@ class SetCompareController(QObject):
         _build_legend(
             ax_lbal if has_balance else None,
             balance_handles, bal_labels,
-            title="-- Balance",
-            is_dashed=True,
+            title="— Balance",
+            is_dashed=False,
         )
 
         # --- Interactive Hover Detection ---
@@ -927,25 +945,25 @@ class SetCompareController(QObject):
         all_lines = equity_handles + balance_handles
 
         # ── Animated artists (blit-compatible) ────────────────────────────────
-        v_line = ax.axvline(x=df_plot["DATE"].iloc[0], color='cyan',
-                            linestyle='--', alpha=0.35, linewidth=1.0,
+        v_line = ax.axvline(x=df_plot["DATE"].iloc[0], color='#ffcc00',
+                            linestyle='--', alpha=0.6, linewidth=1.2,
                             visible=False, animated=True)
 
         annot = ax.annotate("", xy=(0, 0), xytext=(12, 12),
                             textcoords="offset points",
-                            bbox=dict(boxstyle="round,pad=0.4", fc="#1a1a1a",
-                                      ec="#555555", alpha=0.92),
+                            bbox=dict(boxstyle="round,pad=0.4", fc="#1e1e1e",
+                                      ec="#808791", alpha=0.95),
                             color="white", fontsize=7.5, fontfamily='monospace',
                             animated=True)
         annot.set_visible(False)
 
         info_text = fig.text(0.5, 0.03,
                              "Hover over any curve to display details here",
-                             color="#aaaaaa", fontsize=8.5,
+                             color="#e0dcdc", fontsize=8.5,
                              fontfamily="sans-serif",
                              ha="center", va="center",
-                             bbox=dict(boxstyle="round,pad=0.5", fc="#161616",
-                                       ec="#333333", alpha=0.95),
+                             bbox=dict(boxstyle="round,pad=0.5", fc="#2b2b2b",
+                                       ec="#555555", alpha=0.95),
                              animated=True)
 
         # ── Blit background ───────────────────────────────────────────────────
