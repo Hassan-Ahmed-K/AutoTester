@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 import shutil
 import traceback
 import pandas as pd
@@ -14,9 +15,48 @@ from aiagentfinder.utils import Logger
 from aiagentfinder.utils.workerThread import ThreadRunner
 from bs4 import BeautifulSoup
 import chardet
-import re
 import matplotlib.pyplot as plt
 from functools import partial
+
+
+def _normalize_key(key: str) -> str:
+    """
+    Normalize an EA parameter key so that minor spelling/case/plural
+    variations all map to the same root token string.
+
+    Steps
+    -----
+    1. Split camelCase / PascalCase into individual words
+       e.g.  "lotSize"  -> "lot size"
+             "MaxOrders" -> "max orders"
+    2. Lowercase everything.
+    3. Lightweight suffix stemming – strip common English endings so that
+       plurals and verb forms collapse to their base word:
+       lotSize / LotSizes  -> "lot siz"
+       maxLot  / maxLots   -> "max lot"
+       maxOrder/ maxOrders -> "max order"
+    """
+    # 1. Split camelCase / PascalCase
+    #    Insert a space before every uppercase letter that follows a lowercase
+    #    letter, or before an uppercase letter followed by a lowercase letter
+    #    (handles sequences like "HTMLParser" -> "HTML Parser").
+    split = re.sub(r'([a-z])([A-Z])', r'\1 \2', key)   # camelCase boundary
+    split = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1 \2', split)  # ACRONYMWord
+
+    # 2. Lowercase
+    words = split.lower().split()
+
+    # 3. Lightweight suffix stemming
+    _SUFFIXES = ('ment', 'ing', 'tion', 'sion', 'ness', 'ers', 'ies', 'es', 'ed', 's')
+
+    def _stem(word):
+        for suf in _SUFFIXES:
+            if word.endswith(suf) and len(word) - len(suf) >= 3:
+                return word[: len(word) - len(suf)]
+        return word
+
+    return ' '.join(_stem(w) for w in words)
+
 
 class HtmlHunterController:
     def __init__(self, ui):
@@ -150,7 +190,7 @@ class HtmlHunterController:
         return t1_dict 
 
     def parse_strategy_report(self, data):
-        data_dict = {}
+        raw_dict = {}
 
         for row in data:
             i = 0
@@ -164,13 +204,13 @@ class HtmlHunterController:
                         inp_key, inp_value = value.split("=", 1)
                         inp_key = inp_key.strip()
                         if inp_key:          # skip bare "=" separator rows (empty key)
-                            data_dict[inp_key] = inp_value.strip()
+                            raw_dict[inp_key] = inp_value.strip()
                 # --- Normal key-value ---
                 elif key:
-                    if key in data_dict:
-                        data_dict[key] += f", {value}"  # append multiple values
+                    if key in raw_dict:
+                        raw_dict[key] += f", {value}"  # append multiple values
                     else:
-                        data_dict[key] = value
+                        raw_dict[key] = value
                 # --- Empty key but remaining pairs in row ---
                 elif key == "" and i+2 < len(row):
                     j = i+1
@@ -178,11 +218,18 @@ class HtmlHunterController:
                         k = row[j].strip().rstrip(':')
                         v = row[j+1].strip()
                         if k:
-                            data_dict[k] = v
+                            raw_dict[k] = v
                         j += 2
                     break  # finished with this row
                 i += 2
 
+        # Build a secondary lookup keyed by the normalized form so that
+        # column_mapping lookups can match on root words regardless of
+        # casing, plural, or camelCase variation.
+        data_dict = dict(raw_dict)  # keep originals intact
+        data_dict["__normalized__"] = {
+            _normalize_key(k): v for k, v in raw_dict.items()
+        }
         return data_dict
 
     def save_to_csv(self,filepath, rows):
@@ -550,10 +597,10 @@ class HtmlHunterController:
                 "Avg Win": "Average profit trade",
                 "Avg Loss": "Average loss trade",
                 "Trade Vol": "Total Trades",
-                "Lot Size": "LotSize",
-                "Max Sq No": "MaxSequencesPerDay",
-                "Max Lots": "MaxLots",
-                "Lot Expo": "LotSizeExponent",
+                "Lot Size": "lotSize",
+                "Max Sq No": "maxOrders",
+                "Max Lots": "maxLot",
+                "Lot Expo": "lotExponent",
                 "Max Hold": "Maximal position holding time",
                 "Avg Hold": "Average position holding time",
                 "Graph": "Graph",
@@ -563,12 +610,25 @@ class HtmlHunterController:
             # Build rows directly mapped to the frontend headers (left values)
             mapped_rows = []
             for item in summaries:
+                # Build a normalized lookup dict once per item so we can
+                # fall back to root-word matching when exact key is missing.
+                norm_lookup = item.get("__normalized__", {
+                    _normalize_key(k): v for k, v in item.items()
+                    if k != "__normalized__"
+                })
+
                 row = {}
                 for left_key, right_val in column_mapping.items():
                     if left_key in ("Graph", "Overview"):
                         row[left_key] = "Open"
                     else:
-                        row[left_key] = item.get(right_val, "")
+                        # 1. Try exact match first
+                        value = item.get(right_val, None)
+                        # 2. Fall back to normalized / stemmed match
+                        if value is None:
+                            norm_rv = _normalize_key(right_val)
+                            value = norm_lookup.get(norm_rv, "")
+                        row[left_key] = value if value is not None else ""
                 mapped_rows.append(row)
 
             display_df = pd.DataFrame(mapped_rows)
@@ -962,7 +1022,7 @@ class HtmlHunterController:
             columns_to_show = [
                 "Profit", "Max DD", "RF", "PF",
                 "Avg Win", "Avg Loss", "Trade Vol",
-                "LotSize", "MaxLots", "MaxSequencesPerDay",
+                "Lot Size", "Max Sq No", "Max Lots",
                 "Lot Expo", "Max Hold", "Avg Hold"
             ]
 

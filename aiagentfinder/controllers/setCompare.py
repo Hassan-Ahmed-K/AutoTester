@@ -4,19 +4,132 @@ import pandas as pd
 import traceback
 from aiagentfinder.utils.ThreadRunnerV2 import ThreadRunnerV2
 from aiagentfinder.utils import Logger 
-from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget,QTableWidget, QTableWidgetItem, QHeaderView,QLabel,QToolTip,QMessageBox,QInputDialog
+from PyQt5.QtWidgets import QLineEdit, QFileDialog,QListWidget,QTableWidget, QTableWidgetItem, QHeaderView,QLabel,QToolTip,QMessageBox,QInputDialog, QDialog, QVBoxLayout, QTextBrowser, QPushButton, QFrame
 import matplotlib
 matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.cm as cm
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPoint, QRect, QTimer, QObject
+from PyQt5.QtGui import QCursor
 import numpy as np
 
 
-class SetCompareController:
-    def __init__(self, ui):
+class ScrollableToolTip(QFrame):
+    def __init__(self, parent=None):
+        super().__init__(parent, Qt.ToolTip | Qt.FramelessWindowHint)
+        self.resize(580, 320)
+        self.setStyleSheet("""
+            QFrame {
+                background-color: #1e1e1e;
+                border: 1px solid #444444;
+            }
+            QTextBrowser {
+                background-color: #1e1e1e;
+                color: #cccccc;
+                border: none;
+                font-family: Consolas, "Courier New", monospace;
+                font-size: 12px;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #1e1e1e;
+                width: 10px;
+                margin: 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: #444444;
+                min-height: 20px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #555555;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                background: none;
+                height: 0px;
+            }
+        """)
         
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(5, 5, 5, 5)
+        
+        self.browser = QTextBrowser(self)
+        layout.addWidget(self.browser)
+        
+        # Prevent the tooltip window from taking window focus or stealing keyboard focus
+        self.setAttribute(Qt.WA_ShowWithoutActivating, True)
+
+
+class DetailDialog(QDialog):
+    def __init__(self, title, html_content, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle(title)
+        self.resize(650, 550)
+        
+        # Style sheet to match the app dark mode and make it look clean
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #1e1e1e;
+                color: #cccccc;
+            }
+            QTextBrowser {
+                background-color: #1e1e1e;
+                color: #cccccc;
+                border: 1px solid #3a3a3a;
+                font-family: Consolas, "Courier New", monospace;
+                font-size: 13px;
+                padding: 10px;
+            }
+            QPushButton {
+                background-color: #2b2b2b;
+                color: #ffffff;
+                border: 1px solid #444444;
+                padding: 6px 14px;
+                border-radius: 4px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #3b3b3b;
+                border-color: #555555;
+            }
+            QPushButton:pressed {
+                background-color: #1b1b1b;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #1e1e1e;
+                width: 10px;
+                margin: 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: #444444;
+                min-height: 20px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #555555;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                background: none;
+                height: 0px;
+            }
+        """)
+        
+        layout = QVBoxLayout(self)
+        self.browser = QTextBrowser(self)
+        self.browser.setHtml(html_content)
+        layout.addWidget(self.browser)
+        
+        close_btn = QPushButton("Close", self)
+        close_btn.clicked.connect(self.accept)
+        layout.addWidget(close_btn)
+
+
+class SetCompareController(QObject):
+    def __init__(self, ui):
+        super().__init__()
         self.ui = ui
         self.main_window = self.ui.parent()
         self.runner = ThreadRunnerV2(self.main_window)
@@ -43,6 +156,19 @@ class SetCompareController:
         self.ui.deselect_button.clicked.connect(self.on_deselect_button_clicked)
         self.ui.show_graph_button.clicked.connect(self.on_show_graph_clicked)
         self.ui.export_profile_button.clicked.connect(self.export_files)
+        
+        # Connect portfolio_stats cell clicked to show detailed breakdown dialog
+        self.ui.portfolio_stats.cellClicked.connect(self.on_portfolio_cell_clicked)
+        
+        # Setup scrollable hover tooltip
+        from PyQt5.QtCore import QEvent
+        self.scroll_tip = ScrollableToolTip(self.main_window)
+        self.tip_timer = QTimer(self.main_window)
+        self.tip_timer.setInterval(200)
+        self.tip_timer.timeout.connect(self.check_tip_hover)
+        self.ui.portfolio_stats.viewport().installEventFilter(self)
+        self.ui.portfolio_stats.setMouseTracking(True)
+        self.ui.portfolio_stats.viewport().setMouseTracking(True)
 
 
 
@@ -86,6 +212,64 @@ class SetCompareController:
     def on_deselect_button_clicked(self):
         if hasattr(self.ui, "csv_list") and self.ui.csv_list is not None:
             self.ui.csv_list.clearSelection()
+
+    def on_portfolio_cell_clicked(self, row, col):
+        item = self.ui.portfolio_stats.item(row, col)
+        if not item:
+            return
+        html_content = item.data(Qt.UserRole)
+        if not html_content:
+            return
+        
+        # Get column header text for the dialog title
+        header_item = self.ui.portfolio_stats.horizontalHeaderItem(col)
+        title = f"Monthly Breakdown - {header_item.text()}" if header_item else "Monthly Breakdown"
+        
+        dialog = DetailDialog(title, html_content, self.main_window)
+        dialog.exec_()
+
+    def eventFilter(self, obj, event):
+        from PyQt5.QtCore import QEvent
+        if obj == self.ui.portfolio_stats.viewport():
+            if event.type() == QEvent.MouseMove:
+                pos = event.pos()
+                item = self.ui.portfolio_stats.itemAt(pos)
+                if item:
+                    html_content = item.data(Qt.UserRole)
+                    if html_content:
+                        self.scroll_tip.browser.setHtml(html_content)
+                        # Position popup near cursor but not if cursor is already inside the tooltip
+                        cursor_pos = QCursor.pos()
+                        if not self.scroll_tip.geometry().contains(cursor_pos):
+                            global_pos = self.ui.portfolio_stats.viewport().mapToGlobal(pos)
+                            self.scroll_tip.move(global_pos + QPoint(15, 15))
+                        if not self.scroll_tip.isVisible():
+                            self.scroll_tip.show()
+                            self.tip_timer.start()
+                        return False
+        return super().eventFilter(obj, event)
+
+    def check_tip_hover(self):
+        if not self.scroll_tip.isVisible():
+            self.tip_timer.stop()
+            return
+            
+        cursor_pos = QCursor.pos()
+        
+        # Check if cursor is over the table viewport
+        viewport = self.ui.portfolio_stats.viewport()
+        vp_rect = viewport.rect()
+        vp_global_topleft = viewport.mapToGlobal(vp_rect.topLeft())
+        vp_global_rect = QRect(vp_global_topleft, vp_rect.size())
+        
+        # Check if cursor is over the tooltip window
+        tip_rect = self.scroll_tip.rect()
+        tip_global_topleft = self.scroll_tip.mapToGlobal(tip_rect.topLeft())
+        tip_global_rect = QRect(tip_global_topleft, tip_rect.size())
+        
+        if not (vp_global_rect.contains(cursor_pos) or tip_global_rect.contains(cursor_pos)):
+            self.scroll_tip.hide()
+            self.tip_timer.stop()
 
     def log_to_ui(self, message: str):
         """
@@ -177,6 +361,9 @@ class SetCompareController:
                     if df.empty:
                         continue
 
+                    # Keep the last entry for duplicate timestamps to resolve InvalidIndexError during concat
+                    df = df.groupby("DATE", as_index=False).last()
+
                     # convert numeric columns
                     for col in df.columns:
                         if col == "DATE":
@@ -184,6 +371,7 @@ class SetCompareController:
                         df[col] = pd.to_numeric(df[col].astype(str).str.replace(",", ""), errors="coerce")
 
                     suffix = os.path.splitext(file_name)[0]
+                    # Rename columns to include suffix, EXCEPT DATE
                     df = df.rename(columns={c: f"{c}_{suffix}" for c in df.columns if c != "DATE"})
 
                     csv_data_map[file_name] = df
@@ -192,37 +380,34 @@ class SetCompareController:
                 if not csv_data_map:
                     return {"error": "NO_VALID_CSV"}
 
-                # merge inner on DATE
-                dfs = list(csv_data_map.values())
-                merged_df = dfs[0].copy()
-                for df in dfs[1:]:
-                    merged_df = pd.merge(merged_df, df, on="DATE", how="inner")
+                # Set DATE as index for all dataframes to allow outer join
+                for fn, df in csv_data_map.items():
+                    df.set_index("DATE", inplace=True)
 
-                merged_df = merged_df.sort_values("DATE").reset_index(drop=True)
+                # Outer join all dataframes on DATE index
+                merged_df = pd.concat(csv_data_map.values(), axis=1)
+                merged_df = merged_df.sort_index()
 
-                # ensure numeric
+                # Forward-fill to propagate last known balance/equity, then backward-fill
+                merged_df = merged_df.ffill().bfill()
+                merged_df = merged_df.reset_index() # DATE is back as a column
+
+                # Ensure all columns are numeric
                 for col in merged_df.columns:
                     if col != "DATE":
                         merged_df[col] = pd.to_numeric(merged_df[col], errors="coerce")
 
-                # compute equity aggregates
+                # Compute aggregates
                 equity_cols = [c for c in merged_df.columns if c.startswith("EQUITY_")]
+                balance_cols = [c for c in merged_df.columns if c.startswith("BALANCE_")]
+
+                # Average and Sum
                 if equity_cols:
                     merged_df["AVG_EQUITY"] = merged_df[equity_cols].mean(axis=1)
                     merged_df["SUM_EQUITY"] = merged_df[equity_cols].sum(axis=1)
-
-                # compute balance aggregates
-                balance_cols = [c for c in merged_df.columns if c.startswith("BALANCE_")]
                 if balance_cols:
                     merged_df["AVG_BALANCE"] = merged_df[balance_cols].mean(axis=1)
                     merged_df["SUM_BALANCE"] = merged_df[balance_cols].sum(axis=1)
-
-                # save merged CSV
-                # out_path = os.path.join(self.csv_dir, "merged_output.csv")
-                # try:
-                #     merged_df.to_csv(out_path, index=False)
-                # except Exception as e:
-                #     return {"df": merged_df, "out_path": out_path, "files": file_suffixes, "save_error": str(e)}
 
                 return {"df": merged_df, "files": file_suffixes}
 
@@ -280,33 +465,45 @@ class SetCompareController:
         df = merged_df.copy()
 
         # ✅ Correct date parsing (IMPORTANT)
-        df["DATE"] = pd.to_datetime(df["DATE"], dayfirst=True, errors="coerce")
+        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
         df = df.dropna(subset=["DATE"])
 
-        df["MONTH_NUM"] = df["DATE"].dt.month
+        df["PERIOD"] = df["DATE"].dt.to_period("M")
+        periods = sorted(df["PERIOD"].unique())
 
         # Detect BALANCE columns (per file)
         balance_cols = [c for c in df.columns if c.startswith("BALANCE_")]
 
-        month_name_map = {
-            1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
-            5: "May", 6: "Jun", 7: "Jul", 8: "Aug",
-            9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
-        }
-
-        # Monthly portfolio value (table values)
-        month_summary = (
-            df.sort_values("DATE")
-            .groupby("MONTH_NUM")["AVG_BALANCE"]
-            .last()
-            .dropna()
-        )
-
-        if month_summary.empty:
+        if not balance_cols or not periods:
             self.ui.portfolio_stats.clear()
             return
 
-        headers = [month_name_map[m] for m in month_summary.index] + ["Total"]
+        # Calculate monthly profit for each strategy
+        strategy_profits = {}  # col -> {period: profit}
+        strategy_start_end = {}  # col -> {period: (start, end)}
+
+        for col in balance_cols:
+            initial_balance = df[col].iloc[0]
+            monthly_last_balances = df.groupby("PERIOD")[col].last()
+            
+            profits = {}
+            start_end = {}
+            prev_bal = initial_balance
+            for period in periods:
+                last_bal = monthly_last_balances.get(period, prev_bal)
+                profits[period] = last_bal - prev_bal
+                start_end[period] = (prev_bal, last_bal)
+                prev_bal = last_bal
+            
+            strategy_profits[col] = profits
+            strategy_start_end[col] = start_end
+
+        # Portfolio profit per period
+        portfolio_profits = {}
+        for period in periods:
+            portfolio_profits[period] = sum(strategy_profits[col][period] for col in balance_cols)
+
+        headers = [p.strftime("%b %y") for p in periods] + ["Total"]
 
         table = self.ui.portfolio_stats
         table.clear()
@@ -315,43 +512,89 @@ class SetCompareController:
         table.setHorizontalHeaderLabels(headers)
 
         # Fill month cells with FILE-BASED tooltips
-        for col_idx, (month_num, value) in enumerate(month_summary.items()):
+        for col_idx, period in enumerate(periods):
+            value = portfolio_profits[period]
             item = QTableWidgetItem(str(round(value, 2)))
             item.setTextAlignment(Qt.AlignCenter)
 
-            month_df = df[df["MONTH_NUM"] == month_num].sort_values("DATE")
+            # Build tooltip per file as a beautiful HTML table
+            html_lines = [
+                "<table style='width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 12px; color: #cccccc;'>",
+                "  <thead>",
+                "    <tr style='border-bottom: 2px solid #444444; text-align: left;'>",
+                "      <th style='padding: 6px; color: #ffffff;'>Strategy / File</th>",
+                "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Start</th>",
+                "      <th style='padding: 6px; text-align: right; color: #ffffff;'>End</th>",
+                "      <th style='padding: 6px; text-align: right; color: #ffffff;'>PnL</th>",
+                "    </tr>",
+                "  </thead>",
+                "  <tbody>"
+            ]
 
-            # Build tooltip per file
-            tooltip_lines = []
-
-            
-            for col in balance_cols:
-                start = month_df[col].iloc[0]
-                end = month_df[col].iloc[-1]
-                pnl = round(end - start, 2)
+            for idx, col in enumerate(balance_cols):
+                pnl = strategy_profits[col][period]
+                start, end = strategy_start_end[col][period]
                 color = "#22c55e" if pnl >= 0 else "#ef4444"
-
+                pnl_str = f"+{round(pnl, 2)}" if pnl >= 0 else f"{round(pnl, 2)}"
+                bg_color = "#252525" if idx % 2 == 0 else "#1e1e1e"
                 file_name = col.replace("BALANCE_", "")
-                # tooltip_lines.append(
-                #     f"{file_name}\n"
-                #     f"  Start: {round(start, 2)}\n"
-                #     f"  End:   {round(end, 2)}\n"
-                #     f"  PnL:   {pnl}\n"
-                # )
 
-                tooltip_lines.append(
-                    f"<b>{file_name}</b><br>"
-                    f"Start: {round(start, 2)}<br>"
-                    f"End: {round(end, 2)}<br>"
-                    f"PnL: <span style='color:{color}'>{pnl}</span><br><br>"
+                html_lines.append(
+                    f"    <tr style='background-color: {bg_color}; border-bottom: 1px solid #2d2d2d;'>"
+                    f"      <td style='padding: 6px; font-weight: bold;'>{file_name}</td>"
+                    f"      <td style='padding: 6px; text-align: right;'>{round(start, 2)}</td>"
+                    f"      <td style='padding: 6px; text-align: right;'>{round(end, 2)}</td>"
+                    f"      <td style='padding: 6px; text-align: right; color: {color}; font-weight: bold;'>{pnl_str}</td>"
+                    f"    </tr>"
                 )
 
-            item.setToolTip("\n".join(tooltip_lines))
+            html_lines.append("  </tbody>")
+            html_lines.append("</table>")
+
+            item.setData(Qt.UserRole, "\n".join(html_lines))
             table.setItem(0, col_idx, item)
 
-        # Total column
-        total_item = QTableWidgetItem(str(round(month_summary.sum(), 2)))
+        # Total column (sum of all monthly profits)
+        total_profit = sum(portfolio_profits.values())
+        total_item = QTableWidgetItem(str(round(total_profit, 2)))
         total_item.setTextAlignment(Qt.AlignCenter)
+
+        # Build tooltip for the Total column showing total breakdown per strategy
+        total_html_lines = [
+            "<table style='width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 12px; color: #cccccc;'>",
+            "  <thead>",
+            "    <tr style='border-bottom: 2px solid #444444; text-align: left;'>",
+            "      <th style='padding: 6px; color: #ffffff;'>Strategy / File</th>",
+            "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Initial</th>",
+            "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Final</th>",
+            "      <th style='padding: 6px; text-align: right; color: #ffffff;'>Total PnL</th>",
+            "    </tr>",
+            "  </thead>",
+            "  <tbody>"
+        ]
+
+        for idx, col in enumerate(balance_cols):
+            start = strategy_start_end[col][periods[0]][0]
+            end = strategy_start_end[col][periods[-1]][1]
+            pnl = end - start
+            color = "#22c55e" if pnl >= 0 else "#ef4444"
+            pnl_str = f"+{round(pnl, 2)}" if pnl >= 0 else f"{round(pnl, 2)}"
+            bg_color = "#252525" if idx % 2 == 0 else "#1e1e1e"
+            file_name = col.replace("BALANCE_", "")
+
+            total_html_lines.append(
+                f"    <tr style='background-color: {bg_color}; border-bottom: 1px solid #2d2d2d;'>"
+                f"      <td style='padding: 6px; font-weight: bold;'>{file_name}</td>"
+                f"      <td style='padding: 6px; text-align: right;'>{round(start, 2)}</td>"
+                f"      <td style='padding: 6px; text-align: right;'>{round(end, 2)}</td>"
+                f"      <td style='padding: 6px; text-align: right; color: {color}; font-weight: bold;'>{pnl_str}</td>"
+                f"    </tr>"
+            )
+
+        total_html_lines.append("  </tbody>")
+        total_html_lines.append("</table>")
+
+        total_item.setData(Qt.UserRole, "\n".join(total_html_lines))
         table.setItem(0, len(headers) - 1, total_item)
 
         header = table.horizontalHeader()
@@ -376,28 +619,45 @@ class SetCompareController:
         # Build nicer headers based on file names
         file_headers = [col.replace("EQUITY_", "") for col in equity_cols]
 
-        # Add SUM_EQUITY if missing
-        if "SUM_EQUITY" not in df.columns and equity_cols:
-            df["SUM_EQUITY"] = df[equity_cols].sum(axis=1)
-
-        # 🔹 Apply filter based on draw_input value
-        draw_threshold = int(self.ui.draw_input.text())  # QDoubleSpinBox value
-        df = df[df["SUM_EQUITY"] >= draw_threshold]
-
-        if df.empty:
-            self.log_to_ui(f"No rows match the filter (SUM_EQUITY ≥ {draw_threshold}).")
+        if not equity_cols:
             self.ui.drawdown_analysis.clear()
             return
 
-        # 🔹 Resample to 30-minute intervals — keep last record in each bucket
-        df = df.copy()
+        # 🔹 Resample to 30-minute intervals first - keep last record in each bucket, forward/backward fill
         df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
         df = df.dropna(subset=["DATE"])
         df = df.set_index("DATE")
-        df = df.resample("30min").last().dropna(how="all")
-        df = df.reset_index()  # DATE becomes a column again
+        df = df.resample("30min").last().ffill().bfill()
+        df = df.reset_index()
 
-        # FINAL HEADERS
+        # Calculate running loss (drawdown) for each strategy: cummax - current_equity
+        loss_cols = []
+        for col in equity_cols:
+            loss_col_name = f"LOSS_{col.replace('EQUITY_', '')}"
+            df[loss_col_name] = df[col].cummax() - df[col]
+            loss_cols.append(loss_col_name)
+
+        # Calculate combined drawdown (DD Total)
+        df["DD_TOTAL"] = df[loss_cols].sum(axis=1)
+
+        # Count active drawdowns (loss > 0)
+        df["ACTIVE_COUNT"] = (df[loss_cols] > 0.0).sum(axis=1)
+
+        # 🔹 Apply filter based on draw_input value
+        draw_input_text = self.ui.draw_input.text().strip()
+        try:
+            draw_threshold = float(draw_input_text) if draw_input_text else 0.0
+        except ValueError:
+            draw_threshold = 1000.0  # fallback
+
+        df = df[df["DD_TOTAL"] >= draw_threshold]
+
+        if df.empty:
+            self.log_to_ui(f"No rows match the filter (DD Total ≥ {draw_threshold}).")
+            self.ui.drawdown_analysis.clear()
+            return
+
+        # FINAL HEADERS: Date & Time, DD Total, #, plus each strategy
         headers = ["Date & Time", "DD Total", "#"] + file_headers
 
         # Setup table
@@ -409,28 +669,32 @@ class SetCompareController:
 
         # Fill rows
         for row in range(len(df)):
-            # Date (using EditRole for correct sorting)
+            # Date & Time (using EditRole for correct sorting)
             date_str = str(df["DATE"].iloc[row])
             date_item = QTableWidgetItem(date_str)
             self.ui.drawdown_analysis.setItem(row, 0, date_item)
 
-            # DD Total → SUM_EQUITY (numeric sort)
-            dd_value = df["SUM_EQUITY"].iloc[row] if "SUM_EQUITY" in df else 0.0
+            # DD Total (numeric sort)
+            dd_value = df["DD_TOTAL"].iloc[row]
             dd_item = QTableWidgetItem()
             dd_item.setData(Qt.EditRole, float(round(dd_value, 2)))
+            dd_item.setTextAlignment(Qt.AlignCenter)
             self.ui.drawdown_analysis.setItem(row, 1, dd_item)
 
-            # Static value "15" in column #
-            num_item = QTableWidgetItem()
-            num_item.setData(Qt.EditRole, 15)
-            self.ui.drawdown_analysis.setItem(row, 2, num_item)
+            # Number of active drawdowns (numeric sort)
+            active_val = int(df["ACTIVE_COUNT"].iloc[row])
+            active_item = QTableWidgetItem()
+            active_item.setData(Qt.EditRole, active_val)
+            active_item.setTextAlignment(Qt.AlignCenter)
+            self.ui.drawdown_analysis.setItem(row, 2, active_item)
 
-            # Equity values for each file (numeric sort)
+            # Loss values for each file (numeric sort)
             col_index = 3
-            for col in equity_cols:
-                val = df[col].iloc[row]
+            for loss_col in loss_cols:
+                val = df[loss_col].iloc[row]
                 val_item = QTableWidgetItem()
                 val_item.setData(Qt.EditRole, float(round(val, 2)))
+                val_item.setTextAlignment(Qt.AlignCenter)
                 self.ui.drawdown_analysis.setItem(row, col_index, val_item)
                 col_index += 1
 
@@ -440,12 +704,18 @@ class SetCompareController:
         # Sort by Date & Time (column 0) ascending by default
         self.ui.drawdown_analysis.sortByColumn(0, Qt.AscendingOrder)
 
-        # Stretch all columns to fill width
+        # Ensure columns are interactive and resize to contents for readability
         header = self.ui.drawdown_analysis.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Stretch)
+        header.setSectionResizeMode(QHeaderView.Interactive)
+        self.ui.drawdown_analysis.resizeColumnsToContents()
         self.ui.drawdown_analysis.resizeRowsToContents()
 
-        self.log_to_ui(f"Drawdown table updated (SUM_EQUITY ≥ {draw_threshold}, sampled every 30 min). Rows: {len(df)}.")
+        # Set specific initial widths for the first three columns
+        self.ui.drawdown_analysis.setColumnWidth(0, 160)  # Date & Time
+        self.ui.drawdown_analysis.setColumnWidth(1, 100)  # DD Total
+        self.ui.drawdown_analysis.setColumnWidth(2, 50)   # #
+
+        self.log_to_ui(f"Drawdown table updated (DD Total ≥ {draw_threshold}, sampled every 30 min). Rows: {len(df)}.")
 
     def on_show_graph_clicked(self):
         if self.merged_df is None or self.merged_df.empty:
@@ -478,48 +748,164 @@ class SetCompareController:
             self.log_to_ui("❌ No columns found to plot for selection.")
             return
 
-        # --- Prepare colors ---
+        # --- Prepare colors and line styling ---
         total_lines = len(equity_cols) + len(balance_cols)
         color_map = plt.get_cmap("tab20")
         colors = [color_map(i % 20) for i in range(total_lines)]
 
+        # Use thin semi-transparent lines if there are many files to avoid clutter
+        use_clutter_mode = len(equity_cols) > 8 or len(balance_cols) > 8
+        default_alpha = 0.22 if use_clutter_mode else 0.85
+        default_lw = 1.0 if use_clutter_mode else 1.5
+
+        from matplotlib.gridspec import GridSpec
+        from matplotlib.lines import Line2D
+
         # Set style for a more premium dark look
         plt.style.use('dark_background')
-        fig, ax = plt.subplots(figsize=(13, 7), facecolor='#121212')
-        ax.set_facecolor('#121212')
 
-        # Plot Equity
-        equity_handles = []
-        for col, color in zip(equity_cols, colors[:len(equity_cols)]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("EQUITY_", ""), color=color, linewidth=1.5, alpha=0.9)
-            equity_handles.append(line)
+        # --- Layout: [Equity Panel | Chart | Balance Panel] ---
+        # Panels are shown only if they have data
+        has_equity = len(equity_cols) > 0
+        has_balance = len(balance_cols) > 0
 
-        # Plot Balance
+        if has_equity and has_balance:
+            width_ratios = [1.0, 2.4, 1.0]
+            fig = plt.figure(figsize=(22, 9), facecolor='#1e1e1e')
+            gs = GridSpec(1, 3, figure=fig, width_ratios=width_ratios, wspace=0.03)
+            ax_leq = fig.add_subplot(gs[0, 0])   # left: equity legend
+            ax     = fig.add_subplot(gs[0, 1])   # center: chart
+            ax_lbal = fig.add_subplot(gs[0, 2])  # right: balance legend
+            ax_leq.set_facecolor('#1e1e1e')
+            ax_leq.set_axis_off()
+            ax_lbal.set_facecolor('#1e1e1e')
+            ax_lbal.set_axis_off()
+        elif has_equity:
+            width_ratios = [2.6, 1.0]
+            fig = plt.figure(figsize=(19, 9), facecolor='#1e1e1e')
+            gs = GridSpec(1, 2, figure=fig, width_ratios=width_ratios, wspace=0.03)
+            ax     = fig.add_subplot(gs[0, 0])
+            ax_leq = fig.add_subplot(gs[0, 1])
+            ax_leq.set_facecolor('#1e1e1e')
+            ax_leq.set_axis_off()
+            ax_lbal = None
+        else:  # balance only
+            width_ratios = [2.6, 1.0]
+            fig = plt.figure(figsize=(19, 9), facecolor='#1e1e1e')
+            gs = GridSpec(1, 2, figure=fig, width_ratios=width_ratios, wspace=0.0)
+            ax     = fig.add_subplot(gs[0, 0])
+            ax_lbal = fig.add_subplot(gs[0, 1])
+            ax_lbal.set_facecolor('#1e1e1e')
+            ax_lbal.set_axis_off()
+            ax_leq = None
+
+        ax.set_facecolor('#2b2b2b')
+
+        # --- Prepare per-strategy colors (matched across equity & balance) ---
+        # Derive the unique strategy names from whichever column set is larger
+        all_strategy_names = []
+        seen = set()
+        for c in equity_cols + balance_cols:
+            name = c.replace("EQUITY_", "").replace("BALANCE_", "")
+            if name not in seen:
+                all_strategy_names.append(name)
+                seen.add(name)
+        color_map = plt.get_cmap("tab20")
+        strategy_color = {name: color_map(i % 20) for i, name in enumerate(all_strategy_names)}
+
+        # Plot Individual Balance Curves (Solid '-') — balance always rises cleanly
         balance_handles = []
-        for col, color in zip(balance_cols, colors[len(equity_cols):]):
-            line, = ax.plot(df["DATE"], df[col], label=col.replace("BALANCE_", ""), color=color, linewidth=1.5, alpha=0.9, linestyle='--')
+        for col in balance_cols:
+            name = col.replace("BALANCE_", "")
+            color = strategy_color.get(name, color_map(0))
+            line, = ax.plot(df["DATE"], df[col], label=name, color=color,
+                            linewidth=default_lw, alpha=default_alpha, linestyle='-')
             balance_handles.append(line)
 
-        # Title and labels
+        # Plot Individual Equity Curves (Dashed '--') — equity trails/dips below balance
+        equity_handles = []
+        for col in equity_cols:
+            name = col.replace("EQUITY_", "")
+            color = strategy_color.get(name, color_map(0))
+            line, = ax.plot(df["DATE"], df[col], label=name, color=color,
+                            linewidth=default_lw, alpha=default_alpha, linestyle='--')
+            equity_handles.append(line)
+
+        # avg lines intentionally not plotted
+        avg_handles = {}
+
+        # Title and labels formatted according to UI Theme
         ax.set_title({
             "Equity": "Equity Curve Comparison",
             "Balance": "Balance Curve Comparison",
             "Both": "Equity & Balance Comparison"
-        }[choice], color='white', fontsize=14, pad=20)
-        ax.set_xlabel("Date / Time", color='#bbbbbb')
-        ax.set_ylabel("Value", color='#bbbbbb')
-        ax.grid(True, alpha=0.15, color='gray', linestyle=':')
+        }[choice], color='#ffffff', fontsize=14, fontweight='bold', pad=16)
+        ax.set_xlabel("Date / Time", color='#e0dcdc', fontsize=10, labelpad=8)
+        ax.set_ylabel("Value", color='#e0dcdc', fontsize=10, labelpad=8)
+        ax.grid(True, alpha=0.25, color='#555555', linestyle=':')
+        ax.tick_params(colors='#e0dcdc', labelsize=9)
+        # Give the curves breathing room so they don't stick to the edges
+        ax.margins(x=0.02, y=0.06)
+        for spine in ax.spines.values():
+            spine.set_edgecolor('#555555')
 
-        # Customize ticks
-        ax.tick_params(colors='#888888', labelsize=9)
+        def _build_legend(panel_ax, handles_list, labels_list, title, avg_handle=None, avg_label=None, is_dashed=False):
+            """Render a legend into a blank axes panel with 2 columns."""
+            if panel_ax is None:
+                return
+            # Avg entry first
+            all_h = []
+            all_l = []
+            if avg_handle is not None:
+                avg_color = "#00f2fe" if is_dashed else "#ffcc00"
+                all_h.append(Line2D([0], [0], color=avg_color, lw=3.0,
+                                    linestyle='--' if is_dashed else '-', solid_capstyle='round'))
+                all_l.append(avg_label)
+            for h, l in zip(handles_list, labels_list):
+                max_chars = 25
+                display_l = l[:max_chars] + "…" if len(l) > max_chars else l
+                all_h.append(Line2D([0], [0], color=h.get_color(), lw=2.0,
+                                    linestyle='--' if is_dashed else '-', solid_capstyle='round'))
+                all_l.append(display_l)
 
-        # --- Legends ---
-        if equity_handles:
-            legend_equity = ax.legend(handles=equity_handles, title="Equity", loc="upper left", fontsize=7, framealpha=0.1)
-            ax.add_artist(legend_equity)
+            # Use 2 columns so long lists fit; switch at 15 entries
+            ncols = 2 if len(all_l) > 20 else 1
+            leg = panel_ax.legend(
+                all_h, all_l,
+                title=title,
+                loc="upper left",
+                bbox_to_anchor=(0.01, 0.99),
+                fontsize=7,
+                title_fontsize=9,
+                frameon=False,
+                labelcolor='#e0dcdc',
+                borderpad=0.3,
+                labelspacing=0.5,
+                handlelength=2.5,
+                handletextpad=0.5,
+                ncol=ncols,
+                columnspacing=0.8,
+            )
+            leg.get_title().set_color('#00f2fe' if is_dashed else '#ffcc00')
+            leg.get_title().set_fontweight('bold')
 
-        if balance_handles:
-            ax.legend(handles=balance_handles, title="Balance", loc="upper right", fontsize=7, framealpha=0.1)
+        # --- Render Equity Legend (left panel) ---
+        eq_labels = [c.replace("EQUITY_", "") for c in equity_cols]
+        _build_legend(
+            ax_leq if has_equity and has_balance else (ax_leq if has_equity else None),
+            equity_handles, eq_labels,
+            title="-- Equity",
+            is_dashed=True,
+        )
+
+        # --- Render Balance Legend (right panel) ---
+        bal_labels = [c.replace("BALANCE_", "") for c in balance_cols]
+        _build_legend(
+            ax_lbal if has_balance else None,
+            balance_handles, bal_labels,
+            title="— Balance",
+            is_dashed=False,
+        )
 
         # --- Interactive Hover Detection ---
         # Map handles to column names and set picker radius for easier selection
@@ -531,87 +917,194 @@ class SetCompareController:
             handle_to_col[line] = col
             line.set_picker(10)
 
-        # Pre-calculate numeric dates for fast searching
-        x_data_numeric = mdates.date2num(df["DATE"].tolist())
-        
-        v_line = ax.axvline(x=df["DATE"].iloc[0], color='white', linestyle='-', alpha=0.3, visible=False)
-        
-        # Tooltip annotation
-        annot = ax.annotate("", xy=(0,0), xytext=(15, 15),
+        # ── Performance: downsample display df to max 800 pts ─────────────────
+        MAX_DISPLAY_PTS = 800
+        if len(df) > MAX_DISPLAY_PTS:
+            step = max(1, len(df) // MAX_DISPLAY_PTS)
+            df_plot = df.iloc[::step].reset_index(drop=True)
+        else:
+            df_plot = df
+
+        # Re-plot using downsampled data (replace lines already drawn)
+        for line, col in zip(equity_handles, equity_cols):
+            line.set_xdata(df_plot["DATE"])
+            line.set_ydata(df_plot[col])
+        for line, col in zip(balance_handles, balance_cols):
+            line.set_xdata(df_plot["DATE"])
+            line.set_ydata(df_plot[col])
+
+        # Pre-compute x numeric array and per-line y arrays for fast lookup
+        x_num   = mdates.date2num(df_plot["DATE"].tolist())
+        x_num   = np.array(x_num)
+        line_y  = {}   # line -> np.array of y values
+        for line, col in zip(equity_handles, equity_cols):
+            line_y[line] = df_plot[col].to_numpy(dtype=float)
+        for line, col in zip(balance_handles, balance_cols):
+            line_y[line] = df_plot[col].to_numpy(dtype=float)
+
+        all_lines = equity_handles + balance_handles
+
+        # ── Animated artists (blit-compatible) ────────────────────────────────
+        v_line = ax.axvline(x=df_plot["DATE"].iloc[0], color='#ffcc00',
+                            linestyle='--', alpha=0.6, linewidth=1.2,
+                            visible=False, animated=True)
+
+        annot = ax.annotate("", xy=(0, 0), xytext=(12, 12),
                             textcoords="offset points",
-                            bbox=dict(boxstyle="round4,pad=0.5", fc="#1e1e1e", ec="#444444", alpha=0.9),
-                            color="white", fontsize=8, fontfamily='monospace')
+                            bbox=dict(boxstyle="round,pad=0.4", fc="#1e1e1e",
+                                      ec="#808791", alpha=0.95),
+                            color="white", fontsize=7.5, fontfamily='monospace',
+                            animated=True)
         annot.set_visible(False)
 
+        info_text = fig.text(0.5, 0.03,
+                             "Hover over any curve to display details here",
+                             color="#e0dcdc", fontsize=8.5,
+                             fontfamily="sans-serif",
+                             ha="center", va="center",
+                             bbox=dict(boxstyle="round,pad=0.5", fc="#2b2b2b",
+                                       ec="#555555", alpha=0.95),
+                             animated=True)
+
+        # ── Blit background ───────────────────────────────────────────────────
+        # We capture the background AFTER the first draw so blitting is clean.
+        _bg = [None]   # mutable container so inner functions can write it
+
+        def _save_bg(event=None):
+            _bg[0] = fig.canvas.copy_from_bbox(fig.bbox)
+
+        fig.canvas.mpl_connect("draw_event", _save_bg)
+
+        # ── Hover state ───────────────────────────────────────────────────────
+        _last = {"idx": -1, "hovered": set()}   # throttle guard
+
+        # Pixel-height tolerance for y-proximity detection
+        Y_TOL_PX = 8
+
+        def _px_per_data(ax_ref):
+            """Return (scale_x, scale_y): data units per pixel."""
+            bbox = ax_ref.get_window_extent()
+            xlim = ax_ref.get_xlim()
+            ylim = ax_ref.get_ylim()
+            sx = (xlim[1] - xlim[0]) / max(bbox.width,  1)
+            sy = (ylim[1] - ylim[0]) / max(bbox.height, 1)
+            return sx, sy
+
         def hover(event):
-            hovered_lines = []
-            if event.inaxes == ax:
-                # Check if mouse is near any specific line(s)
-                for line in equity_handles + balance_handles:
-                    cont, _ = line.contains(event)
-                    if cont:
-                        hovered_lines.append(line)
-                
-                if hovered_lines:
-                    # Highlight all active lines and dim others
-                    for line in equity_handles + balance_handles:
-                        if line in hovered_lines:
-                            line.set_alpha(1.0)
-                            line.set_linewidth(2.5)
-                        else:
-                            line.set_alpha(0.15)
-                            line.set_linewidth(1.0)
-                    
-                    # Fast search for nearest date index
-                    idx = np.searchsorted(x_data_numeric, event.xdata)
-                    if idx >= len(x_data_numeric): idx = len(x_data_numeric) - 1
-                    if idx > 0 and abs(event.xdata - x_data_numeric[idx-1]) < abs(event.xdata - x_data_numeric[idx]):
-                        idx -= 1
-                    
-                    target_date = df["DATE"].iloc[idx]
-                    
-                    # Build multi-line tooltip text for all hovered lines
-                    tooltip_lines = [f"DATE: {target_date.strftime('%Y-%m-%d %H:%M')}"]
-                    tooltip_lines.append("-" * 35)
-                    
-                    for line in hovered_lines:
-                        col_name = handle_to_col[line]
-                        val = df[col_name].iloc[idx]
-                        clean_name = col_name.replace("EQUITY_", "").replace("BALANCE_", "")[:25]
-                        tooltip_lines.append(f"{clean_name:<25}: {val:>10.2f}")
-
-                    annot.set_text("\n".join(tooltip_lines))
-                    
-                    # Anchor tooltip to the first hovered line's value
-                    first_col = handle_to_col[hovered_lines[0]]
-                    annot.xy = (target_date, df[first_col].iloc[idx])
-                    
-                    v_line.set_xdata([target_date, target_date])
-                    v_line.set_visible(True)
-                    annot.set_visible(True)
-                    fig.canvas.draw_idle()
-                    return
-
-            # Reset visibility and styles if no line is hovered
-            if not hovered_lines:
-                needs_redraw = False
-                if v_line.get_visible():
+            if event.inaxes is not ax or event.xdata is None:
+                # Mouse left axes — reset if needed
+                if _last["hovered"]:
+                    _last["hovered"] = set()
+                    _last["idx"] = -1
+                    for ln in all_lines:
+                        ln.set_alpha(default_alpha)
+                        ln.set_linewidth(default_lw)
                     v_line.set_visible(False)
                     annot.set_visible(False)
-                    needs_redraw = True
-                
-                for line in equity_handles + balance_handles:
-                    if line.get_alpha() != 0.9 or line.get_linewidth() != 1.5:
-                        line.set_alpha(0.9)
-                        line.set_linewidth(1.5)
-                        needs_redraw = True
-                
-                if needs_redraw:
-                    fig.canvas.draw_idle()
+                    info_text.set_text("Hover over any curve to display details here")
+                    info_text.set_color("#aaaaaa")
+                    if _bg[0]:
+                        fig.canvas.restore_region(_bg[0])
+                        ax.draw_artist(v_line)
+                        ax.draw_artist(annot)
+                        fig.draw_artist(info_text)
+                        fig.canvas.blit(fig.bbox)
+                return
+
+            # ── Accurate detection: line.contains() — pixel-perfect ────────────
+            # This checks the actual rendered path (including between-point segments).
+            # It is fast enough because blitting handles all redraw costs.
+            hovered_set = set()
+            for ln in all_lines:
+                try:
+                    cont, _ = ln.contains(event)
+                    if cont:
+                        hovered_set.add(ln)
+                except Exception:
+                    pass
+
+            # ── Find nearest x index for value lookup ──────────────────────────
+            idx = int(np.searchsorted(x_num, event.xdata))
+            idx = min(idx, len(x_num) - 1)
+            if idx > 0 and abs(event.xdata - x_num[idx-1]) < abs(event.xdata - x_num[idx]):
+                idx -= 1
+
+            # Throttle: skip redraw if nothing changed
+            if hovered_set == _last["hovered"] and idx == _last["idx"]:
+                return
+            _last["idx"] = idx
+            _last["hovered"] = hovered_set
+
+            target_date = df_plot["DATE"].iloc[idx]
+
+            # ── Update line styles ─────────────────────────────────────────
+            if hovered_set:
+                for ln in all_lines:
+                    if ln in hovered_set:
+                        ln.set_alpha(1.0)
+                        ln.set_linewidth(2.2)
+                    else:
+                        ln.set_alpha(0.06 if use_clutter_mode else 0.12)
+                        ln.set_linewidth(0.7)
+
+                # Floating tooltip
+                tip_lines = []
+                for ln in hovered_set:
+                    col_name = handle_to_col[ln]
+                    val = line_y[ln][idx]
+                    nm  = col_name.replace("EQUITY_","").replace("BALANCE_","")[:20]
+                    tip_lines.append(f"{nm}: {val:,.2f}")
+                annot.set_text("\n".join(tip_lines))
+                first_ln = next(iter(hovered_set))
+                annot.xy = (target_date, line_y[first_ln][idx])
+                annot.set_visible(True)
+
+                # Bottom bar
+                date_str = target_date.strftime('%Y-%m-%d %H:%M')
+                parts = [f"📅 {date_str}"]
+                for ln in hovered_set:
+                    col_name = handle_to_col[ln]
+                    val = line_y[ln][idx]
+                    nm  = col_name.replace("EQUITY_","").replace("BALANCE_","")
+                    kind = "EQ" if "EQUITY" in col_name else "BAL"
+                    parts.append(f"[{kind}] {nm}: {val:,.2f}")
+                info_text.set_text("   |   ".join(parts))
+                info_text.set_color("white")
+
+                v_line.set_xdata([target_date, target_date])
+                v_line.set_visible(True)
+            else:
+                for ln in all_lines:
+                    ln.set_alpha(default_alpha)
+                    ln.set_linewidth(default_lw)
+                v_line.set_visible(False)
+                annot.set_visible(False)
+                info_text.set_text("Hover over any curve to display details here")
+                info_text.set_color("#aaaaaa")
+
+            # ── Blit: only repaint changed pixels ─────────────────────────
+            if _bg[0]:
+                fig.canvas.restore_region(_bg[0])
+                for ln in all_lines:
+                    ax.draw_artist(ln)
+                ax.draw_artist(v_line)
+                ax.draw_artist(annot)
+                fig.draw_artist(info_text)
+                fig.canvas.blit(fig.bbox)
+            else:
+                fig.canvas.draw_idle()
 
         fig.canvas.mpl_connect("motion_notify_event", hover)
 
-        plt.tight_layout()
+        fig.subplots_adjust(left=0.02, right=0.99, top=0.95, bottom=0.10)
+
+        # Maximize window on open
+        try:
+            manager = plt.get_current_fig_manager()
+            manager.window.showMaximized()
+        except Exception:
+            pass
+
         plt.show()
         self.log_to_ui(f"Interactive graph displayed: {choice}")
 
@@ -627,6 +1120,8 @@ class SetCompareController:
             self.logger.info(f"SET Dir: {self.set_dir}")
 
             self.selected_set_files = set()
+            self.csv_files = set()
+            self.htm_files = set()
 
             # If SET folder empty, bounce
             if not os.path.isdir(self.set_dir):
@@ -700,42 +1195,50 @@ class SetCompareController:
         # Ask for export folder
         export_dir = QFileDialog.getExistingDirectory(self.ui, "Select Export Folder")
         if not export_dir:
-            print("Export cancelled.")
+            self.log_to_ui("Export cancelled.")
             return
 
         # Selected CSVs from QListWidget (lowercase)
-        selected_csv_files = [item.text().lower() for item in self.ui.csv_list.selectedItems()]
+        selected_csv_names = [item.text().lower() for item in self.ui.csv_list.selectedItems()]
 
-        # Generic copy helper (case-insensitive)
-        def copy_matching_files(selected_files, src_dir, extensions=None):
-            if not os.path.isdir(src_dir):
-                print(f"Source folder not found: {src_dir}")
-                return
+        if not selected_csv_names:
+            self.log_to_ui("No CSV files selected for export.")
+            return
 
-            for f in os.listdir(src_dir):
-                fname_lower = os.path.splitext(f)[0].lower()  # strip extension
+        # 1. Copy CSV files
+        if os.path.isdir(csv_dir):
+            for f in os.listdir(csv_dir):
+                if f.lower().endswith(".csv"):
+                    fname_lower = os.path.splitext(f)[0].lower()
+                    if fname_lower in selected_csv_names:
+                        shutil.copy2(os.path.join(csv_dir, f), os.path.join(export_dir, f))
+                        self.log_to_ui(f"Copied CSV: {f}")
 
-                # Skip by extension if needed
-                if extensions and not f.lower().endswith(tuple(extensions)):
-                    continue
+        # 2. Copy HTM files
+        if os.path.isdir(htm_dir):
+            for f in os.listdir(htm_dir):
+                if f.lower().endswith((".htm", ".html")):
+                    fname_lower = os.path.splitext(f)[0].lower()
+                    if fname_lower in selected_csv_names:
+                        shutil.copy2(os.path.join(htm_dir, f), os.path.join(export_dir, f))
+                        self.log_to_ui(f"Copied HTM: {f}")
 
-                if fname_lower in selected_files or selected_files == ["*"]:
-                    src_path = os.path.join(src_dir, f)
-                    dst_path = os.path.join(export_dir, f)
-                    try:
-                        shutil.copy2(src_path, dst_path)
-                        print(f"Copied: {f}")
-                    except Exception as e:
-                        print(f"Error copying {f}: {e}")
+        # 3. Copy SET files
+        if os.path.isdir(set_dir):
+            for f in os.listdir(set_dir):
+                if f.lower().endswith(".set"):
+                    set_name_lower = os.path.splitext(f)[0].lower()
+                    # Check if this set_name_lower is a substring of any selected CSV name
+                    matched = False
+                    for csv_name in selected_csv_names:
+                        if set_name_lower in csv_name:
+                            matched = True
+                            break
+                    if matched:
+                        shutil.copy2(os.path.join(set_dir, f), os.path.join(export_dir, f))
+                        self.log_to_ui(f"Copied SET: {f}")
 
-
-        copy_matching_files(selected_csv_files, csv_dir, extensions=[".csv"])
-
-        copy_matching_files(selected_csv_files, htm_dir, extensions=[".htm"])
-
-        copy_matching_files(selected_csv_files, set_dir, extensions=[".set"])
-
-        print(f"All selected files copied to {export_dir}")
+        self.log_to_ui(f"All selected files copied to {export_dir}")
 
 
 

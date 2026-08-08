@@ -187,13 +187,27 @@ class SetFinderUI(BaseTab):
 
         self.toggle_label = QLabel("Filter For 1 Trade Approach:")
 
+        import os
+        from aiagentfinder.utils.paths import get_resource_path
+        icon_path = get_resource_path(os.path.join("aiagentfinder", "icons", "checkmark-24.png")).replace("\\", "/")
         self.toggle_btn = QCheckBox()
         self.toggle_btn.setChecked(False)
-        self.toggle_btn.setStyleSheet("""
-            QCheckBox::indicator {
+        self.toggle_btn.setStyleSheet(f"""
+            QCheckBox::indicator {{
                 width: 22px;
                 height: 22px;
-            }
+                border: 1px solid #808791;
+                border-radius: 3px;
+                background-color: #2b2b2b;
+            }}
+            QCheckBox::indicator:checked {{
+                background-color: #2b2b2b;
+                border: 1px solid #ffcc00;
+                image: url({icon_path});
+            }}
+            QCheckBox::indicator:hover {{
+                border: 1px solid #ffcc00;
+            }}
         """)
 
         # self.toggle_btn.stateChanged.connect(self.on_toggle_trade_filter)

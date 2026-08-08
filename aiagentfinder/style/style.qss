@@ -13,13 +13,16 @@ QLabel {
 QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QDateEdit {
     border: 2px solid #555555;       /* nice gray border */
     border-radius: 5px;              /* rounded corners */
-    padding: 1px 2px;     /* 🔽 reduced padding */
-    font-size: 12px;      /* 🔽 smaller text */
+    padding: 1px 2px;     /* reduced padding */
+    font-size: 12px;      /* smaller text */
     background-color: #2b2b2b;
     color: #ffffff;
-    min-height:20px
+    min-height:20px;
+    selection-background-color: #ffcc00;
+    selection-color: #1e1e1e;
 }
-/* 🔹 Hover effect */
+
+/* Hover effect */
 QLineEdit:hover, 
 QComboBox:hover, 
 QSpinBox:hover, 
@@ -27,8 +30,6 @@ QDoubleSpinBox:hover,
 QDateEdit:hover {
     border: 1px solid #d6d2d2ff;       /* lighter border */
 }
-
-
 
 QLineEdit#queueList, QListWidget {
     border: 1px solid #808791;
@@ -44,8 +45,8 @@ QPushButton {
     color: #ffffff;
     min-height:20px;
     
-    padding: 2px 6px;     /* 🔽 smaller padding */
-    font-size: 10px;      /* 🔽 smaller text */
+    padding: 2px 6px;     /* smaller padding */
+    font-size: 10px;      /* smaller text */
 }
 
 QPushButton:hover {
@@ -58,15 +59,36 @@ QComboBox QAbstractItemView {
     background-color: #2b2b2b;
     border: 1px solid #555555;
     selection-background-color: #ffcc00;
-    selection-color: black;
+    selection-color: #1e1e1e;
 }
 
-QListWidget{
-        font-size : 12px       
+/* QListWidget selection */
+QListWidget {
+    font-size: 12px;
+}
+
+QListWidget::item {
+    color: #ffffff;
+    border-bottom: 1px solid #3a3a3a;
+    padding: 3px 2px;
+}
+
+QListWidget::item:selected {
+    background-color: #ffcc00;
+    color: #1e1e1e;
+}
+
+QListWidget::item:selected:!active {
+    background-color: #c8a800;
+    color: #1e1e1e;
+}
+
+QListWidget::item:hover {
+    background-color: #3a3a3a;
 }
 
 QListWidget:hover {
-        border: 2px solid #e5e9ecff;
+    border: 2px solid #e5e9ecff;
 }
 
 QCalendarWidget QWidget { 
@@ -79,7 +101,7 @@ QCalendarWidget QAbstractItemView:enabled {
     color: #e0dcdc;
     background-color: #2b2b2b;
     selection-background-color: #ffcc00;
-    selection-color: black;
+    selection-color: #1e1e1e;
     gridline-color: #555555;
 }
 
@@ -89,10 +111,7 @@ QCalendarWidget QToolButton {
     font-size: 8px;
     icon-size: 12px;
     background-color: #444444;
-    /* border-radius: 5px; */
 }
-
-
 
 QCalendarWidget QMenu {
     background-color: #2b2b2b;
@@ -117,25 +136,75 @@ QCalendarWidget QSpinBox::down-button {
     subcontrol-origin: border;
     subcontrol-position: bottom right;
 }
-QTableWidget {
-         background-color: #2b2b2b;
-         color: #dcdcdc;
-         gridline-color: #444;
-         font-size: 12px;
 
- }
+/* Tables */
+QTableWidget, QTableView {
+    background-color: #2b2b2b;
+    color: #dcdcdc;
+    gridline-color: #444;
+    font-size: 12px;
+}
+
+QTableWidget::item,
+QTableView::item {
+    color: #dcdcdc;
+}
+
+QTableWidget::item:selected,
+QTableView::item:selected {
+    background-color: #ffcc00;
+    color: #1e1e1e;
+}
+
+QTableWidget::item:selected:!active,
+QTableView::item:selected:!active {
+    background-color: #c8a800;
+    color: #1e1e1e;
+}
 
 QHeaderView::section {
-            background-color: #333;
-            color: #dcdcdc;
-            padding: 2px;
-            font-size: 12px;
-        }
+    background-color: #333;
+    color: #dcdcdc;
+    padding: 2px;
+    font-size: 12px;
+}
+
+/* TextEdit */
+QTextEdit {
+    background-color: #2b2b2b;
+    color: #dcdcdc;
+    selection-background-color: #ffcc00;
+    selection-color: #1e1e1e;
+}
 
 QTextEdit:hover {
-        border: 2px solid #e5e9ecff;
-    }
+    border: 2px solid #e5e9ecff;
+}
 
+/* CheckBox */
+QCheckBox {
+    color: #dcdcdc;
+    spacing: 5px;
+    background-color: transparent;
+}
+
+QCheckBox::indicator {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #808791;
+    border-radius: 3px;
+    background-color: #2b2b2b;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #2b2b2b;
+    border: 1px solid #ffcc00;
+    image: url({ICON_CHECKMARK});
+}
+
+QCheckBox::indicator:hover {
+    border: 1px solid #ffcc00;
+}
 
 QToolTip {
     background-color: #2b2b2b;    

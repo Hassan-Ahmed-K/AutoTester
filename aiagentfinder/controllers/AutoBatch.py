@@ -322,7 +322,7 @@ class AutoBatchController:
 
             
             def on_done(result):
-                # file_path = result["file_path"]
+                file_path = result["file_path"]
                 file_name = result["file_name"]
 
                 # Clean placeholder
@@ -337,6 +337,15 @@ class AutoBatchController:
                     self.ui.expert_input.addItem(file_name)
 
                 self.ui.expert_input.setCurrentText(file_name)
+                
+                # Update underlying experts dictionary
+                if not hasattr(self.ui, "experts") or self.ui.experts is None:
+                    self.ui.experts = {}
+                self.ui.experts[file_name] = {
+                    "path": file_path,
+                    "modified": datetime.datetime.fromtimestamp(os.path.getmtime(file_path)) if os.path.exists(file_path) else datetime.datetime.now()
+                }
+                
                 Logger.success(f"Expert file selected: {file_name}")
 
          
@@ -609,7 +618,15 @@ class AutoBatchController:
         def task(folder):
       
             expert_files = glob.glob(os.path.join(folder, "*.ex5"))
-            experts_dict = {os.path.basename(f): f for f in expert_files}
+            # Store as {"path": ..., "modified": ...} to match the format
+            # expected by mt5_manager: expert_path[expert]['path']
+            experts_dict = {
+                os.path.basename(f): {
+                    "path": f,
+                    "modified": datetime.datetime.fromtimestamp(os.path.getmtime(f))
+                }
+                for f in expert_files
+            }
 
             # Return both dict + latest file (if any)
             latest_file = None
