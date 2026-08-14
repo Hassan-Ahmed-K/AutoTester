@@ -162,6 +162,15 @@ def package_final_release():
         else:
             print(f"   [WARNING] {filename} not found in root, skipped.")
 
+    # 3b. Copy favicon_black_bg.ico → ECHELON\Executable\
+    favicon_src = os.path.join(ROOT_DIR, "data", "favicon_black_bg.ico")
+    if os.path.exists(favicon_src):
+        shutil.copy2(favicon_src, EXECUTABLE_DIR)
+        print("   [OK] Favicon: favicon_black_bg.ico -> Executable\\")
+    else:
+        print("   [WARNING] data/favicon_black_bg.ico not found, skipped.")
+
+
     # 4. Move build\ folder → ECHELON\build\
     src_build = os.path.join(ROOT_DIR, "build")
     dst_build = os.path.join(FINAL_RELEASE_DIR, "build")
